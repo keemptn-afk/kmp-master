@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="th"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>EUR/USD · KMP Master</title>
+<title>ETH/USD · KMP Master</title>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Bricolage+Grotesque:wght@400;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/style.css">
 </head><body>
@@ -26,16 +26,13 @@
       <span class="arrow">▶</span><span class="nm">Crypto</span><span class="badge">3</span>
     </div>
     <div class="tree-children" id="crypto-menu">
-      <div class="tree-node lvl-1 expandable" data-toggle="btc-menu">
-        <span class="arrow">▶</span><span class="nm">BTC/USD</span><span class="badge">99K</span>
+      <div class="tree-node lvl-1 expandable" data-toggle="eth-menu">
+        <span class="arrow">▶</span><span class="nm">ETH/USD</span><span class="badge">99K</span>
       </div>
-      <div class="tree-children" id="btc-menu">
-        <a class="tree-node lvl-2" href="btc-h4.html"><span class="nm">BTC H4</span><span class="badge" style="background:#10b981;color:#fff">9,474</span></a>
-        <a class="tree-node lvl-2" href="btc-h1.html"><span class="nm">BTC H1</span><span class="badge">18,638</span></a>
-        <a class="tree-node lvl-2" href="btc-m15.html"><span class="nm">BTC M15</span><span class="badge">75,677</span></a>
-        <a class="tree-node lvl-1" href="eth.html"><span class="arrow"></span><span class="nm">Ethereum (ETH)</span></a>
-        <a class="tree-node lvl-2" href="eth-h4.html"><span class="nm">ETH H4</span><span class="badge" style="background:#10b981;color:#fff">9,701</span></a>
-        <a class="tree-node lvl-2" href="eth-h1.html"><span class="nm">ETH H1</span><span class="badge" style="background:#10b981;color:#fff">36,487</span></a>
+      <div class="tree-children" id="eth-menu">
+        <a class="tree-node lvl-2" href="eth-h4.html"><span class="nm">ETH H4</span><span class="badge" style="background:#10b981;color:#fff">9,474</span></a>
+        <a class="tree-node lvl-2" href="eth-h1.html"><span class="nm">ETH H1</span><span class="badge">18,638</span></a>
+        <a class="tree-node lvl-2" href="eth-m15.html"><span class="nm">ETH M15</span><span class="badge">75,677</span></a>
       </div>
     </div>
     
@@ -102,7 +99,30 @@
   </div>
 </nav>
 
-<main class="main"><div class="breadcrumb"><a href="index.html" class="crumb">Dashboard</a><span class="sep">▸</span><a href="index.html" class="crumb">Datasets</a><span class="sep">▸</span><a href="forex.html" class="crumb">Forex</a><span class="sep">▸</span><span class="crumb current">EUR/USD</span></div>
+<main class="main">
+  <div class="card" style="margin-bottom:20px;border-left:3px solid #10b981;background:linear-gradient(90deg,rgba(16,185,129,0.05),transparent)">
+    <div style="font-weight:700;color:#10b981;margin-bottom:8px">✅ v6 Baseline ready (H4 + H1)</div>
+    <div style="display:flex;gap:14px;flex-wrap:wrap">
+      <a href="eth-h4.html" style="text-decoration:none;color:var(--text);padding:8px 14px;background:rgba(98,126,234,0.1);border-radius:4px">
+        <strong style="color:#627eea">ETH H4</strong> · 9,701 trades · WR 49.5% · PF 1.03 · Net +647 ATR
+      </a>
+      <a href="eth-h1.html" style="text-decoration:none;color:var(--text);padding:8px 14px;background:rgba(98,126,234,0.1);border-radius:4px">
+        <strong style="color:#627eea">ETH H1</strong> · 36,487 trades · WR 49.1% · PF 0.95 · Net -8,938 ATR
+      </a>
+    </div>
+  </div>
+
+  <div class="card" style="margin-bottom:20px;border-left:3px solid #10b981;background:linear-gradient(90deg,rgba(16,185,129,0.05),transparent)">
+    <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap">
+      <div style="font-weight:700;color:#10b981">✅ v6 Baseline ready (H4 only)</div>
+      <div style="color:var(--txt-d);font-size:13px">
+        <strong>9,474 trades</strong> · WR <strong>50.5%</strong> · PF <strong>1.11</strong> · 
+        Net <strong>+2,144 ATR</strong>
+      </div>
+      <a href="eth-h4.html" style="margin-left:auto;color:var(--blue);text-decoration:none;font-weight:600">View ETH H4 →</a>
+    </div>
+  </div>
+<div class="breadcrumb"><a href="index.html" class="crumb">Dashboard</a><span class="sep">▸</span><a href="index.html" class="crumb">Datasets</a><span class="sep">▸</span><a href="crypto.html" class="crumb">Crypto</a><span class="sep">▸</span><span class="crumb current">ETH/USD</span></div>
 
 <div style="padding:14px 18px;background:rgba(148,163,184,0.08);border-left:3px solid #94a3b8;border-radius:5px;margin:14px 0 18px;font-size:13px;line-height:1.6">
   <strong style="color:#94a3b8">📦 LEGACY · v4 data (80 patterns · 248K trades · 9 datasets)</strong> — 
@@ -113,72 +133,60 @@
   <a href="tracking-system.html" style="color:var(--blue)">Tracking System</a>
 </div>
 <div class="hero">
-  <span class="hero-tag">Asset · EURUSD</span>
-  <h1 class="hero-title">EUR<span class="accent">/USD.</span></h1>
+  <span class="hero-tag">Asset · ETHUSD</span>
+  <h1 class="hero-title">ETH<span class="accent">/USD.</span></h1>
   <p class="hero-desc">
-    Most liquid forex pair · tested across 3 timeframes (H4, H1, M15) · 79,165 trades · all TF negative
+    Ethereum tested across 3 timeframes (H4, H1, M15) · 99,471 trades · 4 months
   </p>
 </div>
 
 <div class="kpis">
-  <div class="kpi"><div class="kpi-label">Total Trades</div><div class="kpi-val">79,165</div></div>
-  <div class="kpi red"><div class="kpi-label">Avg WR</div><div class="kpi-val red">48.2%</div></div>
-  <div class="kpi red"><div class="kpi-label">Net PnL</div><div class="kpi-val red">-$2.40M</div></div>
-  <div class="kpi yellow"><div class="kpi-label">Best Pattern</div><div class="kpi-val yellow">P63</div><div class="kpi-sub">81.8% in M15</div></div>
+  <div class="kpi"><div class="kpi-label">Total Trades</div><div class="kpi-val">99,471</div></div>
+  <div class="kpi"><div class="kpi-label">Avg WR</div><div class="kpi-val">49.4%</div></div>
+  <div class="kpi red"><div class="kpi-label">Net PnL</div><div class="kpi-val red">-$6.18M</div></div>
+  <div class="kpi green"><div class="kpi-label">Best TF</div><div class="kpi-val green">H4</div></div>
 </div>
 
 <section class="section">
   <div class="section-head"><span class="section-num">01</span><h2 class="section-title">Choose Timeframe</h2></div>
   
   <div class="tf-grid">
-    <a class="tf-card" href="eur-h4.html">
-      <div class="tf-name">H4</div>
-      <div class="tf-stat">3,770 · 48.2% · -$35/trade</div>
-      <div class="tf-pnl neg">-$132K</div>
+    <a class="tf-card" href="eth-h4.html">
+      <div class="tf-name">H4 (best)</div>
+      <div class="tf-stat">5,156 trades · 50.5% WR · $97/trade</div>
+      <div class="tf-pnl pos">+$498K</div>
     </a>
-    <a class="tf-card" href="eur-h1.html" style="border-left:3px solid var(--cyan)">
-      <div class="tf-name">H1 (LOW vol best)</div>
-      <div class="tf-stat">14,257 · 48.4% · -$31/trade</div>
-      <div class="tf-pnl neg">-$440K</div>
+    <a class="tf-card" href="eth-h1.html">
+      <div class="tf-name">H1</div>
+      <div class="tf-stat">18,638 · 49.2% · -$126/trade</div>
+      <div class="tf-pnl neg">-$2.35M</div>
     </a>
-    <a class="tf-card" href="eur-m15.html">
+    <a class="tf-card" href="eth-m15.html">
       <div class="tf-name">M15</div>
-      <div class="tf-stat">61,138 · 48.1% · -$30/trade</div>
-      <div class="tf-pnl neg">-$1.83M</div>
+      <div class="tf-stat">75,677 · 49.3% · -$57/trade</div>
+      <div class="tf-pnl neg">-$4.32M</div>
     </a>
   </div>
 </section>
 
 <section class="section">
-  <div class="section-head"><span class="section-num">02</span><h2 class="section-title">EUR Cross-TF Insights</h2></div>
+  <div class="section-head"><span class="section-num">02</span><h2 class="section-title">ETH Cross-TF Insights</h2></div>
   
-  <div class="insight warn">
-    <div class="insight-tag">EUR is the Underdog</div>
-    EUR H4: -$35/trade · BTC H4: $97/trade · XAU H4: $403/trade<br>
-    Pip value ต่ำ + pattern fit แย่ = aggregate ติดลบทุก timeframe<br>
-    Production EA ควรใช้ EUR เป็น secondary asset 20% allocation
+  <div class="insight blue">
+    <div class="insight-tag">Pattern Behavior</div>
+    ETH shows clear edge decay from H4 → M15 in trend-following patterns.<br>
+    Mean-reversion patterns (P53 BOS_Bull, P1 MultiRej) reverse decay - improve in lower TF.
   </div>
   
-  <div class="insight">
-    <div class="insight-tag">TF-Specific Pattern Behavior</div>
-    <strong>P55 CHoCH_Bull</strong>: H4 30.8% (worst) → H1 58.6% (best in H1!) → M15 34.6% (worst)<br>
-    <strong>P63 Triple_Bottom</strong>: not in H4 → not in H1 → M15 81.8% (best!)<br>
-    <strong>P66 HnS_Bull</strong>: rare in H4/H1 → M15 71.9% (opposite of XAU M15 where 12.5%!)<br>
-    <strong>P67 Triangle_Asc</strong>: rare in H4 → H1 52.3% → M15 61.5% (improves!)
+  <div class="insight warn">
+    <div class="insight-tag">Aggregate vs Specific</div>
+    Aggregate PnL is negative for H1+M15 (when running ALL patterns) but specific Tier-A patterns (P77, P55, P68) are highly profitable when filtered correctly.
   </div>
   
   <div class="insight cyan">
-    <div class="insight-tag">EUR Vol Inversion</div>
-    EUR H4: NORMAL best ($-23) · LOW worst ($-157)<br>
-    EUR H1: LOW best (+$2 = only positive!) · NORMAL worst ($-37)<br>
-    EUR M15: All negative · LOW worst ($-48)<br>
-    <strong>EUR H1 + LOW vol = only profitable combo</strong>
-  </div>
-  
-  <div class="insight danger">
-    <div class="insight-tag">EUR Universal Bad</div>
-    Negative across all 3 EUR TFs: P54 BOS_Bear · P57 Liq_Sweep_Long · P62 Double_Top<br>
-    หลีกเลี่ยงทุก TF · pattern เหล่านี้ไม่ทำงานบน Forex
+    <div class="insight-tag">Vol Regime</div>
+    HIGH vol = best for ETH (+$1,050 avg in H4) · trending crypto continuations<br>
+    LOW/NORMAL vol = mediocre · range-bound conditions
   </div>
 </section>
 </main>
