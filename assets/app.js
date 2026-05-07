@@ -5,8 +5,14 @@
 // Sidebar tree expand/collapse — ปิดทุกครั้งที่ refresh
 (function initSidebar() {
   // Clear any old localStorage state (no persistence anymore)
-  localStorage.removeItem('kmp_sidebar_state');
-  localStorage.removeItem('kmp_sidebar_state_v2');
+  try {
+    localStorage.removeItem('kmp_sidebar_state');
+    localStorage.removeItem('kmp_sidebar_state_v2');
+  } catch(e) {}
+
+  // Force-close ALL sidebar menus on every page load
+  document.querySelectorAll('.tree-children').forEach(el => el.classList.remove('show'));
+  document.querySelectorAll('.tree-node.expandable, .tree-node.expanded').forEach(el => el.classList.remove('expanded'));
 
   // Click handler only — no state persistence, no auto-expand
   document.querySelectorAll('.tree-node.expandable').forEach(node => {

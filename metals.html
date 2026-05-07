@@ -2,8 +2,8 @@
 <html lang="th"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Metals · KMP Master</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Thai:wght@400;500;600;700&family=Bricolage+Grotesque:wght@400;700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&family=Sarabun:wght@400;500;600;700&family=Bricolage+Grotesque:wght@400;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css?v=6.7">
 </head><body>
 <nav class="sidebar">
   <div class="sidebar-brand">
@@ -194,5 +194,30 @@
   </div>
 </section>
 </main>
-<script src="assets/app.js"></script>
+<script src="assets/app.js?v=6.7"></script>
+  <script>
+    // Force close all sidebar menus — runs BEFORE and AFTER DOM load
+    (function forceClose() {
+      try {
+        localStorage.removeItem('kmp_sidebar_state');
+        localStorage.removeItem('kmp_sidebar_state_v2');
+      } catch(e) {}
+      var doIt = function() {
+        document.querySelectorAll('.tree-children').forEach(function(el) {
+          el.classList.remove('show');
+        });
+        document.querySelectorAll('.tree-node.expandable, .tree-node.expanded').forEach(function(el) {
+          el.classList.remove('expanded');
+        });
+      };
+      // Run NOW (immediately when this script executes)
+      doIt();
+      // Run AGAIN after DOM ready (in case elements weren't there yet)
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', doIt);
+      }
+      // Run on every visibility change (back from another tab)
+      document.addEventListener('visibilitychange', doIt);
+    })();
+  </script>
 </body></html>
