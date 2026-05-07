@@ -406,11 +406,11 @@ ul.bullet li, ol.bullet li { padding: 4px 0; }
 }
 
 
-/* === Number rendering (slashed zero + tabular alignment) === */
+/* === Number rendering (tabular alignment, NO slashed zero) === */
 body, .table, .num-pos, .num-neg, .bar-row, .bar-fill, .val-r, .label,
 .kpi-val, .kpi-sub, .badge, .hero-tag, .lead-desc, td, th {
-    font-variant-numeric: slashed-zero tabular-nums;
-    font-feature-settings: "zero" 1, "tnum" 1;
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: "tnum" 1;
 }
 
 /* === Fix bar-fill text overflow === */
@@ -427,15 +427,15 @@ body, .table, .num-pos, .num-neg, .bar-row, .bar-fill, .val-r, .label,
    FIX v6.4: slashed zero + bar text overflow
    ============================================ */
 
-/* Slashed zero — เลข 0 มีขีดทแยง */
-body, .table, .bar-fill, .bar-fill-outside, .val-r, .label, .badge,
+/* Tabular nums (เลขชิดเป็นแนว) แต่ไม่มีขีดผ่าน 0 */
+body, .table, .bar-fill, .val-r, .label, .badge,
 .kpi-val, .kpi-sub, .hero-tag, .num-pos, .num-neg, .tg, .tr,
 code, td, th, .insight, input, select {
-  font-variant-numeric: slashed-zero tabular-nums;
-  font-feature-settings: "zero" 1, "tnum" 1;
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1;
 }
 
-/* Bar chart — text overflow handling */
+/* Bar chart — text ALWAYS outside (no overflow, no wrap) */
 .bar-track {
   position: relative;
   display: flex;
@@ -443,19 +443,17 @@ code, td, th, .insight, input, select {
   overflow: visible;
 }
 .bar-fill {
+  height: 18px;
+  display: block;
   white-space: nowrap;
-  overflow: visible;
-  position: relative;
+  overflow: hidden;
+  /* text inside bar = no longer used */
+  text-indent: -9999px;
 }
-/* When bar is narrow, text shows outside on the right */
 .bar-row .bar-label-outside {
   font-size: 11px;
   color: var(--text);
   padding-left: 8px;
   white-space: nowrap;
   font-weight: 600;
-}
-/* Text inside bar — readable shadow */
-.bar-fill {
-  text-shadow: 0 1px 2px rgba(0,0,0,0.5);
 }

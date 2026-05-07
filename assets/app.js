@@ -4,7 +4,7 @@
 
 // Sidebar tree expand/collapse with state persistence
 (function initSidebar() {
-  const STORAGE_KEY = 'kmp_sidebar_state';
+  const STORAGE_KEY = 'kmp_sidebar_state_v2';
   const state = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
 
   document.querySelectorAll('.tree-node.expandable').forEach(node => {
