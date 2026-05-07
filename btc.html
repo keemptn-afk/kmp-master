@@ -20,10 +20,10 @@
   </div>
   
   <div class="nav-section">
-    <div class="nav-label">Datasets · v4 LEGACY</div>
+    <div class="nav-label">Datasets · v6</div>
     
     <div class="tree-node lvl-0 expandable" data-toggle="crypto-menu">
-      <span class="arrow">▶</span><span class="nm">Crypto</span><span class="badge">3</span>
+      <span class="arrow">▶</span><span class="nm">Crypto</span><span class="badge">2</span>
     </div>
     <div class="tree-children" id="crypto-menu">
       <div class="tree-node lvl-1 expandable" data-toggle="btc-menu">
@@ -31,9 +31,13 @@
       </div>
       <div class="tree-children" id="btc-menu">
         <a class="tree-node lvl-2" href="btc-h4.html"><span class="nm">BTC H4</span><span class="badge" style="background:#10b981;color:#fff">9,474</span></a>
-        <a class="tree-node lvl-2" href="btc-h1.html"><span class="nm">BTC H1</span><span class="badge">18,638</span></a>
+        <a class="tree-node lvl-2" href="btc-h1.html"><span class="nm">BTC H1</span><span class="badge" style="background:#10b981;color:#fff">35,654</span></a>
         <a class="tree-node lvl-2" href="btc-m15.html"><span class="nm">BTC M15</span><span class="badge">75,677</span></a>
-        <a class="tree-node lvl-1" href="eth.html"><span class="arrow"></span><span class="nm">Ethereum (ETH)</span></a>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="eth-menu">
+        <span class="arrow">▶</span><span class="nm">ETH/USD</span><span class="badge">46K</span>
+      </div>
+      <div class="tree-children" id="eth-menu">
         <a class="tree-node lvl-2" href="eth-h4.html"><span class="nm">ETH H4</span><span class="badge" style="background:#10b981;color:#fff">9,701</span></a>
         <a class="tree-node lvl-2" href="eth-h1.html"><span class="nm">ETH H1</span><span class="badge" style="background:#10b981;color:#fff">36,487</span></a>
       </div>
@@ -104,13 +108,14 @@
 
 <main class="main">
   <div class="card" style="margin-bottom:20px;border-left:3px solid #10b981;background:linear-gradient(90deg,rgba(16,185,129,0.05),transparent)">
-    <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap">
-      <div style="font-weight:700;color:#10b981">✅ v6 Baseline ready (H4 only)</div>
-      <div style="color:var(--txt-d);font-size:13px">
-        <strong>9,474 trades</strong> · WR <strong>50.5%</strong> · PF <strong>1.11</strong> · 
-        Net <strong>+2,144 ATR</strong>
-      </div>
-      <a href="btc-h4.html" style="margin-left:auto;color:var(--blue);text-decoration:none;font-weight:600">View BTC H4 →</a>
+    <div style="font-weight:700;color:#10b981;margin-bottom:8px">✅ v6 Baseline COMPLETE (H4 + H1)</div>
+    <div style="display:flex;gap:14px;flex-wrap:wrap">
+      <a href="btc-h4.html" style="text-decoration:none;color:var(--text);padding:8px 14px;background:rgba(247,147,26,0.1);border-radius:4px">
+        <strong style="color:#f7931a">BTC H4</strong> · 9,474 trades · WR 50.5% · PF 1.11 · Net +2,144 ATR
+      </a>
+      <a href="btc-h1.html" style="text-decoration:none;color:var(--text);padding:8px 14px;background:rgba(247,147,26,0.1);border-radius:4px">
+        <strong style="color:#f7931a">BTC H1</strong> · 35,654 trades · WR 50.0% · PF 1.03 · Net +4,417 ATR
+      </a>
     </div>
   </div>
 
