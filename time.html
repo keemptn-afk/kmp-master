@@ -1,10 +1,14 @@
 <!DOCTYPE html>
-<html lang="th"><head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Time Analysis · KMP Master</title>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Bricolage+Grotesque:wght@400;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/style.css">
-</head><body>
+</head>
+<body>
+
 <nav class="sidebar">
   <div class="sidebar-brand">
     <a class="brand-logo" href="index.html">KMP <span class="accent">Master</span></a>
@@ -99,6 +103,7 @@
   </div>
 </nav>
 
+
 <main class="main">
 
   <div class="hero">
@@ -138,65 +143,7 @@
   </div>
 </section>
 </main>
+
 <script src="assets/app.js"></script>
-<script>
-loadData().then(data => {
-  if (!data) return;
-  const body = document.getElementById('patternsBody');
-  data.patterns.sort((a,b) => a.pid - b.pid).forEach(p => {
-    const tr = document.createElement('tr');
-    if (p.tier === 'A') tr.classList.add('tier-a-row');
-    if (p.tier === 'BAD') tr.classList.add('tier-bad-row');
-    tr.dataset.cat = p.cat;
-    tr.dataset.tier = p.tier;
-    tr.dataset.search = (p.name + ' P' + p.pid).toLowerCase();
-    
-    const totalN = (p.btc_h4.n||0) + (p.btc_h1.n||0) + (p.btc_m15.n||0) + (p.xau_h4.n||0) + (p.xau_h1.n||0) + (p.xau_m15?.n||0) + (p.eur_h4?.n||0) + (p.eur_h1?.n||0) + (p.eur_m15?.n||0);
-    
-    tr.innerHTML = `
-      <td><strong style="color:var(--blue)">P${p.pid}</strong></td>
-      <td><span class="cat cat-${p.cat}">${p.cat}</span></td>
-      <td>${p.name}</td>
-      <td>${dirText(p.dir)}</td>
-      <td>${wrPill(p.btc_h4.wr, p.btc_h4.n)} <span style="font-size:9px;color:var(--txt-dim)">${(p.btc_h4.n||0).toLocaleString()}</span></td>
-      <td>${wrPill(p.btc_h1.wr, p.btc_h1.n)} <span style="font-size:9px;color:var(--txt-dim)">${(p.btc_h1.n||0).toLocaleString()}</span></td>
-      <td>${wrPill(p.btc_m15.wr, p.btc_m15.n)} <span style="font-size:9px;color:var(--txt-dim)">${(p.btc_m15.n||0).toLocaleString()}</span></td>
-      <td>${wrPill(p.xau_h4.wr, p.xau_h4.n)} <span style="font-size:9px;color:var(--txt-dim)">${(p.xau_h4.n||0).toLocaleString()}</span></td>
-      <td>${wrPill(p.xau_h1.wr, p.xau_h1.n)} <span style="font-size:9px;color:var(--txt-dim)">${(p.xau_h1.n||0).toLocaleString()}</span></td>
-      <td>${wrPill(p.xau_m15?.wr, p.xau_m15?.n)} <span style="font-size:9px;color:var(--txt-dim)">${(p.xau_m15?.n||0).toLocaleString()}</span></td>
-      <td>${wrPill(p.eur_h4?.wr, p.eur_h4?.n)} <span style="font-size:9px;color:var(--txt-dim)">${(p.eur_h4?.n||0).toLocaleString()}</span></td>
-      <td>${wrPill(p.eur_h1?.wr, p.eur_h1?.n)} <span style="font-size:9px;color:var(--txt-dim)">${(p.eur_h1?.n||0).toLocaleString()}</span></td>
-      <td>${wrPill(p.eur_m15?.wr, p.eur_m15?.n)} <span style="font-size:9px;color:var(--txt-dim)">${(p.eur_m15?.n||0).toLocaleString()}</span></td>
-      <td class="num">${totalN.toLocaleString()}</td>
-      <td>${tierLabel(p.tier)}</td>
-    `;
-    body.appendChild(tr);
-  });
-  
-  let curCat = 'all', curTier = 'all';
-  function applyFilter() {
-    const q = (document.getElementById('searchPat')?.value || '').toLowerCase();
-    document.querySelectorAll('#patternsBody tr').forEach(tr => {
-      const matchCat = curCat === 'all' || tr.dataset.cat === curCat;
-      const matchTier = curTier === 'all' || tr.dataset.tier === curTier;
-      const matchSearch = !q || tr.dataset.search.includes(q);
-      tr.style.display = (matchCat && matchTier && matchSearch) ? '' : 'none';
-    });
-  }
-  
-  document.querySelectorAll('.cat-filter').forEach(b => b.addEventListener('click', () => {
-    document.querySelectorAll('.cat-filter').forEach(x => x.classList.remove('active'));
-    b.classList.add('active');
-    curCat = b.dataset.cat;
-    applyFilter();
-  }));
-  document.querySelectorAll('.tier-filter').forEach(b => b.addEventListener('click', () => {
-    document.querySelectorAll('.tier-filter').forEach(x => x.classList.remove('active'));
-    b.classList.add('active');
-    curTier = b.dataset.tier;
-    applyFilter();
-  }));
-  document.getElementById('searchPat').addEventListener('input', applyFilter);
-});
-</script>
-</body></html>
+</body>
+</html>
