@@ -28,7 +28,7 @@ html { scroll-behavior: smooth; }
 body {
   background: var(--bg-base);
   color: var(--txt);
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Inter', 'Noto Sans Thai', 'Sarabun', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
   font-size: 13px;
   line-height: 1.6;
   display: grid;
@@ -456,4 +456,34 @@ code, td, th, .insight, input, select {
   padding-left: 8px;
   white-space: nowrap;
   font-weight: 600;
+}
+
+
+/* ============================================
+   FIX v6.6: Better fonts (no slash 0, readable)
+   ============================================ */
+
+/* Tables, code, numbers → IBM Plex Mono (clean 0, no slash) */
+.table, .table td, .table th,
+.bar-fill, .bar-label-outside, .val-r, .label,
+.kpi-val, .kpi-sub, .num-pos, .num-neg, .tg, .tr,
+.badge, .hero-tag, code, pre,
+.bar-row, .insight-tag {
+  font-family: 'IBM Plex Mono', 'Sarabun', monospace;
+}
+
+/* Body / Thai content → IBM Plex Sans + Sarabun fallback */
+body, p, li, span:not(.bar-fill):not(.val-r):not(.label):not(.badge):not(.hero-tag):not(.num-pos):not(.num-neg):not(.tg):not(.tr) {
+  font-family: 'IBM Plex Sans', 'Sarabun', -apple-system, sans-serif;
+}
+
+/* Headings keep Bricolage Grotesque (already nice) */
+h1, h2, h3, h4, .hero-title, .section-title, .card-title, .chart-title {
+  font-family: 'Bricolage Grotesque', 'Sarabun', sans-serif;
+}
+
+/* Force NO slashed zero ทุกที่ */
+* {
+  font-variant-numeric: tabular-nums !important;
+  font-feature-settings: "tnum" 1 !important;
 }

@@ -2,46 +2,30 @@
 // KMP Master · Shared App Logic
 // ════════════════════════════════════════════════════
 
-// Sidebar tree expand/collapse with state persistence
+// Sidebar tree expand/collapse — ปิดทุกครั้งที่ refresh
 (function initSidebar() {
-  const STORAGE_KEY = 'kmp_sidebar_state_v2';
-  const state = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+  // Clear any old localStorage state (no persistence anymore)
+  localStorage.removeItem('kmp_sidebar_state');
+  localStorage.removeItem('kmp_sidebar_state_v2');
 
+  // Click handler only — no state persistence, no auto-expand
   document.querySelectorAll('.tree-node.expandable').forEach(node => {
     const targetId = node.dataset.toggle;
     const target = document.getElementById(targetId);
     if (!target) return;
 
-    // Restore state
-    if (state[targetId]) {
-      node.classList.add('expanded');
-      target.classList.add('show');
-    }
-
     node.addEventListener('click', e => {
       e.stopPropagation();
-      const isExpanded = node.classList.toggle('expanded');
+      node.classList.toggle('expanded');
       target.classList.toggle('show');
-      state[targetId] = isExpanded;
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
     });
   });
 
-  // Highlight active nav based on current page
+  // Highlight active page link only (no auto-expand of parents)
   const currentPage = window.location.pathname.split('/').pop() || 'index.html';
   document.querySelectorAll('.tree-node[href]').forEach(link => {
     if (link.getAttribute('href') === currentPage) {
       link.classList.add('active');
-      // Auto-expand parents
-      let parent = link.closest('.tree-children');
-      while (parent) {
-        const toggle = document.querySelector(`[data-toggle="${parent.id}"]`);
-        if (toggle) {
-          toggle.classList.add('expanded');
-          parent.classList.add('show');
-        }
-        parent = toggle?.closest('.tree-children');
-      }
     }
   });
 })();
