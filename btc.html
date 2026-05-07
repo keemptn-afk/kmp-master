@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="th"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BTC/USD · KMP Master</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Bricolage+Grotesque:wght@400;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head><body>
+<nav class="sidebar">
+  <div class="sidebar-brand">
+    <a class="brand-logo" href="index.html">KMP <span class="accent">Master</span></a>
+    <div class="brand-ver">EA v3.1 · 177 patterns · 93 cols</div>
+  </div>
+  
+  <input type="text" class="search-box" id="globalSearch" placeholder="ค้นหา...">
+  
+  <div class="nav-section">
+    <div class="nav-label">Overview</div>
+    <a class="tree-node lvl-0" href="index.html"><span class="arrow"></span><span class="nm">Dashboard</span></a>
+    <a class="tree-node lvl-0" href="preface.html"><span class="arrow"></span><span class="nm">คำนำ &amp; เป้าหมาย</span></a>
+  </div>
+  
+  <div class="nav-section">
+    <div class="nav-label">Datasets · v4 LEGACY</div>
+    
+    <div class="tree-node lvl-0 expandable" data-toggle="crypto-menu">
+      <span class="arrow">▶</span><span class="nm">Crypto</span><span class="badge">3</span>
+    </div>
+    <div class="tree-children" id="crypto-menu">
+      <div class="tree-node lvl-1 expandable" data-toggle="btc-menu">
+        <span class="arrow">▶</span><span class="nm">BTC/USD</span><span class="badge">99K</span>
+      </div>
+      <div class="tree-children" id="btc-menu">
+        <a class="tree-node lvl-2" href="btc-h4.html"><span class="nm">BTC H4</span><span class="badge" style="background:#10b981;color:#fff">9,474</span></a>
+        <a class="tree-node lvl-2" href="btc-h1.html"><span class="nm">BTC H1</span><span class="badge">18,638</span></a>
+        <a class="tree-node lvl-2" href="btc-m15.html"><span class="nm">BTC M15</span><span class="badge">75,677</span></a>
+      </div>
+    </div>
+    
+    <div class="tree-node lvl-0 expandable" data-toggle="metals-menu">
+      <span class="arrow">▶</span><span class="nm">Metals</span><span class="badge">3</span>
+    </div>
+    <div class="tree-children" id="metals-menu">
+      <div class="tree-node lvl-1 expandable" data-toggle="xau-menu">
+        <span class="arrow">▶</span><span class="nm">XAU/USD</span><span class="badge">70K</span>
+      </div>
+      <div class="tree-children" id="xau-menu">
+        <a class="tree-node lvl-2" href="xau-h4.html"><span class="nm">XAU H4</span><span class="badge" style="background:#10b981;color:#fff">7,077</span></a>
+        <a class="tree-node lvl-2" href="xau-h1.html"><span class="nm">XAU H1</span><span class="badge">13,319</span></a>
+        <a class="tree-node lvl-2" href="xau-m15.html"><span class="nm">XAU M15</span><span class="badge">53,098</span></a>
+      </div>
+    </div>
+    
+    <div class="tree-node lvl-0 expandable" data-toggle="forex-menu">
+      <span class="arrow">▶</span><span class="nm">Forex</span><span class="badge">3</span>
+    </div>
+    <div class="tree-children" id="forex-menu">
+      <div class="tree-node lvl-1 expandable" data-toggle="eur-menu">
+        <span class="arrow">▶</span><span class="nm">EUR/USD</span><span class="badge">79K</span>
+      </div>
+      <div class="tree-children" id="eur-menu">
+        <a class="tree-node lvl-2" href="eur-h4.html"><span class="nm">EUR H4</span><span class="badge">3,770</span></a>
+        <a class="tree-node lvl-2" href="eur-h1.html"><span class="nm">EUR H1</span><span class="badge">14,257</span></a>
+        <a class="tree-node lvl-2" href="eur-m15.html"><span class="nm">EUR M15</span><span class="badge">61,138</span></a>
+      </div>
+    </div>
+  </div>
+  
+  <div class="nav-section">
+    <div class="nav-label">Patterns · 177 (v3.1)</div>
+    <a class="tree-node lvl-0" href="patterns-encyclopedia.html"><span class="arrow"></span><span class="nm">📚 Pattern Encyclopedia</span><span class="badge">177</span></a>
+    <div class="tree-node lvl-0 expandable" data-toggle="pat-menu">
+      <span class="arrow">▶</span><span class="nm">v4 Analysis</span><span class="badge">80</span>
+    </div>
+    <div class="tree-children" id="pat-menu">
+      <a class="tree-node lvl-1" href="patterns.html"><span class="nm">All Patterns Table</span></a>
+      <a class="tree-node lvl-1" href="tier.html"><span class="nm">Tier Rankings</span></a>
+      <a class="tree-node lvl-1" href="optimal-tpsl.html"><span class="nm">Optimal TP/SL EV</span></a>
+    </div>
+  </div>
+  
+  <div class="nav-section">
+    <div class="nav-label">Analysis</div>
+    <a class="tree-node lvl-0" href="cross.html"><span class="arrow"></span><span class="nm">Cross-TF / Asset</span></a>
+    <a class="tree-node lvl-0" href="time.html"><span class="arrow"></span><span class="nm">Hour / DoW / Conf</span></a>
+    <a class="tree-node lvl-0" href="edge.html"><span class="arrow"></span><span class="nm">Edge Decay / Vol</span></a>
+  </div>
+  
+  <div class="nav-section">
+    <div class="nav-label">Strategy</div>
+    <a class="tree-node lvl-0" href="strategy.html"><span class="arrow"></span><span class="nm">EA Blueprint &amp; Risk</span></a>
+  </div>
+  
+  <div class="nav-section">
+    <div class="nav-label">EA System · v3.1</div>
+    <a class="tree-node lvl-0" href="ea-architecture.html"><span class="arrow"></span><span class="nm">⚙ EA Architecture</span></a>
+    <a class="tree-node lvl-0" href="tracking-system.html"><span class="arrow"></span><span class="nm">🎯 Tracking System</span></a>  </div>  <div class="nav-section">
+    <div class="nav-label">Reference</div>
+    <a class="tree-node lvl-0" href="reference.html"><span class="arrow"></span><span class="nm">Sources &amp; Changelog</span></a>
+  </div>
+</nav>
+
+<main class="main">
+  <div class="card" style="margin-bottom:20px;border-left:3px solid #10b981;background:linear-gradient(90deg,rgba(16,185,129,0.05),transparent)">
+    <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap">
+      <div style="font-weight:700;color:#10b981">✅ v6 Baseline ready (H4 only)</div>
+      <div style="color:var(--txt-d);font-size:13px">
+        <strong>9,474 trades</strong> · WR <strong>50.5%</strong> · PF <strong>1.11</strong> · 
+        Net <strong>+2,144 ATR</strong>
+      </div>
+      <a href="btc-h4.html" style="margin-left:auto;color:var(--blue);text-decoration:none;font-weight:600">View BTC H4 →</a>
+    </div>
+  </div>
+<div class="breadcrumb"><a href="index.html" class="crumb">Dashboard</a><span class="sep">▸</span><a href="index.html" class="crumb">Datasets</a><span class="sep">▸</span><a href="crypto.html" class="crumb">Crypto</a><span class="sep">▸</span><span class="crumb current">BTC/USD</span></div>
+
+<div style="padding:14px 18px;background:rgba(148,163,184,0.08);border-left:3px solid #94a3b8;border-radius:5px;margin:14px 0 18px;font-size:13px;line-height:1.6">
+  <strong style="color:#94a3b8">📦 LEGACY · v4 data (80 patterns · 248K trades · 9 datasets)</strong> — 
+  หน้านี้แสดงข้อมูลจาก backtest เก่า (Phase 1 only) · 
+  จะถูกแทนที่ด้วย v6 baseline หลัง backtest ใหม่ด้วย EA v3.1 (177 patterns) · 
+  สำหรับเอกสารปัจจุบันดูที่ <a href="patterns-encyclopedia.html" style="color:var(--blue)">Pattern Encyclopedia</a> · 
+  <a href="ea-architecture.html" style="color:var(--blue)">EA Architecture</a> · 
+  <a href="tracking-system.html" style="color:var(--blue)">Tracking System</a>
+</div>
+<div class="hero">
+  <span class="hero-tag">Asset · BTCUSD</span>
+  <h1 class="hero-title">BTC<span class="accent">/USD.</span></h1>
+  <p class="hero-desc">
+    Bitcoin tested across 3 timeframes (H4, H1, M15) · 99,471 trades · 4 months
+  </p>
+</div>
+
+<div class="kpis">
+  <div class="kpi"><div class="kpi-label">Total Trades</div><div class="kpi-val">99,471</div></div>
+  <div class="kpi"><div class="kpi-label">Avg WR</div><div class="kpi-val">49.4%</div></div>
+  <div class="kpi red"><div class="kpi-label">Net PnL</div><div class="kpi-val red">-$6.18M</div></div>
+  <div class="kpi green"><div class="kpi-label">Best TF</div><div class="kpi-val green">H4</div></div>
+</div>
+
+<section class="section">
+  <div class="section-head"><span class="section-num">01</span><h2 class="section-title">Choose Timeframe</h2></div>
+  
+  <div class="tf-grid">
+    <a class="tf-card" href="btc-h4.html">
+      <div class="tf-name">H4 (best)</div>
+      <div class="tf-stat">5,156 trades · 50.5% WR · $97/trade</div>
+      <div class="tf-pnl pos">+$498K</div>
+    </a>
+    <a class="tf-card" href="btc-h1.html">
+      <div class="tf-name">H1</div>
+      <div class="tf-stat">18,638 · 49.2% · -$126/trade</div>
+      <div class="tf-pnl neg">-$2.35M</div>
+    </a>
+    <a class="tf-card" href="btc-m15.html">
+      <div class="tf-name">M15</div>
+      <div class="tf-stat">75,677 · 49.3% · -$57/trade</div>
+      <div class="tf-pnl neg">-$4.32M</div>
+    </a>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head"><span class="section-num">02</span><h2 class="section-title">BTC Cross-TF Insights</h2></div>
+  
+  <div class="insight blue">
+    <div class="insight-tag">Pattern Behavior</div>
+    BTC shows clear edge decay from H4 → M15 in trend-following patterns.<br>
+    Mean-reversion patterns (P53 BOS_Bull, P1 MultiRej) reverse decay - improve in lower TF.
+  </div>
+  
+  <div class="insight warn">
+    <div class="insight-tag">Aggregate vs Specific</div>
+    Aggregate PnL is negative for H1+M15 (when running ALL patterns) but specific Tier-A patterns (P77, P55, P68) are highly profitable when filtered correctly.
+  </div>
+  
+  <div class="insight cyan">
+    <div class="insight-tag">Vol Regime</div>
+    HIGH vol = best for BTC (+$1,050 avg in H4) · trending crypto continuations<br>
+    LOW/NORMAL vol = mediocre · range-bound conditions
+  </div>
+</section>
+</main>
+<script src="assets/app.js"></script>
+</body></html>

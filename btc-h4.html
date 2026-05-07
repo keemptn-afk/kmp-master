@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="th"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BTC H4 · KMP Master</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Bricolage+Grotesque:wght@400;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head><body>
+<nav class="sidebar">
+  <div class="sidebar-brand">
+    <a class="brand-logo" href="index.html">KMP <span class="accent">Master</span></a>
+    <div class="brand-ver">EA v3.1 · 177 patterns · 93 cols</div>
+  </div>
+  
+  <input type="text" class="search-box" id="globalSearch" placeholder="ค้นหา...">
+  
+  <div class="nav-section">
+    <div class="nav-label">Overview</div>
+    <a class="tree-node lvl-0" href="index.html"><span class="arrow"></span><span class="nm">Dashboard</span></a>
+    <a class="tree-node lvl-0" href="preface.html"><span class="arrow"></span><span class="nm">คำนำ &amp; เป้าหมาย</span></a>
+  </div>
+  
+  <div class="nav-section">
+    <div class="nav-label">Datasets · v4 LEGACY</div>
+    
+    <div class="tree-node lvl-0 expandable" data-toggle="crypto-menu">
+      <span class="arrow">▶</span><span class="nm">Crypto</span><span class="badge">3</span>
+    </div>
+    <div class="tree-children" id="crypto-menu">
+      <div class="tree-node lvl-1 expandable" data-toggle="btc-menu">
+        <span class="arrow">▶</span><span class="nm">BTC/USD</span><span class="badge">99K</span>
+      </div>
+      <div class="tree-children" id="btc-menu">
+        <a class="tree-node lvl-2" href="btc-h4.html"><span class="nm">BTC H4</span><span class="badge" style="background:#10b981;color:#fff">9,474</span></a>
+        <a class="tree-node lvl-2" href="btc-h1.html"><span class="nm">BTC H1</span><span class="badge">18,638</span></a>
+        <a class="tree-node lvl-2" href="btc-m15.html"><span class="nm">BTC M15</span><span class="badge">75,677</span></a>
+      </div>
+    </div>
+    
+    <div class="tree-node lvl-0 expandable" data-toggle="metals-menu">
+      <span class="arrow">▶</span><span class="nm">Metals</span><span class="badge">3</span>
+    </div>
+    <div class="tree-children" id="metals-menu">
+      <div class="tree-node lvl-1 expandable" data-toggle="xau-menu">
+        <span class="arrow">▶</span><span class="nm">XAU/USD</span><span class="badge">70K</span>
+      </div>
+      <div class="tree-children" id="xau-menu">
+        <a class="tree-node lvl-2" href="xau-h4.html"><span class="nm">XAU H4</span><span class="badge" style="background:#10b981;color:#fff">7,077</span></a>
+        <a class="tree-node lvl-2" href="xau-h1.html"><span class="nm">XAU H1</span><span class="badge">13,319</span></a>
+        <a class="tree-node lvl-2" href="xau-m15.html"><span class="nm">XAU M15</span><span class="badge">53,098</span></a>
+      </div>
+    </div>
+    
+    <div class="tree-node lvl-0 expandable" data-toggle="forex-menu">
+      <span class="arrow">▶</span><span class="nm">Forex</span><span class="badge">3</span>
+    </div>
+    <div class="tree-children" id="forex-menu">
+      <div class="tree-node lvl-1 expandable" data-toggle="eur-menu">
+        <span class="arrow">▶</span><span class="nm">EUR/USD</span><span class="badge">79K</span>
+      </div>
+      <div class="tree-children" id="eur-menu">
+        <a class="tree-node lvl-2" href="eur-h4.html"><span class="nm">EUR H4</span><span class="badge">3,770</span></a>
+        <a class="tree-node lvl-2" href="eur-h1.html"><span class="nm">EUR H1</span><span class="badge">14,257</span></a>
+        <a class="tree-node lvl-2" href="eur-m15.html"><span class="nm">EUR M15</span><span class="badge">61,138</span></a>
+      </div>
+    </div>
+  </div>
+  
+  <div class="nav-section">
+    <div class="nav-label">Patterns · 177 (v3.1)</div>
+    <a class="tree-node lvl-0" href="patterns-encyclopedia.html"><span class="arrow"></span><span class="nm">📚 Pattern Encyclopedia</span><span class="badge">177</span></a>
+    <div class="tree-node lvl-0 expandable" data-toggle="pat-menu">
+      <span class="arrow">▶</span><span class="nm">v4 Analysis</span><span class="badge">80</span>
+    </div>
+    <div class="tree-children" id="pat-menu">
+      <a class="tree-node lvl-1" href="patterns.html"><span class="nm">All Patterns Table</span></a>
+      <a class="tree-node lvl-1" href="tier.html"><span class="nm">Tier Rankings</span></a>
+      <a class="tree-node lvl-1" href="optimal-tpsl.html"><span class="nm">Optimal TP/SL EV</span></a>
+    </div>
+  </div>
+  
+  <div class="nav-section">
+    <div class="nav-label">Analysis</div>
+    <a class="tree-node lvl-0" href="cross.html"><span class="arrow"></span><span class="nm">Cross-TF / Asset</span></a>
+    <a class="tree-node lvl-0" href="time.html"><span class="arrow"></span><span class="nm">Hour / DoW / Conf</span></a>
+    <a class="tree-node lvl-0" href="edge.html"><span class="arrow"></span><span class="nm">Edge Decay / Vol</span></a>
+  </div>
+  
+  <div class="nav-section">
+    <div class="nav-label">Strategy</div>
+    <a class="tree-node lvl-0" href="strategy.html"><span class="arrow"></span><span class="nm">EA Blueprint &amp; Risk</span></a>
+  </div>
+  
+  <div class="nav-section">
+    <div class="nav-label">EA System · v3.1</div>
+    <a class="tree-node lvl-0" href="ea-architecture.html"><span class="arrow"></span><span class="nm">⚙ EA Architecture</span></a>
+    <a class="tree-node lvl-0" href="tracking-system.html"><span class="arrow"></span><span class="nm">🎯 Tracking System</span></a>  </div>  <div class="nav-section">
+    <div class="nav-label">Reference</div>
+    <a class="tree-node lvl-0" href="reference.html"><span class="arrow"></span><span class="nm">Sources &amp; Changelog</span></a>
+  </div>
+</nav>
+
+<main class="main">
+
+  <div class="hero">
+    <span class="hero-tag" style="background:#f7931a;color:#fff">BTCUSD · H4 · v6 baseline</span>
+    <h1 class="hero-title">BTCUSD <span class="accent">H4</span></h1>
+    <p class="hero-desc">
+      EA v3.1 · 9,474 trades · WR 50.53% · PF 1.114 · 
+      Net <span class="tg">+2144.0 ATR</span> 
+      / <span class="tg">$+1,741,575</span>
+    </p>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:14px;font-size:12px;color:var(--txt-d)">
+      <div>📅 2026.01.01 → 2026.04.30</div>
+      <div>🎯 150/177 patterns active</div>
+      <div>📊 expectancy +0.2263 ATR/trade</div>
+      <div>💱 spread avg 1168pts</div>
+    </div>
+  </div>
+
+<section>
+  <div class="section-head"><span class="section-num">01</span><h2 class="section-title">Pattern Distribution</h2></div>
+  <p class="lead-desc">การกระจายของ trades ตามหมวดของ pattern (150 patterns active จาก 177 ทั้งหมด)</p>
+  <div class="card">
+    <table class="table compact">
+      <thead><tr><th>Category</th><th class="r">Patterns</th><th class="r">Trades</th><th>Distribution</th><th class="r">PnL (ATR)</th></tr></thead>
+      <tbody>
+      <tr>
+        <td style="width:90px"><strong>Cat A</strong> · Original</td>
+        <td style="width:60px;text-align:right">18</td>
+        <td style="width:80px;text-align:right">2,062</td>
+        <td><div class="bar-row"><div class="bar" style="width:100.0%;background:var(--accent)"></div></div></td>
+        <td class="num tr" style="width:90px;text-align:right">-50.2</td>
+      </tr>
+      <tr>
+        <td style="width:90px"><strong>Cat B</strong> · Candlestick</td>
+        <td style="width:60px;text-align:right">18</td>
+        <td style="width:80px;text-align:right">429</td>
+        <td><div class="bar-row"><div class="bar" style="width:20.8%;background:var(--accent)"></div></div></td>
+        <td class="num tg" style="width:90px;text-align:right">+5.9</td>
+      </tr>
+      <tr>
+        <td style="width:90px"><strong>Cat C</strong> · S/R + OB</td>
+        <td style="width:60px;text-align:right">10</td>
+        <td style="width:80px;text-align:right">877</td>
+        <td><div class="bar-row"><div class="bar" style="width:42.5%;background:var(--accent)"></div></div></td>
+        <td class="num tg" style="width:90px;text-align:right">+739.3</td>
+      </tr>
+      <tr>
+        <td style="width:90px"><strong>Cat D</strong> · Structure</td>
+        <td style="width:60px;text-align:right">10</td>
+        <td style="width:80px;text-align:right">774</td>
+        <td><div class="bar-row"><div class="bar" style="width:37.5%;background:var(--accent)"></div></div></td>
+        <td class="num tg" style="width:90px;text-align:right">+250.6</td>
+      </tr>
+      <tr>
+        <td style="width:90px"><strong>Cat E</strong> · Chart Patterns</td>
+        <td style="width:60px;text-align:right">5</td>
+        <td style="width:80px;text-align:right">116</td>
+        <td><div class="bar-row"><div class="bar" style="width:5.6%;background:var(--accent)"></div></div></td>
+        <td class="num tg" style="width:90px;text-align:right">+113.6</td>
+      </tr>
+      <tr>
+        <td style="width:90px"><strong>Cat F</strong> · SMC</td>
+        <td style="width:60px;text-align:right">9</td>
+        <td style="width:80px;text-align:right">947</td>
+        <td><div class="bar-row"><div class="bar" style="width:45.9%;background:var(--accent)"></div></div></td>
+        <td class="num tg" style="width:90px;text-align:right">+494.3</td>
+      </tr>
+      <tr>
+        <td style="width:90px"><strong>Cat G</strong> · Stat Edge</td>
+        <td style="width:60px;text-align:right">8</td>
+        <td style="width:80px;text-align:right">729</td>
+        <td><div class="bar-row"><div class="bar" style="width:35.4%;background:var(--accent)"></div></div></td>
+        <td class="num tr" style="width:90px;text-align:right">-103.5</td>
+      </tr>
+      <tr>
+        <td style="width:90px"><strong>Cat H</strong> · SMC Advanced</td>
+        <td style="width:60px;text-align:right">5</td>
+        <td style="width:80px;text-align:right">267</td>
+        <td><div class="bar-row"><div class="bar" style="width:12.9%;background:var(--accent)"></div></div></td>
+        <td class="num tg" style="width:90px;text-align:right">+96.5</td>
+      </tr>
+      <tr>
+        <td style="width:90px"><strong>Cat I</strong> · VSA/Wyckoff</td>
+        <td style="width:60px;text-align:right">9</td>
+        <td style="width:80px;text-align:right">256</td>
+        <td><div class="bar-row"><div class="bar" style="width:12.4%;background:var(--accent)"></div></div></td>
+        <td class="num tr" style="width:90px;text-align:right">-73.5</td>
+      </tr>
+      <tr>
+        <td style="width:90px"><strong>Cat J</strong> · Harmonic</td>
+        <td style="width:60px;text-align:right">11</td>
+        <td style="width:80px;text-align:right">253</td>
+        <td><div class="bar-row"><div class="bar" style="width:12.3%;background:var(--accent)"></div></div></td>
+        <td class="num tr" style="width:90px;text-align:right">-226.4</td>
+      </tr>
+      <tr>
+        <td style="width:90px"><strong>Cat K</strong> · Multi-TF</td>
+        <td style="width:60px;text-align:right">8</td>
+        <td style="width:80px;text-align:right">474</td>
+        <td><div class="bar-row"><div class="bar" style="width:23.0%;background:var(--accent)"></div></div></td>
+        <td class="num tr" style="width:90px;text-align:right">-35.4</td>
+      </tr>
+      <tr>
+        <td style="width:90px"><strong>Cat L</strong> · Ichimoku</td>
+        <td style="width:60px;text-align:right">7</td>
+        <td style="width:80px;text-align:right">1,018</td>
+        <td><div class="bar-row"><div class="bar" style="width:49.4%;background:var(--accent)"></div></div></td>
+        <td class="num tg" style="width:90px;text-align:right">+501.6</td>
+      </tr>
+      <tr>
+        <td style="width:90px"><strong>Cat M</strong> · Modern SMC</td>
+        <td style="width:60px;text-align:right">8</td>
+        <td style="width:80px;text-align:right">171</td>
+        <td><div class="bar-row"><div class="bar" style="width:8.3%;background:var(--accent)"></div></div></td>
+        <td class="num tg" style="width:90px;text-align:right">+88.3</td>
+      </tr>
+      <tr>
+        <td style="width:90px"><strong>Cat N</strong> · Momentum</td>
+        <td style="width:60px;text-align:right">10</td>
+        <td style="width:80px;text-align:right">394</td>
+        <td><div class="bar-row"><div class="bar" style="width:19.1%;background:var(--accent)"></div></div></td>
+        <td class="num tg" style="width:90px;text-align:right">+493.8</td>
+      </tr>
+      <tr>
+        <td style="width:90px"><strong>Cat O</strong> · Vol Profile</td>
+        <td style="width:60px;text-align:right">3</td>
+        <td style="width:80px;text-align:right">181</td>
+        <td><div class="bar-row"><div class="bar" style="width:8.8%;background:var(--accent)"></div></div></td>
+        <td class="num tg" style="width:90px;text-align:right">+30.4</td>
+      </tr>
+      <tr>
+        <td style="width:90px"><strong>Cat P</strong> · Range</td>
+        <td style="width:60px;text-align:right">5</td>
+        <td style="width:80px;text-align:right">266</td>
+        <td><div class="bar-row"><div class="bar" style="width:12.9%;background:var(--accent)"></div></div></td>
+        <td class="num tg" style="width:90px;text-align:right">+12.1</td>
+      </tr>
+      <tr>
+        <td style="width:90px"><strong>Cat Q</strong> · ABCD</td>
+        <td style="width:60px;text-align:right">4</td>
+        <td style="width:80px;text-align:right">243</td>
+        <td><div class="bar-row"><div class="bar" style="width:11.8%;background:var(--accent)"></div></div></td>
+        <td class="num tr" style="width:90px;text-align:right">-184.4</td>
+      </tr>
+      <tr>
+        <td style="width:90px"><strong>Cat R</strong> · Vol Regime</td>
+        <td style="width:60px;text-align:right">2</td>
+        <td style="width:80px;text-align:right">17</td>
+        <td><div class="bar-row"><div class="bar" style="width:0.8%;background:var(--accent)"></div></div></td>
+        <td class="num tr" style="width:90px;text-align:right">-9.0</td>
+      </tr></tbody>
+    </table>
+  </div>
+  <div class="section-head"><span class="section-num">02</span><h2 class="section-title">Top Patterns (n≥30)</h2></div>
+  <p class="lead-desc">15 patterns ที่มีกำไรสูงสุด (PnL ATR) จาก 82 patterns ที่ผ่านเกณฑ์ trades ≥ 30</p>
+  <div class="card">
+    <table class="table compact ranked">
+      <thead><tr><th>Pattern</th><th>Cat</th><th class="r">N</th><th class="r">Win%</th><th class="r">PnL ATR</th><th class="r">PnL $</th><th class="r">PF</th><th class="r">EV/trade</th><th class="r">Avg Hold</th></tr></thead>
+      <tbody>
+      <tr>
+        <td><strong>P141</strong> Ichimoku_Kumo_Twist_Bear</td>
+        <td>Cat L</td>
+        <td class="r">135</td>
+        <td class="r">74.1%</td>
+        <td class="r tg">+622.0</td>
+        <td class="r tg">$+606,813</td>
+        <td class="r">4.81</td>
+        <td class="r">+4.608</td>
+        <td class="r">240h</td>
+      </tr>
+      <tr>
+        <td><strong>P46</strong> Breaker_Block_Bear</td>
+        <td>Cat C</td>
+        <td class="r">316</td>
+        <td class="r">57.6%</td>
+        <td class="r tg">+435.7</td>
+        <td class="r tg">$+486,720</td>
+        <td class="r">1.80</td>
+        <td class="r">+1.379</td>
+        <td class="r">227h</td>
+      </tr>
+      <tr>
+        <td><strong>P52</strong> LHLL</td>
+        <td>Cat D</td>
+        <td class="r">174</td>
+        <td class="r">53.5%</td>
+        <td class="r tg">+199.3</td>
+        <td class="r tg">$+377,640</td>
+        <td class="r">1.81</td>
+        <td class="r">+1.145</td>
+        <td class="r">232h</td>
+      </tr>
+      <tr>
+        <td><strong>P160</strong> Hidden_Div_Bear_MACD</td>
+        <td>Cat N</td>
+        <td class="r">54</td>
+        <td class="r">64.8%</td>
+        <td class="r tg">+174.9</td>
+        <td class="r tg">$+208,987</td>
+        <td class="r">8.63</td>
+        <td class="r">+3.238</td>
+        <td class="r">240h</td>
+      </tr>
+      <tr>
+        <td><strong>P158</strong> Hidden_Div_Bear_RSI</td>
+        <td>Cat N</td>
+        <td class="r">56</td>
+        <td class="r">64.3%</td>
+        <td class="r tg">+172.7</td>
+        <td class="r tg">$+206,415</td>
+        <td class="r">8.34</td>
+        <td class="r">+3.085</td>
+        <td class="r">240h</td>
+      </tr>
+      <tr>
+        <td><strong>P107</strong> CVD_Div_Bear</td>
+        <td>Cat I</td>
+        <td class="r">90</td>
+        <td class="r">48.9%</td>
+        <td class="r tg">+152.0</td>
+        <td class="r tg">$+147,696</td>
+        <td class="r">1.72</td>
+        <td class="r">+1.689</td>
+        <td class="r">238h</td>
+      </tr>
+      <tr>
+        <td><strong>P54</strong> BOS_Bear</td>
+        <td>Cat D</td>
+        <td class="r">30</td>
+        <td class="r">53.3%</td>
+        <td class="r tg">+142.0</td>
+        <td class="r tg">$+95,868</td>
+        <td class="r">4.41</td>
+        <td class="r">+4.734</td>
+        <td class="r">240h</td>
+      </tr>
+      <tr>
+        <td><strong>P133</strong> Daily_Bias_Intraday_Short</td>
+        <td>Cat K</td>
+        <td class="r">165</td>
+        <td class="r">46.1%</td>
+        <td class="r tg">+131.7</td>
+        <td class="r tg">$+139,316</td>
+        <td class="r">1.42</td>
+        <td class="r">+0.798</td>
+        <td class="r">231h</td>
+      </tr>
+      <tr>
+        <td><strong>P45</strong> Breaker_Block_Bull</td>
+        <td>Cat C</td>
+        <td class="r">381</td>
+        <td class="r">50.9%</td>
+        <td class="r tg">+130.5</td>
+        <td class="r tr">$-66,165</td>
+        <td class="r">1.20</td>
+        <td class="r">+0.343</td>
+        <td class="r">230h</td>
+      </tr>
+      <tr>
+        <td><strong>P72</strong> FVG_Bear</td>
+        <td>Cat F</td>
+        <td class="r">339</td>
+        <td class="r">50.7%</td>
+        <td class="r tg">+113.8</td>
+        <td class="r tg">$+228,252</td>
+        <td class="r">1.18</td>
+        <td class="r">+0.336</td>
+        <td class="r">230h</td>
+      </tr>
+      <tr>
+        <td><strong>P80</strong> POC_Bounce_Short</td>
+        <td>Cat F</td>
+        <td class="r">52</td>
+        <td class="r">65.4%</td>
+        <td class="r tg">+112.0</td>
+        <td class="r tg">$+168,706</td>
+        <td class="r">2.63</td>
+        <td class="r">+2.154</td>
+        <td class="r">237h</td>
+      </tr>
+      <tr>
+        <td><strong>P119</strong> Asian_Sweep_Short</td>
+        <td>Cat J</td>
+        <td class="r">47</td>
+        <td class="r">57.5%</td>
+        <td class="r tg">+101.6</td>
+        <td class="r tg">$+102,478</td>
+        <td class="r">2.40</td>
+        <td class="r">+2.162</td>
+        <td class="r">233h</td>
+      </tr>
+      <tr>
+        <td><strong>P172</strong> ABCD_Bear</td>
+        <td>Cat Q</td>
+        <td class="r">58</td>
+        <td class="r">56.9%</td>
+        <td class="r tg">+99.7</td>
+        <td class="r tg">$+121,390</td>
+        <td class="r">2.74</td>
+        <td class="r">+1.720</td>
+        <td class="r">231h</td>
+      </tr>
+      <tr>
+        <td><strong>P39</strong> Tweezer_Top</td>
+        <td>Cat B</td>
+        <td class="r">62</td>
+        <td class="r">64.5%</td>
+        <td class="r tg">+96.2</td>
+        <td class="r tg">$+140,718</td>
+        <td class="r">1.93</td>
+        <td class="r">+1.552</td>
+        <td class="r">229h</td>
+      </tr>
+      <tr>
+        <td><strong>P74</strong> Liq_Grab_Bear</td>
+        <td>Cat F</td>
+        <td class="r">34</td>
+        <td class="r">70.6%</td>
+        <td class="r tg">+96.2</td>
+        <td class="r tg">$+102,221</td>
+        <td class="r">3.72</td>
+        <td class="r">+2.829</td>
+        <td class="r">225h</td>
+      </tr></tbody>
+    </table>
+  </div>
+  <div class="section-head"><span class="section-num">03</span><h2 class="section-title">Worst Patterns</h2></div>
+  <p class="lead-desc">Top 10 patterns ที่ขาดทุนสูงสุด — ไม่ใช้ในกลยุทธ์ production</p>
+  <div class="card">
+    <table class="table compact ranked">
+      <thead><tr><th>Pattern</th><th>Cat</th><th class="r">N</th><th class="r">Win%</th><th class="r">PnL ATR</th><th class="r">PnL $</th><th class="r">PF</th><th class="r">EV/trade</th></tr></thead>
+      <tbody>
+      <tr>
+        <td><strong>P120</strong> Sunday_Gap_Fill_Long</td>
+        <td>Cat J</td>
+        <td class="r">47</td>
+        <td class="r">36.2%</td>
+        <td class="r tr">-204.7</td>
+        <td class="r tr">$-232,699</td>
+        <td class="r">0.26</td>
+        <td class="r">-4.356</td>
+      </tr>
+      <tr>
+        <td><strong>P132</strong> Daily_Bias_Intraday_Long</td>
+        <td>Cat K</td>
+        <td class="r">153</td>
+        <td class="r">39.9%</td>
+        <td class="r tr">-185.5</td>
+        <td class="r tr">$-293,029</td>
+        <td class="r">0.59</td>
+        <td class="r">-1.212</td>
+      </tr>
+      <tr>
+        <td><strong>P106</strong> CVD_Div_Bull</td>
+        <td>Cat I</td>
+        <td class="r">87</td>
+        <td class="r">33.3%</td>
+        <td class="r tr">-153.3</td>
+        <td class="r tr">$-218,851</td>
+        <td class="r">0.24</td>
+        <td class="r">-1.762</td>
+      </tr>
+      <tr>
+        <td><strong>P174</strong> Three_Drives_Bear</td>
+        <td>Cat Q</td>
+        <td class="r">67</td>
+        <td class="r">26.9%</td>
+        <td class="r tr">-140.2</td>
+        <td class="r tr">$-120,942</td>
+        <td class="r">0.37</td>
+        <td class="r">-2.093</td>
+      </tr>
+      <tr>
+        <td><strong>P140</strong> Ichimoku_Kumo_Twist_Bull</td>
+        <td>Cat L</td>
+        <td class="r">135</td>
+        <td class="r">50.4%</td>
+        <td class="r tr">-114.4</td>
+        <td class="r tr">$-138,673</td>
+        <td class="r">0.64</td>
+        <td class="r">-0.848</td>
+      </tr>
+      <tr>
+        <td><strong>P55</strong> CHoCH_Bull</td>
+        <td>Cat D</td>
+        <td class="r">42</td>
+        <td class="r">45.2%</td>
+        <td class="r tr">-109.9</td>
+        <td class="r tr">$-117,479</td>
+        <td class="r">0.26</td>
+        <td class="r">-2.617</td>
+      </tr>
+      <tr>
+        <td><strong>P99</strong> VSA_NoSupply</td>
+        <td>Cat I</td>
+        <td class="r">37</td>
+        <td class="r">37.8%</td>
+        <td class="r tr">-92.5</td>
+        <td class="r tr">$-79,687</td>
+        <td class="r">0.40</td>
+        <td class="r">-2.501</td>
+      </tr>
+      <tr>
+        <td><strong>P124</strong> ThreeBar_Rev_Bull</td>
+        <td>Cat J</td>
+        <td class="r">34</td>
+        <td class="r">38.2%</td>
+        <td class="r tr">-86.3</td>
+        <td class="r tr">$-85,625</td>
+        <td class="r">0.33</td>
+        <td class="r">-2.538</td>
+      </tr>
+      <tr>
+        <td><strong>P44</strong> Bearish_Order_Block</td>
+        <td>Cat C</td>
+        <td class="r">32</td>
+        <td class="r">31.2%</td>
+        <td class="r tr">-82.0</td>
+        <td class="r tr">$-57,814</td>
+        <td class="r">0.19</td>
+        <td class="r">-2.562</td>
+      </tr>
+      <tr>
+        <td><strong>P171</strong> ABCD_Bull</td>
+        <td>Cat Q</td>
+        <td class="r">56</td>
+        <td class="r">37.5%</td>
+        <td class="r tr">-79.4</td>
+        <td class="r tr">$-77,113</td>
+        <td class="r">0.41</td>
+        <td class="r">-1.417</td>
+      </tr></tbody>
+    </table>
+  </div>
+  <div class="section-head"><span class="section-num">04</span><h2 class="section-title">Entry Quality</h2></div>
+  <p class="lead-desc">เข้าตลาดที่ตำแหน่งไหนของ bar (เทียบ high-low) ส่งผลต่อ outcome อย่างไร</p>
+  <div class="card">
+    <table class="table compact">
+      <thead><tr><th>Entry Position</th><th class="r">Trades</th><th class="r">Win%</th><th class="r">Mean PnL (ATR)</th></tr></thead>
+      <tbody>
+      <tr>
+        <td><strong>At Low</strong></td>
+        <td class="r">1,511</td>
+        <td class="r">52.7%</td>
+        <td class="r tg">+0.5688</td>
+      </tr>
+      <tr>
+        <td><strong>Lower Half</strong></td>
+        <td class="r">3,056</td>
+        <td class="r">50.0%</td>
+        <td class="r tg">+0.3863</td>
+      </tr>
+      <tr>
+        <td><strong>Upper Half</strong></td>
+        <td class="r">2,892</td>
+        <td class="r">51.7%</td>
+        <td class="r tg">+0.1761</td>
+      </tr>
+      <tr>
+        <td><strong>At High</strong></td>
+        <td class="r">2,015</td>
+        <td class="r">48.0%</td>
+        <td class="r tr">-0.2011</td>
+      </tr></tbody>
+    </table>
+  </div>
+  <div class="section-head"><span class="section-num">05</span><h2 class="section-title">Context Filters</h2></div>
+  <p class="lead-desc">การกระจาย trades ตาม market context — vol_regime, trend, session, ADX (ค่า win% และ mean ATR เฉพาะ ADX ที่คำนวณได้)</p>
+  <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:8px">
+    
+    <div class="card" style="flex:1;min-width:260px">
+      <div class="card-title">Volatility Regime</div>
+      <table class="table compact"><thead><tr><th>Regime</th><th class="r">N</th><th class="r">Win%</th><th class="r">Mean ATR</th></tr></thead>
+      <tbody>
+      <tr>
+        <td><strong>NORMAL</strong></td>
+        <td class="r">7,864</td>
+        <td class="r">0.0%</td>
+        <td class="r ">+0.0000</td>
+      </tr>
+      <tr>
+        <td><strong>HIGH</strong></td>
+        <td class="r">896</td>
+        <td class="r">0.0%</td>
+        <td class="r ">+0.0000</td>
+      </tr>
+      <tr>
+        <td><strong>LOW</strong></td>
+        <td class="r">714</td>
+        <td class="r">0.0%</td>
+        <td class="r ">+0.0000</td>
+      </tr></tbody></table>
+    </div>
+    
+    <div class="card" style="flex:1;min-width:260px">
+      <div class="card-title">Trend Regime</div>
+      <table class="table compact"><thead><tr><th>Trend</th><th class="r">N</th><th class="r">Win%</th><th class="r">Mean ATR</th></tr></thead>
+      <tbody>
+      <tr>
+        <td><strong>WEAK_UP</strong></td>
+        <td class="r">1,725</td>
+        <td class="r">0.0%</td>
+        <td class="r ">+0.0000</td>
+      </tr>
+      <tr>
+        <td><strong>WEAK_DOWN</strong></td>
+        <td class="r">1,732</td>
+        <td class="r">0.0%</td>
+        <td class="r ">+0.0000</td>
+      </tr>
+      <tr>
+        <td><strong>STRONG_UP</strong></td>
+        <td class="r">2,273</td>
+        <td class="r">0.0%</td>
+        <td class="r ">+0.0000</td>
+      </tr>
+      <tr>
+        <td><strong>RANGING</strong></td>
+        <td class="r">1,227</td>
+        <td class="r">0.0%</td>
+        <td class="r ">+0.0000</td>
+      </tr>
+      <tr>
+        <td><strong>STRONG_DOWN</strong></td>
+        <td class="r">2,517</td>
+        <td class="r">0.0%</td>
+        <td class="r ">+0.0000</td>
+      </tr></tbody></table>
+    </div>
+    
+    <div class="card" style="flex:1;min-width:260px">
+      <div class="card-title">Session</div>
+      <table class="table compact"><thead><tr><th>Session</th><th class="r">N</th><th class="r">Win%</th><th class="r">Mean ATR</th></tr></thead>
+      <tbody>
+      <tr>
+        <td><strong>ASIAN</strong></td>
+        <td class="r">3,303</td>
+        <td class="r">0.0%</td>
+        <td class="r ">+0.0000</td>
+      </tr>
+      <tr>
+        <td><strong>LONDON</strong></td>
+        <td class="r">1,523</td>
+        <td class="r">0.0%</td>
+        <td class="r ">+0.0000</td>
+      </tr>
+      <tr>
+        <td><strong>OVERLAP</strong></td>
+        <td class="r">1,535</td>
+        <td class="r">0.0%</td>
+        <td class="r ">+0.0000</td>
+      </tr>
+      <tr>
+        <td><strong>NY</strong></td>
+        <td class="r">3,113</td>
+        <td class="r">0.0%</td>
+        <td class="r ">+0.0000</td>
+      </tr></tbody></table>
+    </div>
+    
+    <div class="card" style="flex:1;min-width:260px">
+      <div class="card-title">ADX Bins</div>
+      <table class="table compact"><thead><tr><th>ADX Range</th><th class="r">N</th><th class="r">Win%</th><th class="r">Mean ATR</th></tr></thead>
+      <tbody>
+      <tr>
+        <td><strong>>45</strong></td>
+        <td class="r">1,236</td>
+        <td class="r">55.0%</td>
+        <td class="r tg">+0.6432</td>
+      </tr>
+      <tr>
+        <td><strong>35-45</strong></td>
+        <td class="r">2,004</td>
+        <td class="r">54.5%</td>
+        <td class="r tg">+0.6360</td>
+      </tr>
+      <tr>
+        <td><strong>20-25</strong></td>
+        <td class="r">1,938</td>
+        <td class="r">51.0%</td>
+        <td class="r tg">+0.2759</td>
+      </tr>
+      <tr>
+        <td><strong>25-35</strong></td>
+        <td class="r">2,800</td>
+        <td class="r">48.6%</td>
+        <td class="r tr">-0.0965</td>
+      </tr>
+      <tr>
+        <td><strong><20</strong></td>
+        <td class="r">1,496</td>
+        <td class="r">44.4%</td>
+        <td class="r tr">-0.1270</td>
+      </tr></tbody></table>
+    </div>
+  </div>
+  <div class="section-head"><span class="section-num">06</span><h2 class="section-title">SL / TP Hit Rates</h2></div>
+  <p class="lead-desc">% trades ที่ราคาแตะระดับ SL/TP ตามลำดับ (ค่า ATR multiplier) ก่อน time-stop 240h</p>
+  <div style="display:flex;gap:12px;flex-wrap:wrap">
+    <div class="card" style="flex:1;min-width:280px">
+      <div class="card-title">Stop Loss Hit Rates</div>
+      <table class="table compact"><thead><tr><th>SL Level</th><th class="r">Hit %</th><th>Distribution</th></tr></thead>
+      <tbody>
+      <tr>
+        <td><strong>SL 0.5× ATR</strong></td>
+        <td class="r">90.60%</td>
+        <td><div class="bar-row"><div class="bar" style="width:90.6%;background:var(--red)"></div></div></td>
+      </tr>
+      <tr>
+        <td><strong>SL 1.0× ATR</strong></td>
+        <td class="r">80.60%</td>
+        <td><div class="bar-row"><div class="bar" style="width:80.6%;background:var(--red)"></div></div></td>
+      </tr>
+      <tr>
+        <td><strong>SL 2.0× ATR</strong></td>
+        <td class="r">62.18%</td>
+        <td><div class="bar-row"><div class="bar" style="width:62.2%;background:var(--red)"></div></div></td>
+      </tr>
+      <tr>
+        <td><strong>SL 3.0× ATR</strong></td>
+        <td class="r">51.26%</td>
+        <td><div class="bar-row"><div class="bar" style="width:51.3%;background:var(--red)"></div></div></td>
+      </tr></tbody></table>
+    </div>
+    <div class="card" style="flex:1;min-width:280px">
+      <div class="card-title">Take Profit Hit Rates</div>
+      <table class="table compact"><thead><tr><th>TP Level</th><th class="r">Hit %</th><th>Distribution</th></tr></thead>
+      <tbody>
+      <tr>
+        <td><strong>TP 1.0× ATR</strong></td>
+        <td class="r">81.16%</td>
+        <td><div class="bar-row"><div class="bar" style="width:81.2%;background:var(--green)"></div></div></td>
+      </tr>
+      <tr>
+        <td><strong>TP 2.0× ATR</strong></td>
+        <td class="r">64.21%</td>
+        <td><div class="bar-row"><div class="bar" style="width:64.2%;background:var(--green)"></div></div></td>
+      </tr>
+      <tr>
+        <td><strong>TP 3.0× ATR</strong></td>
+        <td class="r">53.67%</td>
+        <td><div class="bar-row"><div class="bar" style="width:53.7%;background:var(--green)"></div></div></td>
+      </tr>
+      <tr>
+        <td><strong>TP 5.0× ATR</strong></td>
+        <td class="r">34.19%</td>
+        <td><div class="bar-row"><div class="bar" style="width:34.2%;background:var(--green)"></div></div></td>
+      </tr></tbody></table>
+    </div>
+  </div>
+  <div class="section-head"><span class="section-num">07</span><h2 class="section-title">Time Decay</h2></div>
+  <p class="lead-desc">Mean PnL (ATR) ที่ checkpoint ต่างๆ หลัง entry — ดูว่ากำไร "พุ่ง" ตอนไหน และ "หาย" ตอนไหน</p>
+  <div class="card">
+    
+    <svg viewBox="0 0 700 280" style="width:100%;height:auto;display:block;background:rgba(15,23,42,0.3);border-radius:6px">
+      <line x1="50" y1="130.0" x2="670" y2="130.0" stroke="#475569" stroke-width="1" stroke-dasharray="4,4"/>
+      <line x1="50" y1="30" x2="50" y2="230" stroke="#475569" stroke-width="1"/>
+      <line x1="50" y1="230" x2="670" y2="230" stroke="#475569" stroke-width="1"/>
+      <path d="M 52.6,132.3 L 65.5,134.2 L 81.0,129.1 L 112.0,119.6 L 174.0,107.4 L 236.0,115.6 L 360.0,75.6 L 484.0,69.5 L 670.0,46.7" fill="none" stroke="#3b82f6" stroke-width="2"/>
+      <circle cx="52.6" cy="132.3" r="4" fill="#ef4444"/><text x="52.6" y="122.3" text-anchor="middle" font-size="10" fill="#94a3b8">-0.01</text><circle cx="65.5" cy="134.2" r="4" fill="#ef4444"/><text x="65.5" y="124.2" text-anchor="middle" font-size="10" fill="#94a3b8">-0.01</text><circle cx="81.0" cy="129.1" r="4" fill="#10b981"/><text x="81.0" y="119.1" text-anchor="middle" font-size="10" fill="#94a3b8">+0.00</text><circle cx="112.0" cy="119.6" r="4" fill="#10b981"/><text x="112.0" y="109.6" text-anchor="middle" font-size="10" fill="#94a3b8">+0.03</text><circle cx="174.0" cy="107.4" r="4" fill="#10b981"/><text x="174.0" y="97.4" text-anchor="middle" font-size="10" fill="#94a3b8">+0.07</text><circle cx="236.0" cy="115.6" r="4" fill="#10b981"/><text x="236.0" y="105.6" text-anchor="middle" font-size="10" fill="#94a3b8">+0.04</text><circle cx="360.0" cy="75.6" r="4" fill="#10b981"/><text x="360.0" y="65.6" text-anchor="middle" font-size="10" fill="#94a3b8">+0.17</text><circle cx="484.0" cy="69.5" r="4" fill="#10b981"/><text x="484.0" y="59.5" text-anchor="middle" font-size="10" fill="#94a3b8">+0.19</text><circle cx="670.0" cy="46.7" r="4" fill="#10b981"/><text x="670.0" y="36.7" text-anchor="middle" font-size="10" fill="#94a3b8">+0.26</text>
+      <text x="52.6" y="255" text-anchor="middle" font-size="11" fill="#94a3b8">1h</text><line x1="52.6" y1="230" x2="52.6" y2="234" stroke="#475569" stroke-width="1"/><text x="65.5" y="255" text-anchor="middle" font-size="11" fill="#94a3b8">6h</text><line x1="65.5" y1="230" x2="65.5" y2="234" stroke="#475569" stroke-width="1"/><text x="81.0" y="255" text-anchor="middle" font-size="11" fill="#94a3b8">12h</text><line x1="81.0" y1="230" x2="81.0" y2="234" stroke="#475569" stroke-width="1"/><text x="112.0" y="255" text-anchor="middle" font-size="11" fill="#94a3b8">24h</text><line x1="112.0" y1="230" x2="112.0" y2="234" stroke="#475569" stroke-width="1"/><text x="174.0" y="255" text-anchor="middle" font-size="11" fill="#94a3b8">48h</text><line x1="174.0" y1="230" x2="174.0" y2="234" stroke="#475569" stroke-width="1"/><text x="236.0" y="255" text-anchor="middle" font-size="11" fill="#94a3b8">72h</text><line x1="236.0" y1="230" x2="236.0" y2="234" stroke="#475569" stroke-width="1"/><text x="360.0" y="255" text-anchor="middle" font-size="11" fill="#94a3b8">120h</text><line x1="360.0" y1="230" x2="360.0" y2="234" stroke="#475569" stroke-width="1"/><text x="484.0" y="255" text-anchor="middle" font-size="11" fill="#94a3b8">168h</text><line x1="484.0" y1="230" x2="484.0" y2="234" stroke="#475569" stroke-width="1"/><text x="670.0" y="255" text-anchor="middle" font-size="11" fill="#94a3b8">240h</text><line x1="670.0" y1="230" x2="670.0" y2="234" stroke="#475569" stroke-width="1"/>
+      <text x="42" y="234.0" text-anchor="end" font-size="10" fill="#94a3b8">-0.31</text><line x1="46" y1="230.0" x2="50" y2="230.0" stroke="#475569" stroke-width="1"/><text x="42" y="184.0" text-anchor="end" font-size="10" fill="#94a3b8">-0.16</text><line x1="46" y1="180.0" x2="50" y2="180.0" stroke="#475569" stroke-width="1"/><text x="42" y="134.0" text-anchor="end" font-size="10" fill="#94a3b8">+0.00</text><line x1="46" y1="130.0" x2="50" y2="130.0" stroke="#475569" stroke-width="1"/><text x="42" y="84.0" text-anchor="end" font-size="10" fill="#94a3b8">+0.16</text><line x1="46" y1="80.0" x2="50" y2="80.0" stroke="#475569" stroke-width="1"/><text x="42" y="34.0" text-anchor="end" font-size="10" fill="#94a3b8">+0.31</text><line x1="46" y1="30.0" x2="50" y2="30.0" stroke="#475569" stroke-width="1"/>
+      <text x="350.0" y="275" text-anchor="middle" font-size="11" fill="#cbd5e1">Hours after entry</text>
+      <text x="15" y="140.0" text-anchor="middle" font-size="11" fill="#cbd5e1" transform="rotate(-90, 15, 140.0)">Mean PnL (ATR)</text>
+    </svg>
+    <table class="table compact" style="margin-top:14px">
+      <thead><tr><th>Checkpoint</th><th class="r">Mean PnL (ATR)</th><th class="r">% Positive</th></tr></thead>
+      <tbody><tr><td><strong>1h</strong></td><td class="r tr">-0.0073</td><td class="r">47.6%</td></tr><tr><td><strong>6h</strong></td><td class="r tr">-0.0130</td><td class="r">48.6%</td></tr><tr><td><strong>12h</strong></td><td class="r tg">+0.0027</td><td class="r">48.2%</td></tr><tr><td><strong>24h</strong></td><td class="r tg">+0.0326</td><td class="r">48.7%</td></tr><tr><td><strong>48h</strong></td><td class="r tg">+0.0706</td><td class="r">49.1%</td></tr><tr><td><strong>72h</strong></td><td class="r tg">+0.0450</td><td class="r">49.4%</td></tr><tr><td><strong>120h</strong></td><td class="r tg">+0.1700</td><td class="r">49.0%</td></tr><tr><td><strong>168h</strong></td><td class="r tg">+0.1888</td><td class="r">48.3%</td></tr><tr><td><strong>240h</strong></td><td class="r tg">+0.2602</td><td class="r">47.3%</td></tr></tbody>
+    </table>
+  </div>
+  <div class="section-head"><span class="section-num">08</span><h2 class="section-title">Key Findings</h2></div>
+  <div class="card">
+    <ul class="bullet">
+      <li><strong>Total trades:</strong> 9,474 · win rate <strong>50.53%</strong> · PF (ATR) <strong>1.114</strong> · expectancy <strong>+0.2263 ATR/trade</strong></li><li><strong>Net PnL:</strong> <span class="tg">+2144.04 ATR</span> · <span class="tg">$+1,741,575</span></li><li><strong>Active patterns:</strong> 150 จาก 177 ทั้งหมด (85% activation rate) · 82 patterns ผ่านเกณฑ์ n≥30</li><li><strong>Top 3 patterns (by ATR):</strong> <strong>P141</strong> Ichimoku_Kumo_Twist_Bear (+622.0 ATR · WR 74%) · <strong>P46</strong> Breaker_Block_Bear (+435.7 ATR · WR 58%) · <strong>P52</strong> LHLL (+199.3 ATR · WR 53%)</li><li><strong>Worst 3 patterns:</strong> <strong>P120</strong> Sunday_Gap_Fill_Long (-204.7) · <strong>P132</strong> Daily_Bias_Intraday_Long (-185.5) · <strong>P106</strong> CVD_Div_Bull (-153.3) — ห้ามใช้ใน production EA</li><li><strong>Best entry quality:</strong> "AT_LOW" (+0.5688 ATR · WR 52.7%)</li><li><strong>Best ADX bin:</strong> >45 (n=1236 · +0.6432 ATR · WR 55.0%)</li><li><strong>Time decay sweet spot:</strong> 240h (mean +0.260 ATR · 47.3% positive)</li><li><strong>SL/TP profile:</strong> SL 1× hit 80.6% · TP 1× hit 81.2% · TP 5× hit 34.2% · ratio TP/SL @ 1× = 1.01 ถ้า > 1 = edge</li><li><strong>Direction correctness:</strong> 50.2% (จากการประเมินทิศทาง pattern_dir_expected vs actual move)</li><li><strong>Spread cost:</strong> avg 1167.6 pts entry · 1062.5 pts exit (real broker fill)</li>
+    </ul>
+  </div>
+</section>
+</main>
+<script src="assets/app.js"></script>
+</body></html>

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="th"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Edge Analysis · KMP Master</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Bricolage+Grotesque:wght@400;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head><body>
+<nav class="sidebar">
+  <div class="sidebar-brand">
+    <a class="brand-logo" href="index.html">KMP <span class="accent">Master</span></a>
+    <div class="brand-ver">EA v3.1 · 177 patterns · 93 cols</div>
+  </div>
+  
+  <input type="text" class="search-box" id="globalSearch" placeholder="ค้นหา...">
+  
+  <div class="nav-section">
+    <div class="nav-label">Overview</div>
+    <a class="tree-node lvl-0" href="index.html"><span class="arrow"></span><span class="nm">Dashboard</span></a>
+    <a class="tree-node lvl-0" href="preface.html"><span class="arrow"></span><span class="nm">คำนำ &amp; เป้าหมาย</span></a>
+  </div>
+  
+  <div class="nav-section">
+    <div class="nav-label">Datasets · v4 LEGACY</div>
+    
+    <div class="tree-node lvl-0 expandable" data-toggle="crypto-menu">
+      <span class="arrow">▶</span><span class="nm">Crypto</span><span class="badge">3</span>
+    </div>
+    <div class="tree-children" id="crypto-menu">
+      <div class="tree-node lvl-1 expandable" data-toggle="btc-menu">
+        <span class="arrow">▶</span><span class="nm">BTC/USD</span><span class="badge">99K</span>
+      </div>
+      <div class="tree-children" id="btc-menu">
+        <a class="tree-node lvl-2" href="btc-h4.html"><span class="nm">BTC H4</span><span class="badge" style="background:#10b981;color:#fff">9,474</span></a>
+        <a class="tree-node lvl-2" href="btc-h1.html"><span class="nm">BTC H1</span><span class="badge">18,638</span></a>
+        <a class="tree-node lvl-2" href="btc-m15.html"><span class="nm">BTC M15</span><span class="badge">75,677</span></a>
+      </div>
+    </div>
+    
+    <div class="tree-node lvl-0 expandable" data-toggle="metals-menu">
+      <span class="arrow">▶</span><span class="nm">Metals</span><span class="badge">3</span>
+    </div>
+    <div class="tree-children" id="metals-menu">
+      <div class="tree-node lvl-1 expandable" data-toggle="xau-menu">
+        <span class="arrow">▶</span><span class="nm">XAU/USD</span><span class="badge">70K</span>
+      </div>
+      <div class="tree-children" id="xau-menu">
+        <a class="tree-node lvl-2" href="xau-h4.html"><span class="nm">XAU H4</span><span class="badge" style="background:#10b981;color:#fff">7,077</span></a>
+        <a class="tree-node lvl-2" href="xau-h1.html"><span class="nm">XAU H1</span><span class="badge">13,319</span></a>
+        <a class="tree-node lvl-2" href="xau-m15.html"><span class="nm">XAU M15</span><span class="badge">53,098</span></a>
+      </div>
+    </div>
+    
+    <div class="tree-node lvl-0 expandable" data-toggle="forex-menu">
+      <span class="arrow">▶</span><span class="nm">Forex</span><span class="badge">3</span>
+    </div>
+    <div class="tree-children" id="forex-menu">
+      <div class="tree-node lvl-1 expandable" data-toggle="eur-menu">
+        <span class="arrow">▶</span><span class="nm">EUR/USD</span><span class="badge">79K</span>
+      </div>
+      <div class="tree-children" id="eur-menu">
+        <a class="tree-node lvl-2" href="eur-h4.html"><span class="nm">EUR H4</span><span class="badge">3,770</span></a>
+        <a class="tree-node lvl-2" href="eur-h1.html"><span class="nm">EUR H1</span><span class="badge">14,257</span></a>
+        <a class="tree-node lvl-2" href="eur-m15.html"><span class="nm">EUR M15</span><span class="badge">61,138</span></a>
+      </div>
+    </div>
+  </div>
+  
+  <div class="nav-section">
+    <div class="nav-label">Patterns · 177 (v3.1)</div>
+    <a class="tree-node lvl-0" href="patterns-encyclopedia.html"><span class="arrow"></span><span class="nm">📚 Pattern Encyclopedia</span><span class="badge">177</span></a>
+    <div class="tree-node lvl-0 expandable" data-toggle="pat-menu">
+      <span class="arrow">▶</span><span class="nm">v4 Analysis</span><span class="badge">80</span>
+    </div>
+    <div class="tree-children" id="pat-menu">
+      <a class="tree-node lvl-1" href="patterns.html"><span class="nm">All Patterns Table</span></a>
+      <a class="tree-node lvl-1" href="tier.html"><span class="nm">Tier Rankings</span></a>
+      <a class="tree-node lvl-1" href="optimal-tpsl.html"><span class="nm">Optimal TP/SL EV</span></a>
+    </div>
+  </div>
+  
+  <div class="nav-section">
+    <div class="nav-label">Analysis</div>
+    <a class="tree-node lvl-0" href="cross.html"><span class="arrow"></span><span class="nm">Cross-TF / Asset</span></a>
+    <a class="tree-node lvl-0" href="time.html"><span class="arrow"></span><span class="nm">Hour / DoW / Conf</span></a>
+    <a class="tree-node lvl-0" href="edge.html"><span class="arrow"></span><span class="nm">Edge Decay / Vol</span></a>
+  </div>
+  
+  <div class="nav-section">
+    <div class="nav-label">Strategy</div>
+    <a class="tree-node lvl-0" href="strategy.html"><span class="arrow"></span><span class="nm">EA Blueprint &amp; Risk</span></a>
+  </div>
+  
+  <div class="nav-section">
+    <div class="nav-label">EA System · v3.1</div>
+    <a class="tree-node lvl-0" href="ea-architecture.html"><span class="arrow"></span><span class="nm">⚙ EA Architecture</span></a>
+    <a class="tree-node lvl-0" href="tracking-system.html"><span class="arrow"></span><span class="nm">🎯 Tracking System</span></a>  </div>  <div class="nav-section">
+    <div class="nav-label">Reference</div>
+    <a class="tree-node lvl-0" href="reference.html"><span class="arrow"></span><span class="nm">Sources &amp; Changelog</span></a>
+  </div>
+</nav>
+
+<main class="main">
+
+  <div class="hero">
+    <span class="hero-tag">Edge Analysis · v6 (2 datasets)</span>
+    <h1 class="hero-title">Trading <span class="accent">Edge.</span></h1>
+    <p class="hero-desc">ค้นหาเงื่อนไขที่ pattern มี edge ชัดเจน — vol regime · trend · ADX · session</p>
+  </div>
+
+<section>
+  <div class="section-head"><h2 class="section-title">BTC H4 (9,474 trades · WR 50.5% · PF 1.11)</h2></div>
+  <div style="display:flex;gap:14px;flex-wrap:wrap">
+    <div class="card" style="flex:1;min-width:340px">
+      <div class="card-title">🟢 Top Edge Conditions (n≥50)</div>
+      <table class="table compact"><thead><tr><th>Condition</th><th class="r">N</th><th class="r">WR</th><th class="r">Mean</th><th class="r">Total</th></tr></thead>
+      <tbody><tr><td>vol_regime_HIGH</td><td class="r">896</td><td class="r">56.2%</td><td class="r tg">+0.7902</td><td class="r tg">+708.0</td></tr><tr><td>quality_AT_LOW</td><td class="r">1,511</td><td class="r">51.4%</td><td class="r tg">+0.5688</td><td class="r tg">+859.4</td></tr><tr><td>session_OVERLAP</td><td class="r">1,535</td><td class="r">53.0%</td><td class="r tg">+0.5674</td><td class="r tg">+870.9</td></tr><tr><td>session_LONDON</td><td class="r">1,523</td><td class="r">49.7%</td><td class="r tg">+0.4304</td><td class="r tg">+655.5</td></tr><tr><td>trend_STRONG_DOWN</td><td class="r">2,517</td><td class="r">51.4%</td><td class="r tg">+0.4069</td><td class="r tg">+1,024.2</td></tr><tr><td>quality_LOWER_HALF</td><td class="r">3,056</td><td class="r">49.0%</td><td class="r tg">+0.3863</td><td class="r tg">+1,180.4</td></tr><tr><td>trend_RANGING</td><td class="r">1,227</td><td class="r">49.1%</td><td class="r tg">+0.3776</td><td class="r tg">+463.3</td></tr><tr><td>vol_regime_NORMAL</td><td class="r">7,864</td><td class="r">49.4%</td><td class="r tg">+0.1942</td><td class="r tg">+1,527.3</td></tr><tr><td>quality_UPPER_HALF</td><td class="r">2,892</td><td class="r">50.3%</td><td class="r tg">+0.1761</td><td class="r tg">+509.3</td></tr><tr><td>trend_WEAK_DOWN</td><td class="r">1,732</td><td class="r">47.5%</td><td class="r tg">+0.1628</td><td class="r tg">+282.0</td></tr><tr><td>trend_STRONG_UP</td><td class="r">2,273</td><td class="r">51.4%</td><td class="r tg">+0.1436</td><td class="r tg">+326.4</td></tr><tr><td>session_NY</td><td class="r">3,113</td><td class="r">48.5%</td><td class="r tg">+0.1042</td><td class="r tg">+324.4</td></tr><tr><td>session_ASIAN</td><td class="r">3,303</td><td class="r">49.0%</td><td class="r tg">+0.0888</td><td class="r tg">+293.2</td></tr><tr><td>trend_WEAK_UP</td><td class="r">1,725</td><td class="r">45.5%</td><td class="r tg">+0.0279</td><td class="r tg">+48.1</td></tr><tr><td>vol_regime_LOW</td><td class="r">714</td><td class="r">46.5%</td><td class="r tr">-0.1277</td><td class="r tr">-91.2</td></tr></tbody></table>
+    </div>
+    <div class="card" style="flex:1;min-width:340px">
+      <div class="card-title">🔴 Worst Conditions (avoid)</div>
+      <table class="table compact"><thead><tr><th>Condition</th><th class="r">N</th><th class="r">WR</th><th class="r">Mean</th><th class="r">Total</th></tr></thead>
+      <tbody><tr><td>quality_AT_HIGH</td><td class="r">2,015</td><td class="r">46.7%</td><td class="r tr">-0.2011</td><td class="r tr">-405.2</td></tr><tr><td>vol_regime_LOW</td><td class="r">714</td><td class="r">46.5%</td><td class="r tr">-0.1277</td><td class="r tr">-91.2</td></tr><tr><td>trend_WEAK_UP</td><td class="r">1,725</td><td class="r">45.5%</td><td class="r tg">+0.0279</td><td class="r tg">+48.1</td></tr><tr><td>session_ASIAN</td><td class="r">3,303</td><td class="r">49.0%</td><td class="r tg">+0.0888</td><td class="r tg">+293.2</td></tr><tr><td>session_NY</td><td class="r">3,113</td><td class="r">48.5%</td><td class="r tg">+0.1042</td><td class="r tg">+324.4</td></tr><tr><td>trend_STRONG_UP</td><td class="r">2,273</td><td class="r">51.4%</td><td class="r tg">+0.1436</td><td class="r tg">+326.4</td></tr><tr><td>trend_WEAK_DOWN</td><td class="r">1,732</td><td class="r">47.5%</td><td class="r tg">+0.1628</td><td class="r tg">+282.0</td></tr><tr><td>quality_UPPER_HALF</td><td class="r">2,892</td><td class="r">50.3%</td><td class="r tg">+0.1761</td><td class="r tg">+509.3</td></tr><tr><td>vol_regime_NORMAL</td><td class="r">7,864</td><td class="r">49.4%</td><td class="r tg">+0.1942</td><td class="r tg">+1,527.3</td></tr><tr><td>trend_RANGING</td><td class="r">1,227</td><td class="r">49.1%</td><td class="r tg">+0.3776</td><td class="r tg">+463.3</td></tr></tbody></table>
+    </div>
+  </div>
+</section>
+<section>
+  <div class="section-head"><h2 class="section-title">XAU H4 (7,077 trades · WR 48.7% · PF 1.07)</h2></div>
+  <div style="display:flex;gap:14px;flex-wrap:wrap">
+    <div class="card" style="flex:1;min-width:340px">
+      <div class="card-title">🟢 Top Edge Conditions (n≥50)</div>
+      <table class="table compact"><thead><tr><th>Condition</th><th class="r">N</th><th class="r">WR</th><th class="r">Mean</th><th class="r">Total</th></tr></thead>
+      <tbody><tr><td>vol_regime_LOW</td><td class="r">530</td><td class="r">47.7%</td><td class="r tg">+0.9160</td><td class="r tg">+485.5</td></tr><tr><td>quality_AT_LOW</td><td class="r">999</td><td class="r">50.7%</td><td class="r tg">+0.5487</td><td class="r tg">+548.2</td></tr><tr><td>trend_WEAK_DOWN</td><td class="r">1,283</td><td class="r">48.5%</td><td class="r tg">+0.4431</td><td class="r tg">+568.5</td></tr><tr><td>trend_WEAK_UP</td><td class="r">1,348</td><td class="r">49.4%</td><td class="r tg">+0.3939</td><td class="r tg">+531.0</td></tr><tr><td>session_OVERLAP</td><td class="r">1,203</td><td class="r">48.4%</td><td class="r tg">+0.3307</td><td class="r tg">+397.9</td></tr><tr><td>quality_AT_HIGH</td><td class="r">1,743</td><td class="r">45.1%</td><td class="r tg">+0.2975</td><td class="r tg">+518.6</td></tr><tr><td>trend_STRONG_DOWN</td><td class="r">1,498</td><td class="r">49.9%</td><td class="r tg">+0.2818</td><td class="r tg">+422.1</td></tr><tr><td>vol_regime_NORMAL</td><td class="r">5,640</td><td class="r">48.5%</td><td class="r tg">+0.2007</td><td class="r tg">+1,132.2</td></tr><tr><td>session_LONDON</td><td class="r">1,106</td><td class="r">48.1%</td><td class="r tg">+0.1998</td><td class="r tg">+220.9</td></tr><tr><td>trend_RANGING</td><td class="r">571</td><td class="r">46.4%</td><td class="r tg">+0.1756</td><td class="r tg">+100.2</td></tr><tr><td>session_ASIAN</td><td class="r">2,218</td><td class="r">47.7%</td><td class="r tg">+0.1331</td><td class="r tg">+295.2</td></tr><tr><td>quality_UPPER_HALF</td><td class="r">2,212</td><td class="r">48.5%</td><td class="r tg">+0.1121</td><td class="r tg">+247.9</td></tr><tr><td>session_NY</td><td class="r">2,550</td><td class="r">46.7%</td><td class="r tg">+0.1064</td><td class="r tg">+271.4</td></tr><tr><td>quality_LOWER_HALF</td><td class="r">2,123</td><td class="r">46.5%</td><td class="r tr">-0.0609</td><td class="r tr">-129.2</td></tr><tr><td>vol_regime_EXTREME</td><td class="r">106</td><td class="r">46.2%</td><td class="r tr">-0.0826</td><td class="r tr">-8.8</td></tr></tbody></table>
+    </div>
+    <div class="card" style="flex:1;min-width:340px">
+      <div class="card-title">🔴 Worst Conditions (avoid)</div>
+      <table class="table compact"><thead><tr><th>Condition</th><th class="r">N</th><th class="r">WR</th><th class="r">Mean</th><th class="r">Total</th></tr></thead>
+      <tbody><tr><td>vol_regime_HIGH</td><td class="r">801</td><td class="r">44.3%</td><td class="r tr">-0.5287</td><td class="r tr">-423.5</td></tr><tr><td>trend_STRONG_UP</td><td class="r">2,377</td><td class="r">44.6%</td><td class="r tr">-0.1836</td><td class="r tr">-436.3</td></tr><tr><td>vol_regime_EXTREME</td><td class="r">106</td><td class="r">46.2%</td><td class="r tr">-0.0826</td><td class="r tr">-8.8</td></tr><tr><td>quality_LOWER_HALF</td><td class="r">2,123</td><td class="r">46.5%</td><td class="r tr">-0.0609</td><td class="r tr">-129.2</td></tr><tr><td>session_NY</td><td class="r">2,550</td><td class="r">46.7%</td><td class="r tg">+0.1064</td><td class="r tg">+271.4</td></tr><tr><td>quality_UPPER_HALF</td><td class="r">2,212</td><td class="r">48.5%</td><td class="r tg">+0.1121</td><td class="r tg">+247.9</td></tr><tr><td>session_ASIAN</td><td class="r">2,218</td><td class="r">47.7%</td><td class="r tg">+0.1331</td><td class="r tg">+295.2</td></tr><tr><td>trend_RANGING</td><td class="r">571</td><td class="r">46.4%</td><td class="r tg">+0.1756</td><td class="r tg">+100.2</td></tr><tr><td>session_LONDON</td><td class="r">1,106</td><td class="r">48.1%</td><td class="r tg">+0.1998</td><td class="r tg">+220.9</td></tr><tr><td>vol_regime_NORMAL</td><td class="r">5,640</td><td class="r">48.5%</td><td class="r tg">+0.2007</td><td class="r tg">+1,132.2</td></tr></tbody></table>
+    </div>
+  </div>
+</section>
+</main>
+<script src="assets/app.js"></script>
+<script>
+loadData().then(data => {
+  if (!data) return;
+  const body = document.getElementById('patternsBody');
+  data.patterns.sort((a,b) => a.pid - b.pid).forEach(p => {
+    const tr = document.createElement('tr');
+    if (p.tier === 'A') tr.classList.add('tier-a-row');
+    if (p.tier === 'BAD') tr.classList.add('tier-bad-row');
+    tr.dataset.cat = p.cat;
+    tr.dataset.tier = p.tier;
+    tr.dataset.search = (p.name + ' P' + p.pid).toLowerCase();
+    
+    const totalN = (p.btc_h4.n||0) + (p.btc_h1.n||0) + (p.btc_m15.n||0) + (p.xau_h4.n||0) + (p.xau_h1.n||0) + (p.xau_m15?.n||0) + (p.eur_h4?.n||0) + (p.eur_h1?.n||0) + (p.eur_m15?.n||0);
+    
+    tr.innerHTML = `
+      <td><strong style="color:var(--blue)">P${p.pid}</strong></td>
+      <td><span class="cat cat-${p.cat}">${p.cat}</span></td>
+      <td>${p.name}</td>
+      <td>${dirText(p.dir)}</td>
+      <td>${wrPill(p.btc_h4.wr, p.btc_h4.n)} <span style="font-size:9px;color:var(--txt-dim)">${(p.btc_h4.n||0).toLocaleString()}</span></td>
+      <td>${wrPill(p.btc_h1.wr, p.btc_h1.n)} <span style="font-size:9px;color:var(--txt-dim)">${(p.btc_h1.n||0).toLocaleString()}</span></td>
+      <td>${wrPill(p.btc_m15.wr, p.btc_m15.n)} <span style="font-size:9px;color:var(--txt-dim)">${(p.btc_m15.n||0).toLocaleString()}</span></td>
+      <td>${wrPill(p.xau_h4.wr, p.xau_h4.n)} <span style="font-size:9px;color:var(--txt-dim)">${(p.xau_h4.n||0).toLocaleString()}</span></td>
+      <td>${wrPill(p.xau_h1.wr, p.xau_h1.n)} <span style="font-size:9px;color:var(--txt-dim)">${(p.xau_h1.n||0).toLocaleString()}</span></td>
+      <td>${wrPill(p.xau_m15?.wr, p.xau_m15?.n)} <span style="font-size:9px;color:var(--txt-dim)">${(p.xau_m15?.n||0).toLocaleString()}</span></td>
+      <td>${wrPill(p.eur_h4?.wr, p.eur_h4?.n)} <span style="font-size:9px;color:var(--txt-dim)">${(p.eur_h4?.n||0).toLocaleString()}</span></td>
+      <td>${wrPill(p.eur_h1?.wr, p.eur_h1?.n)} <span style="font-size:9px;color:var(--txt-dim)">${(p.eur_h1?.n||0).toLocaleString()}</span></td>
+      <td>${wrPill(p.eur_m15?.wr, p.eur_m15?.n)} <span style="font-size:9px;color:var(--txt-dim)">${(p.eur_m15?.n||0).toLocaleString()}</span></td>
+      <td class="num">${totalN.toLocaleString()}</td>
+      <td>${tierLabel(p.tier)}</td>
+    `;
+    body.appendChild(tr);
+  });
+  
+  let curCat = 'all', curTier = 'all';
+  function applyFilter() {
+    const q = (document.getElementById('searchPat')?.value || '').toLowerCase();
+    document.querySelectorAll('#patternsBody tr').forEach(tr => {
+      const matchCat = curCat === 'all' || tr.dataset.cat === curCat;
+      const matchTier = curTier === 'all' || tr.dataset.tier === curTier;
+      const matchSearch = !q || tr.dataset.search.includes(q);
+      tr.style.display = (matchCat && matchTier && matchSearch) ? '' : 'none';
+    });
+  }
+  
+  document.querySelectorAll('.cat-filter').forEach(b => b.addEventListener('click', () => {
+    document.querySelectorAll('.cat-filter').forEach(x => x.classList.remove('active'));
+    b.classList.add('active');
+    curCat = b.dataset.cat;
+    applyFilter();
+  }));
+  document.querySelectorAll('.tier-filter').forEach(b => b.addEventListener('click', () => {
+    document.querySelectorAll('.tier-filter').forEach(x => x.classList.remove('active'));
+    b.classList.add('active');
+    curTier = b.dataset.tier;
+    applyFilter();
+  }));
+  document.getElementById('searchPat').addEventListener('input', applyFilter);
+});
+</script>
+</body></html>

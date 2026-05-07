@@ -1,0 +1,2185 @@
+<!DOCTYPE html>
+<html lang="th"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Patterns · KMP Master</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Bricolage+Grotesque:wght@400;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head><body>
+<nav class="sidebar">
+  <div class="sidebar-brand">
+    <a class="brand-logo" href="index.html">KMP <span class="accent">Master</span></a>
+    <div class="brand-ver">EA v3.1 · 177 patterns · 93 cols</div>
+  </div>
+  
+  <input type="text" class="search-box" id="globalSearch" placeholder="ค้นหา...">
+  
+  <div class="nav-section">
+    <div class="nav-label">Overview</div>
+    <a class="tree-node lvl-0" href="index.html"><span class="arrow"></span><span class="nm">Dashboard</span></a>
+    <a class="tree-node lvl-0" href="preface.html"><span class="arrow"></span><span class="nm">คำนำ &amp; เป้าหมาย</span></a>
+  </div>
+  
+  <div class="nav-section">
+    <div class="nav-label">Datasets · v4 LEGACY</div>
+    
+    <div class="tree-node lvl-0 expandable" data-toggle="crypto-menu">
+      <span class="arrow">▶</span><span class="nm">Crypto</span><span class="badge">3</span>
+    </div>
+    <div class="tree-children" id="crypto-menu">
+      <div class="tree-node lvl-1 expandable" data-toggle="btc-menu">
+        <span class="arrow">▶</span><span class="nm">BTC/USD</span><span class="badge">99K</span>
+      </div>
+      <div class="tree-children" id="btc-menu">
+        <a class="tree-node lvl-2" href="btc-h4.html"><span class="nm">BTC H4</span><span class="badge" style="background:#10b981;color:#fff">9,474</span></a>
+        <a class="tree-node lvl-2" href="btc-h1.html"><span class="nm">BTC H1</span><span class="badge">18,638</span></a>
+        <a class="tree-node lvl-2" href="btc-m15.html"><span class="nm">BTC M15</span><span class="badge">75,677</span></a>
+      </div>
+    </div>
+    
+    <div class="tree-node lvl-0 expandable" data-toggle="metals-menu">
+      <span class="arrow">▶</span><span class="nm">Metals</span><span class="badge">3</span>
+    </div>
+    <div class="tree-children" id="metals-menu">
+      <div class="tree-node lvl-1 expandable" data-toggle="xau-menu">
+        <span class="arrow">▶</span><span class="nm">XAU/USD</span><span class="badge">70K</span>
+      </div>
+      <div class="tree-children" id="xau-menu">
+        <a class="tree-node lvl-2" href="xau-h4.html"><span class="nm">XAU H4</span><span class="badge" style="background:#10b981;color:#fff">7,077</span></a>
+        <a class="tree-node lvl-2" href="xau-h1.html"><span class="nm">XAU H1</span><span class="badge">13,319</span></a>
+        <a class="tree-node lvl-2" href="xau-m15.html"><span class="nm">XAU M15</span><span class="badge">53,098</span></a>
+      </div>
+    </div>
+    
+    <div class="tree-node lvl-0 expandable" data-toggle="forex-menu">
+      <span class="arrow">▶</span><span class="nm">Forex</span><span class="badge">3</span>
+    </div>
+    <div class="tree-children" id="forex-menu">
+      <div class="tree-node lvl-1 expandable" data-toggle="eur-menu">
+        <span class="arrow">▶</span><span class="nm">EUR/USD</span><span class="badge">79K</span>
+      </div>
+      <div class="tree-children" id="eur-menu">
+        <a class="tree-node lvl-2" href="eur-h4.html"><span class="nm">EUR H4</span><span class="badge">3,770</span></a>
+        <a class="tree-node lvl-2" href="eur-h1.html"><span class="nm">EUR H1</span><span class="badge">14,257</span></a>
+        <a class="tree-node lvl-2" href="eur-m15.html"><span class="nm">EUR M15</span><span class="badge">61,138</span></a>
+      </div>
+    </div>
+  </div>
+  
+  <div class="nav-section">
+    <div class="nav-label">Patterns · 177 (v3.1)</div>
+    <a class="tree-node lvl-0" href="patterns-encyclopedia.html"><span class="arrow"></span><span class="nm">📚 Pattern Encyclopedia</span><span class="badge">177</span></a>
+    <div class="tree-node lvl-0 expandable" data-toggle="pat-menu">
+      <span class="arrow">▶</span><span class="nm">v4 Analysis</span><span class="badge">80</span>
+    </div>
+    <div class="tree-children" id="pat-menu">
+      <a class="tree-node lvl-1" href="patterns.html"><span class="nm">All Patterns Table</span></a>
+      <a class="tree-node lvl-1" href="tier.html"><span class="nm">Tier Rankings</span></a>
+      <a class="tree-node lvl-1" href="optimal-tpsl.html"><span class="nm">Optimal TP/SL EV</span></a>
+    </div>
+  </div>
+  
+  <div class="nav-section">
+    <div class="nav-label">Analysis</div>
+    <a class="tree-node lvl-0" href="cross.html"><span class="arrow"></span><span class="nm">Cross-TF / Asset</span></a>
+    <a class="tree-node lvl-0" href="time.html"><span class="arrow"></span><span class="nm">Hour / DoW / Conf</span></a>
+    <a class="tree-node lvl-0" href="edge.html"><span class="arrow"></span><span class="nm">Edge Decay / Vol</span></a>
+  </div>
+  
+  <div class="nav-section">
+    <div class="nav-label">Strategy</div>
+    <a class="tree-node lvl-0" href="strategy.html"><span class="arrow"></span><span class="nm">EA Blueprint &amp; Risk</span></a>
+  </div>
+  
+  <div class="nav-section">
+    <div class="nav-label">EA System · v3.1</div>
+    <a class="tree-node lvl-0" href="ea-architecture.html"><span class="arrow"></span><span class="nm">⚙ EA Architecture</span></a>
+    <a class="tree-node lvl-0" href="tracking-system.html"><span class="arrow"></span><span class="nm">🎯 Tracking System</span></a>  </div>  <div class="nav-section">
+    <div class="nav-label">Reference</div>
+    <a class="tree-node lvl-0" href="reference.html"><span class="arrow"></span><span class="nm">Sources &amp; Changelog</span></a>
+  </div>
+</nav>
+
+<main class="main">
+
+  <div class="hero">
+    <span class="hero-tag">Patterns Database · v6 (2 datasets · 16,551 trades)</span>
+    <h1 class="hero-title">177 <span class="accent">Patterns</span></h1>
+    <p class="hero-desc">
+      ตารางครบทุก pattern ที่ EA v3.1 ตรวจจับได้ · ดูสถิติ + ranking + tier · filter ได้ตามหมวด/tier
+    </p>
+  </div>
+
+<section>
+  <div class="section-head"><span class="section-num">01</span><h2 class="section-title">Tier Distribution</h2></div>
+  <div class="kpis">
+    <div class="kpi" style="border-color:#10b981"><div class="kpi-label" style="color:#10b981">Tier S</div><div class="kpi-val" style="color:#10b981">6</div><div class="kpi-sub">PnL ≥200 · 2ds · n≥100</div></div>
+    <div class="kpi" style="border-color:#22c55e"><div class="kpi-label" style="color:#22c55e">Tier A</div><div class="kpi-val" style="color:#22c55e">8</div><div class="kpi-sub">PnL ≥100 · n≥60</div></div>
+    <div class="kpi" style="border-color:#3b82f6"><div class="kpi-label" style="color:#3b82f6">Tier B</div><div class="kpi-val" style="color:#3b82f6">15</div><div class="kpi-sub">PnL ≥50</div></div>
+    <div class="kpi"><div class="kpi-label">Tier C</div><div class="kpi-val">26</div><div class="kpi-sub">PnL 0-50</div></div>
+    <div class="kpi" style="border-color:#ef4444"><div class="kpi-label" style="color:#ef4444">Tier D</div><div class="kpi-val" style="color:#ef4444">43</div><div class="kpi-sub">PnL < 0 (avoid)</div></div>
+    <div class="kpi"><div class="kpi-label" style="color:#94a3b8">N/A</div><div class="kpi-val" style="color:#94a3b8">79</div><div class="kpi-sub">n < 30 หรือ inactive</div></div>
+  </div>
+</section>
+
+<section>
+  <div class="section-head"><span class="section-num">02</span><h2 class="section-title">Patterns Master Table</h2></div>
+  <p class="lead-desc">177 patterns · sortable · filterable · ⚠️ Tier ตอนนี้ preliminary จาก 2/6 datasets</p>
+  <div style="margin:12px 0;display:flex;gap:8px;flex-wrap:wrap;align-items:center">
+    <label style="font-size:13px;color:var(--txt-d)">Filter:</label>
+    <button class="filter-btn active" onclick="filterTier('all')">All</button>
+    <button class="filter-btn" onclick="filterTier('S')">Tier S</button>
+    <button class="filter-btn" onclick="filterTier('A')">Tier A</button>
+    <button class="filter-btn" onclick="filterTier('B')">Tier B</button>
+    <button class="filter-btn" onclick="filterTier('C')">Tier C</button>
+    <button class="filter-btn" onclick="filterTier('D')">Tier D</button>
+    <input type="text" id="patternSearch" placeholder="Search name..." style="margin-left:auto;padding:6px 10px;background:var(--bg-1);border:1px solid var(--bd);color:var(--txt);border-radius:4px;width:200px" oninput="filterSearch()"/>
+  </div>
+  <div class="card" style="overflow-x:auto">
+    <table class="table compact ranked" id="patternsTable">
+      <thead>
+        <tr>
+          <th>ID</th><th>Pattern</th><th>Cat</th><th>Tier</th>
+          <th class="r">N (total)</th><th class="r">Win%</th>
+          <th class="r">PnL ATR</th><th class="r">PnL $</th>
+          <th class="r">BTC H4</th><th class="r">XAU H4</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr data-pid="1" data-cat="A" data-tier="N/A" data-pnl="84.71300000000001" data-n="22">
+          <td><strong>P1</strong></td>
+          <td>MultiRej_Long</td>
+          <td>Cat A</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#475569;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">N/A</span></td>
+          <td class="r">22</td>
+          <td class="r">40.9%</td>
+          <td class="r tg"><strong>+84.7</strong></td>
+          <td class="r tg">$+306,165</td>
+          <td class="r tr" data-pnl="-15.532">-15.5<br><span style="color:var(--txt-d);font-size:11px">n=10·WR20%</span></td><td class="r tg" data-pnl="100.245">+100.2<br><span style="color:var(--txt-d);font-size:11px">n=12·WR58%</span></td>
+        </tr>
+        <tr data-pid="2" data-cat="A" data-tier="N/A" data-pnl="-4.804" data-n="20">
+          <td><strong>P2</strong></td>
+          <td>MultiRej_Short</td>
+          <td>Cat A</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#475569;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">N/A</span></td>
+          <td class="r">20</td>
+          <td class="r">45.0%</td>
+          <td class="r tr"><strong>-4.8</strong></td>
+          <td class="r tr">$-12,864</td>
+          <td class="r tr" data-pnl="-4.804">-4.8<br><span style="color:var(--txt-d);font-size:11px">n=20·WR45%</span></td><td class="r" style="color:var(--txt-d)">—</td>
+        </tr>
+        <tr data-pid="3" data-cat="A" data-tier="N/A" data-pnl="21.063000000000002" data-n="5">
+          <td><strong>P3</strong></td>
+          <td>WRB_Bull</td>
+          <td>Cat A</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#475569;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">N/A</span></td>
+          <td class="r">5</td>
+          <td class="r">60.0%</td>
+          <td class="r tg"><strong>+21.1</strong></td>
+          <td class="r tg">$+84,797</td>
+          <td class="r tr" data-pnl="-2.929">-2.9<br><span style="color:var(--txt-d);font-size:11px">n=2·WR50%</span></td><td class="r tg" data-pnl="23.992">+24.0<br><span style="color:var(--txt-d);font-size:11px">n=3·WR67%</span></td>
+        </tr>
+        <tr data-pid="4" data-cat="A" data-tier="N/A" data-pnl="-3.104" data-n="1">
+          <td><strong>P4</strong></td>
+          <td>WRB_Bear</td>
+          <td>Cat A</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#475569;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">N/A</span></td>
+          <td class="r">1</td>
+          <td class="r">0.0%</td>
+          <td class="r tr"><strong>-3.1</strong></td>
+          <td class="r tr">$-3,294</td>
+          <td class="r tr" data-pnl="-3.104">-3.1<br><span style="color:var(--txt-d);font-size:11px">n=1·WR0%</span></td><td class="r" style="color:var(--txt-d)">—</td>
+        </tr>
+        <tr data-pid="5" data-cat="A" data-tier="N/A" data-pnl="1.3130000000000002" data-n="3">
+          <td><strong>P5</strong></td>
+          <td>Engulf_Trap_Bull</td>
+          <td>Cat A</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#475569;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">N/A</span></td>
+          <td class="r">3</td>
+          <td class="r">33.3%</td>
+          <td class="r tg"><strong>+1.3</strong></td>
+          <td class="r tg">$+9,619</td>
+          <td class="r tr" data-pnl="-0.535">-0.5<br><span style="color:var(--txt-d);font-size:11px">n=1·WR0%</span></td><td class="r tg" data-pnl="1.848">+1.8<br><span style="color:var(--txt-d);font-size:11px">n=2·WR50%</span></td>
+        </tr>
+        <tr data-pid="6" data-cat="A" data-tier="N/A" data-pnl="0" data-n="0" style="opacity:0.4">
+          <td><strong>P6</strong></td>
+          <td>Engulf_Trap_Bear</td>
+          <td>Cat A</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#475569;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">N/A</span></td>
+          <td class="r">0</td>
+          <td class="r">—</td>
+          <td class="r">—</td>
+          <td class="r">—</td>
+          <td class="r" colspan="2" style="color:var(--txt-d)">not active in v6 datasets</td>
+        </tr>
+        <tr data-pid="7" data-cat="A" data-tier="D" data-pnl="-0.511" data-n="60">
+          <td><strong>P7</strong></td>
+          <td>PinBar</td>
+          <td>Cat A</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#ef4444;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">60</td>
+          <td class="r">50.0%</td>
+          <td class="r tr"><strong>-0.5</strong></td>
+          <td class="r tr">$-8,652</td>
+          <td class="r tr" data-pnl="-0.433">-0.4<br><span style="color:var(--txt-d);font-size:11px">n=40·WR50%</span></td><td class="r tr" data-pnl="-0.078">-0.1<br><span style="color:var(--txt-d);font-size:11px">n=20·WR50%</span></td>
+        </tr>
+        <tr data-pid="8" data-cat="A" data-tier="D" data-pnl="-4.906" data-n="548">
+          <td><strong>P8</strong></td>
+          <td>TwoBar_Reversal</td>
+          <td>Cat A</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#ef4444;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">548</td>
+          <td class="r">49.8%</td>
+          <td class="r tr"><strong>-4.9</strong></td>
+          <td class="r tr">$-84,721</td>
+          <td class="r tr" data-pnl="-3.927">-3.9<br><span style="color:var(--txt-d);font-size:11px">n=342·WR50%</span></td><td class="r tr" data-pnl="-0.979">-1.0<br><span style="color:var(--txt-d);font-size:11px">n=206·WR50%</span></td>
+        </tr>
+        <tr data-pid="9" data-cat="A" data-tier="D" data-pnl="-1.7269999999999999" data-n="188">
+          <td><strong>P9</strong></td>
+          <td>BB_Touch_Reversal</td>
+          <td>Cat A</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#ef4444;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">188</td>
+          <td class="r">49.5%</td>
+          <td class="r tr"><strong>-1.7</strong></td>
+          <td class="r tr">$-28,409</td>
+          <td class="r tr" data-pnl="-1.371">-1.4<br><span style="color:var(--txt-d);font-size:11px">n=120·WR49%</span></td><td class="r tr" data-pnl="-0.356">-0.4<br><span style="color:var(--txt-d);font-size:11px">n=68·WR50%</span></td>
+        </tr>
+        <tr data-pid="10" data-cat="A" data-tier="N/A" data-pnl="-0.01" data-n="2">
+          <td><strong>P10</strong></td>
+          <td>BB_Squeeze_Break</td>
+          <td>Cat A</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#475569;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">N/A</span></td>
+          <td class="r">2</td>
+          <td class="r">50.0%</td>
+          <td class="r tr"><strong>-0.0</strong></td>
+          <td class="r tr">$-706</td>
+          <td class="r" style="color:var(--txt-d)">—</td><td class="r tr" data-pnl="-0.01">-0.0<br><span style="color:var(--txt-d);font-size:11px">n=2·WR50%</span></td>
+        </tr>
+        <tr data-pid="11" data-cat="A" data-tier="D" data-pnl="-3.154" data-n="366">
+          <td><strong>P11</strong></td>
+          <td>EMA_Bounce</td>
+          <td>Cat A</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#ef4444;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">366</td>
+          <td class="r">50.0%</td>
+          <td class="r tr"><strong>-3.2</strong></td>
+          <td class="r tr">$-59,766</td>
+          <td class="r tr" data-pnl="-2.515">-2.5<br><span style="color:var(--txt-d);font-size:11px">n=222·WR50%</span></td><td class="r tr" data-pnl="-0.639">-0.6<br><span style="color:var(--txt-d);font-size:11px">n=144·WR50%</span></td>
+        </tr>
+        <tr data-pid="12" data-cat="A" data-tier="D" data-pnl="-1.254" data-n="132">
+          <td><strong>P12</strong></td>
+          <td>EMA_Cross</td>
+          <td>Cat A</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#ef4444;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">132</td>
+          <td class="r">50.0%</td>
+          <td class="r tr"><strong>-1.3</strong></td>
+          <td class="r tr">$-20,513</td>
+          <td class="r tr" data-pnl="-1.063">-1.1<br><span style="color:var(--txt-d);font-size:11px">n=86·WR50%</span></td><td class="r tr" data-pnl="-0.191">-0.2<br><span style="color:var(--txt-d);font-size:11px">n=46·WR50%</span></td>
+        </tr>
+        <tr data-pid="13" data-cat="A" data-tier="D" data-pnl="-0.523" data-n="64">
+          <td><strong>P13</strong></td>
+          <td>RSI_Extreme_Rev</td>
+          <td>Cat A</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#ef4444;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">64</td>
+          <td class="r">50.0%</td>
+          <td class="r tr"><strong>-0.5</strong></td>
+          <td class="r tr">$-10,566</td>
+          <td class="r tr" data-pnl="-0.425">-0.4<br><span style="color:var(--txt-d);font-size:11px">n=40·WR50%</span></td><td class="r tr" data-pnl="-0.098">-0.1<br><span style="color:var(--txt-d);font-size:11px">n=24·WR50%</span></td>
+        </tr>
+        <tr data-pid="14" data-cat="A" data-tier="N/A" data-pnl="-0.126" data-n="24">
+          <td><strong>P14</strong></td>
+          <td>RSI_Divergence</td>
+          <td>Cat A</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#475569;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">N/A</span></td>
+          <td class="r">24</td>
+          <td class="r">50.0%</td>
+          <td class="r tr"><strong>-0.1</strong></td>
+          <td class="r tr">$-5,282</td>
+          <td class="r tr" data-pnl="-0.06">-0.1<br><span style="color:var(--txt-d);font-size:11px">n=6·WR50%</span></td><td class="r tr" data-pnl="-0.066">-0.1<br><span style="color:var(--txt-d);font-size:11px">n=18·WR50%</span></td>
+        </tr>
+        <tr data-pid="15" data-cat="A" data-tier="D" data-pnl="-0.8009999999999999" data-n="82">
+          <td><strong>P15</strong></td>
+          <td>MACD_Zero_Cross</td>
+          <td>Cat A</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#ef4444;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">82</td>
+          <td class="r">50.0%</td>
+          <td class="r tr"><strong>-0.8</strong></td>
+          <td class="r tr">$-10,757</td>
+          <td class="r tr" data-pnl="-0.722">-0.7<br><span style="color:var(--txt-d);font-size:11px">n=62·WR50%</span></td><td class="r tr" data-pnl="-0.079">-0.1<br><span style="color:var(--txt-d);font-size:11px">n=20·WR50%</span></td>
+        </tr>
+        <tr data-pid="16" data-cat="A" data-tier="D" data-pnl="-1.9620000000000002" data-n="228">
+          <td><strong>P16</strong></td>
+          <td>Stoch_Cross</td>
+          <td>Cat A</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#ef4444;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">228</td>
+          <td class="r">49.6%</td>
+          <td class="r tr"><strong>-2.0</strong></td>
+          <td class="r tr">$-37,321</td>
+          <td class="r tr" data-pnl="-1.568">-1.6<br><span style="color:var(--txt-d);font-size:11px">n=140·WR49%</span></td><td class="r tr" data-pnl="-0.394">-0.4<br><span style="color:var(--txt-d);font-size:11px">n=88·WR50%</span></td>
+        </tr>
+        <tr data-pid="17" data-cat="A" data-tier="D" data-pnl="-0.494" data-n="68">
+          <td><strong>P17</strong></td>
+          <td>Volume_Spike_Rev</td>
+          <td>Cat A</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#ef4444;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">68</td>
+          <td class="r">50.0%</td>
+          <td class="r tr"><strong>-0.5</strong></td>
+          <td class="r tr">$-11,238</td>
+          <td class="r tr" data-pnl="-0.37">-0.4<br><span style="color:var(--txt-d);font-size:11px">n=36·WR50%</span></td><td class="r tr" data-pnl="-0.124">-0.1<br><span style="color:var(--txt-d);font-size:11px">n=32·WR50%</span></td>
+        </tr>
+        <tr data-pid="18" data-cat="A" data-tier="D" data-pnl="-9.908" data-n="1162">
+          <td><strong>P18</strong></td>
+          <td>Pivot_Bounce</td>
+          <td>Cat A</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#ef4444;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">1,162</td>
+          <td class="r">49.9%</td>
+          <td class="r tr"><strong>-9.9</strong></td>
+          <td class="r tr">$-191,543</td>
+          <td class="r tr" data-pnl="-7.813">-7.8<br><span style="color:var(--txt-d);font-size:11px">n=672·WR50%</span></td><td class="r tr" data-pnl="-2.095">-2.1<br><span style="color:var(--txt-d);font-size:11px">n=490·WR50%</span></td>
+        </tr>
+        <tr data-pid="19" data-cat="A" data-tier="D" data-pnl="-2.972" data-n="480">
+          <td><strong>P19</strong></td>
+          <td>Round_Number</td>
+          <td>Cat A</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#ef4444;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">480</td>
+          <td class="r">50.0%</td>
+          <td class="r tr"><strong>-3.0</strong></td>
+          <td class="r tr">$-116,241</td>
+          <td class="r tr" data-pnl="-1.248">-1.2<br><span style="color:var(--txt-d);font-size:11px">n=106·WR50%</span></td><td class="r tr" data-pnl="-1.724">-1.7<br><span style="color:var(--txt-d);font-size:11px">n=374·WR50%</span></td>
+        </tr>
+        <tr data-pid="20" data-cat="A" data-tier="D" data-pnl="-2.284" data-n="264">
+          <td><strong>P20</strong></td>
+          <td>Inside_Bar_Break</td>
+          <td>Cat A</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#ef4444;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">264</td>
+          <td class="r">50.0%</td>
+          <td class="r tr"><strong>-2.3</strong></td>
+          <td class="r tr">$-43,522</td>
+          <td class="r tr" data-pnl="-1.791">-1.8<br><span style="color:var(--txt-d);font-size:11px">n=156·WR50%</span></td><td class="r tr" data-pnl="-0.493">-0.5<br><span style="color:var(--txt-d);font-size:11px">n=108·WR50%</span></td>
+        </tr>
+        <tr data-pid="21" data-cat="B" data-tier="D" data-pnl="-0.937" data-n="124">
+          <td><strong>P21</strong></td>
+          <td>Doji</td>
+          <td>Cat B</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#ef4444;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">124</td>
+          <td class="r">49.2%</td>
+          <td class="r tr"><strong>-0.9</strong></td>
+          <td class="r tr">$-21,599</td>
+          <td class="r tr" data-pnl="-0.644">-0.6<br><span style="color:var(--txt-d);font-size:11px">n=58·WR48%</span></td><td class="r tr" data-pnl="-0.293">-0.3<br><span style="color:var(--txt-d);font-size:11px">n=66·WR50%</span></td>
+        </tr>
+        <tr data-pid="22" data-cat="B" data-tier="N/A" data-pnl="3.5409999999999986" data-n="2">
+          <td><strong>P22</strong></td>
+          <td>Dragonfly_Doji</td>
+          <td>Cat B</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#475569;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">N/A</span></td>
+          <td class="r">2</td>
+          <td class="r">50.0%</td>
+          <td class="r tg"><strong>+3.5</strong></td>
+          <td class="r tg">$+28,738</td>
+          <td class="r tr" data-pnl="-9.034">-9.0<br><span style="color:var(--txt-d);font-size:11px">n=1·WR0%</span></td><td class="r tg" data-pnl="12.575">+12.6<br><span style="color:var(--txt-d);font-size:11px">n=1·WR100%</span></td>
+        </tr>
+        <tr data-pid="23" data-cat="B" data-tier="N/A" data-pnl="-15.134" data-n="3">
+          <td><strong>P23</strong></td>
+          <td>Gravestone_Doji</td>
+          <td>Cat B</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#475569;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">N/A</span></td>
+          <td class="r">3</td>
+          <td class="r">0.0%</td>
+          <td class="r tr"><strong>-15.1</strong></td>
+          <td class="r tr">$-48,671</td>
+          <td class="r tr" data-pnl="-5.322">-5.3<br><span style="color:var(--txt-d);font-size:11px">n=1·WR0%</span></td><td class="r tr" data-pnl="-9.812">-9.8<br><span style="color:var(--txt-d);font-size:11px">n=2·WR0%</span></td>
+        </tr>
+        <tr data-pid="24" data-cat="B" data-tier="N/A" data-pnl="-52.752" data-n="28">
+          <td><strong>P24</strong></td>
+          <td>Hammer</td>
+          <td>Cat B</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#475569;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">N/A</span></td>
+          <td class="r">28</td>
+          <td class="r">32.1%</td>
+          <td class="r tr"><strong>-52.8</strong></td>
+          <td class="r tr">$-134,120</td>
+          <td class="r tr" data-pnl="-33.039">-33.0<br><span style="color:var(--txt-d);font-size:11px">n=13·WR23%</span></td><td class="r tr" data-pnl="-19.713">-19.7<br><span style="color:var(--txt-d);font-size:11px">n=15·WR40%</span></td>
+        </tr>
+        <tr data-pid="25" data-cat="B" data-tier="N/A" data-pnl="17.894" data-n="17">
+          <td><strong>P25</strong></td>
+          <td>Inverted_Hammer</td>
+          <td>Cat B</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#475569;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">N/A</span></td>
+          <td class="r">17</td>
+          <td class="r">70.6%</td>
+          <td class="r tg"><strong>+17.9</strong></td>
+          <td class="r tg">$+101,305</td>
+          <td class="r tr" data-pnl="-3.704">-3.7<br><span style="color:var(--txt-d);font-size:11px">n=9·WR78%</span></td><td class="r tg" data-pnl="21.598">+21.6<br><span style="color:var(--txt-d);font-size:11px">n=8·WR62%</span></td>
+        </tr>
+        <tr data-pid="26" data-cat="B" data-tier="N/A" data-pnl="32.075" data-n="17">
+          <td><strong>P26</strong></td>
+          <td>Hanging_Man</td>
+          <td>Cat B</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#475569;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">N/A</span></td>
+          <td class="r">17</td>
+          <td class="r">76.5%</td>
+          <td class="r tg"><strong>+32.1</strong></td>
+          <td class="r tg">$+108,491</td>
+          <td class="r tg" data-pnl="25.482">+25.5<br><span style="color:var(--txt-d);font-size:11px">n=8·WR75%</span></td><td class="r tg" data-pnl="6.593">+6.6<br><span style="color:var(--txt-d);font-size:11px">n=9·WR78%</span></td>
+        </tr>
+        <tr data-pid="27" data-cat="B" data-tier="N/A" data-pnl="17.238" data-n="20">
+          <td><strong>P27</strong></td>
+          <td>Shooting_Star</td>
+          <td>Cat B</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#475569;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">N/A</span></td>
+          <td class="r">20</td>
+          <td class="r">65.0%</td>
+          <td class="r tg"><strong>+17.2</strong></td>
+          <td class="r tg">$+47,867</td>
+          <td class="r tg" data-pnl="14.944">+14.9<br><span style="color:var(--txt-d);font-size:11px">n=15·WR73%</span></td><td class="r tg" data-pnl="2.294">+2.3<br><span style="color:var(--txt-d);font-size:11px">n=5·WR40%</span></td>
+        </tr>
+        <tr data-pid="28" data-cat="B" data-tier="C" data-pnl="47.603" data-n="70">
+          <td><strong>P28</strong></td>
+          <td>Bullish_Engulfing</td>
+          <td>Cat B</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#94a3b8;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">C</span></td>
+          <td class="r">70</td>
+          <td class="r">55.7%</td>
+          <td class="r tg"><strong>+47.6</strong></td>
+          <td class="r tg">$+107,558</td>
+          <td class="r tr" data-pnl="-1.894">-1.9<br><span style="color:var(--txt-d);font-size:11px">n=43·WR51%</span></td><td class="r tg" data-pnl="49.497">+49.5<br><span style="color:var(--txt-d);font-size:11px">n=27·WR63%</span></td>
+        </tr>
+        <tr data-pid="29" data-cat="B" data-tier="B" data-pnl="66.18900000000001" data-n="83">
+          <td><strong>P29</strong></td>
+          <td>Bearish_Engulfing</td>
+          <td>Cat B</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#3b82f6;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">B</span></td>
+          <td class="r">83</td>
+          <td class="r">54.2%</td>
+          <td class="r tg"><strong>+66.2</strong></td>
+          <td class="r tg">$+108,801</td>
+          <td class="r tg" data-pnl="55.828">+55.8<br><span style="color:var(--txt-d);font-size:11px">n=52·WR58%</span></td><td class="r tg" data-pnl="10.361">+10.4<br><span style="color:var(--txt-d);font-size:11px">n=31·WR48%</span></td>
+        </tr>
+        <tr data-pid="30" data-cat="B" data-tier="N/A" data-pnl="0" data-n="0" style="opacity:0.4">
+          <td><strong>P30</strong></td>
+          <td>Piercing_Line</td>
+          <td>Cat B</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#475569;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">N/A</span></td>
+          <td class="r">0</td>
+          <td class="r">—</td>
+          <td class="r">—</td>
+          <td class="r">—</td>
+          <td class="r" colspan="2" style="color:var(--txt-d)">not active in v6 datasets</td>
+        </tr>
+        <tr data-pid="31" data-cat="B" data-tier="N/A" data-pnl="0" data-n="0" style="opacity:0.4">
+          <td><strong>P31</strong></td>
+          <td>Dark_Cloud_Cover</td>
+          <td>Cat B</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#475569;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">N/A</span></td>
+          <td class="r">0</td>
+          <td class="r">—</td>
+          <td class="r">—</td>
+          <td class="r">—</td>
+          <td class="r" colspan="2" style="color:var(--txt-d)">not active in v6 datasets</td>
+        </tr>
+        <tr data-pid="32" data-cat="B" data-tier="D" data-pnl="-31.226000000000003" data-n="63">
+          <td><strong>P32</strong></td>
+          <td>Bullish_Harami</td>
+          <td>Cat B</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#ef4444;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">63</td>
+          <td class="r">54.0%</td>
+          <td class="r tr"><strong>-31.2</strong></td>
+          <td class="r tr">$-35,381</td>
+          <td class="r tr" data-pnl="-40.249">-40.2<br><span style="color:var(--txt-d);font-size:11px">n=41·WR51%</span></td><td class="r tg" data-pnl="9.023">+9.0<br><span style="color:var(--txt-d);font-size:11px">n=22·WR59%</span></td>
+        </tr>
+        <tr data-pid="33" data-cat="B" data-tier="C" data-pnl="4.822000000000003" data-n="57">
+          <td><strong>P33</strong></td>
+          <td>Bearish_Harami</td>
+          <td>Cat B</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#94a3b8;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">C</span></td>
+          <td class="r">57</td>
+          <td class="r">52.6%</td>
+          <td class="r tg"><strong>+4.8</strong></td>
+          <td class="r tr">$-1,798</td>
+          <td class="r tg" data-pnl="21.812">+21.8<br><span style="color:var(--txt-d);font-size:11px">n=33·WR52%</span></td><td class="r tr" data-pnl="-16.99">-17.0<br><span style="color:var(--txt-d);font-size:11px">n=24·WR54%</span></td>
+        </tr>
+        <tr data-pid="34" data-cat="B" data-tier="D" data-pnl="-25.587" data-n="31">
+          <td><strong>P34</strong></td>
+          <td>Morning_Star</td>
+          <td>Cat B</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#ef4444;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">31</td>
+          <td class="r">41.9%</td>
+          <td class="r tr"><strong>-25.6</strong></td>
+          <td class="r tr">$-59,478</td>
+          <td class="r tr" data-pnl="-29.934">-29.9<br><span style="color:var(--txt-d);font-size:11px">n=20·WR35%</span></td><td class="r tg" data-pnl="4.347">+4.3<br><span style="color:var(--txt-d);font-size:11px">n=11·WR55%</span></td>
+        </tr>
+        <tr data-pid="35" data-cat="B" data-tier="N/A" data-pnl="-1.819" data-n="23">
+          <td><strong>P35</strong></td>
+          <td>Evening_Star</td>
+          <td>Cat B</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#475569;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">N/A</span></td>
+          <td class="r">23</td>
+          <td class="r">47.8%</td>
+          <td class="r tr"><strong>-1.8</strong></td>
+          <td class="r tg">$+36,386</td>
+          <td class="r tr" data-pnl="-9.68">-9.7<br><span style="color:var(--txt-d);font-size:11px">n=13·WR38%</span></td><td class="r tg" data-pnl="7.861">+7.9<br><span style="color:var(--txt-d);font-size:11px">n=10·WR60%</span></td>
+        </tr>
+        <tr data-pid="36" data-cat="B" data-tier="N/A" data-pnl="-6.46" data-n="2">
+          <td><strong>P36</strong></td>
+          <td>Three_White_Soldiers</td>
+          <td>Cat B</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#475569;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">N/A</span></td>
+          <td class="r">2</td>
+          <td class="r">0.0%</td>
+          <td class="r tr"><strong>-6.5</strong></td>
+          <td class="r tr">$-35,839</td>
+          <td class="r tr" data-pnl="-0.946">-0.9<br><span style="color:var(--txt-d);font-size:11px">n=1·WR0%</span></td><td class="r tr" data-pnl="-5.514">-5.5<br><span style="color:var(--txt-d);font-size:11px">n=1·WR0%</span></td>
+        </tr>
+        <tr data-pid="37" data-cat="B" data-tier="N/A" data-pnl="-2.421" data-n="1">
+          <td><strong>P37</strong></td>
+          <td>Three_Black_Crows</td>
+          <td>Cat B</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#475569;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">N/A</span></td>
+          <td class="r">1</td>
+          <td class="r">0.0%</td>
+          <td class="r tr"><strong>-2.4</strong></td>
+          <td class="r tr">$-5,998</td>
+          <td class="r tr" data-pnl="-2.421">-2.4<br><span style="color:var(--txt-d);font-size:11px">n=1·WR0%</span></td><td class="r" style="color:var(--txt-d)">—</td>
+        </tr>
+        <tr data-pid="38" data-cat="B" data-tier="D" data-pnl="-53.852000000000004" data-n="87">
+          <td><strong>P38</strong></td>
+          <td>Tweezer_Bottom</td>
+          <td>Cat B</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#ef4444;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">87</td>
+          <td class="r">43.7%</td>
+          <td class="r tr"><strong>-53.9</strong></td>
+          <td class="r tr">$-24,753</td>
+          <td class="r tr" data-pnl="-71.488">-71.5<br><span style="color:var(--txt-d);font-size:11px">n=54·WR41%</span></td><td class="r tg" data-pnl="17.636">+17.6<br><span style="color:var(--txt-d);font-size:11px">n=33·WR48%</span></td>
+        </tr>
+        <tr data-pid="39" data-cat="B" data-tier="C" data-pnl="45.688" data-n="110">
+          <td><strong>P39</strong></td>
+          <td>Tweezer_Top</td>
+          <td>Cat B</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#94a3b8;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">C</span></td>
+          <td class="r">110</td>
+          <td class="r">56.4%</td>
+          <td class="r tg"><strong>+45.7</strong></td>
+          <td class="r tr">$-19,614</td>
+          <td class="r tg" data-pnl="96.247">+96.2<br><span style="color:var(--txt-d);font-size:11px">n=62·WR65%</span></td><td class="r tr" data-pnl="-50.559">-50.6<br><span style="color:var(--txt-d);font-size:11px">n=48·WR46%</span></td>
+        </tr>
+        <tr data-pid="40" data-cat="B" data-tier="N/A" data-pnl="-0.106" data-n="14">
+          <td><strong>P40</strong></td>
+          <td>Marubozu</td>
+          <td>Cat B</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#475569;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">N/A</span></td>
+          <td class="r">14</td>
+          <td class="r">42.9%</td>
+          <td class="r tr"><strong>-0.1</strong></td>
+          <td class="r tr">$-3,595</td>
+          <td class="r tr" data-pnl="-0.051">-0.1<br><span style="color:var(--txt-d);font-size:11px">n=4·WR25%</span></td><td class="r tr" data-pnl="-0.055">-0.1<br><span style="color:var(--txt-d);font-size:11px">n=10·WR50%</span></td>
+        </tr>
+        <tr data-pid="41" data-cat="C" data-tier="N/A" data-pnl="-1.5890000000000004" data-n="11">
+          <td><strong>P41</strong></td>
+          <td>Supply_Zone_Reject</td>
+          <td>Cat C</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#475569;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">N/A</span></td>
+          <td class="r">11</td>
+          <td class="r">54.5%</td>
+          <td class="r tr"><strong>-1.6</strong></td>
+          <td class="r tg">$+14,629</td>
+          <td class="r tr" data-pnl="-5.288">-5.3<br><span style="color:var(--txt-d);font-size:11px">n=9·WR44%</span></td><td class="r tg" data-pnl="3.699">+3.7<br><span style="color:var(--txt-d);font-size:11px">n=2·WR100%</span></td>
+        </tr>
+        <tr data-pid="42" data-cat="C" data-tier="N/A" data-pnl="-3.8810000000000002" data-n="4">
+          <td><strong>P42</strong></td>
+          <td>Demand_Zone_Reject</td>
+          <td>Cat C</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#475569;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">N/A</span></td>
+          <td class="r">4</td>
+          <td class="r">25.0%</td>
+          <td class="r tr"><strong>-3.9</strong></td>
+          <td class="r tr">$-18,137</td>
+          <td class="r tg" data-pnl="0.053">+0.1<br><span style="color:var(--txt-d);font-size:11px">n=2·WR50%</span></td><td class="r tr" data-pnl="-3.934">-3.9<br><span style="color:var(--txt-d);font-size:11px">n=2·WR0%</span></td>
+        </tr>
+        <tr data-pid="43" data-cat="C" data-tier="B" data-pnl="92.266" data-n="33">
+          <td><strong>P43</strong></td>
+          <td>Bullish_Order_Block</td>
+          <td>Cat C</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#3b82f6;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">B</span></td>
+          <td class="r">33</td>
+          <td class="r">72.7%</td>
+          <td class="r tg"><strong>+92.3</strong></td>
+          <td class="r tg">$+100,549</td>
+          <td class="r tg" data-pnl="90.793">+90.8<br><span style="color:var(--txt-d);font-size:11px">n=28·WR79%</span></td><td class="r tg" data-pnl="1.473">+1.5<br><span style="color:var(--txt-d);font-size:11px">n=5·WR40%</span></td>
+        </tr>
+        <tr data-pid="44" data-cat="C" data-tier="D" data-pnl="-96.361" data-n="52">
+          <td><strong>P44</strong></td>
+          <td>Bearish_Order_Block</td>
+          <td>Cat C</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#ef4444;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">52</td>
+          <td class="r">34.6%</td>
+          <td class="r tr"><strong>-96.4</strong></td>
+          <td class="r tr">$-138,143</td>
+          <td class="r tr" data-pnl="-81.983">-82.0<br><span style="color:var(--txt-d);font-size:11px">n=32·WR31%</span></td><td class="r tr" data-pnl="-14.378">-14.4<br><span style="color:var(--txt-d);font-size:11px">n=20·WR40%</span></td>
+        </tr>
+        <tr data-pid="45" data-cat="C" data-tier="S" data-pnl="263.254" data-n="600">
+          <td><strong>P45</strong></td>
+          <td>Breaker_Block_Bull</td>
+          <td>Cat C</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#10b981;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">S</span></td>
+          <td class="r">600</td>
+          <td class="r">53.8%</td>
+          <td class="r tg"><strong>+263.3</strong></td>
+          <td class="r tg">$+307,515</td>
+          <td class="r tg" data-pnl="130.539">+130.5<br><span style="color:var(--txt-d);font-size:11px">n=381·WR51%</span></td><td class="r tg" data-pnl="132.715">+132.7<br><span style="color:var(--txt-d);font-size:11px">n=219·WR59%</span></td>
+        </tr>
+        <tr data-pid="46" data-cat="C" data-tier="S" data-pnl="385.17900000000003" data-n="544">
+          <td><strong>P46</strong></td>
+          <td>Breaker_Block_Bear</td>
+          <td>Cat C</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#10b981;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">S</span></td>
+          <td class="r">544</td>
+          <td class="r">51.5%</td>
+          <td class="r tg"><strong>+385.2</strong></td>
+          <td class="r tg">$+215,400</td>
+          <td class="r tg" data-pnl="435.653">+435.7<br><span style="color:var(--txt-d);font-size:11px">n=316·WR58%</span></td><td class="r tr" data-pnl="-50.474">-50.5<br><span style="color:var(--txt-d);font-size:11px">n=228·WR43%</span></td>
+        </tr>
+        <tr data-pid="47" data-cat="C" data-tier="C" data-pnl="4.369" data-n="59">
+          <td><strong>P47</strong></td>
+          <td>SR_Flip_Long</td>
+          <td>Cat C</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#94a3b8;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">C</span></td>
+          <td class="r">59</td>
+          <td class="r">61.0%</td>
+          <td class="r tg"><strong>+4.4</strong></td>
+          <td class="r tr">$-163,105</td>
+          <td class="r tg" data-pnl="46.199">+46.2<br><span style="color:var(--txt-d);font-size:11px">n=31·WR71%</span></td><td class="r tr" data-pnl="-41.83">-41.8<br><span style="color:var(--txt-d);font-size:11px">n=28·WR50%</span></td>
+        </tr>
+        <tr data-pid="48" data-cat="C" data-tier="B" data-pnl="116.257" data-n="42">
+          <td><strong>P48</strong></td>
+          <td>SR_Flip_Short</td>
+          <td>Cat C</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#3b82f6;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">B</span></td>
+          <td class="r">42</td>
+          <td class="r">45.2%</td>
+          <td class="r tg"><strong>+116.3</strong></td>
+          <td class="r tg">$+89,778</td>
+          <td class="r tg" data-pnl="108.855">+108.9<br><span style="color:var(--txt-d);font-size:11px">n=26·WR46%</span></td><td class="r tg" data-pnl="7.402">+7.4<br><span style="color:var(--txt-d);font-size:11px">n=16·WR44%</span></td>
+        </tr>
+        <tr data-pid="49" data-cat="C" data-tier="D" data-pnl="-68.801" data-n="40">
+          <td><strong>P49</strong></td>
+          <td>Trendline_Bounce_Long</td>
+          <td>Cat C</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#ef4444;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">40</td>
+          <td class="r">27.5%</td>
+          <td class="r tr"><strong>-68.8</strong></td>
+          <td class="r tr">$-316,708</td>
+          <td class="r tr" data-pnl="-25.317">-25.3<br><span style="color:var(--txt-d);font-size:11px">n=23·WR30%</span></td><td class="r tr" data-pnl="-43.484">-43.5<br><span style="color:var(--txt-d);font-size:11px">n=17·WR24%</span></td>
+        </tr>
+        <tr data-pid="50" data-cat="C" data-tier="C" data-pnl="45.564" data-n="47">
+          <td><strong>P50</strong></td>
+          <td>Trendline_Bounce_Short</td>
+          <td>Cat C</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#94a3b8;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">C</span></td>
+          <td class="r">47</td>
+          <td class="r">66.0%</td>
+          <td class="r tg"><strong>+45.6</strong></td>
+          <td class="r tg">$+23,198</td>
+          <td class="r tg" data-pnl="39.808">+39.8<br><span style="color:var(--txt-d);font-size:11px">n=29·WR76%</span></td><td class="r tg" data-pnl="5.756">+5.8<br><span style="color:var(--txt-d);font-size:11px">n=18·WR50%</span></td>
+        </tr>
+        <tr data-pid="51" data-cat="D" data-tier="A" data-pnl="197.01299999999998" data-n="417">
+          <td><strong>P51</strong></td>
+          <td>HHHL</td>
+          <td>Cat D</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#22c55e;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">A</span></td>
+          <td class="r">417</td>
+          <td class="r">52.8%</td>
+          <td class="r tg"><strong>+197.0</strong></td>
+          <td class="r tg">$+240,485</td>
+          <td class="r tg" data-pnl="21.182">+21.2<br><span style="color:var(--txt-d);font-size:11px">n=273·WR52%</span></td><td class="r tg" data-pnl="175.831">+175.8<br><span style="color:var(--txt-d);font-size:11px">n=144·WR54%</span></td>
+        </tr>
+        <tr data-pid="52" data-cat="D" data-tier="S" data-pnl="268.153" data-n="326">
+          <td><strong>P52</strong></td>
+          <td>LHLL</td>
+          <td>Cat D</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#10b981;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">S</span></td>
+          <td class="r">326</td>
+          <td class="r">52.5%</td>
+          <td class="r tg"><strong>+268.2</strong></td>
+          <td class="r tg">$+587,185</td>
+          <td class="r tg" data-pnl="199.262">+199.3<br><span style="color:var(--txt-d);font-size:11px">n=174·WR53%</span></td><td class="r tg" data-pnl="68.891">+68.9<br><span style="color:var(--txt-d);font-size:11px">n=152·WR51%</span></td>
+        </tr>
+        <tr data-pid="53" data-cat="D" data-tier="C" data-pnl="35.949" data-n="169">
+          <td><strong>P53</strong></td>
+          <td>BOS_Bull</td>
+          <td>Cat D</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#94a3b8;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">C</span></td>
+          <td class="r">169</td>
+          <td class="r">40.8%</td>
+          <td class="r tg"><strong>+35.9</strong></td>
+          <td class="r tr">$-589,567</td>
+          <td class="r tg" data-pnl="29.06">+29.1<br><span style="color:var(--txt-d);font-size:11px">n=73·WR56%</span></td><td class="r tg" data-pnl="6.889">+6.9<br><span style="color:var(--txt-d);font-size:11px">n=96·WR29%</span></td>
+        </tr>
+        <tr data-pid="54" data-cat="D" data-tier="A" data-pnl="184.113" data-n="62">
+          <td><strong>P54</strong></td>
+          <td>BOS_Bear</td>
+          <td>Cat D</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#22c55e;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">A</span></td>
+          <td class="r">62</td>
+          <td class="r">56.5%</td>
+          <td class="r tg"><strong>+184.1</strong></td>
+          <td class="r tg">$+219,656</td>
+          <td class="r tg" data-pnl="142.016">+142.0<br><span style="color:var(--txt-d);font-size:11px">n=30·WR53%</span></td><td class="r tg" data-pnl="42.097">+42.1<br><span style="color:var(--txt-d);font-size:11px">n=32·WR59%</span></td>
+        </tr>
+        <tr data-pid="55" data-cat="D" data-tier="D" data-pnl="-162.073" data-n="71">
+          <td><strong>P55</strong></td>
+          <td>CHoCH_Bull</td>
+          <td>Cat D</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#ef4444;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">71</td>
+          <td class="r">42.2%</td>
+          <td class="r tr"><strong>-162.1</strong></td>
+          <td class="r tr">$-381,723</td>
+          <td class="r tr" data-pnl="-109.925">-109.9<br><span style="color:var(--txt-d);font-size:11px">n=42·WR45%</span></td><td class="r tr" data-pnl="-52.148">-52.1<br><span style="color:var(--txt-d);font-size:11px">n=29·WR38%</span></td>
+        </tr>
+        <tr data-pid="56" data-cat="D" data-tier="D" data-pnl="-15.125" data-n="68">
+          <td><strong>P56</strong></td>
+          <td>CHoCH_Bear</td>
+          <td>Cat D</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#ef4444;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">68</td>
+          <td class="r">44.1%</td>
+          <td class="r tr"><strong>-15.1</strong></td>
+          <td class="r tr">$-58,329</td>
+          <td class="r tr" data-pnl="-3.744">-3.7<br><span style="color:var(--txt-d);font-size:11px">n=46·WR46%</span></td><td class="r tr" data-pnl="-11.381">-11.4<br><span style="color:var(--txt-d);font-size:11px">n=22·WR41%</span></td>
+        </tr>
+        <tr data-pid="57" data-cat="D" data-tier="N/A" data-pnl="-6.897" data-n="25">
+          <td><strong>P57</strong></td>
+          <td>Liq_Sweep_Long</td>
+          <td>Cat D</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#475569;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">N/A</span></td>
+          <td class="r">25</td>
+          <td class="r">40.0%</td>
+          <td class="r tr"><strong>-6.9</strong></td>
+          <td class="r tr">$-58,699</td>
+          <td class="r tr" data-pnl="-4.622">-4.6<br><span style="color:var(--txt-d);font-size:11px">n=19·WR47%</span></td><td class="r tr" data-pnl="-2.275">-2.3<br><span style="color:var(--txt-d);font-size:11px">n=6·WR17%</span></td>
+        </tr>
+        <tr data-pid="58" data-cat="D" data-tier="N/A" data-pnl="-17.567999999999998" data-n="19">
+          <td><strong>P58</strong></td>
+          <td>Liq_Sweep_Short</td>
+          <td>Cat D</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#475569;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">N/A</span></td>
+          <td class="r">19</td>
+          <td class="r">52.6%</td>
+          <td class="r tr"><strong>-17.6</strong></td>
+          <td class="r tr">$-17,370</td>
+          <td class="r tr" data-pnl="-9.939">-9.9<br><span style="color:var(--txt-d);font-size:11px">n=15·WR60%</span></td><td class="r tr" data-pnl="-7.629">-7.6<br><span style="color:var(--txt-d);font-size:11px">n=4·WR25%</span></td>
+        </tr>
+        <tr data-pid="59" data-cat="D" data-tier="B" data-pnl="72.389" data-n="75">
+          <td><strong>P59</strong></td>
+          <td>Failed_Breakout_Long</td>
+          <td>Cat D</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#3b82f6;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">B</span></td>
+          <td class="r">75</td>
+          <td class="r">52.0%</td>
+          <td class="r tg"><strong>+72.4</strong></td>
+          <td class="r tg">$+236,728</td>
+          <td class="r tr" data-pnl="-11.474">-11.5<br><span style="color:var(--txt-d);font-size:11px">n=41·WR59%</span></td><td class="r tg" data-pnl="83.863">+83.9<br><span style="color:var(--txt-d);font-size:11px">n=34·WR44%</span></td>
+        </tr>
+        <tr data-pid="60" data-cat="D" data-tier="D" data-pnl="-17.032" data-n="85">
+          <td><strong>P60</strong></td>
+          <td>Failed_Breakout_Short</td>
+          <td>Cat D</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#ef4444;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">85</td>
+          <td class="r">48.2%</td>
+          <td class="r tr"><strong>-17.0</strong></td>
+          <td class="r tr">$-27,561</td>
+          <td class="r tr" data-pnl="-1.227">-1.2<br><span style="color:var(--txt-d);font-size:11px">n=61·WR52%</span></td><td class="r tr" data-pnl="-15.805">-15.8<br><span style="color:var(--txt-d);font-size:11px">n=24·WR38%</span></td>
+        </tr>
+        <tr data-pid="61" data-cat="E" data-tier="B" data-pnl="116.05600000000001" data-n="55">
+          <td><strong>P61</strong></td>
+          <td>Double_Bottom</td>
+          <td>Cat E</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#3b82f6;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">B</span></td>
+          <td class="r">55</td>
+          <td class="r">61.8%</td>
+          <td class="r tg"><strong>+116.1</strong></td>
+          <td class="r tg">$+463,200</td>
+          <td class="r tr" data-pnl="-57.736">-57.7<br><span style="color:var(--txt-d);font-size:11px">n=34·WR38%</span></td><td class="r tg" data-pnl="173.792">+173.8<br><span style="color:var(--txt-d);font-size:11px">n=21·WR100%</span></td>
+        </tr>
+        <tr data-pid="62" data-cat="E" data-tier="C" data-pnl="13.208" data-n="59">
+          <td><strong>P62</strong></td>
+          <td>Double_Top</td>
+          <td>Cat E</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#94a3b8;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">C</span></td>
+          <td class="r">59</td>
+          <td class="r">40.7%</td>
+          <td class="r tg"><strong>+13.2</strong></td>
+          <td class="r tg">$+105,927</td>
+          <td class="r tg" data-pnl="1.802">+1.8<br><span style="color:var(--txt-d);font-size:11px">n=54·WR35%</span></td><td class="r tg" data-pnl="11.406">+11.4<br><span style="color:var(--txt-d);font-size:11px">n=5·WR100%</span></td>
+        </tr>
+        <tr data-pid="63" data-cat="E" data-tier="N/A" data-pnl="0" data-n="0" style="opacity:0.4">
+          <td><strong>P63</strong></td>
+          <td>Triple_Bottom</td>
+          <td>Cat E</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#475569;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">N/A</span></td>
+          <td class="r">0</td>
+          <td class="r">—</td>
+          <td class="r">—</td>
+          <td class="r">—</td>
+          <td class="r" colspan="2" style="color:var(--txt-d)">not active in v6 datasets</td>
+        </tr>
+        <tr data-pid="64" data-cat="E" data-tier="N/A" data-pnl="101.119" data-n="12">
+          <td><strong>P64</strong></td>
+          <td>Triple_Top</td>
+          <td>Cat E</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#475569;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">N/A</span></td>
+          <td class="r">12</td>
+          <td class="r">100.0%</td>
+          <td class="r tg"><strong>+101.1</strong></td>
+          <td class="r tg">$+160,071</td>
+          <td class="r tg" data-pnl="101.119">+101.1<br><span style="color:var(--txt-d);font-size:11px">n=12·WR100%</span></td><td class="r" style="color:var(--txt-d)">—</td>
+        </tr>
+        <tr data-pid="65" data-cat="E" data-tier="N/A" data-pnl="64.77" data-n="9">
+          <td><strong>P65</strong></td>
+          <td>HnS_Bear</td>
+          <td>Cat E</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#475569;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">N/A</span></td>
+          <td class="r">9</td>
+          <td class="r">77.8%</td>
+          <td class="r tg"><strong>+64.8</strong></td>
+          <td class="r tg">$+318,427</td>
+          <td class="r" style="color:var(--txt-d)">—</td><td class="r tg" data-pnl="64.77">+64.8<br><span style="color:var(--txt-d);font-size:11px">n=9·WR78%</span></td>
+        </tr>
+        <tr data-pid="66" data-cat="E" data-tier="N/A" data-pnl="0" data-n="0" style="opacity:0.4">
+          <td><strong>P66</strong></td>
+          <td>HnS_Bull</td>
+          <td>Cat E</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#475569;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">N/A</span></td>
+          <td class="r">0</td>
+          <td class="r">—</td>
+          <td class="r">—</td>
+          <td class="r">—</td>
+          <td class="r" colspan="2" style="color:var(--txt-d)">not active in v6 datasets</td>
+        </tr>
+        <tr data-pid="67" data-cat="E" data-tier="B" data-pnl="185.71" data-n="56">
+          <td><strong>P67</strong></td>
+          <td>Triangle_Asc</td>
+          <td>Cat E</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#3b82f6;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">B</span></td>
+          <td class="r">56</td>
+          <td class="r">60.7%</td>
+          <td class="r tg"><strong>+185.7</strong></td>
+          <td class="r tg">$+353,208</td>
+          <td class="r tg" data-pnl="70.405">+70.4<br><span style="color:var(--txt-d);font-size:11px">n=14·WR79%</span></td><td class="r tg" data-pnl="115.305">+115.3<br><span style="color:var(--txt-d);font-size:11px">n=42·WR55%</span></td>
+        </tr>
+        <tr data-pid="68" data-cat="E" data-tier="N/A" data-pnl="45.039" data-n="23">
+          <td><strong>P68</strong></td>
+          <td>Triangle_Desc</td>
+          <td>Cat E</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#475569;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">N/A</span></td>
+          <td class="r">23</td>
+          <td class="r">60.9%</td>
+          <td class="r tg"><strong>+45.0</strong></td>
+          <td class="r tg">$+247,450</td>
+          <td class="r tr" data-pnl="-2.004">-2.0<br><span style="color:var(--txt-d);font-size:11px">n=2·WR0%</span></td><td class="r tg" data-pnl="47.043">+47.0<br><span style="color:var(--txt-d);font-size:11px">n=21·WR67%</span></td>
+        </tr>
+        <tr data-pid="69" data-cat="E" data-tier="N/A" data-pnl="0" data-n="0" style="opacity:0.4">
+          <td><strong>P69</strong></td>
+          <td>Bull_Flag</td>
+          <td>Cat E</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#475569;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">N/A</span></td>
+          <td class="r">0</td>
+          <td class="r">—</td>
+          <td class="r">—</td>
+          <td class="r">—</td>
+          <td class="r" colspan="2" style="color:var(--txt-d)">not active in v6 datasets</td>
+        </tr>
+        <tr data-pid="70" data-cat="E" data-tier="N/A" data-pnl="0" data-n="0" style="opacity:0.4">
+          <td><strong>P70</strong></td>
+          <td>Bear_Flag</td>
+          <td>Cat E</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#475569;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">N/A</span></td>
+          <td class="r">0</td>
+          <td class="r">—</td>
+          <td class="r">—</td>
+          <td class="r">—</td>
+          <td class="r" colspan="2" style="color:var(--txt-d)">not active in v6 datasets</td>
+        </tr>
+        <tr data-pid="71" data-cat="F" data-tier="S" data-pnl="322.97700000000003" data-n="683">
+          <td><strong>P71</strong></td>
+          <td>FVG_Bull</td>
+          <td>Cat F</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#10b981;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">S</span></td>
+          <td class="r">683</td>
+          <td class="r">51.4%</td>
+          <td class="r tg"><strong>+323.0</strong></td>
+          <td class="r tg">$+692,970</td>
+          <td class="r tg" data-pnl="77.48">+77.5<br><span style="color:var(--txt-d);font-size:11px">n=424·WR50%</span></td><td class="r tg" data-pnl="245.497">+245.5<br><span style="color:var(--txt-d);font-size:11px">n=259·WR54%</span></td>
+        </tr>
+        <tr data-pid="72" data-cat="F" data-tier="A" data-pnl="128.783" data-n="611">
+          <td><strong>P72</strong></td>
+          <td>FVG_Bear</td>
+          <td>Cat F</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#22c55e;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">A</span></td>
+          <td class="r">611</td>
+          <td class="r">49.3%</td>
+          <td class="r tg"><strong>+128.8</strong></td>
+          <td class="r tg">$+274,864</td>
+          <td class="r tg" data-pnl="113.839">+113.8<br><span style="color:var(--txt-d);font-size:11px">n=339·WR51%</span></td><td class="r tg" data-pnl="14.944">+14.9<br><span style="color:var(--txt-d);font-size:11px">n=272·WR47%</span></td>
+        </tr>
+        <tr data-pid="73" data-cat="F" data-tier="B" data-pnl="60.379000000000005" data-n="64">
+          <td><strong>P73</strong></td>
+          <td>Liq_Grab_Bull</td>
+          <td>Cat F</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#3b82f6;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">B</span></td>
+          <td class="r">64</td>
+          <td class="r">48.4%</td>
+          <td class="r tg"><strong>+60.4</strong></td>
+          <td class="r tg">$+36,840</td>
+          <td class="r tg" data-pnl="17.288">+17.3<br><span style="color:var(--txt-d);font-size:11px">n=31·WR58%</span></td><td class="r tg" data-pnl="43.091">+43.1<br><span style="color:var(--txt-d);font-size:11px">n=33·WR39%</span></td>
+        </tr>
+        <tr data-pid="74" data-cat="F" data-tier="B" data-pnl="115.901" data-n="43">
+          <td><strong>P74</strong></td>
+          <td>Liq_Grab_Bear</td>
+          <td>Cat F</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#3b82f6;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">B</span></td>
+          <td class="r">43</td>
+          <td class="r">65.1%</td>
+          <td class="r tg"><strong>+115.9</strong></td>
+          <td class="r tg">$+173,667</td>
+          <td class="r tg" data-pnl="96.196">+96.2<br><span style="color:var(--txt-d);font-size:11px">n=34·WR71%</span></td><td class="r tg" data-pnl="19.705">+19.7<br><span style="color:var(--txt-d);font-size:11px">n=9·WR44%</span></td>
+        </tr>
+        <tr data-pid="75" data-cat="F" data-tier="N/A" data-pnl="-2.294" data-n="1">
+          <td><strong>P75</strong></td>
+          <td>Equal_Highs_Sweep</td>
+          <td>Cat F</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#475569;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">N/A</span></td>
+          <td class="r">1</td>
+          <td class="r">0.0%</td>
+          <td class="r tr"><strong>-2.3</strong></td>
+          <td class="r tr">$-3,480</td>
+          <td class="r tr" data-pnl="-2.294">-2.3<br><span style="color:var(--txt-d);font-size:11px">n=1·WR0%</span></td><td class="r" style="color:var(--txt-d)">—</td>
+        </tr>
+        <tr data-pid="76" data-cat="F" data-tier="N/A" data-pnl="0" data-n="0" style="opacity:0.4">
+          <td><strong>P76</strong></td>
+          <td>Equal_Lows_Sweep</td>
+          <td>Cat F</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#475569;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">N/A</span></td>
+          <td class="r">0</td>
+          <td class="r">—</td>
+          <td class="r">—</td>
+          <td class="r">—</td>
+          <td class="r" colspan="2" style="color:var(--txt-d)">not active in v6 datasets</td>
+        </tr>
+        <tr data-pid="77" data-cat="F" data-tier="N/A" data-pnl="79.464" data-n="14">
+          <td><strong>P77</strong></td>
+          <td>Mitigation_Block_Bull</td>
+          <td>Cat F</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#475569;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">N/A</span></td>
+          <td class="r">14</td>
+          <td class="r">78.6%</td>
+          <td class="r tg"><strong>+79.5</strong></td>
+          <td class="r tg">$+52,686</td>
+          <td class="r tg" data-pnl="79.464">+79.5<br><span style="color:var(--txt-d);font-size:11px">n=14·WR79%</span></td><td class="r" style="color:var(--txt-d)">—</td>
+        </tr>
+        <tr data-pid="78" data-cat="F" data-tier="N/A" data-pnl="10.221999999999998" data-n="28">
+          <td><strong>P78</strong></td>
+          <td>Mitigation_Block_Bear</td>
+          <td>Cat F</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#475569;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">N/A</span></td>
+          <td class="r">28</td>
+          <td class="r">53.6%</td>
+          <td class="r tg"><strong>+10.2</strong></td>
+          <td class="r tr">$-24,899</td>
+          <td class="r tg" data-pnl="17.444">+17.4<br><span style="color:var(--txt-d);font-size:11px">n=8·WR100%</span></td><td class="r tr" data-pnl="-7.222">-7.2<br><span style="color:var(--txt-d);font-size:11px">n=20·WR35%</span></td>
+        </tr>
+        <tr data-pid="79" data-cat="F" data-tier="D" data-pnl="-2.9990000000000006" data-n="71">
+          <td><strong>P79</strong></td>
+          <td>POC_Bounce_Long</td>
+          <td>Cat F</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#ef4444;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">71</td>
+          <td class="r">53.5%</td>
+          <td class="r tr"><strong>-3.0</strong></td>
+          <td class="r tr">$-65,758</td>
+          <td class="r tr" data-pnl="-17.129">-17.1<br><span style="color:var(--txt-d);font-size:11px">n=44·WR57%</span></td><td class="r tg" data-pnl="14.13">+14.1<br><span style="color:var(--txt-d);font-size:11px">n=27·WR48%</span></td>
+        </tr>
+        <tr data-pid="80" data-cat="F" data-tier="A" data-pnl="115.67200000000001" data-n="78">
+          <td><strong>P80</strong></td>
+          <td>POC_Bounce_Short</td>
+          <td>Cat F</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#22c55e;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">A</span></td>
+          <td class="r">78</td>
+          <td class="r">57.7%</td>
+          <td class="r tg"><strong>+115.7</strong></td>
+          <td class="r tg">$+164,823</td>
+          <td class="r tg" data-pnl="112.016">+112.0<br><span style="color:var(--txt-d);font-size:11px">n=52·WR65%</span></td><td class="r tg" data-pnl="3.656">+3.7<br><span style="color:var(--txt-d);font-size:11px">n=26·WR42%</span></td>
+        </tr>
+        <tr data-pid="81" data-cat="G" data-tier="N/A" data-pnl="-49.093999999999994" data-n="21">
+          <td><strong>P81</strong></td>
+          <td>ZScore_MeanRev_Long</td>
+          <td>Cat G</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#475569;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">N/A</span></td>
+          <td class="r">21</td>
+          <td class="r">52.4%</td>
+          <td class="r tr"><strong>-49.1</strong></td>
+          <td class="r tr">$-88,548</td>
+          <td class="r tr" data-pnl="-39.535">-39.5<br><span style="color:var(--txt-d);font-size:11px">n=14·WR50%</span></td><td class="r tr" data-pnl="-9.559">-9.6<br><span style="color:var(--txt-d);font-size:11px">n=7·WR57%</span></td>
+        </tr>
+        <tr data-pid="82" data-cat="G" data-tier="N/A" data-pnl="-53.532" data-n="21">
+          <td><strong>P82</strong></td>
+          <td>ZScore_MeanRev_Short</td>
+          <td>Cat G</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#475569;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">N/A</span></td>
+          <td class="r">21</td>
+          <td class="r">47.6%</td>
+          <td class="r tr"><strong>-53.5</strong></td>
+          <td class="r tr">$-103,590</td>
+          <td class="r tr" data-pnl="-17.348">-17.3<br><span style="color:var(--txt-d);font-size:11px">n=10·WR40%</span></td><td class="r tr" data-pnl="-36.184">-36.2<br><span style="color:var(--txt-d);font-size:11px">n=11·WR55%</span></td>
+        </tr>
+        <tr data-pid="83" data-cat="G" data-tier="C" data-pnl="22.775000000000002" data-n="45">
+          <td><strong>P83</strong></td>
+          <td>ORB_Long</td>
+          <td>Cat G</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#94a3b8;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">C</span></td>
+          <td class="r">45</td>
+          <td class="r">51.1%</td>
+          <td class="r tg"><strong>+22.8</strong></td>
+          <td class="r tg">$+7,460</td>
+          <td class="r tr" data-pnl="-4.97">-5.0<br><span style="color:var(--txt-d);font-size:11px">n=24·WR54%</span></td><td class="r tg" data-pnl="27.745">+27.7<br><span style="color:var(--txt-d);font-size:11px">n=21·WR48%</span></td>
+        </tr>
+        <tr data-pid="84" data-cat="G" data-tier="C" data-pnl="38.010999999999996" data-n="53">
+          <td><strong>P84</strong></td>
+          <td>ORB_Short</td>
+          <td>Cat G</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#94a3b8;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">C</span></td>
+          <td class="r">53</td>
+          <td class="r">39.6%</td>
+          <td class="r tg"><strong>+38.0</strong></td>
+          <td class="r tg">$+30,522</td>
+          <td class="r tg" data-pnl="29.017">+29.0<br><span style="color:var(--txt-d);font-size:11px">n=35·WR40%</span></td><td class="r tg" data-pnl="8.994">+9.0<br><span style="color:var(--txt-d);font-size:11px">n=18·WR39%</span></td>
+        </tr>
+        <tr data-pid="85" data-cat="G" data-tier="D" data-pnl="-5.675" data-n="692">
+          <td><strong>P85</strong></td>
+          <td>NR4</td>
+          <td>Cat G</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#ef4444;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">692</td>
+          <td class="r">49.7%</td>
+          <td class="r tr"><strong>-5.7</strong></td>
+          <td class="r tr">$-113,492</td>
+          <td class="r tr" data-pnl="-4.295">-4.3<br><span style="color:var(--txt-d);font-size:11px">n=396·WR49%</span></td><td class="r tr" data-pnl="-1.38">-1.4<br><span style="color:var(--txt-d);font-size:11px">n=296·WR50%</span></td>
+        </tr>
+        <tr data-pid="86" data-cat="G" data-tier="D" data-pnl="-3.221" data-n="402">
+          <td><strong>P86</strong></td>
+          <td>NR7</td>
+          <td>Cat G</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#ef4444;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">402</td>
+          <td class="r">49.8%</td>
+          <td class="r tr"><strong>-3.2</strong></td>
+          <td class="r tr">$-66,340</td>
+          <td class="r tr" data-pnl="-2.418">-2.4<br><span style="color:var(--txt-d);font-size:11px">n=226·WR50%</span></td><td class="r tr" data-pnl="-0.803">-0.8<br><span style="color:var(--txt-d);font-size:11px">n=176·WR50%</span></td>
+        </tr>
+        <tr data-pid="87" data-cat="G" data-tier="N/A" data-pnl="-73.616" data-n="21">
+          <td><strong>P87</strong></td>
+          <td>BB_PctB_Long</td>
+          <td>Cat G</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#475569;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">N/A</span></td>
+          <td class="r">21</td>
+          <td class="r">42.9%</td>
+          <td class="r tr"><strong>-73.6</strong></td>
+          <td class="r tr">$-164,223</td>
+          <td class="r tr" data-pnl="-48.565">-48.6<br><span style="color:var(--txt-d);font-size:11px">n=14·WR43%</span></td><td class="r tr" data-pnl="-25.051">-25.1<br><span style="color:var(--txt-d);font-size:11px">n=7·WR43%</span></td>
+        </tr>
+        <tr data-pid="88" data-cat="G" data-tier="N/A" data-pnl="-36.731" data-n="19">
+          <td><strong>P88</strong></td>
+          <td>BB_PctB_Short</td>
+          <td>Cat G</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#475569;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">N/A</span></td>
+          <td class="r">19</td>
+          <td class="r">52.6%</td>
+          <td class="r tr"><strong>-36.7</strong></td>
+          <td class="r tr">$-54,873</td>
+          <td class="r tr" data-pnl="-15.349">-15.3<br><span style="color:var(--txt-d);font-size:11px">n=10·WR40%</span></td><td class="r tr" data-pnl="-21.382">-21.4<br><span style="color:var(--txt-d);font-size:11px">n=9·WR67%</span></td>
+        </tr>
+        <tr data-pid="89" data-cat="H" data-tier="C" data-pnl="3.7279999999999998" data-n="67">
+          <td><strong>P89</strong></td>
+          <td>OTE_Long</td>
+          <td>Cat H</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#94a3b8;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">C</span></td>
+          <td class="r">67</td>
+          <td class="r">52.2%</td>
+          <td class="r tg"><strong>+3.7</strong></td>
+          <td class="r tr">$-25,363</td>
+          <td class="r tr" data-pnl="-3.909">-3.9<br><span style="color:var(--txt-d);font-size:11px">n=36·WR50%</span></td><td class="r tg" data-pnl="7.637">+7.6<br><span style="color:var(--txt-d);font-size:11px">n=31·WR55%</span></td>
+        </tr>
+        <tr data-pid="90" data-cat="H" data-tier="D" data-pnl="-39.512" data-n="68">
+          <td><strong>P90</strong></td>
+          <td>OTE_Short</td>
+          <td>Cat H</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#ef4444;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">68</td>
+          <td class="r">39.7%</td>
+          <td class="r tr"><strong>-39.5</strong></td>
+          <td class="r tr">$-215,214</td>
+          <td class="r tg" data-pnl="23.151">+23.2<br><span style="color:var(--txt-d);font-size:11px">n=40·WR48%</span></td><td class="r tr" data-pnl="-62.663">-62.7<br><span style="color:var(--txt-d);font-size:11px">n=28·WR29%</span></td>
+        </tr>
+        <tr data-pid="91" data-cat="H" data-tier="N/A" data-pnl="0" data-n="0" style="opacity:0.4">
+          <td><strong>P91</strong></td>
+          <td>LondonKZ_Long</td>
+          <td>Cat H</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#475569;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">N/A</span></td>
+          <td class="r">0</td>
+          <td class="r">—</td>
+          <td class="r">—</td>
+          <td class="r">—</td>
+          <td class="r" colspan="2" style="color:var(--txt-d)">not active in v6 datasets</td>
+        </tr>
+        <tr data-pid="92" data-cat="H" data-tier="N/A" data-pnl="0" data-n="0" style="opacity:0.4">
+          <td><strong>P92</strong></td>
+          <td>LondonKZ_Short</td>
+          <td>Cat H</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#475569;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">N/A</span></td>
+          <td class="r">0</td>
+          <td class="r">—</td>
+          <td class="r">—</td>
+          <td class="r">—</td>
+          <td class="r" colspan="2" style="color:var(--txt-d)">not active in v6 datasets</td>
+        </tr>
+        <tr data-pid="93" data-cat="H" data-tier="D" data-pnl="-36.281" data-n="42">
+          <td><strong>P93</strong></td>
+          <td>NYSB_Long</td>
+          <td>Cat H</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#ef4444;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">42</td>
+          <td class="r">42.9%</td>
+          <td class="r tr"><strong>-36.3</strong></td>
+          <td class="r tr">$-164,408</td>
+          <td class="r tr" data-pnl="-22.173">-22.2<br><span style="color:var(--txt-d);font-size:11px">n=22·WR41%</span></td><td class="r tr" data-pnl="-14.108">-14.1<br><span style="color:var(--txt-d);font-size:11px">n=20·WR45%</span></td>
+        </tr>
+        <tr data-pid="94" data-cat="H" data-tier="C" data-pnl="1.2509999999999994" data-n="44">
+          <td><strong>P94</strong></td>
+          <td>NYSB_Short</td>
+          <td>Cat H</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#94a3b8;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">C</span></td>
+          <td class="r">44</td>
+          <td class="r">40.9%</td>
+          <td class="r tg"><strong>+1.3</strong></td>
+          <td class="r tr">$-42,141</td>
+          <td class="r tg" data-pnl="11.554">+11.6<br><span style="color:var(--txt-d);font-size:11px">n=30·WR40%</span></td><td class="r tr" data-pnl="-10.303">-10.3<br><span style="color:var(--txt-d);font-size:11px">n=14·WR43%</span></td>
+        </tr>
+        <tr data-pid="95" data-cat="H" data-tier="N/A" data-pnl="0" data-n="0" style="opacity:0.4">
+          <td><strong>P95</strong></td>
+          <td>PowerOf3_Long</td>
+          <td>Cat H</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#475569;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">N/A</span></td>
+          <td class="r">0</td>
+          <td class="r">—</td>
+          <td class="r">—</td>
+          <td class="r">—</td>
+          <td class="r" colspan="2" style="color:var(--txt-d)">not active in v6 datasets</td>
+        </tr>
+        <tr data-pid="96" data-cat="H" data-tier="N/A" data-pnl="0" data-n="0" style="opacity:0.4">
+          <td><strong>P96</strong></td>
+          <td>PowerOf3_Short</td>
+          <td>Cat H</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#475569;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">N/A</span></td>
+          <td class="r">0</td>
+          <td class="r">—</td>
+          <td class="r">—</td>
+          <td class="r">—</td>
+          <td class="r" colspan="2" style="color:var(--txt-d)">not active in v6 datasets</td>
+        </tr>
+        <tr data-pid="97" data-cat="H" data-tier="C" data-pnl="8.248999999999995" data-n="241">
+          <td><strong>P97</strong></td>
+          <td>PD_Array_Premium</td>
+          <td>Cat H</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#94a3b8;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">C</span></td>
+          <td class="r">241</td>
+          <td class="r">51.0%</td>
+          <td class="r tg"><strong>+8.2</strong></td>
+          <td class="r tg">$+68,627</td>
+          <td class="r tg" data-pnl="87.862">+87.9<br><span style="color:var(--txt-d);font-size:11px">n=139·WR51%</span></td><td class="r tr" data-pnl="-79.613">-79.6<br><span style="color:var(--txt-d);font-size:11px">n=102·WR51%</span></td>
+        </tr>
+        <tr data-pid="98" data-cat="I" data-tier="C" data-pnl="11.949000000000005" data-n="54">
+          <td><strong>P98</strong></td>
+          <td>VSA_NoDemand</td>
+          <td>Cat I</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#94a3b8;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">C</span></td>
+          <td class="r">54</td>
+          <td class="r">57.4%</td>
+          <td class="r tg"><strong>+11.9</strong></td>
+          <td class="r tr">$-28,471</td>
+          <td class="r tg" data-pnl="39.093">+39.1<br><span style="color:var(--txt-d);font-size:11px">n=29·WR72%</span></td><td class="r tr" data-pnl="-27.144">-27.1<br><span style="color:var(--txt-d);font-size:11px">n=25·WR40%</span></td>
+        </tr>
+        <tr data-pid="99" data-cat="I" data-tier="D" data-pnl="-84.875" data-n="48">
+          <td><strong>P99</strong></td>
+          <td>VSA_NoSupply</td>
+          <td>Cat I</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#ef4444;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">48</td>
+          <td class="r">41.7%</td>
+          <td class="r tr"><strong>-84.9</strong></td>
+          <td class="r tr">$-16,771</td>
+          <td class="r tr" data-pnl="-92.531">-92.5<br><span style="color:var(--txt-d);font-size:11px">n=37·WR38%</span></td><td class="r tg" data-pnl="7.656">+7.7<br><span style="color:var(--txt-d);font-size:11px">n=11·WR55%</span></td>
+        </tr>
+        <tr data-pid="100" data-cat="I" data-tier="N/A" data-pnl="-0.74" data-n="1">
+          <td><strong>P100</strong></td>
+          <td>VSA_StoppingVol_Bull</td>
+          <td>Cat I</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#475569;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">N/A</span></td>
+          <td class="r">1</td>
+          <td class="r">0.0%</td>
+          <td class="r tr"><strong>-0.7</strong></td>
+          <td class="r tr">$-12,636</td>
+          <td class="r" style="color:var(--txt-d)">—</td><td class="r tr" data-pnl="-0.74">-0.7<br><span style="color:var(--txt-d);font-size:11px">n=1·WR0%</span></td>
+        </tr>
+        <tr data-pid="101" data-cat="I" data-tier="N/A" data-pnl="2.647" data-n="1">
+          <td><strong>P101</strong></td>
+          <td>VSA_ClimaxVol_Bear</td>
+          <td>Cat I</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#475569;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">N/A</span></td>
+          <td class="r">1</td>
+          <td class="r">100.0%</td>
+          <td class="r tg"><strong>+2.6</strong></td>
+          <td class="r tg">$+3,279</td>
+          <td class="r tg" data-pnl="2.647">+2.6<br><span style="color:var(--txt-d);font-size:11px">n=1·WR100%</span></td><td class="r" style="color:var(--txt-d)">—</td>
+        </tr>
+        <tr data-pid="102" data-cat="I" data-tier="N/A" data-pnl="48.099000000000004" data-n="4">
+          <td><strong>P102</strong></td>
+          <td>Wyckoff_Spring</td>
+          <td>Cat I</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#475569;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">N/A</span></td>
+          <td class="r">4</td>
+          <td class="r">50.0%</td>
+          <td class="r tg"><strong>+48.1</strong></td>
+          <td class="r tg">$+158,336</td>
+          <td class="r tr" data-pnl="-1.427">-1.4<br><span style="color:var(--txt-d);font-size:11px">n=1·WR0%</span></td><td class="r tg" data-pnl="49.526">+49.5<br><span style="color:var(--txt-d);font-size:11px">n=3·WR67%</span></td>
+        </tr>
+        <tr data-pid="103" data-cat="I" data-tier="N/A" data-pnl="1.401" data-n="1">
+          <td><strong>P103</strong></td>
+          <td>Wyckoff_Upthrust</td>
+          <td>Cat I</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#475569;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">N/A</span></td>
+          <td class="r">1</td>
+          <td class="r">100.0%</td>
+          <td class="r tg"><strong>+1.4</strong></td>
+          <td class="r tg">$+1,050</td>
+          <td class="r tg" data-pnl="1.401">+1.4<br><span style="color:var(--txt-d);font-size:11px">n=1·WR100%</span></td><td class="r" style="color:var(--txt-d)">—</td>
+        </tr>
+        <tr data-pid="104" data-cat="I" data-tier="N/A" data-pnl="-29.169" data-n="12">
+          <td><strong>P104</strong></td>
+          <td>SellingClimax</td>
+          <td>Cat I</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#475569;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">N/A</span></td>
+          <td class="r">12</td>
+          <td class="r">33.3%</td>
+          <td class="r tr"><strong>-29.2</strong></td>
+          <td class="r tr">$-39,141</td>
+          <td class="r tr" data-pnl="-24.698">-24.7<br><span style="color:var(--txt-d);font-size:11px">n=6·WR33%</span></td><td class="r tr" data-pnl="-4.471">-4.5<br><span style="color:var(--txt-d);font-size:11px">n=6·WR33%</span></td>
+        </tr>
+        <tr data-pid="105" data-cat="I" data-tier="N/A" data-pnl="9.049" data-n="5">
+          <td><strong>P105</strong></td>
+          <td>BuyingClimax</td>
+          <td>Cat I</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#475569;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">N/A</span></td>
+          <td class="r">5</td>
+          <td class="r">60.0%</td>
+          <td class="r tg"><strong>+9.0</strong></td>
+          <td class="r tg">$+26,277</td>
+          <td class="r tg" data-pnl="3.346">+3.3<br><span style="color:var(--txt-d);font-size:11px">n=4·WR50%</span></td><td class="r tg" data-pnl="5.703">+5.7<br><span style="color:var(--txt-d);font-size:11px">n=1·WR100%</span></td>
+        </tr>
+        <tr data-pid="106" data-cat="I" data-tier="D" data-pnl="-262.543" data-n="147">
+          <td><strong>P106</strong></td>
+          <td>CVD_Div_Bull</td>
+          <td>Cat I</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#ef4444;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">147</td>
+          <td class="r">36.7%</td>
+          <td class="r tr"><strong>-262.5</strong></td>
+          <td class="r tr">$-866,987</td>
+          <td class="r tr" data-pnl="-153.309">-153.3<br><span style="color:var(--txt-d);font-size:11px">n=87·WR33%</span></td><td class="r tr" data-pnl="-109.234">-109.2<br><span style="color:var(--txt-d);font-size:11px">n=60·WR42%</span></td>
+        </tr>
+        <tr data-pid="107" data-cat="I" data-tier="A" data-pnl="131.991" data-n="125">
+          <td><strong>P107</strong></td>
+          <td>CVD_Div_Bear</td>
+          <td>Cat I</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#22c55e;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">A</span></td>
+          <td class="r">125</td>
+          <td class="r">47.2%</td>
+          <td class="r tg"><strong>+132.0</strong></td>
+          <td class="r tg">$+187,192</td>
+          <td class="r tg" data-pnl="152.001">+152.0<br><span style="color:var(--txt-d);font-size:11px">n=90·WR49%</span></td><td class="r tr" data-pnl="-20.01">-20.0<br><span style="color:var(--txt-d);font-size:11px">n=35·WR43%</span></td>
+        </tr>
+        <tr data-pid="108" data-cat="J" data-tier="N/A" data-pnl="0" data-n="0" style="opacity:0.4">
+          <td><strong>P108</strong></td>
+          <td>Gartley_Bull</td>
+          <td>Cat J</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#475569;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">N/A</span></td>
+          <td class="r">0</td>
+          <td class="r">—</td>
+          <td class="r">—</td>
+          <td class="r">—</td>
+          <td class="r" colspan="2" style="color:var(--txt-d)">not active in v6 datasets</td>
+        </tr>
+        <tr data-pid="109" data-cat="J" data-tier="N/A" data-pnl="0" data-n="0" style="opacity:0.4">
+          <td><strong>P109</strong></td>
+          <td>Gartley_Bear</td>
+          <td>Cat J</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#475569;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">N/A</span></td>
+          <td class="r">0</td>
+          <td class="r">—</td>
+          <td class="r">—</td>
+          <td class="r">—</td>
+          <td class="r" colspan="2" style="color:var(--txt-d)">not active in v6 datasets</td>
+        </tr>
+        <tr data-pid="110" data-cat="J" data-tier="N/A" data-pnl="-3.062" data-n="4">
+          <td><strong>P110</strong></td>
+          <td>Bat_Bull</td>
+          <td>Cat J</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#475569;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">N/A</span></td>
+          <td class="r">4</td>
+          <td class="r">50.0%</td>
+          <td class="r tr"><strong>-3.1</strong></td>
+          <td class="r tr">$-15,942</td>
+          <td class="r tg" data-pnl="0.656">+0.7<br><span style="color:var(--txt-d);font-size:11px">n=2·WR100%</span></td><td class="r tr" data-pnl="-3.718">-3.7<br><span style="color:var(--txt-d);font-size:11px">n=2·WR0%</span></td>
+        </tr>
+        <tr data-pid="111" data-cat="J" data-tier="N/A" data-pnl="0" data-n="0" style="opacity:0.4">
+          <td><strong>P111</strong></td>
+          <td>Bat_Bear</td>
+          <td>Cat J</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#475569;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">N/A</span></td>
+          <td class="r">0</td>
+          <td class="r">—</td>
+          <td class="r">—</td>
+          <td class="r">—</td>
+          <td class="r" colspan="2" style="color:var(--txt-d)">not active in v6 datasets</td>
+        </tr>
+        <tr data-pid="112" data-cat="J" data-tier="N/A" data-pnl="3.852" data-n="2">
+          <td><strong>P112</strong></td>
+          <td>Butterfly_Bull</td>
+          <td>Cat J</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#475569;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">N/A</span></td>
+          <td class="r">2</td>
+          <td class="r">100.0%</td>
+          <td class="r tg"><strong>+3.9</strong></td>
+          <td class="r tg">$+5,327</td>
+          <td class="r tg" data-pnl="3.852">+3.9<br><span style="color:var(--txt-d);font-size:11px">n=2·WR100%</span></td><td class="r" style="color:var(--txt-d)">—</td>
+        </tr>
+        <tr data-pid="113" data-cat="J" data-tier="N/A" data-pnl="0" data-n="0" style="opacity:0.4">
+          <td><strong>P113</strong></td>
+          <td>Butterfly_Bear</td>
+          <td>Cat J</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#475569;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">N/A</span></td>
+          <td class="r">0</td>
+          <td class="r">—</td>
+          <td class="r">—</td>
+          <td class="r">—</td>
+          <td class="r" colspan="2" style="color:var(--txt-d)">not active in v6 datasets</td>
+        </tr>
+        <tr data-pid="114" data-cat="J" data-tier="N/A" data-pnl="0" data-n="0" style="opacity:0.4">
+          <td><strong>P114</strong></td>
+          <td>Crab_Bull</td>
+          <td>Cat J</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#475569;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">N/A</span></td>
+          <td class="r">0</td>
+          <td class="r">—</td>
+          <td class="r">—</td>
+          <td class="r">—</td>
+          <td class="r" colspan="2" style="color:var(--txt-d)">not active in v6 datasets</td>
+        </tr>
+        <tr data-pid="115" data-cat="J" data-tier="N/A" data-pnl="0" data-n="0" style="opacity:0.4">
+          <td><strong>P115</strong></td>
+          <td>Crab_Bear</td>
+          <td>Cat J</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#475569;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">N/A</span></td>
+          <td class="r">0</td>
+          <td class="r">—</td>
+          <td class="r">—</td>
+          <td class="r">—</td>
+          <td class="r" colspan="2" style="color:var(--txt-d)">not active in v6 datasets</td>
+        </tr>
+        <tr data-pid="116" data-cat="J" data-tier="N/A" data-pnl="0.705" data-n="7">
+          <td><strong>P116</strong></td>
+          <td>Cypher_Bull</td>
+          <td>Cat J</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#475569;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">N/A</span></td>
+          <td class="r">7</td>
+          <td class="r">57.1%</td>
+          <td class="r tg"><strong>+0.7</strong></td>
+          <td class="r tg">$+564</td>
+          <td class="r tg" data-pnl="0.705">+0.7<br><span style="color:var(--txt-d);font-size:11px">n=7·WR57%</span></td><td class="r" style="color:var(--txt-d)">—</td>
+        </tr>
+        <tr data-pid="117" data-cat="J" data-tier="N/A" data-pnl="0" data-n="0" style="opacity:0.4">
+          <td><strong>P117</strong></td>
+          <td>Cypher_Bear</td>
+          <td>Cat J</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#475569;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">N/A</span></td>
+          <td class="r">0</td>
+          <td class="r">—</td>
+          <td class="r">—</td>
+          <td class="r">—</td>
+          <td class="r" colspan="2" style="color:var(--txt-d)">not active in v6 datasets</td>
+        </tr>
+        <tr data-pid="118" data-cat="J" data-tier="C" data-pnl="23.278000000000002" data-n="63">
+          <td><strong>P118</strong></td>
+          <td>Asian_Sweep_Long</td>
+          <td>Cat J</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#94a3b8;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">C</span></td>
+          <td class="r">63</td>
+          <td class="r">52.4%</td>
+          <td class="r tg"><strong>+23.3</strong></td>
+          <td class="r tr">$-21,710</td>
+          <td class="r tg" data-pnl="4.719">+4.7<br><span style="color:var(--txt-d);font-size:11px">n=39·WR56%</span></td><td class="r tg" data-pnl="18.559">+18.6<br><span style="color:var(--txt-d);font-size:11px">n=24·WR46%</span></td>
+        </tr>
+        <tr data-pid="119" data-cat="J" data-tier="B" data-pnl="83.577" data-n="69">
+          <td><strong>P119</strong></td>
+          <td>Asian_Sweep_Short</td>
+          <td>Cat J</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#3b82f6;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">B</span></td>
+          <td class="r">69</td>
+          <td class="r">49.3%</td>
+          <td class="r tg"><strong>+83.6</strong></td>
+          <td class="r tg">$+3,520</td>
+          <td class="r tg" data-pnl="101.593">+101.6<br><span style="color:var(--txt-d);font-size:11px">n=47·WR57%</span></td><td class="r tr" data-pnl="-18.016">-18.0<br><span style="color:var(--txt-d);font-size:11px">n=22·WR32%</span></td>
+        </tr>
+        <tr data-pid="120" data-cat="J" data-tier="D" data-pnl="-237.273" data-n="75">
+          <td><strong>P120</strong></td>
+          <td>Sunday_Gap_Fill_Long</td>
+          <td>Cat J</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#ef4444;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">75</td>
+          <td class="r">42.7%</td>
+          <td class="r tr"><strong>-237.3</strong></td>
+          <td class="r tr">$-293,189</td>
+          <td class="r tr" data-pnl="-204.708">-204.7<br><span style="color:var(--txt-d);font-size:11px">n=47·WR36%</span></td><td class="r tr" data-pnl="-32.565">-32.6<br><span style="color:var(--txt-d);font-size:11px">n=28·WR54%</span></td>
+        </tr>
+        <tr data-pid="121" data-cat="J" data-tier="D" data-pnl="-230.015" data-n="70">
+          <td><strong>P121</strong></td>
+          <td>Sunday_Gap_Fill_Short</td>
+          <td>Cat J</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#ef4444;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">70</td>
+          <td class="r">31.4%</td>
+          <td class="r tr"><strong>-230.0</strong></td>
+          <td class="r tr">$-617,569</td>
+          <td class="r tr" data-pnl="-50.624">-50.6<br><span style="color:var(--txt-d);font-size:11px">n=33·WR30%</span></td><td class="r tr" data-pnl="-179.391">-179.4<br><span style="color:var(--txt-d);font-size:11px">n=37·WR32%</span></td>
+        </tr>
+        <tr data-pid="122" data-cat="J" data-tier="N/A" data-pnl="-4.662" data-n="5">
+          <td><strong>P122</strong></td>
+          <td>Kicker_Bull</td>
+          <td>Cat J</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#475569;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">N/A</span></td>
+          <td class="r">5</td>
+          <td class="r">40.0%</td>
+          <td class="r tr"><strong>-4.7</strong></td>
+          <td class="r tg">$+3,072</td>
+          <td class="r tr" data-pnl="-4.014">-4.0<br><span style="color:var(--txt-d);font-size:11px">n=2·WR0%</span></td><td class="r tr" data-pnl="-0.648">-0.6<br><span style="color:var(--txt-d);font-size:11px">n=3·WR67%</span></td>
+        </tr>
+        <tr data-pid="123" data-cat="J" data-tier="N/A" data-pnl="-15.264" data-n="5">
+          <td><strong>P123</strong></td>
+          <td>Kicker_Bear</td>
+          <td>Cat J</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#475569;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">N/A</span></td>
+          <td class="r">5</td>
+          <td class="r">20.0%</td>
+          <td class="r tr"><strong>-15.3</strong></td>
+          <td class="r tr">$-26,950</td>
+          <td class="r tr" data-pnl="-4.035">-4.0<br><span style="color:var(--txt-d);font-size:11px">n=3·WR0%</span></td><td class="r tr" data-pnl="-11.229">-11.2<br><span style="color:var(--txt-d);font-size:11px">n=2·WR50%</span></td>
+        </tr>
+        <tr data-pid="124" data-cat="J" data-tier="D" data-pnl="-61.086999999999996" data-n="66">
+          <td><strong>P124</strong></td>
+          <td>ThreeBar_Rev_Bull</td>
+          <td>Cat J</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#ef4444;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">66</td>
+          <td class="r">40.9%</td>
+          <td class="r tr"><strong>-61.1</strong></td>
+          <td class="r tr">$-53,260</td>
+          <td class="r tr" data-pnl="-86.297">-86.3<br><span style="color:var(--txt-d);font-size:11px">n=34·WR38%</span></td><td class="r tg" data-pnl="25.21">+25.2<br><span style="color:var(--txt-d);font-size:11px">n=32·WR44%</span></td>
+        </tr>
+        <tr data-pid="125" data-cat="J" data-tier="C" data-pnl="43.43" data-n="69">
+          <td><strong>P125</strong></td>
+          <td>ThreeBar_Rev_Bear</td>
+          <td>Cat J</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#94a3b8;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">C</span></td>
+          <td class="r">69</td>
+          <td class="r">47.8%</td>
+          <td class="r tg"><strong>+43.4</strong></td>
+          <td class="r tg">$+103,759</td>
+          <td class="r tg" data-pnl="11.715">+11.7<br><span style="color:var(--txt-d);font-size:11px">n=37·WR46%</span></td><td class="r tg" data-pnl="31.715">+31.7<br><span style="color:var(--txt-d);font-size:11px">n=32·WR50%</span></td>
+        </tr>
+        <tr data-pid="126" data-cat="K" data-tier="B" data-pnl="86.621" data-n="58">
+          <td><strong>P126</strong></td>
+          <td>HTF_Bias_Long</td>
+          <td>Cat K</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#3b82f6;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">B</span></td>
+          <td class="r">58</td>
+          <td class="r">43.1%</td>
+          <td class="r tg"><strong>+86.6</strong></td>
+          <td class="r tg">$+57,918</td>
+          <td class="r tr" data-pnl="-6.15">-6.2<br><span style="color:var(--txt-d);font-size:11px">n=8·WR25%</span></td><td class="r tg" data-pnl="92.771">+92.8<br><span style="color:var(--txt-d);font-size:11px">n=50·WR46%</span></td>
+        </tr>
+        <tr data-pid="127" data-cat="K" data-tier="N/A" data-pnl="-57.932" data-n="21">
+          <td><strong>P127</strong></td>
+          <td>HTF_Bias_Short</td>
+          <td>Cat K</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#475569;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">N/A</span></td>
+          <td class="r">21</td>
+          <td class="r">23.8%</td>
+          <td class="r tr"><strong>-57.9</strong></td>
+          <td class="r tr">$-90,035</td>
+          <td class="r tr" data-pnl="-56.028">-56.0<br><span style="color:var(--txt-d);font-size:11px">n=14·WR7%</span></td><td class="r tr" data-pnl="-1.904">-1.9<br><span style="color:var(--txt-d);font-size:11px">n=7·WR57%</span></td>
+        </tr>
+        <tr data-pid="128" data-cat="K" data-tier="C" data-pnl="41.32" data-n="90">
+          <td><strong>P128</strong></td>
+          <td>MTF_FVG_Aligned_Long</td>
+          <td>Cat K</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#94a3b8;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">C</span></td>
+          <td class="r">90</td>
+          <td class="r">54.4%</td>
+          <td class="r tg"><strong>+41.3</strong></td>
+          <td class="r tr">$-39,312</td>
+          <td class="r tg" data-pnl="34.281">+34.3<br><span style="color:var(--txt-d);font-size:11px">n=50·WR60%</span></td><td class="r tg" data-pnl="7.039">+7.0<br><span style="color:var(--txt-d);font-size:11px">n=40·WR48%</span></td>
+        </tr>
+        <tr data-pid="129" data-cat="K" data-tier="D" data-pnl="-72.01599999999999" data-n="112">
+          <td><strong>P129</strong></td>
+          <td>MTF_FVG_Aligned_Short</td>
+          <td>Cat K</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#ef4444;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">112</td>
+          <td class="r">28.6%</td>
+          <td class="r tr"><strong>-72.0</strong></td>
+          <td class="r tr">$-467,862</td>
+          <td class="r tg" data-pnl="19.915">+19.9<br><span style="color:var(--txt-d);font-size:11px">n=40·WR32%</span></td><td class="r tr" data-pnl="-91.931">-91.9<br><span style="color:var(--txt-d);font-size:11px">n=72·WR26%</span></td>
+        </tr>
+        <tr data-pid="130" data-cat="K" data-tier="B" data-pnl="55.370000000000005" data-n="47">
+          <td><strong>P130</strong></td>
+          <td>MTF_OB_Aligned_Long</td>
+          <td>Cat K</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#3b82f6;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">B</span></td>
+          <td class="r">47</td>
+          <td class="r">53.2%</td>
+          <td class="r tg"><strong>+55.4</strong></td>
+          <td class="r tg">$+151,395</td>
+          <td class="r tg" data-pnl="21.16">+21.2<br><span style="color:var(--txt-d);font-size:11px">n=43·WR49%</span></td><td class="r tg" data-pnl="34.21">+34.2<br><span style="color:var(--txt-d);font-size:11px">n=4·WR100%</span></td>
+        </tr>
+        <tr data-pid="131" data-cat="K" data-tier="N/A" data-pnl="-70.234" data-n="11">
+          <td><strong>P131</strong></td>
+          <td>MTF_OB_Aligned_Short</td>
+          <td>Cat K</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#475569;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">N/A</span></td>
+          <td class="r">11</td>
+          <td class="r">0.0%</td>
+          <td class="r tr"><strong>-70.2</strong></td>
+          <td class="r tr">$-336,057</td>
+          <td class="r" style="color:var(--txt-d)">—</td><td class="r tr" data-pnl="-70.234">-70.2<br><span style="color:var(--txt-d);font-size:11px">n=11·WR0%</span></td>
+        </tr>
+        <tr data-pid="132" data-cat="K" data-tier="D" data-pnl="-138.324" data-n="298">
+          <td><strong>P132</strong></td>
+          <td>Daily_Bias_Intraday_Long</td>
+          <td>Cat K</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#ef4444;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">298</td>
+          <td class="r">44.3%</td>
+          <td class="r tr"><strong>-138.3</strong></td>
+          <td class="r tr">$-524,053</td>
+          <td class="r tr" data-pnl="-185.502">-185.5<br><span style="color:var(--txt-d);font-size:11px">n=153·WR40%</span></td><td class="r tg" data-pnl="47.178">+47.2<br><span style="color:var(--txt-d);font-size:11px">n=145·WR49%</span></td>
+        </tr>
+        <tr data-pid="133" data-cat="K" data-tier="A" data-pnl="144.082" data-n="267">
+          <td><strong>P133</strong></td>
+          <td>Daily_Bias_Intraday_Short</td>
+          <td>Cat K</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#22c55e;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">A</span></td>
+          <td class="r">267</td>
+          <td class="r">46.4%</td>
+          <td class="r tg"><strong>+144.1</strong></td>
+          <td class="r tg">$+34,977</td>
+          <td class="r tg" data-pnl="131.701">+131.7<br><span style="color:var(--txt-d);font-size:11px">n=165·WR46%</span></td><td class="r tg" data-pnl="12.381">+12.4<br><span style="color:var(--txt-d);font-size:11px">n=102·WR47%</span></td>
+        </tr>
+        <tr data-pid="134" data-cat="K" data-tier="N/A" data-pnl="25.141" data-n="25">
+          <td><strong>P134</strong></td>
+          <td>Triple_TF_Aligned_Long</td>
+          <td>Cat K</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#475569;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">N/A</span></td>
+          <td class="r">25</td>
+          <td class="r">40.0%</td>
+          <td class="r tg"><strong>+25.1</strong></td>
+          <td class="r tr">$-98,676</td>
+          <td class="r" style="color:var(--txt-d)">—</td><td class="r tg" data-pnl="25.141">+25.1<br><span style="color:var(--txt-d);font-size:11px">n=25·WR40%</span></td>
+        </tr>
+        <tr data-pid="135" data-cat="K" data-tier="N/A" data-pnl="1.0999999999999996" data-n="2">
+          <td><strong>P135</strong></td>
+          <td>Triple_TF_Aligned_Short</td>
+          <td>Cat K</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#475569;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">N/A</span></td>
+          <td class="r">2</td>
+          <td class="r">50.0%</td>
+          <td class="r tg"><strong>+1.1</strong></td>
+          <td class="r tr">$-16,351</td>
+          <td class="r tg" data-pnl="5.234">+5.2<br><span style="color:var(--txt-d);font-size:11px">n=1·WR100%</span></td><td class="r tr" data-pnl="-4.134">-4.1<br><span style="color:var(--txt-d);font-size:11px">n=1·WR0%</span></td>
+        </tr>
+        <tr data-pid="136" data-cat="L" data-tier="C" data-pnl="13.043999999999997" data-n="33">
+          <td><strong>P136</strong></td>
+          <td>Ichimoku_TK_Cross_Bull</td>
+          <td>Cat L</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#94a3b8;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">C</span></td>
+          <td class="r">33</td>
+          <td class="r">45.5%</td>
+          <td class="r tg"><strong>+13.0</strong></td>
+          <td class="r tg">$+90,221</td>
+          <td class="r tr" data-pnl="-31.628">-31.6<br><span style="color:var(--txt-d);font-size:11px">n=18·WR28%</span></td><td class="r tg" data-pnl="44.672">+44.7<br><span style="color:var(--txt-d);font-size:11px">n=15·WR67%</span></td>
+        </tr>
+        <tr data-pid="137" data-cat="L" data-tier="D" data-pnl="-16.637999999999998" data-n="31">
+          <td><strong>P137</strong></td>
+          <td>Ichimoku_TK_Cross_Bear</td>
+          <td>Cat L</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#ef4444;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">31</td>
+          <td class="r">38.7%</td>
+          <td class="r tr"><strong>-16.6</strong></td>
+          <td class="r tr">$-73,500</td>
+          <td class="r tg" data-pnl="1.73">+1.7<br><span style="color:var(--txt-d);font-size:11px">n=17·WR47%</span></td><td class="r tr" data-pnl="-18.368">-18.4<br><span style="color:var(--txt-d);font-size:11px">n=14·WR29%</span></td>
+        </tr>
+        <tr data-pid="138" data-cat="L" data-tier="B" data-pnl="63.541" data-n="30">
+          <td><strong>P138</strong></td>
+          <td>Ichimoku_Cloud_Break_Bull</td>
+          <td>Cat L</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#3b82f6;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">B</span></td>
+          <td class="r">30</td>
+          <td class="r">66.7%</td>
+          <td class="r tg"><strong>+63.5</strong></td>
+          <td class="r tg">$+142,795</td>
+          <td class="r tg" data-pnl="31.756">+31.8<br><span style="color:var(--txt-d);font-size:11px">n=12·WR58%</span></td><td class="r tg" data-pnl="31.785">+31.8<br><span style="color:var(--txt-d);font-size:11px">n=18·WR72%</span></td>
+        </tr>
+        <tr data-pid="139" data-cat="L" data-tier="N/A" data-pnl="-17.77" data-n="17">
+          <td><strong>P139</strong></td>
+          <td>Ichimoku_Cloud_Break_Bear</td>
+          <td>Cat L</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#475569;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">N/A</span></td>
+          <td class="r">17</td>
+          <td class="r">47.1%</td>
+          <td class="r tr"><strong>-17.8</strong></td>
+          <td class="r tr">$-170,664</td>
+          <td class="r tr" data-pnl="-0.722">-0.7<br><span style="color:var(--txt-d);font-size:11px">n=7·WR57%</span></td><td class="r tr" data-pnl="-17.048">-17.0<br><span style="color:var(--txt-d);font-size:11px">n=10·WR40%</span></td>
+        </tr>
+        <tr data-pid="140" data-cat="L" data-tier="S" data-pnl="381.049" data-n="226">
+          <td><strong>P140</strong></td>
+          <td>Ichimoku_Kumo_Twist_Bull</td>
+          <td>Cat L</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#10b981;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">S</span></td>
+          <td class="r">226</td>
+          <td class="r">61.1%</td>
+          <td class="r tg"><strong>+381.0</strong></td>
+          <td class="r tg">$+1,584,527</td>
+          <td class="r tr" data-pnl="-114.424">-114.4<br><span style="color:var(--txt-d);font-size:11px">n=135·WR50%</span></td><td class="r tg" data-pnl="495.473">+495.5<br><span style="color:var(--txt-d);font-size:11px">n=91·WR77%</span></td>
+        </tr>
+        <tr data-pid="141" data-cat="L" data-tier="S" data-pnl="785.489" data-n="244">
+          <td><strong>P141</strong></td>
+          <td>Ichimoku_Kumo_Twist_Bear</td>
+          <td>Cat L</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#10b981;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">S</span></td>
+          <td class="r">244</td>
+          <td class="r">61.1%</td>
+          <td class="r tg"><strong>+785.5</strong></td>
+          <td class="r tg">$+1,662,173</td>
+          <td class="r tg" data-pnl="622.038">+622.0<br><span style="color:var(--txt-d);font-size:11px">n=135·WR74%</span></td><td class="r tg" data-pnl="163.451">+163.5<br><span style="color:var(--txt-d);font-size:11px">n=109·WR45%</span></td>
+        </tr>
+        <tr data-pid="142" data-cat="L" data-tier="D" data-pnl="-9.797" data-n="1286">
+          <td><strong>P142</strong></td>
+          <td>Ichimoku_Chikou_Confirm</td>
+          <td>Cat L</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#ef4444;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">1,286</td>
+          <td class="r">49.6%</td>
+          <td class="r tr"><strong>-9.8</strong></td>
+          <td class="r tr">$-219,987</td>
+          <td class="r tr" data-pnl="-7.144">-7.1<br><span style="color:var(--txt-d);font-size:11px">n=694·WR49%</span></td><td class="r tr" data-pnl="-2.653">-2.7<br><span style="color:var(--txt-d);font-size:11px">n=592·WR50%</span></td>
+        </tr>
+        <tr data-pid="143" data-cat="M" data-tier="N/A" data-pnl="-14.613" data-n="21">
+          <td><strong>P143</strong></td>
+          <td>Inducement_Bull</td>
+          <td>Cat M</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#475569;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">N/A</span></td>
+          <td class="r">21</td>
+          <td class="r">52.4%</td>
+          <td class="r tr"><strong>-14.6</strong></td>
+          <td class="r tr">$-59,605</td>
+          <td class="r tr" data-pnl="-2.442">-2.4<br><span style="color:var(--txt-d);font-size:11px">n=13·WR54%</span></td><td class="r tr" data-pnl="-12.171">-12.2<br><span style="color:var(--txt-d);font-size:11px">n=8·WR50%</span></td>
+        </tr>
+        <tr data-pid="144" data-cat="M" data-tier="N/A" data-pnl="41.084" data-n="17">
+          <td><strong>P144</strong></td>
+          <td>Inducement_Bear</td>
+          <td>Cat M</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#475569;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">N/A</span></td>
+          <td class="r">17</td>
+          <td class="r">70.6%</td>
+          <td class="r tg"><strong>+41.1</strong></td>
+          <td class="r tg">$+182,379</td>
+          <td class="r tg" data-pnl="11.166">+11.2<br><span style="color:var(--txt-d);font-size:11px">n=11·WR73%</span></td><td class="r tg" data-pnl="29.918">+29.9<br><span style="color:var(--txt-d);font-size:11px">n=6·WR67%</span></td>
+        </tr>
+        <tr data-pid="145" data-cat="M" data-tier="C" data-pnl="17.627" data-n="51">
+          <td><strong>P145</strong></td>
+          <td>Turtle_Soup_Long</td>
+          <td>Cat M</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#94a3b8;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">C</span></td>
+          <td class="r">51</td>
+          <td class="r">56.9%</td>
+          <td class="r tg"><strong>+17.6</strong></td>
+          <td class="r tr">$-24,924</td>
+          <td class="r tg" data-pnl="18.651">+18.7<br><span style="color:var(--txt-d);font-size:11px">n=36·WR64%</span></td><td class="r tr" data-pnl="-1.024">-1.0<br><span style="color:var(--txt-d);font-size:11px">n=15·WR40%</span></td>
+        </tr>
+        <tr data-pid="146" data-cat="M" data-tier="C" data-pnl="24.181000000000004" data-n="68">
+          <td><strong>P146</strong></td>
+          <td>Turtle_Soup_Short</td>
+          <td>Cat M</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#94a3b8;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">C</span></td>
+          <td class="r">68</td>
+          <td class="r">58.8%</td>
+          <td class="r tg"><strong>+24.2</strong></td>
+          <td class="r tg">$+8,926</td>
+          <td class="r tg" data-pnl="71.307">+71.3<br><span style="color:var(--txt-d);font-size:11px">n=44·WR59%</span></td><td class="r tr" data-pnl="-47.126">-47.1<br><span style="color:var(--txt-d);font-size:11px">n=24·WR58%</span></td>
+        </tr>
+        <tr data-pid="147" data-cat="M" data-tier="N/A" data-pnl="-5.8" data-n="9">
+          <td><strong>P147</strong></td>
+          <td>Stop_Run_Reversal_Bull</td>
+          <td>Cat M</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#475569;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">N/A</span></td>
+          <td class="r">9</td>
+          <td class="r">44.4%</td>
+          <td class="r tr"><strong>-5.8</strong></td>
+          <td class="r tr">$-10,743</td>
+          <td class="r tr" data-pnl="-5.787">-5.8<br><span style="color:var(--txt-d);font-size:11px">n=4·WR50%</span></td><td class="r tr" data-pnl="-0.013">-0.0<br><span style="color:var(--txt-d);font-size:11px">n=5·WR40%</span></td>
+        </tr>
+        <tr data-pid="148" data-cat="M" data-tier="N/A" data-pnl="10.688" data-n="5">
+          <td><strong>P148</strong></td>
+          <td>Stop_Run_Reversal_Bear</td>
+          <td>Cat M</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#475569;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">N/A</span></td>
+          <td class="r">5</td>
+          <td class="r">80.0%</td>
+          <td class="r tg"><strong>+10.7</strong></td>
+          <td class="r tg">$+25,268</td>
+          <td class="r tg" data-pnl="7.503">+7.5<br><span style="color:var(--txt-d);font-size:11px">n=2·WR100%</span></td><td class="r tg" data-pnl="3.185">+3.2<br><span style="color:var(--txt-d);font-size:11px">n=3·WR67%</span></td>
+        </tr>
+        <tr data-pid="149" data-cat="M" data-tier="C" data-pnl="15.334000000000001" data-n="45">
+          <td><strong>P149</strong></td>
+          <td>Internal_Liq_Sweep_Long</td>
+          <td>Cat M</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#94a3b8;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">C</span></td>
+          <td class="r">45</td>
+          <td class="r">48.9%</td>
+          <td class="r tg"><strong>+15.3</strong></td>
+          <td class="r tg">$+75,875</td>
+          <td class="r tr" data-pnl="-14.984">-15.0<br><span style="color:var(--txt-d);font-size:11px">n=27·WR48%</span></td><td class="r tg" data-pnl="30.318">+30.3<br><span style="color:var(--txt-d);font-size:11px">n=18·WR50%</span></td>
+        </tr>
+        <tr data-pid="150" data-cat="M" data-tier="D" data-pnl="-65.914" data-n="70">
+          <td><strong>P150</strong></td>
+          <td>External_Liq_Sweep_Long</td>
+          <td>Cat M</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#ef4444;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">70</td>
+          <td class="r">47.1%</td>
+          <td class="r tr"><strong>-65.9</strong></td>
+          <td class="r tr">$-450,873</td>
+          <td class="r tg" data-pnl="2.91">+2.9<br><span style="color:var(--txt-d);font-size:11px">n=34·WR50%</span></td><td class="r tr" data-pnl="-68.824">-68.8<br><span style="color:var(--txt-d);font-size:11px">n=36·WR44%</span></td>
+        </tr>
+        <tr data-pid="151" data-cat="N" data-tier="B" data-pnl="63.908" data-n="69">
+          <td><strong>P151</strong></td>
+          <td>Pullback_EMA20_Long</td>
+          <td>Cat N</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#3b82f6;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">B</span></td>
+          <td class="r">69</td>
+          <td class="r">56.5%</td>
+          <td class="r tg"><strong>+63.9</strong></td>
+          <td class="r tg">$+69,599</td>
+          <td class="r tg" data-pnl="38.304">+38.3<br><span style="color:var(--txt-d);font-size:11px">n=44·WR52%</span></td><td class="r tg" data-pnl="25.604">+25.6<br><span style="color:var(--txt-d);font-size:11px">n=25·WR64%</span></td>
+        </tr>
+        <tr data-pid="152" data-cat="N" data-tier="C" data-pnl="21.256" data-n="62">
+          <td><strong>P152</strong></td>
+          <td>Pullback_EMA20_Short</td>
+          <td>Cat N</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#94a3b8;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">C</span></td>
+          <td class="r">62</td>
+          <td class="r">46.8%</td>
+          <td class="r tg"><strong>+21.3</strong></td>
+          <td class="r tr">$-31,101</td>
+          <td class="r tg" data-pnl="30.336">+30.3<br><span style="color:var(--txt-d);font-size:11px">n=39·WR49%</span></td><td class="r tr" data-pnl="-9.08">-9.1<br><span style="color:var(--txt-d);font-size:11px">n=23·WR43%</span></td>
+        </tr>
+        <tr data-pid="153" data-cat="N" data-tier="C" data-pnl="18.557000000000002" data-n="39">
+          <td><strong>P153</strong></td>
+          <td>Pullback_EMA50_Long</td>
+          <td>Cat N</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#94a3b8;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">C</span></td>
+          <td class="r">39</td>
+          <td class="r">51.3%</td>
+          <td class="r tg"><strong>+18.6</strong></td>
+          <td class="r tg">$+12,206</td>
+          <td class="r tg" data-pnl="5.289">+5.3<br><span style="color:var(--txt-d);font-size:11px">n=23·WR48%</span></td><td class="r tg" data-pnl="13.268">+13.3<br><span style="color:var(--txt-d);font-size:11px">n=16·WR56%</span></td>
+        </tr>
+        <tr data-pid="154" data-cat="N" data-tier="N/A" data-pnl="24.103" data-n="17">
+          <td><strong>P154</strong></td>
+          <td>Pullback_EMA50_Short</td>
+          <td>Cat N</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#475569;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">N/A</span></td>
+          <td class="r">17</td>
+          <td class="r">47.1%</td>
+          <td class="r tg"><strong>+24.1</strong></td>
+          <td class="r tg">$+81,088</td>
+          <td class="r tg" data-pnl="8.525">+8.5<br><span style="color:var(--txt-d);font-size:11px">n=9·WR33%</span></td><td class="r tg" data-pnl="15.578">+15.6<br><span style="color:var(--txt-d);font-size:11px">n=8·WR62%</span></td>
+        </tr>
+        <tr data-pid="155" data-cat="N" data-tier="N/A" data-pnl="-6.7940000000000005" data-n="22">
+          <td><strong>P155</strong></td>
+          <td>Three_Touch_Trendline_Long</td>
+          <td>Cat N</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#475569;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">N/A</span></td>
+          <td class="r">22</td>
+          <td class="r">40.9%</td>
+          <td class="r tr"><strong>-6.8</strong></td>
+          <td class="r tr">$-25,419</td>
+          <td class="r tr" data-pnl="-27.216">-27.2<br><span style="color:var(--txt-d);font-size:11px">n=11·WR36%</span></td><td class="r tg" data-pnl="20.422">+20.4<br><span style="color:var(--txt-d);font-size:11px">n=11·WR45%</span></td>
+        </tr>
+        <tr data-pid="156" data-cat="N" data-tier="C" data-pnl="49.785" data-n="34">
+          <td><strong>P156</strong></td>
+          <td>Three_Touch_Trendline_Short</td>
+          <td>Cat N</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#94a3b8;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">C</span></td>
+          <td class="r">34</td>
+          <td class="r">67.7%</td>
+          <td class="r tg"><strong>+49.8</strong></td>
+          <td class="r tg">$+121,956</td>
+          <td class="r tg" data-pnl="24.999">+25.0<br><span style="color:var(--txt-d);font-size:11px">n=17·WR71%</span></td><td class="r tg" data-pnl="24.786">+24.8<br><span style="color:var(--txt-d);font-size:11px">n=17·WR65%</span></td>
+        </tr>
+        <tr data-pid="157" data-cat="N" data-tier="D" data-pnl="-5.597999999999999" data-n="112">
+          <td><strong>P157</strong></td>
+          <td>Hidden_Div_Bull_RSI</td>
+          <td>Cat N</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#ef4444;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">112</td>
+          <td class="r">42.9%</td>
+          <td class="r tr"><strong>-5.6</strong></td>
+          <td class="r tr">$-424,114</td>
+          <td class="r tg" data-pnl="34.078">+34.1<br><span style="color:var(--txt-d);font-size:11px">n=64·WR52%</span></td><td class="r tr" data-pnl="-39.676">-39.7<br><span style="color:var(--txt-d);font-size:11px">n=48·WR31%</span></td>
+        </tr>
+        <tr data-pid="158" data-cat="N" data-tier="A" data-pnl="154.07100000000003" data-n="92">
+          <td><strong>P158</strong></td>
+          <td>Hidden_Div_Bear_RSI</td>
+          <td>Cat N</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#22c55e;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">A</span></td>
+          <td class="r">92</td>
+          <td class="r">59.8%</td>
+          <td class="r tg"><strong>+154.1</strong></td>
+          <td class="r tg">$+167,034</td>
+          <td class="r tg" data-pnl="172.741">+172.7<br><span style="color:var(--txt-d);font-size:11px">n=56·WR64%</span></td><td class="r tr" data-pnl="-18.67">-18.7<br><span style="color:var(--txt-d);font-size:11px">n=36·WR53%</span></td>
+        </tr>
+        <tr data-pid="159" data-cat="N" data-tier="B" data-pnl="85.239" data-n="138">
+          <td><strong>P159</strong></td>
+          <td>Hidden_Div_Bull_MACD</td>
+          <td>Cat N</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#3b82f6;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">B</span></td>
+          <td class="r">138</td>
+          <td class="r">49.3%</td>
+          <td class="r tg"><strong>+85.2</strong></td>
+          <td class="r tr">$-163,902</td>
+          <td class="r tg" data-pnl="31.845">+31.8<br><span style="color:var(--txt-d);font-size:11px">n=77·WR53%</span></td><td class="r tg" data-pnl="53.394">+53.4<br><span style="color:var(--txt-d);font-size:11px">n=61·WR44%</span></td>
+        </tr>
+        <tr data-pid="160" data-cat="N" data-tier="A" data-pnl="151.05" data-n="107">
+          <td><strong>P160</strong></td>
+          <td>Hidden_Div_Bear_MACD</td>
+          <td>Cat N</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#22c55e;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">A</span></td>
+          <td class="r">107</td>
+          <td class="r">54.2%</td>
+          <td class="r tg"><strong>+151.1</strong></td>
+          <td class="r tg">$+128,599</td>
+          <td class="r tg" data-pnl="174.857">+174.9<br><span style="color:var(--txt-d);font-size:11px">n=54·WR65%</span></td><td class="r tr" data-pnl="-23.807">-23.8<br><span style="color:var(--txt-d);font-size:11px">n=53·WR43%</span></td>
+        </tr>
+        <tr data-pid="161" data-cat="O" data-tier="C" data-pnl="25.771" data-n="80">
+          <td><strong>P161</strong></td>
+          <td>VAH_Reject_Short</td>
+          <td>Cat O</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#94a3b8;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">C</span></td>
+          <td class="r">80</td>
+          <td class="r">50.0%</td>
+          <td class="r tg"><strong>+25.8</strong></td>
+          <td class="r tg">$+60,652</td>
+          <td class="r tg" data-pnl="35.773">+35.8<br><span style="color:var(--txt-d);font-size:11px">n=44·WR52%</span></td><td class="r tr" data-pnl="-10.002">-10.0<br><span style="color:var(--txt-d);font-size:11px">n=36·WR47%</span></td>
+        </tr>
+        <tr data-pid="162" data-cat="O" data-tier="D" data-pnl="-82.173" data-n="88">
+          <td><strong>P162</strong></td>
+          <td>VAL_Reject_Long</td>
+          <td>Cat O</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#ef4444;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">88</td>
+          <td class="r">40.9%</td>
+          <td class="r tr"><strong>-82.2</strong></td>
+          <td class="r tr">$-245,128</td>
+          <td class="r tr" data-pnl="-66.401">-66.4<br><span style="color:var(--txt-d);font-size:11px">n=48·WR42%</span></td><td class="r tr" data-pnl="-15.772">-15.8<br><span style="color:var(--txt-d);font-size:11px">n=40·WR40%</span></td>
+        </tr>
+        <tr data-pid="163" data-cat="O" data-tier="N/A" data-pnl="-20.728" data-n="3">
+          <td><strong>P163</strong></td>
+          <td>Single_Print_Fill_Long</td>
+          <td>Cat O</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#475569;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">N/A</span></td>
+          <td class="r">3</td>
+          <td class="r">0.0%</td>
+          <td class="r tr"><strong>-20.7</strong></td>
+          <td class="r tr">$-139,344</td>
+          <td class="r" style="color:var(--txt-d)">—</td><td class="r tr" data-pnl="-20.728">-20.7<br><span style="color:var(--txt-d);font-size:11px">n=3·WR0%</span></td>
+        </tr>
+        <tr data-pid="164" data-cat="O" data-tier="N/A" data-pnl="6.54" data-n="1">
+          <td><strong>P164</strong></td>
+          <td>Single_Print_Fill_Short</td>
+          <td>Cat O</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#475569;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">N/A</span></td>
+          <td class="r">1</td>
+          <td class="r">100.0%</td>
+          <td class="r tg"><strong>+6.5</strong></td>
+          <td class="r tg">$+43,742</td>
+          <td class="r" style="color:var(--txt-d)">—</td><td class="r tg" data-pnl="6.54">+6.5<br><span style="color:var(--txt-d);font-size:11px">n=1·WR100%</span></td>
+        </tr>
+        <tr data-pid="165" data-cat="O" data-tier="C" data-pnl="40.461" data-n="188">
+          <td><strong>P165</strong></td>
+          <td>POC_Migration_Long</td>
+          <td>Cat O</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#94a3b8;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">C</span></td>
+          <td class="r">188</td>
+          <td class="r">45.7%</td>
+          <td class="r tg"><strong>+40.5</strong></td>
+          <td class="r tr">$-382,147</td>
+          <td class="r tg" data-pnl="61.066">+61.1<br><span style="color:var(--txt-d);font-size:11px">n=89·WR58%</span></td><td class="r tr" data-pnl="-20.605">-20.6<br><span style="color:var(--txt-d);font-size:11px">n=99·WR34%</span></td>
+        </tr>
+        <tr data-pid="166" data-cat="P" data-tier="N/A" data-pnl="-14.387999999999998" data-n="12">
+          <td><strong>P166</strong></td>
+          <td>Round_Number_Bounce_Long</td>
+          <td>Cat P</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#475569;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">N/A</span></td>
+          <td class="r">12</td>
+          <td class="r">33.3%</td>
+          <td class="r tr"><strong>-14.4</strong></td>
+          <td class="r tr">$-2,976</td>
+          <td class="r tr" data-pnl="-16.243">-16.2<br><span style="color:var(--txt-d);font-size:11px">n=11·WR27%</span></td><td class="r tg" data-pnl="1.855">+1.9<br><span style="color:var(--txt-d);font-size:11px">n=1·WR100%</span></td>
+        </tr>
+        <tr data-pid="167" data-cat="P" data-tier="N/A" data-pnl="-20.6" data-n="20">
+          <td><strong>P167</strong></td>
+          <td>Round_Number_Bounce_Short</td>
+          <td>Cat P</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#475569;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">N/A</span></td>
+          <td class="r">20</td>
+          <td class="r">40.0%</td>
+          <td class="r tr"><strong>-20.6</strong></td>
+          <td class="r tr">$-75,107</td>
+          <td class="r tg" data-pnl="2.212">+2.2<br><span style="color:var(--txt-d);font-size:11px">n=16·WR44%</span></td><td class="r tr" data-pnl="-22.812">-22.8<br><span style="color:var(--txt-d);font-size:11px">n=4·WR25%</span></td>
+        </tr>
+        <tr data-pid="168" data-cat="P" data-tier="C" data-pnl="45.480000000000004" data-n="79">
+          <td><strong>P168</strong></td>
+          <td>Daily_Pivot_Tag_Long</td>
+          <td>Cat P</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#94a3b8;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">C</span></td>
+          <td class="r">79</td>
+          <td class="r">51.9%</td>
+          <td class="r tg"><strong>+45.5</strong></td>
+          <td class="r tg">$+90,812</td>
+          <td class="r tr" data-pnl="-5.163">-5.2<br><span style="color:var(--txt-d);font-size:11px">n=44·WR48%</span></td><td class="r tg" data-pnl="50.643">+50.6<br><span style="color:var(--txt-d);font-size:11px">n=35·WR57%</span></td>
+        </tr>
+        <tr data-pid="169" data-cat="P" data-tier="D" data-pnl="-44.145" data-n="101">
+          <td><strong>P169</strong></td>
+          <td>Daily_Pivot_Tag_Short</td>
+          <td>Cat P</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#ef4444;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">101</td>
+          <td class="r">53.5%</td>
+          <td class="r tr"><strong>-44.1</strong></td>
+          <td class="r tr">$-211,775</td>
+          <td class="r tg" data-pnl="32.76">+32.8<br><span style="color:var(--txt-d);font-size:11px">n=63·WR60%</span></td><td class="r tr" data-pnl="-76.905">-76.9<br><span style="color:var(--txt-d);font-size:11px">n=38·WR42%</span></td>
+        </tr>
+        <tr data-pid="170" data-cat="P" data-tier="D" data-pnl="-1.6199999999999999" data-n="168">
+          <td><strong>P170</strong></td>
+          <td>Range_Mid_Bounce</td>
+          <td>Cat P</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#ef4444;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">168</td>
+          <td class="r">50.0%</td>
+          <td class="r tr"><strong>-1.6</strong></td>
+          <td class="r tr">$-19,431</td>
+          <td class="r tr" data-pnl="-1.47">-1.5<br><span style="color:var(--txt-d);font-size:11px">n=132·WR50%</span></td><td class="r tr" data-pnl="-0.15">-0.1<br><span style="color:var(--txt-d);font-size:11px">n=36·WR50%</span></td>
+        </tr>
+        <tr data-pid="171" data-cat="Q" data-tier="D" data-pnl="-162.834" data-n="86">
+          <td><strong>P171</strong></td>
+          <td>ABCD_Bull</td>
+          <td>Cat Q</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#ef4444;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">86</td>
+          <td class="r">33.7%</td>
+          <td class="r tr"><strong>-162.8</strong></td>
+          <td class="r tr">$-498,179</td>
+          <td class="r tr" data-pnl="-79.382">-79.4<br><span style="color:var(--txt-d);font-size:11px">n=56·WR38%</span></td><td class="r tr" data-pnl="-83.452">-83.5<br><span style="color:var(--txt-d);font-size:11px">n=30·WR27%</span></td>
+        </tr>
+        <tr data-pid="172" data-cat="Q" data-tier="B" data-pnl="80.643" data-n="92">
+          <td><strong>P172</strong></td>
+          <td>ABCD_Bear</td>
+          <td>Cat Q</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#3b82f6;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">B</span></td>
+          <td class="r">92</td>
+          <td class="r">52.2%</td>
+          <td class="r tg"><strong>+80.6</strong></td>
+          <td class="r tr">$-16,618</td>
+          <td class="r tg" data-pnl="99.743">+99.7<br><span style="color:var(--txt-d);font-size:11px">n=58·WR57%</span></td><td class="r tr" data-pnl="-19.1">-19.1<br><span style="color:var(--txt-d);font-size:11px">n=34·WR44%</span></td>
+        </tr>
+        <tr data-pid="173" data-cat="Q" data-tier="D" data-pnl="-132.98000000000002" data-n="124">
+          <td><strong>P173</strong></td>
+          <td>Three_Drives_Bull</td>
+          <td>Cat Q</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#ef4444;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">124</td>
+          <td class="r">43.5%</td>
+          <td class="r tr"><strong>-133.0</strong></td>
+          <td class="r tr">$-586,785</td>
+          <td class="r tr" data-pnl="-64.516">-64.5<br><span style="color:var(--txt-d);font-size:11px">n=62·WR42%</span></td><td class="r tr" data-pnl="-68.464">-68.5<br><span style="color:var(--txt-d);font-size:11px">n=62·WR45%</span></td>
+        </tr>
+        <tr data-pid="174" data-cat="Q" data-tier="D" data-pnl="-163.902" data-n="109">
+          <td><strong>P174</strong></td>
+          <td>Three_Drives_Bear</td>
+          <td>Cat Q</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#ef4444;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">109</td>
+          <td class="r">30.3%</td>
+          <td class="r tr"><strong>-163.9</strong></td>
+          <td class="r tr">$-80,572</td>
+          <td class="r tr" data-pnl="-140.226">-140.2<br><span style="color:var(--txt-d);font-size:11px">n=67·WR27%</span></td><td class="r tr" data-pnl="-23.676">-23.7<br><span style="color:var(--txt-d);font-size:11px">n=42·WR36%</span></td>
+        </tr>
+        <tr data-pid="175" data-cat="R" data-tier="N/A" data-pnl="9.890999999999998" data-n="16">
+          <td><strong>P175</strong></td>
+          <td>BB_Squeeze_Breakout_Long</td>
+          <td>Cat R</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#475569;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">N/A</span></td>
+          <td class="r">16</td>
+          <td class="r">37.5%</td>
+          <td class="r tg"><strong>+9.9</strong></td>
+          <td class="r tg">$+63,791</td>
+          <td class="r tr" data-pnl="-20.817">-20.8<br><span style="color:var(--txt-d);font-size:11px">n=10·WR30%</span></td><td class="r tg" data-pnl="30.708">+30.7<br><span style="color:var(--txt-d);font-size:11px">n=6·WR50%</span></td>
+        </tr>
+        <tr data-pid="176" data-cat="R" data-tier="N/A" data-pnl="21.73" data-n="12">
+          <td><strong>P176</strong></td>
+          <td>BB_Squeeze_Breakout_Short</td>
+          <td>Cat R</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#475569;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">N/A</span></td>
+          <td class="r">12</td>
+          <td class="r">75.0%</td>
+          <td class="r tg"><strong>+21.7</strong></td>
+          <td class="r tg">$+54,546</td>
+          <td class="r tg" data-pnl="11.813">+11.8<br><span style="color:var(--txt-d);font-size:11px">n=7·WR86%</span></td><td class="r tg" data-pnl="9.917">+9.9<br><span style="color:var(--txt-d);font-size:11px">n=5·WR60%</span></td>
+        </tr>
+        <tr data-pid="177" data-cat="R" data-tier="N/A" data-pnl="0" data-n="0" style="opacity:0.4">
+          <td><strong>P177</strong></td>
+          <td>ATR_Expansion</td>
+          <td>Cat R</td>
+          <td style="text-align:center"><span class="tier-badge" style="background:#475569;color:#fff;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">N/A</span></td>
+          <td class="r">0</td>
+          <td class="r">—</td>
+          <td class="r">—</td>
+          <td class="r">—</td>
+          <td class="r" colspan="2" style="color:var(--txt-d)">not active in v6 datasets</td>
+        </tr></tbody>
+    </table>
+  </div>
+</section>
+
+<style>
+.filter-btn { padding:6px 14px; background:var(--bg-1); border:1px solid var(--bd); color:var(--txt); border-radius:4px; cursor:pointer; font-size:12px; }
+.filter-btn.active, .filter-btn:hover { background:var(--accent); color:var(--bg-0); border-color:var(--accent); }
+.tier-badge { display:inline-block; min-width:24px; text-align:center; }
+</style>
+
+<script>
+function filterTier(tier) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  event.target.classList.add('active');
+  document.querySelectorAll('#patternsTable tbody tr').forEach(tr => {
+    if (tier === 'all') tr.style.display = '';
+    else tr.style.display = tr.dataset.tier === tier ? '' : 'none';
+  });
+}
+function filterSearch() {
+  const q = document.getElementById('patternSearch').value.toLowerCase();
+  document.querySelectorAll('#patternsTable tbody tr').forEach(tr => {
+    const name = tr.cells[1].textContent.toLowerCase();
+    tr.style.display = name.includes(q) ? '' : 'none';
+  });
+}
+</script>
+
+</main>
+<script src="assets/app.js"></script>
+<script>
+loadData().then(data => {
+  if (!data) return;
+  const body = document.getElementById('patternsBody');
+  data.patterns.sort((a,b) => a.pid - b.pid).forEach(p => {
+    const tr = document.createElement('tr');
+    if (p.tier === 'A') tr.classList.add('tier-a-row');
+    if (p.tier === 'BAD') tr.classList.add('tier-bad-row');
+    tr.dataset.cat = p.cat;
+    tr.dataset.tier = p.tier;
+    tr.dataset.search = (p.name + ' P' + p.pid).toLowerCase();
+    
+    const totalN = (p.btc_h4.n||0) + (p.btc_h1.n||0) + (p.btc_m15.n||0) + (p.xau_h4.n||0) + (p.xau_h1.n||0) + (p.xau_m15?.n||0) + (p.eur_h4?.n||0) + (p.eur_h1?.n||0) + (p.eur_m15?.n||0);
+    
+    tr.innerHTML = `
+      <td><strong style="color:var(--blue)">P${p.pid}</strong></td>
+      <td><span class="cat cat-${p.cat}">${p.cat}</span></td>
+      <td>${p.name}</td>
+      <td>${dirText(p.dir)}</td>
+      <td>${wrPill(p.btc_h4.wr, p.btc_h4.n)} <span style="font-size:9px;color:var(--txt-dim)">${(p.btc_h4.n||0).toLocaleString()}</span></td>
+      <td>${wrPill(p.btc_h1.wr, p.btc_h1.n)} <span style="font-size:9px;color:var(--txt-dim)">${(p.btc_h1.n||0).toLocaleString()}</span></td>
+      <td>${wrPill(p.btc_m15.wr, p.btc_m15.n)} <span style="font-size:9px;color:var(--txt-dim)">${(p.btc_m15.n||0).toLocaleString()}</span></td>
+      <td>${wrPill(p.xau_h4.wr, p.xau_h4.n)} <span style="font-size:9px;color:var(--txt-dim)">${(p.xau_h4.n||0).toLocaleString()}</span></td>
+      <td>${wrPill(p.xau_h1.wr, p.xau_h1.n)} <span style="font-size:9px;color:var(--txt-dim)">${(p.xau_h1.n||0).toLocaleString()}</span></td>
+      <td>${wrPill(p.xau_m15?.wr, p.xau_m15?.n)} <span style="font-size:9px;color:var(--txt-dim)">${(p.xau_m15?.n||0).toLocaleString()}</span></td>
+      <td>${wrPill(p.eur_h4?.wr, p.eur_h4?.n)} <span style="font-size:9px;color:var(--txt-dim)">${(p.eur_h4?.n||0).toLocaleString()}</span></td>
+      <td>${wrPill(p.eur_h1?.wr, p.eur_h1?.n)} <span style="font-size:9px;color:var(--txt-dim)">${(p.eur_h1?.n||0).toLocaleString()}</span></td>
+      <td>${wrPill(p.eur_m15?.wr, p.eur_m15?.n)} <span style="font-size:9px;color:var(--txt-dim)">${(p.eur_m15?.n||0).toLocaleString()}</span></td>
+      <td class="num">${totalN.toLocaleString()}</td>
+      <td>${tierLabel(p.tier)}</td>
+    `;
+    body.appendChild(tr);
+  });
+  
+  let curCat = 'all', curTier = 'all';
+  function applyFilter() {
+    const q = (document.getElementById('searchPat')?.value || '').toLowerCase();
+    document.querySelectorAll('#patternsBody tr').forEach(tr => {
+      const matchCat = curCat === 'all' || tr.dataset.cat === curCat;
+      const matchTier = curTier === 'all' || tr.dataset.tier === curTier;
+      const matchSearch = !q || tr.dataset.search.includes(q);
+      tr.style.display = (matchCat && matchTier && matchSearch) ? '' : 'none';
+    });
+  }
+  
+  document.querySelectorAll('.cat-filter').forEach(b => b.addEventListener('click', () => {
+    document.querySelectorAll('.cat-filter').forEach(x => x.classList.remove('active'));
+    b.classList.add('active');
+    curCat = b.dataset.cat;
+    applyFilter();
+  }));
+  document.querySelectorAll('.tier-filter').forEach(b => b.addEventListener('click', () => {
+    document.querySelectorAll('.tier-filter').forEach(x => x.classList.remove('active'));
+    b.classList.add('active');
+    curTier = b.dataset.tier;
+    applyFilter();
+  }));
+  document.getElementById('searchPat').addEventListener('input', applyFilter);
+});
+</script>
+</body></html>

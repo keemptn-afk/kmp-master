@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="th"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reference · KMP Master</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Bricolage+Grotesque:wght@400;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head><body>
+<nav class="sidebar">
+  <div class="sidebar-brand">
+    <a class="brand-logo" href="index.html">KMP <span class="accent">Master</span></a>
+    <div class="brand-ver">EA v3.1 · 177 patterns · 93 cols</div>
+  </div>
+  
+  <input type="text" class="search-box" id="globalSearch" placeholder="ค้นหา...">
+  
+  <div class="nav-section">
+    <div class="nav-label">Overview</div>
+    <a class="tree-node lvl-0" href="index.html"><span class="arrow"></span><span class="nm">Dashboard</span></a>
+    <a class="tree-node lvl-0" href="preface.html"><span class="arrow"></span><span class="nm">คำนำ &amp; เป้าหมาย</span></a>
+  </div>
+  
+  <div class="nav-section">
+    <div class="nav-label">Datasets · v4 LEGACY</div>
+    
+    <div class="tree-node lvl-0 expandable" data-toggle="crypto-menu">
+      <span class="arrow">▶</span><span class="nm">Crypto</span><span class="badge">3</span>
+    </div>
+    <div class="tree-children" id="crypto-menu">
+      <div class="tree-node lvl-1 expandable" data-toggle="btc-menu">
+        <span class="arrow">▶</span><span class="nm">BTC/USD</span><span class="badge">99K</span>
+      </div>
+      <div class="tree-children" id="btc-menu">
+        <a class="tree-node lvl-2" href="btc-h4.html"><span class="nm">BTC H4</span><span class="badge" style="background:#10b981;color:#fff">9,474</span></a>
+        <a class="tree-node lvl-2" href="btc-h1.html"><span class="nm">BTC H1</span><span class="badge">18,638</span></a>
+        <a class="tree-node lvl-2" href="btc-m15.html"><span class="nm">BTC M15</span><span class="badge">75,677</span></a>
+      </div>
+    </div>
+    
+    <div class="tree-node lvl-0 expandable" data-toggle="metals-menu">
+      <span class="arrow">▶</span><span class="nm">Metals</span><span class="badge">3</span>
+    </div>
+    <div class="tree-children" id="metals-menu">
+      <div class="tree-node lvl-1 expandable" data-toggle="xau-menu">
+        <span class="arrow">▶</span><span class="nm">XAU/USD</span><span class="badge">70K</span>
+      </div>
+      <div class="tree-children" id="xau-menu">
+        <a class="tree-node lvl-2" href="xau-h4.html"><span class="nm">XAU H4</span><span class="badge" style="background:#10b981;color:#fff">7,077</span></a>
+        <a class="tree-node lvl-2" href="xau-h1.html"><span class="nm">XAU H1</span><span class="badge">13,319</span></a>
+        <a class="tree-node lvl-2" href="xau-m15.html"><span class="nm">XAU M15</span><span class="badge">53,098</span></a>
+      </div>
+    </div>
+    
+    <div class="tree-node lvl-0 expandable" data-toggle="forex-menu">
+      <span class="arrow">▶</span><span class="nm">Forex</span><span class="badge">3</span>
+    </div>
+    <div class="tree-children" id="forex-menu">
+      <div class="tree-node lvl-1 expandable" data-toggle="eur-menu">
+        <span class="arrow">▶</span><span class="nm">EUR/USD</span><span class="badge">79K</span>
+      </div>
+      <div class="tree-children" id="eur-menu">
+        <a class="tree-node lvl-2" href="eur-h4.html"><span class="nm">EUR H4</span><span class="badge">3,770</span></a>
+        <a class="tree-node lvl-2" href="eur-h1.html"><span class="nm">EUR H1</span><span class="badge">14,257</span></a>
+        <a class="tree-node lvl-2" href="eur-m15.html"><span class="nm">EUR M15</span><span class="badge">61,138</span></a>
+      </div>
+    </div>
+  </div>
+  
+  <div class="nav-section">
+    <div class="nav-label">Patterns · 177 (v3.1)</div>
+    <a class="tree-node lvl-0" href="patterns-encyclopedia.html"><span class="arrow"></span><span class="nm">📚 Pattern Encyclopedia</span><span class="badge">177</span></a>
+    <div class="tree-node lvl-0 expandable" data-toggle="pat-menu">
+      <span class="arrow">▶</span><span class="nm">v4 Analysis</span><span class="badge">80</span>
+    </div>
+    <div class="tree-children" id="pat-menu">
+      <a class="tree-node lvl-1" href="patterns.html"><span class="nm">All Patterns Table</span></a>
+      <a class="tree-node lvl-1" href="tier.html"><span class="nm">Tier Rankings</span></a>
+      <a class="tree-node lvl-1" href="optimal-tpsl.html"><span class="nm">Optimal TP/SL EV</span></a>
+    </div>
+  </div>
+  
+  <div class="nav-section">
+    <div class="nav-label">Analysis</div>
+    <a class="tree-node lvl-0" href="cross.html"><span class="arrow"></span><span class="nm">Cross-TF / Asset</span></a>
+    <a class="tree-node lvl-0" href="time.html"><span class="arrow"></span><span class="nm">Hour / DoW / Conf</span></a>
+    <a class="tree-node lvl-0" href="edge.html"><span class="arrow"></span><span class="nm">Edge Decay / Vol</span></a>
+  </div>
+  
+  <div class="nav-section">
+    <div class="nav-label">Strategy</div>
+    <a class="tree-node lvl-0" href="strategy.html"><span class="arrow"></span><span class="nm">EA Blueprint &amp; Risk</span></a>
+  </div>
+  
+  <div class="nav-section">
+    <div class="nav-label">EA System · v3.1</div>
+    <a class="tree-node lvl-0" href="ea-architecture.html"><span class="arrow"></span><span class="nm">⚙ EA Architecture</span></a>
+    <a class="tree-node lvl-0" href="tracking-system.html"><span class="arrow"></span><span class="nm">🎯 Tracking System</span></a>  </div>  <div class="nav-section">
+    <div class="nav-label">Reference</div>
+    <a class="tree-node lvl-0" href="reference.html"><span class="arrow"></span><span class="nm">Sources &amp; Changelog</span></a>
+  </div>
+</nav>
+
+<main class="main"><div class="breadcrumb"><a href="index.html" class="crumb">Dashboard</a><span class="sep">▸</span><a href="#" class="crumb">Reference</a><span class="sep">▸</span><span class="crumb current">Sources & Glossary</span></div>
+<div class="hero">
+  <span class="hero-tag">Reference</span>
+  <h1 class="hero-title">Sources <span class="accent">/ Glossary.</span></h1>
+  <p class="hero-desc">
+    Books · academic papers · methodology · EA architecture · technical glossary · change log
+  </p>
+</div>
+
+<section class="section">
+  <div class="section-head"><span class="section-num">01</span><h2 class="section-title">Classical Books</h2></div>
+  
+  <div class="kpis">
+    <div class="kpi">
+      <div class="kpi-label">Candlestick</div>
+      <div style="font-size:11px;color:var(--txt-d);line-height:1.7;margin-top:10px">
+        Steve Nison · Japanese Candlestick (1991)<br>
+        Bulkowski · Encyclopedia of Candlestick Charts<br>
+        → Patterns: P21-P40
+      </div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Chart Patterns</div>
+      <div style="font-size:11px;color:var(--txt-d);line-height:1.7;margin-top:10px">
+        Edwards &amp; Magee · Technical Analysis (1948)<br>
+        Bulkowski · Encyclopedia of Chart Patterns<br>
+        → Patterns: P61-P70
+      </div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Price Action</div>
+      <div style="font-size:11px;color:var(--txt-d);line-height:1.7;margin-top:10px">
+        Tony Crabel · Day Trading Patterns (1990)<br>
+        Al Brooks · Reading Price Charts Bar by Bar<br>
+        → Patterns: P1-P20
+      </div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Wyckoff/VSA</div>
+      <div style="font-size:11px;color:var(--txt-d);line-height:1.7;margin-top:10px">
+        Richard Wyckoff · Phase A-E (1930s)<br>
+        Tom Williams · Master the Markets (1998)<br>
+        → P55-P56 + P98-P107 (Cat I · VSA/Wyckoff in v3.1)
+      </div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Harmonic</div>
+      <div style="font-size:11px;color:var(--txt-d);line-height:1.7;margin-top:10px">
+        Scott Carney · Harmonic Trading (2004)<br>
+        H.M. Gartley · Profits in Stock Market (1935)<br>
+        Larry Pesavento · Fibonacci Ratios<br>
+        → Future: P108-P115
+      </div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Auction Market</div>
+      <div style="font-size:11px;color:var(--txt-d);line-height:1.7;margin-top:10px">
+        J. Peter Steidlmayer · Market Profile/TPO<br>
+        Sam Seiden · Supply/Demand zones<br>
+        → P41-P50, P79-P80
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head"><span class="section-num">02</span><h2 class="section-title">Academic Papers</h2></div>
+  <div class="insight blue">
+    <div class="insight-tag">Peer-Reviewed Sources</div>
+    <strong>Concretum Group</strong> · "Can Day Trading Really Be Profitable?" (2023) · ORB strategy<br>
+    <strong>Andrew Aziz et al.</strong> · ORB co-author, Polygon.io backtest framework<br>
+    <strong>Academia Sinica</strong> · "Timely Open Range Breakout on Index Futures" (2018)<br>
+    <strong>Renaissance Technologies methodology</strong> · Mean reversion · stat arbitrage<br>
+    <strong>AQR Capital</strong> · momentum factors research<br>
+    <strong>Two Sigma</strong> · stat arbitrage publications<br>
+    <strong>QuantConnect LEAN</strong> · open-source quant strategies
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head"><span class="section-num">03</span><h2 class="section-title">Modern Methodology</h2></div>
+  <div class="kpis">
+    <div class="kpi cyan">
+      <div class="kpi-label">SMC / ICT</div>
+      <div style="font-size:11px;color:var(--txt-d);line-height:1.7;margin-top:10px">
+        Inner Circle Trader (ICT) · Smart Money Concepts<br>
+        Order Blocks, FVG, Liquidity, BOS/CHoCH, Killzones<br>
+        OTE 62-79% Fib · Power of 3 · PD Array<br>
+        → Patterns: P43-P78 + P89-P97
+      </div>
+    </div>
+    <div class="kpi cyan">
+      <div class="kpi-label">Order Flow</div>
+      <div style="font-size:11px;color:var(--txt-d);line-height:1.7;margin-top:10px">
+        Bookmap · Cumulative Volume Delta<br>
+        TradingView/ATAS · Footprint charts<br>
+        Trader Dale · VWAP &amp; Volume Profile<br>
+        → Future: P105-P107
+      </div>
+    </div>
+    <div class="kpi cyan">
+      <div class="kpi-label">MQL5 Community</div>
+      <div style="font-size:11px;color:var(--txt-d);line-height:1.7;margin-top:10px">
+        MQL5.com articles 2025-2026<br>
+        Decoding Opening Range Breakout (Concretum)<br>
+        SMC EA Implementation references<br>
+        Forex Factory community threads
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head"><span class="section-num">04</span><h2 class="section-title">EA Architecture</h2></div>
+  
+  <div class="insight blue">
+    <div class="insight-tag">KMP Pattern Harvester EA · v3.1 (current)</div>
+    <strong>KMP_PatternHarvester.mq5</strong> · 1,108 lines main EA<br>
+    <strong>28 code files</strong> · 11,622 total lines (10,424 code + 1,198 docs)<br>
+    <strong>177 patterns</strong> in 18 categories (A-R) · 3 phases<br>
+    <strong>Per-Pattern Mode:</strong> 1 pattern fired = 1 order (no blocking)<br>
+    <strong>MAX_TRACKED_POSITIONS:</strong> 10,000 concurrent slots<br>
+    <strong>Magic Number:</strong> 317077 (configurable)<br>
+    <strong>Output:</strong> CSV with full trade details (93 columns)<br>
+    <strong>Time-stop:</strong> 240h · <strong>Path checkpoints:</strong> 9 (1/6/12/24/48/72/120/168/240h)<br>
+    <strong>Indicators:</strong> ATR, EMA(9/20/50/100/200), BB, RSI, Stoch, MACD, ADX, Ichimoku(9/26/52)<br>
+    <br>
+    📚 <a href="ea-architecture.html" style="color:var(--blue)">EA Architecture (full docs)</a> · 
+    🎯 <a href="tracking-system.html" style="color:var(--blue)">Tracking System</a> · 
+    📋 <a href="patterns-encyclopedia.html" style="color:var(--blue)">Pattern Encyclopedia</a>
+  </div>
+  
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>File</th><th>Lines</th><th>Purpose</th></tr></thead>
+      <tbody>
+        <tr><td>KMP_PatternHarvester.mq5</td><td>1,108</td><td>Main EA · OnTick · order management · OnTradeTransaction</td></tr>
+        <tr><td>Include/KMP_Structures.mqh</td><td>1,053</td><td>PatternFlags (177) · IndicatorSnapshot (70 fields) · TrackedPosition</td></tr>
+        <tr><td>Include/KMP_Indicators.mqh</td><td>~580</td><td>Indicator init + snapshot capture (incl. Ichimoku v3.0)</td></tr>
+        <tr><td>Include/KMP_Patterns.mqh</td><td>587</td><td>Master dispatcher · 18 sub-detectors</td></tr>
+        <tr><td>Include/KMP_PatternMetadata.mqh</td><td>459</td><td>177 metadata cases (name/category/direction)</td></tr>
+        <tr><td>Include/KMP_HarvesterLogger.mqh</td><td>~360</td><td>CSV writer · 93-column header + WriteRecord</td></tr>
+        <tr><td>Include/Patterns/KMP_CandleHelpers.mqh</td><td>~210</td><td>FindSwing, IsBullBar, GetHTF, etc.</td></tr>
+        <tr><td>Patterns/KMP_PatternsA_Original.mqh</td><td>~700</td><td>Cat A · P1-P20 · Original strategy</td></tr>
+        <tr><td>Patterns/KMP_PatternsB_Candlestick.mqh</td><td>~600</td><td>Cat B · P21-P40 · Nison candlesticks</td></tr>
+        <tr><td>Patterns/KMP_PatternsC_SupportRes.mqh</td><td>~510</td><td>Cat C · P41-P50 · S/R + OB</td></tr>
+        <tr><td>Patterns/KMP_PatternsD_Structure.mqh</td><td>~470</td><td>Cat D · P51-P60 · Structure</td></tr>
+        <tr><td>Patterns/KMP_PatternsE_ChartPatterns.mqh</td><td>~530</td><td>Cat E · P61-P70 · Chart patterns</td></tr>
+        <tr><td>Patterns/KMP_PatternsF_SmartMoney.mqh</td><td>~510</td><td>Cat F · P71-P80 · SMC</td></tr>
+        <tr><td>Patterns/KMP_PatternsG_StatEdge.mqh</td><td>~430</td><td>Cat G · P81-P88 · Statistical edge</td></tr>
+        <tr><td>Patterns/KMP_PatternsH_SMCAdvanced.mqh</td><td>~480</td><td>Cat H · P89-P97 · SMC advanced</td></tr>
+        <tr><td>Patterns/KMP_PatternsI_VolumeWyckoff.mqh</td><td>~600</td><td>Cat I · P98-P107 · VSA + Wyckoff</td></tr>
+        <tr><td>Patterns/KMP_PatternsJ_Harmonic.mqh</td><td>~700</td><td>Cat J · P108-P125 · Carney harmonics</td></tr>
+        <tr><td>Patterns/KMP_PatternsK_MultiTF.mqh</td><td>~370</td><td>Cat K · P126-P135 · Multi-timeframe (v3.0 NEW)</td></tr>
+        <tr><td>Patterns/KMP_PatternsL_Ichimoku.mqh</td><td>~240</td><td>Cat L · P136-P142 · Ichimoku (v3.0 NEW)</td></tr>
+        <tr><td>Patterns/KMP_PatternsM_ModernSMC.mqh</td><td>~330</td><td>Cat M · P143-P150 · Modern SMC (v3.0 NEW)</td></tr>
+        <tr><td>Patterns/KMP_PatternsN_Momentum.mqh</td><td>~330</td><td>Cat N · P151-P160 · Momentum + hidden div (v3.0 NEW)</td></tr>
+        <tr><td>Patterns/KMP_PatternsO_VolumeProfile.mqh</td><td>~280</td><td>Cat O · P161-P165 · Volume profile (v3.0 NEW)</td></tr>
+        <tr><td>Patterns/KMP_PatternsP_Range.mqh</td><td>~190</td><td>Cat P · P166-P170 · Range/reversion (v3.0 NEW)</td></tr>
+        <tr><td>Patterns/KMP_PatternsQ_ABCD.mqh</td><td>~210</td><td>Cat Q · P171-P174 · ABCD/Three Drives (v3.0 NEW)</td></tr>
+        <tr><td>Patterns/KMP_PatternsR_VolRegime.mqh</td><td>~140</td><td>Cat R · P175-P177 · Vol regime (v3.0 NEW)</td></tr>
+        <tr><td>Docs/PATTERN_REFERENCE.md</td><td>679</td><td>Theory + detection rules + bibliography</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head"><span class="section-num">05</span><h2 class="section-title">Glossary · ศัพท์เทคนิค</h2></div>
+  
+  <div class="glossary-term"><div class="glossary-term-name">ATR</div><div class="glossary-term-def">Average True Range · ค่าเฉลี่ยของ true range ใช้วัด volatility</div></div>
+  <div class="glossary-term"><div class="glossary-term-name">BOS</div><div class="glossary-term-def">Break of Structure · ราคาทะลุ swing high/low ก่อนหน้า · ยืนยัน trend</div></div>
+  <div class="glossary-term"><div class="glossary-term-name">CHoCH</div><div class="glossary-term-def">Change of Character · การเปลี่ยน trend · ทะลุ structure ตรงข้าม</div></div>
+  <div class="glossary-term"><div class="glossary-term-name">CVD</div><div class="glossary-term-def">Cumulative Volume Delta · ผลรวมสะสมของ buy volume - sell volume</div></div>
+  <div class="glossary-term"><div class="glossary-term-name">EV</div><div class="glossary-term-def">Expected Value · ผลตอบแทนคาดหวังต่อ trade · ใน R-units</div></div>
+  <div class="glossary-term"><div class="glossary-term-name">FVG</div><div class="glossary-term-def">Fair Value Gap · ช่องว่างราคา 3-bar pattern · imbalance</div></div>
+  <div class="glossary-term"><div class="glossary-term-name">HHHL</div><div class="glossary-term-def">Higher High Higher Low · ยืนยัน uptrend</div></div>
+  <div class="glossary-term"><div class="glossary-term-name">ICT</div><div class="glossary-term-def">Inner Circle Trader · methodology โดย Michael J. Huddleston (SMC)</div></div>
+  <div class="glossary-term"><div class="glossary-term-name">Killzone</div><div class="glossary-term-def">ช่วงเวลาที่ smart money active · London 7-10 GMT, NY 13-16 GMT</div></div>
+  <div class="glossary-term"><div class="glossary-term-name">LHLL</div><div class="glossary-term-def">Lower High Lower Low · ยืนยัน downtrend</div></div>
+  <div class="glossary-term"><div class="glossary-term-name">Liquidity Grab/Sweep</div><div class="glossary-term-def">ราคาทะลุ swing point เพื่อ trigger stops · แล้วกลับ</div></div>
+  <div class="glossary-term"><div class="glossary-term-name">MAE</div><div class="glossary-term-def">Maximum Adverse Excursion · การเคลื่อนที่ตรงข้ามทิศทางมากที่สุด</div></div>
+  <div class="glossary-term"><div class="glossary-term-name">MFE</div><div class="glossary-term-def">Maximum Favorable Excursion · การเคลื่อนที่ตามทิศทางมากที่สุด</div></div>
+  <div class="glossary-term"><div class="glossary-term-name">Mitigation Block</div><div class="glossary-term-def">Order block ที่ price กลับมา test แล้ว reverse · SMC concept</div></div>
+  <div class="glossary-term"><div class="glossary-term-name">OB</div><div class="glossary-term-def">Order Block · Last opposite candle ก่อน strong move · institutional interest</div></div>
+  <div class="glossary-term"><div class="glossary-term-name">OTE</div><div class="glossary-term-def">Optimal Trade Entry · ICT zone ที่ Fib retracement 62-79%</div></div>
+  <div class="glossary-term"><div class="glossary-term-name">POC</div><div class="glossary-term-def">Point of Control · ราคาที่มี volume สูงสุด · Volume Profile concept</div></div>
+  <div class="glossary-term"><div class="glossary-term-name">R-multiple</div><div class="glossary-term-def">ผลตอบแทนวัดในหน่วย R (initial risk) · เช่น +3R = ได้ 3 เท่าของ risk</div></div>
+  <div class="glossary-term"><div class="glossary-term-name">SMC</div><div class="glossary-term-def">Smart Money Concepts · Trading methodology ที่ตามรอย institutional</div></div>
+  <div class="glossary-term"><div class="glossary-term-name">VSA</div><div class="glossary-term-def">Volume Spread Analysis · วิเคราะห์ volume × spread × close · Tom Williams</div></div>
+  <div class="glossary-term"><div class="glossary-term-name">WR</div><div class="glossary-term-def">Win Rate · % ของ trades ที่ direction ถูก</div></div>
+  <div class="glossary-term"><div class="glossary-term-name">WRB</div><div class="glossary-term-def">Wide Range Bar · Bar ที่มี range ใหญ่ผิดปกติ · momentum signal</div></div>
+  <div class="glossary-term"><div class="glossary-term-name">Wyckoff Phases</div><div class="glossary-term-def">A-E schematic · Accumulation → Markup → Distribution → Markdown</div></div>
+</section>
+
+<section class="section">
+  <div class="section-head"><span class="section-num">06</span><h2 class="section-title">Change Log</h2></div>
+  
+  <div class="insight" style="border-left:3px solid #10b981;background:rgba(16,185,129,0.06)">
+    <div class="insight-tag" style="color:#10b981">⭐ EA v3.1 · 2026-05-07 · LATEST · v6 baseline ready</div>
+    <strong>Execution metadata + Weekend AUTO mode — production-ready harvester</strong><br>
+    <ul style="margin:8px 0;padding-left:20px;line-height:1.7">
+      <li><strong>+3 CSV columns</strong> (90 → 93): <code class="cb">intended_entry_price</code>, <code class="cb">spread_at_entry_pts</code>, <code class="cb">spread_at_exit_pts</code></li>
+      <li><strong>entry_price now = ACTUAL broker fill</strong> (was intended) → enables slippage analysis</li>
+      <li><strong>WeekendMode AUTO</strong> via SymbolInfoSessionTrade — BTC counts weekend hours, EUR/XAU skip weekend → uniform "chart-running hours" across assets</li>
+      <li>Phase 1+2+3 default = true (was Phase 1 only)</li>
+      <li><strong>OnTradeTransaction enhanced</strong>: handles DEAL_ENTRY_IN to capture actual fill price</li>
+      <li>Spread captured at both open + close → cost analysis vs MFE</li>
+      <li>Order rejection counter logged at OnDeinit (g_total_orders_failed)</li>
+      <li><strong>Academic standards preserved</strong> · no pattern threshold tuning · all detection logic = literature</li>
+    </ul>
+    📚 <a href="patterns-encyclopedia.html" style="color:#10b981">Encyclopedia</a> · 
+    ⚙ <a href="ea-architecture.html" style="color:#10b981">Architecture</a> · 
+    🎯 <a href="tracking-system.html" style="color:#10b981">Tracking</a>
+  </div>
+  
+  <div class="insight" style="border-left:3px solid #f59e0b;background:rgba(245,158,11,0.06)">
+    <div class="insight-tag" style="color:#f59e0b">EA v3.0 · 2026-05-06 · superseded by v3.1</div>
+    <strong>Pattern Harvester v3.0 — 177 patterns ready</strong><br>
+    <ul style="margin:8px 0;padding-left:20px;line-height:1.7">
+      <li><strong>+52 patterns</strong> in 8 new categories (K-R) — Phase 3 build</li>
+      <li><strong>Total 177 patterns</strong> in 18 categories</li>
+      <li>+ Ichimoku indicator (9/26/52)</li>
+      <li>+3 path checkpoints (120h, 168h, 240h) → total 9 checkpoints</li>
+      <li>Time-stop extended 168h → 240h</li>
+      <li>+3 CSV columns (87 → 90)</li>
+      <li>Independent phase toggles (InpEnablePhase1/2/3)</li>
+      <li>7-layer audit passed · 0 errors</li>
+    </ul>
+    📚 <a href="patterns-encyclopedia.html" style="color:#f59e0b">Encyclopedia</a> · 
+    ⚙ <a href="ea-architecture.html" style="color:#f59e0b">Architecture</a> · 
+    🎯 <a href="tracking-system.html" style="color:#f59e0b">Tracking</a> · 
+    Phase 3 (in v3.1)
+  </div>
+  
+  <div class="insight">
+    <div class="insight-tag">EA v2.01 · 2026-05-04 to 05-05 · legacy (not extensively tested)</div>
+    <strong>Phase 2 build — 125 patterns</strong><br>
+    +45 patterns in 4 new cat (G/H/I/J) · CSV 84 → 87 cols · Phase toggles introduced<br>
+    Skipped extensive backtest to wait for Phase 3 → v6 baseline
+  </div>
+  
+  <div class="insight blue">
+    <div class="insight-tag">Website v3.0 · 2026-05-06</div>
+    <strong>Multi-file website launch</strong><br>
+    Restructured as multi-page site (15+ pages)<br>
+    Sidebar tree navigation · collapsed by default<br>
+    Theme: minimal black/white + blue/green/yellow accents<br>
+    GitHub Pages deployment ready · All raw data preserved 100%
+  </div>
+  
+    <div class="insight" style="border-color:#10b981">
+    <div class="insight-tag" style="color:#10b981">⭐ v6 Baseline · 2026-05-07 · IN PROGRESS · 2/6 datasets</div>
+    <strong>v6 Backtest — first 2 datasets</strong><br>
+    BTCUSD H4 (9,474 trades · WR 50.5% · PF 1.11) · 
+    XAUUSD H4 (7,077 trades · WR 48.7% · PF 1.07)<br>
+    Total: 16,551 trades · 93 CSV cols · WeekendMode AUTO · spread+slippage real<br>
+    Pending: BTC H1 · EUR H1 · EUR H4 · XAU H1 (4 datasets)<br>
+    Top performer (both): P141 Ichimoku Kumo Twist Bear · Worst: Sunday Gap Fill (P120/P121)
+  </div>
+  
+<div class="insight" style="border-color:#10b981">
+    <div class="insight-tag" style="color:#10b981">⭐ Website v5.0 · 2026-05-07 · LATEST · EA v3.1 aligned</div>
+    <strong>v3.1 alignment update — 177 patterns ready</strong><br>
+    Branding refreshed everywhere: "EA v3.1 · 177 patterns · 93 cols"<br>
+    +9 dataset placeholders (BTC/EUR/XAU × H1/H4/M15) waiting for v6 baseline<br>
+    +Pattern Encyclopedia (P1-P177) · +Phase 3 page · +EA Architecture · +Tracking System<br>
+    +3 asset hubs (BTC/EUR/XAU) · +3 category landings (Crypto/Forex/Metals)<br>
+    patterns.json updated: meta.version v3.1 · csv_columns: 93 · time_stop_hours: 240 · indicators: ATR/EMA/BB/RSI/Stoch/MACD/ADX/Ichimoku · v31_new_fields: intended_entry_price, spread_at_entry_pts, spread_at_exit_pts<br>
+    All "90 cols" references updated → 93 cols · 30 HTML pages total
+  </div>
+  
+  <div class="insight">
+    <div class="insight-tag">Website v4.0 · 2026-05-06 · v4 baseline data (legacy 80 patterns)</div>
+    Add XAU M15 + EUR (3 TFs) → 9 datasets total · 248,875 trades<br>
+    New Forex section · Tier rankings rewritten · Strategy adds EUR module · Vol inversion 3 profiles
+  </div>
+  
+  <div class="insight">
+    <div class="insight-tag">Website v3.0 · 2026-05-06</div>
+    Single HTML with sidebar nav (19 pages)<br>
+    Combined 5 datasets · filter + search · cross-TF analysis · tier rankings + EA blueprint
+  </div>
+  
+  <div class="insight">
+    <div class="insight-tag">v1.x · 2026-04</div>
+    Per-Dataset Reports · Separate HTML reports per dataset · SVG charts + KPIs · Initial pattern findings
+  </div>
+</section>
+</main>
+<script src="assets/app.js"></script>
+
+</body></html>

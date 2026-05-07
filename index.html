@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard · KMP Master</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Bricolage+Grotesque:wght@400;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<nav class="sidebar">
+  <div class="sidebar-brand">
+    <a class="brand-logo" href="index.html">KMP <span class="accent">Master</span></a>
+    <div class="brand-ver">EA v3.1 · 177 patterns · 93 cols</div>
+  </div>
+  
+  <input type="text" class="search-box" id="globalSearch" placeholder="ค้นหา...">
+  
+  <div class="nav-section">
+    <div class="nav-label">Overview</div>
+    <a class="tree-node lvl-0" href="index.html"><span class="arrow"></span><span class="nm">Dashboard</span></a>
+    <a class="tree-node lvl-0" href="preface.html"><span class="arrow"></span><span class="nm">คำนำ &amp; เป้าหมาย</span></a>
+  </div>
+  
+  <div class="nav-section">
+    <div class="nav-label">Datasets · v4 LEGACY</div>
+    
+    <div class="tree-node lvl-0 expandable" data-toggle="crypto-menu">
+      <span class="arrow">▶</span><span class="nm">Crypto</span><span class="badge">3</span>
+    </div>
+    <div class="tree-children" id="crypto-menu">
+      <div class="tree-node lvl-1 expandable" data-toggle="btc-menu">
+        <span class="arrow">▶</span><span class="nm">BTC/USD</span><span class="badge">99K</span>
+      </div>
+      <div class="tree-children" id="btc-menu">
+        <a class="tree-node lvl-2" href="btc-h4.html"><span class="nm">BTC H4</span><span class="badge" style="background:#10b981;color:#fff">9,474</span></a>
+        <a class="tree-node lvl-2" href="btc-h1.html"><span class="nm">BTC H1</span><span class="badge">18,638</span></a>
+        <a class="tree-node lvl-2" href="btc-m15.html"><span class="nm">BTC M15</span><span class="badge">75,677</span></a>
+      </div>
+    </div>
+    
+    <div class="tree-node lvl-0 expandable" data-toggle="metals-menu">
+      <span class="arrow">▶</span><span class="nm">Metals</span><span class="badge">3</span>
+    </div>
+    <div class="tree-children" id="metals-menu">
+      <div class="tree-node lvl-1 expandable" data-toggle="xau-menu">
+        <span class="arrow">▶</span><span class="nm">XAU/USD</span><span class="badge">70K</span>
+      </div>
+      <div class="tree-children" id="xau-menu">
+        <a class="tree-node lvl-2" href="xau-h4.html"><span class="nm">XAU H4</span><span class="badge" style="background:#10b981;color:#fff">7,077</span></a>
+        <a class="tree-node lvl-2" href="xau-h1.html"><span class="nm">XAU H1</span><span class="badge">13,319</span></a>
+        <a class="tree-node lvl-2" href="xau-m15.html"><span class="nm">XAU M15</span><span class="badge">53,098</span></a>
+      </div>
+    </div>
+    
+    <div class="tree-node lvl-0 expandable" data-toggle="forex-menu">
+      <span class="arrow">▶</span><span class="nm">Forex</span><span class="badge">3</span>
+    </div>
+    <div class="tree-children" id="forex-menu">
+      <div class="tree-node lvl-1 expandable" data-toggle="eur-menu">
+        <span class="arrow">▶</span><span class="nm">EUR/USD</span><span class="badge">79K</span>
+      </div>
+      <div class="tree-children" id="eur-menu">
+        <a class="tree-node lvl-2" href="eur-h4.html"><span class="nm">EUR H4</span><span class="badge">3,770</span></a>
+        <a class="tree-node lvl-2" href="eur-h1.html"><span class="nm">EUR H1</span><span class="badge">14,257</span></a>
+        <a class="tree-node lvl-2" href="eur-m15.html"><span class="nm">EUR M15</span><span class="badge">61,138</span></a>
+      </div>
+    </div>
+  </div>
+  
+  <div class="nav-section">
+    <div class="nav-label">Patterns · 177 (v3.1)</div>
+    <a class="tree-node lvl-0" href="patterns-encyclopedia.html"><span class="arrow"></span><span class="nm">📚 Pattern Encyclopedia</span><span class="badge">177</span></a>
+    <div class="tree-node lvl-0 expandable" data-toggle="pat-menu">
+      <span class="arrow">▶</span><span class="nm">v4 Analysis</span><span class="badge">80</span>
+    </div>
+    <div class="tree-children" id="pat-menu">
+      <a class="tree-node lvl-1" href="patterns.html"><span class="nm">All Patterns Table</span></a>
+      <a class="tree-node lvl-1" href="tier.html"><span class="nm">Tier Rankings</span></a>
+      <a class="tree-node lvl-1" href="optimal-tpsl.html"><span class="nm">Optimal TP/SL EV</span></a>
+    </div>
+  </div>
+  
+  <div class="nav-section">
+    <div class="nav-label">Analysis</div>
+    <a class="tree-node lvl-0" href="cross.html"><span class="arrow"></span><span class="nm">Cross-TF / Asset</span></a>
+    <a class="tree-node lvl-0" href="time.html"><span class="arrow"></span><span class="nm">Hour / DoW / Conf</span></a>
+    <a class="tree-node lvl-0" href="edge.html"><span class="arrow"></span><span class="nm">Edge Decay / Vol</span></a>
+  </div>
+  
+  <div class="nav-section">
+    <div class="nav-label">Strategy</div>
+    <a class="tree-node lvl-0" href="strategy.html"><span class="arrow"></span><span class="nm">EA Blueprint &amp; Risk</span></a>
+  </div>
+  
+  <div class="nav-section">
+    <div class="nav-label">EA System · v3.1</div>
+    <a class="tree-node lvl-0" href="ea-architecture.html"><span class="arrow"></span><span class="nm">⚙ EA Architecture</span></a>
+    <a class="tree-node lvl-0" href="tracking-system.html"><span class="arrow"></span><span class="nm">🎯 Tracking System</span></a>  </div>  <div class="nav-section">
+    <div class="nav-label">Reference</div>
+    <a class="tree-node lvl-0" href="reference.html"><span class="arrow"></span><span class="nm">Sources &amp; Changelog</span></a>
+  </div>
+</nav>
+
+
+<main class="main">
+<div class="breadcrumb"><span class="crumb current">Dashboard</span></div>
+
+<div class="hero">
+  <span class="hero-tag">KMP MASTER · v4 data · EA v3.1 · 177 patterns · 93 cols</span>
+  <h1 class="hero-title">Pattern <span class="accent">Harvester.</span></h1>
+  <p class="hero-desc">
+    ระบบทดสอบ trading patterns บนแพลตฟอร์ม MT5 · EA v3.1 มี <strong>177 patterns</strong> พร้อมทำงาน · 
+    เริ่มอ่านที่ <a href="preface.html" style="color:var(--blue)">คำนำ &amp; เป้าหมาย</a>
+    หรือเลือกหัวข้อจาก sidebar ซ้าย.
+  </p>
+</div>
+
+<div style="padding:14px 18px;background:rgba(245,158,11,0.08);border-left:3px solid #f59e0b;border-radius:5px;margin:14px 0;font-size:13px;line-height:1.6">
+  <strong style="color:#f59e0b">📢 Status:</strong> EA v3.1 (177 patterns · 18 cat · 93 CSV cols + execution metadata) พร้อม backtest 100% — กำลังจะรัน 9 datasets เดิม + asset ใหม่เพื่อสร้าง <strong>v6 baseline</strong>. 
+  ข้อมูลที่แสดงในเว็บนี้ส่วนใหญ่ยังเป็น <strong>v4 (80 patterns · 248K trades)</strong> · 
+  สำหรับ EA system docs ดูที่ <a href="ea-architecture.html" style="color:var(--blue)">EA Architecture</a> · 
+  <a href="patterns-encyclopedia.html" style="color:var(--blue)">Pattern Encyclopedia (177)</a> · 
+  <a href="tracking-system.html" style="color:var(--blue)">Tracking System</a>
+</div>
+
+<div class="kpis">
+  <div class="kpi blue"><div class="kpi-label">Total Trades · v4</div><div class="kpi-val blue">248,875</div><div class="kpi-sub">9 datasets · 4 months</div></div>
+  <div class="kpi"><div class="kpi-label">Patterns in EA v3.1</div><div class="kpi-val">177</div><div class="kpi-sub">18 cat · 80 tested · 97 new</div></div>
+  <div class="kpi yellow"><div class="kpi-label">Best EV-Weighted · v4</div><div class="kpi-val yellow">$617</div><div class="kpi-sub">P68 Triangle_Desc</div></div>
+  <div class="kpi green"><div class="kpi-label">Best Single · v4</div><div class="kpi-val green">$9,895</div><div class="kpi-sub">P77 in XAU M15</div></div>
+  <div class="kpi cyan"><div class="kpi-label">v6 Pipeline</div><div class="kpi-val cyan">177×9+</div><div class="kpi-sub">backtest pending</div></div>
+</div>
+
+<section class="section">
+  <div class="section-head"><span class="section-num">01</span><h2 class="section-title">Datasets Overview · v4 LEGACY (9 datasets)</h2></div>
+  
+  <div style="padding:12px 16px;background:rgba(148,163,184,0.08);border-left:3px solid #94a3b8;border-radius:5px;margin:0 0 14px;font-size:12.5px;line-height:1.6">
+    <strong style="color:#94a3b8">📦 LEGACY:</strong> ตัวเลขจาก v4 backtest (80 patterns × 9 datasets · เสร็จก่อน 2026-05-06) · เก็บไว้เป็น historical reference · ระบบใหม่ (EA v3.1 · 177 patterns) ยังไม่ backtest
+  </div>
+  <div class="kpis">
+    <div class="kpi green"><div class="kpi-label">BTC H4</div><div class="kpi-val green">+$498K</div><div class="kpi-sub">5,156 · 50.5% WR · $97 avg</div></div>
+    <div class="kpi red"><div class="kpi-label">BTC H1</div><div class="kpi-val red">-$2.35M</div><div class="kpi-sub">18,638 · 49.2% WR · -$126</div></div>
+    <div class="kpi red"><div class="kpi-label">BTC M15</div><div class="kpi-val red">-$4.32M</div><div class="kpi-sub">75,677 · 49.3% WR · -$57</div></div>
+    <div class="kpi yellow"><div class="kpi-label">XAU H4</div><div class="kpi-val yellow">+$1.54M</div><div class="kpi-sub">3,822 · 51.4% WR · $403 avg</div></div>
+    <div class="kpi yellow"><div class="kpi-label">XAU H1</div><div class="kpi-val yellow">+$267K</div><div class="kpi-sub">13,319 · 50.1% WR · $20 avg</div></div>
+    <div class="kpi red"><div class="kpi-label">XAU M15</div><div class="kpi-val red">-$6.91M</div><div class="kpi-sub">53,098 · 49.7% WR · -$130</div></div>
+    <div class="kpi red"><div class="kpi-label">EUR H4</div><div class="kpi-val red">-$132K</div><div class="kpi-sub">3,770 · 48.2% WR · -$35 avg</div></div>
+    <div class="kpi red"><div class="kpi-label">EUR H1</div><div class="kpi-val red">-$440K</div><div class="kpi-sub">14,257 · 48.4% WR · -$31 avg</div></div>
+    <div class="kpi red"><div class="kpi-label">EUR M15</div><div class="kpi-val red">-$1.83M</div><div class="kpi-sub">61,138 · 48.1% WR · -$30 avg</div></div>
+  </div>
+  
+  <div class="kpis" style="margin-top:24px">
+    <div class="kpi green"><div class="kpi-label">XAU Aggregate</div><div class="kpi-val">-$5.10M</div><div class="kpi-sub">3 datasets · M15 dragged it down</div></div>
+    <div class="kpi red"><div class="kpi-label">BTC Aggregate</div><div class="kpi-val red">-$6.18M</div><div class="kpi-sub">3 datasets</div></div>
+    <div class="kpi red"><div class="kpi-label">EUR Aggregate</div><div class="kpi-val red">-$2.40M</div><div class="kpi-sub">3 datasets · all negative</div></div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head"><span class="section-num">02</span><h2 class="section-title">Top Findings · v4 LEGACY (9 datasets · 80 patterns)</h2></div>
+  
+  <div style="padding:12px 16px;background:rgba(148,163,184,0.08);border-left:3px solid #94a3b8;border-radius:5px;margin:0 0 14px;font-size:12.5px;line-height:1.6">
+    <strong style="color:#94a3b8">📦 LEGACY findings:</strong> ผลการทดสอบจาก v4 (Phase 1 EA · 80 patterns) · เก็บไว้เป็น reference · จะถูก superseded เมื่อ v6 backtest เสร็จ (EA v3.1 · 177 patterns)
+  </div>
+  
+  <div class="insight">
+    <div class="insight-tag">Headline 1 — H4 = Best Timeframe</div>
+    <strong>H4 aggregate +$1.91M · H1 -$2.52M · M15 -$13.06M</strong><br>
+    เมื่อรวม 9 datasets · M15 frequency สูงแต่ EV ติดลบหนัก · H4 ยังเป็น sweet spot
+  </div>
+
+  <div class="insight yellow">
+    <div class="insight-tag">Headline 2 — Best Single Pattern·Dataset</div>
+    <strong>P77 Mitigation_Block_Bull (XAU M15)</strong> · 87.8% WR (n=41) · <strong>$9,895 avg PnL</strong><br>
+    แซงหน้า P49 Trendline_Bounce_Long (XAU H1) ที่ทำ $5,404 ในเวอร์ชัน v3
+  </div>
+
+  <div class="insight blue">
+    <div class="insight-tag">Headline 3 — Surviving Universals (Top 4 by EV-weighted)</div>
+    <strong>P68 Triangle_Desc · P59 Failed_Breakout_Long · P74 Liq_Grab_Bear · P79 POC_Bounce_Long</strong><br>
+    Best EV-weighted across all 9 ds: P68 = $617 · P59 = $345 · P74 = $264 · P79 = $222
+  </div>
+
+  <div class="insight cyan">
+    <div class="insight-tag">Headline 4 — XAU M15 Stars</div>
+    <strong>P77 Mit_Bull 87.8% · P1 MultiRej_Long 74% (n=181) · P41 Supply_Reject 64.1% · P63 Triple_Bottom 61.4%</strong><br>
+    XAU M15 มี star patterns เด่น แม้ aggregate ติดลบ · selective application = profitable
+  </div>
+
+  <div class="insight warn">
+    <div class="insight-tag">Headline 5 — Asset-Specific Vol Profile (CRITICAL)</div>
+    <strong>BTC: HIGH vol = best</strong> ·
+    <strong>XAU: LOW vol = best</strong> ·
+    <strong>EUR: NORMAL vol = best</strong><br>
+    EUR profile ต่างจาก BTC และ XAU ชัดเจน · ต้องมี per-asset vol filter ใน production EA
+  </div>
+
+  <div class="insight danger">
+    <div class="insight-tag">Headline 6 — EUR = Bad Hunting Ground</div>
+    <strong>EUR ขาดทุนทุก timeframe</strong> · H4 -$132K · H1 -$440K · M15 -$1.83M<br>
+    Patterns ส่วนใหญ่ไม่ทำงานบน EUR · ใช้ XAU H4/H1 และ BTC H4 เป็นหลัก · EUR เป็น secondary
+  </div>
+
+  <div class="insight danger">
+    <div class="insight-tag">Headline 7 — Universal Blacklist (14 patterns)</div>
+    <strong>Negative EV ในทุก 9 datasets:</strong>
+    P8 TwoBar_Reversal · P9 BB_Touch_Reversal · P11 EMA_Bounce · P12 EMA_Cross ·
+    P16 Stoch_Cross · P17 Volume_Spike_Rev · P18 Pivot_Bounce ·
+    P19 Round_Number · P20 Inside_Bar_Break · P21 Doji<br><br>
+    Indicator-based patterns (RSI, MACD, EMA cross) ใช้ไม่ได้กับ asset ใดเลย
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head"><span class="section-num">03</span><h2 class="section-title">Current Status</h2></div>
+  <div class="status-card" style="background:linear-gradient(135deg,rgba(16,185,129,0.08),rgba(59,130,246,0.05));border:1px solid rgba(16,185,129,0.3);border-radius:8px;padding:20px;margin-bottom:24px">
+    <div style="display:flex;gap:24px;flex-wrap:wrap;align-items:center">
+      <div style="flex:1;min-width:280px">
+        <div style="font-size:13px;color:#10b981;font-weight:700;letter-spacing:0.5px">✅ READY · EA v3.1 BUILD COMPLETE</div>
+        <div style="font-size:18px;font-weight:600;margin-top:4px;color:var(--txt)">177 patterns · 93 CSV cols · WeekendMode AUTO</div>
+        <div style="font-size:13px;color:var(--txt-d);margin-top:6px">Phase 1 + Phase 2 + Phase 3 ทำงานพร้อมกัน · academic standards (Bulkowski/Nison/Carney/ICT/Wyckoff/Hosoda)</div>
+      </div>
+      <div style="flex:1;min-width:280px">
+        <div style="font-size:13px;color:#3b82f6;font-weight:700;letter-spacing:0.5px">🟡 NEXT · BACKTEST 6 DATASETS</div>
+        <div style="font-size:18px;font-weight:600;margin-top:4px;color:var(--txt)">BTC · EUR · XAU × H1 · H4</div>
+        <div style="font-size:13px;color:var(--txt-d);margin-top:6px">รัน Strategy Tester ด้วย EA v3.1 · เก็บ CSV 93 cols · generate v6 master_data.json → update website pages</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head"><span class="section-num">04</span><h2 class="section-title">Quick Navigation</h2></div>
+  <div class="kpis">
+    <a class="kpi blue" href="patterns-encyclopedia.html" style="text-decoration:none">
+      <div class="kpi-label">📚 Pattern Encyclopedia</div>
+      <div class="kpi-val blue">177</div>
+      <div class="kpi-sub">all patterns · v3.1</div>
+    </a>
+    <a class="kpi cyan" href="ea-architecture.html" style="text-decoration:none">
+      <div class="kpi-label">⚙ EA Architecture</div>
+      <div class="kpi-val cyan">→</div>
+      <div class="kpi-sub">system docs · v3.1</div>
+    </a>
+    <a class="kpi yellow" href="tracking-system.html" style="text-decoration:none">
+      <div class="kpi-label">🎯 Tracking System</div>
+      <div class="kpi-val yellow">→</div>
+      <div class="kpi-sub">5 phases · 93 cols CSV</div>
+    </a>
+    <a class="kpi green" href="strategy.html" style="text-decoration:none">
+      <div class="kpi-label">EA Blueprint · v4 data</div>
+      <div class="kpi-val green">→</div>
+      <div class="kpi-sub">production design</div>
+    </a>
+    <a class="kpi yellow" href="xau-h4.html" style="text-decoration:none">
+      <div class="kpi-label">XAU H4 (best dataset)</div>
+      <div class="kpi-val yellow">→</div>
+      <div class="kpi-sub">$403 avg/trade · v4</div>
+    </a>
+    <a class="kpi" href="xau-m15.html" style="text-decoration:none">
+      <div class="kpi-label">XAU M15 · v4</div>
+      <div class="kpi-val">→</div>
+      <div class="kpi-sub">53,098 trades · star P77</div>
+    </a>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head"><span class="section-num">04</span><h2 class="section-title">v6 Baseline · Datasets Overview (2 datasets · 16,551 trades)</h2></div>
+  <p class="lead-desc">ผลรัน Strategy Tester ด้วย EA v3.1 — เก็บทุกอย่างจริง (real spreads · slippage · 93 CSV cols)</p>
+  <div class="kpis">
+    <a class="kpi" href="btc-h4.html" style="text-decoration:none;border-color:#f7931a">
+      <div class="kpi-label" style="color:#f7931a">BTCUSD · H4</div>
+      <div class="kpi-val" style="color:#f7931a">9,474</div>
+      <div class="kpi-sub">trades · WR 50.5% · PF 1.11</div>
+      <div style="margin-top:8px;font-size:13px">
+        <span class="tg" style="font-weight:600">+2,144 ATR</span>
+        <span style="color:var(--txt-d)">·</span>
+        <span class="tg" style="font-weight:600">$+1,741,575</span>
+      </div>
+    </a>
+    <a class="kpi" href="xau-h4.html" style="text-decoration:none;border-color:#fbbf24">
+      <div class="kpi-label" style="color:#fbbf24">XAUUSD · H4</div>
+      <div class="kpi-val" style="color:#fbbf24">7,077</div>
+      <div class="kpi-sub">trades · WR 48.7% · PF 1.07</div>
+      <div style="margin-top:8px;font-size:13px">
+        <span class="tg" style="font-weight:600">+1,185 ATR</span>
+        <span style="color:var(--txt-d)">·</span>
+        <span class="tr" style="font-weight:600">$-1,628,908</span>
+      </div>
+    </a>
+    <div class="kpi" style="border-color:#475569;background:rgba(30,41,59,0.4)">
+      <div class="kpi-label" style="color:#94a3b8">⏳ Pending v6</div>
+      <div class="kpi-val" style="color:#94a3b8;font-size:18px">EUR-H1/H4</div>
+      <div class="kpi-sub">BTC-H1 · XAU-H1 (4 datasets ที่เหลือ)</div>
+      <div style="margin-top:8px;font-size:12px;color:var(--txt-d)">รัน Strategy Tester เพิ่มเพื่อ complete v6 baseline</div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head"><span class="section-num">05</span><h2 class="section-title">Top Findings · v6 Baseline (preliminary · 2/6 datasets)</h2></div>
+  <p class="lead-desc">⚠️ ผลเบื้องต้นจาก 2 datasets — รอครบ 6 datasets แล้วจึงคัด Tier-A patterns สำหรับ Production EA</p>
+  <div class="card">
+    <h3 style="margin-top:0">🏆 Top performers (ทั้ง 2 datasets)</h3>
+    <ul class="bullet">
+      <li><strong>P141</strong> Ichimoku_Kumo_Twist_Bear (Cat L) — +785 ATR รวม · n=244</li>
+      <li><strong>P46</strong> Breaker_Block_Bear (Cat C) — +385 ATR รวม · n=544</li>
+      <li><strong>P140</strong> Ichimoku_Kumo_Twist_Bull (Cat L) — +381 ATR รวม · n=226</li>
+      <li><strong>P71</strong> FVG_Bull (Cat F) — +323 ATR รวม · n=683</li>
+      <li><strong>P52</strong> LHLL (Cat D) — +268 ATR รวม · n=326</li>
+    </ul>
+    <h3>📉 Worst (ทั้งสอง datasets)</h3>
+    <ul class="bullet">
+      <li><strong>P106</strong> CVD_Div_Bull (Cat I) — -263 ATR รวม · n=147</li>
+      <li><strong>P120</strong> Sunday_Gap_Fill_Long (Cat J) — -237 ATR รวม · n=75</li>
+      <li><strong>P121</strong> Sunday_Gap_Fill_Short (Cat J) — -230 ATR รวม · n=70</li>
+      <li><strong>P174</strong> Three_Drives_Bear (Cat Q) — -164 ATR รวม · n=109</li>
+      <li><strong>P171</strong> ABCD_Bull (Cat Q) — -163 ATR รวม · n=86</li>
+    </ul>
+    <p style="margin-top:14px;color:var(--txt-d);font-size:13px">
+      💡 <strong>สถานะปัจจุบัน:</strong> ผลเบื้องต้น · ต้องครบ 6 datasets (BTC/EUR/XAU × H1/H4) ก่อนคัด Tier-A patterns สำหรับ Production EA
+    </p>
+  </div>
+</section>
+
+</main>
+
+<script src="assets/app.js"></script>
+</body>
+</html>

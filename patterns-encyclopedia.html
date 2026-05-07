@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="th"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pattern Encyclopedia · KMP Master</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Bricolage+Grotesque:wght@400;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<style>
+  .enc-toc { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 8px; margin: 24px 0; }
+  .enc-toc-item { padding: 12px 14px; background: var(--bg-1); border: 1px solid var(--bdr); border-radius: 8px; cursor: pointer; transition: all 0.15s; }
+  .enc-toc-item:hover { background: var(--bg-2); border-color: var(--accent); }
+  .enc-toc-item .cat { font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 12px; color: var(--accent); }
+  .enc-toc-item .nm { font-size: 13px; font-weight: 600; margin-top: 4px; }
+  .enc-toc-item .meta { font-size: 11px; color: var(--txt-d); margin-top: 2px; }
+  
+  .phase-banner { padding: 14px 18px; border-radius: 10px; margin: 18px 0 12px; font-weight: 600; }
+  .phase-banner.p1 { background: rgba(99,102,241,0.08); border-left: 3px solid #6366f1; color: #6366f1; }
+  .phase-banner.p2 { background: rgba(34,197,94,0.08); border-left: 3px solid #22c55e; color: #22c55e; }
+  .phase-banner.p3 { background: rgba(245,158,11,0.08); border-left: 3px solid #f59e0b; color: #f59e0b; }
+  
+  .cat-section { margin: 24px 0 36px; }
+  .cat-header { display: flex; align-items: baseline; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--bdr); margin-bottom: 16px; }
+  .cat-letter { font-family: 'JetBrains Mono', monospace; font-weight: 800; font-size: 24px; color: var(--accent); }
+  .cat-name { font-weight: 700; font-size: 16px; }
+  .cat-meta { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--txt-d); margin-left: auto; }
+  .cat-desc { font-size: 13px; color: var(--txt-d); margin-bottom: 16px; line-height: 1.5; }
+  
+  .pat-grid { display: grid; grid-template-columns: 1fr; gap: 8px; }
+  .pat-card { padding: 14px 16px; background: var(--bg-1); border: 1px solid var(--bdr); border-radius: 8px; transition: all 0.15s; }
+  .pat-card:hover { border-color: var(--accent); }
+  .pat-head { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; flex-wrap: wrap; }
+  .pat-pid { font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 13px; color: var(--accent); min-width: 48px; }
+  .pat-name { font-weight: 600; font-size: 14px; flex: 1; }
+  .pat-dir { font-family: 'JetBrains Mono', monospace; font-size: 11px; padding: 2px 8px; border-radius: 4px; font-weight: 700; }
+  .pat-dir.long { background: rgba(34,197,94,0.12); color: #22c55e; }
+  .pat-dir.short { background: rgba(239,68,68,0.12); color: #ef4444; }
+  .pat-dir.agnostic { background: rgba(148,163,184,0.12); color: #94a3b8; }
+  .pat-detail { font-size: 12.5px; color: var(--txt); line-height: 1.6; }
+  .pat-theory { color: var(--txt-d); margin-top: 6px; font-size: 12px; font-style: italic; line-height: 1.5; }
+  .pat-detection { font-family: 'JetBrains Mono', monospace; font-size: 11.5px; color: var(--txt); background: var(--bg-0); padding: 6px 10px; border-radius: 5px; margin-top: 8px; }
+  
+  .stats-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin: 18px 0; }
+  .stat-card { padding: 14px 16px; background: var(--bg-1); border: 1px solid var(--bdr); border-radius: 8px; text-align: center; }
+  .stat-val { font-family: 'JetBrains Mono', monospace; font-weight: 800; font-size: 24px; color: var(--accent); }
+  .stat-lbl { font-size: 11px; color: var(--txt-d); margin-top: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
+  
+  .filter-row { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin: 16px 0; padding: 12px; background: var(--bg-1); border-radius: 8px; border: 1px solid var(--bdr); }
+  .filter-row label { font-size: 11px; color: var(--txt-d); min-width: 50px; }
+  .pat-card.hidden { display: none; }
+  .cat-section.empty { display: none; }
+  
+  .legend { display: flex; gap: 16px; flex-wrap: wrap; font-size: 11px; color: var(--txt-d); margin: 8px 0 18px; }
+  .legend-item { display: flex; gap: 6px; align-items: center; }
+  .legend-swatch { display: inline-block; width: 12px; height: 12px; border-radius: 3px; }
+</style>
+</head><body>
+<nav class="sidebar">
+  <div class="sidebar-brand">
+    <a class="brand-logo" href="index.html">KMP <span class="accent">Master</span></a>
+    <div class="brand-ver">EA v3.1 · 177 patterns · 93 cols</div>
+  </div>
+  
+  <input type="text" class="search-box" id="globalSearch" placeholder="ค้นหา...">
+  
+  <div class="nav-section">
+    <div class="nav-label">Overview</div>
+    <a class="tree-node lvl-0" href="index.html"><span class="arrow"></span><span class="nm">Dashboard</span></a>
+    <a class="tree-node lvl-0" href="preface.html"><span class="arrow"></span><span class="nm">คำนำ &amp; เป้าหมาย</span></a>
+  </div>
+  
+  <div class="nav-section">
+    <div class="nav-label">Datasets · v4 LEGACY</div>
+    
+    <div class="tree-node lvl-0 expandable" data-toggle="crypto-menu">
+      <span class="arrow">▶</span><span class="nm">Crypto</span><span class="badge">3</span>
+    </div>
+    <div class="tree-children" id="crypto-menu">
+      <div class="tree-node lvl-1 expandable" data-toggle="btc-menu">
+        <span class="arrow">▶</span><span class="nm">BTC/USD</span><span class="badge">99K</span>
+      </div>
+      <div class="tree-children" id="btc-menu">
+        <a class="tree-node lvl-2" href="btc-h4.html"><span class="nm">BTC H4</span><span class="badge" style="background:#10b981;color:#fff">9,474</span></a>
+        <a class="tree-node lvl-2" href="btc-h1.html"><span class="nm">BTC H1</span><span class="badge">18,638</span></a>
+        <a class="tree-node lvl-2" href="btc-m15.html"><span class="nm">BTC M15</span><span class="badge">75,677</span></a>
+      </div>
+    </div>
+    
+    <div class="tree-node lvl-0 expandable" data-toggle="metals-menu">
+      <span class="arrow">▶</span><span class="nm">Metals</span><span class="badge">3</span>
+    </div>
+    <div class="tree-children" id="metals-menu">
+      <div class="tree-node lvl-1 expandable" data-toggle="xau-menu">
+        <span class="arrow">▶</span><span class="nm">XAU/USD</span><span class="badge">70K</span>
+      </div>
+      <div class="tree-children" id="xau-menu">
+        <a class="tree-node lvl-2" href="xau-h4.html"><span class="nm">XAU H4</span><span class="badge" style="background:#10b981;color:#fff">7,077</span></a>
+        <a class="tree-node lvl-2" href="xau-h1.html"><span class="nm">XAU H1</span><span class="badge">13,319</span></a>
+        <a class="tree-node lvl-2" href="xau-m15.html"><span class="nm">XAU M15</span><span class="badge">53,098</span></a>
+      </div>
+    </div>
+    
+    <div class="tree-node lvl-0 expandable" data-toggle="forex-menu">
+      <span class="arrow">▶</span><span class="nm">Forex</span><span class="badge">3</span>
+    </div>
+    <div class="tree-children" id="forex-menu">
+      <div class="tree-node lvl-1 expandable" data-toggle="eur-menu">
+        <span class="arrow">▶</span><span class="nm">EUR/USD</span><span class="badge">79K</span>
+      </div>
+      <div class="tree-children" id="eur-menu">
+        <a class="tree-node lvl-2" href="eur-h4.html"><span class="nm">EUR H4</span><span class="badge">3,770</span></a>
+        <a class="tree-node lvl-2" href="eur-h1.html"><span class="nm">EUR H1</span><span class="badge">14,257</span></a>
+        <a class="tree-node lvl-2" href="eur-m15.html"><span class="nm">EUR M15</span><span class="badge">61,138</span></a>
+      </div>
+    </div>
+  </div>
+  
+  <div class="nav-section">
+    <div class="nav-label">Patterns · 177 (v3.1)</div>
+    <a class="tree-node lvl-0" href="patterns-encyclopedia.html"><span class="arrow"></span><span class="nm">📚 Pattern Encyclopedia</span><span class="badge">177</span></a>
+    <div class="tree-node lvl-0 expandable" data-toggle="pat-menu">
+      <span class="arrow">▶</span><span class="nm">v4 Analysis</span><span class="badge">80</span>
+    </div>
+    <div class="tree-children" id="pat-menu">
+      <a class="tree-node lvl-1" href="patterns.html"><span class="nm">All Patterns Table</span></a>
+      <a class="tree-node lvl-1" href="tier.html"><span class="nm">Tier Rankings</span></a>
+      <a class="tree-node lvl-1" href="optimal-tpsl.html"><span class="nm">Optimal TP/SL EV</span></a>
+    </div>
+  </div>
+  
+  <div class="nav-section">
+    <div class="nav-label">Analysis</div>
+    <a class="tree-node lvl-0" href="cross.html"><span class="arrow"></span><span class="nm">Cross-TF / Asset</span></a>
+    <a class="tree-node lvl-0" href="time.html"><span class="arrow"></span><span class="nm">Hour / DoW / Conf</span></a>
+    <a class="tree-node lvl-0" href="edge.html"><span class="arrow"></span><span class="nm">Edge Decay / Vol</span></a>
+  </div>
+  
+  <div class="nav-section">
+    <div class="nav-label">Strategy</div>
+    <a class="tree-node lvl-0" href="strategy.html"><span class="arrow"></span><span class="nm">EA Blueprint &amp; Risk</span></a>
+  </div>
+  
+  <div class="nav-section">
+    <div class="nav-label">EA System · v3.1</div>
+    <a class="tree-node lvl-0" href="ea-architecture.html"><span class="arrow"></span><span class="nm">⚙ EA Architecture</span></a>
+    <a class="tree-node lvl-0" href="tracking-system.html"><span class="arrow"></span><span class="nm">🎯 Tracking System</span></a>  </div>  <div class="nav-section">
+    <div class="nav-label">Reference</div>
+    <a class="tree-node lvl-0" href="reference.html"><span class="arrow"></span><span class="nm">Sources &amp; Changelog</span></a>
+  </div>
+</nav>
+
+<main class="main">
+<div class="breadcrumb">
+  <a href="index.html" class="crumb">Dashboard</a>
+  <span class="sep">▸</span>
+  <a href="reference.html" class="crumb">Reference</a>
+  <span class="sep">▸</span>
+  <span class="crumb current">Pattern Encyclopedia</span>
+</div>
+
+<div class="hero">
+  <span class="hero-tag">Pattern Encyclopedia · v3.1 EA</span>
+  <h1 class="hero-title">177 <span class="accent">Patterns.</span></h1>
+  <p class="hero-desc">
+    คลังรวม 177 patterns ใน 18 categories · ทุกแพทเทิลมีทฤษฎี + detection logic + bias direction
+    เก็บไว้เป็น reference ถ้า EA หาย/พัง สามารถใช้สร้างใหม่ได้
+  </p>
+</div>
+
+<div class="stats-row">
+  <div class="stat-card">
+    <div class="stat-val">177</div>
+    <div class="stat-lbl">Total Patterns</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-val">18</div>
+    <div class="stat-lbl">Categories (A-R)</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-val">3</div>
+    <div class="stat-lbl">Research Phases</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-val" id="stat-long" style="color:#22c55e">79</div>
+    <div class="stat-lbl">Long-biased</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-val" id="stat-short" style="color:#ef4444">77</div>
+    <div class="stat-lbl">Short-biased</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-val" id="stat-agnostic" style="color:#94a3b8">21</div>
+    <div class="stat-lbl">Direction-agnostic</div>
+  </div>
+</div>
+
+<section>
+  <div class="section-head"><span class="section-num">01</span><h2 class="section-title">Filters</h2></div>
+  <div class="filter-row">
+    <label>Search:</label>
+    <input type="text" id="searchInput" placeholder="ค้นหา pattern (name, ID, category)..." style="flex:1; min-width:240px; padding:8px 12px; border:1px solid var(--bdr); border-radius:5px; background:var(--bg-0); color:var(--txt);">
+  </div>
+  <div class="filter-row">
+    <label>Phase:</label>
+    <button class="filter-btn phase-filter active" data-phase="all">All</button>
+    <button class="filter-btn phase-filter" data-phase="1">Phase 1 (P1-P80)</button>
+    <button class="filter-btn phase-filter" data-phase="2">Phase 2 (P81-P125)</button>
+    <button class="filter-btn phase-filter" data-phase="3">Phase 3 (P126-P177)</button>
+  </div>
+  <div class="filter-row">
+    <label>Direction:</label>
+    <button class="filter-btn dir-filter active" data-dir="all">All</button>
+    <button class="filter-btn dir-filter" data-dir="1">Long</button>
+    <button class="filter-btn dir-filter" data-dir="-1">Short</button>
+    <button class="filter-btn dir-filter" data-dir="0">Agnostic</button>
+  </div>
+</section>
+
+<section>
+  <div class="section-head"><span class="section-num">02</span><h2 class="section-title">Quick Navigation</h2></div>
+  <div class="enc-toc" id="catToc"></div>
+</section>
+
+<section id="patternList">
+  <!-- Populated by JS -->
+</section>
+
+</main>
+
+<script src="assets/app.js"></script>
+<script>
+const PHASE_NAMES = {
+  1: "Phase 1 — Original + Theoretical (P1-P80)",
+  2: "Phase 2 — Statistical + Advanced (P81-P125)",
+  3: "Phase 3 — Multi-TF + Modern (P126-P177)"
+};
+
+const CAT_TO_PHASE = {
+  "A":1,"B":1,"C":1,"D":1,"E":1,"F":1,
+  "G":2,"H":2,"I":2,"J":2,
+  "K":3,"L":3,"M":3,"N":3,"O":3,"P":3,"Q":3,"R":3
+};
+
+let allPatterns = [];
+let categoryInfo = {};
+let currentPhaseFilter = "all";
+let currentDirFilter = "all";
+let currentSearch = "";
+
+async function loadData() {
+  const r = await fetch("data/patterns.json");
+  const d = await r.json();
+  allPatterns = d.patterns;
+  categoryInfo = d.meta.categories;
+  
+  // Update stats
+  const longCount = allPatterns.filter(p => p.direction === 1).length;
+  const shortCount = allPatterns.filter(p => p.direction === -1).length;
+  const agnCount = allPatterns.filter(p => p.direction === 0).length;
+  document.getElementById('stat-long').textContent = longCount;
+  document.getElementById('stat-short').textContent = shortCount;
+  document.getElementById('stat-agnostic').textContent = agnCount;
+  
+  buildToc();
+  renderPatterns();
+}
+
+function buildToc() {
+  const toc = document.getElementById('catToc');
+  toc.innerHTML = "";
+  Object.entries(categoryInfo).forEach(([letter, info]) => {
+    const item = document.createElement('div');
+    item.className = 'enc-toc-item';
+    item.onclick = () => {
+      document.getElementById(`cat-${letter}`).scrollIntoView({behavior:'smooth', block:'start'});
+    };
+    item.innerHTML = `
+      <div class="cat">Cat ${letter} · Phase ${info.phase}</div>
+      <div class="nm">${info.name}</div>
+      <div class="meta">${info.range} · ${info.count} patterns</div>
+    `;
+    toc.appendChild(item);
+  });
+}
+
+function renderPatterns() {
+  const container = document.getElementById('patternList');
+  container.innerHTML = "";
+  
+  let lastPhase = null;
+  Object.entries(categoryInfo).forEach(([letter, info]) => {
+    // Phase banner
+    if (info.phase !== lastPhase) {
+      const banner = document.createElement('div');
+      banner.className = `phase-banner p${info.phase}`;
+      banner.textContent = PHASE_NAMES[info.phase];
+      container.appendChild(banner);
+      lastPhase = info.phase;
+    }
+    
+    // Cat section
+    const sec = document.createElement('div');
+    sec.className = 'cat-section';
+    sec.id = `cat-${letter}`;
+    
+    const head = document.createElement('div');
+    head.className = 'cat-header';
+    head.innerHTML = `
+      <span class="cat-letter">Cat ${letter}</span>
+      <span class="cat-name">${info.name}</span>
+      <span class="cat-meta">${info.range} · ${info.count} patterns</span>
+    `;
+    sec.appendChild(head);
+    
+    const desc = document.createElement('div');
+    desc.className = 'cat-desc';
+    desc.textContent = info.description;
+    sec.appendChild(desc);
+    
+    const grid = document.createElement('div');
+    grid.className = 'pat-grid';
+    
+    const cats = allPatterns.filter(p => p.category === letter);
+    cats.forEach(p => grid.appendChild(buildPatternCard(p)));
+    sec.appendChild(grid);
+    
+    container.appendChild(sec);
+  });
+  
+  applyFilters();
+}
+
+function buildPatternCard(p) {
+  const div = document.createElement('div');
+  div.className = 'pat-card';
+  div.dataset.pid = p.id;
+  div.dataset.cat = p.category;
+  div.dataset.dir = p.direction;
+  div.dataset.phase = CAT_TO_PHASE[p.category];
+  div.dataset.search = `${p.id} ${p.name} ${p.short_name||''} ${p.theory||''} ${p.detection||''} ${p.category}`.toLowerCase();
+  
+  const dirClass = p.direction === 1 ? "long" : (p.direction === -1 ? "short" : "agnostic");
+  const dirLabel = p.direction === 1 ? "LONG" : (p.direction === -1 ? "SHORT" : "AGNOSTIC");
+  
+  let theoryHtml = "";
+  if (p.theory && p.theory.length > 5) {
+    theoryHtml = `<div class="pat-theory">📖 ${escapeHtml(p.theory)}</div>`;
+  }
+  
+  let detectionHtml = "";
+  if (p.detection && p.detection.length > 5) {
+    detectionHtml = `<div class="pat-detection">⚙ Detection: ${escapeHtml(p.detection)}</div>`;
+  }
+  
+  div.innerHTML = `
+    <div class="pat-head">
+      <span class="pat-pid">P${p.id}</span>
+      <span class="pat-name">${escapeHtml(p.short_name || p.name)}</span>
+      <span class="pat-dir ${dirClass}">${dirLabel}</span>
+    </div>
+    <div class="pat-detail">
+      <code style="font-size:11px;color:var(--txt-d)">${escapeHtml(p.name)}</code>
+      ${theoryHtml}
+      ${detectionHtml}
+    </div>
+  `;
+  return div;
+}
+
+function escapeHtml(s) {
+  if (!s) return "";
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function applyFilters() {
+  const q = currentSearch.toLowerCase();
+  document.querySelectorAll('.pat-card').forEach(card => {
+    const matchesPhase = currentPhaseFilter === "all" || card.dataset.phase === currentPhaseFilter;
+    const matchesDir = currentDirFilter === "all" || card.dataset.dir === currentDirFilter;
+    const matchesSearch = !q || card.dataset.search.includes(q);
+    card.classList.toggle('hidden', !(matchesPhase && matchesDir && matchesSearch));
+  });
+  
+  // Hide empty cat sections
+  document.querySelectorAll('.cat-section').forEach(sec => {
+    const visibleCards = sec.querySelectorAll('.pat-card:not(.hidden)').length;
+    sec.classList.toggle('empty', visibleCards === 0);
+  });
+}
+
+document.querySelectorAll('.phase-filter').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.phase-filter').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    currentPhaseFilter = btn.dataset.phase;
+    applyFilters();
+  });
+});
+
+document.querySelectorAll('.dir-filter').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.dir-filter').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    currentDirFilter = btn.dataset.dir;
+    applyFilters();
+  });
+});
+
+document.getElementById('searchInput').addEventListener('input', e => {
+  currentSearch = e.target.value;
+  applyFilters();
+});
+
+loadData();
+</script>
+</body></html>

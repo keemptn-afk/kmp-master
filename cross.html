@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="th"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cross Analysis · KMP Master</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Bricolage+Grotesque:wght@400;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head><body>
+<nav class="sidebar">
+  <div class="sidebar-brand">
+    <a class="brand-logo" href="index.html">KMP <span class="accent">Master</span></a>
+    <div class="brand-ver">EA v3.1 · 177 patterns · 93 cols</div>
+  </div>
+  
+  <input type="text" class="search-box" id="globalSearch" placeholder="ค้นหา...">
+  
+  <div class="nav-section">
+    <div class="nav-label">Overview</div>
+    <a class="tree-node lvl-0" href="index.html"><span class="arrow"></span><span class="nm">Dashboard</span></a>
+    <a class="tree-node lvl-0" href="preface.html"><span class="arrow"></span><span class="nm">คำนำ &amp; เป้าหมาย</span></a>
+  </div>
+  
+  <div class="nav-section">
+    <div class="nav-label">Datasets · v4 LEGACY</div>
+    
+    <div class="tree-node lvl-0 expandable" data-toggle="crypto-menu">
+      <span class="arrow">▶</span><span class="nm">Crypto</span><span class="badge">3</span>
+    </div>
+    <div class="tree-children" id="crypto-menu">
+      <div class="tree-node lvl-1 expandable" data-toggle="btc-menu">
+        <span class="arrow">▶</span><span class="nm">BTC/USD</span><span class="badge">99K</span>
+      </div>
+      <div class="tree-children" id="btc-menu">
+        <a class="tree-node lvl-2" href="btc-h4.html"><span class="nm">BTC H4</span><span class="badge" style="background:#10b981;color:#fff">9,474</span></a>
+        <a class="tree-node lvl-2" href="btc-h1.html"><span class="nm">BTC H1</span><span class="badge">18,638</span></a>
+        <a class="tree-node lvl-2" href="btc-m15.html"><span class="nm">BTC M15</span><span class="badge">75,677</span></a>
+      </div>
+    </div>
+    
+    <div class="tree-node lvl-0 expandable" data-toggle="metals-menu">
+      <span class="arrow">▶</span><span class="nm">Metals</span><span class="badge">3</span>
+    </div>
+    <div class="tree-children" id="metals-menu">
+      <div class="tree-node lvl-1 expandable" data-toggle="xau-menu">
+        <span class="arrow">▶</span><span class="nm">XAU/USD</span><span class="badge">70K</span>
+      </div>
+      <div class="tree-children" id="xau-menu">
+        <a class="tree-node lvl-2" href="xau-h4.html"><span class="nm">XAU H4</span><span class="badge" style="background:#10b981;color:#fff">7,077</span></a>
+        <a class="tree-node lvl-2" href="xau-h1.html"><span class="nm">XAU H1</span><span class="badge">13,319</span></a>
+        <a class="tree-node lvl-2" href="xau-m15.html"><span class="nm">XAU M15</span><span class="badge">53,098</span></a>
+      </div>
+    </div>
+    
+    <div class="tree-node lvl-0 expandable" data-toggle="forex-menu">
+      <span class="arrow">▶</span><span class="nm">Forex</span><span class="badge">3</span>
+    </div>
+    <div class="tree-children" id="forex-menu">
+      <div class="tree-node lvl-1 expandable" data-toggle="eur-menu">
+        <span class="arrow">▶</span><span class="nm">EUR/USD</span><span class="badge">79K</span>
+      </div>
+      <div class="tree-children" id="eur-menu">
+        <a class="tree-node lvl-2" href="eur-h4.html"><span class="nm">EUR H4</span><span class="badge">3,770</span></a>
+        <a class="tree-node lvl-2" href="eur-h1.html"><span class="nm">EUR H1</span><span class="badge">14,257</span></a>
+        <a class="tree-node lvl-2" href="eur-m15.html"><span class="nm">EUR M15</span><span class="badge">61,138</span></a>
+      </div>
+    </div>
+  </div>
+  
+  <div class="nav-section">
+    <div class="nav-label">Patterns · 177 (v3.1)</div>
+    <a class="tree-node lvl-0" href="patterns-encyclopedia.html"><span class="arrow"></span><span class="nm">📚 Pattern Encyclopedia</span><span class="badge">177</span></a>
+    <div class="tree-node lvl-0 expandable" data-toggle="pat-menu">
+      <span class="arrow">▶</span><span class="nm">v4 Analysis</span><span class="badge">80</span>
+    </div>
+    <div class="tree-children" id="pat-menu">
+      <a class="tree-node lvl-1" href="patterns.html"><span class="nm">All Patterns Table</span></a>
+      <a class="tree-node lvl-1" href="tier.html"><span class="nm">Tier Rankings</span></a>
+      <a class="tree-node lvl-1" href="optimal-tpsl.html"><span class="nm">Optimal TP/SL EV</span></a>
+    </div>
+  </div>
+  
+  <div class="nav-section">
+    <div class="nav-label">Analysis</div>
+    <a class="tree-node lvl-0" href="cross.html"><span class="arrow"></span><span class="nm">Cross-TF / Asset</span></a>
+    <a class="tree-node lvl-0" href="time.html"><span class="arrow"></span><span class="nm">Hour / DoW / Conf</span></a>
+    <a class="tree-node lvl-0" href="edge.html"><span class="arrow"></span><span class="nm">Edge Decay / Vol</span></a>
+  </div>
+  
+  <div class="nav-section">
+    <div class="nav-label">Strategy</div>
+    <a class="tree-node lvl-0" href="strategy.html"><span class="arrow"></span><span class="nm">EA Blueprint &amp; Risk</span></a>
+  </div>
+  
+  <div class="nav-section">
+    <div class="nav-label">EA System · v3.1</div>
+    <a class="tree-node lvl-0" href="ea-architecture.html"><span class="arrow"></span><span class="nm">⚙ EA Architecture</span></a>
+    <a class="tree-node lvl-0" href="tracking-system.html"><span class="arrow"></span><span class="nm">🎯 Tracking System</span></a>  </div>  <div class="nav-section">
+    <div class="nav-label">Reference</div>
+    <a class="tree-node lvl-0" href="reference.html"><span class="arrow"></span><span class="nm">Sources &amp; Changelog</span></a>
+  </div>
+</nav>
+
+<main class="main">
+
+  <div class="hero">
+    <span class="hero-tag">Cross-Dataset Analysis · v6 baseline</span>
+    <h1 class="hero-title">Cross <span class="accent">Compare.</span></h1>
+    <p class="hero-desc">Patterns ที่ active ใน 2 datasets — ดูว่า edge สอดคล้องไหม (both+ = robust · mixed = asset-specific)</p>
+  </div>
+
+<section>
+  <div class="section-head"><h2 class="section-title">Cross-Active Patterns (54 patterns · n≥30 each)</h2></div>
+  <p class="lead-desc">🟢 BOTH+ = ทำกำไรทั้งสอง assets · 🔴 BOTH- = ขาดทุนทั้งสอง · 🟡 MIXED = asset-specific edge</p>
+  <div class="card" style="overflow-x:auto">
+    <table class="table compact ranked">
+      <thead><tr>
+        <th>Pattern</th><th>Cat</th>
+        <th class="r" style="background:rgba(247,147,26,0.1)">BTC N</th>
+        <th class="r" style="background:rgba(247,147,26,0.1)">BTC WR</th>
+        <th class="r" style="background:rgba(247,147,26,0.1)">BTC PnL</th>
+        <th class="r" style="background:rgba(251,191,36,0.1)">XAU N</th>
+        <th class="r" style="background:rgba(251,191,36,0.1)">XAU WR</th>
+        <th class="r" style="background:rgba(251,191,36,0.1)">XAU PnL</th>
+        <th>Signal</th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>P141</strong> Ichimoku_Kumo_Twist_Bear</td>
+          <td>Cat L</td>
+          <td class="r">135</td>
+          <td class="r">74.1%</td>
+          <td class="r tg">+622.0</td>
+          <td class="r">109</td>
+          <td class="r">45.0%</td>
+          <td class="r tg">+163.5</td>
+          <td style="text-align:center"><span style="color:#10b981;font-weight:600">🟢 BOTH+</span></td>
+        </tr>
+        <tr>
+          <td><strong>P46</strong> Breaker_Block_Bear</td>
+          <td>Cat C</td>
+          <td class="r">316</td>
+          <td class="r">57.6%</td>
+          <td class="r tg">+435.7</td>
+          <td class="r">228</td>
+          <td class="r">43.0%</td>
+          <td class="r tr">-50.5</td>
+          <td style="text-align:center"><span style="color:#f59e0b;font-weight:600">🟡 MIXED</span></td>
+        </tr>
+        <tr>
+          <td><strong>P140</strong> Ichimoku_Kumo_Twist_Bull</td>
+          <td>Cat L</td>
+          <td class="r">135</td>
+          <td class="r">50.4%</td>
+          <td class="r tr">-114.4</td>
+          <td class="r">91</td>
+          <td class="r">76.9%</td>
+          <td class="r tg">+495.5</td>
+          <td style="text-align:center"><span style="color:#f59e0b;font-weight:600">🟡 MIXED</span></td>
+        </tr>
+        <tr>
+          <td><strong>P71</strong> FVG_Bull</td>
+          <td>Cat F</td>
+          <td class="r">424</td>
+          <td class="r">49.8%</td>
+          <td class="r tg">+77.5</td>
+          <td class="r">259</td>
+          <td class="r">54.0%</td>
+          <td class="r tg">+245.5</td>
+          <td style="text-align:center"><span style="color:#10b981;font-weight:600">🟢 BOTH+</span></td>
+        </tr>
+        <tr>
+          <td><strong>P52</strong> LHLL</td>
+          <td>Cat D</td>
+          <td class="r">174</td>
+          <td class="r">53.5%</td>
+          <td class="r tg">+199.3</td>
+          <td class="r">152</td>
+          <td class="r">51.3%</td>
+          <td class="r tg">+68.9</td>
+          <td style="text-align:center"><span style="color:#10b981;font-weight:600">🟢 BOTH+</span></td>
+        </tr>
+        <tr>
+          <td><strong>P45</strong> Breaker_Block_Bull</td>
+          <td>Cat C</td>
+          <td class="r">381</td>
+          <td class="r">50.9%</td>
+          <td class="r tg">+130.5</td>
+          <td class="r">219</td>
+          <td class="r">58.9%</td>
+          <td class="r tg">+132.7</td>
+          <td style="text-align:center"><span style="color:#10b981;font-weight:600">🟢 BOTH+</span></td>
+        </tr>
+        <tr>
+          <td><strong>P51</strong> HHHL</td>
+          <td>Cat D</td>
+          <td class="r">273</td>
+          <td class="r">52.0%</td>
+          <td class="r tg">+21.2</td>
+          <td class="r">144</td>
+          <td class="r">54.2%</td>
+          <td class="r tg">+175.8</td>
+          <td style="text-align:center"><span style="color:#10b981;font-weight:600">🟢 BOTH+</span></td>
+        </tr>
+        <tr>
+          <td><strong>P54</strong> BOS_Bear</td>
+          <td>Cat D</td>
+          <td class="r">30</td>
+          <td class="r">53.3%</td>
+          <td class="r tg">+142.0</td>
+          <td class="r">32</td>
+          <td class="r">59.4%</td>
+          <td class="r tg">+42.1</td>
+          <td style="text-align:center"><span style="color:#10b981;font-weight:600">🟢 BOTH+</span></td>
+        </tr>
+        <tr>
+          <td><strong>P158</strong> Hidden_Div_Bear_RSI</td>
+          <td>Cat N</td>
+          <td class="r">56</td>
+          <td class="r">64.3%</td>
+          <td class="r tg">+172.7</td>
+          <td class="r">36</td>
+          <td class="r">52.8%</td>
+          <td class="r tr">-18.7</td>
+          <td style="text-align:center"><span style="color:#f59e0b;font-weight:600">🟡 MIXED</span></td>
+        </tr>
+        <tr>
+          <td><strong>P160</strong> Hidden_Div_Bear_MACD</td>
+          <td>Cat N</td>
+          <td class="r">54</td>
+          <td class="r">64.8%</td>
+          <td class="r tg">+174.9</td>
+          <td class="r">53</td>
+          <td class="r">43.4%</td>
+          <td class="r tr">-23.8</td>
+          <td style="text-align:center"><span style="color:#f59e0b;font-weight:600">🟡 MIXED</span></td>
+        </tr>
+        <tr>
+          <td><strong>P133</strong> Daily_Bias_Intraday_Short</td>
+          <td>Cat K</td>
+          <td class="r">165</td>
+          <td class="r">46.1%</td>
+          <td class="r tg">+131.7</td>
+          <td class="r">102</td>
+          <td class="r">47.1%</td>
+          <td class="r tg">+12.4</td>
+          <td style="text-align:center"><span style="color:#10b981;font-weight:600">🟢 BOTH+</span></td>
+        </tr>
+        <tr>
+          <td><strong>P107</strong> CVD_Div_Bear</td>
+          <td>Cat I</td>
+          <td class="r">90</td>
+          <td class="r">48.9%</td>
+          <td class="r tg">+152.0</td>
+          <td class="r">35</td>
+          <td class="r">42.9%</td>
+          <td class="r tr">-20.0</td>
+          <td style="text-align:center"><span style="color:#f59e0b;font-weight:600">🟡 MIXED</span></td>
+        </tr>
+        <tr>
+          <td><strong>P72</strong> FVG_Bear</td>
+          <td>Cat F</td>
+          <td class="r">339</td>
+          <td class="r">50.7%</td>
+          <td class="r tg">+113.8</td>
+          <td class="r">272</td>
+          <td class="r">47.4%</td>
+          <td class="r tg">+14.9</td>
+          <td style="text-align:center"><span style="color:#10b981;font-weight:600">🟢 BOTH+</span></td>
+        </tr>
+        <tr>
+          <td><strong>P159</strong> Hidden_Div_Bull_MACD</td>
+          <td>Cat N</td>
+          <td class="r">77</td>
+          <td class="r">53.2%</td>
+          <td class="r tg">+31.8</td>
+          <td class="r">61</td>
+          <td class="r">44.3%</td>
+          <td class="r tg">+53.4</td>
+          <td style="text-align:center"><span style="color:#10b981;font-weight:600">🟢 BOTH+</span></td>
+        </tr>
+        <tr>
+          <td><strong>P172</strong> ABCD_Bear</td>
+          <td>Cat Q</td>
+          <td class="r">58</td>
+          <td class="r">56.9%</td>
+          <td class="r tg">+99.7</td>
+          <td class="r">34</td>
+          <td class="r">44.1%</td>
+          <td class="r tr">-19.1</td>
+          <td style="text-align:center"><span style="color:#f59e0b;font-weight:600">🟡 MIXED</span></td>
+        </tr>
+        <tr>
+          <td><strong>P59</strong> Failed_Breakout_Long</td>
+          <td>Cat D</td>
+          <td class="r">41</td>
+          <td class="r">58.5%</td>
+          <td class="r tr">-11.5</td>
+          <td class="r">34</td>
+          <td class="r">44.1%</td>
+          <td class="r tg">+83.9</td>
+          <td style="text-align:center"><span style="color:#f59e0b;font-weight:600">🟡 MIXED</span></td>
+        </tr>
+        <tr>
+          <td><strong>P29</strong> Bearish_Engulfing</td>
+          <td>Cat B</td>
+          <td class="r">52</td>
+          <td class="r">57.7%</td>
+          <td class="r tg">+55.8</td>
+          <td class="r">31</td>
+          <td class="r">48.4%</td>
+          <td class="r tg">+10.4</td>
+          <td style="text-align:center"><span style="color:#10b981;font-weight:600">🟢 BOTH+</span></td>
+        </tr>
+        <tr>
+          <td><strong>P73</strong> Liq_Grab_Bull</td>
+          <td>Cat F</td>
+          <td class="r">31</td>
+          <td class="r">58.1%</td>
+          <td class="r tg">+17.3</td>
+          <td class="r">33</td>
+          <td class="r">39.4%</td>
+          <td class="r tg">+43.1</td>
+          <td style="text-align:center"><span style="color:#10b981;font-weight:600">🟢 BOTH+</span></td>
+        </tr>
+        <tr>
+          <td><strong>P39</strong> Tweezer_Top</td>
+          <td>Cat B</td>
+          <td class="r">62</td>
+          <td class="r">64.5%</td>
+          <td class="r tg">+96.2</td>
+          <td class="r">48</td>
+          <td class="r">45.8%</td>
+          <td class="r tr">-50.6</td>
+          <td style="text-align:center"><span style="color:#f59e0b;font-weight:600">🟡 MIXED</span></td>
+        </tr>
+        <tr>
+          <td><strong>P168</strong> Daily_Pivot_Tag_Long</td>
+          <td>Cat P</td>
+          <td class="r">44</td>
+          <td class="r">47.7%</td>
+          <td class="r tr">-5.2</td>
+          <td class="r">35</td>
+          <td class="r">57.1%</td>
+          <td class="r tg">+50.6</td>
+          <td style="text-align:center"><span style="color:#f59e0b;font-weight:600">🟡 MIXED</span></td>
+        </tr>
+        <tr>
+          <td><strong>P125</strong> ThreeBar_Rev_Bear</td>
+          <td>Cat J</td>
+          <td class="r">37</td>
+          <td class="r">46.0%</td>
+          <td class="r tg">+11.7</td>
+          <td class="r">32</td>
+          <td class="r">50.0%</td>
+          <td class="r tg">+31.7</td>
+          <td style="text-align:center"><span style="color:#10b981;font-weight:600">🟢 BOTH+</span></td>
+        </tr>
+        <tr>
+          <td><strong>P128</strong> MTF_FVG_Aligned_Long</td>
+          <td>Cat K</td>
+          <td class="r">50</td>
+          <td class="r">60.0%</td>
+          <td class="r tg">+34.3</td>
+          <td class="r">40</td>
+          <td class="r">47.5%</td>
+          <td class="r tg">+7.0</td>
+          <td style="text-align:center"><span style="color:#10b981;font-weight:600">🟢 BOTH+</span></td>
+        </tr>
+        <tr>
+          <td><strong>P165</strong> POC_Migration_Long</td>
+          <td>Cat O</td>
+          <td class="r">89</td>
+          <td class="r">58.4%</td>
+          <td class="r tg">+61.1</td>
+          <td class="r">99</td>
+          <td class="r">34.3%</td>
+          <td class="r tr">-20.6</td>
+          <td style="text-align:center"><span style="color:#f59e0b;font-weight:600">🟡 MIXED</span></td>
+        </tr>
+        <tr>
+          <td><strong>P53</strong> BOS_Bull</td>
+          <td>Cat D</td>
+          <td class="r">73</td>
+          <td class="r">56.2%</td>
+          <td class="r tg">+29.1</td>
+          <td class="r">96</td>
+          <td class="r">29.2%</td>
+          <td class="r tg">+6.9</td>
+          <td style="text-align:center"><span style="color:#10b981;font-weight:600">🟢 BOTH+</span></td>
+        </tr>
+        <tr>
+          <td><strong>P161</strong> VAH_Reject_Short</td>
+          <td>Cat O</td>
+          <td class="r">44</td>
+          <td class="r">52.3%</td>
+          <td class="r tg">+35.8</td>
+          <td class="r">36</td>
+          <td class="r">47.2%</td>
+          <td class="r tr">-10.0</td>
+          <td style="text-align:center"><span style="color:#f59e0b;font-weight:600">🟡 MIXED</span></td>
+        </tr>
+        <tr>
+          <td><strong>P97</strong> PD_Array_Premium</td>
+          <td>Cat H</td>
+          <td class="r">139</td>
+          <td class="r">51.1%</td>
+          <td class="r tg">+87.9</td>
+          <td class="r">102</td>
+          <td class="r">51.0%</td>
+          <td class="r tr">-79.6</td>
+          <td style="text-align:center"><span style="color:#f59e0b;font-weight:600">🟡 MIXED</span></td>
+        </tr>
+        <tr>
+          <td><strong>P89</strong> OTE_Long</td>
+          <td>Cat H</td>
+          <td class="r">36</td>
+          <td class="r">50.0%</td>
+          <td class="r tr">-3.9</td>
+          <td class="r">31</td>
+          <td class="r">54.8%</td>
+          <td class="r tg">+7.6</td>
+          <td style="text-align:center"><span style="color:#f59e0b;font-weight:600">🟡 MIXED</span></td>
+        </tr>
+        <tr>
+          <td><strong>P17</strong> Volume_Spike_Rev</td>
+          <td>Cat A</td>
+          <td class="r">36</td>
+          <td class="r">50.0%</td>
+          <td class="r tr">-0.4</td>
+          <td class="r">32</td>
+          <td class="r">50.0%</td>
+          <td class="r tr">-0.1</td>
+          <td style="text-align:center"><span style="color:#ef4444;font-weight:600">🔴 BOTH-</span></td>
+        </tr>
+        <tr>
+          <td><strong>P21</strong> Doji</td>
+          <td>Cat B</td>
+          <td class="r">58</td>
+          <td class="r">48.3%</td>
+          <td class="r tr">-0.6</td>
+          <td class="r">66</td>
+          <td class="r">50.0%</td>
+          <td class="r tr">-0.3</td>
+          <td style="text-align:center"><span style="color:#ef4444;font-weight:600">🔴 BOTH-</span></td>
+        </tr>
+        <tr>
+          <td><strong>P12</strong> EMA_Cross</td>
+          <td>Cat A</td>
+          <td class="r">86</td>
+          <td class="r">50.0%</td>
+          <td class="r tr">-1.1</td>
+          <td class="r">46</td>
+          <td class="r">50.0%</td>
+          <td class="r tr">-0.2</td>
+          <td style="text-align:center"><span style="color:#ef4444;font-weight:600">🔴 BOTH-</span></td>
+        </tr>
+        <tr>
+          <td><strong>P170</strong> Range_Mid_Bounce</td>
+          <td>Cat P</td>
+          <td class="r">132</td>
+          <td class="r">50.0%</td>
+          <td class="r tr">-1.5</td>
+          <td class="r">36</td>
+          <td class="r">50.0%</td>
+          <td class="r tr">-0.1</td>
+          <td style="text-align:center"><span style="color:#ef4444;font-weight:600">🔴 BOTH-</span></td>
+        </tr>
+        <tr>
+          <td><strong>P9</strong> BB_Touch_Reversal</td>
+          <td>Cat A</td>
+          <td class="r">120</td>
+          <td class="r">49.2%</td>
+          <td class="r tr">-1.4</td>
+          <td class="r">68</td>
+          <td class="r">50.0%</td>
+          <td class="r tr">-0.4</td>
+          <td style="text-align:center"><span style="color:#ef4444;font-weight:600">🔴 BOTH-</span></td>
+        </tr>
+        <tr>
+          <td><strong>P16</strong> Stoch_Cross</td>
+          <td>Cat A</td>
+          <td class="r">140</td>
+          <td class="r">49.3%</td>
+          <td class="r tr">-1.6</td>
+          <td class="r">88</td>
+          <td class="r">50.0%</td>
+          <td class="r tr">-0.4</td>
+          <td style="text-align:center"><span style="color:#ef4444;font-weight:600">🔴 BOTH-</span></td>
+        </tr>
+        <tr>
+          <td><strong>P20</strong> Inside_Bar_Break</td>
+          <td>Cat A</td>
+          <td class="r">156</td>
+          <td class="r">50.0%</td>
+          <td class="r tr">-1.8</td>
+          <td class="r">108</td>
+          <td class="r">50.0%</td>
+          <td class="r tr">-0.5</td>
+          <td style="text-align:center"><span style="color:#ef4444;font-weight:600">🔴 BOTH-</span></td>
+        </tr>
+        <tr>
+          <td><strong>P19</strong> Round_Number</td>
+          <td>Cat A</td>
+          <td class="r">106</td>
+          <td class="r">50.0%</td>
+          <td class="r tr">-1.2</td>
+          <td class="r">374</td>
+          <td class="r">50.0%</td>
+          <td class="r tr">-1.7</td>
+          <td style="text-align:center"><span style="color:#ef4444;font-weight:600">🔴 BOTH-</span></td>
+        </tr>
+        <tr>
+          <td><strong>P11</strong> EMA_Bounce</td>
+          <td>Cat A</td>
+          <td class="r">222</td>
+          <td class="r">50.0%</td>
+          <td class="r tr">-2.5</td>
+          <td class="r">144</td>
+          <td class="r">50.0%</td>
+          <td class="r tr">-0.6</td>
+          <td style="text-align:center"><span style="color:#ef4444;font-weight:600">🔴 BOTH-</span></td>
+        </tr>
+        <tr>
+          <td><strong>P86</strong> NR7</td>
+          <td>Cat G</td>
+          <td class="r">226</td>
+          <td class="r">49.6%</td>
+          <td class="r tr">-2.4</td>
+          <td class="r">176</td>
+          <td class="r">50.0%</td>
+          <td class="r tr">-0.8</td>
+          <td style="text-align:center"><span style="color:#ef4444;font-weight:600">🔴 BOTH-</span></td>
+        </tr>
+        <tr>
+          <td><strong>P8</strong> TwoBar_Reversal</td>
+          <td>Cat A</td>
+          <td class="r">342</td>
+          <td class="r">49.7%</td>
+          <td class="r tr">-3.9</td>
+          <td class="r">206</td>
+          <td class="r">50.0%</td>
+          <td class="r tr">-1.0</td>
+          <td style="text-align:center"><span style="color:#ef4444;font-weight:600">🔴 BOTH-</span></td>
+        </tr>
+        <tr>
+          <td><strong>P157</strong> Hidden_Div_Bull_RSI</td>
+          <td>Cat N</td>
+          <td class="r">64</td>
+          <td class="r">51.6%</td>
+          <td class="r tg">+34.1</td>
+          <td class="r">48</td>
+          <td class="r">31.2%</td>
+          <td class="r tr">-39.7</td>
+          <td style="text-align:center"><span style="color:#f59e0b;font-weight:600">🟡 MIXED</span></td>
+        </tr>
+        <tr>
+          <td><strong>P85</strong> NR4</td>
+          <td>Cat G</td>
+          <td class="r">396</td>
+          <td class="r">49.5%</td>
+          <td class="r tr">-4.3</td>
+          <td class="r">296</td>
+          <td class="r">50.0%</td>
+          <td class="r tr">-1.4</td>
+          <td style="text-align:center"><span style="color:#ef4444;font-weight:600">🔴 BOTH-</span></td>
+        </tr>
+        <tr>
+          <td><strong>P142</strong> Ichimoku_Chikou_Confirm</td>
+          <td>Cat L</td>
+          <td class="r">694</td>
+          <td class="r">49.4%</td>
+          <td class="r tr">-7.1</td>
+          <td class="r">592</td>
+          <td class="r">49.8%</td>
+          <td class="r tr">-2.7</td>
+          <td style="text-align:center"><span style="color:#ef4444;font-weight:600">🔴 BOTH-</span></td>
+        </tr>
+        <tr>
+          <td><strong>P18</strong> Pivot_Bounce</td>
+          <td>Cat A</td>
+          <td class="r">672</td>
+          <td class="r">49.9%</td>
+          <td class="r tr">-7.8</td>
+          <td class="r">490</td>
+          <td class="r">50.0%</td>
+          <td class="r tr">-2.1</td>
+          <td style="text-align:center"><span style="color:#ef4444;font-weight:600">🔴 BOTH-</span></td>
+        </tr>
+        <tr>
+          <td><strong>P169</strong> Daily_Pivot_Tag_Short</td>
+          <td>Cat P</td>
+          <td class="r">63</td>
+          <td class="r">60.3%</td>
+          <td class="r tg">+32.8</td>
+          <td class="r">38</td>
+          <td class="r">42.1%</td>
+          <td class="r tr">-76.9</td>
+          <td style="text-align:center"><span style="color:#f59e0b;font-weight:600">🟡 MIXED</span></td>
+        </tr>
+        <tr>
+          <td><strong>P38</strong> Tweezer_Bottom</td>
+          <td>Cat B</td>
+          <td class="r">54</td>
+          <td class="r">40.7%</td>
+          <td class="r tr">-71.5</td>
+          <td class="r">33</td>
+          <td class="r">48.5%</td>
+          <td class="r tg">+17.6</td>
+          <td style="text-align:center"><span style="color:#f59e0b;font-weight:600">🟡 MIXED</span></td>
+        </tr>
+        <tr>
+          <td><strong>P124</strong> ThreeBar_Rev_Bull</td>
+          <td>Cat J</td>
+          <td class="r">34</td>
+          <td class="r">38.2%</td>
+          <td class="r tr">-86.3</td>
+          <td class="r">32</td>
+          <td class="r">43.8%</td>
+          <td class="r tg">+25.2</td>
+          <td style="text-align:center"><span style="color:#f59e0b;font-weight:600">🟡 MIXED</span></td>
+        </tr>
+        <tr>
+          <td><strong>P150</strong> External_Liq_Sweep_Long</td>
+          <td>Cat M</td>
+          <td class="r">34</td>
+          <td class="r">50.0%</td>
+          <td class="r tg">+2.9</td>
+          <td class="r">36</td>
+          <td class="r">44.4%</td>
+          <td class="r tr">-68.8</td>
+          <td style="text-align:center"><span style="color:#f59e0b;font-weight:600">🟡 MIXED</span></td>
+        </tr>
+        <tr>
+          <td><strong>P129</strong> MTF_FVG_Aligned_Short</td>
+          <td>Cat K</td>
+          <td class="r">40</td>
+          <td class="r">32.5%</td>
+          <td class="r tg">+19.9</td>
+          <td class="r">72</td>
+          <td class="r">26.4%</td>
+          <td class="r tr">-91.9</td>
+          <td style="text-align:center"><span style="color:#f59e0b;font-weight:600">🟡 MIXED</span></td>
+        </tr>
+        <tr>
+          <td><strong>P162</strong> VAL_Reject_Long</td>
+          <td>Cat O</td>
+          <td class="r">48</td>
+          <td class="r">41.7%</td>
+          <td class="r tr">-66.4</td>
+          <td class="r">40</td>
+          <td class="r">40.0%</td>
+          <td class="r tr">-15.8</td>
+          <td style="text-align:center"><span style="color:#ef4444;font-weight:600">🔴 BOTH-</span></td>
+        </tr>
+        <tr>
+          <td><strong>P173</strong> Three_Drives_Bull</td>
+          <td>Cat Q</td>
+          <td class="r">62</td>
+          <td class="r">41.9%</td>
+          <td class="r tr">-64.5</td>
+          <td class="r">62</td>
+          <td class="r">45.2%</td>
+          <td class="r tr">-68.5</td>
+          <td style="text-align:center"><span style="color:#ef4444;font-weight:600">🔴 BOTH-</span></td>
+        </tr>
+        <tr>
+          <td><strong>P132</strong> Daily_Bias_Intraday_Long</td>
+          <td>Cat K</td>
+          <td class="r">153</td>
+          <td class="r">39.9%</td>
+          <td class="r tr">-185.5</td>
+          <td class="r">145</td>
+          <td class="r">49.0%</td>
+          <td class="r tg">+47.2</td>
+          <td style="text-align:center"><span style="color:#f59e0b;font-weight:600">🟡 MIXED</span></td>
+        </tr>
+        <tr>
+          <td><strong>P171</strong> ABCD_Bull</td>
+          <td>Cat Q</td>
+          <td class="r">56</td>
+          <td class="r">37.5%</td>
+          <td class="r tr">-79.4</td>
+          <td class="r">30</td>
+          <td class="r">26.7%</td>
+          <td class="r tr">-83.5</td>
+          <td style="text-align:center"><span style="color:#ef4444;font-weight:600">🔴 BOTH-</span></td>
+        </tr>
+        <tr>
+          <td><strong>P174</strong> Three_Drives_Bear</td>
+          <td>Cat Q</td>
+          <td class="r">67</td>
+          <td class="r">26.9%</td>
+          <td class="r tr">-140.2</td>
+          <td class="r">42</td>
+          <td class="r">35.7%</td>
+          <td class="r tr">-23.7</td>
+          <td style="text-align:center"><span style="color:#ef4444;font-weight:600">🔴 BOTH-</span></td>
+        </tr>
+        <tr>
+          <td><strong>P121</strong> Sunday_Gap_Fill_Short</td>
+          <td>Cat J</td>
+          <td class="r">33</td>
+          <td class="r">30.3%</td>
+          <td class="r tr">-50.6</td>
+          <td class="r">37</td>
+          <td class="r">32.4%</td>
+          <td class="r tr">-179.4</td>
+          <td style="text-align:center"><span style="color:#ef4444;font-weight:600">🔴 BOTH-</span></td>
+        </tr>
+        <tr>
+          <td><strong>P106</strong> CVD_Div_Bull</td>
+          <td>Cat I</td>
+          <td class="r">87</td>
+          <td class="r">33.3%</td>
+          <td class="r tr">-153.3</td>
+          <td class="r">60</td>
+          <td class="r">41.7%</td>
+          <td class="r tr">-109.2</td>
+          <td style="text-align:center"><span style="color:#ef4444;font-weight:600">🔴 BOTH-</span></td>
+        </tr></tbody>
+    </table>
+  </div>
+</section>
+
+</main>
+<script src="assets/app.js"></script>
+<script>
+loadData().then(data => {
+  if (!data) return;
+  const body = document.getElementById('patternsBody');
+  data.patterns.sort((a,b) => a.pid - b.pid).forEach(p => {
+    const tr = document.createElement('tr');
+    if (p.tier === 'A') tr.classList.add('tier-a-row');
+    if (p.tier === 'BAD') tr.classList.add('tier-bad-row');
+    tr.dataset.cat = p.cat;
+    tr.dataset.tier = p.tier;
+    tr.dataset.search = (p.name + ' P' + p.pid).toLowerCase();
+    
+    const totalN = (p.btc_h4.n||0) + (p.btc_h1.n||0) + (p.btc_m15.n||0) + (p.xau_h4.n||0) + (p.xau_h1.n||0) + (p.xau_m15?.n||0) + (p.eur_h4?.n||0) + (p.eur_h1?.n||0) + (p.eur_m15?.n||0);
+    
+    tr.innerHTML = `
+      <td><strong style="color:var(--blue)">P${p.pid}</strong></td>
+      <td><span class="cat cat-${p.cat}">${p.cat}</span></td>
+      <td>${p.name}</td>
+      <td>${dirText(p.dir)}</td>
+      <td>${wrPill(p.btc_h4.wr, p.btc_h4.n)} <span style="font-size:9px;color:var(--txt-dim)">${(p.btc_h4.n||0).toLocaleString()}</span></td>
+      <td>${wrPill(p.btc_h1.wr, p.btc_h1.n)} <span style="font-size:9px;color:var(--txt-dim)">${(p.btc_h1.n||0).toLocaleString()}</span></td>
+      <td>${wrPill(p.btc_m15.wr, p.btc_m15.n)} <span style="font-size:9px;color:var(--txt-dim)">${(p.btc_m15.n||0).toLocaleString()}</span></td>
+      <td>${wrPill(p.xau_h4.wr, p.xau_h4.n)} <span style="font-size:9px;color:var(--txt-dim)">${(p.xau_h4.n||0).toLocaleString()}</span></td>
+      <td>${wrPill(p.xau_h1.wr, p.xau_h1.n)} <span style="font-size:9px;color:var(--txt-dim)">${(p.xau_h1.n||0).toLocaleString()}</span></td>
+      <td>${wrPill(p.xau_m15?.wr, p.xau_m15?.n)} <span style="font-size:9px;color:var(--txt-dim)">${(p.xau_m15?.n||0).toLocaleString()}</span></td>
+      <td>${wrPill(p.eur_h4?.wr, p.eur_h4?.n)} <span style="font-size:9px;color:var(--txt-dim)">${(p.eur_h4?.n||0).toLocaleString()}</span></td>
+      <td>${wrPill(p.eur_h1?.wr, p.eur_h1?.n)} <span style="font-size:9px;color:var(--txt-dim)">${(p.eur_h1?.n||0).toLocaleString()}</span></td>
+      <td>${wrPill(p.eur_m15?.wr, p.eur_m15?.n)} <span style="font-size:9px;color:var(--txt-dim)">${(p.eur_m15?.n||0).toLocaleString()}</span></td>
+      <td class="num">${totalN.toLocaleString()}</td>
+      <td>${tierLabel(p.tier)}</td>
+    `;
+    body.appendChild(tr);
+  });
+  
+  let curCat = 'all', curTier = 'all';
+  function applyFilter() {
+    const q = (document.getElementById('searchPat')?.value || '').toLowerCase();
+    document.querySelectorAll('#patternsBody tr').forEach(tr => {
+      const matchCat = curCat === 'all' || tr.dataset.cat === curCat;
+      const matchTier = curTier === 'all' || tr.dataset.tier === curTier;
+      const matchSearch = !q || tr.dataset.search.includes(q);
+      tr.style.display = (matchCat && matchTier && matchSearch) ? '' : 'none';
+    });
+  }
+  
+  document.querySelectorAll('.cat-filter').forEach(b => b.addEventListener('click', () => {
+    document.querySelectorAll('.cat-filter').forEach(x => x.classList.remove('active'));
+    b.classList.add('active');
+    curCat = b.dataset.cat;
+    applyFilter();
+  }));
+  document.querySelectorAll('.tier-filter').forEach(b => b.addEventListener('click', () => {
+    document.querySelectorAll('.tier-filter').forEach(x => x.classList.remove('active'));
+    b.classList.add('active');
+    curTier = b.dataset.tier;
+    applyFilter();
+  }));
+  document.getElementById('searchPat').addEventListener('input', applyFilter);
+});
+</script>
+</body></html>
