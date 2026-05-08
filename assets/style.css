@@ -1,4 +1,4 @@
-/* ============ UNIVERSAL OVERRIDE — no slashed-zero anywhere ============ */
+/* ============ UNIVERSAL OVERRIDE — disable zero stylistic alternates anywhere ============ */
 * {
   font-feature-settings: "zero" 0 !important;
   font-variant-numeric: tabular-nums !important;
