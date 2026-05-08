@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="th"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AUDUSD · KMP Master</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&family=Sarabun:wght@400;500;600;700&family=Bricolage+Grotesque:wght@400;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css?v=6.7">
+</head><body>
+<nav class="sidebar">
+  <div class="sidebar-brand">
+    <a class="brand-logo" href="index.html">KMP <span class="accent">Master</span></a>
+    <div class="brand-ver">EA v3.1 · 177 patterns · 93 cols</div>
+  </div>
+  
+  <input type="text" class="search-box" id="globalSearch" placeholder="ค้นหา...">
+  
+  <div class="nav-section">
+    <div class="nav-label">Overview</div>
+    <a class="tree-node lvl-0" href="index.html"><span class="arrow"></span><span class="nm">Dashboard</span></a>
+    <a class="tree-node lvl-0" href="preface.html"><span class="arrow"></span><span class="nm">คำนำ &amp; เป้าหมาย</span></a>
+  </div>
+  
+  <div class="nav-section">
+    <div class="nav-label">Datasets · v6</div>
+    
+    <div class="tree-node lvl-0 expandable" data-toggle="crypto-menu">
+      <span class="arrow">▶</span><span class="nm">Crypto</span><span class="badge">2</span>
+    </div>
+    <div class="tree-children" id="crypto-menu">
+      <div class="tree-node lvl-1 expandable" data-toggle="btc-menu">
+        <span class="arrow">▶</span><span class="nm">BTC/USD</span><span class="badge">99K</span>
+      </div>
+      <div class="tree-children" id="btc-menu">
+        <a class="tree-node lvl-2" href="btc-h4.html"><span class="nm">BTC H4</span><span class="badge" style="background:#10b981;color:#fff">9,474</span></a>
+        <a class="tree-node lvl-2" href="btc-h1.html"><span class="nm">BTC H1</span><span class="badge" style="background:#10b981;color:#fff">35,654</span></a>
+        <a class="tree-node lvl-2" href="btc-m15.html"><span class="nm">BTC M15</span><span class="badge" style="background:#10b981;color:#fff">120,000</span></a>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="eth-menu">
+        <span class="arrow">▶</span><span class="nm">ETH/USD</span><span class="badge">46K</span>
+      </div>
+      <div class="tree-children" id="eth-menu">
+        <a class="tree-node lvl-2" href="eth-h4.html"><span class="nm">ETH H4</span><span class="badge" style="background:#10b981;color:#fff">9,701</span></a>
+        <a class="tree-node lvl-2" href="eth-h1.html"><span class="nm">ETH H1</span><span class="badge" style="background:#10b981;color:#fff">36,487</span></a>
+        <a class="tree-node lvl-2" href="eth-m15.html"><span class="nm">ETH M15</span><span class="badge" style="background:#10b981;color:#fff">120,000</span></a>
+      </div>
+    </div>
+    
+    <div class="tree-node lvl-0 expandable" data-toggle="metals-menu">
+      <span class="arrow">▶</span><span class="nm">Metals</span><span class="badge">3</span>
+    </div>
+    <div class="tree-children" id="metals-menu">
+      <div class="tree-node lvl-1 expandable" data-toggle="xau-menu">
+        <span class="arrow">▶</span><span class="nm">XAU/USD</span><span class="badge">70K</span>
+      </div>
+      <div class="tree-children" id="xau-menu">
+        <a class="tree-node lvl-2" href="xau-h4.html"><span class="nm">XAU H4</span><span class="badge" style="background:#10b981;color:#fff">7,077</span></a>
+        <a class="tree-node lvl-2" href="xau-h1.html"><span class="nm">XAU H1</span><span class="badge" style="background:#10b981;color:#fff">24,611</span></a>
+        <a class="tree-node lvl-2" href="xau-m15.html"><span class="nm">XAU M15</span><span class="badge">53,098</span></a>
+      </div>
+    </div>
+    
+    <div class="tree-node lvl-0 expandable" data-toggle="forex-menu">
+      <span class="arrow">▶</span><span class="nm">Forex</span><span class="badge">4</span>
+    </div>
+    <div class="tree-children" id="forex-menu">
+      <div class="tree-node lvl-1 expandable" data-toggle="eur-menu">
+        <span class="arrow">▶</span><span class="nm">EUR/USD</span><span class="badge">79K</span>
+      </div>
+      <div class="tree-children" id="eur-menu">
+        <a class="tree-node lvl-2" href="eur-h4.html"><span class="nm">EUR H4</span><span class="badge" style="background:#10b981;color:#fff">6,956</span></a>
+        <a class="tree-node lvl-2" href="eur-h1.html"><span class="nm">EUR H1</span><span class="badge" style="background:#10b981;color:#fff">26,141</span></a>
+        <a class="tree-node lvl-2" href="eur-m15.html"><span class="nm">EUR M15</span><span class="badge" style="background:#10b981;color:#fff">105,295</span></a>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="gbp-menu">
+        <span class="arrow">▶</span><span class="nm">GBP/USD</span><span class="badge" style="background:#a78bfa;color:#fff">7,217</span>
+      </div>
+      <div class="tree-children" id="gbp-menu">
+        <a class="tree-node lvl-2" href="gbp-h4.html"><span class="nm">GBP H4</span><span class="badge" style="background:#10b981;color:#fff">7,217</span></a>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="jpy-menu">
+        <span class="arrow">▶</span><span class="nm">USD/JPY</span><span class="badge" style="background:#fb7185;color:#fff">7,056</span>
+      </div>
+      <div class="tree-children" id="jpy-menu">
+        <a class="tree-node lvl-2" href="jpy-h4.html"><span class="nm">JPY H4</span><span class="badge" style="background:#10b981;color:#fff">7,056</span></a>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="aud-menu">
+        <span class="arrow">▶</span><span class="nm">AUD/USD</span><span class="badge" style="background:#34d399;color:#0a0a0a">7,140</span>
+      </div>
+      <div class="tree-children" id="aud-menu">
+        <a class="tree-node lvl-2" href="aud-h4.html"><span class="nm">AUD H4</span><span class="badge" style="background:#10b981;color:#fff">7,140</span></a>
+      </div>
+    </div>
+  </div>
+  
+  <div class="nav-section">
+    <div class="nav-label">Patterns · 177 (v3.1)</div>
+    <a class="tree-node lvl-0" href="patterns-encyclopedia.html"><span class="arrow"></span><span class="nm">📚 Pattern Encyclopedia</span><span class="badge">177</span></a>
+    <div class="tree-node lvl-0 expandable" data-toggle="pat-menu">
+      <span class="arrow">▶</span><span class="nm">v4 Analysis</span><span class="badge">80</span>
+    </div>
+    <div class="tree-children" id="pat-menu">
+      <a class="tree-node lvl-1" href="patterns.html"><span class="nm">All Patterns Table</span></a>
+      <a class="tree-node lvl-1" href="tier.html"><span class="nm">Tier Rankings</span></a>
+      <a class="tree-node lvl-1" href="optimal-tpsl.html"><span class="nm">Optimal TP/SL EV</span></a>
+    </div>
+  </div>
+  
+  <div class="nav-section">
+    <div class="nav-label">Analysis</div>
+    <a class="tree-node lvl-0" href="cross.html"><span class="arrow"></span><span class="nm">Cross-TF / Asset</span></a>
+    <a class="tree-node lvl-0" href="time.html"><span class="arrow"></span><span class="nm">Hour / DoW / Conf</span></a>
+    <a class="tree-node lvl-0" href="edge.html"><span class="arrow"></span><span class="nm">Edge Decay / Vol</span></a>
+  </div>
+  
+  <div class="nav-section">
+    <div class="nav-label">Strategy</div>
+    <a class="tree-node lvl-0" href="strategy.html"><span class="arrow"></span><span class="nm">EA Blueprint &amp; Risk</span></a>
+  </div>
+  
+  <div class="nav-section">
+    <div class="nav-label">EA System · v3.1</div>
+    <a class="tree-node lvl-0" href="ea-architecture.html"><span class="arrow"></span><span class="nm">⚙ EA Architecture</span></a>
+    <a class="tree-node lvl-0" href="tracking-system.html"><span class="arrow"></span><span class="nm">🎯 Tracking System</span></a>  </div>  <div class="nav-section">
+    <div class="nav-label">Reference</div>
+    <a class="tree-node lvl-0" href="ea-source.html"><span class="arrow"></span><span class="nm">EA Source Code</span><span class="badge" style="background:#4dd498;color:#0a0a0a">v3.1.1</span></a>
+    <a class="tree-node lvl-0" href="research-references.html"><span class="arrow"></span><span class="nm">Research Refs</span><span class="badge" style="background:#5b9bd5;color:#fff">NEW</span></a>
+    <a class="tree-node lvl-0" href="reference.html"><span class="arrow"></span><span class="nm">Sources &amp; Changelog</span></a>
+  </div>
+</nav>
+
+<main class="main">>
+<div class="hero">
+  <span class="hero-tag">🆕 AUDUSD · v7.2 (H4 only · ใหม่)</span>
+  <h1 class="hero-title">AUDUSD <span class="accent" style="color:#34d399">AUD.</span></h1>
+  <p class="hero-desc">
+    Forex pair · AUD · ข้อมูล H4 · 7,140 trades<br>
+    คาดว่าจะเก็บ H1 + M15 ในอนาคต
+  </p>
+</div>
+
+<div class="card" style="margin-bottom:20px;border-left:3px solid #10b981;background:linear-gradient(90deg,rgba(16,185,129,0.05),transparent)">
+    <div style="font-weight:700;color:#10b981;margin-bottom:8px">✅ v7.2 Available (H4)</div>
+    <div style="display:flex;gap:14px;flex-wrap:wrap">
+      <a href="aud-h4.html" style="text-decoration:none;color:var(--text);padding:8px 14px;background:rgba(52,211,153,0.1);border-radius:4px"><strong style="color:#34d399">AUD H4</strong> · 7,140 · WR 49.0% · PF 0.95</a>
+      <span style="padding:8px 14px;background:rgba(120,120,120,0.1);border-radius:4px;color:var(--text-dim)">H1: ⏳ planned</span>
+      <span style="padding:8px 14px;background:rgba(120,120,120,0.1);border-radius:4px;color:var(--text-dim)">M15: ⏳ planned</span>
+    </div>
+  </div>
+
+<section class="section">
+  <div class="section-head"><span class="section-num">01</span><h2 class="section-title">📊 AUD H4 — Quick Stats</h2></div>
+  <div class="kpis">
+    <div class="kpi" style="border-color:#34d399">
+      <div class="kpi-label" style="color:#34d399">Total Trades</div>
+      <div class="kpi-val" style="color:#34d399">7,140</div>
+      <div class="kpi-sub">over 4 months</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Win Rate</div>
+      <div class="kpi-val">49.0%</div>
+      <div class="kpi-sub">average</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Profit Factor</div>
+      <div class="kpi-val">0.95</div>
+      <div class="kpi-sub">ATR-based</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Net PnL</div>
+      <div class="kpi-val" style="color:var(--red)">-685</div>
+      <div class="kpi-sub">ATR units</div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head"><span class="section-num">02</span><h2 class="section-title">🔗 Detail Pages</h2></div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px">
+    <a href="aud-h4.html" class="card" style="text-decoration:none;color:var(--text);border-left:3px solid #34d399">
+      <h3 style="margin-top:0;color:#34d399">AUD H4 Detail</h3>
+      <p style="font-size:13px;color:var(--text-dim)">Full analysis · 10 sections · charts · SL/TP optimization</p>
+    </a>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head"><span class="section-num">03</span><h2 class="section-title">📋 Cross-Reference</h2></div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px">
+    <a href="forex.html" class="card" style="text-decoration:none;color:var(--text)"><div class="card-title">📈 Forex Category</div><div style="font-size:12px;color:var(--text-dim)">All forex pairs</div></a>
+    <a href="patterns.html" class="card" style="text-decoration:none;color:var(--text)"><div class="card-title">🎯 Patterns Master</div><div style="font-size:12px;color:var(--text-dim)">177 patterns</div></a>
+    <a href="cross.html" class="card" style="text-decoration:none;color:var(--text)"><div class="card-title">🔄 Cross Analysis</div><div style="font-size:12px;color:var(--text-dim)">Compare datasets</div></a>
+  </div>
+</section>
+</main>
+<script src="assets/app.js?v=6.7"></script>
+  <script>
+    // Force close all sidebar menus — runs BEFORE and AFTER DOM load
+    (function forceClose() {
+      try {
+        localStorage.removeItem('kmp_sidebar_state');
+        localStorage.removeItem('kmp_sidebar_state_v2');
+      } catch(e) {}
+      var doIt = function() {
+        document.querySelectorAll('.tree-children').forEach(function(el) {
+          el.classList.remove('show');
+        });
+        document.querySelectorAll('.tree-node.expandable, .tree-node.expanded').forEach(function(el) {
+          el.classList.remove('expanded');
+        });
+      };
+      // Run NOW (immediately when this script executes)
+      doIt();
+      // Run AGAIN after DOM ready (in case elements weren't there yet)
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', doIt);
+      }
+      // Run on every visibility change (back from another tab)
+      document.addEventListener('visibilitychange', doIt);
+    })();
+  </script>
+</body></html>

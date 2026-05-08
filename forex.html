@@ -59,7 +59,7 @@
     </div>
     
     <div class="tree-node lvl-0 expandable" data-toggle="forex-menu">
-      <span class="arrow">▶</span><span class="nm">Forex</span><span class="badge">3</span>
+      <span class="arrow">▶</span><span class="nm">Forex</span><span class="badge">4</span>
     </div>
     <div class="tree-children" id="forex-menu">
       <div class="tree-node lvl-1 expandable" data-toggle="eur-menu">
@@ -69,6 +69,24 @@
         <a class="tree-node lvl-2" href="eur-h4.html"><span class="nm">EUR H4</span><span class="badge" style="background:#10b981;color:#fff">6,956</span></a>
         <a class="tree-node lvl-2" href="eur-h1.html"><span class="nm">EUR H1</span><span class="badge" style="background:#10b981;color:#fff">26,141</span></a>
         <a class="tree-node lvl-2" href="eur-m15.html"><span class="nm">EUR M15</span><span class="badge" style="background:#10b981;color:#fff">105,295</span></a>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="gbp-menu">
+        <span class="arrow">▶</span><span class="nm">GBP/USD</span><span class="badge" style="background:#a78bfa;color:#fff">7,217</span>
+      </div>
+      <div class="tree-children" id="gbp-menu">
+        <a class="tree-node lvl-2" href="gbp-h4.html"><span class="nm">GBP H4</span><span class="badge" style="background:#10b981;color:#fff">7,217</span></a>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="jpy-menu">
+        <span class="arrow">▶</span><span class="nm">USD/JPY</span><span class="badge" style="background:#fb7185;color:#fff">7,056</span>
+      </div>
+      <div class="tree-children" id="jpy-menu">
+        <a class="tree-node lvl-2" href="jpy-h4.html"><span class="nm">JPY H4</span><span class="badge" style="background:#10b981;color:#fff">7,056</span></a>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="aud-menu">
+        <span class="arrow">▶</span><span class="nm">AUD/USD</span><span class="badge" style="background:#34d399;color:#0a0a0a">7,140</span>
+      </div>
+      <div class="tree-children" id="aud-menu">
+        <a class="tree-node lvl-2" href="aud-h4.html"><span class="nm">AUD H4</span><span class="badge" style="background:#10b981;color:#fff">7,140</span></a>
       </div>
     </div>
   </div>
@@ -109,94 +127,64 @@
   </div>
 </nav>
 
-<main class="main"><div class="breadcrumb"><a href="index.html" class="crumb">Dashboard</a><span class="sep">▸</span><a href="index.html" class="crumb">Datasets</a><span class="sep">▸</span><span class="crumb current">Forex</span></div>
-
-<div style="padding:14px 18px;background:rgba(148,163,184,0.08);border-left:3px solid #94a3b8;border-radius:5px;margin:14px 0 18px;font-size:13px;line-height:1.6">
-  <strong style="color:#94a3b8">📦 LEGACY · v4 data (80 patterns · 248K trades · 9 datasets)</strong> — 
-  หน้านี้แสดงข้อมูลจาก backtest เก่า (Phase 1 only) · 
-  จะถูกแทนที่ด้วย v6 baseline หลัง backtest ใหม่ด้วย EA v3.1 (177 patterns) · 
-  สำหรับเอกสารปัจจุบันดูที่ <a href="patterns-encyclopedia.html" style="color:var(--blue)">Pattern Encyclopedia</a> · 
-  <a href="ea-architecture.html" style="color:var(--blue)">EA Architecture</a> · 
-  <a href="tracking-system.html" style="color:var(--blue)">Tracking System</a>
-</div>
+<main class="main">>
 <div class="hero">
-  <span class="hero-tag">Asset Category</span>
-  <h1 class="hero-title">Forex<span class="accent">.</span></h1>
+  <span class="hero-tag">📈 Forex · v7.2 · 4 currencies · 159,805 trades</span>
+  <h1 class="hero-title">Forex <span class="accent">Pairs.</span></h1>
   <p class="hero-desc">
-    Foreign exchange · 1 asset (EUR/USD) · 3 timeframes · 79,165 trades · ผลรวมขาดทุน · secondary asset
+    Major forex pairs analysis · EUR · GBP · JPY · AUD · ครอบคลุม 3 sessions + 3 currency types<br>
+    ทุก pair ทดสอบกับ 177 patterns
   </p>
 </div>
 
-<div class="kpis">
-  <div class="kpi"><div class="kpi-label">Total Trades</div><div class="kpi-val">79,165</div></div>
-  <div class="kpi red"><div class="kpi-label">Avg WR</div><div class="kpi-val red">48.2%</div></div>
-  <div class="kpi red"><div class="kpi-label">Net PnL</div><div class="kpi-val red">-$2.40M</div></div>
-  <div class="kpi yellow"><div class="kpi-label">Best Pattern</div><div class="kpi-val yellow">P63</div><div class="kpi-sub">81.8% WR · EUR M15</div></div>
-</div>
-
 <section class="section">
-  <div class="section-head"><span class="section-num">01</span><h2 class="section-title">Available Assets</h2></div>
-  
-  <a class="asset-card red" href="eur.html">
-    <div class="ah">
-      <div class="ah-l">EUR/USD</div>
-      <div class="ah-r">3 timeframes</div>
-    </div>
-    <div class="desc">
-      Euro vs US Dollar · 24/5 · most liquid forex pair · low pip value =
-      ตัวเลข PnL เล็กกว่า BTC/XAU · pattern selection สำคัญมาก
-    </div>
-    <div class="stats">
-      <div>Total: <span>79,165</span></div>
-      <div>Avg WR: <span>48.2%</span></div>
-      <div>Net PnL: <span style="color:var(--red)">-$2.40M</span></div>
-    </div>
-    <div class="tf-grid">
-      <div class="tf-card">
-        <div class="tf-name">H4</div>
-        <div class="tf-stat">3,770 · 48.2% · -$35</div>
-        <div class="tf-pnl neg">-$132K</div>
-      </div>
-      <div class="tf-card">
-        <div class="tf-name">H1</div>
-        <div class="tf-stat">14,257 · 48.4%</div>
-        <div class="tf-pnl neg">-$440K</div>
-      </div>
-      <div class="tf-card">
-        <div class="tf-name">M15</div>
-        <div class="tf-stat">61,138 · 48.1%</div>
-        <div class="tf-pnl neg">-$1.83M</div>
-      </div>
-    </div>
-  </a>
+  <div class="section-head"><span class="section-num">01</span><h2 class="section-title">💱 Currency Pairs</h2></div>
+  <div class="kpis">
+    <a class="kpi" href="eur.html" style="text-decoration:none;border-color:#5b9bd5">
+      <div class="kpi-label" style="color:#5b9bd5">🇪🇺 EUR/USD</div>
+      <div class="kpi-val" style="color:#5b9bd5">138,392</div>
+      <div class="kpi-sub">trades · H4 + H1 + M15</div>
+    </a>
+    <a class="kpi" href="gbp.html" style="text-decoration:none;border-color:#a78bfa">
+      <div class="kpi-label" style="color:#a78bfa">🇬🇧 GBP/USD</div>
+      <div class="kpi-val" style="color:#a78bfa">7,217</div>
+      <div class="kpi-sub">trades · H4 only · NEW 🆕</div>
+    </a>
+    <a class="kpi" href="jpy.html" style="text-decoration:none;border-color:#fb7185">
+      <div class="kpi-label" style="color:#fb7185">🇯🇵 USD/JPY</div>
+      <div class="kpi-val" style="color:#fb7185">7,056</div>
+      <div class="kpi-sub">trades · H4 only · NEW 🆕</div>
+    </a>
+    <a class="kpi" href="aud.html" style="text-decoration:none;border-color:#34d399">
+      <div class="kpi-label" style="color:#34d399">🇦🇺 AUD/USD</div>
+      <div class="kpi-val" style="color:#34d399">7,140</div>
+      <div class="kpi-sub">trades · H4 only · NEW 🆕</div>
+    </a>
+  </div>
 </section>
 
 <section class="section">
-  <div class="section-head"><span class="section-num">02</span><h2 class="section-title">Forex Insights</h2></div>
-  
-  <div class="insight warn">
-    <div class="insight-tag">EUR ≠ BTC ≠ XAU</div>
-    EUR ขาดทุนทุก timeframe · ต่างจาก BTC ที่ H4 ทำกำไร และ XAU ที่ H4/H1 ทำกำไร<br>
-    Patterns ส่วนใหญ่ที่ออกแบบมาสำหรับ Crypto/Metals ไม่ทำงานบน Forex
+  <div class="section-head"><span class="section-num">02</span><h2 class="section-title">🌏 Cross-Pair Coverage</h2></div>
+  <div class="card">
+    <table class="table compact">
+      <thead><tr><th>Pair</th><th>Region</th><th>Type</th><th>Session</th><th class="r">Trades</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td>🇪🇺 EUR/USD</td><td>Europe</td><td>Major</td><td>London</td><td class="r">138,392</td><td>✅ H4 + H1 + M15</td></tr>
+        <tr><td>🇬🇧 GBP/USD</td><td>Europe</td><td>Major</td><td>London</td><td class="r">7,217</td><td>🆕 H4</td></tr>
+        <tr><td>🇯🇵 USD/JPY</td><td>Asia</td><td>Safe-haven</td><td>Tokyo</td><td class="r">7,056</td><td>🆕 H4</td></tr>
+        <tr><td>🇦🇺 AUD/USD</td><td>Oceania</td><td>Commodity</td><td>Sydney</td><td class="r">7,140</td><td>🆕 H4</td></tr>
+      </tbody>
+    </table>
   </div>
-  
-  <div class="insight cyan">
-    <div class="insight-tag">EUR Vol Profile (unique)</div>
-    EUR H4: NORMAL best · EUR H1: LOW best (rare!) · EUR M15: all bad<br>
-    Vol regime ต้องเป็น per-asset filter · ไม่ใช้ rule เดียวกับ BTC/XAU
-  </div>
-  
-  <div class="insight">
-    <div class="insight-tag">EUR Star Patterns (selective)</div>
-    EUR H4: P68 Triangle_Desc 70% · P39 Tweezer_Top 61%<br>
-    EUR H1: P55 CHoCH_Bull 58.6% (n=133, robust) · P65 HnS_Bear 76.9%<br>
-    EUR M15: P63 Triple_Bottom 81.8% · P66 HnS_Bull 71.9% (opposite of XAU M15!)
-  </div>
-  
-  <div class="insight">
-    <div class="insight-tag">Use Case</div>
-    EUR เหมาะเป็น diversification asset · ใช้ pattern selection ที่ระมัดระวัง · 
-    capital allocation 20% สำหรับ EUR · 40% BTC · 40% XAU
+</section>
+
+<section class="section">
+  <div class="section-head"><span class="section-num">03</span><h2 class="section-title">📊 Direct H4 Comparison</h2></div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px">
+    <a href="eur-h4.html" class="card" style="text-decoration:none;color:var(--text);border-left:3px solid #5b9bd5"><div class="card-title">EUR H4</div><div style="font-size:12px;color:var(--text-dim)">6,956 · WR 49.8% · PF 0.99</div></a>
+    <a href="gbp-h4.html" class="card" style="text-decoration:none;color:var(--text);border-left:3px solid #a78bfa"><div class="card-title">GBP H4 🆕</div><div style="font-size:12px;color:var(--text-dim)">7,217 · WR 48.0% · PF 0.88</div></a>
+    <a href="jpy-h4.html" class="card" style="text-decoration:none;color:var(--text);border-left:3px solid #fb7185"><div class="card-title">JPY H4 🆕</div><div style="font-size:12px;color:var(--text-dim)">7,056 · WR 50.4% · PF 0.88</div></a>
+    <a href="aud-h4.html" class="card" style="text-decoration:none;color:var(--text);border-left:3px solid #34d399"><div class="card-title">AUD H4 🆕</div><div style="font-size:12px;color:var(--text-dim)">7,140 · WR 49.0% · PF 0.95</div></a>
   </div>
 </section>
 </main>
