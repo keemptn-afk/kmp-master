@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Research References · KMP Master</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&family=Sarabun:wght@400;500;600;700&family=Bricolage+Grotesque:wght@400;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css?v=6.7">
+</head>
+<body>
+
+<nav class="sidebar">
+  <div class="sidebar-brand">
+    <a class="brand-logo" href="index.html">KMP <span class="accent">Master</span></a>
+    <div class="brand-ver">EA v3.1 · 177 patterns · 93 cols</div>
+  </div>
+  
+  <input type="text" class="search-box" id="globalSearch" placeholder="ค้นหา...">
+  
+  <div class="nav-section">
+    <div class="nav-label">Overview</div>
+    <a class="tree-node lvl-0" href="index.html"><span class="arrow"></span><span class="nm">Dashboard</span></a>
+    <a class="tree-node lvl-0" href="preface.html"><span class="arrow"></span><span class="nm">คำนำ &amp; เป้าหมาย</span></a>
+  </div>
+  
+  <div class="nav-section">
+    <div class="nav-label">Datasets · v6</div>
+    
+    <div class="tree-node lvl-0 expandable" data-toggle="crypto-menu">
+      <span class="arrow">▶</span><span class="nm">Crypto</span><span class="badge">2</span>
+    </div>
+    <div class="tree-children" id="crypto-menu">
+      <div class="tree-node lvl-1 expandable" data-toggle="btc-menu">
+        <span class="arrow">▶</span><span class="nm">BTC/USD</span><span class="badge">99K</span>
+      </div>
+      <div class="tree-children" id="btc-menu">
+        <a class="tree-node lvl-2" href="btc-h4.html"><span class="nm">BTC H4</span><span class="badge" style="background:#10b981;color:#fff">9,474</span></a>
+        <a class="tree-node lvl-2" href="btc-h1.html"><span class="nm">BTC H1</span><span class="badge" style="background:#10b981;color:#fff">35,654</span></a>
+        <a class="tree-node lvl-2" href="btc-m15.html"><span class="nm">BTC M15</span><span class="badge">75,677</span></a>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="eth-menu">
+        <span class="arrow">▶</span><span class="nm">ETH/USD</span><span class="badge">46K</span>
+      </div>
+      <div class="tree-children" id="eth-menu">
+        <a class="tree-node lvl-2" href="eth-h4.html"><span class="nm">ETH H4</span><span class="badge" style="background:#10b981;color:#fff">9,701</span></a>
+        <a class="tree-node lvl-2" href="eth-h1.html"><span class="nm">ETH H1</span><span class="badge" style="background:#10b981;color:#fff">36,487</span></a>
+      </div>
+    </div>
+    
+    <div class="tree-node lvl-0 expandable" data-toggle="metals-menu">
+      <span class="arrow">▶</span><span class="nm">Metals</span><span class="badge">3</span>
+    </div>
+    <div class="tree-children" id="metals-menu">
+      <div class="tree-node lvl-1 expandable" data-toggle="xau-menu">
+        <span class="arrow">▶</span><span class="nm">XAU/USD</span><span class="badge">70K</span>
+      </div>
+      <div class="tree-children" id="xau-menu">
+        <a class="tree-node lvl-2" href="xau-h4.html"><span class="nm">XAU H4</span><span class="badge" style="background:#10b981;color:#fff">7,077</span></a>
+        <a class="tree-node lvl-2" href="xau-h1.html"><span class="nm">XAU H1</span><span class="badge" style="background:#10b981;color:#fff">24,611</span></a>
+        <a class="tree-node lvl-2" href="xau-m15.html"><span class="nm">XAU M15</span><span class="badge">53,098</span></a>
+      </div>
+    </div>
+    
+    <div class="tree-node lvl-0 expandable" data-toggle="forex-menu">
+      <span class="arrow">▶</span><span class="nm">Forex</span><span class="badge">3</span>
+    </div>
+    <div class="tree-children" id="forex-menu">
+      <div class="tree-node lvl-1 expandable" data-toggle="eur-menu">
+        <span class="arrow">▶</span><span class="nm">EUR/USD</span><span class="badge">79K</span>
+      </div>
+      <div class="tree-children" id="eur-menu">
+        <a class="tree-node lvl-2" href="eur-h4.html"><span class="nm">EUR H4</span><span class="badge" style="background:#10b981;color:#fff">6,956</span></a>
+        <a class="tree-node lvl-2" href="eur-h1.html"><span class="nm">EUR H1</span><span class="badge" style="background:#10b981;color:#fff">26,141</span></a>
+        <a class="tree-node lvl-2" href="eur-m15.html"><span class="nm">EUR M15</span><span class="badge" style="background:#10b981;color:#fff">105,295</span></a>
+      </div>
+    </div>
+  </div>
+  
+  <div class="nav-section">
+    <div class="nav-label">Patterns · 177 (v3.1)</div>
+    <a class="tree-node lvl-0" href="patterns-encyclopedia.html"><span class="arrow"></span><span class="nm">📚 Pattern Encyclopedia</span><span class="badge">177</span></a>
+    <div class="tree-node lvl-0 expandable" data-toggle="pat-menu">
+      <span class="arrow">▶</span><span class="nm">v4 Analysis</span><span class="badge">80</span>
+    </div>
+    <div class="tree-children" id="pat-menu">
+      <a class="tree-node lvl-1" href="patterns.html"><span class="nm">All Patterns Table</span></a>
+      <a class="tree-node lvl-1" href="tier.html"><span class="nm">Tier Rankings</span></a>
+      <a class="tree-node lvl-1" href="optimal-tpsl.html"><span class="nm">Optimal TP/SL EV</span></a>
+    </div>
+  </div>
+  
+  <div class="nav-section">
+    <div class="nav-label">Analysis</div>
+    <a class="tree-node lvl-0" href="cross.html"><span class="arrow"></span><span class="nm">Cross-TF / Asset</span></a>
+    <a class="tree-node lvl-0" href="time.html"><span class="arrow"></span><span class="nm">Hour / DoW / Conf</span></a>
+    <a class="tree-node lvl-0" href="edge.html"><span class="arrow"></span><span class="nm">Edge Decay / Vol</span></a>
+  </div>
+  
+  <div class="nav-section">
+    <div class="nav-label">Strategy</div>
+    <a class="tree-node lvl-0" href="strategy.html"><span class="arrow"></span><span class="nm">EA Blueprint &amp; Risk</span></a>
+  </div>
+  
+  <div class="nav-section">
+    <div class="nav-label">EA System · v3.1</div>
+    <a class="tree-node lvl-0" href="ea-architecture.html"><span class="arrow"></span><span class="nm">⚙ EA Architecture</span></a>
+    <a class="tree-node lvl-0" href="tracking-system.html"><span class="arrow"></span><span class="nm">🎯 Tracking System</span></a>  </div>  <div class="nav-section">
+    <div class="nav-label">Reference</div>
+    <a class="tree-node lvl-0" href="ea-source.html"><span class="arrow"></span><span class="nm">EA Source Code</span><span class="badge" style="background:#4dd498;color:#0a0a0a">v3.1.1</span></a>
+    <a class="tree-node lvl-0" href="research-references.html"><span class="arrow"></span><span class="nm">Research Refs</span><span class="badge" style="background:#5b9bd5;color:#fff">NEW</span></a>
+    <a class="tree-node lvl-0" href="reference.html"><span class="arrow"></span><span class="nm">Sources &amp; Changelog</span></a>
+  </div>
+</nav>
+
+
+<main class="main">
+
+<div class="hero">
+  <span class="hero-tag">📚 Research References · Academic + Industry Sources</span>
+  <h1 class="hero-title">Research <span class="accent">Foundation.</span></h1>
+  <p class="hero-desc">
+    งานวิจัยที่เป็นรากฐานของ KMP Master · 4 ทศวรรษของ academic finance + classic trading literature<br>
+    เพื่อให้ทุก methodology ที่ใช้สามารถ trace กลับไปหาแหล่งอ้างอิงน่าเชื่อถือได้
+  </p>
+</div>
+
+<section class="section">
+  <div class="section-head"><span class="section-num">01</span><h2 class="section-title">🎓 Why References Matter</h2></div>
+  <div class="card" style="border-left:3px solid #4dd498">
+    <p style="margin-top:0">โปรเจคนี้ <strong>ไม่ได้คิดเอง</strong> ทุกอย่างจากศูนย์ — แต่ใช้ <strong>standards ที่ academic finance + industry research</strong> ใช้กันมา 30-60 ปี</p>
+    <ul>
+      <li>Pattern definitions → จาก published works ที่อ้างอิงทั่วโลก</li>
+      <li>Statistical methods → จาก peer-reviewed journals (Journal of Finance, etc.)</li>
+      <li>Risk metrics → จาก Nobel laureates (Markowitz, Sharpe)</li>
+      <li>Backtesting framework → จาก industry best practices</li>
+    </ul>
+    <p style="margin-bottom:0;color:var(--text-dim)">→ ไม่ใช่งาน "ปั่น" หรือ "มโน" — เป็น <strong>applied research</strong> ที่ใช้ rigorous foundation</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head"><span class="section-num">02</span><h2 class="section-title">🔬 Methodology Foundations (Academic Finance)</h2></div>
+  <p class="lead-desc">Peer-reviewed papers ใน top finance journals ที่เป็น base ของ pattern recognition + profitability testing</p>
+  
+  <div class="card" style="margin-bottom:14px;border-left:3px solid #5b9bd5">
+    <div style="display:flex;justify-content:space-between;align-items:start;flex-wrap:wrap;gap:10px">
+      <div>
+        <h3 style="margin:0 0 6px 0;color:#5b9bd5">Lo, Mamaysky & Wang (2000)</h3>
+        <div style="font-size:13px;color:var(--text-dim)">"Foundations of Technical Analysis: Computational Algorithms, Statistical Inference, and Empirical Implementation"</div>
+        <div style="font-size:12px;color:var(--text-dim);margin-top:4px"><em>Journal of Finance</em>, Vol. 55, No. 4, pp. 1705-1765 · NBER Working Paper No. 7613</div>
+      </div>
+      <a href="https://www.nber.org/papers/w7613" target="_blank" style="font-size:11px;padding:4px 10px;background:var(--blue);color:var(--bg-base);text-decoration:none;border-radius:3px;white-space:nowrap">📄 NBER →</a>
+    </div>
+    <p style="margin:10px 0 4px 0;font-size:13px"><strong>สำคัญตรงไหน:</strong> Paper สำคัญที่สุดในการ <strong>quantify pattern recognition</strong> · ใช้ kernel regression เพื่อตรวจจับ patterns โดยอัตโนมัติ · ทดสอบกับ US stocks 1962-1996</p>
+    <p style="margin:0;font-size:13px"><strong>โครงการเราใช้ยังไง:</strong> Approach การ track patterns + measure outcome ผ่าน statistical inference · เป็นต้นแบบของการ "วัด" pattern profitability แทนที่จะแค่ "ดู"</p>
+  </div>
+  
+  <div class="card" style="margin-bottom:14px;border-left:3px solid #5b9bd5">
+    <div style="display:flex;justify-content:space-between;align-items:start;flex-wrap:wrap;gap:10px">
+      <div>
+        <h3 style="margin:0 0 6px 0;color:#5b9bd5">Park & Irwin (2007)</h3>
+        <div style="font-size:13px;color:var(--text-dim)">"What Do We Know About the Profitability of Technical Analysis?"</div>
+        <div style="font-size:12px;color:var(--text-dim);margin-top:4px"><em>Journal of Economic Surveys</em>, Vol. 21, No. 4, pp. 786-826</div>
+      </div>
+      <a href="https://onlinelibrary.wiley.com/doi/abs/10.1111/j.1467-6419.2007.00519.x" target="_blank" style="font-size:11px;padding:4px 10px;background:var(--blue);color:var(--bg-base);text-decoration:none;border-radius:3px;white-space:nowrap">📄 Wiley →</a>
+    </div>
+    <p style="margin:10px 0 4px 0;font-size:13px"><strong>สำคัญตรงไหน:</strong> Survey paper ที่ review งานวิจัย <strong>95 papers</strong> เรื่อง technical analysis profitability · พบว่า 56 studies = positive · 20 = negative · 19 = mixed</p>
+    <p style="margin:0;font-size:13px"><strong>โครงการเราใช้ยังไง:</strong> Confirm ว่า technical analysis สามารถ <strong>profitable ได้จริง</strong> ใน FX + futures markets · เป็น meta-analysis ที่ legitimize ทั้ง field</p>
+  </div>
+  
+  <div class="card" style="margin-bottom:14px;border-left:3px solid #5b9bd5">
+    <div style="display:flex;justify-content:space-between;align-items:start;flex-wrap:wrap;gap:10px">
+      <div>
+        <h3 style="margin:0 0 6px 0;color:#5b9bd5">Brock, Lakonishok & LeBaron (1992)</h3>
+        <div style="font-size:13px;color:var(--text-dim)">"Simple Technical Trading Rules and the Stochastic Properties of Stock Returns"</div>
+        <div style="font-size:12px;color:var(--text-dim);margin-top:4px"><em>Journal of Finance</em>, Vol. 47, No. 5, pp. 1731-1764</div>
+      </div>
+    </div>
+    <p style="margin:10px 0 4px 0;font-size:13px"><strong>สำคัญตรงไหน:</strong> Paper classic ที่แสดงให้เห็นว่า <strong>simple moving average rules</strong> สามารถ outperform buy-and-hold ได้ใน DJIA 1897-1986</p>
+    <p style="margin:0;font-size:13px"><strong>โครงการเราใช้ยังไง:</strong> Inspiration ของการใช้ MA crossover + bootstrap statistical testing · 14 patterns ที่เกี่ยวกับ MA ใน KMP มาจาก concept นี้</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head"><span class="section-num">03</span><h2 class="section-title">📖 Pattern Definition Sources (Industry Classics)</h2></div>
+  <p class="lead-desc">177 patterns ใน KMP มาจาก published works ที่ established ในวงการ trading 30-90 ปี</p>
+  
+  <div class="card" style="overflow-x:auto">
+    <table class="table compact">
+      <thead><tr>
+        <th>Author / Source</th>
+        <th>Work</th>
+        <th>Year</th>
+        <th>Patterns ใน KMP</th>
+        <th>Range</th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>Steve Nison</strong></td>
+          <td><em>Japanese Candlestick Charting Techniques</em></td>
+          <td>1991</td>
+          <td>Candlestick patterns (Doji, Hammer, Engulfing, etc.)</td>
+          <td>P1-P40 (Cat A, B)</td>
+        </tr>
+        <tr>
+          <td><strong>Thomas Bulkowski</strong></td>
+          <td><em>Encyclopedia of Chart Patterns</em> (2nd ed.)</td>
+          <td>2005</td>
+          <td>Chart patterns (Head & Shoulders, Triangles, etc.)</td>
+          <td>P40-P60 (Cat E)</td>
+        </tr>
+        <tr>
+          <td><strong>Scott Carney</strong></td>
+          <td><em>Harmonic Trading</em> (Vol I & II)</td>
+          <td>1999, 2010</td>
+          <td>Harmonic patterns (Gartley, Bat, Crab, Butterfly)</td>
+          <td>P100-P115 (Cat J)</td>
+        </tr>
+        <tr>
+          <td><strong>Richard Wyckoff</strong></td>
+          <td>Wyckoff Method (Trading Methods)</td>
+          <td>1931</td>
+          <td>Volume Spread Analysis · Accumulation/Distribution</td>
+          <td>P95-P100 (Cat I)</td>
+        </tr>
+        <tr>
+          <td><strong>Goichi Hosoda</strong></td>
+          <td>Ichimoku Kinko Hyo</td>
+          <td>1969</td>
+          <td>Ichimoku Cloud (Tenkan/Kijun/Senkou/Chikou)</td>
+          <td>P140-P155 (Cat L)</td>
+        </tr>
+        <tr>
+          <td><strong>ICT (Michael Huddleston)</strong></td>
+          <td>Inner Circle Trader Methodology</td>
+          <td>2010s</td>
+          <td>SMC concepts (Order Blocks, FVG, Breaker)</td>
+          <td>P40-P75 (Cat F, H)</td>
+        </tr>
+        <tr>
+          <td><strong>J. Welles Wilder</strong></td>
+          <td><em>New Concepts in Technical Trading Systems</em></td>
+          <td>1978</td>
+          <td>ATR · ADX · RSI · Parabolic SAR</td>
+          <td>indicators ทุกหน้า</td>
+        </tr>
+        <tr>
+          <td><strong>John Bollinger</strong></td>
+          <td><em>Bollinger on Bollinger Bands</em></td>
+          <td>2001</td>
+          <td>Bollinger Bands (BB position/width)</td>
+          <td>indicators ใน CSV</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head"><span class="section-num">04</span><h2 class="section-title">📐 Statistical Methods (Risk-Adjusted Metrics)</h2></div>
+  <p class="lead-desc">ทุก metric ใน KMP มีรากฐานจาก peer-reviewed journals · บางคนได้ Nobel Prize</p>
+  
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:14px">
+    <div class="card" style="border-left:3px solid #f5b400">
+      <h3 style="margin-top:0;color:#f5b400">Kelly (1956)</h3>
+      <div style="font-size:12px;color:var(--text-dim)"><em>Bell System Technical Journal</em>, Vol. 35, pp. 917-926</div>
+      <p style="font-size:13px;margin:8px 0 4px 0">"A New Interpretation of Information Rate"</p>
+      <p style="font-size:12px;margin:0;color:var(--text-dim)">→ Kelly criterion สำหรับ position sizing · เราใช้ <strong>capped Kelly 25%</strong> + half-Kelly recommendation จาก Edward Thorp</p>
+    </div>
+    
+    <div class="card" style="border-left:3px solid #f5b400">
+      <h3 style="margin-top:0;color:#f5b400">Sharpe (1966)</h3>
+      <div style="font-size:12px;color:var(--text-dim)"><em>Journal of Business</em>, Vol. 39, pp. 119-138 · Nobel Prize 1990</div>
+      <p style="font-size:13px;margin:8px 0 4px 0">"Mutual Fund Performance"</p>
+      <p style="font-size:12px;margin:0;color:var(--text-dim)">→ Sharpe ratio (return/risk) · เราคำนวณ <strong>Sharpe per trade</strong> ของทุก best_setup</p>
+    </div>
+    
+    <div class="card" style="border-left:3px solid #f5b400">
+      <h3 style="margin-top:0;color:#f5b400">Markowitz (1952)</h3>
+      <div style="font-size:12px;color:var(--text-dim)"><em>Journal of Finance</em>, Vol. 7, No. 1 · Nobel Prize 1990</div>
+      <p style="font-size:13px;margin:8px 0 4px 0">"Portfolio Selection"</p>
+      <p style="font-size:12px;margin:0;color:var(--text-dim)">→ Modern Portfolio Theory · พื้นฐานของ <strong>cross-asset diversification</strong> (4 assets ใน KMP)</p>
+    </div>
+    
+    <div class="card" style="border-left:3px solid #f5b400">
+      <h3 style="margin-top:0;color:#f5b400">Wilder (1978)</h3>
+      <div style="font-size:12px;color:var(--text-dim)"><em>New Concepts in Technical Trading Systems</em></div>
+      <p style="font-size:13px;margin:8px 0 4px 0">ATR (Average True Range)</p>
+      <p style="font-size:12px;margin:0;color:var(--text-dim)">→ <strong>ATR-normalized PnL</strong> ทำให้เปรียบ asset ต่างกันได้ · ทุก metric ใน KMP ใช้ ATR units</p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head"><span class="section-num">05</span><h2 class="section-title">🛡️ Backtesting Best Practices</h2></div>
+  <p class="lead-desc">งานเขียนที่กำหนด standards ของ rigorous backtesting</p>
+  
+  <div class="card" style="margin-bottom:14px;border-left:3px solid #4dd498">
+    <h3 style="margin:0 0 6px 0;color:#4dd498">Aronson (2006)</h3>
+    <div style="font-size:13px;color:var(--text-dim)"><em>Evidence-Based Technical Analysis: Applying the Scientific Method and Statistical Inference to Trading Signals</em></div>
+    <p style="margin:10px 0 4px 0;font-size:13px"><strong>Key concepts:</strong> Data snooping bias · multiple testing problem · need for out-of-sample testing · Monte Carlo simulation</p>
+    <p style="margin:0;font-size:13px"><strong>โครงการเราใช้ยังไง:</strong> Confidence levels (robust/solid/preliminary) · cross-asset validation · plan สำหรับ forward test (Phase ต่อไป)</p>
+  </div>
+  
+  <div class="card" style="margin-bottom:14px;border-left:3px solid #4dd498">
+    <h3 style="margin:0 0 6px 0;color:#4dd498">Pardo (2008)</h3>
+    <div style="font-size:13px;color:var(--text-dim)"><em>The Evaluation and Optimization of Trading Strategies</em> (2nd ed.)</div>
+    <p style="margin:10px 0 4px 0;font-size:13px"><strong>Key concepts:</strong> Walk-forward analysis · in-sample vs out-of-sample · degrees of freedom · curve-fitting prevention</p>
+    <p style="margin:0;font-size:13px"><strong>โครงการเราใช้ยังไง:</strong> First-hit logic + capped Kelly · plan walk-forward เมื่อมี data 2-3 ปี</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head"><span class="section-num">06</span><h2 class="section-title">🗺️ Methodology Map — Research → Project</h2></div>
+  <p class="lead-desc">ทุก concept ที่ใช้ใน KMP สามารถ trace กลับไปหา reference ได้</p>
+  
+  <div class="card" style="overflow-x:auto">
+    <table class="table compact">
+      <thead><tr>
+        <th>KMP Component</th>
+        <th>Reference</th>
+        <th>How Applied</th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td>177 patterns library</td>
+          <td>Bulkowski, Nison, Carney, Wyckoff, Hosoda, ICT</td>
+          <td>Pattern detection logic ใน Harvester EA</td>
+        </tr>
+        <tr>
+          <td>ATR-based normalization</td>
+          <td>Wilder (1978)</td>
+          <td>ทุก PnL ใน ATR units · cross-asset compare</td>
+        </tr>
+        <tr>
+          <td>First-hit logic</td>
+          <td>Best practice (Sweeney 1988, Aronson 2006)</td>
+          <td>เปรียบ hours_to_mfe vs hours_to_mae</td>
+        </tr>
+        <tr>
+          <td>CI 95% (Z = 1.96)</td>
+          <td>Standard statistical inference</td>
+          <td>ทุก best_setup มี CI bounds</td>
+        </tr>
+        <tr>
+          <td>Sharpe per trade</td>
+          <td>Sharpe (1966)</td>
+          <td>(mean R) / (std R) ใน best_setup</td>
+        </tr>
+        <tr>
+          <td>Kelly capped 25%</td>
+          <td>Kelly (1956), Thorp (1962)</td>
+          <td>Position sizing ใน Production EA</td>
+        </tr>
+        <tr>
+          <td>Maximum Drawdown</td>
+          <td>Industry standard</td>
+          <td>Cumulative R curve · peak-to-trough</td>
+        </tr>
+        <tr>
+          <td>Confidence stratification</td>
+          <td>Aronson (2006) · sample size theory</td>
+          <td>robust (n≥100) / solid (60-99) / preliminary (30-59)</td>
+        </tr>
+        <tr>
+          <td>Cross-asset validation</td>
+          <td>Markowitz (1952) · Modern Portfolio Theory</td>
+          <td>Robust 9/9 datasets = strongest signal</td>
+        </tr>
+        <tr>
+          <td>Forward test (planned)</td>
+          <td>Aronson · Pardo · all backtesting literature</td>
+          <td>Demo 1 month + 3-yr backtest (Phase ต่อไป)</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head"><span class="section-num">07</span><h2 class="section-title">⚠️ Limitations We Acknowledge</h2></div>
+  <div class="card" style="border-left:3px solid #ff5e6c;background:linear-gradient(90deg,rgba(255,94,108,0.04),transparent)">
+    <p style="margin-top:0;font-weight:600;color:#ff5e6c">โครงการนี้ยอมรับข้อจำกัดทางวิทยาศาสตร์อย่างตรงไปตรงมา</p>
+    <ul>
+      <li><strong>In-sample bias</strong> — Data 4 เดือน (2026 Q1) อาจ over-fit market regime นี้ · จะแก้ด้วย backtest 3 ปี (Phase ต่อไป)</li>
+      <li><strong>Multiple testing problem</strong> — 177 patterns × 9 datasets = 1,593 hypotheses · ยังไม่ได้ใช้ Bonferroni correction · ใช้ "robust 9/9 ds" เป็น proxy filter</li>
+      <li><strong>No walk-forward yet</strong> — ตามที่ Pardo (2008) แนะนำ · จะทำเมื่อ data ครบ</li>
+      <li><strong>No live validation yet</strong> — Backtest ดี ≠ Live ดี · forward test demo จะเป็น final check</li>
+      <li><strong>Slippage estimates</strong> — MT5 Tester ใช้ "Realistic mode" แต่ไม่ใช่ tick-by-tick perfect · live อาจต่างจาก backtest 5-15%</li>
+    </ul>
+    <p style="margin-bottom:0;font-size:13px;color:var(--text-dim)">→ การยอมรับข้อจำกัดเหล่านี้ <strong>คือ scientific honesty</strong> · ดีกว่าอ้างว่า "ระบบ 100% perfect"</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head"><span class="section-num">08</span><h2 class="section-title">📚 Further Reading</h2></div>
+  <p class="lead-desc">หนังสือ + papers ที่แนะนำสำหรับคนที่อยากศึกษาต่อ</p>
+  
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px">
+    <div class="card">
+      <div style="font-weight:600;margin-bottom:6px">📖 Books</div>
+      <ul style="margin:0;padding-left:20px;font-size:13px;line-height:1.8">
+        <li>Aronson — <em>Evidence-Based Technical Analysis</em> (2006)</li>
+        <li>Pardo — <em>The Evaluation and Optimization of Trading Strategies</em> (2008)</li>
+        <li>Bulkowski — <em>Encyclopedia of Chart Patterns</em> (2005)</li>
+        <li>Nison — <em>Japanese Candlestick Charting</em> (1991)</li>
+        <li>Carney — <em>Harmonic Trading</em> Vol I & II</li>
+        <li>Thorp — <em>Beat the Dealer</em> (1962, half-Kelly)</li>
+        <li>Lo — <em>Adaptive Markets</em> (2017)</li>
+      </ul>
+    </div>
+    
+    <div class="card">
+      <div style="font-weight:600;margin-bottom:6px">📄 Key Papers</div>
+      <ul style="margin:0;padding-left:20px;font-size:13px;line-height:1.8">
+        <li>Lo, Mamaysky, Wang (2000) · J. Finance</li>
+        <li>Park & Irwin (2007) · J. Economic Surveys</li>
+        <li>Brock, Lakonishok, LeBaron (1992) · J. Finance</li>
+        <li>Sharpe (1966) · J. Business</li>
+        <li>Kelly (1956) · Bell System Tech. J.</li>
+        <li>Markowitz (1952) · J. Finance</li>
+      </ul>
+    </div>
+    
+    <div class="card">
+      <div style="font-weight:600;margin-bottom:6px">🌐 Online Resources</div>
+      <ul style="margin:0;padding-left:20px;font-size:13px;line-height:1.8">
+        <li><a href="https://www.nber.org" target="_blank" style="color:var(--blue)">NBER</a> — Working papers ฟรี</li>
+        <li><a href="https://papers.ssrn.com" target="_blank" style="color:var(--blue)">SSRN</a> — preprints + abstracts</li>
+        <li><a href="https://www.researchgate.net" target="_blank" style="color:var(--blue)">ResearchGate</a> — Author networks</li>
+        <li><a href="https://onlinelibrary.wiley.com" target="_blank" style="color:var(--blue)">Wiley Online</a> — J. Finance</li>
+        <li><a href="https://www.cfainstitute.org" target="_blank" style="color:var(--blue)">CFA Institute</a> — Professional standards</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head"><span class="section-num">09</span><h2 class="section-title">💡 Summary — Why This Matters</h2></div>
+  <div class="card" style="background:linear-gradient(135deg,rgba(77,212,152,0.08),rgba(91,155,213,0.04));border:1px solid rgba(77,212,152,0.3)">
+    <p style="margin-top:0;font-size:15px">โครงการ <strong>KMP Master ไม่ได้คิดเอง</strong> ทุกอย่างจากศูนย์</p>
+    <p style="font-size:14px">เป็นการ <strong>apply academic + industry research</strong> ที่ established 40-90 ปี เข้ากับ:</p>
+    <ul style="font-size:14px">
+      <li>Modern computing power (MT5 + Python pipeline)</li>
+      <li>Multi-asset cross-validation (4 assets × 3 timeframes)</li>
+      <li>Granular tracking (93 columns/trade)</li>
+      <li>Open dashboard (transparent for review)</li>
+    </ul>
+    <p style="margin-bottom:0;font-size:14px;color:var(--text-dim)">นี่คือสิ่งที่ <strong>Renaissance Technologies, AQR, Citadel</strong> ทำในระดับ industrial · KMP ทำในระดับ individual researcher · ใช้ same foundations</p>
+  </div>
+</section>
+
+</main>
+
+<script src="assets/app.js?v=6.7"></script>
+  <script>
+    // Force close all sidebar menus — runs BEFORE and AFTER DOM load
+    (function forceClose() {
+      try {
+        localStorage.removeItem('kmp_sidebar_state');
+        localStorage.removeItem('kmp_sidebar_state_v2');
+      } catch(e) {}
+      var doIt = function() {
+        document.querySelectorAll('.tree-children').forEach(function(el) {
+          el.classList.remove('show');
+        });
+        document.querySelectorAll('.tree-node.expandable, .tree-node.expanded').forEach(function(el) {
+          el.classList.remove('expanded');
+        });
+      };
+      // Run NOW (immediately when this script executes)
+      doIt();
+      // Run AGAIN after DOM ready (in case elements weren't there yet)
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', doIt);
+      }
+      // Run on every visibility change (back from another tab)
+      document.addEventListener('visibilitychange', doIt);
+    })();
+  </script>
+</body>
+</html>
