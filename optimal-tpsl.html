@@ -24,14 +24,14 @@
   </div>
   
   <div class="nav-section">
-    <div class="nav-label">Datasets · v6</div>
+    <div class="nav-label">Datasets · v7.2</div>
     
     <div class="tree-node lvl-0 expandable" data-toggle="crypto-menu">
       <span class="arrow">▶</span><span class="nm">Crypto</span><span class="badge">2</span>
     </div>
     <div class="tree-children" id="crypto-menu">
       <div class="tree-node lvl-1 expandable" data-toggle="btc-menu">
-        <span class="arrow">▶</span><span class="nm">BTC/USD</span><span class="badge">99K</span>
+        <span class="arrow">▶</span><span class="nm">BTC/USD</span><span class="badge">165K</span>
       </div>
       <div class="tree-children" id="btc-menu">
         <a class="tree-node lvl-2" href="btc-h4.html"><span class="nm">BTC H4</span><span class="badge" style="background:#10b981;color:#fff">9,474</span></a>
@@ -39,25 +39,26 @@
         <a class="tree-node lvl-2" href="btc-m15.html"><span class="nm">BTC M15</span><span class="badge" style="background:#10b981;color:#fff">120,000</span></a>
       </div>
       <div class="tree-node lvl-1 expandable" data-toggle="eth-menu">
-        <span class="arrow">▶</span><span class="nm">ETH/USD</span><span class="badge">46K</span>
+        <span class="arrow">▶</span><span class="nm">ETH/USD</span><span class="badge">166K</span>
       </div>
       <div class="tree-children" id="eth-menu">
         <a class="tree-node lvl-2" href="eth-h4.html"><span class="nm">ETH H4</span><span class="badge" style="background:#10b981;color:#fff">9,701</span></a>
         <a class="tree-node lvl-2" href="eth-h1.html"><span class="nm">ETH H1</span><span class="badge" style="background:#10b981;color:#fff">36,487</span></a>
+        <a class="tree-node lvl-2" href="eth-m15.html"><span class="nm">ETH M15</span><span class="badge" style="background:#10b981;color:#fff">120,000</span></a>
       </div>
     </div>
     
     <div class="tree-node lvl-0 expandable" data-toggle="metals-menu">
-      <span class="arrow">▶</span><span class="nm">Metals</span><span class="badge">3</span>
+      <span class="arrow">▶</span><span class="nm">Metals</span><span class="badge">1</span>
     </div>
     <div class="tree-children" id="metals-menu">
       <div class="tree-node lvl-1 expandable" data-toggle="xau-menu">
-        <span class="arrow">▶</span><span class="nm">XAU/USD</span><span class="badge">70K</span>
+        <span class="arrow">▶</span><span class="nm">XAU/USD</span><span class="badge">32K</span>
       </div>
       <div class="tree-children" id="xau-menu">
         <a class="tree-node lvl-2" href="xau-h4.html"><span class="nm">XAU H4</span><span class="badge" style="background:#10b981;color:#fff">7,077</span></a>
         <a class="tree-node lvl-2" href="xau-h1.html"><span class="nm">XAU H1</span><span class="badge" style="background:#10b981;color:#fff">24,611</span></a>
-        <a class="tree-node lvl-2" href="xau-m15.html"><span class="nm">XAU M15</span><span class="badge">53,098</span></a>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">XAU M15</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
       </div>
     </div>
     
@@ -124,7 +125,8 @@
     <a class="tree-node lvl-0" href="ea-architecture.html"><span class="arrow"></span><span class="nm">⚙ EA Architecture</span></a>
     <a class="tree-node lvl-0" href="tracking-system.html"><span class="arrow"></span><span class="nm">🎯 Tracking System</span></a>  </div>  <div class="nav-section">
     <div class="nav-label">Reference</div>
-    <a class="tree-node lvl-0" href="reference.html"><span class="arrow"></span><span class="nm">Sources &amp; Changelog</span></a>
+    <a class="tree-node lvl-0" href="research-comparison.html"><span class="nm">📊 Research Comparison</span></a>
+  <a class="tree-node lvl-0" href="reference.html"><span class="arrow"></span><span class="nm">Sources &amp; Changelog</span></a>
   </div>
 </nav>
 
@@ -136,6 +138,94 @@
       <button class="cf" onclick="cf('robust','BTCUSD_H4',event)">✅ Robust</button>
       <button class="cf" onclick="cf('solid','BTCUSD_H4',event)">🔵 Solid+</button>
     </div>
+
+<section class="section" style="margin-top:0">
+  <div class="section-head"><span class="section-num">📖</span><h2 class="section-title">วิธีอ่านหน้านี้</h2></div>
+  <div class="card" style="border-left:3px solid #f5b400">
+    <p style="margin-top:0;font-size:14px"><strong>หน้านี้แสดง Optimal SL/TP ของแต่ละ pattern ในแต่ละ dataset</strong> · ใช้สำหรับเลือก setup ที่จะใส่ใน Production EA</p>
+    <p style="font-size:13px;margin:10px 0"><strong>คอลัมน์สำคัญ:</strong></p>
+    <ul style="margin:0;padding-left:24px;line-height:1.9;font-size:13px">
+      <li><strong>Conf</strong> = Confidence level จาก sample size · ✅ Robust (n≥100) · 🔵 Solid (60-99) · ⚠️ Preliminary (30-59)</li>
+      <li><strong>EV</strong> = Expected Value ต่อ trade · เป็น R units (1R = 1× SL) · ใช้ first-hit logic</li>
+      <li><strong>CI 95%</strong> = ช่วงความเชื่อมั่น 95% ของ EV (statistical inference)</li>
+      <li><strong>SL/TP</strong> = ขนาด ATR · เช่น SL 1× / TP 3× = SL หนึ่งเท่า ATR / TP สามเท่า ATR</li>
+      <li><strong>RR</strong> = Risk:Reward ratio</li>
+      <li><strong>TP first</strong> = % ที่ราคาแตะ TP ก่อน SL (ความน่าจะเป็นชนะ)</li>
+      <li><strong>SR</strong> = Sharpe Ratio per trade · &gt;0 = positive edge</li>
+      <li><strong>Kelly</strong> = ขนาด position แนะนำ (capped 25%)</li>
+      <li><strong>MDD</strong> = Maximum Drawdown · ในหน่วย R</li>
+    </ul>
+    <p style="margin:10px 0 0 0;font-size:13px;color:var(--text-dim)">
+      💡 ใช้ filter <strong>"Robust"</strong> ก่อนเสมอ · setup ที่ confidence ต่ำอาจหายไปเมื่อ live
+    </p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head"><span class="section-num">📊</span><h2 class="section-title">Visual: EV Distribution (Robust Patterns เท่านั้น)</h2></div>
+  <p class="lead-desc">การกระจาย Expected Value ของ 776 robust setups ทั้ง 14 datasets · X = EV (R units) · Y = จำนวน setup</p>
+  <div class="card">
+    <svg viewBox="0 0 700 200" style="width:100%;max-width:700px;display:block;margin:0 auto" xmlns="http://www.w3.org/2000/svg">
+      <line x1="40" y1="170" x2="680" y2="170" stroke="var(--line)" stroke-width="1"/>
+      
+    <g>
+      <rect x="42.0" y="94.50331125827815" width="58.0" height="75.49668874172185" fill="#5b9bd5" rx="2"/>
+      <text x="71.0" y="90.50331125827815" text-anchor="middle" font-size="11" font-weight="600" fill="#5b9bd5">76</text>
+      <text x="71.0" y="186" text-anchor="middle" font-size="10" fill="var(--text-dim)">0.0</text>
+    </g>
+    <g>
+      <rect x="104.0" y="56.754966887417226" width="58.0" height="113.24503311258277" fill="#5b9bd5" rx="2"/>
+      <text x="133.0" y="52.754966887417226" text-anchor="middle" font-size="11" font-weight="600" fill="#5b9bd5">114</text>
+      <text x="133.0" y="186" text-anchor="middle" font-size="10" fill="var(--text-dim)">0.5</text>
+    </g>
+    <g>
+      <rect x="166.0" y="30.927152317880797" width="58.0" height="139.0728476821192" fill="#22c55e" rx="2"/>
+      <text x="195.0" y="26.927152317880797" text-anchor="middle" font-size="11" font-weight="600" fill="#22c55e">140</text>
+      <text x="195.0" y="186" text-anchor="middle" font-size="10" fill="var(--text-dim)">1.0</text>
+    </g>
+    <g>
+      <rect x="228.0" y="54.768211920529794" width="58.0" height="115.2317880794702" fill="#22c55e" rx="2"/>
+      <text x="257.0" y="50.768211920529794" text-anchor="middle" font-size="11" font-weight="600" fill="#22c55e">116</text>
+      <text x="257.0" y="186" text-anchor="middle" font-size="10" fill="var(--text-dim)">1.5</text>
+    </g>
+    <g>
+      <rect x="290.0" y="57.74834437086092" width="58.0" height="112.25165562913908" fill="#4dd498" rx="2"/>
+      <text x="319.0" y="53.74834437086092" text-anchor="middle" font-size="11" font-weight="600" fill="#4dd498">113</text>
+      <text x="319.0" y="186" text-anchor="middle" font-size="10" fill="var(--text-dim)">2.0</text>
+    </g>
+    <g>
+      <rect x="352.0" y="20.0" width="58.0" height="150.0" fill="#4dd498" rx="2"/>
+      <text x="381.0" y="16.0" text-anchor="middle" font-size="11" font-weight="600" fill="#4dd498">151</text>
+      <text x="381.0" y="186" text-anchor="middle" font-size="10" fill="var(--text-dim)">2.5</text>
+    </g>
+    <g>
+      <rect x="414.0" y="118.34437086092716" width="58.0" height="51.65562913907284" fill="#4dd498" rx="2"/>
+      <text x="443.0" y="114.34437086092716" text-anchor="middle" font-size="11" font-weight="600" fill="#4dd498">52</text>
+      <text x="443.0" y="186" text-anchor="middle" font-size="10" fill="var(--text-dim)">3.0</text>
+    </g>
+    <g>
+      <rect x="476.0" y="158.0794701986755" width="58.0" height="11.920529801324504" fill="#4dd498" rx="2"/>
+      <text x="505.0" y="154.0794701986755" text-anchor="middle" font-size="11" font-weight="600" fill="#4dd498">12</text>
+      <text x="505.0" y="186" text-anchor="middle" font-size="10" fill="var(--text-dim)">3.5</text>
+    </g>
+    <g>
+      <rect x="538.0" y="170.0" width="58.0" height="0.0" fill="#4dd498" rx="2"/>
+      <text x="567.0" y="166.0" text-anchor="middle" font-size="11" font-weight="600" fill="#4dd498">0</text>
+      <text x="567.0" y="186" text-anchor="middle" font-size="10" fill="var(--text-dim)">4.0</text>
+    </g>
+    <g>
+      <rect x="600.0" y="170.0" width="58.0" height="0.0" fill="#4dd498" rx="2"/>
+      <text x="629.0" y="166.0" text-anchor="middle" font-size="11" font-weight="600" fill="#4dd498">0</text>
+      <text x="629.0" y="186" text-anchor="middle" font-size="10" fill="var(--text-dim)">5.0</text>
+    </g>
+      <text x="350.0" y="198" text-anchor="middle" font-size="11" fill="var(--text-dim)">EV per trade (R units)</text>
+    </svg>
+    <p style="text-align:center;font-size:12px;color:var(--text-dim);margin:10px 0 0 0">
+      🟢 EV ≥ 2R = excellent · 🟢 EV ≥ 1R = good · 🔵 EV &lt; 1R = marginal
+    </p>
+  </div>
+</section>
+
     <div class="card" style="overflow-x:auto"><table class="table compact ranked" id="tbl_BTCUSD_H4"><thead><tr><th>Conf</th><th>Pattern</th><th>Cat</th><th class="r">N</th><th class="r" style="background:rgba(77,212,152,0.1)">EV</th><th class="r">CI 95%</th><th class="r">SL/TP</th><th class="r">RR</th><th class="r">TP first</th><th class="r">SR</th><th class="r">Kelly</th><th class="r">MDD</th></tr></thead><tbody><tr data-conf="preliminary"><td><span style="background:#f5b400;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:600;font-size:11px">⚠️ Preliminary</span></td><td><a href="patterns.html#p89" style="color:var(--blue)"><strong>P89</strong></a> OTE_Long</td><td>Cat H</td><td class="r">36</td><td class="r"><strong style="color:var(--green)">+2.67R</strong></td><td class="r" style="font-size:11px;color:var(--text-dim)">[+0.95, +4.38]</td><td class="r"><strong>0.5× / 5.0×</strong></td><td class="r">1:10.0</td><td class="r">33%</td><td class="r">+0.51</td><td class="r">25.0%</td><td class="r">12.0R</td></tr><tr data-conf="preliminary"><td><span style="background:#f5b400;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:600;font-size:11px">⚠️ Preliminary</span></td><td><a href="patterns.html#p47" style="color:var(--blue)"><strong>P47</strong></a> SR_Flip_Long</td><td>Cat C</td><td class="r">31</td><td class="r"><strong style="color:var(--green)">+2.19R</strong></td><td class="r" style="font-size:11px;color:var(--text-dim)">[+0.41, +3.98]</td><td class="r"><strong>0.5× / 5.0×</strong></td><td class="r">1:10.0</td><td class="r">29%</td><td class="r">+0.43</td><td class="r">21.9%</td><td class="r">6.0R</td></tr><tr data-conf="preliminary"><td><span style="background:#f5b400;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:600;font-size:11px">⚠️ Preliminary</span></td><td><a href="patterns.html#p160" style="color:var(--blue)"><strong>P160</strong></a> Hidden_Div_Bear_MACD</td><td>Cat N</td><td class="r">54</td><td class="r"><strong style="color:var(--green)">+2.15R</strong></td><td class="r" style="font-size:11px;color:var(--text-dim)">[+0.83, +3.48]</td><td class="r"><strong>0.5× / 5.0×</strong></td><td class="r">1:10.0</td><td class="r">28%</td><td class="r">+0.43</td><td class="r">22.3%</td><td class="r">12.0R</td></tr><tr data-conf="preliminary"><td><span style="background:#f5b400;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:600;font-size:11px">⚠️ Preliminary</span></td><td><a href="patterns.html#p158" style="color:var(--blue)"><strong>P158</strong></a> Hidden_Div_Bear_RSI</td><td>Cat N</td><td class="r">56</td><td class="r"><strong style="color:var(--green)">+2.04R</strong></td><td class="r" style="font-size:11px;color:var(--text-dim)">[+0.75, +3.32]</td><td class="r"><strong>0.5× / 5.0×</strong></td><td class="r">1:10.0</td><td class="r">27%</td><td class="r">+0.41</td><td class="r">21.2%</td><td class="r">13.8R</td></tr><tr data-conf="preliminary"><td><span style="background:#f5b400;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:600;font-size:11px">⚠️ Preliminary</span></td><td><a href="patterns.html#p55" style="color:var(--blue)"><strong>P55</strong></a> CHoCH_Bull</td><td>Cat D</td><td class="r">42</td><td class="r"><strong style="color:var(--green)">+2.00R</strong></td><td class="r" style="font-size:11px;color:var(--text-dim)">[+0.94, +3.06]</td><td class="r"><strong>0.5× / 3.0×</strong></td><td class="r">1:6.0</td><td class="r">43%</td><td class="r">+0.57</td><td class="r">25.0%</td><td class="r">12.0R</td></tr><tr data-conf="solid"><td><span style="background:#5b9bd5;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:600;font-size:11px">🔵 Solid</span></td><td><a href="patterns.html#p157" style="color:var(--blue)"><strong>P157</strong></a> Hidden_Div_Bull_RSI</td><td>Cat N</td><td class="r">64</td><td class="r"><strong style="color:var(--green)">+1.92R</strong></td><td class="r" style="font-size:11px;color:var(--text-dim)">[+0.72, +3.12]</td><td class="r"><strong>0.5× / 5.0×</strong></td><td class="r">1:10.0</td><td class="r">27%</td><td class="r">+0.39</td><td class="r">19.2%</td><td class="r">19.0R</td></tr><tr data-conf="preliminary"><td><span style="background:#f5b400;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:600;font-size:11px">⚠️ Preliminary</span></td><td><a href="patterns.html#p79" style="color:var(--blue)"><strong>P79</strong></a> POC_Bounce_Long</td><td>Cat F</td><td class="r">44</td><td class="r"><strong style="color:var(--green)">+1.84R</strong></td><td class="r" style="font-size:11px;color:var(--text-dim)">[+0.42, +3.26]</td><td class="r"><strong>0.5× / 5.0×</strong></td><td class="r">1:10.0</td><td class="r">25%</td><td class="r">+0.38</td><td class="r">19.5%</td><td class="r">16.1R</td></tr><tr data-conf="preliminary"><td><span style="background:#f5b400;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:600;font-size:11px">⚠️ Preliminary</span></td><td><a href="patterns.html#p171" style="color:var(--blue)"><strong>P171</strong></a> ABCD_Bull</td><td>Cat Q</td><td class="r">56</td><td class="r"><strong style="color:var(--green)">+1.62R</strong></td><td class="r" style="font-size:11px;color:var(--text-dim)">[+0.39, +2.84]</td><td class="r"><strong>0.5× / 5.0×</strong></td><td class="r">1:10.0</td><td class="r">23%</td><td class="r">+0.35</td><td class="r">17.2%</td><td class="r">19.1R</td></tr><tr data-conf="solid"><td><span style="background:#5b9bd5;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:600;font-size:11px">🔵 Solid</span></td><td><a href="patterns.html#p39" style="color:var(--blue)"><strong>P39</strong></a> Tweezer_Top</td><td>Cat B</td><td class="r">62</td><td class="r"><strong style="color:var(--green)">+1.57R</strong></td><td class="r" style="font-size:11px;color:var(--text-dim)">[+0.41, +2.72]</td><td class="r"><strong>0.5× / 5.0×</strong></td><td class="r">1:10.0</td><td class="r">23%</td><td class="r">+0.34</td><td class="r">16.3%</td><td class="r">30.0R</td></tr><tr data-conf="preliminary"><td><span style="background:#f5b400;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:600;font-size:11px">⚠️ Preliminary</span></td><td><a href="patterns.html#p54" style="color:var(--blue)"><strong>P54</strong></a> BOS_Bear</td><td>Cat D</td><td class="r">30</td><td class="r"><strong style="color:var(--green)">+1.57R</strong></td><td class="r" style="font-size:11px;color:var(--text-dim)">[+0.34, +2.79]</td><td class="r"><strong>0.5× / 3.0×</strong></td><td class="r">1:6.0</td><td class="r">37%</td><td class="r">+0.46</td><td class="r">25.0%</td><td class="r">12.0R</td></tr><tr data-conf="preliminary"><td><span style="background:#f5b400;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:600;font-size:11px">⚠️ Preliminary</span></td><td><a href="patterns.html#p172" style="color:var(--blue)"><strong>P172</strong></a> ABCD_Bear</td><td>Cat Q</td><td class="r">58</td><td class="r"><strong style="color:var(--green)">+1.53R</strong></td><td class="r" style="font-size:11px;color:var(--text-dim)">[+0.66, +2.41]</td><td class="r"><strong>0.5× / 3.0×</strong></td><td class="r">1:6.0</td><td class="r">36%</td><td class="r">+0.45</td><td class="r">25.0%</td><td class="r">10.0R</td></tr><tr data-conf="preliminary"><td><span style="background:#f5b400;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:600;font-size:11px">⚠️ Preliminary</span></td><td><a href="patterns.html#p62" style="color:var(--blue)"><strong>P62</strong></a> Double_Top</td><td>Cat E</td><td class="r">54</td><td class="r"><strong style="color:var(--green)">+1.46R</strong></td><td class="r" style="font-size:11px;color:var(--text-dim)">[+0.56, +2.36]</td><td class="r"><strong>0.5× / 3.0×</strong></td><td class="r">1:6.0</td><td class="r">35%</td><td class="r">+0.43</td><td class="r">24.4%</td><td class="r">13.0R</td></tr><tr data-conf="solid"><td><span style="background:#5b9bd5;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:600;font-size:11px">🔵 Solid</span></td><td><a href="patterns.html#p159" style="color:var(--blue)"><strong>P159</strong></a> Hidden_Div_Bull_MACD</td><td>Cat N</td><td class="r">77</td><td class="r"><strong style="color:var(--green)">+1.43R</strong></td><td class="r" style="font-size:11px;color:var(--text-dim)">[+0.40, +2.45]</td><td class="r"><strong>0.5× / 5.0×</strong></td><td class="r">1:10.0</td><td class="r">22%</td><td class="r">+0.31</td><td class="r">14.3%</td><td class="r">24.0R</td></tr><tr data-conf="preliminary"><td><span style="background:#f5b400;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:600;font-size:11px">⚠️ Preliminary</span></td><td><a href="patterns.html#p44" style="color:var(--blue)"><strong>P44</strong></a> Bearish_Order_Block</td><td>Cat C</td><td class="r">32</td><td class="r"><strong style="color:var(--green)">+1.41R</strong></td><td class="r" style="font-size:11px;color:var(--text-dim)">[-0.19, +3.01]</td><td class="r"><strong>0.5× / 5.0×</strong></td><td class="r">1:10.0</td><td class="r">22%</td><td class="r">+0.30</td><td class="r">14.1%</td><td class="r">13.0R</td></tr><tr data-conf="preliminary"><td><span style="background:#f5b400;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:600;font-size:11px">⚠️ Preliminary</span></td><td><a href="patterns.html#p33" style="color:var(--blue)"><strong>P33</strong></a> Bearish_Harami</td><td>Cat B</td><td class="r">33</td><td class="r"><strong style="color:var(--green)">+1.31R</strong></td><td class="r" style="font-size:11px;color:var(--text-dim)">[+0.45, +2.16]</td><td class="r"><strong>0.5× / 2.0×</strong></td><td class="r">1:4.0</td><td class="r">45%</td><td class="r">+0.52</td><td class="r">25.0%</td><td class="r">3.0R</td></tr><tr data-conf="solid"><td><span style="background:#5b9bd5;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:600;font-size:11px">🔵 Solid</span></td><td><a href="patterns.html#p60" style="color:var(--blue)"><strong>P60</strong></a> Failed_Breakout_Short</td><td>Cat D</td><td class="r">61</td><td class="r"><strong style="color:var(--green)">+1.28R</strong></td><td class="r" style="font-size:11px;color:var(--text-dim)">[+0.16, +2.40]</td><td class="r"><strong>0.5× / 5.0×</strong></td><td class="r">1:10.0</td><td class="r">20%</td><td class="r">+0.29</td><td class="r">13.2%</td><td class="r">24.0R</td></tr><tr data-conf="preliminary"><td><span style="background:#f5b400;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:600;font-size:11px">⚠️ Preliminary</span></td><td><a href="patterns.html#p168" style="color:var(--blue)"><strong>P168</strong></a> Daily_Pivot_Tag_Long</td><td>Cat P</td><td class="r">44</td><td class="r"><strong style="color:var(--green)">+1.25R</strong></td><td class="r" style="font-size:11px;color:var(--text-dim)">[-0.08, +2.58]</td><td class="r"><strong>0.5× / 5.0×</strong></td><td class="r">1:10.0</td><td class="r">20%</td><td class="r">+0.28</td><td class="r">12.5%</td><td class="r">15.0R</td></tr><tr data-conf="preliminary"><td><span style="background:#f5b400;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:600;font-size:11px">⚠️ Preliminary</span></td><td><a href="patterns.html#p146" style="color:var(--blue)"><strong>P146</strong></a> Turtle_Soup_Short</td><td>Cat M</td><td class="r">44</td><td class="r"><strong style="color:var(--green)">+1.23R</strong></td><td class="r" style="font-size:11px;color:var(--text-dim)">[+0.25, +2.20]</td><td class="r"><strong>0.5× / 3.0×</strong></td><td class="r">1:6.0</td><td class="r">32%</td><td class="r">+0.37</td><td class="r">20.4%</td><td class="r">12.0R</td></tr><tr data-conf="solid"><td><span style="background:#5b9bd5;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:600;font-size:11px">🔵 Solid</span></td><td><a href="patterns.html#p12" style="color:var(--blue)"><strong>P12</strong></a> EMA_Cross</td><td>Cat A</td><td class="r">86</td><td class="r"><strong style="color:var(--green)">+1.16R</strong></td><td class="r" style="font-size:11px;color:var(--text-dim)">[+0.26, +2.05]</td><td class="r"><strong>0.5× / 5.0×</strong></td><td class="r">1:10.0</td><td class="r">17%</td><td class="r">+0.27</td><td class="r">13.2%</td><td class="r">10.0R</td></tr><tr data-conf="preliminary"><td><span style="background:#f5b400;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:600;font-size:11px">⚠️ Preliminary</span></td><td><a href="patterns.html#p151" style="color:var(--blue)"><strong>P151</strong></a> Pullback_EMA20_Long</td><td>Cat N</td><td class="r">44</td><td class="r"><strong style="color:var(--green)">+1.07R</strong></td><td class="r" style="font-size:11px;color:var(--text-dim)">[+0.11, +2.02]</td><td class="r"><strong>0.5× / 3.0×</strong></td><td class="r">1:6.0</td><td class="r">30%</td><td class="r">+0.33</td><td class="r">17.8%</td><td class="r">16.0R</td></tr><tr data-conf="preliminary"><td><span style="background:#f5b400;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:600;font-size:11px">⚠️ Preliminary</span></td><td><a href="patterns.html#p80" style="color:var(--blue)"><strong>P80</strong></a> POC_Bounce_Short</td><td>Cat F</td><td class="r">52</td><td class="r"><strong style="color:var(--green)">+1.02R</strong></td><td class="r" style="font-size:11px;color:var(--text-dim)">[+0.15, +1.89]</td><td class="r"><strong>0.5× / 3.0×</strong></td><td class="r">1:6.0</td><td class="r">29%</td><td class="r">+0.32</td><td class="r">17.0%</td><td class="r">9.0R</td></tr><tr data-conf="solid"><td><span style="background:#5b9bd5;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:600;font-size:11px">🔵 Solid</span></td><td><a href="patterns.html#p174" style="color:var(--blue)"><strong>P174</strong></a> Three_Drives_Bear</td><td>Cat Q</td><td class="r">67</td><td class="r"><strong style="color:var(--green)">+1.01R</strong></td><td class="r" style="font-size:11px;color:var(--text-dim)">[+0.42, +1.61]</td><td class="r"><strong>0.5× / 2.0×</strong></td><td class="r">1:4.0</td><td class="r">40%</td><td class="r">+0.41</td><td class="r">25.0%</td><td class="r">16.0R</td></tr><tr data-conf="preliminary"><td><span style="background:#f5b400;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:600;font-size:11px">⚠️ Preliminary</span></td><td><a href="patterns.html#p161" style="color:var(--blue)"><strong>P161</strong></a> VAH_Reject_Short</td><td>Cat O</td><td class="r">44</td><td class="r"><strong style="color:var(--green)">+1.00R</strong></td><td class="r" style="font-size:11px;color:var(--text-dim)">[-0.27, +2.27]</td><td class="r"><strong>0.5× / 5.0×</strong></td><td class="r">1:10.0</td><td class="r">18%</td><td class="r">+0.23</td><td class="r">10.0%</td><td class="r">21.0R</td></tr><tr data-conf="robust"><td><span style="background:#4dd498;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:600;font-size:11px">✅ Robust</span></td><td><a href="patterns.html#p52" style="color:var(--blue)"><strong>P52</strong></a> LHLL</td><td>Cat D</td><td class="r">174</td><td class="r"><strong style="color:var(--green)">+0.99R</strong></td><td class="r" style="font-size:11px;color:var(--text-dim)">[+0.36, +1.62]</td><td class="r"><strong>0.5× / 5.0×</strong></td><td class="r">1:10.0</td><td class="r">18%</td><td class="r">+0.23</td><td class="r">10.8%</td><td class="r">64.0R</td></tr><tr data-conf="robust"><td><span style="background:#4dd498;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:600;font-size:11px">✅ Robust</span></td><td><a href="patterns.html#p170" style="color:var(--blue)"><strong>P170</strong></a> Range_Mid_Bounce</td><td>Cat P</td><td class="r">132</td><td class="r"><strong style="color:var(--green)">+0.91R</strong></td><td class="r" style="font-size:11px;color:var(--text-dim)">[+0.38, +1.44]</td><td class="r"><strong>0.5× / 3.0×</strong></td><td class="r">1:6.0</td><td class="r">27%</td><td class="r">+0.29</td><td class="r">15.2%</td><td class="r">16.0R</td></tr><tr data-conf="solid"><td><span style="background:#5b9bd5;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:600;font-size:11px">🔵 Solid</span></td><td><a href="patterns.html#p107" style="color:var(--blue)"><strong>P107</strong></a> CVD_Div_Bear</td><td>Cat I</td><td class="r">90</td><td class="r"><strong style="color:var(--green)">+0.89R</strong></td><td class="r" style="font-size:11px;color:var(--text-dim)">[+0.39, +1.39]</td><td class="r"><strong>0.5× / 2.0×</strong></td><td class="r">1:4.0</td><td class="r">38%</td><td class="r">+0.36</td><td class="r">22.2%</td><td class="r">21.0R</td></tr><tr data-conf="preliminary"><td><span style="background:#f5b400;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:600;font-size:11px">⚠️ Preliminary</span></td><td><a href="patterns.html#p124" style="color:var(--blue)"><strong>P124</strong></a> ThreeBar_Rev_Bull</td><td>Cat J</td><td class="r">34</td><td class="r"><strong style="color:var(--green)">+0.85R</strong></td><td class="r" style="font-size:11px;color:var(--text-dim)">[-0.20, +1.91]</td><td class="r"><strong>0.5× / 3.0×</strong></td><td class="r">1:6.0</td><td class="r">26%</td><td class="r">+0.27</td><td class="r">14.2%</td><td class="r">9.0R</td></tr><tr data-conf="preliminary"><td><span style="background:#f5b400;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:600;font-size:11px">⚠️ Preliminary</span></td><td><a href="patterns.html#p74" style="color:var(--blue)"><strong>P74</strong></a> Liq_Grab_Bear</td><td>Cat F</td><td class="r">34</td><td class="r"><strong style="color:var(--green)">+0.85R</strong></td><td class="r" style="font-size:11px;color:var(--text-dim)">[-0.20, +1.91]</td><td class="r"><strong>0.5× / 3.0×</strong></td><td class="r">1:6.0</td><td class="r">26%</td><td class="r">+0.27</td><td class="r">14.2%</td><td class="r">11.0R</td></tr><tr data-conf="solid"><td><span style="background:#5b9bd5;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:600;font-size:11px">🔵 Solid</span></td><td><a href="patterns.html#p15" style="color:var(--blue)"><strong>P15</strong></a> MACD_Zero_Cross</td><td>Cat A</td><td class="r">62</td><td class="r"><strong style="color:var(--green)">+0.84R</strong></td><td class="r" style="font-size:11px;color:var(--text-dim)">[-0.17, +1.86]</td><td class="r"><strong>0.5× / 5.0×</strong></td><td class="r">1:10.0</td><td class="r">16%</td><td class="r">+0.21</td><td class="r">9.0%</td><td class="r">20.0R</td></tr><tr data-conf="preliminary"><td><span style="background:#f5b400;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:600;font-size:11px">⚠️ Preliminary</span></td><td><a href="patterns.html#p73" style="color:var(--blue)"><strong>P73</strong></a> Liq_Grab_Bull</td><td>Cat F</td><td class="r">31</td><td class="r"><strong style="color:var(--green)">+0.84R</strong></td><td class="r" style="font-size:11px;color:var(--text-dim)">[-0.60, +2.28]</td><td class="r"><strong>0.5× / 5.0×</strong></td><td class="r">1:10.0</td><td class="r">16%</td><td class="r">+0.21</td><td class="r">10.0%</td><td class="r">11.0R</td></tr></tbody></table></div></section><section><div class="section-head"><h2 class="section-title">BTC H1 (35,654 · WR 50.0% · PF 1.03)</h2></div><p class="lead-desc"><span style="background:#4dd498;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:600;font-size:11px">✅ Robust</span> <strong>82</strong> · <span style="background:#5b9bd5;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:600;font-size:11px">🔵 Solid</span> <strong>23</strong> · <span style="background:#f5b400;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:600;font-size:11px">⚠️ Preliminary</span> <strong>22</strong></p>
     <div style="margin:10px 0;display:flex;gap:6px;flex-wrap:wrap">
       <button class="cf active" onclick="cf('all','BTCUSD_H1',event)">All</button>

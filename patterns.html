@@ -24,14 +24,14 @@
   </div>
   
   <div class="nav-section">
-    <div class="nav-label">Datasets · v6</div>
+    <div class="nav-label">Datasets · v7.2</div>
     
     <div class="tree-node lvl-0 expandable" data-toggle="crypto-menu">
       <span class="arrow">▶</span><span class="nm">Crypto</span><span class="badge">2</span>
     </div>
     <div class="tree-children" id="crypto-menu">
       <div class="tree-node lvl-1 expandable" data-toggle="btc-menu">
-        <span class="arrow">▶</span><span class="nm">BTC/USD</span><span class="badge">99K</span>
+        <span class="arrow">▶</span><span class="nm">BTC/USD</span><span class="badge">165K</span>
       </div>
       <div class="tree-children" id="btc-menu">
         <a class="tree-node lvl-2" href="btc-h4.html"><span class="nm">BTC H4</span><span class="badge" style="background:#10b981;color:#fff">9,474</span></a>
@@ -39,25 +39,26 @@
         <a class="tree-node lvl-2" href="btc-m15.html"><span class="nm">BTC M15</span><span class="badge" style="background:#10b981;color:#fff">120,000</span></a>
       </div>
       <div class="tree-node lvl-1 expandable" data-toggle="eth-menu">
-        <span class="arrow">▶</span><span class="nm">ETH/USD</span><span class="badge">46K</span>
+        <span class="arrow">▶</span><span class="nm">ETH/USD</span><span class="badge">166K</span>
       </div>
       <div class="tree-children" id="eth-menu">
         <a class="tree-node lvl-2" href="eth-h4.html"><span class="nm">ETH H4</span><span class="badge" style="background:#10b981;color:#fff">9,701</span></a>
         <a class="tree-node lvl-2" href="eth-h1.html"><span class="nm">ETH H1</span><span class="badge" style="background:#10b981;color:#fff">36,487</span></a>
+        <a class="tree-node lvl-2" href="eth-m15.html"><span class="nm">ETH M15</span><span class="badge" style="background:#10b981;color:#fff">120,000</span></a>
       </div>
     </div>
     
     <div class="tree-node lvl-0 expandable" data-toggle="metals-menu">
-      <span class="arrow">▶</span><span class="nm">Metals</span><span class="badge">3</span>
+      <span class="arrow">▶</span><span class="nm">Metals</span><span class="badge">1</span>
     </div>
     <div class="tree-children" id="metals-menu">
       <div class="tree-node lvl-1 expandable" data-toggle="xau-menu">
-        <span class="arrow">▶</span><span class="nm">XAU/USD</span><span class="badge">70K</span>
+        <span class="arrow">▶</span><span class="nm">XAU/USD</span><span class="badge">32K</span>
       </div>
       <div class="tree-children" id="xau-menu">
         <a class="tree-node lvl-2" href="xau-h4.html"><span class="nm">XAU H4</span><span class="badge" style="background:#10b981;color:#fff">7,077</span></a>
         <a class="tree-node lvl-2" href="xau-h1.html"><span class="nm">XAU H1</span><span class="badge" style="background:#10b981;color:#fff">24,611</span></a>
-        <a class="tree-node lvl-2" href="xau-m15.html"><span class="nm">XAU M15</span><span class="badge">53,098</span></a>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">XAU M15</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
       </div>
     </div>
     
@@ -124,13 +125,31 @@
     <a class="tree-node lvl-0" href="ea-architecture.html"><span class="arrow"></span><span class="nm">⚙ EA Architecture</span></a>
     <a class="tree-node lvl-0" href="tracking-system.html"><span class="arrow"></span><span class="nm">🎯 Tracking System</span></a>  </div>  <div class="nav-section">
     <div class="nav-label">Reference</div>
-    <a class="tree-node lvl-0" href="reference.html"><span class="arrow"></span><span class="nm">Sources &amp; Changelog</span></a>
+    <a class="tree-node lvl-0" href="research-comparison.html"><span class="nm">📊 Research Comparison</span></a>
+  <a class="tree-node lvl-0" href="reference.html"><span class="arrow"></span><span class="nm">Sources &amp; Changelog</span></a>
   </div>
 </nav>
 
 
 <main class="main">
 <div class="hero"><span class="hero-tag">Patterns · v7 (14 ds · 522,809 trades)</span><h1 class="hero-title">177 <span class="accent">Patterns</span></h1><p class="hero-desc">Master Table + Tier + Best Setup (realistic EV) + Confidence levels</p></div>
+
+<section class="section" style="margin-top:0">
+  <div class="section-head"><span class="section-num">📖</span><h2 class="section-title">วิธีอ่านหน้านี้</h2></div>
+  <div class="card" style="border-left:3px solid #5b9bd5">
+    <p style="margin-top:0;font-size:14px"><strong>หน้านี้แสดงผลของ 177 patterns ทั้งหมด</strong> · จัดอันดับด้วย <strong>Tier (S/A/B/C/D)</strong> ตามผลรวมข้าม 14 datasets</p>
+    <ul style="margin:0;padding-left:24px;line-height:1.9;font-size:13px">
+      <li><strong>Tier S</strong> 🥇 = Production-ready · กำไรรวม ≥200 ATR · ใช้ได้ใน 2+ datasets · n≥100</li>
+      <li><strong>Tier A</strong> 🥈 = Strong · กำไรรวม ≥100 ATR · n≥60</li>
+      <li><strong>Tier B</strong> 🥉 = Promising · กำไรรวม ≥50 ATR</li>
+      <li><strong>Tier D</strong> ⚠️ = Avoid · ขาดทุน · ไม่ควรใช้</li>
+      <li><strong>N/A</strong> = ข้อมูลไม่พอ (n&lt;30) หรือ pattern ไม่ fire ในตลาด</li>
+    </ul>
+    <p style="margin:10px 0 0 0;font-size:13px;color:var(--text-dim)">
+      💡 <strong>Best Setup</strong> = SL/TP ที่แนะนำ + Realistic EV (ใช้ first-hit logic ไม่ใช่ aggregated rate)
+    </p>
+  </div>
+</section>
 <section><div class="section-head"><span class="section-num">01</span><h2 class="section-title">Tier Distribution</h2></div>
 <div class="kpis">
 <div class="kpi" style="border-color:#4dd498"><div class="kpi-label" style="color:#4dd498">S</div><div class="kpi-val" style="color:#4dd498">61</div><div class="kpi-sub">Production</div></div>
@@ -140,6 +159,63 @@
 <div class="kpi" style="border-color:#ff5e6c"><div class="kpi-label" style="color:#ff5e6c">D</div><div class="kpi-val" style="color:#ff5e6c">94</div><div class="kpi-sub">Avoid</div></div>
 <div class="kpi"><div class="kpi-label" style="color:#94a3b8">N/A</div><div class="kpi-val" style="color:#94a3b8">14</div><div class="kpi-sub">n&lt;30</div></div>
 </div></section>
+<section class="section">
+  <div class="section-head"><span class="section-num">01b</span><h2 class="section-title">📊 Tier Distribution Chart</h2></div>
+  
+<div class="card" style="margin-top:14px">
+  <div class="card-title" style="margin-bottom:14px">📊 Tier Distribution Visual</div>
+  <svg viewBox="0 0 600 220" style="width:100%;max-width:600px;display:block;margin:0 auto" xmlns="http://www.w3.org/2000/svg">
+    <line x1="40" y1="190" x2="580" y2="190" stroke="var(--line)" stroke-width="1"/>
+    
+    <g>
+      <rect x="45.0" y="86.17021276595744" width="76.66666666666667" height="103.82978723404256" fill="#4dd498" rx="3"/>
+      <text x="83.33333333333334" y="78.17021276595744" text-anchor="middle" font-size="14" font-weight="700" fill="#4dd498">61</text>
+      <text x="83.33333333333334" y="64.17021276595744" text-anchor="middle" font-size="10" fill="var(--text-dim)">34%</text>
+      <text x="83.33333333333334" y="206" text-anchor="middle" font-size="13" font-weight="700" fill="#4dd498">S</text>
+      <text x="83.33333333333334" y="219" text-anchor="middle" font-size="9" fill="var(--text-dim)">Production-ready</text>
+    </g>
+    <g>
+      <rect x="131.66666666666669" y="184.89361702127658" width="76.66666666666667" height="5.106382978723404" fill="#22c55e" rx="3"/>
+      <text x="170.00000000000003" y="176.89361702127658" text-anchor="middle" font-size="14" font-weight="700" fill="#22c55e">3</text>
+      <text x="170.00000000000003" y="162.89361702127658" text-anchor="middle" font-size="10" fill="var(--text-dim)">2%</text>
+      <text x="170.00000000000003" y="206" text-anchor="middle" font-size="13" font-weight="700" fill="#22c55e">A</text>
+      <text x="170.00000000000003" y="219" text-anchor="middle" font-size="9" fill="var(--text-dim)">Strong</text>
+    </g>
+    <g>
+      <rect x="218.33333333333334" y="181.48936170212767" width="76.66666666666667" height="8.51063829787234" fill="#5b9bd5" rx="3"/>
+      <text x="256.6666666666667" y="173.48936170212767" text-anchor="middle" font-size="14" font-weight="700" fill="#5b9bd5">5</text>
+      <text x="256.6666666666667" y="159.48936170212767" text-anchor="middle" font-size="10" fill="var(--text-dim)">3%</text>
+      <text x="256.6666666666667" y="206" text-anchor="middle" font-size="13" font-weight="700" fill="#5b9bd5">B</text>
+      <text x="256.6666666666667" y="219" text-anchor="middle" font-size="9" fill="var(--text-dim)">Promising</text>
+    </g>
+    <g>
+      <rect x="305.0" y="190.0" width="76.66666666666667" height="0.0" fill="#94a3b8" rx="3"/>
+      <text x="343.3333333333333" y="182.0" text-anchor="middle" font-size="14" font-weight="700" fill="#94a3b8">0</text>
+      <text x="343.3333333333333" y="168.0" text-anchor="middle" font-size="10" fill="var(--text-dim)">0%</text>
+      <text x="343.3333333333333" y="206" text-anchor="middle" font-size="13" font-weight="700" fill="#94a3b8">C</text>
+      <text x="343.3333333333333" y="219" text-anchor="middle" font-size="9" fill="var(--text-dim)">Marginal</text>
+    </g>
+    <g>
+      <rect x="391.6666666666667" y="30.0" width="76.66666666666667" height="160.0" fill="#ff5e6c" rx="3"/>
+      <text x="430.0" y="22.0" text-anchor="middle" font-size="14" font-weight="700" fill="#ff5e6c">94</text>
+      <text x="430.0" y="8.0" text-anchor="middle" font-size="10" fill="var(--text-dim)">53%</text>
+      <text x="430.0" y="206" text-anchor="middle" font-size="13" font-weight="700" fill="#ff5e6c">D</text>
+      <text x="430.0" y="219" text-anchor="middle" font-size="9" fill="var(--text-dim)">Avoid</text>
+    </g>
+    <g>
+      <rect x="478.33333333333337" y="166.17021276595744" width="76.66666666666667" height="23.829787234042552" fill="#475569" rx="3"/>
+      <text x="516.6666666666667" y="158.17021276595744" text-anchor="middle" font-size="14" font-weight="700" fill="#475569">14</text>
+      <text x="516.6666666666667" y="144.17021276595744" text-anchor="middle" font-size="10" fill="var(--text-dim)">8%</text>
+      <text x="516.6666666666667" y="206" text-anchor="middle" font-size="13" font-weight="700" fill="#475569">N/A</text>
+      <text x="516.6666666666667" y="219" text-anchor="middle" font-size="9" fill="var(--text-dim)">Insufficient</text>
+    </g>
+  </svg>
+  <p style="text-align:center;font-size:12px;color:var(--text-dim);margin:10px 0 0 0">
+    Total 177 patterns · Tier S+A+B = <strong style="color:#4dd498">69 patterns</strong> ที่ใช้งานได้
+  </p>
+</div>
+</section>
+
 <section><div class="section-head"><span class="section-num">02</span><h2 class="section-title">Patterns Master Table</h2></div>
 <p class="lead-desc">Best Setup ใช้ realistic EV จาก dataset ที่ทำได้ดีที่สุด</p>
 <div style="margin:12px 0;display:flex;gap:8px;flex-wrap:wrap;align-items:center">
