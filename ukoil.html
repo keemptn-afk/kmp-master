@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brent Crude Oil · KMP Master</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&family=Sarabun:wght@400;500;600;700&family=Bricolage+Grotesque:wght@400;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css?v=6.7">
+</head>
+<body>
+
+<nav class="sidebar">
+  <div class="sidebar-brand">
+    <a class="brand-logo" href="index.html">KMP <span class="accent">Master</span></a>
+    <div class="brand-ver">EA v3.1 · 177 patterns · 93 cols</div>
+  </div>
+  
+  <input type="text" class="search-box" id="globalSearch" placeholder="ค้นหา...">
+  
+  <div class="nav-section">
+    <div class="nav-label">Overview</div>
+    <a class="tree-node lvl-0" href="index.html"><span class="arrow"></span><span class="nm">Dashboard</span></a>
+    <a class="tree-node lvl-0" href="preface.html"><span class="arrow"></span><span class="nm">คำนำ &amp; เป้าหมาย</span></a>
+  </div>
+  
+  <div class="nav-section">
+    <div class="nav-label">Datasets · v7.2</div>
+    
+    <div class="tree-node lvl-0 expandable" data-toggle="crypto-menu">
+      <span class="arrow">▶</span><span class="nm">Crypto</span><span class="badge">2</span>
+    </div>
+    <div class="tree-children" id="crypto-menu">
+      <div class="tree-node lvl-1 expandable" data-toggle="btc-menu">
+        <span class="arrow">▶</span><span class="nm">BTC/USD</span><span class="badge">165K</span>
+      </div>
+      <div class="tree-children" id="btc-menu">
+        <a class="tree-node lvl-2" href="btc-h4.html"><span class="nm">BTC H4</span><span class="badge" style="background:#10b981;color:#fff">9,474</span></a>
+        <a class="tree-node lvl-2" href="btc-h1.html"><span class="nm">BTC H1</span><span class="badge" style="background:#10b981;color:#fff">35,654</span></a>
+        <a class="tree-node lvl-2" href="btc-m15.html"><span class="nm">BTC M15</span><span class="badge" style="background:#10b981;color:#fff">120,000</span></a>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="eth-menu">
+        <span class="arrow">▶</span><span class="nm">ETH/USD</span><span class="badge">166K</span>
+      </div>
+      <div class="tree-children" id="eth-menu">
+        <a class="tree-node lvl-2" href="eth-h4.html"><span class="nm">ETH H4</span><span class="badge" style="background:#10b981;color:#fff">9,701</span></a>
+        <a class="tree-node lvl-2" href="eth-h1.html"><span class="nm">ETH H1</span><span class="badge" style="background:#10b981;color:#fff">36,487</span></a>
+        <a class="tree-node lvl-2" href="eth-m15.html"><span class="nm">ETH M15</span><span class="badge" style="background:#10b981;color:#fff">120,000</span></a>
+      </div>
+    </div>
+    
+    <div class="tree-node lvl-0 expandable" data-toggle="metals-menu">
+      <span class="arrow">▶</span><span class="nm">Metals</span><span class="badge">1</span>
+    </div>
+    <div class="tree-children" id="metals-menu">
+      <div class="tree-node lvl-1 expandable" data-toggle="xau-menu">
+        <span class="arrow">▶</span><span class="nm">XAU/USD</span><span class="badge">32K</span>
+      </div>
+      <div class="tree-children" id="xau-menu">
+        <a class="tree-node lvl-2" href="xau-h4.html"><span class="nm">XAU H4</span><span class="badge" style="background:#10b981;color:#fff">7,077</span></a>
+        <a class="tree-node lvl-2" href="xau-h1.html"><span class="nm">XAU H1</span><span class="badge" style="background:#10b981;color:#fff">24,611</span></a>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">XAU M15</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+      </div>
+    </div>
+    
+    <div class="tree-node lvl-0 expandable" data-toggle="energy-menu">
+      <span class="arrow">▶</span><span class="nm">Energy</span><span class="badge">2</span>
+    </div>
+    <div class="tree-children" id="energy-menu">
+      <div class="tree-node lvl-1 expandable" data-toggle="usoil-menu">
+        <span class="arrow">▶</span><span class="nm">USOIL (WTI)</span><span class="badge" style="background:#84cc16;color:#0a0a0a">7,060</span>
+      </div>
+      <div class="tree-children" id="usoil-menu">
+        <a class="tree-node lvl-2" href="usoil-h4.html"><span class="nm">USOIL H4</span><span class="badge" style="background:#10b981;color:#fff">7,060</span></a>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="ukoil-menu">
+        <span class="arrow">▶</span><span class="nm">UKOIL (Brent)</span><span class="badge" style="background:#65a30d;color:#0a0a0a">6,598</span>
+      </div>
+      <div class="tree-children" id="ukoil-menu">
+        <a class="tree-node lvl-2" href="ukoil-h4.html"><span class="nm">UKOIL H4</span><span class="badge" style="background:#10b981;color:#fff">6,598</span></a>
+      </div>
+    </div>
+    
+    <div class="tree-node lvl-0 expandable" data-toggle="forex-menu">
+      <span class="arrow">▶</span><span class="nm">Forex</span><span class="badge">4</span>
+    </div>
+    <div class="tree-children" id="forex-menu">
+      <div class="tree-node lvl-1 expandable" data-toggle="eur-menu">
+        <span class="arrow">▶</span><span class="nm">EUR/USD</span><span class="badge">79K</span>
+      </div>
+      <div class="tree-children" id="eur-menu">
+        <a class="tree-node lvl-2" href="eur-h4.html"><span class="nm">EUR H4</span><span class="badge" style="background:#10b981;color:#fff">6,956</span></a>
+        <a class="tree-node lvl-2" href="eur-h1.html"><span class="nm">EUR H1</span><span class="badge" style="background:#10b981;color:#fff">26,141</span></a>
+        <a class="tree-node lvl-2" href="eur-m15.html"><span class="nm">EUR M15</span><span class="badge" style="background:#10b981;color:#fff">105,295</span></a>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="gbp-menu">
+        <span class="arrow">▶</span><span class="nm">GBP/USD</span><span class="badge" style="background:#a78bfa;color:#fff">7,217</span>
+      </div>
+      <div class="tree-children" id="gbp-menu">
+        <a class="tree-node lvl-2" href="gbp-h4.html"><span class="nm">GBP H4</span><span class="badge" style="background:#10b981;color:#fff">7,217</span></a>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="jpy-menu">
+        <span class="arrow">▶</span><span class="nm">USD/JPY</span><span class="badge" style="background:#fb7185;color:#fff">7,056</span>
+      </div>
+      <div class="tree-children" id="jpy-menu">
+        <a class="tree-node lvl-2" href="jpy-h4.html"><span class="nm">JPY H4</span><span class="badge" style="background:#10b981;color:#fff">7,056</span></a>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="aud-menu">
+        <span class="arrow">▶</span><span class="nm">AUD/USD</span><span class="badge" style="background:#34d399;color:#0a0a0a">137K</span>
+      </div>
+      <div class="tree-children" id="aud-menu">
+        <a class="tree-node lvl-2" href="aud-h4.html"><span class="nm">AUD H4</span><span class="badge" style="background:#10b981;color:#fff">7,140</span></a>
+        <a class="tree-node lvl-2" href="aud-h1.html"><span class="nm">AUD H1</span><span class="badge" style="background:#10b981;color:#fff">26,781</span></a>
+        <a class="tree-node lvl-2" href="aud-m15.html"><span class="nm">AUD M15</span><span class="badge" style="background:#10b981;color:#fff">103,269</span></a>
+      </div>
+    </div>
+  </div>
+  
+  <div class="nav-section">
+    <div class="nav-label">Patterns · 177 (v3.1)</div>
+    <a class="tree-node lvl-0" href="patterns-encyclopedia.html"><span class="arrow"></span><span class="nm">📚 Pattern Encyclopedia</span><span class="badge">177</span></a>
+    <div class="tree-node lvl-0 expandable" data-toggle="pat-menu">
+      <span class="arrow">▶</span><span class="nm">v4 Analysis</span><span class="badge">80</span>
+    </div>
+    <div class="tree-children" id="pat-menu">
+      <a class="tree-node lvl-1" href="patterns.html"><span class="nm">All Patterns Table</span></a>
+      <a class="tree-node lvl-1" href="tier.html"><span class="nm">Tier Rankings</span></a>
+      <a class="tree-node lvl-1" href="optimal-tpsl.html"><span class="nm">Optimal TP/SL EV</span></a>
+    </div>
+  </div>
+  
+  <div class="nav-section">
+    <div class="nav-label">Analysis</div>
+    <a class="tree-node lvl-0" href="cross.html"><span class="arrow"></span><span class="nm">Cross-TF / Asset</span></a>
+    <a class="tree-node lvl-0" href="time.html"><span class="arrow"></span><span class="nm">Hour / DoW / Conf</span></a>
+    <a class="tree-node lvl-0" href="edge.html"><span class="arrow"></span><span class="nm">Edge Decay / Vol</span></a>
+  </div>
+  
+  <div class="nav-section">
+    <div class="nav-label">Strategy</div>
+    <a class="tree-node lvl-0" href="strategy.html"><span class="arrow"></span><span class="nm">EA Blueprint &amp; Risk</span></a>
+  </div>
+  
+  <div class="nav-section">
+    <div class="nav-label">EA System · v3.1</div>
+    <a class="tree-node lvl-0" href="ea-architecture.html"><span class="arrow"></span><span class="nm">⚙ EA Architecture</span></a>
+    <a class="tree-node lvl-0" href="tracking-system.html"><span class="arrow"></span><span class="nm">🎯 Tracking System</span></a>  </div>  <div class="nav-section">
+    <div class="nav-label">Reference</div>
+    <a class="tree-node lvl-0" href="research-comparison.html"><span class="nm">📊 Research Comparison</span></a>
+  <a class="tree-node lvl-0" href="reference.html"><span class="arrow"></span><span class="nm">Sources &amp; Changelog</span></a>
+  </div>
+</nav>
+
+
+<main class="main">>
+<div class="hero">
+  <span class="hero-tag">🇦🇺 Brent Crude Oil · UKOIL</span>
+  <h1 class="hero-title">AUD <span class="accent" style="color:#65a30d">USD.</span></h1>
+  <p class="hero-desc">
+    <strong>UKOIL ("Aussie")</strong> · commodity currency · correlate กับ gold, iron ore, China · daily volume ~5.2% · session ที่ active: Sydney (04:00-13:00 ไทย) + Asian · ตอบสนองต่อ RBA decisions, China data · risk-on indicator · เหมาะกับ Asian/Sydney session
+  </p>
+</div>
+
+<section class="section">
+  <div class="section-head"><span class="section-num">01</span><h2 class="section-title">📊 ภาพรวม · 7,140 trades</h2></div>
+  <p class="lead-desc">สรุปผลรวมของ UKOIL ใน Backtest 4 เดือน · 1 timeframe</p>
+  <div class="kpis">
+    <div class="kpi" style="border-color:#65a30d">
+      <div class="kpi-label" style="color:#65a30d">Trades รวม</div>
+      <div class="kpi-val" style="color:#65a30d">7,140</div>
+      <div class="kpi-sub">1 timeframe</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Win Rate เฉลี่ย</div>
+      <div class="kpi-val">49.0%</div>
+      <div class="kpi-sub">เปอร์เซ็นต์ trade ที่กำไร</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Profit Factor</div>
+      <div class="kpi-val">0.95</div>
+      <div class="kpi-sub"><1 = ขาดทุน</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Robust Patterns</div>
+      <div class="kpi-val" style="color:#4dd498">18</div>
+      <div class="kpi-sub">patterns ที่น่าเชื่อถือ (n≥100)</div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head"><span class="section-num">02</span><h2 class="section-title">⏱️ เลือก Timeframe</h2></div>
+  <p class="lead-desc">คลิกเข้าไปดูรายละเอียดของแต่ละ timeframe · ตัวเลข ✅ = จำนวน robust patterns</p>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px">
+    
+        <a href="ukoil-h4.html" class="card" style="text-decoration:none;color:var(--text);border-left:3px solid #65a30d">
+          <div style="display:flex;justify-content:space-between;align-items:start">
+            <div>
+              <div class="card-title" style="color:#65a30d">AUD H4</div>
+              <div style="font-size:13px;color:var(--text-dim);margin:6px 0">
+                7,140 trades · WR 49.0% · PF 0.95
+              </div>
+            </div>
+            <span style="background:#4dd498;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-size:11px;font-weight:600">✅ 18</span>
+          </div>
+          <div style="margin-top:8px;font-size:12px;color:var(--text-dim)">
+            Net: <span class="tr" style="font-weight:600">-685 ATR</span>
+          </div>
+        </a>
+        <div class="card" style="opacity:0.5;border-left:3px solid #475569">
+          <div class="card-title" style="color:#94a3b8">AUD H1 / M15</div>
+          <div style="font-size:13px;color:var(--text-dim);margin:6px 0">⏳ Planned · จะเก็บข้อมูลในอนาคต</div>
+        </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head"><span class="section-num">03</span><h2 class="section-title">🎯 ลักษณะของสินทรัพย์</h2></div>
+  <p class="lead-desc">สิ่งที่ควรรู้เกี่ยวกับ Brent Crude Oil ก่อนเทรด</p>
+  <div class="card" style="border-left:3px solid #65a30d">
+    <ul style="margin:0;padding-left:24px;line-height:1.9;font-size:14px">
+      <li style="margin:6px 0">🌾 Commodity currency · correlate กับ gold/iron</li><li style="margin:6px 0">🇨🇳 Influence จาก China data</li><li style="margin:6px 0">🇦🇺 Best: Sydney session (04:00-13:00 ไทย)</li><li style="margin:6px 0">📊 Risk-on indicator</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head"><span class="section-num">04</span><h2 class="section-title">🔗 หน้าที่เกี่ยวข้อง</h2></div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px">
+    <a href="forex.html" class="card" style="text-decoration:none;color:var(--text)">
+      <div class="card-title">📁 Forex</div>
+      <div style="font-size:12px;color:var(--text-dim)">หน้ารวม category</div>
+    </a>
+    <a href="patterns.html" class="card" style="text-decoration:none;color:var(--text)">
+      <div class="card-title">🎯 177 Patterns</div>
+      <div style="font-size:12px;color:var(--text-dim)">ตารางรวมทุก pattern</div>
+    </a>
+    <a href="cross.html" class="card" style="text-decoration:none;color:var(--text)">
+      <div class="card-title">🔄 Cross Analysis</div>
+      <div style="font-size:12px;color:var(--text-dim)">เปรียบเทียบทุก asset</div>
+    </a>
+    <a href="optimal-tpsl.html" class="card" style="text-decoration:none;color:var(--text)">
+      <div class="card-title">⚙️ Optimal SL/TP</div>
+      <div style="font-size:12px;color:var(--text-dim)">setup ที่แนะนำ</div>
+    </a>
+  </div>
+</section>
+</main>
+
+<script src="assets/app.js?v=6.7"></script>
+  <script>
+    // Force close all sidebar menus — runs BEFORE and AFTER DOM load
+    (function forceClose() {
+      try {
+        localStorage.removeItem('kmp_sidebar_state');
+        localStorage.removeItem('kmp_sidebar_state_v2');
+      } catch(e) {}
+      var doIt = function() {
+        document.querySelectorAll('.tree-children').forEach(function(el) {
+          el.classList.remove('show');
+        });
+        document.querySelectorAll('.tree-node.expandable, .tree-node.expanded').forEach(function(el) {
+          el.classList.remove('expanded');
+        });
+      };
+      // Run NOW (immediately when this script executes)
+      doIt();
+      // Run AGAIN after DOM ready (in case elements weren't there yet)
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', doIt);
+      }
+      // Run on every visibility change (back from another tab)
+      document.addEventListener('visibilitychange', doIt);
+    })();
+  </script>
+</body>
+</html>

@@ -58,6 +58,24 @@
       </div>
     </div>
     
+    <div class="tree-node lvl-0 expandable" data-toggle="energy-menu">
+      <span class="arrow">▶</span><span class="nm">Energy</span><span class="badge">2</span>
+    </div>
+    <div class="tree-children" id="energy-menu">
+      <div class="tree-node lvl-1 expandable" data-toggle="usoil-menu">
+        <span class="arrow">▶</span><span class="nm">USOIL (WTI)</span><span class="badge" style="background:#84cc16;color:#0a0a0a">7,060</span>
+      </div>
+      <div class="tree-children" id="usoil-menu">
+        <a class="tree-node lvl-2" href="usoil-h4.html"><span class="nm">USOIL H4</span><span class="badge" style="background:#10b981;color:#fff">7,060</span></a>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="ukoil-menu">
+        <span class="arrow">▶</span><span class="nm">UKOIL (Brent)</span><span class="badge" style="background:#65a30d;color:#0a0a0a">6,598</span>
+      </div>
+      <div class="tree-children" id="ukoil-menu">
+        <a class="tree-node lvl-2" href="ukoil-h4.html"><span class="nm">UKOIL H4</span><span class="badge" style="background:#10b981;color:#fff">6,598</span></a>
+      </div>
+    </div>
+    
     <div class="tree-node lvl-0 expandable" data-toggle="forex-menu">
       <span class="arrow">▶</span><span class="nm">Forex</span><span class="badge">4</span>
     </div>
@@ -83,10 +101,12 @@
         <a class="tree-node lvl-2" href="jpy-h4.html"><span class="nm">JPY H4</span><span class="badge" style="background:#10b981;color:#fff">7,056</span></a>
       </div>
       <div class="tree-node lvl-1 expandable" data-toggle="aud-menu">
-        <span class="arrow">▶</span><span class="nm">AUD/USD</span><span class="badge" style="background:#34d399;color:#0a0a0a">7,140</span>
+        <span class="arrow">▶</span><span class="nm">AUD/USD</span><span class="badge" style="background:#34d399;color:#0a0a0a">137K</span>
       </div>
       <div class="tree-children" id="aud-menu">
         <a class="tree-node lvl-2" href="aud-h4.html"><span class="nm">AUD H4</span><span class="badge" style="background:#10b981;color:#fff">7,140</span></a>
+        <a class="tree-node lvl-2" href="aud-h1.html"><span class="nm">AUD H1</span><span class="badge" style="background:#10b981;color:#fff">26,781</span></a>
+        <a class="tree-node lvl-2" href="aud-m15.html"><span class="nm">AUD M15</span><span class="badge" style="background:#10b981;color:#fff">103,269</span></a>
       </div>
     </div>
   </div>
@@ -326,24 +346,37 @@
 <section class="section">
   <div class="section-head"><span class="section-num">06</span><h2 class="section-title">Change Log</h2></div>
   
+  <div class="insight" style="border-color:#84cc16;background:linear-gradient(90deg,rgba(132,204,22,0.05),transparent)">
+    <div class="insight-tag" style="color:#84cc16">⚡ v7.5 · Phase 2A Start · 2026-05-08</div>
+    <strong>v7.5 — Phase 2A Begins · 4 datasets เพิ่ม</strong><br>
+    <strong>+AUD H1</strong> (26,781 trades · WR 48.8% · PF 0.98)<br>
+    <strong>+AUD M15</strong> (103,269 trades · WR 48.7% · PF 0.96)<br>
+    <strong>+USOIL H4 (WTI)</strong> (7,060 trades · WR <strong>51.8%</strong> · PF <strong>1.17</strong>) 🟢 กำไร<br>
+    <strong>+UKOIL H4 (Brent)</strong> (6,598 trades · WR <strong>54.8%</strong> · PF <strong>1.15</strong>) 🟢 WR สูงสุดในระบบ<br>
+    <strong>New: Energy class</strong> · landing energy.html + hubs usoil.html, ukoil.html<br>
+    <strong>Total:</strong> 18 datasets · 666,517 trades · 8 assets (added Energy class)<br>
+    <strong>Tier:</strong> S=51 · A=5 · B=5 · D=102<br>
+    <strong>Universal patterns:</strong> 0/18 robust · 0 robust ≥16/18 datasets
+  </div>
+  
   <div class="insight" style="border-color:#4dd498;background:linear-gradient(90deg,rgba(77,212,152,0.05),transparent)">
     <div class="insight-tag" style="color:#4dd498">🎉 v7.3 · Polish · 2026-05-08</div>
     <strong>v7.3 Polish — Comprehensive QA + Thai descriptions + Visuals</strong><br>
     <strong>Phase A:</strong> Fixed eth.html duplicate sections · expanded patterns-encyclopedia.html (22→154 KB · 177 patterns ครบ) · xau-m15.html → "Coming Soon"<br>
-    <strong>Phase B:</strong> Added Thai "วิธีอ่าน" blocks ใน 6 aggregators + 14 datasets + index intro<br>
+    <strong>Phase B:</strong> Added Thai "วิธีอ่าน" blocks ใน 6 aggregators + 18 datasets + index intro<br>
     <strong>Phase C:</strong> Added 6 visuals — Tier chart (patterns) · Top 20 bars (tier) · EV histogram (optimal-tpsl) · Universal Patterns 15 ตัว (cross) · 24h heatmap (time) · Top/Worst edges (edge)<br>
     <strong>Phase D:</strong> 7 hubs standardized (4 sections each + Thai asset characteristics)<br>
-    <strong>Hero hardening:</strong> All aggregator hero tags now show "14 datasets · 522,809 trades"<br>
+    <strong>Hero hardening:</strong> All aggregator hero tags now show "18 datasets · 666,517 trades"<br>
     <strong>Bug fix:</strong> ETH M15 was missing from sidebar tree — now added in all 40 files
   </div>
   
   <div class="insight" style="border-color:#a78bfa;background:linear-gradient(90deg,rgba(167,139,250,0.05),transparent)">
-    <div class="insight-tag" style="color:#a78bfa">🎉 v7.2 · 14 datasets · 7 assets · 2026-05-08</div>
+    <div class="insight-tag" style="color:#a78bfa">🎉 v7.2 · 18 datasets · 7 assets · 2026-05-08</div>
     <strong>v7.2 Forex Expansion — GBP + JPY + AUD added</strong><br>
     GBPUSD H4 (7,217 · WR 48.0% · PF 0.88)<br>
     USDJPY H4 (7,056 · WR 50.4% · PF 0.88)<br>
     AUDUSD H4 (7,140 · WR 49.0% · PF 0.95)<br>
-    Total: <strong>522,809 trades</strong> across 14 datasets · 7 assets<br>
+    Total: <strong>666,517 trades</strong> across 18 datasets · 7 assets<br>
     Forex coverage: 3 sessions (Tokyo/London/Sydney) + 3 currency types (safe-haven/major/commodity)
   </div>
   
@@ -472,6 +505,26 @@
     BTCUSD H4 (9,474 trades · WR 50.5% · PF 1.11) · 
     XAUUSD H4 (7,077 trades · WR 48.7% · PF 1.07)<br>
     Total: 16,551 trades · 93 CSV cols · WeekendMode AUTO · spread+slippage real<br>
+    Pending: BTC H1 · EUR H1 · EUR H4 · XAU H1 (4 datasets)<br>
+    Top performer (both): P141 Ichimoku Kumo Twist Bear · Worst: Sunday Gap Fill (P120/P121)
+  </div>
+  
+  <div class="insight" style="border-color:#10b981">
+    <div class="insight-tag" style="color:#10b981">⭐ v6 Baseline · 2026-05-07 · IN PROGRESS · 18/6 datasets</div>
+    <strong>v6 Backtest — first 2 datasets</strong><br>
+    BTCUSD H4 (9,474 trades · WR 50.5% · PF 1.11) · 
+    XAUUSD H4 (7,077 trades · WR 48.7% · PF 1.07)<br>
+    Total: 666,517 trades · 93 CSV cols · WeekendMode AUTO · spread+slippage real<br>
+    Pending: BTC H1 · EUR H1 · EUR H4 · XAU H1 (4 datasets)<br>
+    Top performer (both): P141 Ichimoku Kumo Twist Bear · Worst: Sunday Gap Fill (P120/P121)
+  </div>
+  
+  <div class="insight" style="border-color:#10b981">
+    <div class="insight-tag" style="color:#10b981">⭐ v6 Baseline · 2026-05-07 · IN PROGRESS · 18/6 datasets</div>
+    <strong>v6 Backtest — first 2 datasets</strong><br>
+    BTCUSD H4 (9,474 trades · WR 50.5% · PF 1.11) · 
+    XAUUSD H4 (7,077 trades · WR 48.7% · PF 1.07)<br>
+    Total: 666,517 trades · 93 CSV cols · WeekendMode AUTO · spread+slippage real<br>
     Pending: BTC H1 · EUR H1 · EUR H4 · XAU H1 (4 datasets)<br>
     Top performer (both): P141 Ichimoku Kumo Twist Bear · Worst: Sunday Gap Fill (P120/P121)
   </div>
