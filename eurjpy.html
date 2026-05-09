@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Euro / Yen · KMP Master</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&family=Sarabun:wght@400;500;600;700&family=Bricolage+Grotesque:wght@400;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css?v=8.0">
+</head>
+<body>
+
+<nav class="sidebar">
+  <div class="sidebar-brand">
+    <a class="brand-logo" href="index.html">KMP <span class="accent">Master</span></a>
+    <div class="brand-ver">EA v3.1 · 177 patterns · 93 cols</div>
+  </div>
+  
+  <input type="text" class="search-box" id="globalSearch" placeholder="ค้นหา...">
+  
+  <div class="nav-section">
+    <div class="nav-label">Overview</div>
+    <a class="tree-node lvl-0" href="index.html"><span class="arrow"></span><span class="nm">Dashboard</span></a>
+    <a class="tree-node lvl-0" href="preface.html"><span class="arrow"></span><span class="nm">คำนำ &amp; เป้าหมาย</span></a>
+  </div>
+  
+  <div class="nav-section">
+    <div class="nav-label">Datasets · v8.0</div>
+    
+    <div class="tree-node lvl-0 expandable" data-toggle="crypto-menu">
+      <span class="arrow">▶</span><span class="nm">Crypto</span><span class="badge">2</span>
+    </div>
+    <div class="tree-children" id="crypto-menu">
+      <div class="tree-node lvl-1 expandable" data-toggle="btc-menu">
+        <span class="arrow">▶</span><span class="nm">BTC/USD</span><span class="badge" style="background:#f7931a;color:#0a0a0a">165.1K</span>
+      </div>
+      <div class="tree-children" id="btc-menu">
+        <a class="tree-node lvl-2" href="btc-h4.html"><span class="nm">BTC H4</span><span class="badge" style="background:#10b981;color:#fff">9,474</span></a>
+        <a class="tree-node lvl-2" href="btc-h1.html"><span class="nm">BTC H1</span><span class="badge" style="background:#10b981;color:#fff">35,654</span></a>
+        <a class="tree-node lvl-2" href="btc-m15.html"><span class="nm">BTC M15</span><span class="badge" style="background:#10b981;color:#fff">120,000</span></a>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="eth-menu">
+        <span class="arrow">▶</span><span class="nm">ETH/USD</span><span class="badge" style="background:#627eea;color:#fff">166.2K</span>
+      </div>
+      <div class="tree-children" id="eth-menu">
+        <a class="tree-node lvl-2" href="eth-h4.html"><span class="nm">ETH H4</span><span class="badge" style="background:#10b981;color:#fff">9,701</span></a>
+        <a class="tree-node lvl-2" href="eth-h1.html"><span class="nm">ETH H1</span><span class="badge" style="background:#10b981;color:#fff">36,487</span></a>
+        <a class="tree-node lvl-2" href="eth-m15.html"><span class="nm">ETH M15</span><span class="badge" style="background:#10b981;color:#fff">120,000</span></a>
+      </div>
+    </div>
+    
+    <div class="tree-node lvl-0 expandable" data-toggle="metals-menu">
+      <span class="arrow">▶</span><span class="nm">Metals</span><span class="badge">1</span>
+    </div>
+    <div class="tree-children" id="metals-menu">
+      <div class="tree-node lvl-1 expandable" data-toggle="xau-menu">
+        <span class="arrow">▶</span><span class="nm">XAU/USD</span><span class="badge" style="background:#fbbf24;color:#0a0a0a">128.8K</span>
+      </div>
+      <div class="tree-children" id="xau-menu">
+        <a class="tree-node lvl-2" href="xau-h4.html"><span class="nm">XAU H4</span><span class="badge" style="background:#10b981;color:#fff">7,077</span></a>
+        <a class="tree-node lvl-2" href="xau-h1.html"><span class="nm">XAU H1</span><span class="badge" style="background:#10b981;color:#fff">24,611</span></a>
+        <a class="tree-node lvl-2" href="xau-m15.html"><span class="nm">XAU M15</span><span class="badge" style="background:#10b981;color:#fff">97,149</span></a>
+      </div>
+    </div>
+    
+    <div class="tree-node lvl-0 expandable" data-toggle="energy-menu">
+      <span class="arrow">▶</span><span class="nm">Energy</span><span class="badge">3</span>
+    </div>
+    <div class="tree-children" id="energy-menu">
+      <div class="tree-node lvl-1 expandable" data-toggle="usoil-menu">
+        <span class="arrow">▶</span><span class="nm">USOIL (WTI)</span><span class="badge" style="background:#84cc16;color:#0a0a0a">122.7K</span>
+      </div>
+      <div class="tree-children" id="usoil-menu">
+        <a class="tree-node lvl-2" href="usoil-h4.html"><span class="nm">USOIL H4</span><span class="badge" style="background:#10b981;color:#fff">7,060</span></a>
+        <a class="tree-node lvl-2" href="usoil-h1.html"><span class="nm">USOIL H1</span><span class="badge" style="background:#10b981;color:#fff">23,471</span></a>
+        <a class="tree-node lvl-2" href="usoil-m15.html"><span class="nm">USOIL M15</span><span class="badge" style="background:#10b981;color:#fff">92,162</span></a>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="ukoil-menu">
+        <span class="arrow">▶</span><span class="nm">UKOIL (Brent)</span><span class="badge" style="background:#65a30d;color:#0a0a0a">109.9K</span>
+      </div>
+      <div class="tree-children" id="ukoil-menu">
+        <a class="tree-node lvl-2" href="ukoil-h4.html"><span class="nm">UKOIL H4</span><span class="badge" style="background:#10b981;color:#fff">6,598</span></a>
+        <a class="tree-node lvl-2" href="ukoil-h1.html"><span class="nm">UKOIL H1</span><span class="badge" style="background:#10b981;color:#fff">21,030</span></a>
+        <a class="tree-node lvl-2" href="ukoil-m15.html"><span class="nm">UKOIL M15</span><span class="badge" style="background:#10b981;color:#fff">82,254</span></a>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="xng-menu">
+        <span class="arrow">▶</span><span class="nm">XNGUSD (NatGas)</span><span class="badge" style="background:#06b6d4;color:#0a0a0a">123.2K</span>
+      </div>
+      <div class="tree-children" id="xng-menu">
+        <a class="tree-node lvl-2" href="xng-h4.html"><span class="nm">XNG H4</span><span class="badge" style="background:#10b981;color:#fff">6,883</span></a>
+        <a class="tree-node lvl-2" href="xng-h1.html"><span class="nm">XNG H1</span><span class="badge" style="background:#10b981;color:#fff">24,284</span></a>
+        <a class="tree-node lvl-2" href="xng-m15.html"><span class="nm">XNG M15</span><span class="badge" style="background:#10b981;color:#fff">92,080</span></a>
+      </div>
+    </div>
+    
+    <div class="tree-node lvl-0 expandable" data-toggle="forex-menu">
+      <span class="arrow">▶</span><span class="nm">Forex</span><span class="badge">6</span>
+    </div>
+    <div class="tree-children" id="forex-menu">
+      <div class="tree-node lvl-1 expandable" data-toggle="eur-menu">
+        <span class="arrow">▶</span><span class="nm">EUR/USD</span><span class="badge" style="background:#5b9bd5;color:#fff">138.4K</span>
+      </div>
+      <div class="tree-children" id="eur-menu">
+        <a class="tree-node lvl-2" href="eur-h4.html"><span class="nm">EUR H4</span><span class="badge" style="background:#10b981;color:#fff">6,956</span></a>
+        <a class="tree-node lvl-2" href="eur-h1.html"><span class="nm">EUR H1</span><span class="badge" style="background:#10b981;color:#fff">26,141</span></a>
+        <a class="tree-node lvl-2" href="eur-m15.html"><span class="nm">EUR M15</span><span class="badge" style="background:#10b981;color:#fff">105,295</span></a>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="gbp-menu">
+        <span class="arrow">▶</span><span class="nm">GBP/USD</span><span class="badge" style="background:#a78bfa;color:#fff">138.8K</span>
+      </div>
+      <div class="tree-children" id="gbp-menu">
+        <a class="tree-node lvl-2" href="gbp-h4.html"><span class="nm">GBP H4</span><span class="badge" style="background:#10b981;color:#fff">7,217</span></a>
+        <a class="tree-node lvl-2" href="gbp-h1.html"><span class="nm">GBP H1</span><span class="badge" style="background:#10b981;color:#fff">26,671</span></a>
+        <a class="tree-node lvl-2" href="gbp-m15.html"><span class="nm">GBP M15</span><span class="badge" style="background:#10b981;color:#fff">104,878</span></a>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="jpy-menu">
+        <span class="arrow">▶</span><span class="nm">USD/JPY</span><span class="badge" style="background:#fb7185;color:#fff">138.9K</span>
+      </div>
+      <div class="tree-children" id="jpy-menu">
+        <a class="tree-node lvl-2" href="jpy-h4.html"><span class="nm">JPY H4</span><span class="badge" style="background:#10b981;color:#fff">7,056</span></a>
+        <a class="tree-node lvl-2" href="jpy-h1.html"><span class="nm">JPY H1</span><span class="badge" style="background:#10b981;color:#fff">26,817</span></a>
+        <a class="tree-node lvl-2" href="jpy-m15.html"><span class="nm">JPY M15</span><span class="badge" style="background:#10b981;color:#fff">105,016</span></a>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="aud-menu">
+        <span class="arrow">▶</span><span class="nm">AUD/USD</span><span class="badge" style="background:#34d399;color:#0a0a0a">137.2K</span>
+      </div>
+      <div class="tree-children" id="aud-menu">
+        <a class="tree-node lvl-2" href="aud-h4.html"><span class="nm">AUD H4</span><span class="badge" style="background:#10b981;color:#fff">7,140</span></a>
+        <a class="tree-node lvl-2" href="aud-h1.html"><span class="nm">AUD H1</span><span class="badge" style="background:#10b981;color:#fff">26,781</span></a>
+        <a class="tree-node lvl-2" href="aud-m15.html"><span class="nm">AUD M15</span><span class="badge" style="background:#10b981;color:#fff">103,269</span></a>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="cad-menu">
+        <span class="arrow">▶</span><span class="nm">USD/CAD</span><span class="badge" style="background:#f59e0b;color:#0a0a0a">139.8K</span>
+      </div>
+      <div class="tree-children" id="cad-menu">
+        <a class="tree-node lvl-2" href="cad-h4.html"><span class="nm">CAD H4</span><span class="badge" style="background:#10b981;color:#fff">7,009</span></a>
+        <a class="tree-node lvl-2" href="cad-h1.html"><span class="nm">CAD H1</span><span class="badge" style="background:#10b981;color:#fff">26,860</span></a>
+        <a class="tree-node lvl-2" href="cad-m15.html"><span class="nm">CAD M15</span><span class="badge" style="background:#10b981;color:#fff">105,955</span></a>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="chf-menu">
+        <span class="arrow">▶</span><span class="nm">USD/CHF</span><span class="badge" style="background:#ef4444;color:#fff">138.3K</span>
+      </div>
+      <div class="tree-children" id="chf-menu">
+        <a class="tree-node lvl-2" href="chf-h4.html"><span class="nm">CHF H4</span><span class="badge" style="background:#10b981;color:#fff">6,974</span></a>
+        <a class="tree-node lvl-2" href="chf-h1.html"><span class="nm">CHF H1</span><span class="badge" style="background:#10b981;color:#fff">27,125</span></a>
+        <a class="tree-node lvl-2" href="chf-m15.html"><span class="nm">CHF M15</span><span class="badge" style="background:#10b981;color:#fff">104,173</span></a>
+      </div>
+    </div>
+    
+    <div class="tree-node lvl-0 expandable" data-toggle="cross-menu">
+      <span class="arrow">▶</span><span class="nm">Forex Cross</span><span class="badge">3</span>
+    </div>
+    <div class="tree-children" id="cross-menu">
+      <div class="tree-node lvl-1 expandable" data-toggle="eurjpy-menu">
+        <span class="arrow">▶</span><span class="nm">EUR/JPY</span><span class="badge" style="background:#8b5cf6;color:#fff">138.8K</span>
+      </div>
+      <div class="tree-children" id="eurjpy-menu">
+        <a class="tree-node lvl-2" href="eurjpy-h4.html"><span class="nm">EURJPY H4</span><span class="badge" style="background:#10b981;color:#fff">7,225</span></a>
+        <a class="tree-node lvl-2" href="eurjpy-h1.html"><span class="nm">EURJPY H1</span><span class="badge" style="background:#10b981;color:#fff">27,071</span></a>
+        <a class="tree-node lvl-2" href="eurjpy-m15.html"><span class="nm">EURJPY M15</span><span class="badge" style="background:#10b981;color:#fff">104,548</span></a>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="gbpjpy-menu">
+        <span class="arrow">▶</span><span class="nm">GBP/JPY</span><span class="badge" style="background:#ec4899;color:#fff">137.5K</span>
+      </div>
+      <div class="tree-children" id="gbpjpy-menu">
+        <a class="tree-node lvl-2" href="gbpjpy-h4.html"><span class="nm">GBPJPY H4</span><span class="badge" style="background:#10b981;color:#fff">6,969</span></a>
+        <a class="tree-node lvl-2" href="gbpjpy-h1.html"><span class="nm">GBPJPY H1</span><span class="badge" style="background:#10b981;color:#fff">26,390</span></a>
+        <a class="tree-node lvl-2" href="gbpjpy-m15.html"><span class="nm">GBPJPY M15</span><span class="badge" style="background:#10b981;color:#fff">104,163</span></a>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="eurgbp-menu">
+        <span class="arrow">▶</span><span class="nm">EUR/GBP</span><span class="badge" style="background:#6366f1;color:#fff">141.0K</span>
+      </div>
+      <div class="tree-children" id="eurgbp-menu">
+        <a class="tree-node lvl-2" href="eurgbp-h4.html"><span class="nm">EURGBP H4</span><span class="badge" style="background:#10b981;color:#fff">7,228</span></a>
+        <a class="tree-node lvl-2" href="eurgbp-h1.html"><span class="nm">EURGBP H1</span><span class="badge" style="background:#10b981;color:#fff">28,129</span></a>
+        <a class="tree-node lvl-2" href="eurgbp-m15.html"><span class="nm">EURGBP M15</span><span class="badge" style="background:#10b981;color:#fff">105,619</span></a>
+      </div>
+    </div>
+  </div>
+  
+  <div class="nav-section">
+    <div class="nav-label">Patterns · 177 (v3.1)</div>
+    <a class="tree-node lvl-0" href="patterns-encyclopedia.html"><span class="arrow"></span><span class="nm">📚 Pattern Encyclopedia</span><span class="badge">177</span></a>
+    <div class="tree-node lvl-0 expandable" data-toggle="pat-menu">
+      <span class="arrow">▶</span><span class="nm">v4 Analysis</span><span class="badge">80</span>
+    </div>
+    <div class="tree-children" id="pat-menu">
+      <a class="tree-node lvl-1" href="patterns.html"><span class="nm">All Patterns Table</span></a>
+      <a class="tree-node lvl-1" href="tier.html"><span class="nm">Tier Rankings</span></a>
+      <a class="tree-node lvl-1" href="optimal-tpsl.html"><span class="nm">Optimal TP/SL EV</span></a>
+    </div>
+  </div>
+  
+  <div class="nav-section">
+    <div class="nav-label">Analysis</div>
+    <a class="tree-node lvl-0" href="cross.html"><span class="arrow"></span><span class="nm">Cross-TF / Asset</span></a>
+    <a class="tree-node lvl-0" href="time.html"><span class="arrow"></span><span class="nm">Hour / DoW / Conf</span></a>
+    <a class="tree-node lvl-0" href="edge.html"><span class="arrow"></span><span class="nm">Edge Decay / Vol</span></a>
+  </div>
+  
+  <div class="nav-section">
+    <div class="nav-label">Strategy</div>
+    <a class="tree-node lvl-0" href="strategy.html"><span class="arrow"></span><span class="nm">EA Blueprint &amp; Risk</span></a>
+  </div>
+  
+  <div class="nav-section">
+    <div class="nav-label">EA System · v3.1</div>
+    <a class="tree-node lvl-0" href="ea-architecture.html"><span class="arrow"></span><span class="nm">⚙ EA Architecture</span></a>
+    <a class="tree-node lvl-0" href="tracking-system.html"><span class="arrow"></span><span class="nm">🎯 Tracking System</span></a>  </div>  <div class="nav-section">
+    <div class="nav-label">Reference</div>
+    <a class="tree-node lvl-0" href="ea-source.html"><span class="arrow"></span><span class="nm">EA Source Code</span><span class="badge" style="background:#4dd498;color:#0a0a0a">v3.1.1</span></a>
+    <a class="tree-node lvl-0" href="research-references.html"><span class="arrow"></span><span class="nm">Research Refs</span><span class="badge" style="background:#5b9bd5;color:#fff">NEW</span></a>
+    <a class="tree-node lvl-0" href="research-comparison.html"><span class="nm">📊 Research Comparison</span></a>
+  <a class="tree-node lvl-0" href="reference.html"><span class="arrow"></span><span class="nm">Sources &amp; Changelog</span></a>
+  </div>
+</nav>
+
+<main class="main">
+<div class="hero">
+  <span class="hero-tag" style="background:#8b5cf6;color:#0a0a0a">EURJPY · 3 timeframes · 138,844 trades</span>
+  <h1 class="hero-title">Euro / Yen</h1>
+  <p class="hero-desc">
+    <strong>EURJPY ("Yuppy")</strong> · Forex cross · Euro × Yen · risk-on/off proxy · ปกติ trend ชัด · spread กว้างกว่า majors · daily range 80-150 pips · sensitive ต่อ ECB + BoJ policy divergence
+  </p>
+</div>
+
+<section class="section">
+  <div class="section-head"><span class="section-num">01</span><h2 class="section-title">📊 ภาพรวม · 138,844 trades</h2></div>
+  <p class="lead-desc">สรุปผลรวมของ EURJPY ใน Backtest 4 เดือน · 3 timeframes</p>
+  <div class="kpis">
+    <div class="kpi" style="border-color:#8b5cf6">
+      <div class="kpi-label" style="color:#8b5cf6">Trades รวม</div>
+      <div class="kpi-val" style="color:#8b5cf6">138,844</div>
+      <div class="kpi-sub">3 timeframes</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Win Rate เฉลี่ย</div>
+      <div class="kpi-val">48.0%</div>
+      <div class="kpi-sub">น้ำหนักตาม trade count</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Profit Factor</div>
+      <div class="kpi-val">0.00</div>
+      <div class="kpi-sub"><1 = ขาดทุน</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Robust Patterns</div>
+      <div class="kpi-val" style="color:#4dd498">0</div>
+      <div class="kpi-sub">รวมทุก TF (n≥100)</div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head"><span class="section-num">02</span><h2 class="section-title">⏱️ เลือก Timeframe</h2></div>
+  <p class="lead-desc">คลิกเข้าไปดูรายละเอียดของแต่ละ timeframe · ตัวเลข ✅ = จำนวน robust patterns</p>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px">
+    <a href="eurjpy-h4.html" class="card" style="text-decoration:none;color:var(--text);border-left:3px solid #8b5cf6">
+          <div style="display:flex;justify-content:space-between;align-items:start">
+            <div>
+              <div class="card-title" style="color:#8b5cf6">EURJPY H4</div>
+              <div style="font-size:13px;color:var(--text-dim);margin:6px 0">
+                7,225 trades · WR 46.9% · PF 0.91
+              </div>
+            </div>
+            <span style="background:#4dd498;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-size:11px;font-weight:600">✅ 0</span>
+          </div>
+          <div style="margin-top:8px;font-size:12px;color:var(--text-dim)">
+            Net: <span class="tr" style="font-weight:600">-1,353 ATR</span>
+          </div>
+        </a><a href="eurjpy-h1.html" class="card" style="text-decoration:none;color:var(--text);border-left:3px solid #8b5cf6">
+          <div style="display:flex;justify-content:space-between;align-items:start">
+            <div>
+              <div class="card-title" style="color:#8b5cf6">EURJPY H1</div>
+              <div style="font-size:13px;color:var(--text-dim);margin:6px 0">
+                27,071 trades · WR 48.0% · PF 0.91
+              </div>
+            </div>
+            <span style="background:#4dd498;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-size:11px;font-weight:600">✅ 0</span>
+          </div>
+          <div style="margin-top:8px;font-size:12px;color:var(--text-dim)">
+            Net: <span class="tr" style="font-weight:600">-10,398 ATR</span>
+          </div>
+        </a><a href="eurjpy-m15.html" class="card" style="text-decoration:none;color:var(--text);border-left:3px solid #8b5cf6">
+          <div style="display:flex;justify-content:space-between;align-items:start">
+            <div>
+              <div class="card-title" style="color:#8b5cf6">EURJPY M15</div>
+              <div style="font-size:13px;color:var(--text-dim);margin:6px 0">
+                104,548 trades · WR 48.1% · PF 0.93
+              </div>
+            </div>
+            <span style="background:#4dd498;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-size:11px;font-weight:600">✅ 0</span>
+          </div>
+          <div style="margin-top:8px;font-size:12px;color:var(--text-dim)">
+            Net: <span class="tr" style="font-weight:600">-63,440 ATR</span>
+          </div>
+        </a>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head"><span class="section-num">03</span><h2 class="section-title">🎯 ลักษณะของสินทรัพย์</h2></div>
+  <p class="lead-desc">สิ่งที่ควรรู้เกี่ยวกับ Euro / Yen ก่อนเทรด</p>
+  <div class="card" style="border-left:3px solid #8b5cf6">
+    <ul style="margin:0;padding-left:24px;line-height:1.9;font-size:14px">
+      <li style="margin:6px 0">📈 Risk-on barometer (correlate กับ Nikkei)</li><li style="margin:6px 0">🇪🇺🇯🇵 Best: London + Tokyo overlap (15:00 ไทย)</li><li style="margin:6px 0">⚡ Trend strong กว่า EURUSD</li><li style="margin:6px 0">💱 Spread กว้างกว่า majors</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head"><span class="section-num">04</span><h2 class="section-title">🔗 หน้าที่เกี่ยวข้อง</h2></div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px">
+    <a href="forex-cross.html" class="card" style="text-decoration:none;color:var(--text)">
+      <div class="card-title">📁 Forex Cross</div>
+      <div style="font-size:12px;color:var(--text-dim)">หน้ารวม category</div>
+    </a>
+    <a href="patterns.html" class="card" style="text-decoration:none;color:var(--text)">
+      <div class="card-title">🎯 177 Patterns</div>
+      <div style="font-size:12px;color:var(--text-dim)">ตารางรวมทุก pattern</div>
+    </a>
+    <a href="cross.html" class="card" style="text-decoration:none;color:var(--text)">
+      <div class="card-title">🔄 Cross Analysis</div>
+      <div style="font-size:12px;color:var(--text-dim)">เปรียบเทียบทุก asset</div>
+    </a>
+    <a href="optimal-tpsl.html" class="card" style="text-decoration:none;color:var(--text)">
+      <div class="card-title">⚙️ Optimal SL/TP</div>
+      <div style="font-size:12px;color:var(--text-dim)">setup ที่แนะนำ</div>
+    </a>
+  </div>
+</section>
+</main>
+
+<script src="assets/app.js?v=8.0"></script>
+  <script>
+    (function forceClose() {
+      try {
+        localStorage.removeItem('kmp_sidebar_state');
+        localStorage.removeItem('kmp_sidebar_state_v2');
+      } catch(e) {}
+      var doIt = function() {
+        document.querySelectorAll('.tree-children').forEach(function(el) { el.classList.remove('show'); });
+        document.querySelectorAll('.tree-node.expandable, .tree-node.expanded').forEach(function(el) { el.classList.remove('expanded'); });
+      };
+      doIt();
+      if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', doIt);
+      document.addEventListener('visibilitychange', doIt);
+    })();
+  </script>
+</body>
+</html>

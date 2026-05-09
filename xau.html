@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Gold · KMP Master</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&family=Sarabun:wght@400;500;600;700&family=Bricolage+Grotesque:wght@400;700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css?v=6.7">
+<link rel="stylesheet" href="assets/style.css?v=8.0">
 </head>
 <body>
 
@@ -53,12 +53,12 @@
     </div>
     <div class="tree-children" id="metals-menu">
       <div class="tree-node lvl-1 expandable" data-toggle="xau-menu">
-        <span class="arrow">▶</span><span class="nm">XAU/USD</span><span class="badge" style="background:#fbbf24;color:#0a0a0a">31.7K</span>
+        <span class="arrow">▶</span><span class="nm">XAU/USD</span><span class="badge" style="background:#fbbf24;color:#0a0a0a">128.8K</span>
       </div>
       <div class="tree-children" id="xau-menu">
         <a class="tree-node lvl-2" href="xau-h4.html"><span class="nm">XAU H4</span><span class="badge" style="background:#10b981;color:#fff">7,077</span></a>
         <a class="tree-node lvl-2" href="xau-h1.html"><span class="nm">XAU H1</span><span class="badge" style="background:#10b981;color:#fff">24,611</span></a>
-        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">XAU M15</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <a class="tree-node lvl-2" href="xau-m15.html"><span class="nm">XAU M15</span><span class="badge" style="background:#10b981;color:#fff">97,149</span></a>
       </div>
     </div>
     
@@ -67,11 +67,12 @@
     </div>
     <div class="tree-children" id="energy-menu">
       <div class="tree-node lvl-1 expandable" data-toggle="usoil-menu">
-        <span class="arrow">▶</span><span class="nm">USOIL (WTI)</span><span class="badge" style="background:#84cc16;color:#0a0a0a">30.5K</span>
+        <span class="arrow">▶</span><span class="nm">USOIL (WTI)</span><span class="badge" style="background:#84cc16;color:#0a0a0a">122.7K</span>
       </div>
       <div class="tree-children" id="usoil-menu">
         <a class="tree-node lvl-2" href="usoil-h4.html"><span class="nm">USOIL H4</span><span class="badge" style="background:#10b981;color:#fff">7,060</span></a>
         <a class="tree-node lvl-2" href="usoil-h1.html"><span class="nm">USOIL H1</span><span class="badge" style="background:#10b981;color:#fff">23,471</span></a>
+        <a class="tree-node lvl-2" href="usoil-m15.html"><span class="nm">USOIL M15</span><span class="badge" style="background:#10b981;color:#fff">92,162</span></a>
       </div>
       <div class="tree-node lvl-1 expandable" data-toggle="ukoil-menu">
         <span class="arrow">▶</span><span class="nm">UKOIL (Brent)</span><span class="badge" style="background:#65a30d;color:#0a0a0a">109.9K</span>
@@ -144,6 +145,36 @@
         <a class="tree-node lvl-2" href="chf-m15.html"><span class="nm">CHF M15</span><span class="badge" style="background:#10b981;color:#fff">104,173</span></a>
       </div>
     </div>
+    
+    <div class="tree-node lvl-0 expandable" data-toggle="cross-menu">
+      <span class="arrow">▶</span><span class="nm">Forex Cross</span><span class="badge">3</span>
+    </div>
+    <div class="tree-children" id="cross-menu">
+      <div class="tree-node lvl-1 expandable" data-toggle="eurjpy-menu">
+        <span class="arrow">▶</span><span class="nm">EUR/JPY</span><span class="badge" style="background:#8b5cf6;color:#fff">138.8K</span>
+      </div>
+      <div class="tree-children" id="eurjpy-menu">
+        <a class="tree-node lvl-2" href="eurjpy-h4.html"><span class="nm">EURJPY H4</span><span class="badge" style="background:#10b981;color:#fff">7,225</span></a>
+        <a class="tree-node lvl-2" href="eurjpy-h1.html"><span class="nm">EURJPY H1</span><span class="badge" style="background:#10b981;color:#fff">27,071</span></a>
+        <a class="tree-node lvl-2" href="eurjpy-m15.html"><span class="nm">EURJPY M15</span><span class="badge" style="background:#10b981;color:#fff">104,548</span></a>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="gbpjpy-menu">
+        <span class="arrow">▶</span><span class="nm">GBP/JPY</span><span class="badge" style="background:#ec4899;color:#fff">137.5K</span>
+      </div>
+      <div class="tree-children" id="gbpjpy-menu">
+        <a class="tree-node lvl-2" href="gbpjpy-h4.html"><span class="nm">GBPJPY H4</span><span class="badge" style="background:#10b981;color:#fff">6,969</span></a>
+        <a class="tree-node lvl-2" href="gbpjpy-h1.html"><span class="nm">GBPJPY H1</span><span class="badge" style="background:#10b981;color:#fff">26,390</span></a>
+        <a class="tree-node lvl-2" href="gbpjpy-m15.html"><span class="nm">GBPJPY M15</span><span class="badge" style="background:#10b981;color:#fff">104,163</span></a>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="eurgbp-menu">
+        <span class="arrow">▶</span><span class="nm">EUR/GBP</span><span class="badge" style="background:#6366f1;color:#fff">141.0K</span>
+      </div>
+      <div class="tree-children" id="eurgbp-menu">
+        <a class="tree-node lvl-2" href="eurgbp-h4.html"><span class="nm">EURGBP H4</span><span class="badge" style="background:#10b981;color:#fff">7,228</span></a>
+        <a class="tree-node lvl-2" href="eurgbp-h1.html"><span class="nm">EURGBP H1</span><span class="badge" style="background:#10b981;color:#fff">28,129</span></a>
+        <a class="tree-node lvl-2" href="eurgbp-m15.html"><span class="nm">EURGBP M15</span><span class="badge" style="background:#10b981;color:#fff">105,619</span></a>
+      </div>
+    </div>
   </div>
   
   <div class="nav-section">
@@ -176,99 +207,45 @@
     <a class="tree-node lvl-0" href="ea-architecture.html"><span class="arrow"></span><span class="nm">⚙ EA Architecture</span></a>
     <a class="tree-node lvl-0" href="tracking-system.html"><span class="arrow"></span><span class="nm">🎯 Tracking System</span></a>  </div>  <div class="nav-section">
     <div class="nav-label">Reference</div>
+    <a class="tree-node lvl-0" href="ea-source.html"><span class="arrow"></span><span class="nm">EA Source Code</span><span class="badge" style="background:#4dd498;color:#0a0a0a">v3.1.1</span></a>
+    <a class="tree-node lvl-0" href="research-references.html"><span class="arrow"></span><span class="nm">Research Refs</span><span class="badge" style="background:#5b9bd5;color:#fff">NEW</span></a>
     <a class="tree-node lvl-0" href="research-comparison.html"><span class="nm">📊 Research Comparison</span></a>
   <a class="tree-node lvl-0" href="reference.html"><span class="arrow"></span><span class="nm">Sources &amp; Changelog</span></a>
   </div>
 </nav>
 
-
 <main class="main">
-  <div class="card" style="margin-bottom:20px;border-left:3px solid #10b981;background:linear-gradient(90deg,rgba(16,185,129,0.05),transparent)">
-    <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap">
-      <div style="font-weight:700;color:#10b981">✅ v6 Baseline ready (H4 only)</div>
-      <div style="color:var(--txt-d);font-size:13px">
-        <strong>7,077 trades</strong> · WR <strong>48.7%</strong> · PF <strong>1.07</strong> · 
-        Net <strong>+1,185 ATR</strong>
-      </div>
-      <a href="xau-h4.html" style="margin-left:auto;color:var(--blue);text-decoration:none;font-weight:600">View XAU H4 →</a>
-    </div>
-  </div>
-
-  <div class="card" style="margin-bottom:20px;border-left:3px solid #10b981;background:linear-gradient(90deg,rgba(16,185,129,0.05),transparent)">
-    <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap">
-      <div style="font-weight:700;color:#10b981">✅ v6 Baseline ready (H4 only)</div>
-      <div style="color:var(--txt-d);font-size:13px">
-        <strong>7,077 trades</strong> · WR <strong>48.7%</strong> · PF <strong>1.07</strong> · 
-        Net <strong>+1,185 ATR</strong>
-      </div>
-      <a href="xau-h4.html" style="margin-left:auto;color:var(--blue);text-decoration:none;font-weight:600">View XAU H4 →</a>
-    </div>
-  </div>
-
-  <div class="card" style="margin-bottom:20px;border-left:3px solid #10b981;background:linear-gradient(90deg,rgba(16,185,129,0.05),transparent)">
-    <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap">
-      <div style="font-weight:700;color:#10b981">✅ v6 Baseline ready (H4 only)</div>
-      <div style="color:var(--txt-d);font-size:13px">
-        <strong>7,077 trades</strong> · WR <strong>48.7%</strong> · PF <strong>1.07</strong> · 
-        Net <strong>+1,185 ATR</strong>
-      </div>
-      <a href="xau-h4.html" style="margin-left:auto;color:var(--blue);text-decoration:none;font-weight:600">View XAU H4 →</a>
-    </div>
-  </div>
-
-  <div class="card" style="margin-bottom:20px;border-left:3px solid #10b981;background:linear-gradient(90deg,rgba(16,185,129,0.05),transparent)">
-    <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap">
-      <div style="font-weight:700;color:#10b981">✅ v6 Baseline ready (H4 only)</div>
-      <div style="color:var(--txt-d);font-size:13px">
-        <strong>7,077 trades</strong> · WR <strong>48.7%</strong> · PF <strong>1.07</strong> · 
-        Net <strong>+1,185 ATR</strong>
-      </div>
-      <a href="xau-h4.html" style="margin-left:auto;color:var(--blue);text-decoration:none;font-weight:600">View XAU H4 →</a>
-    </div>
-  </div>
-
-  <div class="card" style="margin-bottom:20px;border-left:3px solid #10b981;background:linear-gradient(90deg,rgba(16,185,129,0.05),transparent)">
-    <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap">
-      <div style="font-weight:700;color:#10b981">✅ v6 Baseline ready (H4 only)</div>
-      <div style="color:var(--txt-d);font-size:13px">
-        <strong>7,077 trades</strong> · WR <strong>48.7%</strong> · PF <strong>1.07</strong> · 
-        Net <strong>+1,185 ATR</strong>
-      </div>
-      <a href="xau-h4.html" style="margin-left:auto;color:var(--blue);text-decoration:none;font-weight:600">View XAU H4 →</a>
-    </div>
-  </div>
->
 <div class="hero">
-  <span class="hero-tag">🟡 Gold · XAUUSD</span>
-  <h1 class="hero-title">XAU <span class="accent" style="color:#fbbf24">USD.</span></h1>
+  <span class="hero-tag" style="background:#fbbf24;color:#0a0a0a">XAUUSD · 3 timeframes · 128,837 trades</span>
+  <h1 class="hero-title">Gold</h1>
   <p class="hero-desc">
-    <strong>Gold (XAU/USD)</strong> · safe-haven asset · ค่ายาว ๆ มาก (200-500 pips ต่อวัน) · negative correlation กับ USD (-0.40 ถึง -0.80) · ตอบสนองต่อ Fed decisions, geopolitics, inflation · session ดีที่สุด: London-NY overlap (19:00-23:00 ไทย) · เหมาะกับ swing trading
+    <strong>XAUUSD (Gold spot price)</strong> · ทองคำ · safe-haven asset อันดับหนึ่ง · ตอบสนองต่อ USD strength + US yields + risk sentiment · daily range $20-50 ปกติ · ราคาเคลื่อนไหวสวนทาง USD
   </p>
 </div>
 
 <section class="section">
-  <div class="section-head"><span class="section-num">01</span><h2 class="section-title">📊 ภาพรวม · 31,688 trades</h2></div>
-  <p class="lead-desc">สรุปผลรวมของ XAUUSD ใน Backtest 4 เดือน · 2 timeframe</p>
+  <div class="section-head"><span class="section-num">01</span><h2 class="section-title">📊 ภาพรวม · 128,837 trades</h2></div>
+  <p class="lead-desc">สรุปผลรวมของ XAUUSD ใน Backtest 4 เดือน · 3 timeframes</p>
   <div class="kpis">
     <div class="kpi" style="border-color:#fbbf24">
       <div class="kpi-label" style="color:#fbbf24">Trades รวม</div>
-      <div class="kpi-val" style="color:#fbbf24">31,688</div>
-      <div class="kpi-sub">2 timeframe</div>
+      <div class="kpi-val" style="color:#fbbf24">128,837</div>
+      <div class="kpi-sub">3 timeframes</div>
     </div>
     <div class="kpi">
       <div class="kpi-label">Win Rate เฉลี่ย</div>
       <div class="kpi-val">49.7%</div>
-      <div class="kpi-sub">เปอร์เซ็นต์ trade ที่กำไร</div>
+      <div class="kpi-sub">น้ำหนักตาม trade count</div>
     </div>
     <div class="kpi">
       <div class="kpi-label">Profit Factor</div>
-      <div class="kpi-val">1.08</div>
-      <div class="kpi-sub">>1 = กำไร</div>
+      <div class="kpi-val">0.00</div>
+      <div class="kpi-sub"><1 = ขาดทุน</div>
     </div>
     <div class="kpi">
       <div class="kpi-label">Robust Patterns</div>
-      <div class="kpi-val" style="color:#4dd498">63</div>
-      <div class="kpi-sub">patterns ที่น่าเชื่อถือ (n≥100)</div>
+      <div class="kpi-val" style="color:#4dd498">0</div>
+      <div class="kpi-sub">รวมทุก TF (n≥100)</div>
     </div>
   </div>
 </section>
@@ -277,40 +254,46 @@
   <div class="section-head"><span class="section-num">02</span><h2 class="section-title">⏱️ เลือก Timeframe</h2></div>
   <p class="lead-desc">คลิกเข้าไปดูรายละเอียดของแต่ละ timeframe · ตัวเลข ✅ = จำนวน robust patterns</p>
   <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px">
-    
-        <a href="xau-h4.html" class="card" style="text-decoration:none;color:var(--text);border-left:3px solid #fbbf24">
+    <a href="xau-h4.html" class="card" style="text-decoration:none;color:var(--text);border-left:3px solid #fbbf24">
           <div style="display:flex;justify-content:space-between;align-items:start">
             <div>
-              <div class="card-title" style="color:#fbbf24">XAU H4</div>
+              <div class="card-title" style="color:#fbbf24">XAUUSD H4</div>
               <div style="font-size:13px;color:var(--text-dim);margin:6px 0">
                 7,077 trades · WR 48.7% · PF 1.07
               </div>
             </div>
-            <span style="background:#4dd498;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-size:11px;font-weight:600">✅ 18</span>
+            <span style="background:#4dd498;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-size:11px;font-weight:600">✅ 0</span>
           </div>
           <div style="margin-top:8px;font-size:12px;color:var(--text-dim)">
             Net: <span class="tg" style="font-weight:600">+1,185 ATR</span>
           </div>
-        </a>
-        <a href="xau-h1.html" class="card" style="text-decoration:none;color:var(--text);border-left:3px solid #fbbf24">
+        </a><a href="xau-h1.html" class="card" style="text-decoration:none;color:var(--text);border-left:3px solid #fbbf24">
           <div style="display:flex;justify-content:space-between;align-items:start">
             <div>
-              <div class="card-title" style="color:#fbbf24">XAU H1</div>
+              <div class="card-title" style="color:#fbbf24">XAUUSD H1</div>
               <div style="font-size:13px;color:var(--text-dim);margin:6px 0">
                 24,611 trades · WR 50.7% · PF 1.08
               </div>
             </div>
-            <span style="background:#4dd498;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-size:11px;font-weight:600">✅ 63</span>
+            <span style="background:#4dd498;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-size:11px;font-weight:600">✅ 0</span>
           </div>
           <div style="margin-top:8px;font-size:12px;color:var(--text-dim)">
             Net: <span class="tg" style="font-weight:600">+8,344 ATR</span>
           </div>
+        </a><a href="xau-m15.html" class="card" style="text-decoration:none;color:var(--text);border-left:3px solid #fbbf24">
+          <div style="display:flex;justify-content:space-between;align-items:start">
+            <div>
+              <div class="card-title" style="color:#fbbf24">XAUUSD M15</div>
+              <div style="font-size:13px;color:var(--text-dim);margin:6px 0">
+                97,149 trades · WR 49.6% · PF 1.02
+              </div>
+            </div>
+            <span style="background:#4dd498;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-size:11px;font-weight:600">✅ 0</span>
+          </div>
+          <div style="margin-top:8px;font-size:12px;color:var(--text-dim)">
+            Net: <span class="tg" style="font-weight:600">+16,707 ATR</span>
+          </div>
         </a>
-        <div class="card" style="opacity:0.5;border-left:3px solid #475569">
-          <div class="card-title" style="color:#94a3b8">XAU M15</div>
-          <div style="font-size:13px;color:var(--text-dim);margin:6px 0">⏳ กำลังรัน backtest · ยังไม่พร้อม</div>
-          <div style="margin-top:8px;font-size:12px;color:var(--text-dim)">รอข้อมูล...</div>
-        </div>
   </div>
 </section>
 
@@ -319,7 +302,7 @@
   <p class="lead-desc">สิ่งที่ควรรู้เกี่ยวกับ Gold ก่อนเทรด</p>
   <div class="card" style="border-left:3px solid #fbbf24">
     <ul style="margin:0;padding-left:24px;line-height:1.9;font-size:14px">
-      <li style="margin:6px 0">🏅 Safe-haven (ลงทุนเมื่อตลาดผันผวน)</li><li style="margin:6px 0">📉 Negative correlation กับ USD</li><li style="margin:6px 0">🌐 Best: London-NY overlap (19:00-23:00 ไทย)</li><li style="margin:6px 0">📊 Daily range ใหญ่ (200-500 pips)</li>
+      <li style="margin:6px 0">🥇 Safe-haven อันดับหนึ่ง · ตอบสนอง crisis</li><li style="margin:6px 0">💱 Inverse correlation USD + yields</li><li style="margin:6px 0">⏰ Best: London + NY overlap (20:00-23:00 ไทย)</li><li style="margin:6px 0">📰 ตอบสนอง Fed + geopolitics</li>
     </ul>
   </div>
 </section>
@@ -347,29 +330,19 @@
 </section>
 </main>
 
-<script src="assets/app.js?v=6.7"></script>
+<script src="assets/app.js?v=8.0"></script>
   <script>
-    // Force close all sidebar menus — runs BEFORE and AFTER DOM load
     (function forceClose() {
       try {
         localStorage.removeItem('kmp_sidebar_state');
         localStorage.removeItem('kmp_sidebar_state_v2');
       } catch(e) {}
       var doIt = function() {
-        document.querySelectorAll('.tree-children').forEach(function(el) {
-          el.classList.remove('show');
-        });
-        document.querySelectorAll('.tree-node.expandable, .tree-node.expanded').forEach(function(el) {
-          el.classList.remove('expanded');
-        });
+        document.querySelectorAll('.tree-children').forEach(function(el) { el.classList.remove('show'); });
+        document.querySelectorAll('.tree-node.expandable, .tree-node.expanded').forEach(function(el) { el.classList.remove('expanded'); });
       };
-      // Run NOW (immediately when this script executes)
       doIt();
-      // Run AGAIN after DOM ready (in case elements weren't there yet)
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', doIt);
-      }
-      // Run on every visibility change (back from another tab)
+      if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', doIt);
       document.addEventListener('visibilitychange', doIt);
     })();
   </script>
