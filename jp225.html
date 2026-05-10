@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nikkei · KMP Master Patterns</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="brand">
+    <a href="index.html" class="brand-link">
+      <span class="brand-name">KMP Master</span>
+      <span class="brand-ver">v9.0 · 10/69 datasets · 458K trades · EA v4.1</span>
+    </a>
+  </div>
+  <nav class="main-nav"><a href="index.html" class="">Home</a><a href="preface.html" class="">Preface</a><a href="patterns.html" class="">Patterns</a><a href="tier.html" class="">Tier</a><a href="optimal-tpsl.html" class="">SL/TP</a><a href="cross-asset.html" class="">Cross-Asset</a><a href="time.html" class="">Time</a><a href="edge.html" class="">Edge</a><a href="future.html" class="">Roadmap</a><a href="reference.html" class="">Changelog</a></nav>
+</header>
+
+<div class="layout ">
+<aside class="sidebar">
+<div class="sidebar-section">
+<a href="index.html" class="sidebar-link">📊 Overview</a>
+<a href="patterns-encyclopedia.html" class="sidebar-link">📖 Pattern Encyclopedia</a>
+<a href="ea-architecture.html" class="sidebar-link">🏗️ EA Architecture</a>
+</div>
+<div class="sidebar-class">
+<a href="crypto.html" class="sidebar-class-header">Crypto <span class="badge">4/6</span></a>
+<ul class="sidebar-asset-list">
+<li><a href="btc.html" class="sidebar-asset">BTC/USD <span class="badge active">●</span></a>
+<ul class="sidebar-tf-list">
+<li><a href="btc-m15.html" class="sidebar-tf">M15</a></li>
+<li><a href="btc-h1.html" class="sidebar-tf pending">H1 <span class="pending-mark">⋯</span></a></li>
+<li><a href="btc-h4.html" class="sidebar-tf">H4</a></li>
+</ul></li>
+<li><a href="eth.html" class="sidebar-asset">ETH/USD <span class="badge active">●</span></a>
+<ul class="sidebar-tf-list">
+<li><a href="eth-m15.html" class="sidebar-tf">M15</a></li>
+<li><a href="eth-h1.html" class="sidebar-tf pending">H1 <span class="pending-mark">⋯</span></a></li>
+<li><a href="eth-h4.html" class="sidebar-tf">H4</a></li>
+</ul></li>
+</ul></div>
+<div class="sidebar-class">
+<a href="metals.html" class="sidebar-class-header">Metals <span class="badge">2/9</span></a>
+<ul class="sidebar-asset-list">
+<li><a href="xau.html" class="sidebar-asset">XAU/USD <span class="badge active">●</span></a>
+<ul class="sidebar-tf-list">
+<li><a href="xau-m15.html" class="sidebar-tf">M15</a></li>
+<li><a href="xau-h1.html" class="sidebar-tf pending">H1 <span class="pending-mark">⋯</span></a></li>
+<li><a href="xau-h4.html" class="sidebar-tf">H4</a></li>
+</ul></li>
+<li><a href="xag.html" class="sidebar-asset">XAG/USD <span class="badge inactive">○</span></a>
+<ul class="sidebar-tf-list">
+<li><a href="xag-m15.html" class="sidebar-tf pending">M15 <span class="pending-mark">⋯</span></a></li>
+<li><a href="xag-h1.html" class="sidebar-tf pending">H1 <span class="pending-mark">⋯</span></a></li>
+<li><a href="xag-h4.html" class="sidebar-tf pending">H4 <span class="pending-mark">⋯</span></a></li>
+</ul></li>
+<li><a href="xpt.html" class="sidebar-asset">XPT/USD <span class="badge inactive">○</span></a>
+<ul class="sidebar-tf-list">
+<li><a href="xpt-m15.html" class="sidebar-tf pending">M15 <span class="pending-mark">⋯</span></a></li>
+<li><a href="xpt-h1.html" class="sidebar-tf pending">H1 <span class="pending-mark">⋯</span></a></li>
+<li><a href="xpt-h4.html" class="sidebar-tf pending">H4 <span class="pending-mark">⋯</span></a></li>
+</ul></li>
+</ul></div>
+<div class="sidebar-class">
+<a href="energy.html" class="sidebar-class-header">Energy <span class="badge">0/9</span></a>
+<ul class="sidebar-asset-list">
+<li><a href="usoil.html" class="sidebar-asset">WTI <span class="badge inactive">○</span></a>
+<ul class="sidebar-tf-list">
+<li><a href="usoil-m15.html" class="sidebar-tf pending">M15 <span class="pending-mark">⋯</span></a></li>
+<li><a href="usoil-h1.html" class="sidebar-tf pending">H1 <span class="pending-mark">⋯</span></a></li>
+<li><a href="usoil-h4.html" class="sidebar-tf pending">H4 <span class="pending-mark">⋯</span></a></li>
+</ul></li>
+<li><a href="ukoil.html" class="sidebar-asset">Brent <span class="badge inactive">○</span></a>
+<ul class="sidebar-tf-list">
+<li><a href="ukoil-m15.html" class="sidebar-tf pending">M15 <span class="pending-mark">⋯</span></a></li>
+<li><a href="ukoil-h1.html" class="sidebar-tf pending">H1 <span class="pending-mark">⋯</span></a></li>
+<li><a href="ukoil-h4.html" class="sidebar-tf pending">H4 <span class="pending-mark">⋯</span></a></li>
+</ul></li>
+<li><a href="xng.html" class="sidebar-asset">NatGas <span class="badge inactive">○</span></a>
+<ul class="sidebar-tf-list">
+<li><a href="xng-m15.html" class="sidebar-tf pending">M15 <span class="pending-mark">⋯</span></a></li>
+<li><a href="xng-h1.html" class="sidebar-tf pending">H1 <span class="pending-mark">⋯</span></a></li>
+<li><a href="xng-h4.html" class="sidebar-tf pending">H4 <span class="pending-mark">⋯</span></a></li>
+</ul></li>
+</ul></div>
+<div class="sidebar-class">
+<a href="forex.html" class="sidebar-class-header">Forex Major <span class="badge">4/21</span></a>
+<ul class="sidebar-asset-list">
+<li><a href="eur.html" class="sidebar-asset">EUR/USD <span class="badge active">●</span></a>
+<ul class="sidebar-tf-list">
+<li><a href="eur-m15.html" class="sidebar-tf">M15</a></li>
+<li><a href="eur-h1.html" class="sidebar-tf pending">H1 <span class="pending-mark">⋯</span></a></li>
+<li><a href="eur-h4.html" class="sidebar-tf">H4</a></li>
+</ul></li>
+<li><a href="gbp.html" class="sidebar-asset">GBP/USD <span class="badge inactive">○</span></a>
+<ul class="sidebar-tf-list">
+<li><a href="gbp-m15.html" class="sidebar-tf pending">M15 <span class="pending-mark">⋯</span></a></li>
+<li><a href="gbp-h1.html" class="sidebar-tf pending">H1 <span class="pending-mark">⋯</span></a></li>
+<li><a href="gbp-h4.html" class="sidebar-tf pending">H4 <span class="pending-mark">⋯</span></a></li>
+</ul></li>
+<li><a href="jpy.html" class="sidebar-asset">USD/JPY <span class="badge active">●</span></a>
+<ul class="sidebar-tf-list">
+<li><a href="jpy-m15.html" class="sidebar-tf">M15</a></li>
+<li><a href="jpy-h1.html" class="sidebar-tf pending">H1 <span class="pending-mark">⋯</span></a></li>
+<li><a href="jpy-h4.html" class="sidebar-tf">H4</a></li>
+</ul></li>
+<li><a href="aud.html" class="sidebar-asset">AUD/USD <span class="badge inactive">○</span></a>
+<ul class="sidebar-tf-list">
+<li><a href="aud-m15.html" class="sidebar-tf pending">M15 <span class="pending-mark">⋯</span></a></li>
+<li><a href="aud-h1.html" class="sidebar-tf pending">H1 <span class="pending-mark">⋯</span></a></li>
+<li><a href="aud-h4.html" class="sidebar-tf pending">H4 <span class="pending-mark">⋯</span></a></li>
+</ul></li>
+<li><a href="cad.html" class="sidebar-asset">USD/CAD <span class="badge inactive">○</span></a>
+<ul class="sidebar-tf-list">
+<li><a href="cad-m15.html" class="sidebar-tf pending">M15 <span class="pending-mark">⋯</span></a></li>
+<li><a href="cad-h1.html" class="sidebar-tf pending">H1 <span class="pending-mark">⋯</span></a></li>
+<li><a href="cad-h4.html" class="sidebar-tf pending">H4 <span class="pending-mark">⋯</span></a></li>
+</ul></li>
+<li><a href="chf.html" class="sidebar-asset">USD/CHF <span class="badge inactive">○</span></a>
+<ul class="sidebar-tf-list">
+<li><a href="chf-m15.html" class="sidebar-tf pending">M15 <span class="pending-mark">⋯</span></a></li>
+<li><a href="chf-h1.html" class="sidebar-tf pending">H1 <span class="pending-mark">⋯</span></a></li>
+<li><a href="chf-h4.html" class="sidebar-tf pending">H4 <span class="pending-mark">⋯</span></a></li>
+</ul></li>
+<li><a href="nzd.html" class="sidebar-asset">NZD/USD <span class="badge inactive">○</span></a>
+<ul class="sidebar-tf-list">
+<li><a href="nzd-m15.html" class="sidebar-tf pending">M15 <span class="pending-mark">⋯</span></a></li>
+<li><a href="nzd-h1.html" class="sidebar-tf pending">H1 <span class="pending-mark">⋯</span></a></li>
+<li><a href="nzd-h4.html" class="sidebar-tf pending">H4 <span class="pending-mark">⋯</span></a></li>
+</ul></li>
+</ul></div>
+<div class="sidebar-class">
+<a href="cross.html" class="sidebar-class-header">Forex Cross <span class="badge">0/9</span></a>
+<ul class="sidebar-asset-list">
+<li><a href="eurjpy.html" class="sidebar-asset">EUR/JPY <span class="badge inactive">○</span></a>
+<ul class="sidebar-tf-list">
+<li><a href="eurjpy-m15.html" class="sidebar-tf pending">M15 <span class="pending-mark">⋯</span></a></li>
+<li><a href="eurjpy-h1.html" class="sidebar-tf pending">H1 <span class="pending-mark">⋯</span></a></li>
+<li><a href="eurjpy-h4.html" class="sidebar-tf pending">H4 <span class="pending-mark">⋯</span></a></li>
+</ul></li>
+<li><a href="gbpjpy.html" class="sidebar-asset">GBP/JPY <span class="badge inactive">○</span></a>
+<ul class="sidebar-tf-list">
+<li><a href="gbpjpy-m15.html" class="sidebar-tf pending">M15 <span class="pending-mark">⋯</span></a></li>
+<li><a href="gbpjpy-h1.html" class="sidebar-tf pending">H1 <span class="pending-mark">⋯</span></a></li>
+<li><a href="gbpjpy-h4.html" class="sidebar-tf pending">H4 <span class="pending-mark">⋯</span></a></li>
+</ul></li>
+<li><a href="eurgbp.html" class="sidebar-asset">EUR/GBP <span class="badge inactive">○</span></a>
+<ul class="sidebar-tf-list">
+<li><a href="eurgbp-m15.html" class="sidebar-tf pending">M15 <span class="pending-mark">⋯</span></a></li>
+<li><a href="eurgbp-h1.html" class="sidebar-tf pending">H1 <span class="pending-mark">⋯</span></a></li>
+<li><a href="eurgbp-h4.html" class="sidebar-tf pending">H4 <span class="pending-mark">⋯</span></a></li>
+</ul></li>
+</ul></div>
+<div class="sidebar-class">
+<a href="indices.html" class="sidebar-class-header">Indices <span class="badge">0/15</span></a>
+<ul class="sidebar-asset-list">
+<li><a href="us500.html" class="sidebar-asset">S&P 500 <span class="badge inactive">○</span></a>
+<ul class="sidebar-tf-list">
+<li><a href="us500-m15.html" class="sidebar-tf pending">M15 <span class="pending-mark">⋯</span></a></li>
+<li><a href="us500-h1.html" class="sidebar-tf pending">H1 <span class="pending-mark">⋯</span></a></li>
+<li><a href="us500-h4.html" class="sidebar-tf pending">H4 <span class="pending-mark">⋯</span></a></li>
+</ul></li>
+<li><a href="ustec.html" class="sidebar-asset">NASDAQ 100 <span class="badge inactive">○</span></a>
+<ul class="sidebar-tf-list">
+<li><a href="ustec-m15.html" class="sidebar-tf pending">M15 <span class="pending-mark">⋯</span></a></li>
+<li><a href="ustec-h1.html" class="sidebar-tf pending">H1 <span class="pending-mark">⋯</span></a></li>
+<li><a href="ustec-h4.html" class="sidebar-tf pending">H4 <span class="pending-mark">⋯</span></a></li>
+</ul></li>
+<li><a href="de30.html" class="sidebar-asset">DAX <span class="badge inactive">○</span></a>
+<ul class="sidebar-tf-list">
+<li><a href="de30-m15.html" class="sidebar-tf pending">M15 <span class="pending-mark">⋯</span></a></li>
+<li><a href="de30-h1.html" class="sidebar-tf pending">H1 <span class="pending-mark">⋯</span></a></li>
+<li><a href="de30-h4.html" class="sidebar-tf pending">H4 <span class="pending-mark">⋯</span></a></li>
+</ul></li>
+<li><a href="jp225.html" class="sidebar-asset active">Nikkei <span class="badge inactive">○</span></a>
+<ul class="sidebar-tf-list">
+<li><a href="jp225-m15.html" class="sidebar-tf pending">M15 <span class="pending-mark">⋯</span></a></li>
+<li><a href="jp225-h1.html" class="sidebar-tf pending">H1 <span class="pending-mark">⋯</span></a></li>
+<li><a href="jp225-h4.html" class="sidebar-tf pending">H4 <span class="pending-mark">⋯</span></a></li>
+</ul></li>
+<li><a href="uk100.html" class="sidebar-asset">FTSE <span class="badge inactive">○</span></a>
+<ul class="sidebar-tf-list">
+<li><a href="uk100-m15.html" class="sidebar-tf pending">M15 <span class="pending-mark">⋯</span></a></li>
+<li><a href="uk100-h1.html" class="sidebar-tf pending">H1 <span class="pending-mark">⋯</span></a></li>
+<li><a href="uk100-h4.html" class="sidebar-tf pending">H4 <span class="pending-mark">⋯</span></a></li>
+</ul></li>
+</ul></div>
+</aside>
+<main class="main-content">
+<h1>Nikkei — Asset Hub</h1>
+<p><a href="indices.html">← Back to Indices</a></p>
+
+<div class="section">
+<h2 class="section-title">Timeframes</h2>
+<div class="dataset-grid"><a href="jp225-m15.html" class="dataset-card pending">
+            <div class="dataset-title">M15</div>
+            <div class="dataset-meta">⋯ Pending harvest</div>
+            </a><a href="jp225-h1.html" class="dataset-card pending">
+            <div class="dataset-title">H1</div>
+            <div class="dataset-meta">⋯ Pending harvest</div>
+            </a><a href="jp225-h4.html" class="dataset-card pending">
+            <div class="dataset-title">H4</div>
+            <div class="dataset-meta">⋯ Pending harvest</div>
+            </a></div>
+</div>
+
+<div class="section"><p>No data yet — pending harvest.</p></div>
+</main>
+</div>
+<footer class="site-footer">
+<p><strong>KMP Master Patterns v9.0</strong> · EA v4.1 (Triple-Barrier + HTF Context + Production Filters)</p>
+<p>Schema: 131 cols · 20×20 SL/TP grid · True first-touch logic (López de Prado 2018)</p>
+<p>Sample threshold: robust ≥100 · solid 60-99 · preliminary 30-59 · FDR-BH α=0.05</p>
+</footer>
+
+
+<script src="assets/app.js"></script>
+</body>
+</html>
