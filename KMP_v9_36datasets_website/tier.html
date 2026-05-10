@@ -1,0 +1,2196 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tier Rankings · KMP Master</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&family=Sarabun:wght@400;500;600;700&family=Bricolage+Grotesque:wght@400;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css?v=6.7">
+</head>
+<body>
+
+<nav class="sidebar">
+  <div class="sidebar-brand">
+    <a class="brand-logo" href="index.html">KMP <span class="accent">Master</span></a>
+    <div class="brand-ver">EA v4.1 · 177 patterns · 131 cols</div>
+  </div>
+  
+  <input type="text" class="search-box" id="globalSearch" placeholder="ค้นหา...">
+  
+  <div class="nav-section">
+    <div class="nav-label">Overview</div>
+    <a class="tree-node lvl-0" href="index.html"><span class="arrow"></span><span class="nm">Dashboard</span></a>
+    <a class="tree-node lvl-0" href="preface.html"><span class="arrow"></span><span class="nm">คำนำ &amp; เป้าหมาย</span></a>
+  </div>
+  
+  <div class="nav-section">
+    <div class="nav-label">Datasets · v9.0 · 36/69 ds · 1174K trades</div>
+    
+    <div class="tree-node lvl-0 expandable" data-toggle="crypto-menu">
+      <span class="arrow">▶</span><span class="nm">Crypto</span><span class="badge">2</span>
+    </div>
+    <div class="tree-children" id="crypto-menu">
+      <div class="tree-node lvl-1 expandable" data-toggle="btc-menu">
+        <span class="arrow">▶</span><span class="nm">BTC/USD</span><span class="badge" style="background:#f7931a;color:#0a0a0a">131.2K</span>
+      </div>
+      <div class="tree-children" id="btc-menu">
+        <a class="tree-node lvl-2" href="btc-h4.html"><span class="nm">BTC H4</span><span class="badge" style="background:#10b981;color:#fff">6,340</span></a>
+        <a class="tree-node lvl-2" href="btc-h1.html"><span class="nm">BTC H1</span><span class="badge" style="background:#10b981;color:#fff">24,235</span></a>
+        <a class="tree-node lvl-2" href="btc-m15.html"><span class="nm">BTC M15</span><span class="badge" style="background:#10b981;color:#fff">100,599</span></a>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="eth-menu">
+        <span class="arrow">▶</span><span class="nm">ETH/USD</span><span class="badge" style="background:#627eea;color:#fff">133.8K</span>
+      </div>
+      <div class="tree-children" id="eth-menu">
+        <a class="tree-node lvl-2" href="eth-h4.html"><span class="nm">ETH H4</span><span class="badge" style="background:#10b981;color:#fff">6,449</span></a>
+        <a class="tree-node lvl-2" href="eth-h1.html"><span class="nm">ETH H1</span><span class="badge" style="background:#10b981;color:#fff">24,342</span></a>
+        <a class="tree-node lvl-2" href="eth-m15.html"><span class="nm">ETH M15</span><span class="badge" style="background:#10b981;color:#fff">103,040</span></a>
+      </div>
+    </div>
+    
+    <div class="tree-node lvl-0 expandable" data-toggle="metals-menu">
+      <span class="arrow">▶</span><span class="nm">Metals</span><span class="badge">3</span>
+    </div>
+    <div class="tree-children" id="metals-menu">
+      <div class="tree-node lvl-1 expandable" data-toggle="xau-menu">
+        <span class="arrow">▶</span><span class="nm">XAU/USD</span><span class="badge" style="background:#fbbf24;color:#0a0a0a">92.2K</span>
+      </div>
+      <div class="tree-children" id="xau-menu">
+        <a class="tree-node lvl-2" href="xau-h4.html"><span class="nm">XAU H4</span><span class="badge" style="background:#10b981;color:#fff">4,650</span></a>
+        <a class="tree-node lvl-2" href="xau-h1.html"><span class="nm">XAU H1</span><span class="badge" style="background:#10b981;color:#fff">16,746</span></a>
+        <a class="tree-node lvl-2" href="xau-m15.html"><span class="nm">XAU M15</span><span class="badge" style="background:#10b981;color:#fff">70,805</span></a>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="xag-menu">
+        <span class="arrow">▶</span><span class="nm">XAG/USD (Silver)</span><span class="badge" style="background:#94a3b8;color:#0a0a0a">0</span>
+      </div>
+      <div class="tree-children" id="xag-menu">
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">XAG H4</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">XAG H1</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">XAG M15</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="xpt-menu">
+        <span class="arrow">▶</span><span class="nm">XPT/USD (Platinum)</span><span class="badge" style="background:#cbd5e1;color:#0a0a0a">90.6K</span>
+      </div>
+      <div class="tree-children" id="xpt-menu">
+        <a class="tree-node lvl-2" href="xpt-h4.html"><span class="nm">XPT H4</span><span class="badge" style="background:#10b981;color:#fff">4,619</span></a>
+        <a class="tree-node lvl-2" href="xpt-h1.html"><span class="nm">XPT H1</span><span class="badge" style="background:#10b981;color:#fff">16,485</span></a>
+        <a class="tree-node lvl-2" href="xpt-m15.html"><span class="nm">XPT M15</span><span class="badge" style="background:#10b981;color:#fff">69,457</span></a>
+      </div>
+    </div>
+    
+    <div class="tree-node lvl-0 expandable" data-toggle="energy-menu">
+      <span class="arrow">▶</span><span class="nm">Energy</span><span class="badge">3</span>
+    </div>
+    <div class="tree-children" id="energy-menu">
+      <div class="tree-node lvl-1 expandable" data-toggle="usoil-menu">
+        <span class="arrow">▶</span><span class="nm">USOIL (WTI)</span><span class="badge" style="background:#84cc16;color:#0a0a0a">89.3K</span>
+      </div>
+      <div class="tree-children" id="usoil-menu">
+        <a class="tree-node lvl-2" href="usoil-h4.html"><span class="nm">USOIL H4</span><span class="badge" style="background:#10b981;color:#fff">4,705</span></a>
+        <a class="tree-node lvl-2" href="usoil-h1.html"><span class="nm">USOIL H1</span><span class="badge" style="background:#10b981;color:#fff">16,456</span></a>
+        <a class="tree-node lvl-2" href="usoil-m15.html"><span class="nm">USOIL M15</span><span class="badge" style="background:#10b981;color:#fff">68,188</span></a>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="ukoil-menu">
+        <span class="arrow">▶</span><span class="nm">UKOIL (Brent)</span><span class="badge" style="background:#65a30d;color:#0a0a0a">80.5K</span>
+      </div>
+      <div class="tree-children" id="ukoil-menu">
+        <a class="tree-node lvl-2" href="ukoil-h4.html"><span class="nm">UKOIL H4</span><span class="badge" style="background:#10b981;color:#fff">4,303</span></a>
+        <a class="tree-node lvl-2" href="ukoil-h1.html"><span class="nm">UKOIL H1</span><span class="badge" style="background:#10b981;color:#fff">15,156</span></a>
+        <a class="tree-node lvl-2" href="ukoil-m15.html"><span class="nm">UKOIL M15</span><span class="badge" style="background:#10b981;color:#fff">61,022</span></a>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="xng-menu">
+        <span class="arrow">▶</span><span class="nm">XNGUSD (NatGas)</span><span class="badge" style="background:#06b6d4;color:#0a0a0a">90.9K</span>
+      </div>
+      <div class="tree-children" id="xng-menu">
+        <a class="tree-node lvl-2" href="xng-h4.html"><span class="nm">XNG H4</span><span class="badge" style="background:#10b981;color:#fff">4,644</span></a>
+        <a class="tree-node lvl-2" href="xng-h1.html"><span class="nm">XNG H1</span><span class="badge" style="background:#10b981;color:#fff">17,550</span></a>
+        <a class="tree-node lvl-2" href="xng-m15.html"><span class="nm">XNG M15</span><span class="badge" style="background:#10b981;color:#fff">68,746</span></a>
+      </div>
+    </div>
+    
+    <div class="tree-node lvl-0 expandable" data-toggle="forex-menu">
+      <span class="arrow">▶</span><span class="nm">Forex</span><span class="badge">7</span>
+    </div>
+    <div class="tree-children" id="forex-menu">
+      <div class="tree-node lvl-1 expandable" data-toggle="eur-menu">
+        <span class="arrow">▶</span><span class="nm">EUR/USD</span><span class="badge" style="background:#5b9bd5;color:#fff">102.2K</span>
+      </div>
+      <div class="tree-children" id="eur-menu">
+        <a class="tree-node lvl-2" href="eur-h4.html"><span class="nm">EUR H4</span><span class="badge" style="background:#10b981;color:#fff">4,674</span></a>
+        <a class="tree-node lvl-2" href="eur-h1.html"><span class="nm">EUR H1</span><span class="badge" style="background:#10b981;color:#fff">18,405</span></a>
+        <a class="tree-node lvl-2" href="eur-m15.html"><span class="nm">EUR M15</span><span class="badge" style="background:#10b981;color:#fff">79,150</span></a>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="gbp-menu">
+        <span class="arrow">▶</span><span class="nm">GBP/USD</span><span class="badge" style="background:#a78bfa;color:#fff">0</span>
+      </div>
+      <div class="tree-children" id="gbp-menu">
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">GBP H4</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">GBP H1</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">GBP M15</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="jpy-menu">
+        <span class="arrow">▶</span><span class="nm">USD/JPY</span><span class="badge" style="background:#fb7185;color:#fff">99.4K</span>
+      </div>
+      <div class="tree-children" id="jpy-menu">
+        <a class="tree-node lvl-2" href="jpy-h4.html"><span class="nm">JPY H4</span><span class="badge" style="background:#10b981;color:#fff">4,639</span></a>
+        <a class="tree-node lvl-2" href="jpy-h1.html"><span class="nm">JPY H1</span><span class="badge" style="background:#10b981;color:#fff">17,783</span></a>
+        <a class="tree-node lvl-2" href="jpy-m15.html"><span class="nm">JPY M15</span><span class="badge" style="background:#10b981;color:#fff">76,937</span></a>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="aud-menu">
+        <span class="arrow">▶</span><span class="nm">AUD/USD</span><span class="badge" style="background:#34d399;color:#0a0a0a">0</span>
+      </div>
+      <div class="tree-children" id="aud-menu">
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">AUD H4</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">AUD H1</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">AUD M15</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="cad-menu">
+        <span class="arrow">▶</span><span class="nm">USD/CAD</span><span class="badge" style="background:#f59e0b;color:#0a0a0a">0</span>
+      </div>
+      <div class="tree-children" id="cad-menu">
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">CAD H4</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">CAD H1</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">CAD M15</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="chf-menu">
+        <span class="arrow">▶</span><span class="nm">USD/CHF</span><span class="badge" style="background:#ef4444;color:#fff">0</span>
+      </div>
+      <div class="tree-children" id="chf-menu">
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">CHF H4</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">CHF H1</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">CHF M15</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="nzd-menu">
+        <span class="arrow">▶</span><span class="nm">NZD/USD</span><span class="badge" style="background:#22c55e;color:#fff">0</span>
+      </div>
+      <div class="tree-children" id="nzd-menu">
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">NZD H4</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">NZD H1</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">NZD M15</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+      </div>
+    </div>
+    
+    <div class="tree-node lvl-0 expandable" data-toggle="cross-menu">
+      <span class="arrow">▶</span><span class="nm">Forex Cross</span><span class="badge">3</span>
+    </div>
+    <div class="tree-children" id="cross-menu">
+      <div class="tree-node lvl-1 expandable" data-toggle="eurjpy-menu">
+        <span class="arrow">▶</span><span class="nm">EUR/JPY</span><span class="badge" style="background:#8b5cf6;color:#fff">0</span>
+      </div>
+      <div class="tree-children" id="eurjpy-menu">
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">EURJPY H4</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">EURJPY H1</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">EURJPY M15</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="gbpjpy-menu">
+        <span class="arrow">▶</span><span class="nm">GBP/JPY</span><span class="badge" style="background:#ec4899;color:#fff">0</span>
+      </div>
+      <div class="tree-children" id="gbpjpy-menu">
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">GBPJPY H4</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">GBPJPY H1</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">GBPJPY M15</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="eurgbp-menu">
+        <span class="arrow">▶</span><span class="nm">EUR/GBP</span><span class="badge" style="background:#6366f1;color:#fff">0</span>
+      </div>
+      <div class="tree-children" id="eurgbp-menu">
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">EURGBP H4</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">EURGBP H1</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">EURGBP M15</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+      </div>
+    </div>
+
+    <div class="tree-node lvl-0 expandable" data-toggle="indices-menu">
+      <span class="arrow">▶</span><span class="nm">Indices</span><span class="badge">5</span>
+    </div>
+    <div class="tree-children" id="indices-menu">
+      <div class="tree-node lvl-1 expandable" data-toggle="us500-menu">
+        <span class="arrow">▶</span><span class="nm">US500 (S&amp;P 500)</span><span class="badge" style="background:#3b82f6;color:#fff">90.7K</span>
+      </div>
+      <div class="tree-children" id="us500-menu">
+        <a class="tree-node lvl-2" href="us500-h4.html"><span class="nm">US500 H4</span><span class="badge" style="background:#10b981;color:#fff">4,934</span></a>
+        <a class="tree-node lvl-2" href="us500-h1.html"><span class="nm">US500 H1</span><span class="badge" style="background:#10b981;color:#fff">16,934</span></a>
+        <a class="tree-node lvl-2" href="us500-m15.html"><span class="nm">US500 M15</span><span class="badge" style="background:#10b981;color:#fff">68,857</span></a>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="ustec-menu">
+        <span class="arrow">▶</span><span class="nm">USTEC (Nasdaq 100)</span><span class="badge" style="background:#06b6d4;color:#fff">0</span>
+      </div>
+      <div class="tree-children" id="ustec-menu">
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">USTEC H4</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">USTEC H1</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">USTEC M15</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="de30-menu">
+        <span class="arrow">▶</span><span class="nm">DE30 (DAX)</span><span class="badge" style="background:#facc15;color:#0a0a0a">86.8K</span>
+      </div>
+      <div class="tree-children" id="de30-menu">
+        <a class="tree-node lvl-2" href="de30-h4.html"><span class="nm">DE30 H4</span><span class="badge" style="background:#10b981;color:#fff">4,311</span></a>
+        <a class="tree-node lvl-2" href="de30-h1.html"><span class="nm">DE30 H1</span><span class="badge" style="background:#10b981;color:#fff">16,207</span></a>
+        <a class="tree-node lvl-2" href="de30-m15.html"><span class="nm">DE30 M15</span><span class="badge" style="background:#10b981;color:#fff">66,253</span></a>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="jp225-menu">
+        <span class="arrow">▶</span><span class="nm">JP225 (Nikkei 225)</span><span class="badge" style="background:#ef4444;color:#fff">86.4K</span>
+      </div>
+      <div class="tree-children" id="jp225-menu">
+        <a class="tree-node lvl-2" href="jp225-h4.html"><span class="nm">JP225 H4</span><span class="badge" style="background:#10b981;color:#fff">4,768</span></a>
+        <a class="tree-node lvl-2" href="jp225-h1.html"><span class="nm">JP225 H1</span><span class="badge" style="background:#10b981;color:#fff">15,784</span></a>
+        <a class="tree-node lvl-2" href="jp225-m15.html"><span class="nm">JP225 M15</span><span class="badge" style="background:#10b981;color:#fff">65,875</span></a>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="uk100-menu">
+        <span class="arrow">▶</span><span class="nm">UK100 (FTSE 100)</span><span class="badge" style="background:#a78bfa;color:#fff">0</span>
+      </div>
+      <div class="tree-children" id="uk100-menu">
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">UK100 H4</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">UK100 H1</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">UK100 M15</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+      </div>
+    </div>
+  </div>
+  
+  <div class="nav-section">
+    <div class="nav-label">Patterns · 177 (v3.1)</div>
+    <a class="tree-node lvl-0" href="patterns-encyclopedia.html"><span class="arrow"></span><span class="nm">📚 Pattern Encyclopedia</span><span class="badge">177</span></a>
+    <div class="tree-node lvl-0 expandable" data-toggle="pat-menu">
+      <span class="arrow">▶</span><span class="nm">v4 Analysis</span><span class="badge">80</span>
+    </div>
+    <div class="tree-children" id="pat-menu">
+      <a class="tree-node lvl-1" href="patterns.html"><span class="nm">All Patterns Table</span></a>
+      <a class="tree-node lvl-1" href="tier.html"><span class="nm">Tier Rankings</span></a>
+      <a class="tree-node lvl-1" href="optimal-tpsl.html"><span class="nm">Optimal TP/SL EV</span></a>
+    </div>
+  </div>
+  
+  <div class="nav-section">
+    <div class="nav-label">Analysis</div>
+    <a class="tree-node lvl-0" href="cross.html"><span class="arrow"></span><span class="nm">Cross-TF / Asset</span></a>
+    <a class="tree-node lvl-0" href="time.html"><span class="arrow"></span><span class="nm">Hour / DoW / Conf</span></a>
+    <a class="tree-node lvl-0" href="edge.html"><span class="arrow"></span><span class="nm">Edge Decay / Vol</span></a>
+  </div>
+  
+  <div class="nav-section">
+    <div class="nav-label">Strategy</div>
+    
+  </div>
+  
+  <div class="nav-section">
+    <div class="nav-label">EA System · v3.1</div>
+    <a class="tree-node lvl-0" href="ea-architecture.html"><span class="arrow"></span><span class="nm">⚙ EA Architecture</span></a>
+    <a class="tree-node lvl-0" href="tracking-system.html"><span class="arrow"></span><span class="nm">🎯 Tracking System</span></a>  </div>  <div class="nav-section">
+    <div class="nav-label">Reference</div>
+    
+  <a class="tree-node lvl-0" href="reference.html"><span class="arrow"></span><span class="nm">Sources &amp; Changelog</span></a>
+  </div>
+</nav>
+
+<main class="main">
+
+  <div class="hero">
+    <span class="hero-tag">Pattern Tier Rankings · v6 baseline (36/6 datasets)</span>
+    <h1 class="hero-title">Tier <span class="accent">Rankings.</span></h1>
+    <p class="hero-desc">
+      จัดกลุ่ม 177 patterns ตามผลงาน — <strong>Tier S</strong> = production-ready candidates ·
+      ⚠️ ผล preliminary · จะ finalize หลังครบ 6 datasets
+    </p>
+  </div>
+
+
+<section>
+  <div class="section-head"><h2 class="section-title" style="color:#10b981">🥇 Tier S — Production-ready candidates (20)</h2></div>
+  <p class="lead-desc">PnL ATR ≥ 200 · active in 2+ datasets · n ≥ 100 · ใช้ใน Production EA ได้เลย (รอ confirm กับ 4 datasets ที่เหลือ)</p>
+  <div class="card">
+    <table class="table compact ranked">
+      <thead><tr><th>ID</th><th>Pattern</th><th>Cat</th><th class="r">N</th><th class="r">WR</th><th class="r">PnL ATR</th><th class="r">PnL $</th><th>Datasets breakdown</th></tr></thead>
+      <tbody>
+      <tr>
+        <td><strong>P1</strong></td>
+        <td>MultiRej_Long</td>
+        <td>Cat A</td>
+        <td class="r">8,702</td>
+        <td class="r">51.9%</td>
+        <td class="r tg"><strong>+3,598.0</strong></td>
+        <td class="r tg">$+3,598</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: +6 · BTC H1: +371 · BTC M15: +1417 · XAU H1: -30 · EUR H4: -27 · EUR H1: -224 · EUR M15: -2541 · USDJPY_H4: -5 · USOIL_H4: +24 · UKOIL_H4: +110 · ETH H1: +132 · ETH M15: +425 · USDJPY_H1: +90 · USDJPY_M15: +2693 · USOIL_H1: +538 · UKOIL_H1: +201 · UKOIL_M15: +3018 · XNG H4: -16 · XNG H1: -511 · XNG M15: -3293 · XAU M15: -22 · USOIL_M15: +2223 · XPT M15: -612 · DE30_H1: -56 · DE30_M15: -558 · US500_H1: -67 · US500_M15: +136 · JP225_M15: +173</td>
+      </tr>
+      <tr>
+        <td><strong>P120</strong></td>
+        <td>Sunday_Gap_Fill_Long</td>
+        <td>Cat J</td>
+        <td class="r">4,015</td>
+        <td class="r">53.6%</td>
+        <td class="r tg"><strong>+2,654.1</strong></td>
+        <td class="r tg">$+2,654</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: -81 · BTC H1: -200 · XAU H4: -15 · XAU H1: +40 · EUR H4: +6 · EUR H1: -83 · EUR M15: -267 · USDJPY_H4: +42 · USOIL_H4: +37 · UKOIL_H4: +42 · ETH H4: -52 · ETH H1: -135 · USDJPY_H1: +128 · USDJPY_M15: -775 · USOIL_H1: +466 · UKOIL_H1: +429 · UKOIL_M15: +1433 · XNG H4: -57 · XNG H1: -551 · XNG M15: -1351 · XAU M15: -215 · USOIL_M15: +988 · XPT H4: -7 · XPT H1: -60 · XPT M15: -238 · DE30_H4: -52 · DE30_H1: -128 · DE30_M15: +95 · US500_H4: +4 · US500_H1: +17 · US500_M15: +1087 · JP225_H4: +21 · JP225_H1: +397 · JP225_M15: +1689</td>
+      </tr>
+      <tr>
+        <td><strong>P173</strong></td>
+        <td>Three_Drives_Bull</td>
+        <td>Cat Q</td>
+        <td class="r">8,694</td>
+        <td class="r">50.9%</td>
+        <td class="r tg"><strong>+2,378.9</strong></td>
+        <td class="r tg">$+2,379</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: -55 · BTC H1: +432 · BTC M15: -465 · XAU H4: -118 · XAU H1: -94 · EUR H4: -49 · EUR H1: -208 · EUR M15: -656 · USDJPY_H4: +84 · USOIL_H4: +52 · UKOIL_H4: -4 · ETH H4: -36 · ETH H1: +83 · ETH M15: +622 · USDJPY_H1: +365 · USDJPY_M15: +932 · USOIL_H1: +484 · UKOIL_H1: +259 · UKOIL_M15: +2121 · XNG H4: -34 · XNG H1: -526 · XNG M15: -235 · XAU M15: +39 · USOIL_M15: +1313 · XPT H4: +50 · XPT H1: -140 · XPT M15: -1419 · DE30_H4: +18 · DE30_H1: -237 · DE30_M15: +74 · US500_H4: -86 · US500_H1: -128 · US500_M15: -668 · JP225_H4: -59 · JP225_H1: +129 · JP225_M15: +539</td>
+      </tr>
+      <tr>
+        <td><strong>P159</strong></td>
+        <td>Hidden_Div_Bull_MACD</td>
+        <td>Cat N</td>
+        <td class="r">8,773</td>
+        <td class="r">51.2%</td>
+        <td class="r tg"><strong>+2,322.2</strong></td>
+        <td class="r tg">$+2,322</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: +30 · BTC H1: +329 · BTC M15: +690 · XAU H4: -40 · XAU H1: +40 · EUR H4: -58 · EUR H1: -354 · EUR M15: -666 · USDJPY_H4: -33 · USOIL_H4: +174 · UKOIL_H4: +191 · ETH H4: +94 · ETH H1: +373 · ETH M15: -62 · USDJPY_H1: +189 · USDJPY_M15: +1554 · USOIL_H1: +835 · UKOIL_H1: +712 · UKOIL_M15: +1007 · XNG H4: -42 · XNG H1: -329 · XNG M15: -613 · XAU M15: -801 · USOIL_M15: +1145 · XPT H4: -108 · XPT H1: -138 · XPT M15: -686 · DE30_H4: +40 · DE30_H1: -46 · DE30_M15: -230 · US500_H4: +50 · US500_H1: -226 · US500_M15: -641 · JP225_H4: +80 · JP225_H1: -44 · JP225_M15: -92</td>
+      </tr>
+      <tr>
+        <td><strong>P63</strong></td>
+        <td>Triple_Bottom</td>
+        <td>Cat E</td>
+        <td class="r">479</td>
+        <td class="r">64.9%</td>
+        <td class="r tg"><strong>+1,328.9</strong></td>
+        <td class="r tg">$+1,329</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H1: +30 · BTC M15: +221 · XAU H1: -9 · EUR H1: -130 · EUR M15: +151 · USOIL_H4: +25 · UKOIL_H4: +39 · ETH H4: +13 · ETH M15: +324 · USDJPY_M15: +101 · USOIL_H1: +80 · UKOIL_H1: +84 · UKOIL_M15: +371 · XNG M15: +110 · XAU M15: -143 · USOIL_M15: +220 · XPT M15: -80 · DE30_H1: -100 · DE30_M15: -68 · US500_M15: +90 · JP225_M15: +1</td>
+      </tr>
+      <tr>
+        <td><strong>P77</strong></td>
+        <td>Mitigation_Block_Bull</td>
+        <td>Cat F</td>
+        <td class="r">1,074</td>
+        <td class="r">54.3%</td>
+        <td class="r tg"><strong>+921.2</strong></td>
+        <td class="r tg">$+921</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: +73 · BTC H1: +100 · BTC M15: -131 · XAU H1: +32 · EUR H4: -6 · EUR H1: -43 · EUR M15: -152 · USOIL_H4: +1 · ETH H4: +67 · ETH H1: -55 · ETH M15: -154 · USDJPY_H1: +153 · USDJPY_M15: +232 · USOIL_H1: +20 · UKOIL_H1: -0 · UKOIL_M15: +623 · XNG H4: -14 · XNG H1: +43 · XNG M15: +213 · XAU M15: +19 · USOIL_M15: +282 · XPT H4: +10 · XPT H1: +20 · XPT M15: -17 · DE30_H1: -28 · DE30_M15: -227 · US500_H4: +2 · US500_H1: +44 · US500_M15: -80 · JP225_H4: +1 · JP225_H1: +45 · JP225_M15: -153</td>
+      </tr>
+      <tr>
+        <td><strong>P67</strong></td>
+        <td>Triangle_Asc</td>
+        <td>Cat E</td>
+        <td class="r">2,391</td>
+        <td class="r">51.4%</td>
+        <td class="r tg"><strong>+911.5</strong></td>
+        <td class="r tg">$+912</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: +71 · BTC H1: -194 · BTC M15: -142 · XAU H4: -45 · XAU H1: +207 · EUR H4: -3 · EUR H1: -118 · EUR M15: -88 · USDJPY_H4: -1 · USOIL_H4: +8 · UKOIL_H4: +10 · ETH H4: +69 · ETH H1: +131 · ETH M15: -72 · USDJPY_H1: -2 · USDJPY_M15: +874 · USOIL_H1: +137 · UKOIL_H1: +313 · UKOIL_M15: +537 · XNG H1: -131 · XNG M15: -167 · XAU M15: -167 · USOIL_M15: +747 · XPT H4: +7 · XPT H1: -75 · XPT M15: -558 · DE30_H4: -5 · DE30_H1: +23 · DE30_M15: -557 · US500_H4: -30 · US500_H1: -52 · US500_M15: -303 · JP225_H4: +38 · JP225_H1: +268 · JP225_M15: +182</td>
+      </tr>
+      <tr>
+        <td><strong>P145</strong></td>
+        <td>Turtle_Soup_Long</td>
+        <td>Cat M</td>
+        <td class="r">4,432</td>
+        <td class="r">50.9%</td>
+        <td class="r tg"><strong>+864.3</strong></td>
+        <td class="r tg">$+864</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: +35 · BTC H1: +165 · BTC M15: -545 · XAU H4: -17 · XAU H1: -56 · EUR H4: -9 · EUR H1: -233 · EUR M15: -748 · USDJPY_H4: +22 · USOIL_H4: +49 · UKOIL_H4: +51 · ETH H4: +23 · ETH H1: +152 · ETH M15: -116 · USDJPY_H1: +181 · USDJPY_M15: +597 · USOIL_H1: +278 · UKOIL_H1: +359 · UKOIL_M15: +792 · XNG H4: +31 · XNG H1: +3 · XNG M15: -242 · XAU M15: +39 · USOIL_M15: +530 · XPT H4: -13 · XPT H1: -71 · XPT M15: -499 · DE30_H4: -21 · DE30_H1: +12 · DE30_M15: +253 · US500_H4: -29 · US500_H1: -109 · US500_M15: -513 · JP225_H4: +5 · JP225_H1: +192 · JP225_M15: +316</td>
+      </tr>
+      <tr>
+        <td><strong>P87</strong></td>
+        <td>BB_PctB_Long</td>
+        <td>Cat G</td>
+        <td class="r">1,268</td>
+        <td class="r">53.2%</td>
+        <td class="r tg"><strong>+645.9</strong></td>
+        <td class="r tg">$+646</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: -13 · BTC H1: +29 · BTC M15: -147 · XAU H4: -23 · XAU H1: +14 · EUR H4: -4 · EUR H1: -2 · EUR M15: -15 · USDJPY_H4: +13 · USOIL_H4: +5 · UKOIL_H4: +7 · ETH H4: -13 · ETH H1: -48 · ETH M15: -94 · USDJPY_H1: +38 · USDJPY_M15: +77 · USOIL_H1: +76 · UKOIL_H1: +77 · UKOIL_M15: +211 · XNG H4: -11 · XNG H1: -6 · XNG M15: -48 · XAU M15: +20 · USOIL_M15: +205 · XPT H4: -6 · XPT H1: -34 · XPT M15: -50 · DE30_H4: -2 · DE30_H1: +30 · DE30_M15: +0 · US500_H4: +6 · US500_H1: +10 · US500_M15: +131 · JP225_H4: +4 · JP225_H1: +50 · JP225_M15: +155</td>
+      </tr>
+      <tr>
+        <td><strong>P130</strong></td>
+        <td>MTF_OB_Aligned_Long</td>
+        <td>Cat K</td>
+        <td class="r">318</td>
+        <td class="r">60.4%</td>
+        <td class="r tg"><strong>+625.6</strong></td>
+        <td class="r tg">$+626</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: +25 · BTC H1: -21 · BTC M15: +101 · XAU H4: +35 · EUR M15: -19 · ETH H4: +18 · ETH H1: -31 · ETH M15: +20 · USDJPY_M15: +20 · USOIL_H1: +16 · UKOIL_M15: +433 · XNG M15: -66 · XAU M15: -10 · USOIL_M15: +353 · XPT M15: -4 · DE30_M15: -214 · US500_H1: -10 · US500_M15: -10 · JP225_M15: -10</td>
+      </tr>
+      <tr>
+        <td><strong>P134</strong></td>
+        <td>Triple_TF_Aligned_Long</td>
+        <td>Cat K</td>
+        <td class="r">816</td>
+        <td class="r">50.9%</td>
+        <td class="r tg"><strong>+530.0</strong></td>
+        <td class="r tg">$+530</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC M15: +30 · XAU H4: +10 · XAU H1: +61 · USDJPY_H4: -9 · USOIL_H4: +38 · UKOIL_H4: +50 · ETH H4: +2 · ETH H1: +61 · ETH M15: +108 · USDJPY_H1: -93 · USDJPY_M15: -301 · USOIL_H1: +93 · UKOIL_H1: +208 · UKOIL_M15: +1021 · XAU M15: +213 · USOIL_M15: +277 · XPT H4: -12 · XPT H1: -30 · XPT M15: -113 · DE30_H4: -20 · DE30_H1: -60 · DE30_M15: -261 · US500_H4: -3 · US500_H1: -30 · US500_M15: -100 · JP225_H4: -17 · JP225_H1: -109 · JP225_M15: -483</td>
+      </tr>
+      <tr>
+        <td><strong>P81</strong></td>
+        <td>ZScore_MeanRev_Long</td>
+        <td>Cat G</td>
+        <td class="r">1,370</td>
+        <td class="r">52.3%</td>
+        <td class="r tg"><strong>+404.4</strong></td>
+        <td class="r tg">$+404</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: -4 · BTC H1: +9 · BTC M15: -202 · XAU H4: -13 · XAU H1: +14 · EUR H4: -4 · EUR H1: +5 · EUR M15: -54 · USDJPY_H4: +16 · USOIL_H4: +4 · UKOIL_H4: +7 · ETH H4: -17 · ETH H1: -34 · ETH M15: -155 · USDJPY_H1: +39 · USDJPY_M15: +79 · USOIL_H1: +129 · UKOIL_H1: +55 · UKOIL_M15: +211 · XNG H4: -11 · XNG H1: +8 · XNG M15: -36 · XAU M15: -14 · USOIL_M15: +157 · XPT H4: -5 · XPT H1: -41 · XPT M15: -49 · DE30_H4: -2 · DE30_H1: +48 · DE30_M15: -2 · US500_H4: -5 · US500_H1: +19 · US500_M15: +83 · JP225_H4: +4 · JP225_H1: +37 · JP225_M15: +125</td>
+      </tr>
+      <tr>
+        <td><strong>P25</strong></td>
+        <td>Inverted_Hammer</td>
+        <td>Cat B</td>
+        <td class="r">1,568</td>
+        <td class="r">51.5%</td>
+        <td class="r tg"><strong>+391.9</strong></td>
+        <td class="r tg">$+392</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: +3 · BTC H1: -4 · BTC M15: -2 · XAU H4: +5 · XAU H1: -26 · EUR H4: -17 · EUR H1: +40 · EUR M15: -281 · USDJPY_H4: +13 · USOIL_H4: +2 · UKOIL_H4: +29 · ETH H4: +28 · ETH H1: -12 · ETH M15: +45 · USDJPY_H1: +66 · USDJPY_M15: +146 · USOIL_H1: +73 · UKOIL_H1: +12 · UKOIL_M15: +246 · XNG H4: +20 · XNG H1: -21 · XNG M15: -295 · XAU M15: -22 · USOIL_M15: +332 · XPT H4: -2 · XPT H1: -12 · XPT M15: -88 · DE30_H4: +5 · DE30_H1: +47 · DE30_M15: -38 · US500_H4: +1 · US500_H1: -54 · US500_M15: +7 · JP225_H4: +7 · JP225_H1: +64 · JP225_M15: +74</td>
+      </tr>
+      <tr>
+        <td><strong>P68</strong></td>
+        <td>Triangle_Desc</td>
+        <td>Cat E</td>
+        <td class="r">2,304</td>
+        <td class="r">49.5%</td>
+        <td class="r tg"><strong>+352.5</strong></td>
+        <td class="r tg">$+353</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: -2 · BTC H1: +167 · BTC M15: +596 · XAU H4: +73 · XAU H1: +173 · EUR H4: +71 · EUR H1: +185 · EUR M15: +405 · USDJPY_H4: -18 · UKOIL_H4: -11 · ETH H4: -48 · ETH H1: -18 · ETH M15: +106 · USDJPY_H1: -12 · USDJPY_M15: +83 · USOIL_H1: -86 · UKOIL_H1: -201 · UKOIL_M15: -15 · XNG H4: +1 · XNG H1: +35 · XNG M15: -410 · XAU M15: -167 · USOIL_M15: -10 · XPT H4: +12 · XPT H1: +14 · XPT M15: -99 · DE30_H4: -19 · DE30_H1: +59 · DE30_M15: -138 · US500_H4: -16 · US500_H1: -19 · US500_M15: +55 · JP225_H4: -3 · JP225_H1: -85 · JP225_M15: -305</td>
+      </tr>
+      <tr>
+        <td><strong>P108</strong></td>
+        <td>Gartley_Bull</td>
+        <td>Cat J</td>
+        <td class="r">314</td>
+        <td class="r">53.2%</td>
+        <td class="r tg"><strong>+330.1</strong></td>
+        <td class="r tg">$+330</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H1: -10 · BTC M15: +106 · XAU H1: -10 · EUR H1: -40 · EUR M15: -40 · ETH H1: -5 · ETH M15: -92 · USDJPY_H1: +88 · USDJPY_M15: -10 · UKOIL_H1: +120 · UKOIL_M15: +47 · XNG H1: +62 · XNG M15: +126 · XAU M15: +99 · USOIL_M15: +87 · XPT H4: +8 · XPT H1: -4 · XPT M15: -161 · DE30_M15: +10 · US500_H4: -23 · US500_H1: -11 · US500_M15: -43 · JP225_H1: -0 · JP225_M15: +27</td>
+      </tr>
+      <tr>
+        <td><strong>P99</strong></td>
+        <td>VSA_NoSupply</td>
+        <td>Cat I</td>
+        <td class="r">2,434</td>
+        <td class="r">49.8%</td>
+        <td class="r tg"><strong>+295.8</strong></td>
+        <td class="r tg">$+296</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: +27 · BTC H1: -81 · BTC M15: -6 · XAU H4: +16 · XAU H1: +38 · EUR H4: +32 · EUR H1: -82 · EUR M15: -383 · USDJPY_H4: +15 · USOIL_H4: +84 · UKOIL_H4: +44 · ETH H4: -6 · ETH H1: +34 · ETH M15: -56 · USDJPY_H1: +25 · USDJPY_M15: +322 · USOIL_H1: +325 · UKOIL_H1: +163 · UKOIL_M15: +224 · XNG H4: -5 · XNG H1: -158 · XNG M15: -349 · XAU M15: +37 · USOIL_M15: +289 · XPT H4: +11 · XPT H1: -7 · XPT M15: -117 · DE30_H4: -2 · DE30_H1: -3 · DE30_M15: -222 · US500_H4: +36 · US500_H1: -46 · US500_M15: -215 · JP225_H4: +31 · JP225_H1: +115 · JP225_M15: +165</td>
+      </tr>
+      <tr>
+        <td><strong>P57</strong></td>
+        <td>Liq_Sweep_Long</td>
+        <td>Cat D</td>
+        <td class="r">1,649</td>
+        <td class="r">50.9%</td>
+        <td class="r tg"><strong>+285.9</strong></td>
+        <td class="r tg">$+286</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: +1 · BTC H1: -14 · BTC M15: -169 · XAU H4: -5 · XAU H1: +28 · EUR H4: -7 · EUR H1: -23 · EUR M15: -306 · USDJPY_H4: +4 · USOIL_H4: +13 · UKOIL_H4: +4 · ETH H4: -22 · ETH H1: +41 · ETH M15: -13 · USDJPY_H1: +121 · USDJPY_M15: +157 · USOIL_H1: +64 · UKOIL_H1: +67 · UKOIL_M15: +301 · XNG H4: +10 · XNG H1: +70 · XNG M15: -291 · XAU M15: +8 · USOIL_M15: +282 · XPT H4: +1 · XPT H1: +19 · XPT M15: -239 · DE30_H4: -10 · DE30_H1: +21 · DE30_M15: +119 · US500_H4: -5 · US500_H1: -51 · US500_M15: -19 · JP225_H4: -3 · JP225_H1: +39 · JP225_M15: +93</td>
+      </tr>
+      <tr>
+        <td><strong>P143</strong></td>
+        <td>Inducement_Bull</td>
+        <td>Cat M</td>
+        <td class="r">1,620</td>
+        <td class="r">50.7%</td>
+        <td class="r tg"><strong>+258.9</strong></td>
+        <td class="r tg">$+259</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: -6 · BTC H1: +96 · BTC M15: -17 · XAU H4: -12 · XAU H1: -1 · EUR H4: +10 · EUR H1: -70 · EUR M15: -162 · USDJPY_H4: +13 · USOIL_H4: +23 · UKOIL_H4: +25 · ETH H4: +24 · ETH H1: -6 · ETH M15: -97 · USDJPY_H1: +78 · USDJPY_M15: +278 · USOIL_H1: +76 · UKOIL_H1: +85 · UKOIL_M15: +153 · XNG H4: +1 · XNG H1: +3 · XNG M15: -186 · XAU M15: -11 · USOIL_M15: +138 · XPT H4: -4 · XPT H1: -24 · XPT M15: -191 · DE30_H4: -5 · DE30_H1: -8 · DE30_M15: +147 · US500_H4: -1 · US500_H1: -22 · US500_M15: -186 · JP225_H4: -12 · JP225_H1: +16 · JP225_M15: +113</td>
+      </tr>
+      <tr>
+        <td><strong>P162</strong></td>
+        <td>VAL_Reject_Long</td>
+        <td>Cat O</td>
+        <td class="r">7,561</td>
+        <td class="r">50.1%</td>
+        <td class="r tg"><strong>+246.7</strong></td>
+        <td class="r tg">$+247</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: -27 · BTC H1: +393 · BTC M15: -119 · XAU H4: -33 · XAU H1: +34 · EUR H4: -68 · EUR H1: -237 · EUR M15: -1355 · USDJPY_H4: +52 · USOIL_H4: +96 · UKOIL_H4: +63 · ETH H4: +39 · ETH H1: +297 · ETH M15: -627 · USDJPY_H1: +180 · USDJPY_M15: +1149 · USOIL_H1: +279 · UKOIL_H1: +380 · UKOIL_M15: +1173 · XNG H4: -1 · XNG H1: -185 · XNG M15: -438 · XAU M15: +179 · USOIL_M15: +797 · XPT H4: +16 · XPT H1: -169 · XPT M15: -1173 · DE30_H4: -15 · DE30_H1: -30 · DE30_M15: -86 · US500_H4: -18 · US500_H1: -196 · US500_M15: -1059 · JP225_H4: +3 · JP225_H1: +328 · JP225_M15: +625</td>
+      </tr>
+      <tr>
+        <td><strong>P116</strong></td>
+        <td>Cypher_Bull</td>
+        <td>Cat J</td>
+        <td class="r">151</td>
+        <td class="r">58.3%</td>
+        <td class="r tg"><strong>+219.2</strong></td>
+        <td class="r tg">$+219</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H1: +20 · BTC M15: -153 · EUR H1: -40 · EUR M15: -40 · ETH H1: -4 · ETH M15: +30 · USDJPY_H1: -10 · USDJPY_M15: +100 · USOIL_H1: +43 · XNG M15: +190 · XAU M15: +10 · USOIL_M15: +60 · XPT M15: +3 · DE30_H1: -50 · DE30_M15: +61 · US500_H4: -3 · US500_H1: -21 · US500_M15: +40 · JP225_H4: -7 · JP225_H1: +21 · JP225_M15: -30</td>
+      </tr></tbody>
+    </table>
+  </div>
+</section>
+<section>
+  <div class="section-head"><h2 class="section-title" style="color:#22c55e">🥈 Tier A — Strong performers (4)</h2></div>
+  <p class="lead-desc">PnL ATR ≥ 100 · active in 1+ datasets · n ≥ 60 · candidates สำหรับ Production EA หลัง confirm</p>
+  <div class="card">
+    <table class="table compact ranked">
+      <thead><tr><th>ID</th><th>Pattern</th><th>Cat</th><th class="r">N</th><th class="r">WR</th><th class="r">PnL ATR</th><th class="r">PnL $</th><th>Datasets breakdown</th></tr></thead>
+      <tbody>
+      <tr>
+        <td><strong>P34</strong></td>
+        <td>Morning_Star</td>
+        <td>Cat B</td>
+        <td class="r">2,150</td>
+        <td class="r">50.4%</td>
+        <td class="r tg"><strong>+153.3</strong></td>
+        <td class="r tg">$+153</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: -12 · BTC H1: +79 · BTC M15: +243 · XAU H4: -2 · XAU H1: +75 · EUR H4: -20 · EUR H1: -86 · EUR M15: -267 · USDJPY_H4: +19 · USOIL_H4: +45 · UKOIL_H4: +38 · ETH H4: +12 · ETH H1: +69 · ETH M15: -197 · USDJPY_H1: +38 · USDJPY_M15: +445 · USOIL_H1: +52 · UKOIL_H1: +115 · UKOIL_M15: +293 · XNG H4: -15 · XNG H1: -116 · XNG M15: -193 · XAU M15: +128 · USOIL_M15: +121 · XPT H4: -2 · XPT H1: -3 · XPT M15: -360 · DE30_H4: -15 · DE30_H1: +56 · DE30_M15: -115 · US500_H4: +6 · US500_H1: -55 · US500_M15: -212 · JP225_H4: -22 · JP225_H1: +70 · JP225_M15: -57</td>
+      </tr>
+      <tr>
+        <td><strong>P30</strong></td>
+        <td>Piercing_Line</td>
+        <td>Cat B</td>
+        <td class="r">105</td>
+        <td class="r">56.2%</td>
+        <td class="r tg"><strong>+135.4</strong></td>
+        <td class="r tg">$+135</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC M15: +10 · XAU H1: -10 · EUR H1: +3 · EUR M15: -23 · USDJPY_H4: +2 · USOIL_H4: +10 · ETH M15: -30 · USDJPY_H1: +15 · USDJPY_M15: -1 · USOIL_H1: +20 · UKOIL_H1: +16 · UKOIL_M15: +43 · XNG H1: -4 · XNG M15: -10 · XAU M15: +6 · USOIL_M15: +50 · XPT H1: -6 · XPT M15: -34 · DE30_H1: +10 · DE30_M15: +77 · US500_M15: -20 · JP225_H1: +10 · JP225_M15: -0</td>
+      </tr>
+      <tr>
+        <td><strong>P110</strong></td>
+        <td>Bat_Bull</td>
+        <td>Cat J</td>
+        <td class="r">94</td>
+        <td class="r">55.3%</td>
+        <td class="r tg"><strong>+119.7</strong></td>
+        <td class="r tg">$+120</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC M15: -20 · ETH M15: -13 · USDJPY_H1: -19 · USDJPY_M15: -30 · UKOIL_M15: +15 · XNG M15: +203 · XAU M15: +110 · USOIL_M15: -91 · XPT H1: +24 · XPT M15: -9 · DE30_H1: -10 · DE30_M15: -30 · US500_H1: -10 · US500_M15: -10 · JP225_H1: +20 · JP225_M15: -10</td>
+      </tr>
+      <tr>
+        <td><strong>P36</strong></td>
+        <td>Three_White_Soldiers</td>
+        <td>Cat B</td>
+        <td class="r">115</td>
+        <td class="r">53.0%</td>
+        <td class="r tg"><strong>+103.0</strong></td>
+        <td class="r tg">$+103</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: -1 · BTC M15: -0 · XAU H4: -10 · XAU H1: +20 · EUR H4: -4 · EUR H1: -0 · EUR M15: -10 · UKOIL_H4: +10 · ETH M15: -1 · USDJPY_H1: +3 · USDJPY_M15: +30 · UKOIL_H1: +8 · UKOIL_M15: +66 · XNG H4: -7 · XNG H1: -11 · XNG M15: -70 · XAU M15: +24 · USOIL_M15: +37 · XPT H1: +10 · XPT M15: +20 · DE30_H4: +1 · DE30_M15: +1 · US500_M15: +6 · JP225_H1: +21 · JP225_M15: -40</td>
+      </tr></tbody>
+    </table>
+  </div>
+</section>
+<section>
+  <div class="section-head"><h2 class="section-title" style="color:#3b82f6">🥉 Tier B — Promising (4)</h2></div>
+  <p class="lead-desc">PnL ATR ≥ 50 · ต้องดูเพิ่มกับ datasets อื่น</p>
+  <div class="card">
+    <table class="table compact ranked">
+      <thead><tr><th>ID</th><th>Pattern</th><th>Cat</th><th class="r">N</th><th class="r">WR</th><th class="r">PnL ATR</th><th class="r">PnL $</th><th>Datasets breakdown</th></tr></thead>
+      <tbody>
+      <tr>
+        <td><strong>P3</strong></td>
+        <td>WRB_Bull</td>
+        <td>Cat A</td>
+        <td class="r">191</td>
+        <td class="r">48.7%</td>
+        <td class="r tg"><strong>+76.1</strong></td>
+        <td class="r tg">$+76</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC M15: +21 · XAU H4: +2 · XAU H1: +18 · EUR H4: -5 · EUR H1: -8 · EUR M15: -30 · USOIL_H4: +25 · UKOIL_H4: +10 · ETH H4: -4 · ETH H1: +10 · ETH M15: -22 · USDJPY_H1: -10 · USDJPY_M15: +3 · USOIL_H1: +36 · UKOIL_H1: +20 · UKOIL_M15: +39 · XNG H1: -31 · XNG M15: -46 · XAU M15: -10 · USOIL_M15: +102 · XPT H1: +10 · XPT M15: -50 · DE30_H4: +3 · DE30_H1: -10 · DE30_M15: +33 · US500_H4: -0 · US500_H1: -1 · US500_M15: -18 · JP225_H4: -4 · JP225_M15: -6</td>
+      </tr>
+      <tr>
+        <td><strong>P5</strong></td>
+        <td>Engulf_Trap_Bull</td>
+        <td>Cat A</td>
+        <td class="r">126</td>
+        <td class="r">51.6%</td>
+        <td class="r tg"><strong>+65.7</strong></td>
+        <td class="r tg">$+66</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: -1 · BTC H1: -20 · BTC M15: +22 · XAU H4: +3 · XAU H1: +10 · EUR H1: -8 · EUR M15: -30 · USOIL_H4: +10 · UKOIL_H4: -8 · ETH H4: -1 · ETH H1: +30 · ETH M15: -34 · USDJPY_M15: +60 · USOIL_H1: +26 · UKOIL_H1: +16 · UKOIL_M15: +36 · XNG H1: -4 · XNG M15: +24 · XAU M15: +10 · USOIL_M15: +70 · XPT H1: -15 · XPT M15: -47 · DE30_H1: +3 · DE30_M15: -51 · US500_M15: -1 · JP225_H4: -5 · JP225_H1: -9 · JP225_M15: -20</td>
+      </tr>
+      <tr>
+        <td><strong>P164</strong></td>
+        <td>Single_Print_Fill_Short</td>
+        <td>Cat O</td>
+        <td class="r">138</td>
+        <td class="r">48.5%</td>
+        <td class="r tg"><strong>+56.2</strong></td>
+        <td class="r tg">$+56</td>
+        <td style="font-size:11px;color:var(--txt-d)">XAU H4: +7 · EUR M15: -20 · ETH H4: -1 · ETH M15: +10 · USDJPY_H1: -8 · USDJPY_M15: -5 · USOIL_H1: -10 · UKOIL_H1: -0 · UKOIL_M15: -20 · XNG H1: -22 · XNG M15: -24 · XAU M15: +50 · USOIL_M15: +1 · XPT M15: -0 · DE30_H4: -4 · DE30_H1: +0 · DE30_M15: +141 · US500_H1: +10 · US500_M15: +51 · JP225_H1: -9 · JP225_M15: -90</td>
+      </tr>
+      <tr>
+        <td><strong>P128</strong></td>
+        <td>MTF_FVG_Aligned_Long</td>
+        <td>Cat K</td>
+        <td class="r">9,452</td>
+        <td class="r">49.6%</td>
+        <td class="r tg"><strong>+56.1</strong></td>
+        <td class="r tg">$+56</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: +66 · BTC H1: +436 · BTC M15: +473 · XAU H4: +3 · XAU H1: +137 · EUR H4: -34 · EUR H1: -175 · EUR M15: -1148 · USDJPY_H4: +32 · USOIL_H4: +113 · UKOIL_H4: +137 · ETH H4: +10 · ETH H1: +233 · ETH M15: -342 · USDJPY_H1: +366 · USDJPY_M15: +1486 · USOIL_H1: +579 · UKOIL_H1: +860 · UKOIL_M15: +1261 · XNG H4: -67 · XNG H1: -836 · XNG M15: -2053 · XAU M15: -1 · USOIL_M15: +1723 · XPT H4: -54 · XPT H1: -79 · XPT M15: -1331 · DE30_H4: -1 · DE30_H1: -6 · DE30_M15: -587 · US500_H4: -32 · US500_H1: -397 · US500_M15: -1533 · JP225_H4: +138 · JP225_H1: +546 · JP225_M15: +131</td>
+      </tr></tbody>
+    </table>
+  </div>
+</section>
+<section>
+  <div class="section-head"><h2 class="section-title" style="color:#94a3b8">Tier C — Marginal (8)</h2></div>
+  <p class="lead-desc">0 ≤ PnL ATR < 50 · borderline · ไม่แนะนำ</p>
+  <div class="card">
+    <table class="table compact ranked">
+      <thead><tr><th>ID</th><th>Pattern</th><th>Cat</th><th class="r">N</th><th class="r">WR</th><th class="r">PnL ATR</th><th class="r">PnL $</th><th>Datasets breakdown</th></tr></thead>
+      <tbody>
+      <tr>
+        <td><strong>P101</strong></td>
+        <td>VSA_ClimaxVol_Bear</td>
+        <td>Cat I</td>
+        <td class="r">55</td>
+        <td class="r">56.4%</td>
+        <td class="r tg"><strong>+48.6</strong></td>
+        <td class="r tg">$+49</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: +3 · BTC H1: -10 · BTC M15: -20 · XAU H1: +6 · EUR H1: +9 · EUR M15: -20 · ETH H1: +12 · ETH M15: -14 · USDJPY_M15: -30 · USOIL_H1: +10 · UKOIL_M15: +10 · XNG H4: -0 · XNG H1: +9 · XNG M15: +23 · XAU M15: +10 · DE30_H4: -1 · DE30_H1: -5 · DE30_M15: +23 · US500_H1: +10 · US500_M15: +30 · JP225_H1: -15 · JP225_M15: +10</td>
+      </tr>
+      <tr>
+        <td><strong>P76</strong></td>
+        <td>Equal_Lows_Sweep</td>
+        <td>Cat F</td>
+        <td class="r">254</td>
+        <td class="r">50.8%</td>
+        <td class="r tg"><strong>+42.9</strong></td>
+        <td class="r tg">$+43</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H1: -12 · BTC M15: -50 · XAU H1: -2 · EUR H1: -35 · EUR M15: -73 · USDJPY_H4: +0 · USOIL_H4: +34 · ETH H1: +6 · ETH M15: -4 · USDJPY_H1: +32 · USDJPY_M15: +10 · USOIL_H1: +6 · UKOIL_H1: +67 · UKOIL_M15: +8 · XNG H1: -2 · XNG M15: -97 · XAU M15: +40 · USOIL_M15: +38 · XPT H1: -8 · XPT M15: -77 · DE30_H1: -11 · DE30_M15: +49 · US500_H4: -1 · US500_H1: +35 · US500_M15: +39 · JP225_H1: +2 · JP225_M15: +50</td>
+      </tr>
+      <tr>
+        <td><strong>P79</strong></td>
+        <td>POC_Bounce_Long</td>
+        <td>Cat F</td>
+        <td class="r">5,974</td>
+        <td class="r">49.5%</td>
+        <td class="r tg"><strong>+25.7</strong></td>
+        <td class="r tg">$+26</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: +6 · BTC H1: +97 · BTC M15: -108 · XAU H4: -1 · XAU H1: +248 · EUR H4: -122 · EUR H1: -229 · EUR M15: -768 · USDJPY_H4: +9 · USOIL_H4: +36 · UKOIL_H4: +23 · ETH H4: +30 · ETH H1: +190 · ETH M15: -106 · USDJPY_H1: +56 · USDJPY_M15: +543 · USOIL_H1: +479 · UKOIL_H1: +473 · UKOIL_M15: +1074 · XNG H4: -44 · XNG H1: -189 · XNG M15: -915 · XAU M15: +245 · USOIL_M15: +936 · XPT H4: -3 · XPT H1: -213 · XPT M15: -1210 · DE30_H4: -39 · DE30_H1: -28 · DE30_M15: -82 · US500_H4: -23 · US500_H1: -85 · US500_M15: -412 · JP225_H4: -8 · JP225_H1: +198 · JP225_M15: -32</td>
+      </tr>
+      <tr>
+        <td><strong>P95</strong></td>
+        <td>PowerOf3_Long</td>
+        <td>Cat H</td>
+        <td class="r">50</td>
+        <td class="r">52.0%</td>
+        <td class="r tg"><strong>+19.1</strong></td>
+        <td class="r tg">$+19</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC M15: -30 · XAU H1: +10 · EUR H1: -1 · EUR M15: +20 · ETH H1: +10 · ETH M15: +20 · USDJPY_M15: -80 · UKOIL_M15: +41 · XNG M15: -30 · XAU M15: +30 · USOIL_M15: +50 · XPT M15: -40 · US500_M15: +10 · JP225_M15: +10</td>
+      </tr>
+      <tr>
+        <td><strong>P115</strong></td>
+        <td>Crab_Bear</td>
+        <td>Cat J</td>
+        <td class="r">48</td>
+        <td class="r">47.9%</td>
+        <td class="r tg"><strong>+16.7</strong></td>
+        <td class="r tg">$+17</td>
+        <td style="font-size:11px;color:var(--txt-d)">EUR H1: -80 · EUR M15: +48 · ETH M15: +10 · USDJPY_M15: -0 · UKOIL_M15: -30 · XNG M15: +28 · DE30_M15: +111 · US500_M15: -50 · JP225_M15: -20</td>
+      </tr>
+      <tr>
+        <td><strong>P22</strong></td>
+        <td>Dragonfly_Doji</td>
+        <td>Cat B</td>
+        <td class="r">271</td>
+        <td class="r">49.5%</td>
+        <td class="r tg"><strong>+11.1</strong></td>
+        <td class="r tg">$+11</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H1: +20 · BTC M15: -19 · XAU H1: +8 · EUR H1: -4 · EUR M15: -20 · USOIL_H4: -7 · UKOIL_H4: +3 · ETH H1: +10 · ETH M15: +71 · USDJPY_H1: +10 · USDJPY_M15: +60 · USOIL_H1: +10 · UKOIL_H1: +8 · UKOIL_M15: +30 · XNG H1: -7 · XNG M15: -64 · XAU M15: -49 · USOIL_M15: +20 · XPT H4: -4 · XPT H1: +8 · XPT M15: -117 · DE30_H1: -2 · DE30_M15: +30 · US500_H4: +8 · US500_H1: +14 · US500_M15: -46 · JP225_H1: +20 · JP225_M15: +20</td>
+      </tr>
+      <tr>
+        <td><strong>P114</strong></td>
+        <td>Crab_Bull</td>
+        <td>Cat J</td>
+        <td class="r">33</td>
+        <td class="r">51.5%</td>
+        <td class="r tg"><strong>+8.7</strong></td>
+        <td class="r tg">$+9</td>
+        <td style="font-size:11px;color:var(--txt-d)">EUR M15: -10 · ETH M15: -41 · USDJPY_M15: -10 · UKOIL_M15: +29 · DE30_H1: -40 · JP225_M15: +80</td>
+      </tr>
+      <tr>
+        <td><strong>P37</strong></td>
+        <td>Three_Black_Crows</td>
+        <td>Cat B</td>
+        <td class="r">85</td>
+        <td class="r">50.6%</td>
+        <td class="r tg"><strong>+0.5</strong></td>
+        <td class="r tg">$+0</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: -2 · BTC H1: +10 · BTC M15: +20 · XAU H1: +10 · EUR H4: -1 · EUR M15: -9 · ETH H4: +3 · ETH H1: +8 · ETH M15: +14 · USDJPY_H1: -30 · USDJPY_M15: -3 · UKOIL_M15: -24 · XNG H1: -10 · XNG M15: -43 · XAU M15: +30 · USOIL_M15: -10 · XPT M15: +31 · DE30_M15: -10 · US500_H1: -3 · US500_M15: +16 · JP225_H1: +3 · JP225_M15: +0</td>
+      </tr></tbody>
+    </table>
+  </div>
+</section>
+<section>
+  <div class="section-head"><h2 class="section-title" style="color:#ef4444">⚠️ Tier D — Avoid (138)</h2></div>
+  <p class="lead-desc">PnL ATR < 0 · ห้ามใช้ใน production · ขาดทุนยืนยัน</p>
+  <div class="card">
+    <table class="table compact ranked">
+      <thead><tr><th>ID</th><th>Pattern</th><th>Cat</th><th class="r">N</th><th class="r">WR</th><th class="r">PnL ATR</th><th class="r">PnL $</th><th>Datasets breakdown</th></tr></thead>
+      <tbody>
+      <tr>
+        <td><strong>P144</strong></td>
+        <td>Inducement_Bear</td>
+        <td>Cat M</td>
+        <td class="r">1,482</td>
+        <td class="r">49.9%</td>
+        <td class="r tr"><strong>-14.6</strong></td>
+        <td class="r tr">$-15</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: +7 · BTC H1: +9 · BTC M15: +109 · XAU H4: +29 · XAU H1: +59 · EUR H4: -3 · EUR H1: +86 · EUR M15: +238 · USDJPY_H4: -6 · USOIL_H4: -20 · UKOIL_H4: -7 · ETH H4: +5 · ETH H1: +29 · ETH M15: +222 · USDJPY_H1: -42 · USDJPY_M15: -184 · USOIL_H1: -18 · UKOIL_H1: -36 · UKOIL_M15: -208 · XNG H4: -4 · XNG H1: +7 · XNG M15: -213 · XAU M15: +5 · USOIL_M15: -160 · XPT H4: -16 · XPT H1: +36 · XPT M15: +12 · DE30_H4: +3 · DE30_H1: -31 · DE30_M15: -80 · US500_H4: -27 · US500_H1: +93 · US500_M15: +179 · JP225_H4: -15 · JP225_H1: -48 · JP225_M15: -26</td>
+      </tr>
+      <tr>
+        <td><strong>P96</strong></td>
+        <td>PowerOf3_Short</td>
+        <td>Cat H</td>
+        <td class="r">51</td>
+        <td class="r">49.0%</td>
+        <td class="r tr"><strong>-31.2</strong></td>
+        <td class="r tr">$-31</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC M15: -0 · EUR M15: -51 · ETH M15: +10 · USDJPY_M15: +20 · XNG M15: -33 · USOIL_M15: -10 · XPT M15: +50 · DE30_M15: +2 · US500_M15: -1 · JP225_M15: -19</td>
+      </tr>
+      <tr>
+        <td><strong>P149</strong></td>
+        <td>Internal_Liq_Sweep_Long</td>
+        <td>Cat M</td>
+        <td class="r">3,672</td>
+        <td class="r">49.9%</td>
+        <td class="r tr"><strong>-44.0</strong></td>
+        <td class="r tr">$-44</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: +7 · BTC H1: +75 · BTC M15: -84 · XAU H4: -1 · XAU H1: -11 · EUR H4: -6 · EUR H1: -150 · EUR M15: -408 · USDJPY_H4: +14 · USOIL_H4: +51 · UKOIL_H4: +56 · ETH H4: +38 · ETH H1: +31 · ETH M15: -328 · USDJPY_H1: +118 · USDJPY_M15: +541 · USOIL_H1: +128 · UKOIL_H1: +244 · UKOIL_M15: +653 · XNG H4: +14 · XNG H1: -131 · XNG M15: -414 · XAU M15: -57 · USOIL_M15: +598 · XPT H4: -9 · XPT H1: -63 · XPT M15: -568 · DE30_H4: -21 · DE30_H1: -34 · DE30_M15: +23 · US500_H4: -10 · US500_H1: -84 · US500_M15: -650 · JP225_H4: +18 · JP225_H1: +100 · JP225_M15: +278</td>
+      </tr>
+      <tr>
+        <td><strong>P42</strong></td>
+        <td>Demand_Zone_Reject</td>
+        <td>Cat C</td>
+        <td class="r">540</td>
+        <td class="r">48.3%</td>
+        <td class="r tr"><strong>-55.0</strong></td>
+        <td class="r tr">$-55</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: +0 · BTC H1: +1 · BTC M15: -125 · XAU H1: -11 · EUR H4: +9 · EUR H1: -34 · EUR M15: +63 · USDJPY_H4: +2 · USOIL_H4: +1 · UKOIL_H4: +3 · ETH H4: +11 · ETH H1: -10 · ETH M15: -72 · USDJPY_H1: -3 · USDJPY_M15: +99 · USOIL_H1: +5 · UKOIL_H1: +80 · UKOIL_M15: +41 · XNG H4: -8 · XNG H1: -20 · XNG M15: -16 · XAU M15: -141 · USOIL_M15: +90 · XPT H4: -15 · XPT H1: -35 · XPT M15: -53 · DE30_H4: +5 · DE30_H1: +33 · DE30_M15: +55 · US500_H4: +10 · US500_H1: -17 · US500_M15: -63 · JP225_H1: +14 · JP225_M15: +46</td>
+      </tr>
+      <tr>
+        <td><strong>P10</strong></td>
+        <td>BB_Squeeze_Break</td>
+        <td>Cat A</td>
+        <td class="r">218</td>
+        <td class="r">48.2%</td>
+        <td class="r tr"><strong>-97.2</strong></td>
+        <td class="r tr">$-97</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H1: -0 · BTC M15: -0 · XAU H4: -0 · XAU H1: +0 · EUR H4: -0 · EUR M15: -0 · ETH H4: -0 · ETH H1: -0 · ETH M15: -0 · USDJPY_H1: +0 · USDJPY_M15: -41 · USOIL_H1: -0 · UKOIL_H1: +0 · UKOIL_M15: -2 · XNG H1: -6 · XNG M15: -25 · XAU M15: +0 · USOIL_M15: -0 · XPT H1: -21 · XPT M15: -0 · DE30_H4: -0 · DE30_M15: +0 · US500_H1: +0 · US500_M15: -0 · JP225_M15: +0</td>
+      </tr>
+      <tr>
+        <td><strong>P109</strong></td>
+        <td>Gartley_Bear</td>
+        <td>Cat J</td>
+        <td class="r">359</td>
+        <td class="r">43.7%</td>
+        <td class="r tr"><strong>-99.4</strong></td>
+        <td class="r tr">$-99</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H1: +31 · BTC M15: -163 · XAU H1: -44 · EUR H1: +54 · EUR M15: -57 · USOIL_H4: -11 · ETH M15: -121 · USDJPY_H1: -24 · USDJPY_M15: -171 · UKOIL_M15: +228 · XNG H1: -11 · XAU M15: +164 · USOIL_M15: -115 · XPT H1: +32 · XPT M15: -30 · DE30_H4: +30 · DE30_M15: +265 · US500_H4: +21 · JP225_H1: -77 · JP225_M15: -100</td>
+      </tr>
+      <tr>
+        <td><strong>P163</strong></td>
+        <td>Single_Print_Fill_Long</td>
+        <td>Cat O</td>
+        <td class="r">162</td>
+        <td class="r">46.9%</td>
+        <td class="r tr"><strong>-106.9</strong></td>
+        <td class="r tr">$-107</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H1: +10 · XAU H4: -23 · EUR M15: +19 · ETH M15: -10 · USDJPY_H1: +12 · USDJPY_M15: -33 · USOIL_H1: +6 · UKOIL_H1: -0 · UKOIL_M15: +20 · XNG H4: +8 · XNG H1: +70 · XNG M15: -14 · XAU M15: -10 · USOIL_M15: +37 · XPT M15: -51 · DE30_H1: +17 · DE30_M15: -120 · US500_H1: -15 · US500_M15: -61 · JP225_H1: +0 · JP225_M15: +30</td>
+      </tr>
+      <tr>
+        <td><strong>P75</strong></td>
+        <td>Equal_Highs_Sweep</td>
+        <td>Cat F</td>
+        <td class="r">233</td>
+        <td class="r">48.9%</td>
+        <td class="r tr"><strong>-109.3</strong></td>
+        <td class="r tr">$-109</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: -2 · BTC H1: +32 · BTC M15: +2 · XAU H1: -10 · EUR H1: -14 · EUR M15: -20 · USDJPY_H4: -6 · USOIL_H4: -10 · UKOIL_H4: -10 · ETH H4: +2 · ETH H1: -8 · ETH M15: -32 · USDJPY_H1: -7 · USDJPY_M15: -50 · USOIL_H1: +48 · UKOIL_H1: -32 · UKOIL_M15: -10 · XNG H1: +9 · XNG M15: -22 · XAU M15: -50 · USOIL_M15: -100 · XPT H1: -16 · XPT M15: +114 · DE30_H4: +7 · DE30_H1: -30 · DE30_M15: -8 · US500_H4: +3 · US500_M15: +152 · JP225_H1: -70 · JP225_M15: +30</td>
+      </tr>
+      <tr>
+        <td><strong>P4</strong></td>
+        <td>WRB_Bear</td>
+        <td>Cat A</td>
+        <td class="r">96</td>
+        <td class="r">43.8%</td>
+        <td class="r tr"><strong>-136.1</strong></td>
+        <td class="r tr">$-136</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H1: -7 · BTC M15: +21 · EUR H4: +4 · EUR H1: +5 · EUR M15: -5 · ETH H4: -0 · ETH H1: -10 · ETH M15: -21 · USDJPY_H1: +10 · USDJPY_M15: +0 · UKOIL_M15: -48 · XNG H1: -4 · XNG M15: -10 · XAU M15: +10 · USOIL_M15: -25 · XPT M15: -10 · DE30_H1: -2 · DE30_M15: -20 · US500_M15: +12 · JP225_M15: -37</td>
+      </tr>
+      <tr>
+        <td><strong>P93</strong></td>
+        <td>NYSB_Long</td>
+        <td>Cat H</td>
+        <td class="r">948</td>
+        <td class="r">47.1%</td>
+        <td class="r tr"><strong>-181.3</strong></td>
+        <td class="r tr">$-181</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: +3 · BTC H1: +14 · BTC M15: +47 · XAU H4: -32 · XAU H1: -10 · EUR H4: -25 · EUR H1: -77 · EUR M15: -204 · USDJPY_H4: +10 · USOIL_H4: +26 · UKOIL_H4: +72 · ETH H4: +3 · ETH H1: -2 · ETH M15: -10 · USDJPY_H1: -14 · USDJPY_M15: +108 · USOIL_H1: +50 · UKOIL_H1: +38 · UKOIL_M15: +196 · XNG H4: -26 · XNG H1: -56 · XNG M15: -108 · XAU M15: +18 · USOIL_M15: +170 · XPT H4: -17 · XPT H1: -47 · XPT M15: -124 · DE30_H4: -17 · DE30_H1: +13 · DE30_M15: -18 · US500_H4: -5 · US500_H1: -12 · US500_M15: -174 · JP225_H4: +22 · JP225_H1: +45 · JP225_M15: -42</td>
+      </tr>
+      <tr>
+        <td><strong>P135</strong></td>
+        <td>Triple_TF_Aligned_Short</td>
+        <td>Cat K</td>
+        <td class="r">249</td>
+        <td class="r">46.6%</td>
+        <td class="r tr"><strong>-182.3</strong></td>
+        <td class="r tr">$-182</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: +5 · BTC H1: +40 · BTC M15: +201 · XAU H4: -4 · XAU H1: -20 · ETH H4: +33 · ETH H1: +142 · ETH M15: +355 · XNG H1: -13 · XNG M15: -66 · XAU M15: -51 · XPT H4: -4 · XPT H1: -20 · XPT M15: -70 · DE30_H4: +3 · DE30_H1: -53 · DE30_M15: -404 · US500_H4: -16 · US500_H1: -13 · US500_M15: -227</td>
+      </tr>
+      <tr>
+        <td><strong>P23</strong></td>
+        <td>Gravestone_Doji</td>
+        <td>Cat B</td>
+        <td class="r">220</td>
+        <td class="r">45.9%</td>
+        <td class="r tr"><strong>-184.6</strong></td>
+        <td class="r tr">$-185</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: -5 · BTC H1: -0 · BTC M15: -71 · XAU H4: -9 · XAU H1: -14 · EUR H1: +9 · EUR M15: +4 · USDJPY_H4: -6 · USOIL_H4: -10 · ETH H4: +2 · ETH H1: -10 · ETH M15: +10 · USDJPY_H1: -0 · USDJPY_M15: -50 · USOIL_H1: -24 · UKOIL_H1: -20 · UKOIL_M15: -97 · XNG H1: +0 · XNG M15: -27 · XAU M15: +26 · USOIL_M15: -4 · XPT H4: +2 · XPT H1: +2 · XPT M15: +24 · DE30_H1: +25 · DE30_M15: +91 · US500_H1: +25 · US500_M15: +11 · JP225_H4: -5 · JP225_H1: +2 · JP225_M15: -66</td>
+      </tr>
+      <tr>
+        <td><strong>P100</strong></td>
+        <td>VSA_StoppingVol_Bull</td>
+        <td>Cat I</td>
+        <td class="r">80</td>
+        <td class="r">35.0%</td>
+        <td class="r tr"><strong>-193.4</strong></td>
+        <td class="r tr">$-193</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H1: -50 · BTC M15: -20 · XAU H4: -1 · XAU H1: +6 · EUR M15: +0 · ETH H1: -14 · ETH M15: -20 · USDJPY_M15: +24 · USOIL_H1: +10 · UKOIL_M15: +10 · XNG M15: -43 · XAU M15: -10 · USOIL_M15: -8 · DE30_H4: -2 · DE30_H1: -4 · DE30_M15: +3 · US500_H4: -7 · US500_H1: -10 · US500_M15: -22 · JP225_H4: -3 · JP225_H1: -10 · JP225_M15: -22</td>
+      </tr>
+      <tr>
+        <td><strong>P113</strong></td>
+        <td>Butterfly_Bear</td>
+        <td>Cat J</td>
+        <td class="r">125</td>
+        <td class="r">43.2%</td>
+        <td class="r tr"><strong>-193.5</strong></td>
+        <td class="r tr">$-194</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H1: +10 · BTC M15: -121 · XAU H1: +0 · EUR M15: +120 · ETH M15: +1 · USDJPY_H1: +20 · USDJPY_M15: -20 · UKOIL_H1: -81 · XNG M15: -57 · XAU M15: -189 · USOIL_M15: +102 · XPT H1: +10 · XPT M15: +10 · DE30_M15: +81 · US500_H4: +10 · US500_M15: -69 · JP225_H4: +30 · JP225_H1: -30 · JP225_M15: -20</td>
+      </tr>
+      <tr>
+        <td><strong>P117</strong></td>
+        <td>Cypher_Bear</td>
+        <td>Cat J</td>
+        <td class="r">119</td>
+        <td class="r">42.0%</td>
+        <td class="r tr"><strong>-212.9</strong></td>
+        <td class="r tr">$-213</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H1: -113 · BTC M15: +32 · EUR H1: +10 · EUR M15: +10 · ETH M15: +20 · USDJPY_M15: -120 · UKOIL_M15: -10 · XNG H1: -12 · XNG M15: -0 · XAU M15: -30 · USOIL_M15: -111 · XPT H1: +30 · XPT M15: +10 · DE30_H1: -4 · DE30_M15: +35 · US500_H1: +100 · JP225_H1: -10 · JP225_M15: -50</td>
+      </tr>
+      <tr>
+        <td><strong>P131</strong></td>
+        <td>MTF_OB_Aligned_Short</td>
+        <td>Cat K</td>
+        <td class="r">321</td>
+        <td class="r">46.7%</td>
+        <td class="r tr"><strong>-228.5</strong></td>
+        <td class="r tr">$-228</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H1: +40 · BTC M15: +151 · XAU H4: -70 · EUR M15: +29 · USDJPY_H4: -5 · USOIL_H4: +13 · ETH H1: +111 · ETH M15: +151 · USDJPY_M15: -96 · USOIL_H1: -10 · UKOIL_H1: -10 · UKOIL_M15: -272 · XNG H1: -31 · XNG M15: -110 · XAU M15: -143 · USOIL_M15: -202 · XPT H4: +9 · XPT M15: +81 · DE30_M15: +131 · US500_M15: +164 · JP225_M15: -161</td>
+      </tr>
+      <tr>
+        <td><strong>P6</strong></td>
+        <td>Engulf_Trap_Bear</td>
+        <td>Cat A</td>
+        <td class="r">95</td>
+        <td class="r">41.0%</td>
+        <td class="r tr"><strong>-228.6</strong></td>
+        <td class="r tr">$-229</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H1: -10 · BTC M15: -61 · EUR H1: -3 · EUR M15: -20 · USDJPY_H4: +1 · USOIL_H4: +1 · ETH H4: +1 · ETH H1: -4 · ETH M15: -42 · USDJPY_H1: +20 · USDJPY_M15: +9 · USOIL_H1: +8 · UKOIL_M15: +0 · XNG H4: +6 · XNG H1: -3 · XNG M15: -15 · XAU M15: -34 · USOIL_M15: -9 · XPT H1: +10 · XPT M15: -0 · DE30_M15: -30 · US500_H1: -10 · US500_M15: -13 · JP225_H1: -20 · JP225_M15: -10</td>
+      </tr>
+      <tr>
+        <td><strong>P102</strong></td>
+        <td>Wyckoff_Spring</td>
+        <td>Cat I</td>
+        <td class="r">1,010</td>
+        <td class="r">47.6%</td>
+        <td class="r tr"><strong>-242.9</strong></td>
+        <td class="r tr">$-243</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H1: +10 · BTC M15: -219 · XAU H4: -2 · XAU H1: +1 · EUR H4: -10 · EUR H1: -33 · EUR M15: -62 · USDJPY_H4: +2 · USOIL_H4: +61 · UKOIL_H4: +60 · ETH H1: +9 · ETH M15: -46 · USDJPY_H1: +2 · USDJPY_M15: +48 · USOIL_H1: +42 · UKOIL_H1: +56 · UKOIL_M15: +240 · XNG H4: -8 · XNG H1: -7 · XNG M15: +6 · XAU M15: +52 · USOIL_M15: +265 · XPT H4: +1 · XPT H1: -33 · XPT M15: -353 · DE30_H1: +10 · DE30_M15: -45 · US500_H4: -0 · US500_H1: -8 · US500_M15: -532 · JP225_H1: +77 · JP225_M15: +172</td>
+      </tr>
+      <tr>
+        <td><strong>P31</strong></td>
+        <td>Dark_Cloud_Cover</td>
+        <td>Cat B</td>
+        <td class="r">120</td>
+        <td class="r">40.0%</td>
+        <td class="r tr"><strong>-243.0</strong></td>
+        <td class="r tr">$-243</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC M15: -0 · EUR H1: -12 · EUR M15: +24 · ETH M15: +10 · USDJPY_M15: -51 · UKOIL_M15: -44 · XNG M15: -67 · XAU M15: -10 · USOIL_M15: -37 · XPT H1: -12 · XPT M15: -5 · DE30_H1: +5 · DE30_M15: -52 · US500_H1: -10 · US500_M15: +10 · JP225_M15: +8</td>
+      </tr>
+      <tr>
+        <td><strong>P166</strong></td>
+        <td>Round_Number_Bounce_Long</td>
+        <td>Cat P</td>
+        <td class="r">1,732</td>
+        <td class="r">49.4%</td>
+        <td class="r tr"><strong>-244.4</strong></td>
+        <td class="r tr">$-244</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: -2 · BTC H1: -9 · BTC M15: -42 · XAU H4: +2 · XAU H1: -9 · EUR H4: -39 · EUR H1: -54 · EUR M15: -238 · USDJPY_H4: +13 · USOIL_H4: +33 · UKOIL_H4: +11 · USDJPY_H1: +122 · USDJPY_M15: +335 · USOIL_H1: +86 · UKOIL_H1: +95 · UKOIL_M15: +104 · XNG H4: +7 · XNG H1: -31 · XNG M15: -387 · XAU M15: +130 · USOIL_M15: +67 · DE30_H4: -3 · DE30_H1: -16 · DE30_M15: -152 · US500_H4: -15 · US500_H1: -109 · US500_M15: -247 · JP225_H4: +5 · JP225_H1: +69 · JP225_M15: +29</td>
+      </tr>
+      <tr>
+        <td><strong>P176</strong></td>
+        <td>BB_Squeeze_Breakout_Short</td>
+        <td>Cat R</td>
+        <td class="r">901</td>
+        <td class="r">48.4%</td>
+        <td class="r tr"><strong>-253.9</strong></td>
+        <td class="r tr">$-254</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: +4 · BTC H1: +8 · BTC M15: +112 · XAU H4: +8 · XAU H1: +25 · EUR H4: +17 · EUR H1: +22 · EUR M15: +116 · USDJPY_H4: -5 · USOIL_H4: -8 · UKOIL_H4: +0 · ETH H4: -12 · ETH H1: +16 · ETH M15: -71 · USDJPY_H1: -32 · USDJPY_M15: -196 · USOIL_H1: -39 · UKOIL_H1: -28 · UKOIL_M15: -20 · XNG H4: +1 · XNG H1: -33 · XNG M15: -64 · XAU M15: +24 · USOIL_M15: -166 · XPT H4: -3 · XPT H1: -1 · XPT M15: -26 · DE30_H4: -2 · DE30_H1: -54 · DE30_M15: +42 · US500_H4: +3 · US500_H1: +57 · US500_M15: +102 · JP225_H4: +3 · JP225_H1: -21 · JP225_M15: -34</td>
+      </tr>
+      <tr>
+        <td><strong>P175</strong></td>
+        <td>BB_Squeeze_Breakout_Long</td>
+        <td>Cat R</td>
+        <td class="r">954</td>
+        <td class="r">48.2%</td>
+        <td class="r tr"><strong>-270.7</strong></td>
+        <td class="r tr">$-271</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: -4 · BTC H1: +21 · BTC M15: +55 · XAU H4: -7 · XAU H1: +2 · EUR H4: -20 · EUR H1: +3 · EUR M15: -154 · USDJPY_H4: +10 · USOIL_H4: +11 · UKOIL_H4: +26 · ETH H4: -9 · ETH H1: +78 · ETH M15: +69 · USDJPY_H1: +1 · USDJPY_M15: +167 · USOIL_H1: +10 · UKOIL_H1: +45 · UKOIL_M15: +143 · XNG H4: -9 · XNG H1: -50 · XNG M15: -91 · XAU M15: -16 · USOIL_M15: -4 · XPT H4: +10 · XPT H1: -26 · XPT M15: -225 · DE30_H4: -9 · DE30_H1: -47 · DE30_M15: -51 · US500_H4: -2 · US500_H1: -20 · US500_M15: -175 · JP225_H4: +32 · JP225_H1: +27 · JP225_M15: -61</td>
+      </tr>
+      <tr>
+        <td><strong>P111</strong></td>
+        <td>Bat_Bear</td>
+        <td>Cat J</td>
+        <td class="r">81</td>
+        <td class="r">25.9%</td>
+        <td class="r tr"><strong>-288.4</strong></td>
+        <td class="r tr">$-288</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC M15: -81 · EUR M15: -20 · ETH M15: -20 · USDJPY_M15: -5 · UKOIL_M15: -20 · XNG M15: -94 · XPT H4: -8 · XPT M15: +40 · DE30_M15: -13 · US500_M15: -10 · JP225_H1: -30 · JP225_M15: -27</td>
+      </tr>
+      <tr>
+        <td><strong>P137</strong></td>
+        <td>Ichimoku_TK_Cross_Bear</td>
+        <td>Cat L</td>
+        <td class="r">2,359</td>
+        <td class="r">49.3%</td>
+        <td class="r tr"><strong>-301.4</strong></td>
+        <td class="r tr">$-301</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: -12 · BTC H1: -48 · BTC M15: +149 · XAU H4: -4 · XAU H1: +44 · EUR H4: +24 · EUR H1: +84 · EUR M15: +167 · USDJPY_H4: -13 · USOIL_H4: -24 · UKOIL_H4: -19 · ETH H4: -17 · ETH H1: +28 · ETH M15: +258 · USDJPY_H1: -68 · USDJPY_M15: -357 · USOIL_H1: -98 · UKOIL_H1: -120 · UKOIL_M15: -195 · XNG H4: +4 · XNG H1: -14 · XNG M15: -401 · XAU M15: +146 · USOIL_M15: -294 · XPT H4: +13 · XPT H1: +15 · XPT M15: +202 · DE30_H4: +21 · DE30_H1: -10 · DE30_M15: +62 · US500_H4: +20 · US500_H1: +58 · US500_M15: +275 · JP225_H4: -4 · JP225_H1: -113 · JP225_M15: -63</td>
+      </tr>
+      <tr>
+        <td><strong>P123</strong></td>
+        <td>Kicker_Bear</td>
+        <td>Cat J</td>
+        <td class="r">916</td>
+        <td class="r">48.4%</td>
+        <td class="r tr"><strong>-303.3</strong></td>
+        <td class="r tr">$-303</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: -4 · BTC H1: +28 · BTC M15: -39 · XAU H4: +1 · XAU H1: -8 · EUR H4: +1 · EUR H1: +94 · EUR M15: +228 · USOIL_H4: -20 · UKOIL_H4: -0 · ETH H4: -20 · ETH H1: -45 · ETH M15: +114 · USDJPY_H1: +6 · USDJPY_M15: -199 · USOIL_H1: -37 · UKOIL_H1: -52 · UKOIL_M15: -47 · XNG H4: +2 · XNG H1: -52 · XNG M15: -181 · XAU M15: -57 · USOIL_M15: -165 · XPT H4: -8 · XPT H1: +3 · XPT M15: -66 · DE30_H4: +10 · DE30_H1: +55 · DE30_M15: +65 · US500_H4: +6 · US500_H1: +0 · US500_M15: +65 · JP225_H4: -6 · JP225_H1: -26 · JP225_M15: +48</td>
+      </tr>
+      <tr>
+        <td><strong>P147</strong></td>
+        <td>Stop_Run_Reversal_Bull</td>
+        <td>Cat M</td>
+        <td class="r">808</td>
+        <td class="r">47.0%</td>
+        <td class="r tr"><strong>-304.6</strong></td>
+        <td class="r tr">$-305</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: +3 · BTC H1: -88 · BTC M15: -99 · XAU H4: -1 · XAU H1: +10 · EUR H4: -12 · EUR H1: -51 · EUR M15: -54 · USDJPY_H4: +1 · USOIL_H4: +10 · UKOIL_H4: +10 · ETH H4: -10 · ETH H1: -21 · ETH M15: -86 · USDJPY_H1: -18 · USDJPY_M15: +126 · USOIL_H1: +109 · UKOIL_H1: +49 · UKOIL_M15: +121 · XNG H4: +10 · XNG H1: -26 · XNG M15: -63 · XAU M15: +32 · USOIL_M15: +168 · XPT H1: -10 · XPT M15: -10 · DE30_H4: -8 · DE30_H1: -85 · DE30_M15: +52 · US500_H4: -3 · US500_H1: -7 · US500_M15: -193 · JP225_H4: -19 · JP225_H1: -9 · JP225_M15: -132</td>
+      </tr>
+      <tr>
+        <td><strong>P64</strong></td>
+        <td>Triple_Top</td>
+        <td>Cat E</td>
+        <td class="r">722</td>
+        <td class="r">46.7%</td>
+        <td class="r tr"><strong>-310.9</strong></td>
+        <td class="r tr">$-311</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: +120 · BTC M15: -237 · XAU H1: +45 · EUR M15: +295 · USDJPY_H4: -2 · ETH H1: +108 · ETH M15: -391 · USDJPY_M15: -12 · USOIL_H1: +5 · UKOIL_H1: -5 · UKOIL_M15: -96 · XNG H4: +3 · XNG H1: +12 · XNG M15: -300 · XAU M15: +31 · USOIL_M15: -16 · XPT H1: -107 · XPT M15: +41 · DE30_H1: -73 · DE30_M15: -141 · US500_M15: +512 · JP225_H1: +18 · JP225_M15: -120</td>
+      </tr>
+      <tr>
+        <td><strong>P78</strong></td>
+        <td>Mitigation_Block_Bear</td>
+        <td>Cat F</td>
+        <td class="r">1,323</td>
+        <td class="r">49.1%</td>
+        <td class="r tr"><strong>-324.8</strong></td>
+        <td class="r tr">$-325</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: +17 · BTC H1: +95 · BTC M15: +100 · XAU H4: -7 · XAU H1: +120 · EUR H1: +30 · EUR M15: -65 · USDJPY_H4: +10 · USOIL_H4: +1 · UKOIL_H4: -1 · ETH H4: +10 · ETH H1: -4 · ETH M15: +163 · USDJPY_H1: +0 · USDJPY_M15: -605 · USOIL_H1: -167 · UKOIL_H1: -215 · UKOIL_M15: +46 · XNG H1: -12 · XNG M15: -577 · XAU M15: +317 · USOIL_M15: -301 · XPT H4: -3 · XPT H1: +60 · XPT M15: -98 · DE30_H4: -9 · DE30_H1: +135 · DE30_M15: +421 · US500_H4: -1 · US500_H1: +24 · US500_M15: +356 · JP225_H4: +3 · JP225_H1: -22 · JP225_M15: -147</td>
+      </tr>
+      <tr>
+        <td><strong>P112</strong></td>
+        <td>Butterfly_Bull</td>
+        <td>Cat J</td>
+        <td class="r">179</td>
+        <td class="r">42.5%</td>
+        <td class="r tr"><strong>-346.1</strong></td>
+        <td class="r tr">$-346</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: +4 · BTC H1: -30 · BTC M15: -213 · XAU H1: +40 · EUR H1: +10 · EUR M15: -19 · ETH H1: -60 · ETH M15: -10 · USDJPY_M15: -41 · UKOIL_H1: -8 · UKOIL_M15: -100 · XNG M15: -2 · XAU M15: +47 · USOIL_M15: -25 · XPT H4: -11 · XPT H1: -10 · XPT M15: +71 · DE30_H1: -10 · DE30_M15: +131 · US500_H1: -89 · US500_M15: +10 · JP225_M15: -30</td>
+      </tr>
+      <tr>
+        <td><strong>P105</strong></td>
+        <td>BuyingClimax</td>
+        <td>Cat I</td>
+        <td class="r">463</td>
+        <td class="r">47.5%</td>
+        <td class="r tr"><strong>-361.9</strong></td>
+        <td class="r tr">$-362</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: -4 · BTC H1: -20 · BTC M15: -1 · XAU H1: -0 · EUR H4: +7 · EUR H1: +11 · EUR M15: -14 · USOIL_H4: +3 · UKOIL_H4: -1 · ETH H4: -4 · ETH H1: -24 · ETH M15: +20 · USDJPY_H1: -32 · USDJPY_M15: -50 · USOIL_H1: -44 · UKOIL_H1: -13 · UKOIL_M15: -20 · XNG H4: -0 · XNG H1: +29 · XNG M15: -52 · XAU M15: -36 · USOIL_M15: -12 · DE30_H4: +1 · DE30_H1: +29 · DE30_M15: +4 · US500_H4: +1 · US500_H1: -32 · US500_M15: +92 · JP225_H1: -63 · JP225_M15: -135</td>
+      </tr>
+      <tr>
+        <td><strong>P104</strong></td>
+        <td>SellingClimax</td>
+        <td>Cat I</td>
+        <td class="r">593</td>
+        <td class="r">47.2%</td>
+        <td class="r tr"><strong>-367.4</strong></td>
+        <td class="r tr">$-367</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: -13 · BTC H1: -91 · BTC M15: -96 · XAU H4: -6 · XAU H1: +11 · EUR H1: -3 · EUR M15: -87 · USDJPY_H4: +4 · ETH H4: -3 · ETH H1: -94 · ETH M15: +7 · USDJPY_H1: +8 · USDJPY_M15: +96 · USOIL_H1: +53 · UKOIL_H1: +22 · UKOIL_M15: +58 · XNG H4: -0 · XNG H1: -6 · XNG M15: -37 · XAU M15: +30 · USOIL_M15: +139 · XPT M15: +10 · DE30_H4: +6 · DE30_H1: -18 · DE30_M15: -40 · US500_H4: -6 · US500_H1: -119 · US500_M15: -168 · JP225_H4: -0 · JP225_H1: -14 · JP225_M15: -9</td>
+      </tr>
+      <tr>
+        <td><strong>P155</strong></td>
+        <td>Three_Touch_Trendline_Long</td>
+        <td>Cat N</td>
+        <td class="r">2,393</td>
+        <td class="r">49.7%</td>
+        <td class="r tr"><strong>-389.5</strong></td>
+        <td class="r tr">$-389</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: +17 · BTC H1: +14 · BTC M15: -157 · XAU H4: +0 · XAU H1: +131 · EUR H4: -58 · EUR H1: -72 · EUR M15: -441 · USDJPY_H4: -26 · USOIL_H4: +71 · UKOIL_H4: +84 · ETH H4: +9 · ETH H1: +110 · ETH M15: -401 · USDJPY_H1: +127 · USDJPY_M15: +363 · USOIL_H1: +123 · UKOIL_H1: +106 · UKOIL_M15: +427 · XNG H4: -8 · XNG H1: -116 · XNG M15: -310 · XAU M15: -335 · USOIL_M15: +273 · XPT H4: -26 · XPT H1: -6 · XPT M15: -608 · DE30_H4: -11 · DE30_H1: -44 · DE30_M15: +356 · US500_H4: +39 · US500_H1: -39 · US500_M15: -79 · JP225_H4: +21 · JP225_H1: +33 · JP225_M15: +44</td>
+      </tr>
+      <tr>
+        <td><strong>P118</strong></td>
+        <td>Asian_Sweep_Long</td>
+        <td>Cat J</td>
+        <td class="r">1,341</td>
+        <td class="r">48.7%</td>
+        <td class="r tr"><strong>-391.0</strong></td>
+        <td class="r tr">$-391</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: +22 · BTC H1: +43 · BTC M15: +133 · XAU H4: -5 · XAU H1: -83 · EUR H4: -33 · EUR H1: -79 · EUR M15: -111 · USDJPY_H4: +23 · USOIL_H4: +52 · UKOIL_H4: +56 · ETH H4: +16 · ETH H1: -29 · ETH M15: +65 · USDJPY_H1: +6 · USDJPY_M15: +8 · USOIL_H1: +193 · UKOIL_H1: +144 · UKOIL_M15: +246 · XNG H4: -19 · XNG H1: -23 · XNG M15: -31 · XAU M15: -444 · USOIL_M15: +268 · XPT H4: +1 · XPT H1: -4 · XPT M15: -124 · DE30_H4: -41 · DE30_H1: -94 · DE30_M15: -139 · US500_H4: -9 · US500_H1: -38 · US500_M15: -163 · JP225_H4: +37 · JP225_H1: -64 · JP225_M15: -170</td>
+      </tr>
+      <tr>
+        <td><strong>P148</strong></td>
+        <td>Stop_Run_Reversal_Bear</td>
+        <td>Cat M</td>
+        <td class="r">687</td>
+        <td class="r">47.9%</td>
+        <td class="r tr"><strong>-451.7</strong></td>
+        <td class="r tr">$-452</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: +8 · BTC H1: +0 · BTC M15: -54 · XAU H4: +3 · XAU H1: -7 · EUR H4: -4 · EUR H1: -19 · EUR M15: +48 · USDJPY_H4: -16 · USOIL_H4: -38 · UKOIL_H4: -36 · ETH H4: +1 · ETH H1: +8 · ETH M15: -61 · USDJPY_H1: -23 · USDJPY_M15: -49 · USOIL_H1: -21 · UKOIL_H1: -6 · UKOIL_M15: -94 · XNG H4: -13 · XNG H1: +1 · XNG M15: +46 · XAU M15: +58 · USOIL_M15: -164 · XPT M15: +20 · DE30_H1: +46 · DE30_M15: -1 · US500_H4: +10 · US500_H1: +8 · US500_M15: +140 · JP225_H4: -22 · JP225_H1: -88 · JP225_M15: -137</td>
+      </tr>
+      <tr>
+        <td><strong>P156</strong></td>
+        <td>Three_Touch_Trendline_Short</td>
+        <td>Cat N</td>
+        <td class="r">2,360</td>
+        <td class="r">49.1%</td>
+        <td class="r tr"><strong>-475.6</strong></td>
+        <td class="r tr">$-476</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: +23 · BTC H1: -58 · BTC M15: +113 · XAU H4: +13 · XAU H1: -39 · EUR H4: +28 · EUR H1: +79 · EUR M15: +200 · USDJPY_H4: -17 · UKOIL_H4: +22 · ETH H4: -5 · ETH H1: -25 · ETH M15: +718 · USDJPY_H1: -134 · USDJPY_M15: -239 · USOIL_H1: -109 · UKOIL_H1: -126 · UKOIL_M15: -326 · XNG H4: +16 · XNG H1: +32 · XNG M15: -241 · XAU M15: -2 · USOIL_M15: -542 · XPT H4: -32 · XPT H1: -109 · XPT M15: +3 · DE30_H4: +20 · DE30_H1: +12 · DE30_M15: -86 · US500_H4: +27 · US500_H1: -22 · US500_M15: +391 · JP225_H4: +4 · JP225_H1: -66 · JP225_M15: +2</td>
+      </tr>
+      <tr>
+        <td><strong>P138</strong></td>
+        <td>Ichimoku_Cloud_Break_Bull</td>
+        <td>Cat L</td>
+        <td class="r">1,740</td>
+        <td class="r">48.0%</td>
+        <td class="r tr"><strong>-489.2</strong></td>
+        <td class="r tr">$-489</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: +31 · BTC H1: +27 · BTC M15: +68 · XAU H4: +8 · XAU H1: +59 · EUR H4: +8 · EUR H1: -66 · EUR M15: -317 · USDJPY_H4: +12 · USOIL_H4: +47 · UKOIL_H4: +14 · ETH H4: +20 · ETH H1: +54 · ETH M15: +110 · USDJPY_H1: +141 · USDJPY_M15: +124 · USOIL_H1: +73 · UKOIL_H1: +73 · UKOIL_M15: +160 · XNG H4: -2 · XNG H1: -114 · XNG M15: -169 · XAU M15: -119 · USOIL_M15: +100 · XPT H4: -8 · XPT H1: -28 · XPT M15: -428 · DE30_H4: +1 · DE30_H1: -31 · DE30_M15: +4 · US500_H4: -3 · US500_H1: -214 · US500_M15: -281 · JP225_H4: +9 · JP225_H1: +160 · JP225_M15: -14</td>
+      </tr>
+      <tr>
+        <td><strong>P28</strong></td>
+        <td>Bullish_Engulfing</td>
+        <td>Cat B</td>
+        <td class="r">6,167</td>
+        <td class="r">49.1%</td>
+        <td class="r tr"><strong>-493.0</strong></td>
+        <td class="r tr">$-493</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: +21 · BTC H1: +20 · BTC M15: -6 · XAU H4: +7 · XAU H1: +56 · EUR H4: -28 · EUR H1: -166 · EUR M15: -1295 · USDJPY_H4: +2 · USOIL_H4: +59 · UKOIL_H4: +59 · ETH H4: +6 · ETH H1: +211 · ETH M15: -577 · USDJPY_H1: +85 · USDJPY_M15: +932 · USOIL_H1: +355 · UKOIL_H1: +84 · UKOIL_M15: +1053 · XNG H4: -15 · XNG H1: -185 · XNG M15: -712 · XAU M15: +226 · USOIL_M15: +1055 · XPT H4: -15 · XPT H1: -105 · XPT M15: -1072 · DE30_H4: -10 · DE30_H1: -15 · DE30_M15: -209 · US500_H4: -14 · US500_H1: -111 · US500_M15: -699 · JP225_H4: +5 · JP225_H1: +230 · JP225_M15: +275</td>
+      </tr>
+      <tr>
+        <td><strong>P58</strong></td>
+        <td>Liq_Sweep_Short</td>
+        <td>Cat D</td>
+        <td class="r">1,574</td>
+        <td class="r">48.7%</td>
+        <td class="r tr"><strong>-508.4</strong></td>
+        <td class="r tr">$-508</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: -18 · BTC H1: +53 · BTC M15: +229 · XAU H4: -7 · XAU H1: +39 · EUR H4: -27 · EUR H1: +63 · EUR M15: +128 · USDJPY_H4: +6 · USOIL_H4: -19 · UKOIL_H4: -14 · ETH H4: +4 · ETH H1: +6 · ETH M15: +377 · USDJPY_H1: -68 · USDJPY_M15: -166 · USOIL_H1: -103 · UKOIL_H1: -120 · UKOIL_M15: -334 · XNG H4: +7 · XNG H1: -6 · XNG M15: -234 · XAU M15: +163 · USOIL_M15: -342 · XPT H4: -1 · XPT H1: -5 · XPT M15: +154 · DE30_H4: +7 · DE30_H1: -18 · DE30_M15: -41 · US500_H4: -30 · US500_H1: +31 · US500_M15: -94 · JP225_H4: -4 · JP225_H1: -56 · JP225_M15: -70</td>
+      </tr>
+      <tr>
+        <td><strong>P89</strong></td>
+        <td>OTE_Long</td>
+        <td>Cat H</td>
+        <td class="r">5,520</td>
+        <td class="r">49.5%</td>
+        <td class="r tr"><strong>-583.1</strong></td>
+        <td class="r tr">$-583</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: +21 · BTC H1: +124 · BTC M15: +54 · XAU H4: -31 · XAU H1: -78 · EUR H4: -63 · EUR H1: -114 · EUR M15: -872 · USDJPY_H4: +52 · USOIL_H4: +47 · UKOIL_H4: +109 · ETH H4: +45 · ETH H1: +257 · ETH M15: -182 · USDJPY_H1: +202 · USDJPY_M15: +668 · USOIL_H1: +240 · UKOIL_H1: +212 · UKOIL_M15: +693 · XNG H4: -39 · XNG H1: -192 · XNG M15: +280 · XAU M15: +74 · USOIL_M15: +844 · XPT H4: -28 · XPT H1: -25 · XPT M15: -1271 · DE30_H4: -4 · DE30_H1: -156 · DE30_M15: -169 · US500_H4: -57 · US500_H1: -240 · US500_M15: -832 · JP225_H4: +21 · JP225_H1: +23 · JP225_M15: -198</td>
+      </tr>
+      <tr>
+        <td><strong>P53</strong></td>
+        <td>BOS_Bull</td>
+        <td>Cat D</td>
+        <td class="r">9,206</td>
+        <td class="r">49.1%</td>
+        <td class="r tr"><strong>-594.9</strong></td>
+        <td class="r tr">$-595</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: +20 · BTC H1: +8 · BTC M15: +626 · XAU H4: -136 · XAU H1: -49 · EUR H4: -2 · EUR H1: -21 · EUR M15: -381 · USDJPY_H4: -51 · USOIL_H4: +171 · UKOIL_H4: +77 · ETH H4: -40 · ETH H1: -11 · ETH M15: -431 · USDJPY_H1: -111 · USDJPY_M15: +1441 · USOIL_H1: +863 · UKOIL_H1: +778 · UKOIL_M15: +2001 · XNG H4: -3 · XNG H1: -370 · XNG M15: -1981 · XAU M15: -408 · USOIL_M15: +463 · XPT H4: -109 · XPT H1: -326 · XPT M15: -1962 · DE30_H4: -47 · DE30_H1: +81 · DE30_M15: -812 · US500_H4: +32 · US500_H1: +281 · US500_M15: -691 · JP225_H4: +92 · JP225_H1: +347 · JP225_M15: +65</td>
+      </tr>
+      <tr>
+        <td><strong>P59</strong></td>
+        <td>Failed_Breakout_Long</td>
+        <td>Cat D</td>
+        <td class="r">6,551</td>
+        <td class="r">49.3%</td>
+        <td class="r tr"><strong>-610.5</strong></td>
+        <td class="r tr">$-611</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: +23 · BTC H1: +187 · BTC M15: -190 · XAU H4: +0 · XAU H1: +23 · EUR H4: -24 · EUR H1: -61 · EUR M15: -1273 · USDJPY_H4: +44 · USOIL_H4: +93 · UKOIL_H4: +43 · ETH H4: +46 · ETH H1: +79 · ETH M15: -378 · USDJPY_H1: +267 · USDJPY_M15: +1054 · USOIL_H1: +128 · UKOIL_H1: +365 · UKOIL_M15: +289 · XNG H4: -12 · XNG H1: -222 · XNG M15: -484 · XAU M15: +78 · USOIL_M15: +499 · XPT H4: -11 · XPT H1: -340 · XPT M15: -847 · DE30_H4: +40 · DE30_H1: +63 · DE30_M15: +49 · US500_H4: -6 · US500_H1: -90 · US500_M15: -1509 · JP225_H4: +81 · JP225_H1: +241 · JP225_M15: +1146</td>
+      </tr>
+      <tr>
+        <td><strong>P65</strong></td>
+        <td>HnS_Bear</td>
+        <td>Cat E</td>
+        <td class="r">892</td>
+        <td class="r">45.6%</td>
+        <td class="r tr"><strong>-615.3</strong></td>
+        <td class="r tr">$-615</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H1: +24 · BTC M15: -422 · XAU H4: +53 · XAU H1: +1 · EUR H1: +68 · EUR M15: +168 · ETH H1: +59 · ETH M15: -393 · USDJPY_H1: -65 · USDJPY_M15: +10 · USOIL_H1: -161 · UKOIL_H1: +9 · UKOIL_M15: -367 · XNG H1: -5 · XNG M15: +63 · XAU M15: +66 · USOIL_M15: -133 · XPT H1: +127 · XPT M15: +91 · DE30_H4: -22 · DE30_H1: -10 · DE30_M15: -114 · US500_H4: -98 · US500_H1: -40 · US500_M15: +80 · JP225_H4: +7 · JP225_H1: -10 · JP225_M15: +400</td>
+      </tr>
+      <tr>
+        <td><strong>P88</strong></td>
+        <td>BB_PctB_Short</td>
+        <td>Cat G</td>
+        <td class="r">1,232</td>
+        <td class="r">48.7%</td>
+        <td class="r tr"><strong>-635.7</strong></td>
+        <td class="r tr">$-636</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: -17 · BTC H1: -79 · BTC M15: -84 · XAU H4: +20 · XAU H1: -2 · EUR H4: +7 · EUR H1: +12 · EUR M15: +19 · USDJPY_H4: -15 · USOIL_H4: -60 · UKOIL_H4: -49 · ETH H4: +6 · ETH H1: -11 · ETH M15: -163 · USDJPY_H1: -9 · USDJPY_M15: -257 · USOIL_H1: -65 · UKOIL_H1: -120 · UKOIL_M15: -69 · XNG H4: -4 · XNG H1: +1 · XNG M15: -88 · XAU M15: +32 · USOIL_M15: +29 · XPT H1: +39 · XPT M15: +174 · DE30_H4: -2 · DE30_H1: +33 · DE30_M15: +109 · US500_H4: +0 · US500_H1: +14 · US500_M15: +55 · JP225_H4: +15 · JP225_H1: -16 · JP225_M15: -90</td>
+      </tr>
+      <tr>
+        <td><strong>P73</strong></td>
+        <td>Liq_Grab_Bull</td>
+        <td>Cat F</td>
+        <td class="r">4,762</td>
+        <td class="r">49.0%</td>
+        <td class="r tr"><strong>-640.9</strong></td>
+        <td class="r tr">$-641</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: +28 · BTC H1: +127 · BTC M15: -92 · XAU H4: -30 · XAU H1: -8 · EUR H4: -18 · EUR H1: -84 · EUR M15: -859 · USDJPY_H4: +23 · USOIL_H4: +59 · UKOIL_H4: +46 · ETH H4: +27 · ETH H1: +185 · ETH M15: -143 · USDJPY_H1: +194 · USDJPY_M15: +584 · USOIL_H1: +98 · UKOIL_H1: +276 · UKOIL_M15: +440 · XNG H4: -40 · XNG H1: -96 · XNG M15: -295 · XAU M15: +33 · USOIL_M15: +356 · XPT H4: -19 · XPT H1: -175 · XPT M15: -993 · DE30_H4: -13 · DE30_H1: +27 · DE30_M15: +80 · US500_H4: -12 · US500_H1: -177 · US500_M15: -892 · JP225_H4: +50 · JP225_H1: +88 · JP225_M15: +587</td>
+      </tr>
+      <tr>
+        <td><strong>P106</strong></td>
+        <td>CVD_Div_Bull</td>
+        <td>Cat I</td>
+        <td class="r">10,985</td>
+        <td class="r">49.5%</td>
+        <td class="r tr"><strong>-643.9</strong></td>
+        <td class="r tr">$-644</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: -85 · BTC H1: +325 · BTC M15: -96 · XAU H4: -156 · XAU H1: -10 · EUR H4: -30 · EUR H1: -187 · EUR M15: -2143 · USDJPY_H4: +27 · USOIL_H4: -18 · UKOIL_H4: +111 · ETH H4: -10 · ETH H1: +358 · ETH M15: +185 · USDJPY_H1: +378 · USDJPY_M15: +1936 · USOIL_H1: +78 · UKOIL_H1: +332 · UKOIL_M15: +2097 · XNG H4: +43 · XNG H1: -268 · XNG M15: -2048 · XAU M15: -49 · USOIL_M15: +718 · XPT H4: -40 · XPT H1: -329 · XPT M15: -1532 · DE30_H4: -54 · DE30_H1: -319 · DE30_M15: +211 · US500_H4: -105 · US500_H1: +34 · US500_M15: -1176 · JP225_H4: -59 · JP225_H1: +515 · JP225_M15: +723</td>
+      </tr>
+      <tr>
+        <td><strong>P83</strong></td>
+        <td>ORB_Long</td>
+        <td>Cat G</td>
+        <td class="r">2,643</td>
+        <td class="r">48.3%</td>
+        <td class="r tr"><strong>-645.7</strong></td>
+        <td class="r tr">$-646</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: +2 · BTC H1: -8 · BTC M15: +125 · XAU H4: -26 · XAU H1: +68 · EUR H4: -13 · EUR H1: -70 · EUR M15: -464 · USDJPY_H4: -15 · USOIL_H4: +31 · UKOIL_H4: +54 · ETH H4: +2 · ETH H1: +74 · ETH M15: -79 · USDJPY_H1: +163 · USDJPY_M15: +294 · USOIL_H1: +166 · UKOIL_H1: -7 · UKOIL_M15: +38 · XNG H4: -14 · XNG H1: -242 · XNG M15: -243 · XAU M15: +65 · USOIL_M15: +175 · XPT H4: -12 · XPT H1: -107 · XPT M15: -313 · DE30_H4: -21 · DE30_H1: -60 · DE30_M15: -10 · US500_H4: -16 · US500_H1: -151 · US500_M15: -404 · JP225_H4: +13 · JP225_H1: +203 · JP225_M15: +158</td>
+      </tr>
+      <tr>
+        <td><strong>P136</strong></td>
+        <td>Ichimoku_TK_Cross_Bull</td>
+        <td>Cat L</td>
+        <td class="r">2,383</td>
+        <td class="r">48.0%</td>
+        <td class="r tr"><strong>-649.3</strong></td>
+        <td class="r tr">$-649</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: -2 · BTC H1: +45 · BTC M15: -9 · XAU H4: -1 · XAU H1: -30 · EUR H4: -28 · EUR H1: -50 · EUR M15: -302 · USDJPY_H4: +13 · USOIL_H4: +25 · UKOIL_H4: +19 · ETH H4: -1 · ETH H1: +52 · ETH M15: -271 · USDJPY_H1: +64 · USDJPY_M15: +266 · USOIL_H1: +34 · UKOIL_H1: +166 · UKOIL_M15: +274 · XNG H4: -14 · XNG H1: -57 · XNG M15: -251 · XAU M15: +43 · USOIL_M15: +246 · XPT H4: -13 · XPT H1: -41 · XPT M15: -367 · DE30_H4: -22 · DE30_H1: -44 · DE30_M15: -230 · US500_H4: -24 · US500_H1: -23 · US500_M15: -367 · JP225_H4: +16 · JP225_H1: +137 · JP225_M15: +98</td>
+      </tr>
+      <tr>
+        <td><strong>P32</strong></td>
+        <td>Bullish_Harami</td>
+        <td>Cat B</td>
+        <td class="r">3,852</td>
+        <td class="r">49.1%</td>
+        <td class="r tr"><strong>-651.8</strong></td>
+        <td class="r tr">$-652</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: +39 · BTC H1: +49 · BTC M15: -155 · XAU H4: -28 · XAU H1: +3 · EUR H4: -12 · EUR H1: -180 · EUR M15: -483 · USDJPY_H4: +18 · USOIL_H4: +38 · UKOIL_H4: +28 · ETH H4: -17 · ETH H1: -10 · ETH M15: -125 · USDJPY_H1: +43 · USDJPY_M15: +569 · USOIL_H1: +188 · UKOIL_H1: +214 · UKOIL_M15: +500 · XNG H4: -1 · XNG H1: -118 · XNG M15: -479 · XAU M15: -222 · USOIL_M15: +828 · XPT H4: -32 · XPT H1: -81 · XPT M15: -633 · DE30_H4: +0 · DE30_H1: +3 · DE30_M15: -249 · US500_H4: +15 · US500_H1: -48 · US500_M15: -536 · JP225_H4: +52 · JP225_H1: +76 · JP225_M15: +92</td>
+      </tr>
+      <tr>
+        <td><strong>P122</strong></td>
+        <td>Kicker_Bull</td>
+        <td>Cat J</td>
+        <td class="r">1,014</td>
+        <td class="r">46.6%</td>
+        <td class="r tr"><strong>-653.3</strong></td>
+        <td class="r tr">$-653</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H1: -15 · BTC M15: -190 · XAU H4: -1 · XAU H1: -4 · EUR H4: -9 · EUR H1: -1 · EUR M15: -221 · USDJPY_H4: -5 · USOIL_H4: +16 · UKOIL_H4: +18 · ETH H4: +5 · ETH H1: +64 · ETH M15: -157 · USDJPY_H1: +64 · USDJPY_M15: +157 · USOIL_H1: +15 · UKOIL_H1: +80 · UKOIL_M15: +184 · XNG H4: +3 · XNG H1: -46 · XNG M15: -159 · XAU M15: -26 · USOIL_M15: +87 · XPT H4: +12 · XPT H1: -5 · XPT M15: -246 · DE30_H4: +4 · DE30_H1: -27 · DE30_M15: -141 · US500_H4: -1 · US500_H1: -20 · US500_M15: -144 · JP225_H4: +3 · JP225_H1: +43 · JP225_M15: +6</td>
+      </tr>
+      <tr>
+        <td><strong>P98</strong></td>
+        <td>VSA_NoDemand</td>
+        <td>Cat I</td>
+        <td class="r">3,392</td>
+        <td class="r">49.4%</td>
+        <td class="r tr"><strong>-656.2</strong></td>
+        <td class="r tr">$-656</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: +12 · BTC H1: +4 · BTC M15: +117 · XAU H4: +3 · XAU H1: +21 · EUR H4: +23 · EUR H1: +154 · EUR M15: +703 · USDJPY_H4: -11 · USOIL_H4: -11 · UKOIL_H4: -46 · ETH H4: +3 · ETH H1: -68 · ETH M15: +343 · USDJPY_H1: -68 · USDJPY_M15: -551 · USOIL_H1: -376 · UKOIL_H1: -265 · UKOIL_M15: -377 · XNG H4: -11 · XNG H1: -45 · XNG M15: -309 · XAU M15: +24 · USOIL_M15: -442 · XPT H4: +3 · XPT H1: +44 · XPT M15: +134 · DE30_H4: +49 · DE30_H1: +111 · DE30_M15: +214 · US500_H4: +61 · US500_H1: +318 · US500_M15: +61 · JP225_H4: -25 · JP225_H1: -261 · JP225_M15: -195</td>
+      </tr>
+      <tr>
+        <td><strong>P153</strong></td>
+        <td>Pullback_EMA50_Long</td>
+        <td>Cat N</td>
+        <td class="r">2,741</td>
+        <td class="r">48.7%</td>
+        <td class="r tr"><strong>-661.2</strong></td>
+        <td class="r tr">$-661</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: +4 · BTC H1: -61 · BTC M15: +63 · XAU H4: -2 · XAU H1: +7 · EUR H4: -49 · EUR H1: -100 · EUR M15: -724 · USDJPY_H4: -8 · USOIL_H4: +23 · UKOIL_H4: +7 · ETH H4: -32 · ETH H1: +196 · ETH M15: -76 · USDJPY_H1: +125 · USDJPY_M15: +338 · USOIL_H1: +104 · UKOIL_H1: +54 · UKOIL_M15: +415 · XNG H4: -4 · XNG H1: -182 · XNG M15: -160 · XAU M15: +64 · USOIL_M15: +169 · XPT H4: -15 · XPT H1: -52 · XPT M15: -456 · DE30_H4: -14 · DE30_H1: -141 · DE30_M15: -61 · US500_H4: -57 · US500_H1: -82 · US500_M15: -421 · JP225_H4: +45 · JP225_H1: +174 · JP225_M15: +247</td>
+      </tr>
+      <tr>
+        <td><strong>P49</strong></td>
+        <td>Trendline_Bounce_Long</td>
+        <td>Cat C</td>
+        <td class="r">3,215</td>
+        <td class="r">49.5%</td>
+        <td class="r tr"><strong>-666.4</strong></td>
+        <td class="r tr">$-666</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: +32 · BTC H1: +39 · BTC M15: -61 · XAU H4: -39 · XAU H1: +238 · EUR H4: -66 · EUR H1: -124 · EUR M15: -569 · USDJPY_H4: +23 · USOIL_H4: +64 · UKOIL_H4: +92 · ETH H4: +17 · ETH H1: +123 · ETH M15: -451 · USDJPY_H1: +28 · USDJPY_M15: +289 · USOIL_H1: +111 · UKOIL_H1: +172 · UKOIL_M15: +616 · XNG H4: -19 · XNG H1: -142 · XNG M15: -349 · XAU M15: -531 · USOIL_M15: +310 · XPT H4: -9 · XPT H1: -129 · XPT M15: -808 · DE30_H4: +4 · DE30_H1: -14 · DE30_M15: +570 · US500_H4: +20 · US500_H1: -68 · US500_M15: -163 · JP225_H4: +35 · JP225_H1: +84 · JP225_M15: +10</td>
+      </tr>
+      <tr>
+        <td><strong>P124</strong></td>
+        <td>ThreeBar_Rev_Bull</td>
+        <td>Cat J</td>
+        <td class="r">5,753</td>
+        <td class="r">49.0%</td>
+        <td class="r tr"><strong>-723.6</strong></td>
+        <td class="r tr">$-724</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: -31 · BTC H1: +139 · BTC M15: -152 · XAU H4: -8 · XAU H1: +3 · EUR H4: -66 · EUR H1: -117 · EUR M15: -1067 · USDJPY_H4: +24 · USOIL_H4: +69 · UKOIL_H4: +68 · ETH H4: +17 · ETH H1: +83 · ETH M15: -159 · USDJPY_H1: +206 · USDJPY_M15: +1071 · USOIL_H1: +225 · UKOIL_H1: +329 · UKOIL_M15: +822 · XNG H4: -33 · XNG H1: -195 · XNG M15: -634 · XAU M15: +98 · USOIL_M15: +435 · XPT H4: -28 · XPT H1: -191 · XPT M15: -988 · DE30_H4: -16 · DE30_H1: -21 · DE30_M15: -147 · US500_H4: +9 · US500_H1: -106 · US500_M15: -977 · JP225_H4: -8 · JP225_H1: +310 · JP225_M15: +314</td>
+      </tr>
+      <tr>
+        <td><strong>P66</strong></td>
+        <td>HnS_Bull</td>
+        <td>Cat E</td>
+        <td class="r">1,010</td>
+        <td class="r">46.4%</td>
+        <td class="r tr"><strong>-756.0</strong></td>
+        <td class="r tr">$-756</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H1: -5 · BTC M15: -3 · XAU H1: +145 · EUR H1: +9 · EUR M15: -130 · ETH H4: +15 · ETH H1: +81 · ETH M15: +94 · USDJPY_H1: +39 · USDJPY_M15: +634 · USOIL_H1: -20 · UKOIL_H1: +74 · UKOIL_M15: +55 · XNG H1: -65 · XNG M15: -627 · XAU M15: -135 · USOIL_M15: +234 · XPT H1: +7 · XPT M15: -348 · DE30_M15: -477 · US500_H4: -117 · US500_H1: -36 · US500_M15: -97 · JP225_H4: -217 · JP225_H1: +166 · JP225_M15: -32</td>
+      </tr>
+      <tr>
+        <td><strong>P91</strong></td>
+        <td>LondonKZ_Long</td>
+        <td>Cat H</td>
+        <td class="r">2,756</td>
+        <td class="r">48.8%</td>
+        <td class="r tr"><strong>-756.0</strong></td>
+        <td class="r tr">$-756</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H1: -4 · BTC M15: -98 · XAU H1: +7 · EUR H1: -8 · EUR M15: -244 · ETH H1: -18 · ETH M15: -75 · USDJPY_H1: +28 · USDJPY_M15: +633 · USOIL_H1: +181 · UKOIL_H1: +235 · UKOIL_M15: +511 · XNG H1: -160 · XNG M15: -556 · XAU M15: -109 · USOIL_M15: +516 · XPT H1: -40 · XPT M15: -447 · DE30_H1: +51 · DE30_M15: -358 · US500_H1: -130 · US500_M15: -537 · JP225_H1: +88 · JP225_M15: -222</td>
+      </tr>
+      <tr>
+        <td><strong>P35</strong></td>
+        <td>Evening_Star</td>
+        <td>Cat B</td>
+        <td class="r">2,129</td>
+        <td class="r">47.8%</td>
+        <td class="r tr"><strong>-760.3</strong></td>
+        <td class="r tr">$-760</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: -18 · BTC H1: -24 · BTC M15: +138 · XAU H4: +9 · XAU H1: -27 · EUR H4: +3 · EUR H1: +67 · EUR M15: +306 · USDJPY_H4: -15 · USOIL_H4: -28 · UKOIL_H4: -14 · ETH H4: -25 · ETH H1: -12 · ETH M15: +113 · USDJPY_H1: -68 · USDJPY_M15: -393 · USOIL_H1: -78 · UKOIL_H1: -63 · UKOIL_M15: -334 · XNG H4: +19 · XNG H1: -73 · XNG M15: -247 · XAU M15: +106 · USOIL_M15: -323 · XPT H4: +3 · XPT H1: +13 · XPT M15: +4 · DE30_H4: +9 · DE30_H1: -4 · DE30_M15: +156 · US500_H4: +10 · US500_H1: +95 · US500_M15: +75 · JP225_H4: +12 · JP225_H1: -55 · JP225_M15: -99</td>
+      </tr>
+      <tr>
+        <td><strong>P43</strong></td>
+        <td>Bullish_Order_Block</td>
+        <td>Cat C</td>
+        <td class="r">3,572</td>
+        <td class="r">48.7%</td>
+        <td class="r tr"><strong>-778.4</strong></td>
+        <td class="r tr">$-778</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: +95 · BTC H1: +6 · BTC M15: -475 · XAU H4: +5 · XAU H1: +58 · EUR H4: +50 · EUR H1: -330 · EUR M15: -643 · USDJPY_H4: +8 · USOIL_H4: +45 · UKOIL_H4: +78 · ETH H4: +127 · ETH H1: +234 · ETH M15: -364 · USDJPY_H1: +228 · USDJPY_M15: +1153 · USOIL_H1: +279 · UKOIL_H1: +238 · UKOIL_M15: +754 · XNG H4: +11 · XNG H1: -82 · XNG M15: -408 · XAU M15: -104 · USOIL_M15: +466 · XPT H4: +45 · XPT H1: -143 · XPT M15: -899 · DE30_H4: -4 · DE30_H1: +108 · DE30_M15: -229 · US500_H4: -10 · US500_H1: -187 · US500_M15: -871 · JP225_H4: -11 · JP225_H1: +168 · JP225_M15: -177</td>
+      </tr>
+      <tr>
+        <td><strong>P169</strong></td>
+        <td>Daily_Pivot_Tag_Short</td>
+        <td>Cat P</td>
+        <td class="r">1,807</td>
+        <td class="r">48.2%</td>
+        <td class="r tr"><strong>-790.1</strong></td>
+        <td class="r tr">$-790</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: -78 · BTC H1: -32 · BTC M15: -299 · XAU H4: -11 · XAU H1: +9 · EUR H4: +24 · EUR H1: +57 · EUR M15: +150 · USDJPY_H4: -27 · USOIL_H4: -96 · UKOIL_H4: -79 · ETH H4: -38 · ETH H1: -34 · ETH M15: +38 · USDJPY_H1: -167 · USDJPY_M15: -247 · USOIL_H1: -201 · UKOIL_H1: -184 · UKOIL_M15: -246 · XNG H4: -3 · XNG H1: -132 · XNG M15: -170 · XAU M15: +403 · USOIL_M15: -106 · XPT H4: -3 · XPT H1: +24 · XPT M15: +83 · DE30_H4: +68 · DE30_H1: +98 · DE30_M15: +67 · US500_H4: +28 · US500_H1: +79 · US500_M15: +173 · JP225_H4: +8 · JP225_H1: +48 · JP225_M15: +6</td>
+      </tr>
+      <tr>
+        <td><strong>P94</strong></td>
+        <td>NYSB_Short</td>
+        <td>Cat H</td>
+        <td class="r">869</td>
+        <td class="r">44.5%</td>
+        <td class="r tr"><strong>-806.7</strong></td>
+        <td class="r tr">$-807</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: -15 · BTC H1: -12 · BTC M15: -34 · XAU H4: -17 · XAU H1: -21 · EUR H4: -22 · EUR H1: +7 · EUR M15: +85 · USDJPY_H4: -25 · USOIL_H4: -24 · UKOIL_H4: -26 · ETH H4: -29 · ETH H1: -2 · ETH M15: -3 · USDJPY_H1: -52 · USDJPY_M15: -164 · USOIL_H1: -1 · UKOIL_H1: -28 · UKOIL_M15: -141 · XNG H4: +9 · XNG H1: -8 · XNG M15: -81 · XAU M15: -92 · USOIL_M15: -99 · XPT H4: -5 · XPT H1: -1 · XPT M15: -20 · DE30_H4: +16 · DE30_H1: -1 · DE30_M15: +38 · US500_H4: +6 · US500_H1: -18 · US500_M15: +77 · JP225_H4: -8 · JP225_H1: -32 · JP225_M15: -63</td>
+      </tr>
+      <tr>
+        <td><strong>P167</strong></td>
+        <td>Round_Number_Bounce_Short</td>
+        <td>Cat P</td>
+        <td class="r">1,653</td>
+        <td class="r">47.4%</td>
+        <td class="r tr"><strong>-814.0</strong></td>
+        <td class="r tr">$-814</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: -16 · BTC H1: +10 · BTC M15: -125 · XAU H4: -0 · XAU H1: -2 · EUR H4: +18 · EUR H1: -5 · EUR M15: +16 · USDJPY_H4: +5 · USOIL_H4: -7 · UKOIL_H4: -4 · ETH H4: -13 · ETH H1: -7 · ETH M15: -78 · USDJPY_H1: -107 · USDJPY_M15: -464 · USOIL_H1: -16 · UKOIL_H1: -114 · UKOIL_M15: -153 · XNG H4: +7 · XNG H1: -62 · XNG M15: -368 · XAU M15: +43 · USOIL_M15: -66 · XPT H4: +1 · XPT H1: +6 · XPT M15: +73 · DE30_H4: +3 · DE30_H1: +60 · DE30_M15: +157 · US500_H4: -13 · US500_H1: +69 · US500_M15: +362 · JP225_H4: +7 · JP225_H1: -55 · JP225_M15: +24</td>
+      </tr>
+      <tr>
+        <td><strong>P119</strong></td>
+        <td>Asian_Sweep_Short</td>
+        <td>Cat J</td>
+        <td class="r">1,638</td>
+        <td class="r">48.8%</td>
+        <td class="r tr"><strong>-816.8</strong></td>
+        <td class="r tr">$-817</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: +18 · BTC H1: +94 · BTC M15: -135 · XAU H4: +5 · XAU H1: +3 · EUR H4: +9 · EUR H1: +46 · EUR M15: +211 · USDJPY_H4: -22 · USOIL_H4: -27 · UKOIL_H4: -31 · ETH H4: +8 · ETH H1: -35 · ETH M15: -141 · USDJPY_H1: -183 · USDJPY_M15: -370 · USOIL_H1: -68 · UKOIL_H1: -33 · UKOIL_M15: -19 · XNG H4: -12 · XNG H1: -65 · XNG M15: -132 · XAU M15: +118 · USOIL_M15: -295 · XPT H4: +6 · XPT H1: -11 · XPT M15: -2 · DE30_H4: +31 · DE30_H1: +14 · DE30_M15: +69 · US500_H4: -3 · US500_H1: +122 · US500_M15: +81 · JP225_H4: -6 · JP225_H1: -18 · JP225_M15: -43</td>
+      </tr>
+      <tr>
+        <td><strong>P7</strong></td>
+        <td>PinBar</td>
+        <td>Cat A</td>
+        <td class="r">3,493</td>
+        <td class="r">48.9%</td>
+        <td class="r tr"><strong>-848.6</strong></td>
+        <td class="r tr">$-849</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: -0 · BTC H1: +0 · BTC M15: -20 · XAU H4: -0 · XAU H1: -0 · EUR H4: -1 · EUR H1: -4 · EUR M15: -20 · USDJPY_H4: -1 · USOIL_H4: -0 · UKOIL_H4: -0 · ETH H4: -0 · ETH H1: -2 · ETH M15: -11 · USDJPY_H1: -4 · USDJPY_M15: -6 · USOIL_H1: -1 · UKOIL_H1: -2 · UKOIL_M15: -76 · XNG H4: -7 · XNG H1: -40 · XNG M15: -414 · XAU M15: -2 · USOIL_M15: -5 · XPT H4: -1 · XPT H1: -10 · XPT M15: -195 · DE30_H4: -0 · DE30_H1: -0 · DE30_M15: -2 · US500_H4: -0 · US500_H1: -1 · US500_M15: -21 · JP225_H4: -0 · JP225_H1: -0 · JP225_M15: -0</td>
+      </tr>
+      <tr>
+        <td><strong>P103</strong></td>
+        <td>Wyckoff_Upthrust</td>
+        <td>Cat I</td>
+        <td class="r">917</td>
+        <td class="r">46.0%</td>
+        <td class="r tr"><strong>-862.5</strong></td>
+        <td class="r tr">$-862</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H1: -5 · BTC M15: +133 · XAU H1: +0 · EUR H1: -1 · EUR M15: -6 · USDJPY_H4: -7 · USOIL_H4: -19 · UKOIL_H4: -35 · ETH H1: -54 · ETH M15: -33 · USDJPY_H1: +54 · USDJPY_M15: -134 · USOIL_H1: +32 · UKOIL_H1: -13 · UKOIL_M15: -137 · XNG H4: +9 · XNG H1: -33 · XNG M15: -243 · XAU M15: -81 · USOIL_M15: -261 · XPT H1: -2 · XPT M15: +350 · DE30_H1: -20 · DE30_M15: -27 · US500_H1: -34 · US500_M15: -1 · JP225_H4: -6 · JP225_H1: -79 · JP225_M15: -210</td>
+      </tr>
+      <tr>
+        <td><strong>P26</strong></td>
+        <td>Hanging_Man</td>
+        <td>Cat B</td>
+        <td class="r">1,925</td>
+        <td class="r">48.0%</td>
+        <td class="r tr"><strong>-862.7</strong></td>
+        <td class="r tr">$-863</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: +2 · BTC H1: +22 · BTC M15: -107 · XAU H4: +18 · XAU H1: -24 · EUR H4: +11 · EUR H1: +30 · EUR M15: +290 · USDJPY_H4: -18 · USOIL_H4: -20 · UKOIL_H4: -18 · ETH H4: +7 · ETH H1: -25 · ETH M15: -219 · USDJPY_H1: -68 · USDJPY_M15: -339 · USOIL_H1: -185 · UKOIL_H1: -146 · UKOIL_M15: -445 · XNG H4: +20 · XNG H1: +32 · XNG M15: -256 · XAU M15: +21 · USOIL_M15: -359 · XPT H4: +2 · XPT H1: +64 · XPT M15: +303 · DE30_H4: +11 · DE30_H1: +47 · DE30_M15: +86 · US500_H4: -1 · US500_H1: +101 · US500_M15: +216 · JP225_H4: -9 · JP225_H1: -61 · JP225_M15: +156</td>
+      </tr>
+      <tr>
+        <td><strong>P27</strong></td>
+        <td>Shooting_Star</td>
+        <td>Cat B</td>
+        <td class="r">1,877</td>
+        <td class="r">48.1%</td>
+        <td class="r tr"><strong>-873.5</strong></td>
+        <td class="r tr">$-873</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: -0 · BTC H1: -98 · BTC M15: -53 · XAU H4: +3 · XAU H1: -30 · EUR H4: +11 · EUR H1: +32 · EUR M15: +112 · USDJPY_H4: +10 · USOIL_H4: -8 · UKOIL_H4: -41 · ETH H4: -16 · ETH H1: -84 · ETH M15: +170 · USDJPY_H1: -43 · USDJPY_M15: -459 · USOIL_H1: -10 · UKOIL_H1: -58 · UKOIL_M15: -240 · XNG H4: +4 · XNG H1: +22 · XNG M15: -220 · XAU M15: +106 · USOIL_M15: -336 · XPT H4: +10 · XPT H1: +53 · XPT M15: +75 · DE30_H4: +8 · DE30_H1: +48 · DE30_M15: -24 · US500_H4: -42 · US500_H1: +52 · US500_M15: +130 · JP225_H4: +8 · JP225_H1: -74 · JP225_M15: +106</td>
+      </tr>
+      <tr>
+        <td><strong>P41</strong></td>
+        <td>Supply_Zone_Reject</td>
+        <td>Cat C</td>
+        <td class="r">604</td>
+        <td class="r">41.9%</td>
+        <td class="r tr"><strong>-914.7</strong></td>
+        <td class="r tr">$-915</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: +3 · BTC H1: -40 · BTC M15: -124 · XAU H4: +4 · XAU H1: +5 · EUR H4: +2 · EUR H1: +19 · EUR M15: +211 · USDJPY_H4: -18 · USOIL_H4: -9 · UKOIL_H4: -3 · ETH H4: +3 · ETH H1: -50 · ETH M15: -53 · USDJPY_H1: -17 · USDJPY_M15: -136 · USOIL_H1: -38 · UKOIL_H1: -46 · UKOIL_M15: -78 · XNG H4: -10 · XNG H1: -5 · XNG M15: -218 · XAU M15: +48 · USOIL_M15: -77 · XPT H1: +15 · XPT M15: -111 · DE30_H4: -16 · DE30_H1: +30 · DE30_M15: -196 · US500_H4: -3 · US500_H1: +42 · US500_M15: +36 · JP225_H4: -17 · JP225_H1: +9 · JP225_M15: -75</td>
+      </tr>
+      <tr>
+        <td><strong>P82</strong></td>
+        <td>ZScore_MeanRev_Short</td>
+        <td>Cat G</td>
+        <td class="r">1,369</td>
+        <td class="r">48.0%</td>
+        <td class="r tr"><strong>-924.9</strong></td>
+        <td class="r tr">$-925</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: -19 · BTC H1: -107 · BTC M15: -85 · XAU H4: +20 · XAU H1: -18 · EUR H4: +7 · EUR H1: -11 · EUR M15: -41 · USDJPY_H4: -9 · USOIL_H4: -50 · UKOIL_H4: -59 · ETH H4: -0 · ETH H1: -68 · ETH M15: -153 · USDJPY_H1: -4 · USDJPY_M15: -277 · USOIL_H1: -79 · UKOIL_H1: -122 · UKOIL_M15: -125 · XNG H4: +0 · XNG H1: +28 · XNG M15: -84 · XAU M15: +30 · USOIL_M15: -21 · XPT H1: +54 · XPT M15: +158 · DE30_H4: -2 · DE30_H1: +55 · DE30_M15: +131 · US500_H4: +0 · US500_H1: +24 · US500_M15: +60 · JP225_H4: +25 · JP225_H1: -31 · JP225_M15: -150</td>
+      </tr>
+      <tr>
+        <td><strong>P50</strong></td>
+        <td>Trendline_Bounce_Short</td>
+        <td>Cat C</td>
+        <td class="r">3,123</td>
+        <td class="r">48.8%</td>
+        <td class="r tr"><strong>-969.6</strong></td>
+        <td class="r tr">$-970</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: +36 · BTC H1: -71 · BTC M15: +447 · XAU H4: -9 · XAU H1: -42 · EUR H4: +30 · EUR H1: +114 · EUR M15: +212 · USDJPY_H4: -0 · UKOIL_H4: +22 · ETH H4: +1 · ETH H1: -7 · ETH M15: +880 · USDJPY_H1: -127 · USDJPY_M15: -484 · USOIL_H1: -129 · UKOIL_H1: -230 · UKOIL_M15: -618 · XNG H4: +8 · XNG H1: +49 · XNG M15: -401 · XAU M15: -105 · USOIL_M15: -698 · XPT H4: -14 · XPT H1: -153 · XPT M15: -75 · DE30_H4: +15 · DE30_H1: -24 · DE30_M15: -13 · US500_H4: +18 · US500_H1: +55 · US500_M15: +483 · JP225_H4: +17 · JP225_H1: -89 · JP225_M15: -68</td>
+      </tr>
+      <tr>
+        <td><strong>P62</strong></td>
+        <td>Double_Top</td>
+        <td>Cat E</td>
+        <td class="r">3,477</td>
+        <td class="r">47.3%</td>
+        <td class="r tr"><strong>-984.0</strong></td>
+        <td class="r tr">$-984</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: +15 · BTC H1: -31 · BTC M15: +239 · XAU H1: +189 · EUR H4: +75 · EUR H1: -118 · EUR M15: +612 · USDJPY_H4: -23 · USOIL_H4: -99 · UKOIL_H4: -5 · ETH H4: -67 · ETH H1: -391 · ETH M15: +428 · USDJPY_H1: -165 · USDJPY_M15: +0 · USOIL_H1: -44 · UKOIL_H1: -178 · UKOIL_M15: +101 · XNG H4: +2 · XNG H1: -104 · XNG M15: -1463 · XAU M15: +236 · USOIL_M15: -311 · XPT H4: -21 · XPT H1: -103 · XPT M15: +535 · DE30_H4: +6 · DE30_H1: -103 · DE30_M15: -34 · US500_H4: -22 · US500_H1: +296 · US500_M15: +223 · JP225_H4: -21 · JP225_H1: +49 · JP225_M15: -688</td>
+      </tr>
+      <tr>
+        <td><strong>P24</strong></td>
+        <td>Hammer</td>
+        <td>Cat B</td>
+        <td class="r">2,045</td>
+        <td class="r">47.7%</td>
+        <td class="r tr"><strong>-1,011.6</strong></td>
+        <td class="r tr">$-1,012</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: -21 · BTC H1: +53 · BTC M15: -145 · XAU H4: -18 · XAU H1: -0 · EUR H4: -16 · EUR H1: -68 · EUR M15: -132 · USDJPY_H4: -6 · USOIL_H4: +28 · UKOIL_H4: +2 · ETH H4: +26 · ETH H1: +53 · ETH M15: -244 · USDJPY_H1: +26 · USDJPY_M15: +12 · USOIL_H1: +80 · UKOIL_H1: +65 · UKOIL_M15: +191 · XNG H4: -3 · XNG H1: -21 · XNG M15: -294 · XAU M15: -96 · USOIL_M15: +95 · XPT H4: -25 · XPT H1: -88 · XPT M15: -322 · DE30_H4: -2 · DE30_H1: -74 · DE30_M15: +13 · US500_H4: -12 · US500_H1: -74 · US500_M15: -163 · JP225_H4: +41 · JP225_H1: +42 · JP225_M15: +86</td>
+      </tr>
+      <tr>
+        <td><strong>P13</strong></td>
+        <td>RSI_Extreme_Rev</td>
+        <td>Cat A</td>
+        <td class="r">5,200</td>
+        <td class="r">49.2%</td>
+        <td class="r tr"><strong>-1,035.2</strong></td>
+        <td class="r tr">$-1,035</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: -3 · BTC H1: -0 · BTC M15: -4 · XAU H4: -0 · XAU H1: -0 · EUR H4: -1 · EUR H1: -8 · EUR M15: -47 · USDJPY_H4: -2 · USOIL_H4: +5 · UKOIL_H4: -1 · ETH H4: -0 · ETH H1: -4 · ETH M15: -6 · USDJPY_H1: -13 · USDJPY_M15: -11 · USOIL_H1: -6 · UKOIL_H1: -26 · UKOIL_M15: -53 · XNG H4: -1 · XNG H1: -56 · XNG M15: -588 · XAU M15: -2 · USOIL_M15: -23 · XPT H4: -0 · XPT H1: -21 · XPT M15: -81 · DE30_H4: -0 · DE30_H1: -1 · DE30_M15: -4 · US500_H4: -0 · US500_H1: -1 · US500_M15: -64 · JP225_H4: -0 · JP225_H1: -0 · JP225_M15: -12</td>
+      </tr>
+      <tr>
+        <td><strong>P140</strong></td>
+        <td>Ichimoku_Kumo_Twist_Bull</td>
+        <td>Cat L</td>
+        <td class="r">18,334</td>
+        <td class="r">49.5%</td>
+        <td class="r tr"><strong>-1,046.6</strong></td>
+        <td class="r tr">$-1,047</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: +44 · BTC H1: -249 · BTC M15: +1033 · XAU H4: +160 · XAU H1: +495 · EUR H4: -26 · EUR H1: -857 · EUR M15: -2150 · USDJPY_H4: +182 · USOIL_H4: +278 · UKOIL_H4: +238 · ETH H4: +103 · ETH H1: -382 · ETH M15: -320 · USDJPY_H1: +298 · USDJPY_M15: +3070 · USOIL_H1: +676 · UKOIL_H1: +494 · UKOIL_M15: +2891 · XNG H4: -183 · XNG H1: -877 · XNG M15: -1766 · XAU M15: +656 · USOIL_M15: +1919 · XPT H4: +29 · XPT H1: -264 · XPT M15: -2354 · DE30_H4: +67 · DE30_H1: -296 · DE30_M15: -837 · US500_H4: +18 · US500_H1: -1277 · US500_M15: -2583 · JP225_H4: +160 · JP225_H1: +370 · JP225_M15: +194</td>
+      </tr>
+      <tr>
+        <td><strong>P168</strong></td>
+        <td>Daily_Pivot_Tag_Long</td>
+        <td>Cat P</td>
+        <td class="r">1,730</td>
+        <td class="r">46.8%</td>
+        <td class="r tr"><strong>-1,058.9</strong></td>
+        <td class="r tr">$-1,059</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: +13 · BTC H1: -0 · BTC M15: -38 · XAU H4: +15 · XAU H1: +10 · EUR H4: -17 · EUR H1: -118 · EUR M15: -264 · USDJPY_H4: +31 · USOIL_H4: +56 · UKOIL_H4: +85 · ETH H4: -59 · ETH H1: -116 · ETH M15: -62 · USDJPY_H1: +45 · USDJPY_M15: -56 · USOIL_H1: +131 · UKOIL_H1: +145 · UKOIL_M15: +241 · XNG H4: -55 · XNG H1: -169 · XNG M15: -219 · XAU M15: +92 · USOIL_M15: -28 · XPT H4: -19 · XPT H1: -94 · XPT M15: -223 · DE30_H4: -31 · DE30_H1: +30 · DE30_M15: -44 · US500_H4: -58 · US500_H1: -133 · US500_M15: -103 · JP225_H4: +13 · JP225_H1: +27 · JP225_M15: -87</td>
+      </tr>
+      <tr>
+        <td><strong>P84</strong></td>
+        <td>ORB_Short</td>
+        <td>Cat G</td>
+        <td class="r">2,509</td>
+        <td class="r">47.9%</td>
+        <td class="r tr"><strong>-1,085.8</strong></td>
+        <td class="r tr">$-1,086</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: +7 · BTC H1: -73 · BTC M15: -136 · XAU H4: +9 · XAU H1: -3 · EUR H4: -24 · EUR H1: +140 · EUR M15: +228 · USDJPY_H4: -23 · USOIL_H4: -28 · UKOIL_H4: -32 · ETH H4: -13 · ETH H1: -86 · ETH M15: +77 · USDJPY_H1: -54 · USDJPY_M15: -416 · USOIL_H1: -258 · UKOIL_H1: -39 · UKOIL_M15: +31 · XNG H4: -0 · XNG H1: -163 · XNG M15: -436 · XAU M15: +201 · USOIL_M15: -403 · XPT H4: +2 · XPT H1: +18 · XPT M15: +104 · DE30_H4: +4 · DE30_H1: +63 · DE30_M15: -1 · US500_H4: -2 · US500_H1: +156 · US500_M15: +218 · JP225_H4: -24 · JP225_H1: -61 · JP225_M15: -71</td>
+      </tr>
+      <tr>
+        <td><strong>P17</strong></td>
+        <td>Volume_Spike_Rev</td>
+        <td>Cat A</td>
+        <td class="r">5,636</td>
+        <td class="r">49.0%</td>
+        <td class="r tr"><strong>-1,087.0</strong></td>
+        <td class="r tr">$-1,087</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: -0 · BTC H1: -0 · BTC M15: -65 · XAU H4: -0 · XAU H1: -0 · EUR H4: -2 · EUR H1: -7 · EUR M15: -83 · USDJPY_H4: -1 · USOIL_H4: -1 · UKOIL_H4: -0 · ETH H4: +0 · ETH H1: -29 · ETH M15: -17 · USDJPY_H1: -4 · USDJPY_M15: -90 · USOIL_H1: -7 · UKOIL_H1: -5 · UKOIL_M15: -6 · XNG H4: -3 · XNG H1: -213 · XNG M15: -484 · XAU M15: -3 · USOIL_M15: -8 · XPT H1: -0 · XPT M15: -20 · DE30_H4: -0 · DE30_H1: -3 · DE30_M15: -3 · US500_H4: -0 · US500_H1: -12 · US500_M15: -4 · JP225_H4: -0 · JP225_H1: -1 · JP225_M15: -15</td>
+      </tr>
+      <tr>
+        <td><strong>P150</strong></td>
+        <td>External_Liq_Sweep_Long</td>
+        <td>Cat M</td>
+        <td class="r">4,768</td>
+        <td class="r">48.1%</td>
+        <td class="r tr"><strong>-1,200.4</strong></td>
+        <td class="r tr">$-1,200</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: +18 · BTC H1: +80 · BTC M15: +188 · XAU H4: -100 · XAU H1: +177 · EUR H4: +1 · EUR H1: -7 · EUR M15: -986 · USDJPY_H4: +11 · USOIL_H4: +62 · UKOIL_H4: +51 · ETH H4: +22 · ETH H1: +156 · ETH M15: -98 · USDJPY_H1: +219 · USDJPY_M15: +636 · USOIL_H1: +361 · UKOIL_H1: +100 · UKOIL_M15: +279 · XNG H4: -37 · XNG H1: -254 · XNG M15: -537 · XAU M15: -206 · USOIL_M15: +96 · XPT H4: -18 · XPT H1: -103 · XPT M15: -581 · DE30_H4: -44 · DE30_H1: -157 · DE30_M15: -421 · US500_H4: -128 · US500_H1: -139 · US500_M15: -810 · JP225_H4: +32 · JP225_H1: +590 · JP225_M15: +343</td>
+      </tr>
+      <tr>
+        <td><strong>P40</strong></td>
+        <td>Marubozu</td>
+        <td>Cat B</td>
+        <td class="r">2,230</td>
+        <td class="r">47.4%</td>
+        <td class="r tr"><strong>-1,241.2</strong></td>
+        <td class="r tr">$-1,241</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: -0 · BTC H1: -0 · BTC M15: +2 · XAU H4: -0 · XAU H1: -0 · EUR H4: -0 · EUR H1: -0 · EUR M15: -42 · USDJPY_H4: -1 · USOIL_H4: -0 · UKOIL_H4: -0 · ETH H1: -0 · ETH M15: -2 · USDJPY_H1: -1 · USDJPY_M15: -18 · USOIL_H1: -1 · UKOIL_H1: -2 · UKOIL_M15: -25 · XNG H4: -3 · XNG H1: -72 · XNG M15: -791 · XAU M15: -1 · USOIL_M15: -22 · XPT H4: +0 · XPT H1: -12 · XPT M15: -211 · DE30_H4: -0 · DE30_H1: -0 · DE30_M15: -5 · US500_H4: -0 · US500_H1: -0 · US500_M15: -21 · JP225_H4: -0 · JP225_H1: -0 · JP225_M15: -10</td>
+      </tr>
+      <tr>
+        <td><strong>P44</strong></td>
+        <td>Bearish_Order_Block</td>
+        <td>Cat C</td>
+        <td class="r">4,512</td>
+        <td class="r">48.1%</td>
+        <td class="r tr"><strong>-1,349.9</strong></td>
+        <td class="r tr">$-1,350</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: -50 · BTC H1: +343 · BTC M15: -72 · XAU H4: -14 · XAU H1: -241 · EUR H4: -33 · EUR H1: +69 · EUR M15: +1075 · USDJPY_H4: -7 · USOIL_H4: +17 · UKOIL_H4: -9 · ETH H4: -28 · ETH H1: +120 · ETH M15: -171 · USDJPY_H1: -201 · USDJPY_M15: -239 · USOIL_H1: -246 · UKOIL_H1: -393 · UKOIL_M15: -1205 · XNG H4: +17 · XNG H1: -81 · XNG M15: -1212 · XAU M15: +206 · USOIL_M15: -688 · XPT H4: -29 · XPT H1: +8 · XPT M15: -158 · DE30_H4: +102 · DE30_H1: +203 · DE30_M15: +928 · US500_H4: +45 · US500_H1: +295 · US500_M15: +605 · JP225_H4: -36 · JP225_H1: -142 · JP225_M15: -126</td>
+      </tr>
+      <tr>
+        <td><strong>P38</strong></td>
+        <td>Tweezer_Bottom</td>
+        <td>Cat B</td>
+        <td class="r">6,649</td>
+        <td class="r">49.0%</td>
+        <td class="r tr"><strong>-1,387.0</strong></td>
+        <td class="r tr">$-1,387</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: +14 · BTC H1: +103 · BTC M15: -356 · XAU H4: -0 · XAU H1: -28 · EUR H4: -48 · EUR H1: -270 · EUR M15: -1477 · USDJPY_H4: +47 · USOIL_H4: +46 · UKOIL_H4: +51 · ETH H4: +48 · ETH H1: +15 · ETH M15: -466 · USDJPY_H1: +18 · USDJPY_M15: +730 · USOIL_H1: +223 · UKOIL_H1: +368 · UKOIL_M15: +1036 · XNG H4: +26 · XNG H1: -224 · XNG M15: -513 · XAU M15: -71 · USOIL_M15: +985 · XPT H4: -6 · XPT H1: -201 · XPT M15: -765 · DE30_H4: -12 · DE30_H1: -29 · DE30_M15: -322 · US500_H4: -9 · US500_H1: -193 · US500_M15: -963 · JP225_H4: +30 · JP225_H1: +385 · JP225_M15: +441</td>
+      </tr>
+      <tr>
+        <td><strong>P90</strong></td>
+        <td>OTE_Short</td>
+        <td>Cat H</td>
+        <td class="r">5,634</td>
+        <td class="r">49.1%</td>
+        <td class="r tr"><strong>-1,412.8</strong></td>
+        <td class="r tr">$-1,413</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: -20 · BTC H1: +15 · BTC M15: +351 · XAU H4: -7 · XAU H1: -57 · EUR H4: +56 · EUR H1: +275 · EUR M15: +1039 · USDJPY_H4: -32 · USOIL_H4: -43 · UKOIL_H4: -43 · ETH H4: +26 · ETH H1: +47 · ETH M15: +240 · USDJPY_H1: -70 · USDJPY_M15: -1227 · USOIL_H1: -400 · UKOIL_H1: -482 · UKOIL_M15: -677 · XNG H4: -5 · XNG H1: -8 · XNG M15: -567 · XAU M15: +36 · USOIL_M15: -675 · XPT H4: +4 · XPT H1: +115 · XPT M15: -57 · DE30_H4: +15 · DE30_H1: +30 · DE30_M15: +250 · US500_H4: +14 · US500_H1: +236 · US500_M15: +526 · JP225_H4: -46 · JP225_H1: -131 · JP225_M15: -141</td>
+      </tr>
+      <tr>
+        <td><strong>P56</strong></td>
+        <td>CHoCH_Bear</td>
+        <td>Cat D</td>
+        <td class="r">4,763</td>
+        <td class="r">48.2%</td>
+        <td class="r tr"><strong>-1,413.8</strong></td>
+        <td class="r tr">$-1,414</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: -56 · BTC H1: -155 · BTC M15: -3 · XAU H4: -3 · XAU H1: +22 · EUR H4: -29 · EUR H1: +81 · EUR M15: +618 · USDJPY_H4: -25 · USOIL_H4: -71 · UKOIL_H4: -19 · ETH H4: -137 · ETH H1: -100 · ETH M15: +321 · USDJPY_H1: -261 · USDJPY_M15: -1061 · USOIL_H1: -104 · UKOIL_H1: -247 · UKOIL_M15: -688 · XNG H4: -7 · XNG H1: -162 · XNG M15: -515 · XAU M15: -85 · USOIL_M15: -401 · XPT H4: -7 · XPT H1: -41 · XPT M15: +105 · DE30_H4: -48 · DE30_H1: -84 · DE30_M15: +254 · US500_H4: +40 · US500_H1: +225 · US500_M15: +1177 · JP225_H4: +52 · JP225_H1: -179 · JP225_M15: +178</td>
+      </tr>
+      <tr>
+        <td><strong>P146</strong></td>
+        <td>Turtle_Soup_Short</td>
+        <td>Cat M</td>
+        <td class="r">4,537</td>
+        <td class="r">48.5%</td>
+        <td class="r tr"><strong>-1,420.0</strong></td>
+        <td class="r tr">$-1,420</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: +33 · BTC H1: -8 · BTC M15: -147 · XAU H4: +10 · XAU H1: -29 · EUR H4: -8 · EUR H1: +86 · EUR M15: +660 · USDJPY_H4: +14 · USOIL_H4: -52 · UKOIL_H4: -85 · ETH H4: -23 · ETH H1: -101 · ETH M15: +101 · USDJPY_H1: -105 · USDJPY_M15: -830 · USOIL_H1: -126 · UKOIL_H1: -105 · UKOIL_M15: -583 · XNG H4: +13 · XNG H1: -48 · XNG M15: -414 · XAU M15: +55 · USOIL_M15: -730 · XPT H4: -5 · XPT H1: +64 · XPT M15: +133 · DE30_H4: +54 · DE30_H1: +84 · DE30_M15: +253 · US500_H4: -1 · US500_H1: +149 · US500_M15: +802 · JP225_H4: -8 · JP225_H1: -203 · JP225_M15: -321</td>
+      </tr>
+      <tr>
+        <td><strong>P151</strong></td>
+        <td>Pullback_EMA20_Long</td>
+        <td>Cat N</td>
+        <td class="r">5,686</td>
+        <td class="r">48.6%</td>
+        <td class="r tr"><strong>-1,428.7</strong></td>
+        <td class="r tr">$-1,429</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: +46 · BTC H1: +45 · BTC M15: -25 · XAU H4: +7 · XAU H1: +15 · EUR H4: -49 · EUR H1: -99 · EUR M15: -1265 · USDJPY_H4: +56 · USOIL_H4: +43 · UKOIL_H4: +50 · ETH H4: +27 · ETH H1: +125 · ETH M15: -334 · USDJPY_H1: +165 · USDJPY_M15: +610 · USOIL_H1: +193 · UKOIL_H1: +448 · UKOIL_M15: +865 · XNG H4: -20 · XNG H1: -148 · XNG M15: -582 · XAU M15: -270 · USOIL_M15: +596 · XPT H4: -7 · XPT H1: -148 · XPT M15: -1195 · DE30_H4: -25 · DE30_H1: -39 · DE30_M15: -105 · US500_H4: -28 · US500_H1: -195 · US500_M15: -521 · JP225_H4: +61 · JP225_H1: +197 · JP225_M15: +76</td>
+      </tr>
+      <tr>
+        <td><strong>P92</strong></td>
+        <td>LondonKZ_Short</td>
+        <td>Cat H</td>
+        <td class="r">2,572</td>
+        <td class="r">48.0%</td>
+        <td class="r tr"><strong>-1,497.6</strong></td>
+        <td class="r tr">$-1,498</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H1: -7 · BTC M15: +27 · XAU H1: -5 · EUR H1: +128 · EUR M15: +155 · ETH H1: +63 · ETH M15: +176 · USDJPY_H1: -57 · USDJPY_M15: -605 · USOIL_H1: -97 · UKOIL_H1: -161 · UKOIL_M15: -457 · XNG H1: -91 · XNG M15: -568 · XAU M15: -40 · USOIL_M15: -342 · XPT H1: +1 · XPT M15: -94 · DE30_H1: -7 · DE30_M15: +85 · US500_H1: +66 · US500_M15: +317 · JP225_H1: -87 · JP225_M15: +102</td>
+      </tr>
+      <tr>
+        <td><strong>P171</strong></td>
+        <td>ABCD_Bull</td>
+        <td>Cat Q</td>
+        <td class="r">6,570</td>
+        <td class="r">49.3%</td>
+        <td class="r tr"><strong>-1,502.2</strong></td>
+        <td class="r tr">$-1,502</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: -15 · BTC H1: +252 · BTC M15: -372 · XAU H4: -66 · XAU H1: +36 · EUR H4: +15 · EUR H1: -186 · EUR M15: -623 · USDJPY_H4: +40 · USOIL_H4: +28 · UKOIL_H4: +63 · ETH H4: +20 · ETH H1: +321 · ETH M15: +36 · USDJPY_H1: +108 · USDJPY_M15: +449 · USOIL_H1: +316 · UKOIL_H1: +501 · UKOIL_M15: +392 · XNG H4: -11 · XNG H1: -122 · XNG M15: -662 · XAU M15: -194 · USOIL_M15: +601 · XPT H4: -0 · XPT H1: -295 · XPT M15: -1070 · DE30_H4: +22 · DE30_H1: -4 · DE30_M15: -66 · US500_H4: -39 · US500_H1: -195 · US500_M15: -715 · JP225_H4: +66 · JP225_H1: +86 · JP225_M15: -220</td>
+      </tr>
+      <tr>
+        <td><strong>P154</strong></td>
+        <td>Pullback_EMA50_Short</td>
+        <td>Cat N</td>
+        <td class="r">2,662</td>
+        <td class="r">47.0%</td>
+        <td class="r tr"><strong>-1,576.9</strong></td>
+        <td class="r tr">$-1,577</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: +7 · BTC H1: -25 · BTC M15: +72 · XAU H4: +8 · XAU H1: -110 · EUR H4: -12 · EUR H1: +194 · EUR M15: +258 · USDJPY_H4: -14 · USOIL_H4: -22 · UKOIL_H4: -3 · ETH H4: -27 · ETH H1: -256 · ETH M15: +670 · USDJPY_H1: -64 · USDJPY_M15: -1000 · USOIL_H1: -131 · UKOIL_H1: -288 · UKOIL_M15: -25 · XNG H4: +17 · XNG H1: -77 · XNG M15: -651 · XAU M15: -72 · USOIL_M15: -250 · XPT H4: +1 · XPT H1: -74 · XPT M15: +7 · DE30_H4: +17 · DE30_H1: +35 · DE30_M15: -60 · US500_H4: +13 · US500_H1: +106 · US500_M15: +279 · JP225_H4: +35 · JP225_H1: +7 · JP225_M15: -144</td>
+      </tr>
+      <tr>
+        <td><strong>P60</strong></td>
+        <td>Failed_Breakout_Short</td>
+        <td>Cat D</td>
+        <td class="r">6,725</td>
+        <td class="r">48.4%</td>
+        <td class="r tr"><strong>-1,607.7</strong></td>
+        <td class="r tr">$-1,608</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: -40 · BTC H1: +42 · BTC M15: +510 · XAU H4: +8 · XAU H1: +34 · EUR H4: +13 · EUR H1: +50 · EUR M15: +1387 · USDJPY_H4: -85 · USOIL_H4: -78 · UKOIL_H4: -167 · ETH H4: -41 · ETH H1: +7 · ETH M15: +178 · USDJPY_H1: +45 · USDJPY_M15: -1400 · USOIL_H1: -257 · UKOIL_H1: -367 · UKOIL_M15: -711 · XNG H4: +7 · XNG H1: -136 · XNG M15: -1142 · XAU M15: -39 · USOIL_M15: -794 · XPT H4: -48 · XPT H1: +65 · XPT M15: +195 · DE30_H4: +107 · DE30_H1: +25 · DE30_M15: +304 · US500_H4: +34 · US500_H1: -77 · US500_M15: +957 · JP225_H4: -38 · JP225_H1: -158 · JP225_M15: +1</td>
+      </tr>
+      <tr>
+        <td><strong>P33</strong></td>
+        <td>Bearish_Harami</td>
+        <td>Cat B</td>
+        <td class="r">3,756</td>
+        <td class="r">48.1%</td>
+        <td class="r tr"><strong>-1,639.0</strong></td>
+        <td class="r tr">$-1,639</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: +1 · BTC H1: -24 · BTC M15: +51 · XAU H4: +13 · XAU H1: -55 · EUR H4: +10 · EUR H1: +107 · EUR M15: +215 · USDJPY_H4: -23 · USOIL_H4: -25 · UKOIL_H4: -30 · ETH H4: +23 · ETH H1: -16 · ETH M15: -194 · USDJPY_H1: -37 · USDJPY_M15: -488 · USOIL_H1: -246 · UKOIL_H1: -334 · UKOIL_M15: -878 · XNG H4: +9 · XNG H1: +10 · XNG M15: -431 · XAU M15: +176 · USOIL_M15: -427 · XPT H4: +6 · XPT H1: +99 · XPT M15: +325 · DE30_H4: +31 · DE30_H1: -26 · DE30_M15: +353 · US500_H4: +14 · US500_H1: +105 · US500_M15: +404 · JP225_H4: -14 · JP225_H1: -100 · JP225_M15: -239</td>
+      </tr>
+      <tr>
+        <td><strong>P47</strong></td>
+        <td>SR_Flip_Long</td>
+        <td>Cat C</td>
+        <td class="r">3,300</td>
+        <td class="r">48.0%</td>
+        <td class="r tr"><strong>-1,647.7</strong></td>
+        <td class="r tr">$-1,648</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: +23 · BTC H1: +20 · BTC M15: +45 · XAU H4: -20 · XAU H1: +57 · EUR H4: +10 · EUR H1: -88 · EUR M15: -573 · USDJPY_H4: +45 · USOIL_H4: +26 · UKOIL_H4: +75 · ETH H4: +42 · ETH H1: +94 · ETH M15: +171 · USDJPY_H1: +8 · USDJPY_M15: +385 · USOIL_H1: +22 · UKOIL_H1: +166 · UKOIL_M15: +460 · XNG H4: -26 · XNG H1: -105 · XNG M15: -482 · XAU M15: +71 · USOIL_M15: +128 · XPT H4: -60 · XPT H1: -158 · XPT M15: -941 · DE30_H4: -2 · DE30_H1: -155 · DE30_M15: -476 · US500_H4: -5 · US500_H1: -94 · US500_M15: -668 · JP225_H4: +44 · JP225_H1: +171 · JP225_M15: +141</td>
+      </tr>
+      <tr>
+        <td><strong>P152</strong></td>
+        <td>Pullback_EMA20_Short</td>
+        <td>Cat N</td>
+        <td class="r">5,606</td>
+        <td class="r">48.6%</td>
+        <td class="r tr"><strong>-1,690.7</strong></td>
+        <td class="r tr">$-1,691</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: -23 · BTC H1: -93 · BTC M15: +670 · XAU H4: -11 · XAU H1: -143 · EUR H4: +24 · EUR H1: +133 · EUR M15: +654 · USDJPY_H4: -42 · USOIL_H4: -56 · UKOIL_H4: -59 · ETH H4: -39 · ETH H1: -99 · ETH M15: +1105 · USDJPY_H1: -219 · USDJPY_M15: -1165 · USOIL_H1: -210 · UKOIL_H1: -465 · UKOIL_M15: -687 · XNG H4: +13 · XNG H1: -202 · XNG M15: -979 · XAU M15: -164 · USOIL_M15: -916 · XPT H4: +29 · XPT H1: -78 · XPT M15: +66 · DE30_H4: +36 · DE30_H1: +46 · DE30_M15: +0 · US500_H4: +25 · US500_H1: +243 · US500_M15: +951 · JP225_H4: -27 · JP225_H1: -10 · JP225_M15: -1</td>
+      </tr>
+      <tr>
+        <td><strong>P74</strong></td>
+        <td>Liq_Grab_Bear</td>
+        <td>Cat F</td>
+        <td class="r">4,375</td>
+        <td class="r">48.2%</td>
+        <td class="r tr"><strong>-1,735.3</strong></td>
+        <td class="r tr">$-1,735</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: +26 · BTC H1: +86 · BTC M15: +68 · XAU H4: +5 · XAU H1: -25 · EUR H4: +10 · EUR H1: +96 · EUR M15: +639 · USDJPY_H4: -43 · USOIL_H4: -33 · UKOIL_H4: -46 · ETH H4: -17 · ETH H1: +6 · ETH M15: +133 · USDJPY_H1: -116 · USDJPY_M15: -816 · USOIL_H1: -226 · UKOIL_H1: -214 · UKOIL_M15: -563 · XNG H4: +5 · XNG H1: -132 · XNG M15: -672 · XAU M15: +301 · USOIL_M15: -523 · XPT H4: -21 · XPT H1: +4 · XPT M15: +168 · DE30_H4: +66 · DE30_H1: +23 · DE30_M15: -12 · US500_H4: +27 · US500_H1: +68 · US500_M15: +253 · JP225_H4: -16 · JP225_H1: -29 · JP225_M15: -211</td>
+      </tr>
+      <tr>
+        <td><strong>P174</strong></td>
+        <td>Three_Drives_Bear</td>
+        <td>Cat Q</td>
+        <td class="r">9,112</td>
+        <td class="r">49.4%</td>
+        <td class="r tr"><strong>-1,744.1</strong></td>
+        <td class="r tr">$-1,744</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: -173 · BTC H1: -100 · BTC M15: +658 · XAU H4: +17 · XAU H1: +70 · EUR H4: +77 · EUR H1: +320 · EUR M15: +1094 · USDJPY_H4: +9 · USOIL_H4: -180 · UKOIL_H4: -97 · ETH H4: -64 · ETH H1: -250 · ETH M15: +286 · USDJPY_H1: -58 · USDJPY_M15: -1260 · USOIL_H1: -352 · UKOIL_H1: -612 · UKOIL_M15: -1885 · XNG H4: +44 · XNG H1: -34 · XNG M15: -354 · XAU M15: +231 · USOIL_M15: -1508 · XPT H4: +20 · XPT H1: +26 · XPT M15: +412 · DE30_H4: +156 · DE30_H1: +24 · DE30_M15: +275 · US500_H4: -32 · US500_H1: +429 · US500_M15: +923 · JP225_H4: -96 · JP225_H1: -197 · JP225_M15: +437</td>
+      </tr>
+      <tr>
+        <td><strong>P161</strong></td>
+        <td>VAH_Reject_Short</td>
+        <td>Cat O</td>
+        <td class="r">7,403</td>
+        <td class="r">49.0%</td>
+        <td class="r tr"><strong>-1,787.8</strong></td>
+        <td class="r tr">$-1,788</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: +14 · BTC H1: +251 · BTC M15: -65 · XAU H4: +17 · XAU H1: -99 · EUR H4: +7 · EUR H1: +298 · EUR M15: +1293 · USDJPY_H4: -35 · USOIL_H4: -80 · UKOIL_H4: -77 · ETH H4: -25 · ETH H1: -80 · ETH M15: +351 · USDJPY_H1: -202 · USDJPY_M15: -975 · USOIL_H1: -271 · UKOIL_H1: -467 · UKOIL_M15: -1110 · XNG H4: +8 · XNG H1: -177 · XNG M15: -595 · XAU M15: -199 · USOIL_M15: -1050 · XPT H4: -21 · XPT H1: +24 · XPT M15: +599 · DE30_H4: +2 · DE30_H1: -18 · DE30_M15: +461 · US500_H4: -3 · US500_H1: +167 · US500_M15: +935 · JP225_H4: -80 · JP225_H1: -227 · JP225_M15: -361</td>
+      </tr>
+      <tr>
+        <td><strong>P48</strong></td>
+        <td>SR_Flip_Short</td>
+        <td>Cat C</td>
+        <td class="r">3,205</td>
+        <td class="r">47.5%</td>
+        <td class="r tr"><strong>-1,794.3</strong></td>
+        <td class="r tr">$-1,794</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: +13 · BTC H1: +45 · BTC M15: +550 · XAU H4: -1 · XAU H1: -72 · EUR H4: +7 · EUR H1: +34 · EUR M15: +94 · USDJPY_H4: -18 · USOIL_H4: -21 · UKOIL_H4: -12 · ETH H4: +29 · ETH H1: -272 · ETH M15: -40 · USDJPY_H1: -70 · USDJPY_M15: -536 · USOIL_H1: -361 · UKOIL_H1: -190 · UKOIL_M15: -371 · XNG H4: -38 · XNG H1: -83 · XNG M15: -324 · XAU M15: +42 · USOIL_M15: -437 · XPT H4: +5 · XPT H1: +13 · XPT M15: -84 · DE30_H4: +1 · DE30_H1: +148 · DE30_M15: -257 · US500_H4: +3 · US500_H1: +226 · US500_M15: +497 · JP225_H4: +3 · JP225_H1: -140 · JP225_M15: -177</td>
+      </tr>
+      <tr>
+        <td><strong>P139</strong></td>
+        <td>Ichimoku_Cloud_Break_Bear</td>
+        <td>Cat L</td>
+        <td class="r">1,657</td>
+        <td class="r">43.8%</td>
+        <td class="r tr"><strong>-1,875.2</strong></td>
+        <td class="r tr">$-1,875</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: -9 · BTC H1: -60 · BTC M15: -103 · XAU H4: -22 · XAU H1: -38 · EUR H4: -21 · EUR H1: +93 · EUR M15: +241 · USDJPY_H4: -31 · USOIL_H4: -19 · UKOIL_H4: -13 · ETH H4: -53 · ETH H1: -33 · ETH M15: -100 · USDJPY_H1: -58 · USDJPY_M15: -381 · USOIL_H1: -106 · UKOIL_H1: -73 · UKOIL_M15: -276 · XNG H4: -7 · XNG H1: -56 · XNG M15: -410 · XAU M15: +20 · USOIL_M15: -315 · XPT H4: -0 · XPT H1: +30 · XPT M15: -2 · DE30_H4: +11 · DE30_H1: -3 · DE30_M15: +19 · US500_H4: -9 · US500_H1: +100 · US500_M15: +100 · JP225_H4: -23 · JP225_H1: -98 · JP225_M15: -168</td>
+      </tr>
+      <tr>
+        <td><strong>P15</strong></td>
+        <td>MACD_Zero_Cross</td>
+        <td>Cat A</td>
+        <td class="r">6,581</td>
+        <td class="r">48.5%</td>
+        <td class="r tr"><strong>-1,940.5</strong></td>
+        <td class="r tr">$-1,941</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: -0 · BTC H1: +0 · BTC M15: -66 · XAU H4: -0 · XAU H1: -0 · EUR H4: -1 · EUR H1: -4 · EUR M15: -104 · USDJPY_H4: -2 · USOIL_H4: -1 · UKOIL_H4: -1 · ETH H4: -1 · ETH H1: -2 · ETH M15: -27 · USDJPY_H1: -6 · USDJPY_M15: -174 · USOIL_H1: -4 · UKOIL_H1: -10 · UKOIL_M15: -41 · XNG H4: -10 · XNG H1: -87 · XNG M15: -898 · XAU M15: -2 · USOIL_M15: -39 · XPT H4: -4 · XPT H1: -28 · XPT M15: -343 · DE30_H4: -1 · DE30_H1: -1 · DE30_M15: -6 · US500_H4: -0 · US500_H1: -11 · US500_M15: -64 · JP225_H4: -0 · JP225_H1: +5 · JP225_M15: -5</td>
+      </tr>
+      <tr>
+        <td><strong>P132</strong></td>
+        <td>Daily_Bias_Intraday_Long</td>
+        <td>Cat K</td>
+        <td class="r">21,025</td>
+        <td class="r">49.2%</td>
+        <td class="r tr"><strong>-1,943.9</strong></td>
+        <td class="r tr">$-1,944</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: -58 · BTC H1: +14 · BTC M15: -459 · XAU H4: -45 · XAU H1: +143 · EUR H4: -25 · EUR H1: -541 · EUR M15: -1862 · USDJPY_H4: +29 · USOIL_H4: +240 · UKOIL_H4: +376 · ETH H4: -24 · ETH H1: +223 · ETH M15: -1579 · USDJPY_H1: +455 · USDJPY_M15: +3110 · USOIL_H1: +716 · UKOIL_H1: +1424 · UKOIL_M15: +4020 · XNG H4: -117 · XNG H1: -730 · XNG M15: -3124 · XAU M15: +138 · USOIL_M15: +1456 · XPT H4: -136 · XPT H1: -903 · XPT M15: -4461 · DE30_H4: -169 · DE30_H1: -364 · DE30_M15: -1536 · US500_H4: +23 · US500_H1: -102 · US500_M15: -1108 · JP225_H4: +251 · JP225_H1: +1319 · JP225_M15: +1463</td>
+      </tr>
+      <tr>
+        <td><strong>P172</strong></td>
+        <td>ABCD_Bear</td>
+        <td>Cat Q</td>
+        <td class="r">7,018</td>
+        <td class="r">49.4%</td>
+        <td class="r tr"><strong>-2,039.8</strong></td>
+        <td class="r tr">$-2,040</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: +78 · BTC H1: -123 · BTC M15: +393 · XAU H4: -62 · XAU H1: +67 · EUR H4: +17 · EUR H1: -20 · EUR M15: +685 · USDJPY_H4: -45 · USOIL_H4: -89 · UKOIL_H4: -42 · ETH H4: -17 · ETH H1: -276 · ETH M15: +172 · USDJPY_H1: +51 · USDJPY_M15: -1175 · USOIL_H1: -462 · UKOIL_H1: -552 · UKOIL_M15: -821 · XNG H4: +28 · XNG H1: -121 · XNG M15: -772 · XAU M15: -32 · USOIL_M15: -684 · XPT H4: +39 · XPT H1: +141 · XPT M15: +134 · DE30_H4: -10 · DE30_H1: +130 · DE30_M15: +681 · US500_H4: +22 · US500_H1: +201 · US500_M15: +498 · JP225_H4: -74 · JP225_H1: -112 · JP225_M15: +113</td>
+      </tr>
+      <tr>
+        <td><strong>P127</strong></td>
+        <td>HTF_Bias_Short</td>
+        <td>Cat K</td>
+        <td class="r">2,331</td>
+        <td class="r">43.4%</td>
+        <td class="r tr"><strong>-2,317.5</strong></td>
+        <td class="r tr">$-2,318</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: -59 · BTC H1: +258 · BTC M15: +69 · XAU H4: -11 · XAU H1: +2 · EUR H4: -48 · EUR H1: +89 · EUR M15: +15 · ETH H4: -14 · ETH H1: +134 · ETH M15: +225 · USDJPY_H1: -89 · USDJPY_M15: -438 · USOIL_H1: -20 · UKOIL_H1: +11 · UKOIL_M15: -242 · XNG H4: -32 · XNG H1: -320 · XNG M15: -872 · XAU M15: +356 · USOIL_M15: -532 · XPT H4: -22 · XPT H1: -112 · XPT M15: +92 · DE30_H4: +60 · DE30_H1: -11 · DE30_M15: -620 · US500_H4: -11 · US500_H1: +217 · US500_M15: -268 · JP225_H1: +12 · JP225_M15: -137</td>
+      </tr>
+      <tr>
+        <td><strong>P39</strong></td>
+        <td>Tweezer_Top</td>
+        <td>Cat B</td>
+        <td class="r">7,276</td>
+        <td class="r">48.5%</td>
+        <td class="r tr"><strong>-2,418.7</strong></td>
+        <td class="r tr">$-2,419</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: +1 · BTC H1: -168 · BTC M15: +130 · XAU H4: -17 · XAU H1: -137 · EUR H4: +40 · EUR H1: +184 · EUR M15: +1088 · USDJPY_H4: -6 · USOIL_H4: -87 · UKOIL_H4: -87 · ETH H4: -16 · ETH H1: -185 · ETH M15: +381 · USDJPY_H1: -188 · USDJPY_M15: -1329 · USOIL_H1: -338 · UKOIL_H1: -498 · UKOIL_M15: -981 · XNG H4: -2 · XNG H1: -140 · XNG M15: -1052 · XAU M15: +57 · USOIL_M15: -1093 · XPT H4: +0 · XPT H1: +132 · XPT M15: +643 · DE30_H4: -4 · DE30_H1: +28 · DE30_M15: +474 · US500_H4: +56 · US500_H1: +217 · US500_M15: +844 · JP225_H4: -36 · JP225_H1: -260 · JP225_M15: -71</td>
+      </tr>
+      <tr>
+        <td><strong>P157</strong></td>
+        <td>Hidden_Div_Bull_RSI</td>
+        <td>Cat N</td>
+        <td class="r">6,006</td>
+        <td class="r">48.6%</td>
+        <td class="r tr"><strong>-2,550.4</strong></td>
+        <td class="r tr">$-2,550</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: +17 · BTC H1: -281 · BTC M15: +229 · XAU H4: -117 · XAU H1: -56 · EUR H4: -39 · EUR H1: -219 · EUR M15: -554 · USDJPY_H4: +112 · USOIL_H4: +143 · UKOIL_H4: +185 · ETH H4: +97 · ETH H1: -24 · ETH M15: -581 · USDJPY_H1: +60 · USDJPY_M15: +1257 · USOIL_H1: +596 · UKOIL_H1: +553 · UKOIL_M15: +17 · XNG H4: -6 · XNG H1: -510 · XNG M15: -389 · XAU M15: -957 · USOIL_M15: +956 · XPT H4: -23 · XPT H1: -45 · XPT M15: -744 · DE30_H4: +4 · DE30_H1: +81 · DE30_M15: -883 · US500_H4: -43 · US500_H1: +23 · US500_M15: -875 · JP225_H4: +76 · JP225_H1: -203 · JP225_M15: -408</td>
+      </tr>
+      <tr>
+        <td><strong>P51</strong></td>
+        <td>HHHL</td>
+        <td>Cat D</td>
+        <td class="r">30,233</td>
+        <td class="r">49.5%</td>
+        <td class="r tr"><strong>-2,820.0</strong></td>
+        <td class="r tr">$-2,820</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: +179 · BTC H1: +68 · BTC M15: -342 · XAU H4: +50 · XAU H1: +568 · EUR H4: -115 · EUR H1: -1073 · EUR M15: -2802 · USDJPY_H4: +26 · USOIL_H4: +442 · UKOIL_H4: +358 · ETH H4: +288 · ETH H1: +231 · ETH M15: -1014 · USDJPY_H1: +238 · USDJPY_M15: +4517 · USOIL_H1: +1184 · UKOIL_H1: +2011 · UKOIL_M15: +4063 · XNG H4: -28 · XNG H1: -559 · XNG M15: -3930 · XAU M15: -1629 · USOIL_M15: +3489 · XPT H4: -145 · XPT H1: -651 · XPT M15: -3711 · DE30_H4: -215 · DE30_H1: +103 · DE30_M15: -1190 · US500_H4: +58 · US500_H1: -1122 · US500_M15: -2465 · JP225_H4: +260 · JP225_H1: +704 · JP225_M15: -664</td>
+      </tr>
+      <tr>
+        <td><strong>P21</strong></td>
+        <td>Doji</td>
+        <td>Cat B</td>
+        <td class="r">9,713</td>
+        <td class="r">48.5%</td>
+        <td class="r tr"><strong>-2,859.5</strong></td>
+        <td class="r tr">$-2,860</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: -0 · BTC H1: -0 · BTC M15: -22 · XAU H4: -0 · XAU H1: -11 · EUR H4: -2 · EUR H1: -9 · EUR M15: -132 · USDJPY_H4: -2 · USOIL_H4: -1 · UKOIL_H4: -1 · ETH H4: -1 · ETH H1: -7 · ETH M15: -131 · USDJPY_H1: -20 · USDJPY_M15: -165 · USOIL_H1: -4 · UKOIL_H1: -13 · UKOIL_M15: -108 · XNG H4: -11 · XNG H1: -184 · XNG M15: -1287 · XAU M15: -5 · USOIL_M15: -17 · XPT H4: -7 · XPT H1: -27 · XPT M15: -622 · DE30_H4: -0 · DE30_H1: -3 · DE30_M15: -15 · US500_H4: -0 · US500_H1: -2 · US500_M15: -45 · JP225_H4: -0 · JP225_H1: -1 · JP225_M15: -3</td>
+      </tr>
+      <tr>
+        <td><strong>P9</strong></td>
+        <td>BB_Touch_Reversal</td>
+        <td>Cat A</td>
+        <td class="r">13,551</td>
+        <td class="r">48.8%</td>
+        <td class="r tr"><strong>-2,907.1</strong></td>
+        <td class="r tr">$-2,907</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: -3 · BTC H1: -8 · BTC M15: -119 · XAU H4: -0 · XAU H1: -1 · EUR H4: -3 · EUR H1: -31 · EUR M15: -137 · USDJPY_H4: -4 · USOIL_H4: +2 · UKOIL_H4: -2 · ETH H4: -1 · ETH H1: -13 · ETH M15: -55 · USDJPY_H1: -16 · USDJPY_M15: -108 · USOIL_H1: -12 · UKOIL_H1: -21 · UKOIL_M15: -121 · XNG H4: -20 · XNG H1: -132 · XNG M15: -1236 · XAU M15: -4 · USOIL_M15: -55 · XPT H4: -9 · XPT H1: -59 · XPT M15: -598 · DE30_H4: -1 · DE30_H1: -3 · DE30_M15: -62 · US500_H4: -1 · US500_H1: -2 · US500_M15: -74 · JP225_H4: -0 · JP225_H1: -1 · JP225_M15: -0</td>
+      </tr>
+      <tr>
+        <td><strong>P29</strong></td>
+        <td>Bearish_Engulfing</td>
+        <td>Cat B</td>
+        <td class="r">6,363</td>
+        <td class="r">47.8%</td>
+        <td class="r tr"><strong>-2,923.5</strong></td>
+        <td class="r tr">$-2,924</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: -16 · BTC H1: -208 · BTC M15: +200 · XAU H4: +24 · XAU H1: +29 · EUR H4: +43 · EUR H1: +118 · EUR M15: +1151 · USDJPY_H4: -31 · USOIL_H4: -20 · UKOIL_H4: -48 · ETH H4: -54 · ETH H1: -171 · ETH M15: +13 · USDJPY_H1: -131 · USDJPY_M15: -1265 · USOIL_H1: -251 · UKOIL_H1: -357 · UKOIL_M15: -880 · XNG H4: -19 · XNG H1: -53 · XNG M15: -749 · XAU M15: +240 · USOIL_M15: -1010 · XPT H4: -24 · XPT H1: +65 · XPT M15: +291 · DE30_H4: +33 · DE30_H1: +15 · DE30_M15: +243 · US500_H4: +5 · US500_H1: +127 · US500_M15: +509 · JP225_H4: -21 · JP225_H1: -361 · JP225_M15: -364</td>
+      </tr>
+      <tr>
+        <td><strong>P97</strong></td>
+        <td>PD_Array_Premium</td>
+        <td>Cat H</td>
+        <td class="r">17,416</td>
+        <td class="r">49.6%</td>
+        <td class="r tr"><strong>-3,192.9</strong></td>
+        <td class="r tr">$-3,193</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: -11 · BTC H1: +47 · BTC M15: +479 · XAU H4: +39 · XAU H1: -67 · EUR H4: +92 · EUR H1: +464 · EUR M15: +1595 · USDJPY_H4: -31 · USOIL_H4: -197 · UKOIL_H4: -210 · ETH H4: +48 · ETH H1: -227 · ETH M15: +484 · USDJPY_H1: -519 · USDJPY_M15: -2586 · USOIL_H1: -842 · UKOIL_H1: -1086 · UKOIL_M15: -2206 · XNG H4: +59 · XNG H1: +130 · XNG M15: -1564 · XAU M15: +64 · USOIL_M15: -2101 · XPT H4: -27 · XPT H1: +302 · XPT M15: +1257 · DE30_H4: +60 · DE30_H1: +168 · DE30_M15: +1481 · US500_H4: +18 · US500_H1: +241 · US500_M15: +2145 · JP225_H4: -68 · JP225_H1: -706 · JP225_M15: +85</td>
+      </tr>
+      <tr>
+        <td><strong>P80</strong></td>
+        <td>POC_Bounce_Short</td>
+        <td>Cat F</td>
+        <td class="r">5,751</td>
+        <td class="r">46.9%</td>
+        <td class="r tr"><strong>-3,297.0</strong></td>
+        <td class="r tr">$-3,297</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: +23 · BTC H1: -94 · BTC M15: +161 · XAU H4: -4 · XAU H1: -97 · EUR H4: +51 · EUR H1: +106 · EUR M15: +646 · USDJPY_H4: -41 · USOIL_H4: -109 · UKOIL_H4: -144 · ETH H4: +24 · ETH H1: -143 · ETH M15: +299 · USDJPY_H1: -227 · USDJPY_M15: -498 · USOIL_H1: -477 · UKOIL_H1: -556 · UKOIL_M15: -872 · XNG H4: +30 · XNG H1: -268 · XNG M15: -699 · XAU M15: +203 · USOIL_M15: -1157 · XPT H4: +6 · XPT H1: +80 · XPT M15: +286 · DE30_H4: +22 · DE30_H1: +101 · DE30_M15: -168 · US500_H4: +15 · US500_H1: +119 · US500_M15: +276 · JP225_H4: -33 · JP225_H1: -85 · JP225_M15: -73</td>
+      </tr>
+      <tr>
+        <td><strong>P121</strong></td>
+        <td>Sunday_Gap_Fill_Short</td>
+        <td>Cat J</td>
+        <td class="r">3,889</td>
+        <td class="r">45.9%</td>
+        <td class="r tr"><strong>-3,298.4</strong></td>
+        <td class="r tr">$-3,298</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: -42 · BTC H1: -387 · XAU H4: -31 · XAU H1: -199 · EUR H4: +0 · EUR H1: +239 · EUR M15: -260 · USDJPY_H4: -20 · USOIL_H4: -54 · UKOIL_H4: -95 · ETH H4: -38 · ETH H1: -441 · USDJPY_H1: -254 · USDJPY_M15: -633 · USOIL_H1: -267 · UKOIL_H1: -392 · UKOIL_M15: +347 · XNG H4: -0 · XNG H1: -80 · XNG M15: -53 · XAU M15: -318 · USOIL_M15: +275 · XPT H4: +5 · XPT H1: +230 · XPT M15: -58 · DE30_H4: -3 · DE30_H1: +0 · DE30_M15: -386 · US500_H4: +19 · US500_H1: +353 · US500_M15: +242 · JP225_H4: -52 · JP225_H1: -200 · JP225_M15: -746</td>
+      </tr>
+      <tr>
+        <td><strong>P107</strong></td>
+        <td>CVD_Div_Bear</td>
+        <td>Cat I</td>
+        <td class="r">11,090</td>
+        <td class="r">48.3%</td>
+        <td class="r tr"><strong>-3,421.2</strong></td>
+        <td class="r tr">$-3,421</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: +53 · BTC H1: -90 · BTC M15: -254 · XAU H4: +30 · XAU H1: -49 · EUR H4: +48 · EUR H1: +470 · EUR M15: +979 · USDJPY_H4: -7 · USOIL_H4: -175 · UKOIL_H4: -144 · ETH H4: +87 · ETH H1: -74 · ETH M15: -155 · USDJPY_H1: -364 · USDJPY_M15: -2107 · USOIL_H1: -304 · UKOIL_H1: -530 · UKOIL_M15: -868 · XNG H4: -3 · XNG H1: -68 · XNG M15: -908 · XAU M15: +649 · USOIL_M15: -1512 · XPT H4: +71 · XPT H1: +312 · XPT M15: +878 · DE30_H4: +117 · DE30_H1: +39 · DE30_M15: +411 · US500_H4: +29 · US500_H1: +502 · US500_M15: +967 · JP225_H4: -83 · JP225_H1: -646 · JP225_M15: -721</td>
+      </tr>
+      <tr>
+        <td><strong>P158</strong></td>
+        <td>Hidden_Div_Bear_RSI</td>
+        <td>Cat N</td>
+        <td class="r">5,091</td>
+        <td class="r">46.5%</td>
+        <td class="r tr"><strong>-3,540.4</strong></td>
+        <td class="r tr">$-3,540</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: +69 · BTC H1: -421 · BTC M15: +49 · XAU H4: +31 · XAU H1: +188 · EUR H4: +11 · EUR H1: +51 · EUR M15: +803 · USDJPY_H4: -14 · UKOIL_H4: +11 · ETH H4: +2 · ETH H1: -41 · ETH M15: +467 · USDJPY_H1: -225 · USDJPY_M15: -707 · USOIL_H1: -370 · UKOIL_H1: -131 · UKOIL_M15: -1170 · XNG H4: +20 · XNG H1: -180 · XNG M15: -949 · XAU M15: -210 · USOIL_M15: -563 · XPT H4: +46 · XPT H1: +189 · XPT M15: -344 · DE30_H4: +11 · DE30_H1: -25 · DE30_M15: -163 · US500_H4: +29 · US500_H1: -122 · US500_M15: +483 · JP225_H4: -5 · JP225_H1: -209 · JP225_M15: -150</td>
+      </tr>
+      <tr>
+        <td><strong>P12</strong></td>
+        <td>EMA_Cross</td>
+        <td>Cat A</td>
+        <td class="r">12,046</td>
+        <td class="r">48.5%</td>
+        <td class="r tr"><strong>-3,542.9</strong></td>
+        <td class="r tr">$-3,543</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: -0 · BTC H1: -4 · BTC M15: -62 · XAU H4: -0 · XAU H1: -0 · EUR H4: -2 · EUR H1: -7 · EUR M15: -147 · USDJPY_H4: -3 · USOIL_H4: -1 · UKOIL_H4: -2 · ETH H4: -1 · ETH H1: -9 · ETH M15: -104 · USDJPY_H1: -8 · USDJPY_M15: -267 · USOIL_H1: -7 · UKOIL_H1: -29 · UKOIL_M15: -159 · XNG H4: -14 · XNG H1: -166 · XNG M15: -1663 · XAU M15: -14 · USOIL_M15: -64 · XPT H4: -8 · XPT H1: -73 · XPT M15: -580 · DE30_H4: -1 · DE30_H1: -2 · DE30_M15: -42 · US500_H4: -1 · US500_H1: -1 · US500_M15: -61 · JP225_H4: -0 · JP225_H1: +4 · JP225_M15: -42</td>
+      </tr>
+      <tr>
+        <td><strong>P170</strong></td>
+        <td>Range_Mid_Bounce</td>
+        <td>Cat P</td>
+        <td class="r">12,851</td>
+        <td class="r">48.5%</td>
+        <td class="r tr"><strong>-3,599.6</strong></td>
+        <td class="r tr">$-3,600</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: -1 · BTC H1: -7 · BTC M15: -44 · XAU H4: -0 · XAU H1: -4 · EUR H4: -3 · EUR H1: -20 · EUR M15: -73 · USDJPY_H4: -3 · USOIL_H4: -2 · UKOIL_H4: -3 · ETH H4: -1 · ETH H1: -4 · ETH M15: -69 · USDJPY_H1: -22 · USDJPY_M15: -163 · USOIL_H1: -49 · UKOIL_H1: -20 · UKOIL_M15: -224 · XNG H4: -12 · XNG H1: -256 · XNG M15: -1526 · XAU M15: -12 · USOIL_M15: -37 · XPT H4: -10 · XPT H1: -72 · XPT M15: -822 · DE30_H4: -0 · DE30_H1: -12 · DE30_M15: -48 · US500_H4: -1 · US500_H1: -13 · US500_M15: -47 · JP225_H4: -0 · JP225_H1: -1 · JP225_M15: -20</td>
+      </tr>
+      <tr>
+        <td><strong>P125</strong></td>
+        <td>ThreeBar_Rev_Bear</td>
+        <td>Cat J</td>
+        <td class="r">5,764</td>
+        <td class="r">46.8%</td>
+        <td class="r tr"><strong>-3,617.5</strong></td>
+        <td class="r tr">$-3,617</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: -22 · BTC H1: -123 · BTC M15: +3 · XAU H4: +26 · XAU H1: +75 · EUR H4: +2 · EUR H1: +138 · EUR M15: +922 · USDJPY_H4: -25 · USOIL_H4: -51 · UKOIL_H4: -47 · ETH H4: -10 · ETH H1: -141 · ETH M15: +206 · USDJPY_H1: -196 · USDJPY_M15: -1168 · USOIL_H1: -256 · UKOIL_H1: -287 · UKOIL_M15: -1035 · XNG H4: +14 · XNG H1: -201 · XNG M15: -996 · XAU M15: +151 · USOIL_M15: -1118 · XPT H4: +12 · XPT H1: +143 · XPT M15: -171 · DE30_H4: +13 · DE30_H1: -33 · DE30_M15: +432 · US500_H4: +11 · US500_H1: +120 · US500_M15: +542 · JP225_H4: -16 · JP225_H1: -301 · JP225_M15: -229</td>
+      </tr>
+      <tr>
+        <td><strong>P160</strong></td>
+        <td>Hidden_Div_Bear_MACD</td>
+        <td>Cat N</td>
+        <td class="r">7,646</td>
+        <td class="r">47.5%</td>
+        <td class="r tr"><strong>-4,077.3</strong></td>
+        <td class="r tr">$-4,077</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: +71 · BTC H1: -262 · BTC M15: +245 · XAU H4: +29 · XAU H1: +26 · EUR H4: -3 · EUR H1: +94 · EUR M15: +1528 · USDJPY_H4: -17 · USOIL_H4: -61 · UKOIL_H4: +28 · ETH H4: +5 · ETH H1: -177 · ETH M15: +132 · USDJPY_H1: -289 · USDJPY_M15: -1240 · USOIL_H1: -484 · UKOIL_H1: -503 · UKOIL_M15: -1484 · XNG H4: +31 · XNG H1: -219 · XNG M15: -776 · XAU M15: -48 · USOIL_M15: -592 · XPT H4: +48 · XPT H1: +223 · XPT M15: -383 · DE30_H4: -15 · DE30_H1: +89 · DE30_M15: -88 · US500_H4: +13 · US500_H1: -17 · US500_M15: +935 · JP225_H4: -17 · JP225_H1: -224 · JP225_M15: -680</td>
+      </tr>
+      <tr>
+        <td><strong>P55</strong></td>
+        <td>CHoCH_Bull</td>
+        <td>Cat D</td>
+        <td class="r">5,113</td>
+        <td class="r">45.7%</td>
+        <td class="r tr"><strong>-4,084.6</strong></td>
+        <td class="r tr">$-4,085</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: -48 · BTC H1: +86 · BTC M15: -360 · XAU H4: -26 · XAU H1: +93 · EUR H4: -5 · EUR H1: +339 · EUR M15: -1571 · USDJPY_H4: +6 · USOIL_H4: +48 · UKOIL_H4: +17 · ETH H4: +36 · ETH H1: +221 · ETH M15: -554 · USDJPY_H1: +228 · USDJPY_M15: +617 · USOIL_H1: +81 · UKOIL_H1: +107 · UKOIL_M15: +1074 · XNG H4: -30 · XNG H1: -325 · XNG M15: -875 · XAU M15: -205 · USOIL_M15: +566 · XPT H4: -26 · XPT H1: -232 · XPT M15: -1411 · DE30_H4: -165 · DE30_H1: -210 · DE30_M15: -912 · US500_H4: -14 · US500_H1: -228 · US500_M15: -618 · JP225_H4: +33 · JP225_H1: +206 · JP225_M15: -29</td>
+      </tr>
+      <tr>
+        <td><strong>P126</strong></td>
+        <td>HTF_Bias_Long</td>
+        <td>Cat K</td>
+        <td class="r">3,044</td>
+        <td class="r">43.3%</td>
+        <td class="r tr"><strong>-4,230.0</strong></td>
+        <td class="r tr">$-4,230</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H1: +127 · BTC M15: -586 · XAU H4: -32 · XAU H1: -63 · EUR H4: +2 · EUR H1: -133 · EUR M15: -316 · USDJPY_H4: -15 · USOIL_H4: +250 · UKOIL_H4: +237 · ETH H4: +16 · ETH H1: +36 · ETH M15: -554 · USDJPY_H1: +210 · USDJPY_M15: +12 · USOIL_H1: +14 · UKOIL_H1: +414 · UKOIL_M15: +47 · XNG H4: -3 · XNG H1: -317 · XNG M15: -1108 · XAU M15: -20 · USOIL_M15: -183 · XPT H4: -47 · XPT H1: -263 · XPT M15: -746 · DE30_H4: -31 · DE30_H1: +131 · DE30_M15: -714 · US500_H4: -47 · US500_H1: +227 · US500_M15: -233 · JP225_H4: -78 · JP225_H1: +158 · JP225_M15: -622</td>
+      </tr>
+      <tr>
+        <td><strong>P20</strong></td>
+        <td>Inside_Bar_Break</td>
+        <td>Cat A</td>
+        <td class="r">16,234</td>
+        <td class="r">48.7%</td>
+        <td class="r tr"><strong>-4,345.8</strong></td>
+        <td class="r tr">$-4,346</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: -3 · BTC H1: -15 · BTC M15: -29 · XAU H4: -0 · XAU H1: -0 · EUR H4: -2 · EUR H1: -12 · EUR M15: -169 · USDJPY_H4: -5 · USOIL_H4: -2 · UKOIL_H4: -4 · ETH H4: -2 · ETH H1: -35 · ETH M15: -144 · USDJPY_H1: -30 · USDJPY_M15: -87 · USOIL_H1: -22 · UKOIL_H1: -36 · UKOIL_M15: -181 · XNG H4: -35 · XNG H1: -225 · XNG M15: -2088 · XAU M15: -16 · USOIL_M15: -86 · XPT H4: -13 · XPT H1: -81 · XPT M15: -901 · DE30_H4: -1 · DE30_H1: -3 · DE30_M15: +7 · US500_H4: -1 · US500_H1: +1 · US500_M15: -106 · JP225_H4: -1 · JP225_H1: -4 · JP225_M15: -14</td>
+      </tr>
+      <tr>
+        <td><strong>P61</strong></td>
+        <td>Double_Bottom</td>
+        <td>Cat E</td>
+        <td class="r">3,527</td>
+        <td class="r">44.0%</td>
+        <td class="r tr"><strong>-5,027.1</strong></td>
+        <td class="r tr">$-5,027</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: +8 · BTC H1: +327 · BTC M15: -253 · XAU H1: +153 · EUR H4: +10 · EUR H1: -175 · EUR M15: -214 · USDJPY_H4: +81 · USOIL_H4: +180 · UKOIL_H4: +261 · ETH H4: +49 · ETH H1: -21 · ETH M15: -502 · USDJPY_H1: +174 · USDJPY_M15: +487 · USOIL_H1: +189 · UKOIL_H1: -101 · UKOIL_M15: +150 · XNG H4: -7 · XNG H1: -511 · XNG M15: -1239 · XAU M15: -340 · USOIL_M15: -136 · XPT H4: -21 · XPT H1: -167 · XPT M15: -654 · DE30_H4: +21 · DE30_H1: -217 · DE30_M15: -588 · US500_H4: +31 · US500_H1: -143 · US500_M15: -1322 · JP225_H4: +39 · JP225_H1: -15 · JP225_M15: -557</td>
+      </tr>
+      <tr>
+        <td><strong>P16</strong></td>
+        <td>Stoch_Cross</td>
+        <td>Cat A</td>
+        <td class="r">18,511</td>
+        <td class="r">48.7%</td>
+        <td class="r tr"><strong>-5,029.0</strong></td>
+        <td class="r tr">$-5,029</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: -3 · BTC H1: -21 · BTC M15: -61 · XAU H4: -0 · XAU H1: -1 · EUR H4: -3 · EUR H1: -15 · EUR M15: -231 · USDJPY_H4: -5 · USOIL_H4: -2 · UKOIL_H4: -3 · ETH H4: -2 · ETH H1: -16 · ETH M15: -109 · USDJPY_H1: -20 · USDJPY_M15: -172 · USOIL_H1: -16 · UKOIL_H1: -29 · UKOIL_M15: -153 · XNG H4: -21 · XNG H1: -248 · XNG M15: -2543 · XAU M15: -4 · USOIL_M15: -97 · XPT H4: -13 · XPT H1: -64 · XPT M15: -1021 · DE30_H4: -1 · DE30_H1: -3 · DE30_M15: -32 · US500_H4: -1 · US500_H1: -3 · US500_M15: -103 · JP225_H4: -0 · JP225_H1: -2 · JP225_M15: -10</td>
+      </tr>
+      <tr>
+        <td><strong>P19</strong></td>
+        <td>Round_Number</td>
+        <td>Cat A</td>
+        <td class="r">21,377</td>
+        <td class="r">48.7%</td>
+        <td class="r tr"><strong>-5,287.1</strong></td>
+        <td class="r tr">$-5,287</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: -1 · BTC H1: -5 · BTC M15: -47 · XAU H4: -1 · XAU H1: -30 · EUR H4: -1 · EUR H1: -9 · EUR M15: -97 · ETH H4: -6 · ETH H1: -41 · ETH M15: -597 · USDJPY_H1: +0 · USDJPY_M15: +1 · XNG H4: -9 · XNG H1: -146 · XNG M15: -813 · XAU M15: -84 · XPT H4: -42 · XPT H1: -325 · XPT M15: -3034 · DE30_H4: -0 · DE30_H1: -0 · DE30_M15: -0 · US500_M15: -0 · JP225_H4: -0 · JP225_H1: -0 · JP225_M15: -1</td>
+      </tr>
+      <tr>
+        <td><strong>P14</strong></td>
+        <td>RSI_Divergence</td>
+        <td>Cat A</td>
+        <td class="r">23,658</td>
+        <td class="r">48.9%</td>
+        <td class="r tr"><strong>-5,474.7</strong></td>
+        <td class="r tr">$-5,475</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: -0 · BTC H1: -1 · BTC M15: -59 · XAU H4: -0 · XAU H1: -1 · EUR H4: -3 · EUR H1: -73 · EUR M15: -1405 · USDJPY_H4: -3 · USOIL_H4: +0 · UKOIL_H4: -0 · ETH H4: +0 · ETH H1: -1 · ETH M15: -116 · USDJPY_H1: -72 · USDJPY_M15: -1100 · USOIL_H1: -3 · UKOIL_H1: -8 · UKOIL_M15: -136 · XNG H4: -5 · XNG H1: -79 · XNG M15: -1353 · XAU M15: -19 · USOIL_M15: -26 · XPT H4: -0 · XPT H1: -8 · XPT M15: -369 · DE30_H4: -0 · DE30_H1: -2 · DE30_M15: -162 · US500_H4: -0 · US500_H1: -3 · US500_M15: -375 · JP225_H4: -0 · JP225_H1: -3 · JP225_M15: -88</td>
+      </tr>
+      <tr>
+        <td><strong>P18</strong></td>
+        <td>Pivot_Bounce</td>
+        <td>Cat A</td>
+        <td class="r">25,568</td>
+        <td class="r">48.8%</td>
+        <td class="r tr"><strong>-5,772.2</strong></td>
+        <td class="r tr">$-5,772</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: -3 · BTC H1: -13 · BTC M15: -45 · XAU H4: -1 · XAU H1: -3 · EUR H4: -15 · EUR H1: -54 · EUR M15: -157 · USDJPY_H4: -18 · USOIL_H4: -4 · UKOIL_H4: -14 · ETH H4: -8 · ETH H1: -27 · ETH M15: -69 · USDJPY_H1: -31 · USDJPY_M15: -162 · USOIL_H1: -29 · UKOIL_H1: -72 · UKOIL_M15: -214 · XNG H4: -113 · XNG H1: -626 · XNG M15: -2397 · XAU M15: -7 · USOIL_M15: -17 · XPT H4: -61 · XPT H1: -163 · XPT M15: -1300 · DE30_H4: -4 · DE30_H1: -8 · DE30_M15: -32 · US500_H4: -2 · US500_H1: -7 · US500_M15: -47 · JP225_H4: -2 · JP225_H1: -8 · JP225_M15: -40</td>
+      </tr>
+      <tr>
+        <td><strong>P165</strong></td>
+        <td>POC_Migration_Long</td>
+        <td>Cat O</td>
+        <td class="r">12,589</td>
+        <td class="r">47.1%</td>
+        <td class="r tr"><strong>-6,334.3</strong></td>
+        <td class="r tr">$-6,334</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: +80 · BTC H1: -409 · BTC M15: -137 · XAU H4: -80 · XAU H1: +175 · EUR H4: -34 · EUR H1: -325 · EUR M15: -1541 · USDJPY_H4: +172 · USOIL_H4: +78 · UKOIL_H4: +180 · ETH H4: +3 · ETH H1: -416 · ETH M15: -738 · USDJPY_H1: -122 · USDJPY_M15: +1725 · USOIL_H1: +175 · UKOIL_H1: +623 · UKOIL_M15: +1297 · XNG H4: -100 · XNG H1: -866 · XNG M15: -2340 · XAU M15: -843 · USOIL_M15: +1193 · XPT H4: -81 · XPT H1: -556 · XPT M15: -2787 · DE30_H4: -33 · DE30_H1: -82 · DE30_M15: +342 · US500_H4: +33 · US500_H1: -289 · US500_M15: -936 · JP225_H4: +135 · JP225_H1: +344 · JP225_M15: -176</td>
+      </tr>
+      <tr>
+        <td><strong>P54</strong></td>
+        <td>BOS_Bear</td>
+        <td>Cat D</td>
+        <td class="r">7,500</td>
+        <td class="r">45.0%</td>
+        <td class="r tr"><strong>-6,345.6</strong></td>
+        <td class="r tr">$-6,346</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: +17 · BTC H1: -223 · BTC M15: +632 · XAU H4: +68 · XAU H1: +134 · EUR H4: -42 · EUR H1: -120 · EUR M15: +1173 · USDJPY_H4: -63 · USOIL_H4: -29 · UKOIL_H4: -17 · ETH H4: +27 · ETH H1: +132 · ETH M15: -80 · USDJPY_H1: -286 · USDJPY_M15: -940 · USOIL_H1: -227 · UKOIL_H1: -128 · UKOIL_M15: -1381 · XNG H4: -65 · XNG H1: -418 · XNG M15: -2195 · XAU M15: +138 · USOIL_M15: -1548 · XPT H4: -14 · XPT H1: +140 · XPT M15: +130 · DE30_H4: +109 · DE30_H1: -54 · DE30_M15: -786 · US500_H4: +71 · US500_H1: +21 · US500_M15: +485 · JP225_H4: -8 · JP225_H1: -303 · JP225_M15: -691</td>
+      </tr>
+      <tr>
+        <td><strong>P129</strong></td>
+        <td>MTF_FVG_Aligned_Short</td>
+        <td>Cat K</td>
+        <td class="r">9,125</td>
+        <td class="r">46.4%</td>
+        <td class="r tr"><strong>-6,665.2</strong></td>
+        <td class="r tr">$-6,665</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: -42 · BTC H1: -455 · BTC M15: +175 · XAU H4: -14 · XAU H1: -6 · EUR H4: -57 · EUR H1: -131 · EUR M15: +1046 · USDJPY_H4: -17 · USOIL_H4: -67 · UKOIL_H4: -55 · ETH H4: -40 · ETH H1: -641 · ETH M15: +926 · USDJPY_H1: -282 · USDJPY_M15: -1732 · USOIL_H1: -148 · UKOIL_H1: -752 · UKOIL_M15: -1243 · XNG H4: -44 · XNG H1: -289 · XNG M15: -1949 · XAU M15: +43 · USOIL_M15: -1527 · XPT H4: +46 · XPT H1: +139 · XPT M15: +385 · DE30_H4: +54 · DE30_H1: +49 · DE30_M15: +417 · US500_H4: +3 · US500_H1: +46 · US500_M15: +337 · JP225_H4: -31 · JP225_H1: -482 · JP225_M15: -327</td>
+      </tr>
+      <tr>
+        <td><strong>P86</strong></td>
+        <td>NR7</td>
+        <td>Cat G</td>
+        <td class="r">30,221</td>
+        <td class="r">48.9%</td>
+        <td class="r tr"><strong>-6,943.0</strong></td>
+        <td class="r tr">$-6,943</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: -1 · BTC H1: -27 · BTC M15: -120 · XAU H4: -0 · XAU H1: -2 · EUR H4: -6 · EUR H1: -48 · EUR M15: -279 · USDJPY_H4: -11 · USOIL_H4: -3 · UKOIL_H4: -3 · ETH H4: -3 · ETH H1: -24 · ETH M15: -195 · USDJPY_H1: -39 · USDJPY_M15: -388 · USOIL_H1: -19 · UKOIL_H1: -30 · UKOIL_M15: -489 · XNG H4: -29 · XNG H1: -341 · XNG M15: -3224 · XAU M15: -18 · USOIL_M15: -111 · XPT H4: -24 · XPT H1: -136 · XPT M15: -1032 · DE30_H4: -2 · DE30_H1: -7 · DE30_M15: -108 · US500_H4: -1 · US500_H1: -9 · US500_M15: -208 · JP225_H4: -1 · JP225_H1: -2 · JP225_M15: -5</td>
+      </tr>
+      <tr>
+        <td><strong>P2</strong></td>
+        <td>MultiRej_Short</td>
+        <td>Cat A</td>
+        <td class="r">7,920</td>
+        <td class="r">45.5%</td>
+        <td class="r tr"><strong>-7,262.6</strong></td>
+        <td class="r tr">$-7,263</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: -67 · BTC H1: -262 · BTC M15: -41 · EUR H4: +55 · EUR H1: +470 · EUR M15: +2068 · USDJPY_H4: -13 · USOIL_H4: -36 · ETH H1: -58 · ETH M15: +544 · USDJPY_H1: -12 · USDJPY_M15: -2761 · USOIL_H1: -600 · UKOIL_H1: -361 · UKOIL_M15: -1999 · XNG H4: -54 · XNG H1: -623 · XNG M15: -2505 · XAU M15: +319 · USOIL_M15: -1297 · XPT M15: +162 · DE30_H1: -3 · DE30_M15: -426 · US500_H1: +191 · US500_M15: -83 · JP225_M15: +132</td>
+      </tr>
+      <tr>
+        <td><strong>P133</strong></td>
+        <td>Daily_Bias_Intraday_Short</td>
+        <td>Cat K</td>
+        <td class="r">18,354</td>
+        <td class="r">47.6%</td>
+        <td class="r tr"><strong>-7,477.5</strong></td>
+        <td class="r tr">$-7,477</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: -64 · BTC H1: -401 · BTC M15: +1273 · XAU H4: +57 · XAU H1: +195 · EUR H4: -13 · EUR H1: +342 · EUR M15: +2744 · USDJPY_H4: -77 · USOIL_H4: -233 · UKOIL_H4: -145 · ETH H4: +8 · ETH H1: -481 · ETH M15: +419 · USDJPY_H1: -487 · USDJPY_M15: -2618 · USOIL_H1: -1107 · UKOIL_H1: -860 · UKOIL_M15: -2441 · XNG H4: -38 · XNG H1: -583 · XNG M15: -4320 · XAU M15: +1039 · USOIL_M15: -3660 · XPT H4: -38 · XPT H1: -73 · XPT M15: -155 · DE30_H4: +52 · DE30_H1: -26 · DE30_M15: +362 · US500_H4: +26 · US500_H1: +627 · US500_M15: +2977 · JP225_H4: +62 · JP225_H1: -193 · JP225_M15: +352</td>
+      </tr>
+      <tr>
+        <td><strong>P11</strong></td>
+        <td>EMA_Bounce</td>
+        <td>Cat A</td>
+        <td class="r">27,956</td>
+        <td class="r">48.6%</td>
+        <td class="r tr"><strong>-7,773.2</strong></td>
+        <td class="r tr">$-7,773</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: -1 · BTC H1: -9 · BTC M15: -90 · XAU H4: -0 · XAU H1: -2 · EUR H4: -7 · EUR H1: -74 · EUR M15: -344 · USDJPY_H4: -6 · USOIL_H4: -2 · UKOIL_H4: -3 · ETH H4: -3 · ETH H1: -18 · ETH M15: -241 · USDJPY_H1: -19 · USDJPY_M15: -379 · USOIL_H1: -22 · UKOIL_H1: -43 · UKOIL_M15: -366 · XNG H4: -18 · XNG H1: -607 · XNG M15: -2843 · XAU M15: -31 · USOIL_M15: -164 · XPT H4: -25 · XPT H1: -149 · XPT M15: -1930 · DE30_H4: -2 · DE30_H1: -4 · DE30_M15: -136 · US500_H4: -2 · US500_H1: -5 · US500_M15: -183 · JP225_H4: -1 · JP225_H1: -1 · JP225_M15: -43</td>
+      </tr>
+      <tr>
+        <td><strong>P8</strong></td>
+        <td>TwoBar_Reversal</td>
+        <td>Cat A</td>
+        <td class="r">40,831</td>
+        <td class="r">48.7%</td>
+        <td class="r tr"><strong>-10,512.8</strong></td>
+        <td class="r tr">$-10,513</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: -4 · BTC H1: -20 · BTC M15: -117 · XAU H4: -0 · XAU H1: -9 · EUR H4: -8 · EUR H1: -49 · EUR M15: -597 · USDJPY_H4: -9 · USOIL_H4: -3 · UKOIL_H4: -5 · ETH H4: -4 · ETH H1: -28 · ETH M15: -194 · USDJPY_H1: -78 · USDJPY_M15: -594 · USOIL_H1: -26 · UKOIL_H1: -87 · UKOIL_M15: -374 · XNG H4: -51 · XNG H1: -694 · XNG M15: -4632 · XAU M15: -58 · USOIL_M15: -171 · XPT H4: -30 · XPT H1: -166 · XPT M15: -2043 · DE30_H4: -3 · DE30_H1: -8 · DE30_M15: -48 · US500_H4: -2 · US500_H1: -3 · US500_M15: -302 · JP225_H4: -1 · JP225_H1: -6 · JP225_M15: -91</td>
+      </tr>
+      <tr>
+        <td><strong>P71</strong></td>
+        <td>FVG_Bull</td>
+        <td>Cat F</td>
+        <td class="r">46,731</td>
+        <td class="r">48.7%</td>
+        <td class="r tr"><strong>-10,660.8</strong></td>
+        <td class="r tr">$-10,661</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: +298 · BTC H1: +1180 · BTC M15: +780 · XAU H4: +117 · XAU H1: +119 · EUR H4: -261 · EUR H1: -1241 · EUR M15: -5914 · USDJPY_H4: +250 · USOIL_H4: +715 · UKOIL_H4: +796 · ETH H4: +306 · ETH H1: +890 · ETH M15: -3678 · USDJPY_H1: +877 · USDJPY_M15: +9140 · USOIL_H1: +1380 · UKOIL_H1: +2408 · UKOIL_M15: +7515 · XNG H4: -399 · XNG H1: -1840 · XNG M15: -6585 · XAU M15: -1837 · USOIL_M15: +5280 · XPT H4: +141 · XPT H1: -859 · XPT M15: -8895 · DE30_H4: -207 · DE30_H1: -747 · DE30_M15: -3017 · US500_H4: -218 · US500_H1: -2082 · US500_M15: -6996 · JP225_H4: +260 · JP225_H1: +1693 · JP225_M15: -30</td>
+      </tr>
+      <tr>
+        <td><strong>P85</strong></td>
+        <td>NR4</td>
+        <td>Cat G</td>
+        <td class="r">50,562</td>
+        <td class="r">48.8%</td>
+        <td class="r tr"><strong>-12,067.1</strong></td>
+        <td class="r tr">$-12,067</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: -2 · BTC H1: -28 · BTC M15: -204 · XAU H4: -1 · XAU H1: -4 · EUR H4: -11 · EUR H1: -62 · EUR M15: -514 · USDJPY_H4: -16 · USOIL_H4: -1 · UKOIL_H4: -6 · ETH H4: -5 · ETH H1: -33 · ETH M15: -387 · USDJPY_H1: -76 · USDJPY_M15: -553 · USOIL_H1: -65 · UKOIL_H1: -86 · UKOIL_M15: -673 · XNG H4: -60 · XNG H1: -583 · XNG M15: -5688 · XAU M15: -51 · USOIL_M15: -141 · XPT H4: -37 · XPT H1: -243 · XPT M15: -2071 · DE30_H4: -4 · DE30_H1: -10 · DE30_M15: -101 · US500_H4: -2 · US500_H1: -11 · US500_M15: -253 · JP225_H4: -1 · JP225_H1: -3 · JP225_M15: -81</td>
+      </tr>
+      <tr>
+        <td><strong>P45</strong></td>
+        <td>Breaker_Block_Bull</td>
+        <td>Cat C</td>
+        <td class="r">39,824</td>
+        <td class="r">48.3%</td>
+        <td class="r tr"><strong>-12,212.8</strong></td>
+        <td class="r tr">$-12,213</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: +301 · BTC H1: +91 · BTC M15: -1387 · XAU H4: +16 · XAU H1: +106 · EUR H4: -253 · EUR H1: -916 · EUR M15: -6734 · USDJPY_H4: +207 · USOIL_H4: +466 · UKOIL_H4: +525 · ETH H4: +231 · ETH H1: +800 · ETH M15: -2061 · USDJPY_H1: +902 · USDJPY_M15: +4089 · USOIL_H1: +1049 · UKOIL_H1: +2167 · UKOIL_M15: +5367 · XNG H4: -263 · XNG H1: -1119 · XNG M15: -4008 · XAU M15: -23 · USOIL_M15: +4692 · XPT H4: -110 · XPT H1: -1029 · XPT M15: -7910 · DE30_H4: -297 · DE30_H1: -261 · DE30_M15: -1565 · US500_H4: -115 · US500_H1: -1429 · US500_M15: -5255 · JP225_H4: +313 · JP225_H1: +1538 · JP225_M15: -336</td>
+      </tr>
+      <tr>
+        <td><strong>P141</strong></td>
+        <td>Ichimoku_Kumo_Twist_Bear</td>
+        <td>Cat L</td>
+        <td class="r">18,429</td>
+        <td class="r">47.3%</td>
+        <td class="r tr"><strong>-13,082.0</strong></td>
+        <td class="r tr">$-13,082</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: +240 · BTC H1: -579 · BTC M15: +1209 · XAU H4: +251 · XAU H1: -463 · EUR H4: +187 · EUR H1: +511 · EUR M15: +1967 · USDJPY_H4: -199 · USOIL_H4: -223 · UKOIL_H4: -145 · ETH H4: +104 · ETH H1: -1003 · ETH M15: +400 · USDJPY_H1: -1198 · USDJPY_M15: -3774 · USOIL_H1: -1250 · UKOIL_H1: -945 · UKOIL_M15: -4737 · XNG H4: +2 · XNG H1: -590 · XNG M15: -2599 · XAU M15: +1380 · USOIL_M15: -3498 · XPT H4: +126 · XPT H1: +585 · XPT M15: +873 · DE30_H4: +44 · DE30_H1: -70 · DE30_M15: +1273 · US500_H4: +371 · US500_H1: +580 · US500_M15: +710 · JP225_H4: +11 · JP225_H1: -1100 · JP225_M15: -1531</td>
+      </tr>
+      <tr>
+        <td><strong>P52</strong></td>
+        <td>LHLL</td>
+        <td>Cat D</td>
+        <td class="r">28,231</td>
+        <td class="r">47.0%</td>
+        <td class="r tr"><strong>-15,946.1</strong></td>
+        <td class="r tr">$-15,946</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: +41 · BTC H1: -728 · BTC M15: +224 · XAU H4: +74 · XAU H1: +319 · EUR H4: +3 · EUR H1: +497 · EUR M15: +3076 · USDJPY_H4: -168 · USOIL_H4: -174 · UKOIL_H4: -156 · ETH H4: +87 · ETH H1: -550 · ETH M15: +244 · USDJPY_H1: -822 · USDJPY_M15: -4001 · USOIL_H1: -1542 · UKOIL_H1: -1799 · UKOIL_M15: -4399 · XNG H4: -41 · XNG H1: -628 · XNG M15: -5292 · XAU M15: -577 · USOIL_M15: -3367 · XPT H4: +24 · XPT H1: +683 · XPT M15: +473 · DE30_H4: -23 · DE30_H1: +125 · DE30_M15: +22 · US500_H4: +45 · US500_H1: +956 · US500_M15: +2324 · JP225_H4: +71 · JP225_H1: -713 · JP225_M15: -252</td>
+      </tr>
+      <tr>
+        <td><strong>P46</strong></td>
+        <td>Breaker_Block_Bear</td>
+        <td>Cat C</td>
+        <td class="r">40,132</td>
+        <td class="r">47.8%</td>
+        <td class="r tr"><strong>-17,083.2</strong></td>
+        <td class="r tr">$-17,083</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: -61 · BTC H1: -366 · BTC M15: +1919 · XAU H4: +46 · XAU H1: +26 · EUR H4: +108 · EUR H1: +1296 · EUR M15: +4727 · USDJPY_H4: -222 · USOIL_H4: -417 · UKOIL_H4: -371 · ETH H4: -128 · ETH H1: -1031 · ETH M15: +2175 · USDJPY_H1: -1630 · USDJPY_M15: -6341 · USOIL_H1: -1996 · UKOIL_H1: -2327 · UKOIL_M15: -6771 · XNG H4: -112 · XNG H1: -1043 · XNG M15: -5804 · XAU M15: +887 · USOIL_M15: -6121 · XPT H4: +19 · XPT H1: +284 · XPT M15: +1211 · DE30_H4: +215 · DE30_H1: +354 · DE30_M15: +1531 · US500_H4: +277 · US500_H1: +1216 · US500_M15: +4165 · JP225_H4: -112 · JP225_H1: -1747 · JP225_M15: -936</td>
+      </tr>
+      <tr>
+        <td><strong>P142</strong></td>
+        <td>Ichimoku_Chikou_Confirm</td>
+        <td>Cat L</td>
+        <td class="r">96,672</td>
+        <td class="r">48.7%</td>
+        <td class="r tr"><strong>-25,381.0</strong></td>
+        <td class="r tr">$-25,381</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: -6 · BTC H1: -44 · BTC M15: -313 · XAU H4: -1 · XAU H1: -18 · EUR H4: -24 · EUR H1: -176 · EUR M15: -1324 · USDJPY_H4: -27 · USOIL_H4: -8 · UKOIL_H4: -16 · ETH H4: -7 · ETH H1: -132 · ETH M15: -613 · USDJPY_H1: -194 · USDJPY_M15: -817 · USOIL_H1: -84 · UKOIL_H1: -167 · UKOIL_M15: -1266 · XNG H4: -119 · XNG H1: -1617 · XNG M15: -12430 · XAU M15: -41 · USOIL_M15: -396 · XPT H4: -58 · XPT H1: -332 · XPT M15: -4189 · DE30_H4: -4 · DE30_H1: -36 · DE30_M15: -268 · US500_H4: -2 · US500_H1: -15 · US500_M15: -433 · JP225_H4: -2 · JP225_H1: -7 · JP225_M15: -195</td>
+      </tr>
+      <tr>
+        <td><strong>P72</strong></td>
+        <td>FVG_Bear</td>
+        <td>Cat F</td>
+        <td class="r">46,259</td>
+        <td class="r">46.9%</td>
+        <td class="r tr"><strong>-32,377.0</strong></td>
+        <td class="r tr">$-32,377</td>
+        <td style="font-size:11px;color:var(--txt-d)">BTC H4: -68 · BTC H1: +377 · BTC M15: +1637 · XAU H4: +30 · XAU H1: -499 · EUR H4: +142 · EUR H1: +1238 · EUR M15: +4521 · USDJPY_H4: -94 · USOIL_H4: -387 · UKOIL_H4: -499 · ETH H4: -336 · ETH H1: -1378 · ETH M15: +142 · USDJPY_H1: -1602 · USDJPY_M15: -8070 · USOIL_H1: -1832 · UKOIL_H1: -3101 · UKOIL_M15: -9323 · XNG H4: +20 · XNG H1: -942 · XNG M15: -9023 · XAU M15: -58 · USOIL_M15: -8118 · XPT H4: -23 · XPT H1: +290 · XPT M15: +1051 · DE30_H4: +381 · DE30_H1: +672 · DE30_M15: +2579 · US500_H4: +326 · US500_H1: +1579 · US500_M15: +2711 · JP225_H4: -330 · JP225_H1: -2065 · JP225_M15: -2327</td>
+      </tr></tbody>
+    </table>
+  </div>
+</section>
+
+</main>
+
+
+  
+<script>
+// KMP Master · Inline Sidebar JS (no cache, no delegation)
+(function() {
+  function initSidebar() {
+    // Make sure all menus start closed
+    document.querySelectorAll('.tree-children').forEach(function(el){ el.classList.remove('show'); });
+    document.querySelectorAll('.tree-node.expandable').forEach(function(el){ el.classList.remove('expanded'); });
+    
+    // Attach click handler to EACH expandable tree-node directly
+    var nodes = document.querySelectorAll('.tree-node.expandable');
+    nodes.forEach(function(node) {
+      // Visual feedback — click cursor
+      node.style.cursor = 'pointer';
+      
+      node.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var id = node.getAttribute('data-toggle');
+        if (!id) return;
+        var target = document.getElementById(id);
+        if (!target) return;
+        node.classList.toggle('expanded');
+        target.classList.toggle('show');
+      });
+    });
+    
+    // Highlight active link
+    var path = window.location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('.tree-node[href]').forEach(function(link) {
+      if (link.getAttribute('href') === path) link.classList.add('active');
+    });
+  }
+  
+  // Run when DOM is ready (or now if already ready)
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initSidebar);
+  } else {
+    initSidebar();
+  }
+  
+  // Search filter
+  function initSearch() {
+    var inp = document.getElementById('globalSearch');
+    if (!inp) return;
+    inp.addEventListener('input', function(e) {
+      var q = e.target.value.toLowerCase().trim();
+      var sections = document.querySelectorAll('.section, .insight, .kpi, .pat-card, .chart-card');
+      sections.forEach(function(s) {
+        if (!q) { s.style.display = ''; return; }
+        s.style.display = s.textContent.toLowerCase().includes(q) ? '' : 'none';
+      });
+    });
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initSearch);
+  } else {
+    initSearch();
+  }
+  
+  // Helper functions for pages that need them
+  window.wrClass = function(wr, n) {
+    if (wr == null || n < 30) return 'none';
+    return wr >= 53 ? 'high' : (wr >= 48 ? 'mid' : 'low');
+  };
+  window.wrPill = function(wr, n) {
+    if (wr == null || n < 30) return '<span class="wr-pill none">—</span>';
+    return '<span class="wr-pill ' + window.wrClass(wr, n) + '">' + wr.toFixed(1) + '%</span>';
+  };
+  window.dirText = function(d) {
+    if (d === 1) return '<span style="color:var(--green)">L</span>';
+    if (d === -1) return '<span style="color:var(--red)">S</span>';
+    return '<span style="color:var(--yellow)">⇄</span>';
+  };
+  window.tierLabel = function(tier) {
+    return '<span class="tier-tag tier-' + tier + '">' + tier + '</span>';
+  };
+  window.fmtN = function(n) {
+    if (n == null) return '—';
+    if (n >= 1000000) return (n/1000000).toFixed(2) + 'M';
+    if (n >= 1000) return (n/1000).toFixed(1) + 'K';
+    return n.toLocaleString();
+  };
+  window.fmtDollar = function(n, withSign) {
+    if (n == null) return '—';
+    var sign = n < 0 ? '-$' : (withSign ? '+$' : '$');
+    return sign + Math.abs(n).toLocaleString();
+  };
+  
+  // Data loader
+  var _cached = null;
+  window.loadData = async function() {
+    if (_cached) return _cached;
+    try {
+      var res = await fetch('data/master_data.json');
+      _cached = await res.json();
+      return _cached;
+    } catch (e) {
+      console.error('Failed to load data:', e);
+      return null;
+    }
+  };
+})();
+</script>
+</body>
+</html>

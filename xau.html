@@ -24,7 +24,7 @@
   </div>
   
   <div class="nav-section">
-    <div class="nav-label">Datasets · v9.0 · 33/69 ds · 1087K trades</div>
+    <div class="nav-label">Datasets · v9.0 · 36/69 ds · 1174K trades</div>
     
     <div class="tree-node lvl-0 expandable" data-toggle="crypto-menu">
       <span class="arrow">▶</span><span class="nm">Crypto</span><span class="badge">2</span>
@@ -229,12 +229,12 @@
         <a class="tree-node lvl-2" href="de30-m15.html"><span class="nm">DE30 M15</span><span class="badge" style="background:#10b981;color:#fff">66,253</span></a>
       </div>
       <div class="tree-node lvl-1 expandable" data-toggle="jp225-menu">
-        <span class="arrow">▶</span><span class="nm">JP225 (Nikkei 225)</span><span class="badge" style="background:#ef4444;color:#fff">0</span>
+        <span class="arrow">▶</span><span class="nm">JP225 (Nikkei 225)</span><span class="badge" style="background:#ef4444;color:#fff">86.4K</span>
       </div>
       <div class="tree-children" id="jp225-menu">
-        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">JP225 H4</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
-        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">JP225 H1</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
-        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">JP225 M15</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <a class="tree-node lvl-2" href="jp225-h4.html"><span class="nm">JP225 H4</span><span class="badge" style="background:#10b981;color:#fff">4,768</span></a>
+        <a class="tree-node lvl-2" href="jp225-h1.html"><span class="nm">JP225 H1</span><span class="badge" style="background:#10b981;color:#fff">15,784</span></a>
+        <a class="tree-node lvl-2" href="jp225-m15.html"><span class="nm">JP225 M15</span><span class="badge" style="background:#10b981;color:#fff">65,875</span></a>
       </div>
       <div class="tree-node lvl-1 expandable" data-toggle="uk100-menu">
         <span class="arrow">▶</span><span class="nm">UK100 (FTSE 100)</span><span class="badge" style="background:#a78bfa;color:#fff">0</span>
@@ -425,7 +425,6 @@
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initSidebar);
   else initSidebar();
-  
   function initSearch() {
     var inp = document.getElementById('globalSearch');
     if (!inp) return;
@@ -438,14 +437,12 @@
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initSearch);
   else initSearch();
-  
   window.wrClass = function(wr, n) { return wr == null || n < 30 ? 'none' : (wr >= 53 ? 'high' : (wr >= 48 ? 'mid' : 'low')); };
   window.wrPill = function(wr, n) { return wr == null || n < 30 ? '<span class="wr-pill none">—</span>' : '<span class="wr-pill ' + window.wrClass(wr, n) + '">' + wr.toFixed(1) + '%</span>'; };
   window.dirText = function(d) { return d === 1 ? '<span style="color:var(--green)">L</span>' : (d === -1 ? '<span style="color:var(--red)">S</span>' : '<span style="color:var(--yellow)">⇄</span>'); };
   window.tierLabel = function(t) { return '<span class="tier-tag tier-' + t + '">' + t + '</span>'; };
   window.fmtN = function(n) { if (n == null) return '—'; if (n >= 1e6) return (n/1e6).toFixed(2) + 'M'; if (n >= 1e3) return (n/1e3).toFixed(1) + 'K'; return n.toLocaleString(); };
   window.fmtDollar = function(n, w) { if (n == null) return '—'; var s = n < 0 ? '-$' : (w ? '+$' : '$'); return s + Math.abs(n).toLocaleString(); };
-  
   var _c = null;
   window.loadData = async function() {
     if (_c) return _c;
