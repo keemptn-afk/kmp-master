@@ -294,7 +294,7 @@
   </div>
   
   <div class="nav-section">
-    <div class="nav-label">Patterns · 177 (v3.1)</div>
+    <div class="nav-label">Patterns · 177 (v4.1)</div>
     <a class="tree-node lvl-0" href="patterns-encyclopedia.html"><span class="arrow"></span><span class="nm">📚 Pattern Encyclopedia</span><span class="badge">177</span></a>
     <div class="tree-node lvl-0 expandable" data-toggle="pat-menu">
       <span class="arrow">▶</span><span class="nm">v4 Analysis</span><span class="badge">80</span>
@@ -319,7 +319,7 @@
   </div>
   
   <div class="nav-section">
-    <div class="nav-label">EA System · v3.1</div>
+    <div class="nav-label">EA System · v4.1</div>
     <a class="tree-node lvl-0" href="ea-architecture.html"><span class="arrow"></span><span class="nm">⚙ EA Architecture</span></a>
     <a class="tree-node lvl-0" href="tracking-system.html"><span class="arrow"></span><span class="nm">🎯 Tracking System</span></a>  </div>  <div class="nav-section">
     <div class="nav-label">Reference</div>
@@ -341,14 +341,14 @@
   <span class="hero-tag">Post-Order Tracking · Detail Spec</span>
   <h1 class="hero-title">Tracking <span class="accent">System.</span></h1>
   <p class="hero-desc">
-    Position lifecycle 5 phases · MFE/MAE/path/virtual SL-TP · 93-column CSV schema ·
+    Position lifecycle 5 phases · MFE/MAE/path/virtual SL-TP · 131-column CSV schema ·
     เก็บไว้เป็น blueprint หาก EA หายก็ใช้เอกสารนี้สร้างใหม่ได้
   </p>
 </div>
 
 <section>
   <div class="section-head"><span class="section-num">01</span><h2 class="section-title">Position Lifecycle Overview</h2></div>
-  <p class="lead-desc">ทุก order มี 5 phases ของการติดตาม · 1 trade = 1 CSV row × 93 columns (รวม execution metadata)</p>
+  <p class="lead-desc">ทุก order มี 5 phases ของการติดตาม · 1 trade = 1 CSV row × 131 columns (รวม execution metadata)</p>
   
   <div class="tick-flow">
     <div class="tick-item">
@@ -606,7 +606,7 @@ g_tracked[slot].pnl_atr             = (deal_price - entry_price) / entry_atr * d
 g_tracked[slot].hours_held          = (deal_time - open_time) / <span class="num">3600</span>;
 g_tracked[slot].direction_correct   = (pnl_dollars > <span class="num">0</span>);
 
-<span class="com">// Write 93-column CSV row (90 + 3 execution metadata)</span>
+<span class="com">// Write 131-column CSV row (90 + 3 execution metadata)</span>
 g_Logger.WriteRecord(g_tracked[slot]);
 
 <span class="com">// Free slot</span>
@@ -620,8 +620,8 @@ g_tracked[slot].ticket = <span class="num">0</span>;</pre>
 </section>
 
 <section>
-  <div class="section-head"><span class="section-num">07</span><h2 class="section-title">CSV Schema — 93 Columns (v3.1)</h2></div>
-  <p class="lead-desc">ทุก trade เก็บใน CSV file <code class="cb">MQL5/Files/KMP_Harvest_&lt;symbol&gt;_&lt;tf&gt;.csv</code> · 93 columns/row · v3.1 เพิ่ม 3 fields สำหรับ execution metadata</p>
+  <div class="section-head"><span class="section-num">07</span><h2 class="section-title">CSV Schema — 131 Columns (v4.1)</h2></div>
+  <p class="lead-desc">ทุก trade เก็บใน CSV file <code class="cb">MQL5/Files/KMP_Harvest_&lt;symbol&gt;_&lt;tf&gt;.csv</code> · 131 columns/row · v4.1 ขยายเป็น 131 cols (จาก 93 ใน v3.1) เพิ่ม Triple-Barrier 20×20 grid + path checkpoints</p>
   
   <div class="csv-section-head"><span class="num">Cols 1-10:</span> Identification</div>
   <table class="csv-table">

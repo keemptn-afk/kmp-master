@@ -245,7 +245,7 @@
   </div>
   
   <div class="nav-section">
-    <div class="nav-label">Patterns · 177 (v3.1)</div>
+    <div class="nav-label">Patterns · 177 (v4.1)</div>
     <a class="tree-node lvl-0" href="patterns-encyclopedia.html"><span class="arrow"></span><span class="nm">📚 Pattern Encyclopedia</span><span class="badge">177</span></a>
     <div class="tree-node lvl-0 expandable" data-toggle="pat-menu">
       <span class="arrow">▶</span><span class="nm">v4 Analysis</span><span class="badge">80</span>
@@ -270,7 +270,7 @@
   </div>
   
   <div class="nav-section">
-    <div class="nav-label">EA System · v3.1</div>
+    <div class="nav-label">EA System · v4.1</div>
     <a class="tree-node lvl-0" href="ea-architecture.html"><span class="arrow"></span><span class="nm">⚙ EA Architecture</span></a>
     <a class="tree-node lvl-0" href="tracking-system.html"><span class="arrow"></span><span class="nm">🎯 Tracking System</span></a>  </div>  <div class="nav-section">
     <div class="nav-label">Reference</div>
@@ -295,7 +295,7 @@
 
 <div class="insight" style="border-color:#ef4444;background:linear-gradient(90deg,rgba(239,68,68,0.12),transparent)">
   <div class="insight-tag" style="color:#ef4444">🚨 BUG พบ — EA ไม่บันทึก SL timing</div>
-  <strong>EA v3.1 KMP_Structures.mqh ขาด field สำคัญ:</strong><br>
+  <strong>EA v4.1 KMP_Structures.mqh ขาด field สำคัญ:</strong><br>
   ✅ มี: tp_10_time, tp_20_time, tp_30_time, tp_50_time (TP timestamps)<br>
   ❌ ขาด: sl_05_time, sl_10_time, sl_20_time, sl_30_time (SL timestamps)<br><br>
   
@@ -312,7 +312,7 @@
 <div class="insight" style="border-color:#f59e0b;background:linear-gradient(90deg,rgba(245,158,11,0.12),transparent)">
   <div class="insight-tag" style="color:#f59e0b">📊 Multiple Testing Problem (ไม่ได้ apply correction)</div>
   
-  <strong>ขนาด:</strong> 177 patterns × 16 SL/TP combos × 48 datasets = <strong>135,936 statistical tests</strong><br><br>
+  <strong>ขนาด:</strong> 177 patterns × 16 SL/TP combos × 66 datasets = <strong>186,912 statistical tests</strong><br><br>
   
   <strong>Expected false positives:</strong><br>
   • α = 0.05 → <strong>6,797</strong> false positives by chance<br>
@@ -433,7 +433,7 @@
   คู่มือภาษาไทยครบ 8 ส่วน · อธิบายทุกหัวข้อ · ทุกตัวเลข · วิธีใช้งานเว็บอย่างละเอียด
 </div>
 
-<h2 id="status-goals-obstacles" style="margin-top:48px">📌 สถานะ · เป้าหมาย · อุปสรรค (v8.6)</h2>
+<h2 id="status-goals-obstacles" style="margin-top:48px">📌 สถานะ · เป้าหมาย · อุปสรรค (historical v8.6 — v9.0 ปัจจุบันอยู่ด้านบน)</h2>
 
 <div class="insight" style="border-color:#10b981;background:linear-gradient(90deg,rgba(16,185,129,0.08),transparent)">
   <div class="insight-tag" style="color:#10b981">🎯 เป้าหมายของโปรเจกต์ KMP</div>
@@ -446,7 +446,7 @@
   • Phase Forward: Demo trading 1-3 เดือน ใน Live MT5<br>
   • Phase Live: Production EA · scale up หลัง validate<br><br>
 
-  <strong>Universal Patterns Findings (v8.6 baseline):</strong><br>
+  <strong>Universal Patterns Findings (v8.6 baseline · v9.0 expanded):</strong><br>
   • Tier S+ (active 100% + profitable 100% + minEV>0): <strong style="color:#10b981">19 patterns</strong><br>
   • Tier A (active 95%+ + profitable 95%+ + minEV>-0.3): <strong style="color:#3b82f6">24 patterns</strong><br>
   • รวม Production-ready candidates: <strong>43 patterns</strong>
@@ -481,8 +481,8 @@
   <div class="insight-tag" style="color:#3b82f6">🛣️ Roadmap — Updated v9.x Plan (revised)</div>
   <strong>Final Asset Plan: 23 assets · 6 classes · 69 datasets target</strong><br><br>
 
-  <strong>v8.6 (ปัจจุบัน) — Phase 2A 100% COMPLETE 🏆</strong><br>
-  • 48 datasets · 2,201,457 trades · 16 assets<br>
+  <strong style="color:#94a3b8">v8.6 — Phase 2A 100% COMPLETE (historical · v9.0 is current)</strong><br>
+  • 66 datasets · 2,154,570 trades · 22 assets<br>
   • Forex Major 7/7 · Forex Cross 3/3 · Energy 3/3 · Crypto 2/2 · Metals 1/3<br><br>
 
   <strong>v8.7 (next batch — currently harvesting) — Indices + Metals M15</strong><br>
@@ -517,7 +517,7 @@
     <tr><td><strong>P128</strong></td><td><span class="cat-badge">K</span></td><td>MTF_FVG_Aligned_Long</td><td style="color:#10b981;font-weight:bold">+1.69R</td><td>16,948</td></tr><tr><td><strong>P132</strong></td><td><span class="cat-badge">K</span></td><td>Daily_Bias_Intraday_Long</td><td style="color:#10b981;font-weight:bold">+1.69R</td><td>39,732</td></tr><tr><td><strong>P51</strong></td><td><span class="cat-badge">D</span></td><td>HHHL</td><td style="color:#10b981;font-weight:bold">+1.67R</td><td>55,246</td></tr><tr><td><strong>P165</strong></td><td><span class="cat-badge">O</span></td><td>POC_Migration_Long</td><td style="color:#10b981;font-weight:bold">+1.66R</td><td>23,179</td></tr><tr><td><strong>P140</strong></td><td><span class="cat-badge">L</span></td><td>Ichimoku_Kumo_Twist_Bull</td><td style="color:#10b981;font-weight:bold">+1.57R</td><td>33,175</td></tr><tr><td><strong>P71</strong></td><td><span class="cat-badge">F</span></td><td>FVG_Bull</td><td style="color:#10b981;font-weight:bold">+1.57R</td><td>83,979</td></tr><tr><td><strong>P9</strong></td><td><span class="cat-badge">A</span></td><td>BB_Touch_Reversal</td><td style="color:#10b981;font-weight:bold">+1.43R</td><td>25,299</td></tr><tr><td><strong>P21</strong></td><td><span class="cat-badge">B</span></td><td>Doji</td><td style="color:#10b981;font-weight:bold">+1.40R</td><td>18,029</td></tr><tr><td><strong>P20</strong></td><td><span class="cat-badge">A</span></td><td>Inside_Bar_Break</td><td style="color:#10b981;font-weight:bold">+1.39R</td><td>27,216</td></tr><tr><td><strong>P170</strong></td><td><span class="cat-badge">P</span></td><td>Range_Mid_Bounce</td><td style="color:#10b981;font-weight:bold">+1.38R</td><td>23,642</td></tr>
   </table>
   <p style="margin-top:12px;color:#a8a8b8;font-size:12px">
-    <strong>Criteria:</strong> Active ใน 100% ของ 48 datasets · Profitable ใน 100% · MinEV > 0<br>
+    <strong>Criteria:</strong> Active ใน 100% ของ 66 datasets · Profitable ใน 100% · MinEV > 0<br>
     <strong>Source:</strong> data/universal_patterns.json · auto-regenerated ทุก version
   </p>
 </div>
@@ -650,7 +650,7 @@
     <strong>Per-Pattern Mode:</strong> 1 pattern fired = 1 order (no blocking)<br>
     <strong>MAX_TRACKED_POSITIONS:</strong> 10,000 concurrent slots<br>
     <strong>Magic Number:</strong> 317077 (configurable)<br>
-    <strong>Output:</strong> CSV with full trade details (93 columns)<br>
+    <strong>Output:</strong> CSV with full trade details (131 columns)<br>
     <strong>Time-stop:</strong> 240h · <strong>Path checkpoints:</strong> 9 (1/6/12/24/48/72/120/168/240h)<br>
     <strong>Indicators:</strong> ATR, EMA(9/20/50/100/200), BB, RSI, Stoch, MACD, ADX, Ichimoku(9/26/52)<br>
     <br>
@@ -668,7 +668,7 @@
         <tr><td>Include/KMP_Indicators.mqh</td><td>~580</td><td>Indicator init + snapshot capture (incl. Ichimoku v3.0)</td></tr>
         <tr><td>Include/KMP_Patterns.mqh</td><td>587</td><td>Master dispatcher · 18 sub-detectors</td></tr>
         <tr><td>Include/KMP_PatternMetadata.mqh</td><td>459</td><td>177 metadata cases (name/category/direction)</td></tr>
-        <tr><td>Include/KMP_HarvesterLogger.mqh</td><td>~360</td><td>CSV writer · 93-column header + WriteRecord</td></tr>
+        <tr><td>Include/KMP_HarvesterLogger.mqh</td><td>~360</td><td>CSV writer · 131-column header + WriteRecord</td></tr>
         <tr><td>Include/Patterns/KMP_CandleHelpers.mqh</td><td>~210</td><td>FindSwing, IsBullBar, GetHTF, etc.</td></tr>
         <tr><td>Patterns/KMP_PatternsA_Original.mqh</td><td>~700</td><td>Cat A · P1-P20 · Original strategy</td></tr>
         <tr><td>Patterns/KMP_PatternsB_Candlestick.mqh</td><td>~600</td><td>Cat B · P21-P40 · Nison candlesticks</td></tr>
@@ -726,7 +726,7 @@
   <div class="section-head"><span class="section-num">06</span><h2 class="section-title">Change Log</h2></div>
 
   <div class="insight" style="border-color:#22c55e;background:linear-gradient(90deg,rgba(34,197,94,0.12),transparent)">
-    <div class="insight-tag" style="color:#22c55e">🏆 v8.6 · Phase 2A 100% COMPLETE · 2026-05-09 · LATEST</div>
+    <div class="insight-tag" style="color:#94a3b8">v8.6 · Phase 2A COMPLETE · 2026-05-09 (superseded by v9.0)</div>
     <strong>v8.6 — NZDUSD ครบ 3/3 · Forex Major 7/7 · 48 datasets · 2,201,457 trades</strong><br>
     <strong>+NZDUSD H4</strong> (6,850)<br>
     <strong>+NZDUSD H1</strong> (26,490)<br>
@@ -932,13 +932,13 @@
     <strong>v6 Backtest COMPLETE — Final dataset added</strong><br>
     BTC H1 (35,654 · WR 50.0% · PF 1.03 · Net +4,417 ATR)<br>
     Total: <strong>156,101 trades</strong> across 4 assets × 2 timeframes = 8 datasets<br>
-    EA v3.1.1 (FILE_COMMON patch) ทำงานปกติ — ไฟล์ไม่หาย<br>
+    EA v4.1 (FILE_COMMON patch) ทำงานปกติ — ไฟล์ไม่หาย<br>
     UI fixes: ETH separate menu · slashed-zero font · bar overflow · v6 labels<br>
     <strong>NEXT:</strong> finalize Tier S/A patterns → build Production EA → forward test
   </div>
   
   <div class="insight" style="border-left:3px solid #10b981;background:rgba(16,185,129,0.06)">
-    <div class="insight-tag" style="color:#10b981">⭐ EA v3.1 · 2026-05-07 · LATEST · v8.6 ready</div>
+    <div class="insight-tag" style="color:#10b981">EA v3.1 · 2026-05-07 (deprecated · v4.1 active)</div>
     <strong>Execution metadata + Weekend AUTO mode — production-ready harvester</strong><br>
     <ul style="margin:8px 0;padding-left:20px;line-height:1.7">
       <li><strong>+3 CSV columns</strong> (90 → 93): <code class="cb">intended_entry_price</code>, <code class="cb">spread_at_entry_pts</code>, <code class="cb">spread_at_exit_pts</code></li>
@@ -995,7 +995,7 @@
     <strong>v6 Backtest — Added 2 datasets (7 total · 120,447 trades)</strong><br>
     EUR H1 (26,141 · WR 49.6% · PF 0.95) · 
     ETH H4 (9,701 · WR 49.5% · PF 1.03)<br>
-    EA v3.1.1 (FILE_COMMON patch) ใช้แล้ว — ไฟล์ CSV ไม่หายอีก<br>
+    EA v4.1 (FILE_COMMON patch) ใช้แล้ว — ไฟล์ CSV ไม่หายอีก<br>
     Only BTC H1 pending → จะครบ 8/8 = finalize Tier-A
   </div>
   
@@ -1014,7 +1014,7 @@
     <strong>v6 Backtest — first 2 datasets</strong><br>
     BTCUSD H4 (9,474 trades · WR 50.5% · PF 1.11) · 
     XAUUSD H4 (7,077 trades · WR 48.7% · PF 1.07)<br>
-    Total: 16,551 trades · 93 CSV cols · WeekendMode AUTO · spread+slippage real<br>
+    Total: 16,551 trades · 131 CSV cols · WeekendMode AUTO · spread+slippage real<br>
     Pending: BTC H1 · EUR H1 · EUR H4 · XAU H1 (4 datasets)<br>
     Top performer (both): P141 Ichimoku Kumo Twist Bear · Worst: Sunday Gap Fill (P120/P121)
   </div>
@@ -1034,7 +1034,7 @@
     <strong>v6 Backtest — first 2 datasets</strong><br>
     BTCUSD H4 (9,474 trades · WR 50.5% · PF 1.11) · 
     XAUUSD H4 (7,077 trades · WR 48.7% · PF 1.07)<br>
-    Total: 16,551 trades · 93 CSV cols · WeekendMode AUTO · spread+slippage real<br>
+    Total: 16,551 trades · 131 CSV cols · WeekendMode AUTO · spread+slippage real<br>
     Pending: BTC H1 · EUR H1 · EUR H4 · XAU H1 (4 datasets)<br>
     Top performer (both): P141 Ichimoku Kumo Twist Bear · Worst: Sunday Gap Fill (P120/P121)
   </div>
@@ -1044,7 +1044,7 @@
     <strong>v6 Backtest — first 2 datasets</strong><br>
     BTCUSD H4 (9,474 trades · WR 50.5% · PF 1.11) · 
     XAUUSD H4 (7,077 trades · WR 48.7% · PF 1.07)<br>
-    Total: 2,201,457 trades · 93 CSV cols · WeekendMode AUTO · spread+slippage real<br>
+    Total: 2,201,457 trades · 131 CSV cols · WeekendMode AUTO · spread+slippage real<br>
     Pending: BTC H1 · EUR H1 · EUR H4 · XAU H1 (4 datasets)<br>
     Top performer (both): P141 Ichimoku Kumo Twist Bear · Worst: Sunday Gap Fill (P120/P121)
   </div>
@@ -1054,7 +1054,7 @@
     <strong>v6 Backtest — first 2 datasets</strong><br>
     BTCUSD H4 (9,474 trades · WR 50.5% · PF 1.11) · 
     XAUUSD H4 (7,077 trades · WR 48.7% · PF 1.07)<br>
-    Total: 2,201,457 trades · 93 CSV cols · WeekendMode AUTO · spread+slippage real<br>
+    Total: 2,201,457 trades · 131 CSV cols · WeekendMode AUTO · spread+slippage real<br>
     Pending: BTC H1 · EUR H1 · EUR H4 · XAU H1 (4 datasets)<br>
     Top performer (both): P141 Ichimoku Kumo Twist Bear · Worst: Sunday Gap Fill (P120/P121)
   </div>
@@ -1064,7 +1064,7 @@
     <strong>v6 Backtest — first 2 datasets</strong><br>
     BTCUSD H4 (9,474 trades · WR 50.5% · PF 1.11) · 
     XAUUSD H4 (7,077 trades · WR 48.7% · PF 1.07)<br>
-    Total: 2,201,457 trades · 93 CSV cols · WeekendMode AUTO · spread+slippage real<br>
+    Total: 2,201,457 trades · 131 CSV cols · WeekendMode AUTO · spread+slippage real<br>
     Pending: BTC H1 · EUR H1 · EUR H4 · XAU H1 (4 datasets)<br>
     Top performer (both): P141 Ichimoku Kumo Twist Bear · Worst: Sunday Gap Fill (P120/P121)
   </div>
@@ -1074,7 +1074,7 @@
     <strong>v6 Backtest — first 2 datasets</strong><br>
     BTCUSD H4 (9,474 trades · WR 50.5% · PF 1.11) · 
     XAUUSD H4 (7,077 trades · WR 48.7% · PF 1.07)<br>
-    Total: 2,201,457 trades · 93 CSV cols · WeekendMode AUTO · spread+slippage real<br>
+    Total: 2,201,457 trades · 131 CSV cols · WeekendMode AUTO · spread+slippage real<br>
     Pending: BTC H1 · EUR H1 · EUR H4 · XAU H1 (4 datasets)<br>
     Top performer (both): P141 Ichimoku Kumo Twist Bear · Worst: Sunday Gap Fill (P120/P121)
   </div>
@@ -1084,7 +1084,7 @@
     <strong>v6 Backtest — first 2 datasets</strong><br>
     BTCUSD H4 (9,474 trades · WR 50.5% · PF 1.11) · 
     XAUUSD H4 (7,077 trades · WR 48.7% · PF 1.07)<br>
-    Total: 2,201,457 trades · 93 CSV cols · WeekendMode AUTO · spread+slippage real<br>
+    Total: 2,201,457 trades · 131 CSV cols · WeekendMode AUTO · spread+slippage real<br>
     Pending: BTC H1 · EUR H1 · EUR H4 · XAU H1 (4 datasets)<br>
     Top performer (both): P141 Ichimoku Kumo Twist Bear · Worst: Sunday Gap Fill (P120/P121)
   </div>
@@ -1094,7 +1094,7 @@
     <strong>v6 Backtest — first 2 datasets</strong><br>
     BTCUSD H4 (9,474 trades · WR 50.5% · PF 1.11) · 
     XAUUSD H4 (7,077 trades · WR 48.7% · PF 1.07)<br>
-    Total: 2,201,457 trades · 93 CSV cols · WeekendMode AUTO · spread+slippage real<br>
+    Total: 2,201,457 trades · 131 CSV cols · WeekendMode AUTO · spread+slippage real<br>
     Pending: BTC H1 · EUR H1 · EUR H4 · XAU H1 (4 datasets)<br>
     Top performer (both): P141 Ichimoku Kumo Twist Bear · Worst: Sunday Gap Fill (P120/P121)
   </div>
@@ -1104,7 +1104,7 @@
     <strong>v6 Backtest — first 2 datasets</strong><br>
     BTCUSD H4 (9,474 trades · WR 50.5% · PF 1.11) · 
     XAUUSD H4 (7,077 trades · WR 48.7% · PF 1.07)<br>
-    Total: 2,201,457 trades · 93 CSV cols · WeekendMode AUTO · spread+slippage real<br>
+    Total: 2,201,457 trades · 131 CSV cols · WeekendMode AUTO · spread+slippage real<br>
     Pending: BTC H1 · EUR H1 · EUR H4 · XAU H1 (4 datasets)<br>
     Top performer (both): P141 Ichimoku Kumo Twist Bear · Worst: Sunday Gap Fill (P120/P121)
   </div>
@@ -1114,7 +1114,7 @@
     <strong>v6 Backtest — first 2 datasets</strong><br>
     BTCUSD H4 (9,474 trades · WR 50.5% · PF 1.11) · 
     XAUUSD H4 (7,077 trades · WR 48.7% · PF 1.07)<br>
-    Total: 2,201,457 trades · 93 CSV cols · WeekendMode AUTO · spread+slippage real<br>
+    Total: 2,201,457 trades · 131 CSV cols · WeekendMode AUTO · spread+slippage real<br>
     Pending: BTC H1 · EUR H1 · EUR H4 · XAU H1 (4 datasets)<br>
     Top performer (both): P141 Ichimoku Kumo Twist Bear · Worst: Sunday Gap Fill (P120/P121)
   </div>
@@ -1124,7 +1124,7 @@
     <strong>v6 Backtest — first 2 datasets</strong><br>
     BTCUSD H4 (9,474 trades · WR 50.5% · PF 1.11) · 
     XAUUSD H4 (7,077 trades · WR 48.7% · PF 1.07)<br>
-    Total: 2,201,457 trades · 93 CSV cols · WeekendMode AUTO · spread+slippage real<br>
+    Total: 2,201,457 trades · 131 CSV cols · WeekendMode AUTO · spread+slippage real<br>
     Pending: BTC H1 · EUR H1 · EUR H4 · XAU H1 (4 datasets)<br>
     Top performer (both): P141 Ichimoku Kumo Twist Bear · Worst: Sunday Gap Fill (P120/P121)
   </div>
@@ -1134,7 +1134,7 @@
     <strong>v6 Backtest — first 2 datasets</strong><br>
     BTCUSD H4 (6,340 trades · WR 51.0% · PF 1.10) · 
     XAUUSD H4 (4,650 trades · WR 48.4% · PF 0.98)<br>
-    Total: 2,154,570 trades · 93 CSV cols · WeekendMode AUTO · spread+slippage real<br>
+    Total: 2,154,570 trades · 131 CSV cols · WeekendMode AUTO · spread+slippage real<br>
     Pending: BTC H1 · EUR H1 · EUR H4 · XAU H1 (4 datasets)<br>
     Top performer (both): P141 Ichimoku Kumo Twist Bear · Worst: Sunday Gap Fill (P120/P121)
   </div>
@@ -1144,7 +1144,7 @@
     <strong>v6 Backtest — first 2 datasets</strong><br>
     BTCUSD H4 (0 trades · WR 0.0% · PF 0.00) · 
     XAUUSD H4 (0 trades · WR 0.0% · PF 0.00)<br>
-    Total: 430,531 trades · 93 CSV cols · WeekendMode AUTO · spread+slippage real<br>
+    Total: 430,531 trades · 131 CSV cols · WeekendMode AUTO · spread+slippage real<br>
     Pending: BTC H1 · EUR H1 · EUR H4 · XAU H1 (4 datasets)<br>
     Top performer (both): P141 Ichimoku Kumo Twist Bear · Worst: Sunday Gap Fill (P120/P121)
   </div>
@@ -1154,7 +1154,7 @@
     <strong>v6 Backtest — first 2 datasets</strong><br>
     BTCUSD H4 (0 trades · WR 0.0% · PF 0.00) · 
     XAUUSD H4 (0 trades · WR 0.0% · PF 0.00)<br>
-    Total: 430,531 trades · 93 CSV cols · WeekendMode AUTO · spread+slippage real<br>
+    Total: 430,531 trades · 131 CSV cols · WeekendMode AUTO · spread+slippage real<br>
     Pending: BTC H1 · EUR H1 · EUR H4 · XAU H1 (4 datasets)<br>
     Top performer (both): P141 Ichimoku Kumo Twist Bear · Worst: Sunday Gap Fill (P120/P121)
   </div>
@@ -1164,7 +1164,7 @@
     <strong>v6 Backtest — first 2 datasets</strong><br>
     BTCUSD H4 (6,340 trades · WR 51.0% · PF 1.10) · 
     XAUUSD H4 (4,650 trades · WR 48.4% · PF 0.98)<br>
-    Total: 558,794 trades · 93 CSV cols · WeekendMode AUTO · spread+slippage real<br>
+    Total: 558,794 trades · 131 CSV cols · WeekendMode AUTO · spread+slippage real<br>
     Pending: BTC H1 · EUR H1 · EUR H4 · XAU H1 (4 datasets)<br>
     Top performer (both): P141 Ichimoku Kumo Twist Bear · Worst: Sunday Gap Fill (P120/P121)
   </div>
@@ -1174,7 +1174,7 @@
     <strong>v6 Backtest — first 2 datasets</strong><br>
     BTCUSD H4 (6,340 trades · WR 51.0% · PF 1.10) · 
     XAUUSD H4 (4,650 trades · WR 48.4% · PF 0.98)<br>
-    Total: 558,794 trades · 93 CSV cols · WeekendMode AUTO · spread+slippage real<br>
+    Total: 558,794 trades · 131 CSV cols · WeekendMode AUTO · spread+slippage real<br>
     Pending: BTC H1 · EUR H1 · EUR H4 · XAU H1 (4 datasets)<br>
     Top performer (both): P141 Ichimoku Kumo Twist Bear · Worst: Sunday Gap Fill (P120/P121)
   </div>
@@ -1184,7 +1184,7 @@
     <strong>v6 Backtest — first 2 datasets</strong><br>
     BTCUSD H4 (6,340 trades · WR 51.0% · PF 1.10) · 
     XAUUSD H4 (4,650 trades · WR 48.4% · PF 0.98)<br>
-    Total: 736,126 trades · 93 CSV cols · WeekendMode AUTO · spread+slippage real<br>
+    Total: 736,126 trades · 131 CSV cols · WeekendMode AUTO · spread+slippage real<br>
     Pending: BTC H1 · EUR H1 · EUR H4 · XAU H1 (4 datasets)<br>
     Top performer (both): P141 Ichimoku Kumo Twist Bear · Worst: Sunday Gap Fill (P120/P121)
   </div>
@@ -1194,7 +1194,7 @@
     <strong>v6 Backtest — first 2 datasets</strong><br>
     BTCUSD H4 (6,340 trades · WR 51.0% · PF 1.10) · 
     XAUUSD H4 (4,650 trades · WR 48.4% · PF 0.98)<br>
-    Total: 907,332 trades · 93 CSV cols · WeekendMode AUTO · spread+slippage real<br>
+    Total: 907,332 trades · 131 CSV cols · WeekendMode AUTO · spread+slippage real<br>
     Pending: BTC H1 · EUR H1 · EUR H4 · XAU H1 (4 datasets)<br>
     Top performer (both): P141 Ichimoku Kumo Twist Bear · Worst: Sunday Gap Fill (P120/P121)
   </div>
@@ -1204,7 +1204,7 @@
     <strong>v6 Backtest — first 2 datasets</strong><br>
     BTCUSD H4 (6,340 trades · WR 51.0% · PF 1.10) · 
     XAUUSD H4 (4,650 trades · WR 48.4% · PF 0.98)<br>
-    Total: 998,272 trades · 93 CSV cols · WeekendMode AUTO · spread+slippage real<br>
+    Total: 998,272 trades · 131 CSV cols · WeekendMode AUTO · spread+slippage real<br>
     Pending: BTC H1 · EUR H1 · EUR H4 · XAU H1 (4 datasets)<br>
     Top performer (both): P141 Ichimoku Kumo Twist Bear · Worst: Sunday Gap Fill (P120/P121)
   </div>
@@ -1214,7 +1214,7 @@
     <strong>v6 Backtest — first 2 datasets</strong><br>
     BTCUSD H4 (6,340 trades · WR 51.0% · PF 1.10) · 
     XAUUSD H4 (4,650 trades · WR 48.4% · PF 0.98)<br>
-    Total: 1,087,621 trades · 93 CSV cols · WeekendMode AUTO · spread+slippage real<br>
+    Total: 1,087,621 trades · 131 CSV cols · WeekendMode AUTO · spread+slippage real<br>
     Pending: BTC H1 · EUR H1 · EUR H4 · XAU H1 (4 datasets)<br>
     Top performer (both): P141 Ichimoku Kumo Twist Bear · Worst: Sunday Gap Fill (P120/P121)
   </div>
@@ -1224,7 +1224,7 @@
     <strong>v6 Backtest — first 2 datasets</strong><br>
     BTCUSD H4 (6,340 trades · WR 51.0% · PF 1.10) · 
     XAUUSD H4 (4,650 trades · WR 48.4% · PF 0.98)<br>
-    Total: 1,174,048 trades · 93 CSV cols · WeekendMode AUTO · spread+slippage real<br>
+    Total: 1,174,048 trades · 131 CSV cols · WeekendMode AUTO · spread+slippage real<br>
     Pending: BTC H1 · EUR H1 · EUR H4 · XAU H1 (4 datasets)<br>
     Top performer (both): P141 Ichimoku Kumo Twist Bear · Worst: Sunday Gap Fill (P120/P121)
   </div>
@@ -1234,7 +1234,7 @@
     <strong>v6 Backtest — first 2 datasets</strong><br>
     BTCUSD H4 (6,340 trades · WR 51.0% · PF 1.10) · 
     XAUUSD H4 (4,650 trades · WR 48.4% · PF 0.98)<br>
-    Total: 1,651,135 trades · 93 CSV cols · WeekendMode AUTO · spread+slippage real<br>
+    Total: 1,651,135 trades · 131 CSV cols · WeekendMode AUTO · spread+slippage real<br>
     Pending: BTC H1 · EUR H1 · EUR H4 · XAU H1 (4 datasets)<br>
     Top performer (both): P141 Ichimoku Kumo Twist Bear · Worst: Sunday Gap Fill (P120/P121)
   </div>
@@ -1244,7 +1244,7 @@
     <strong>v6 Backtest — first 2 datasets</strong><br>
     BTCUSD H4 (6,340 trades · WR 51.0% · PF 1.10) · 
     XAUUSD H4 (4,650 trades · WR 48.4% · PF 0.98)<br>
-    Total: 1,955,334 trades · 93 CSV cols · WeekendMode AUTO · spread+slippage real<br>
+    Total: 1,955,334 trades · 131 CSV cols · WeekendMode AUTO · spread+slippage real<br>
     Pending: BTC H1 · EUR H1 · EUR H4 · XAU H1 (4 datasets)<br>
     Top performer (both): P141 Ichimoku Kumo Twist Bear · Worst: Sunday Gap Fill (P120/P121)
   </div>
@@ -1254,20 +1254,20 @@
     <strong>v6 Backtest — first 2 datasets</strong><br>
     BTCUSD H4 (6,340 trades · WR 51.0% · PF 1.10) · 
     XAUUSD H4 (4,650 trades · WR 48.4% · PF 0.98)<br>
-    Total: 2,154,570 trades · 93 CSV cols · WeekendMode AUTO · spread+slippage real<br>
+    Total: 2,154,570 trades · 131 CSV cols · WeekendMode AUTO · spread+slippage real<br>
     Pending: BTC H1 · EUR H1 · EUR H4 · XAU H1 (4 datasets)<br>
     Top performer (both): P141 Ichimoku Kumo Twist Bear · Worst: Sunday Gap Fill (P120/P121)
   </div>
   
 <div class="insight" style="border-color:#10b981">
-    <div class="insight-tag" style="color:#10b981">⭐ Website v5.0 · 2026-05-07 · LATEST · EA v3.1 aligned</div>
+    <div class="insight-tag" style="color:#10b981">⭐ Website v5.0 · 2026-05-07 (superseded · current is v9.0)</div>
     <strong>v3.1 alignment update — 177 patterns ready</strong><br>
-    Branding refreshed everywhere: "EA v3.1 · 177 patterns · 93 cols"<br>
+    Branding refreshed everywhere: "EA v4.1 · 177 patterns · 131 cols"<br>
     +9 dataset placeholders (BTC/EUR/XAU × H1/H4/M15) waiting for v8.6<br>
     +Pattern Encyclopedia (P1-P177) · +Phase 3 page · +EA Architecture · +Tracking System<br>
     +3 asset hubs (BTC/EUR/XAU) · +3 category landings (Crypto/Forex/Metals)<br>
     patterns.json updated: meta.version v3.1 · csv_columns: 93 · time_stop_hours: 240 · indicators: ATR/EMA/BB/RSI/Stoch/MACD/ADX/Ichimoku · v31_new_fields: intended_entry_price, spread_at_entry_pts, spread_at_exit_pts<br>
-    All "90 cols" references updated → 93 cols · 30 HTML pages total
+    All "90 cols" references updated → 131 cols · 30 HTML pages total
   </div>
   
   <div class="insight">
