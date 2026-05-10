@@ -1,26 +1,19 @@
-# KMP Master v9.0 — Final Build
+# KMP Master v9.0 — Final Build (23 assets sidebar)
 
-**Status:** v9.0 · 10/69 datasets · 458K trades · EA v4.1
+**Status:** v9.0 · 10/69 datasets · 458K trades · 23 assets sidebar
 **Total HTML:** 110 pages
 
-## Layout
-- 7 main pages (index, preface, future, reference, ea-architecture, tracking-system, patterns-encyclopedia, phase3)
-- 6 aggregators (patterns, tier, optimal-tpsl, cross, time, edge)
-- 6 landings (crypto, metals, energy, forex, forex-cross, indices)
-- 23 asset hubs (BTC, ETH, XAU, XAG, XPT, USOIL, UKOIL, XNG, EUR, GBP, JPY, AUD, CAD, CHF, NZD, EURJPY, GBPJPY, EURGBP, US500, USTEC, DE30, JP225, UK100)
-- 69 dataset pages:
-  - 10 with new v4.1 data (BTC/ETH/EUR/JPY/XAU × M15+H4)
-  - 38 with v3.1 data + "Awaiting v4.1 re-harvest" banner
-  - 21 placeholder ("Pending harvest")
-
-## Removed in v9.0
-- strategy.html (71 KB — outdated)
-- ea-source.html (37 KB — outdated)
-- research-comparison.html (54 KB — outdated)
-- research-references.html (40 KB — outdated)
+## Sidebar Tree (23 assets)
+```
+Crypto (2):       BTC · ETH
+Metals (3):       XAU · XAG · XPT
+Energy (3):       USOIL · UKOIL · XNGUSD
+Forex Major (7):  EUR · GBP · JPY · AUD · CAD · CHF · NZD
+Forex Cross (3):  EURJPY · GBPJPY · EURGBP
+Indices (5):      US500 · USTEC · DE30 · JP225 · UK100
+```
 
 ## Deploy
-
 ```bash
 cd ~/Downloads
 unzip -o KMP_v9_complete_website.zip
@@ -29,6 +22,6 @@ git pull
 git rm -rf strategy.html ea-source.html research-comparison.html research-references.html 2>/dev/null
 cp -rf ~/Downloads/KMP_v9_complete_website/* ./
 git add -A
-git commit -m "v9.0 complete · 23 assets · 10/69 v4.1 active · 38 v3.1 banner · 21 pending · removed 4 unused pages"
+git commit -m "v9.0 complete · 23 assets sidebar · 10/69 v4.1 active · removed 4 unused pages"
 git push
 ```
