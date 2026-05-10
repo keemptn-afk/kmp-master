@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EA Source Code · KMP Master</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&family=Sarabun:wght@400;500;600;700&family=Bricolage+Grotesque:wght@400;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css?v=6.7">
+</head>
+<body>
+
+<nav class="sidebar">
+  <div class="sidebar-brand">
+    <a class="brand-logo" href="index.html">KMP <span class="accent">Master</span></a>
+    <div class="brand-ver">EA v3.1 · 177 patterns · 93 cols</div>
+  </div>
+  
+  <input type="text" class="search-box" id="globalSearch" placeholder="ค้นหา...">
+  
+  <div class="nav-section">
+    <div class="nav-label">Overview</div>
+    <a class="tree-node lvl-0" href="index.html"><span class="arrow"></span><span class="nm">Dashboard</span></a>
+    <a class="tree-node lvl-0" href="preface.html"><span class="arrow"></span><span class="nm">คำนำ &amp; เป้าหมาย</span></a>
+  </div>
+  
+  <div class="nav-section">
+    <div class="nav-label">Datasets · v8.6 · 10 ds · 457K trades</div>
+    
+    <div class="tree-node lvl-0 expandable" data-toggle="crypto-menu">
+      <span class="arrow">▶</span><span class="nm">Crypto</span><span class="badge">2</span>
+    </div>
+    <div class="tree-children" id="crypto-menu">
+      <div class="tree-node lvl-1 expandable" data-toggle="btc-menu">
+        <span class="arrow">▶</span><span class="nm">BTC/USD</span><span class="badge" style="background:#f7931a;color:#0a0a0a">106.9K</span>
+      </div>
+      <div class="tree-children" id="btc-menu">
+        <a class="tree-node lvl-2" href="btc-h4.html"><span class="nm">BTC H4</span><span class="badge" style="background:#10b981;color:#fff">6,340</span></a>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">BTC H1</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <a class="tree-node lvl-2" href="btc-m15.html"><span class="nm">BTC M15</span><span class="badge" style="background:#10b981;color:#fff">100,599</span></a>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="eth-menu">
+        <span class="arrow">▶</span><span class="nm">ETH/USD</span><span class="badge" style="background:#627eea;color:#fff">109.5K</span>
+      </div>
+      <div class="tree-children" id="eth-menu">
+        <a class="tree-node lvl-2" href="eth-h4.html"><span class="nm">ETH H4</span><span class="badge" style="background:#10b981;color:#fff">6,449</span></a>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">ETH H1</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <a class="tree-node lvl-2" href="eth-m15.html"><span class="nm">ETH M15</span><span class="badge" style="background:#10b981;color:#fff">103,040</span></a>
+      </div>
+    </div>
+    
+    <div class="tree-node lvl-0 expandable" data-toggle="metals-menu">
+      <span class="arrow">▶</span><span class="nm">Metals</span><span class="badge">1</span>
+    </div>
+    <div class="tree-children" id="metals-menu">
+      <div class="tree-node lvl-1 expandable" data-toggle="xau-menu">
+        <span class="arrow">▶</span><span class="nm">XAU/USD</span><span class="badge" style="background:#fbbf24;color:#0a0a0a">75.5K</span>
+      </div>
+      <div class="tree-children" id="xau-menu">
+        <a class="tree-node lvl-2" href="xau-h4.html"><span class="nm">XAU H4</span><span class="badge" style="background:#10b981;color:#fff">4,650</span></a>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">XAU H1</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <a class="tree-node lvl-2" href="xau-m15.html"><span class="nm">XAU M15</span><span class="badge" style="background:#10b981;color:#fff">70,805</span></a>
+      </div>
+    </div>
+    
+    <div class="tree-node lvl-0 expandable" data-toggle="energy-menu">
+      <span class="arrow">▶</span><span class="nm">Energy</span><span class="badge">3</span>
+    </div>
+    <div class="tree-children" id="energy-menu">
+      <div class="tree-node lvl-1 expandable" data-toggle="usoil-menu">
+        <span class="arrow">▶</span><span class="nm">USOIL (WTI)</span><span class="badge" style="background:#84cc16;color:#0a0a0a">0</span>
+      </div>
+      <div class="tree-children" id="usoil-menu">
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">USOIL H4</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">USOIL H1</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">USOIL M15</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="ukoil-menu">
+        <span class="arrow">▶</span><span class="nm">UKOIL (Brent)</span><span class="badge" style="background:#65a30d;color:#0a0a0a">0</span>
+      </div>
+      <div class="tree-children" id="ukoil-menu">
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">UKOIL H4</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">UKOIL H1</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">UKOIL M15</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="xng-menu">
+        <span class="arrow">▶</span><span class="nm">XNGUSD (NatGas)</span><span class="badge" style="background:#06b6d4;color:#0a0a0a">0</span>
+      </div>
+      <div class="tree-children" id="xng-menu">
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">XNG H4</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">XNG H1</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">XNG M15</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+      </div>
+    </div>
+    
+    <div class="tree-node lvl-0 expandable" data-toggle="forex-menu">
+      <span class="arrow">▶</span><span class="nm">Forex</span><span class="badge">7</span>
+    </div>
+    <div class="tree-children" id="forex-menu">
+      <div class="tree-node lvl-1 expandable" data-toggle="eur-menu">
+        <span class="arrow">▶</span><span class="nm">EUR/USD</span><span class="badge" style="background:#5b9bd5;color:#fff">83.8K</span>
+      </div>
+      <div class="tree-children" id="eur-menu">
+        <a class="tree-node lvl-2" href="eur-h4.html"><span class="nm">EUR H4</span><span class="badge" style="background:#10b981;color:#fff">4,674</span></a>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">EUR H1</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <a class="tree-node lvl-2" href="eur-m15.html"><span class="nm">EUR M15</span><span class="badge" style="background:#10b981;color:#fff">79,150</span></a>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="gbp-menu">
+        <span class="arrow">▶</span><span class="nm">GBP/USD</span><span class="badge" style="background:#a78bfa;color:#fff">0</span>
+      </div>
+      <div class="tree-children" id="gbp-menu">
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">GBP H4</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">GBP H1</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">GBP M15</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="jpy-menu">
+        <span class="arrow">▶</span><span class="nm">USD/JPY</span><span class="badge" style="background:#fb7185;color:#fff">81.6K</span>
+      </div>
+      <div class="tree-children" id="jpy-menu">
+        <a class="tree-node lvl-2" href="jpy-h4.html"><span class="nm">JPY H4</span><span class="badge" style="background:#10b981;color:#fff">4,639</span></a>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">JPY H1</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <a class="tree-node lvl-2" href="jpy-m15.html"><span class="nm">JPY M15</span><span class="badge" style="background:#10b981;color:#fff">76,937</span></a>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="aud-menu">
+        <span class="arrow">▶</span><span class="nm">AUD/USD</span><span class="badge" style="background:#34d399;color:#0a0a0a">0</span>
+      </div>
+      <div class="tree-children" id="aud-menu">
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">AUD H4</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">AUD H1</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">AUD M15</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="cad-menu">
+        <span class="arrow">▶</span><span class="nm">USD/CAD</span><span class="badge" style="background:#f59e0b;color:#0a0a0a">0</span>
+      </div>
+      <div class="tree-children" id="cad-menu">
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">CAD H4</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">CAD H1</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">CAD M15</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="chf-menu">
+        <span class="arrow">▶</span><span class="nm">USD/CHF</span><span class="badge" style="background:#ef4444;color:#fff">0</span>
+      </div>
+      <div class="tree-children" id="chf-menu">
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">CHF H4</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">CHF H1</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">CHF M15</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="nzd-menu">
+        <span class="arrow">▶</span><span class="nm">NZD/USD</span><span class="badge" style="background:#22c55e;color:#fff">0</span>
+      </div>
+      <div class="tree-children" id="nzd-menu">
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">NZD H4</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">NZD H1</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">NZD M15</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+      </div>
+    </div>
+    
+    <div class="tree-node lvl-0 expandable" data-toggle="cross-menu">
+      <span class="arrow">▶</span><span class="nm">Forex Cross</span><span class="badge">3</span>
+    </div>
+    <div class="tree-children" id="cross-menu">
+      <div class="tree-node lvl-1 expandable" data-toggle="eurjpy-menu">
+        <span class="arrow">▶</span><span class="nm">EUR/JPY</span><span class="badge" style="background:#8b5cf6;color:#fff">0</span>
+      </div>
+      <div class="tree-children" id="eurjpy-menu">
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">EURJPY H4</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">EURJPY H1</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">EURJPY M15</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="gbpjpy-menu">
+        <span class="arrow">▶</span><span class="nm">GBP/JPY</span><span class="badge" style="background:#ec4899;color:#fff">0</span>
+      </div>
+      <div class="tree-children" id="gbpjpy-menu">
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">GBPJPY H4</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">GBPJPY H1</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">GBPJPY M15</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="eurgbp-menu">
+        <span class="arrow">▶</span><span class="nm">EUR/GBP</span><span class="badge" style="background:#6366f1;color:#fff">0</span>
+      </div>
+      <div class="tree-children" id="eurgbp-menu">
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">EURGBP H4</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">EURGBP H1</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">EURGBP M15</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+      </div>
+    </div>
+  </div>
+  
+  <div class="nav-section">
+    <div class="nav-label">Patterns · 177 (v3.1)</div>
+    <a class="tree-node lvl-0" href="patterns-encyclopedia.html"><span class="arrow"></span><span class="nm">📚 Pattern Encyclopedia</span><span class="badge">177</span></a>
+    <div class="tree-node lvl-0 expandable" data-toggle="pat-menu">
+      <span class="arrow">▶</span><span class="nm">v4 Analysis</span><span class="badge">80</span>
+    </div>
+    <div class="tree-children" id="pat-menu">
+      <a class="tree-node lvl-1" href="patterns.html"><span class="nm">All Patterns Table</span></a>
+      <a class="tree-node lvl-1" href="tier.html"><span class="nm">Tier Rankings</span></a>
+      <a class="tree-node lvl-1" href="optimal-tpsl.html"><span class="nm">Optimal TP/SL EV</span></a>
+    </div>
+  </div>
+  
+  <div class="nav-section">
+    <div class="nav-label">Analysis</div>
+    <a class="tree-node lvl-0" href="cross.html"><span class="arrow"></span><span class="nm">Cross-TF / Asset</span></a>
+    <a class="tree-node lvl-0" href="time.html"><span class="arrow"></span><span class="nm">Hour / DoW / Conf</span></a>
+    <a class="tree-node lvl-0" href="edge.html"><span class="arrow"></span><span class="nm">Edge Decay / Vol</span></a>
+  </div>
+  
+  <div class="nav-section">
+    <div class="nav-label">Strategy</div>
+    <a class="tree-node lvl-0" href="strategy.html"><span class="arrow"></span><span class="nm">EA Blueprint &amp; Risk</span></a>
+  </div>
+  
+  <div class="nav-section">
+    <div class="nav-label">EA System · v3.1</div>
+    <a class="tree-node lvl-0" href="ea-architecture.html"><span class="arrow"></span><span class="nm">⚙ EA Architecture</span></a>
+    <a class="tree-node lvl-0" href="tracking-system.html"><span class="arrow"></span><span class="nm">🎯 Tracking System</span></a>  </div>  <div class="nav-section">
+    <div class="nav-label">Reference</div>
+    <a class="tree-node lvl-0" href="research-comparison.html"><span class="nm">📊 Research Comparison</span></a>
+  <a class="tree-node lvl-0" href="reference.html"><span class="arrow"></span><span class="nm">Sources &amp; Changelog</span></a>
+  </div>
+</nav>
+
+
+<main class="main">
+
+<div class="hero">
+  <span class="hero-tag">⚙️ Source Code · KMP Pattern Harvester v3.1.1</span>
+  <h1 class="hero-title">EA <span class="accent">Source Code.</span></h1>
+  <p class="hero-desc">
+    Open source Expert Advisor สำหรับ MT5 · 25 ไฟล์ · ~10,476 บรรทัด · 177 patterns detection<br>
+    เก็บข้อมูล 93 columns/trade ใน CSV · FILE_COMMON patch ทำให้ไฟล์ไม่หาย
+  </p>
+  <div style="display:flex;gap:14px;flex-wrap:wrap;margin-top:16px">
+    <a href="downloads/KMP_PatternHarvester_v3.1.1.zip" class="kpi" style="text-decoration:none;flex:0 1 auto;padding:14px 24px;cursor:pointer;border-color:#4dd498;background:linear-gradient(135deg,rgba(77,212,152,0.1),transparent)">
+      <div class="kpi-label" style="color:#4dd498">⬇️ Download Full Bundle</div>
+      <div class="kpi-val" style="color:#4dd498;font-size:18px">v3.1.1.zip</div>
+      <div class="kpi-sub">25 files · 532 KB · MQL5 + Documentation</div>
+    </a>
+  </div>
+</div>
+
+<section class="section">
+  <div class="section-head"><span class="section-num">01</span><h2 class="section-title">📦 Bundle Contents</h2></div>
+  <p class="lead-desc">โครงสร้างไฟล์ทั้งหมดใน v3.1.1 bundle</p>
+  <h3 style="margin-top:20px">Main EA (.mq5)</h3><div class="card" style="overflow-x:auto;margin-bottom:14px"><table class="table compact"><thead><tr><th>File</th><th class="r">Lines</th><th class="r">Size</th></tr></thead><tbody><tr><td><code style="font-size:12px">MQL5/Experts/KMP_PatternHarvester.mq5</code></td><td class="r">1,178</td><td class="r" style="color:var(--text-dim);font-size:12px">49.6 KB</td></tr></tbody></table></div><h3 style="margin-top:20px">Core includes (.mqh)</h3><div class="card" style="overflow-x:auto;margin-bottom:14px"><table class="table compact"><thead><tr><th>File</th><th class="r">Lines</th><th class="r">Size</th></tr></thead><tbody><tr><td><code style="font-size:12px">MQL5/Include/KMP_HarvesterLogger.mqh</code></td><td class="r">373</td><td class="r" style="color:var(--text-dim);font-size:12px">14.9 KB</td></tr><tr><td><code style="font-size:12px">MQL5/Include/KMP_Indicators.mqh</code></td><td class="r">416</td><td class="r" style="color:var(--text-dim);font-size:12px">16.1 KB</td></tr><tr><td><code style="font-size:12px">MQL5/Include/KMP_PatternMetadata.mqh</code></td><td class="r">459</td><td class="r" style="color:var(--text-dim);font-size:12px">31.9 KB</td></tr><tr><td><code style="font-size:12px">MQL5/Include/KMP_Patterns.mqh</code></td><td class="r">587</td><td class="r" style="color:var(--text-dim);font-size:12px">21.7 KB</td></tr><tr><td><code style="font-size:12px">MQL5/Include/KMP_Structures.mqh</code></td><td class="r">1,053</td><td class="r" style="color:var(--text-dim);font-size:12px">48.1 KB</td></tr></tbody></table></div><h3 style="margin-top:20px">Pattern includes (.mqh)</h3><div class="card" style="overflow-x:auto;margin-bottom:14px"><table class="table compact"><thead><tr><th>File</th><th class="r">Lines</th><th class="r">Size</th></tr></thead><tbody><tr><td><code style="font-size:12px">MQL5/Include/Patterns/KMP_CandleHelpers.mqh</code></td><td class="r">194</td><td class="r" style="color:var(--text-dim);font-size:12px">7.1 KB</td></tr><tr><td><code style="font-size:12px">MQL5/Include/Patterns/KMP_PatternsA_Original.mqh</code></td><td class="r">731</td><td class="r" style="color:var(--text-dim);font-size:12px">27.6 KB</td></tr><tr><td><code style="font-size:12px">MQL5/Include/Patterns/KMP_PatternsB_Candlestick.mqh</code></td><td class="r">491</td><td class="r" style="color:var(--text-dim);font-size:12px">23.1 KB</td></tr><tr><td><code style="font-size:12px">MQL5/Include/Patterns/KMP_PatternsC_SupportRes.mqh</code></td><td class="r">447</td><td class="r" style="color:var(--text-dim);font-size:12px">19.2 KB</td></tr><tr><td><code style="font-size:12px">MQL5/Include/Patterns/KMP_PatternsD_Structure.mqh</code></td><td class="r">358</td><td class="r" style="color:var(--text-dim);font-size:12px">16.2 KB</td></tr><tr><td><code style="font-size:12px">MQL5/Include/Patterns/KMP_PatternsE_ChartPatterns.mqh</code></td><td class="r">428</td><td class="r" style="color:var(--text-dim);font-size:12px">19.1 KB</td></tr><tr><td><code style="font-size:12px">MQL5/Include/Patterns/KMP_PatternsF_SmartMoney.mqh</code></td><td class="r">395</td><td class="r" style="color:var(--text-dim);font-size:12px">17.5 KB</td></tr><tr><td><code style="font-size:12px">MQL5/Include/Patterns/KMP_PatternsG_StatEdge.mqh</code></td><td class="r">333</td><td class="r" style="color:var(--text-dim);font-size:12px">14.0 KB</td></tr><tr><td><code style="font-size:12px">MQL5/Include/Patterns/KMP_PatternsH_SMCAdvanced.mqh</code></td><td class="r">344</td><td class="r" style="color:var(--text-dim);font-size:12px">15.9 KB</td></tr><tr><td><code style="font-size:12px">MQL5/Include/Patterns/KMP_PatternsI_VolumeWyckoff.mqh</code></td><td class="r">464</td><td class="r" style="color:var(--text-dim);font-size:12px">20.4 KB</td></tr><tr><td><code style="font-size:12px">MQL5/Include/Patterns/KMP_PatternsJ_Harmonic.mqh</code></td><td class="r">620</td><td class="r" style="color:var(--text-dim);font-size:12px">25.7 KB</td></tr><tr><td><code style="font-size:12px">MQL5/Include/Patterns/KMP_PatternsK_MultiTF.mqh</code></td><td class="r">309</td><td class="r" style="color:var(--text-dim);font-size:12px">12.3 KB</td></tr><tr><td><code style="font-size:12px">MQL5/Include/Patterns/KMP_PatternsL_Ichimoku.mqh</code></td><td class="r">185</td><td class="r" style="color:var(--text-dim);font-size:12px">7.8 KB</td></tr><tr><td><code style="font-size:12px">MQL5/Include/Patterns/KMP_PatternsM_ModernSMC.mqh</code></td><td class="r">261</td><td class="r" style="color:var(--text-dim);font-size:12px">10.8 KB</td></tr><tr><td><code style="font-size:12px">MQL5/Include/Patterns/KMP_PatternsN_Momentum.mqh</code></td><td class="r">259</td><td class="r" style="color:var(--text-dim);font-size:12px">10.8 KB</td></tr><tr><td><code style="font-size:12px">MQL5/Include/Patterns/KMP_PatternsO_VolumeProfile.mqh</code></td><td class="r">224</td><td class="r" style="color:var(--text-dim);font-size:12px">9.3 KB</td></tr><tr><td><code style="font-size:12px">MQL5/Include/Patterns/KMP_PatternsP_Range.mqh</code></td><td class="r">141</td><td class="r" style="color:var(--text-dim);font-size:12px">6.0 KB</td></tr><tr><td><code style="font-size:12px">MQL5/Include/Patterns/KMP_PatternsQ_ABCD.mqh</code></td><td class="r">155</td><td class="r" style="color:var(--text-dim);font-size:12px">6.6 KB</td></tr><tr><td><code style="font-size:12px">MQL5/Include/Patterns/KMP_PatternsR_VolRegime.mqh</code></td><td class="r">96</td><td class="r" style="color:var(--text-dim);font-size:12px">4.1 KB</td></tr></tbody></table></div><h3 style="margin-top:20px">Documentation</h3><div class="card" style="overflow-x:auto;margin-bottom:14px"><table class="table compact"><thead><tr><th>File</th><th class="r">Lines</th><th class="r">Size</th></tr></thead><tbody><tr><td><code style="font-size:12px">INSTALL_INSTRUCTIONS.md</code></td><td class="r">191</td><td class="r" style="color:var(--text-dim);font-size:12px">6.6 KB</td></tr></tbody></table></div>
+</section>
+
+<section class="section">
+  <div class="section-head"><span class="section-num">02</span><h2 class="section-title">🚀 Quick Start (MT5)</h2></div>
+  <div class="card" style="border-left:3px solid #5b9bd5">
+    <ol style="margin:0;padding-left:20px;line-height:1.9">
+      <li><strong>Extract zip</strong> → เห็น folder <code>MQL5/</code> ข้างใน</li>
+      <li>เปิด MT5 → File → <strong>Open Data Folder</strong></li>
+      <li>คัดลอก <code>MQL5/Experts/</code> + <code>MQL5/Include/</code> ไปทับใน Data Folder</li>
+      <li>เปิด <strong>MetaEditor (F4)</strong> → เปิดไฟล์ <code>KMP_PatternHarvester.mq5</code></li>
+      <li>กด <strong>F7 (Compile)</strong> → ต้องเห็น <code>0 errors, 0 warnings</code></li>
+      <li>กลับ MT5 → ลาก EA ลงบน chart → Strategy Tester → Start</li>
+      <li>ผลออกที่: <code>%APPDATA%\MetaQuotes\Terminal\Common\Files\KMP_Harvest_*.csv</code></li>
+    </ol>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head"><span class="section-num">03</span><h2 class="section-title">🔑 Key Code — Main EA Header</h2></div>
+  <p class="lead-desc">EA inputs + version info (จากไฟล์ <code>KMP_PatternHarvester.mq5</code>)</p>
+  <div class="card" style="overflow-x:auto;background:#0a0a0a">
+    <pre style="margin:0;font-size:12px;line-height:1.5;color:#d4d4d4;font-family:'Roboto Mono','Consolas',monospace"><code>//+------------------------------------------------------------------+
+//|                                       KMP_PatternHarvester.mq5  |
+//|                                         Keem &amp; Claude - 2026   |
+//|                                                                  |
+//|  PATTERN HARVESTER EA — Maximum Data Collection (177 patterns)  |
+//|                                                                  |
+//|  Mission:                                                        |
+//|    "หว่านแห" - cast wide net to gather data on every pattern.    |
+//|    NO TRADE BLOCKING. EVERY pattern fires its own order.        |
+//|                                                                  |
+//|  Phase toggles (independent on/off):                             |
+//|    InpEnablePhase1 = P1-P80   (Cat A-F, default ON)              |
+//|    InpEnablePhase2 = P81-P125 (Cat G-J, default ON in v6)        |
+//|    InpEnablePhase3 = P126-P177 (Cat K-R, default ON in v6)       |
+//|                                                                  |
+//|  Per-Pattern Mode:                                               |
+//|    Each fired pattern → opens its own order                     |
+//|    Order tagged with pattern_id (in comment)                    |
+//|    Bar with 5 patterns firing → 5 orders open                   |
+//|                                                                  |
+//|  Data Collected (per trade):                                     |
+//|    ✓ Pattern ID, name, category, expected direction              |
+//|    ✓ Bar anatomy (OHLC, body, wicks, range)                     |
+//|    ✓ Entry quality (where in bar entry happened — wick/body/etc)|
+//|    ✓ Path tracking at 1/6/12/24/48/72 hour milestones           |
+//|      (post-72h: only MFE/MAE summary, no granular path)         |
+//|    ✓ MFE/MAE in dollars and ATR (tracks full hold period)       |
+//|    ✓ "Would SL @ 0.5×/1×/2×/3×ATR have hit?" (within hold)      |
+//|    ✓ "Would TP @ 1×/2×/3×/5×ATR have hit?" (within hold)        |
+//|    ✓ Hours-to-TP for each level                                 |
+//|    ✓ All 177 pattern flags + indicators at entry                |
+//|                                                                  |
+//|  Default time-stop = 168h (7 trading days) — was 72h in v4.     |
+//|  Reason: ~24% of EUR H4 trades had MFE peak past 72h in v4.    |
+//|                                                                  |
+//|  Result: comprehensive CSV ready for analysis                    |
+//+------------------------------------------------------------------+
+#property copyright "Keem &amp; Claude - 2026"
+#property version   "3.00"
+#property strict
+
+#include &lt;Trade/Trade.mqh&gt;
+#include &lt;Trade/PositionInfo.mqh&gt;
+#include &lt;Trade/HistoryOrderInfo.mqh&gt;
+#include &lt;Trade/DealInfo.mqh&gt;
+
+#include &lt;KMP_Structures.mqh&gt;
+#include &lt;KMP_Indicators.mqh&gt;
+#include &lt;KMP_Patterns.mqh&gt;
+#include &lt;KMP_PatternMetadata.mqh&gt;
+#include &lt;KMP_HarvesterLogger.mqh&gt;
+
+//+------------------------------------------------------------------+
+//| Inputs                                                           |
+//+------------------------------------------------------------------+
+input group "=== Phase Master Toggles ==="
+input bool     InpEnablePhase1     = true;   // Phase 1 (P1-P80, Cat A-F)
+input bool     InpEnablePhase2     = true;   // Phase 2 (P81-P125, Cat G-J) — ON for v8.6
+input bool     InpEnablePhase3     = true;   // Phase 3 (P126-P177, Cat K-R) — ON for v8.6
+
+input group "=== Categories Enable (default ALL) ==="
+input bool     InpEnableCatA       = true;   // Original (P1-P20)
+input bool     InpEnableCatB       = true;   // Candlestick (P21-P40)
+input bool     InpEnableCatC       = true;   // S/R &amp; OB (P41-P50)
+input bool     InpEnableCatD       = true;   // Structure (P51-P60)
+input bool     InpEnableCatE       = true;   // Chart patterns (P61-P70)
+input bool     InpEnableCatF       = true;   // SMC (P71-P80)
+input bool     InpEnableCatG       = true;   // Stat-Edge (P81-P88)
+input bool     InpEnableCatH       = true;   // SMC Advanced (P89-P97)
+input bool     InpEnableCatI       = true;   // Volume/Wyckoff (P98-P107)
+input bool     InpEnableCatJ       = true;   // Harmonic+Special (P108-P125)
+input bool     InpEnableCatK       = true;   // Multi-TF Confluence (P126-P135)
+input bool     InpEnableCatL       = true;   // Ichimoku (P136-P142)
+input bool     InpEnableCatM       = true;   // Modern SMC (P143-P150)
+input bool     InpEnableCatN       = true;   // Momentum+Hidden Div (P151-P160)
+input bool     InpEnableCatO       = true;   // Volume Profile (P161-P165)
+input bool     InpEnableCatP       = true;   // Range/Reversion (P166-P170)
+input bool     InpEnableCatQ       = true;   // ABCD/Three Drives (P171-P174)
+input bool     InpEnableCatR       = true;   // Vol Regime (P175-P177)
+
+</code></pre>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head"><span class="section-num">04</span><h2 class="section-title">🔧 FILE_COMMON Patch (v3.1.1)</h2></div>
+  <p class="lead-desc">การแก้ที่สำคัญที่สุดใน v3.1.1 — ทำให้ CSV ไม่หาย</p>
+  <div class="card" style="border-left:3px solid #4dd498">
+    <p style="margin-top:0"><strong>ปัญหา (ก่อน patch):</strong></p>
+    <p>EA เขียน CSV ใน Tester sandbox ที่ MT5 ลบ folder ทุก test run → ไฟล์หาย</p>
+    <p style="margin-top:14px"><strong>วิธีแก้ (v3.1.1):</strong></p>
+    <p>เพิ่ม <code>FILE_COMMON</code> flag ใน <code>FileOpen()</code> → เขียนที่ <code>Common/Files/</code> แทน → ไฟล์ไม่ถูกลบ</p>
+  </div>
+  <div class="card" style="overflow-x:auto;background:#0a0a0a;margin-top:14px">
+    <pre style="margin:0;font-size:12px;line-height:1.5;color:#d4d4d4;font-family:'Roboto Mono','Consolas',monospace"><code><span style="color:#608b4e">// Include/KMP_HarvesterLogger.mqh — patched line</span>
+m_handle = FileOpen(filename, FILE_WRITE | FILE_CSV | FILE_ANSI | FILE_COMMON, ',');</code></pre>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head"><span class="section-num">05</span><h2 class="section-title">📋 EA Specifications</h2></div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px">
+    <div class="card">
+      <div class="card-title" style="color:#5b9bd5">Pattern Detection</div>
+      <ul style="font-size:13px;margin:8px 0;padding-left:20px;line-height:1.7">
+        <li>177 patterns total</li>
+        <li>18 categories (A-R)</li>
+        <li>3 phases (P1-80, 81-125, 126-177)</li>
+        <li>Phase toggle inputs</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-title" style="color:#5b9bd5">Data Tracking</div>
+      <ul style="font-size:13px;margin:8px 0;padding-left:20px;line-height:1.7">
+        <li>93 CSV columns/trade</li>
+        <li>MFE/MAE + hours_to</li>
+        <li>9 path checkpoints (1h-240h)</li>
+        <li>Real broker fills + spread</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-title" style="color:#5b9bd5">Indicators</div>
+      <ul style="font-size:13px;margin:8px 0;padding-left:20px;line-height:1.7">
+        <li>ATR 14, 50</li>
+        <li>RSI · ADX · MACD · Stoch</li>
+        <li>EMA 9/20/50/200</li>
+        <li>Ichimoku 9/26/52</li>
+        <li>Bollinger Bands</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-title" style="color:#5b9bd5">Risk / Exit</div>
+      <ul style="font-size:13px;margin:8px 0;padding-left:20px;line-height:1.7">
+        <li>SL: 0.5×, 1×, 2×, 3× ATR</li>
+        <li>TP: 1×, 2×, 3×, 5× ATR</li>
+        <li>Time-stop: 240 hours</li>
+        <li>Weekend mode: AUTO</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head"><span class="section-num">06</span><h2 class="section-title">⚠️ License & Disclaimer</h2></div>
+  <div class="card" style="border-left:3px solid #f5b400;background:linear-gradient(90deg,rgba(245,180,0,0.04),transparent)">
+    <p style="margin-top:0"><strong>License:</strong> โปรเจคนี้แชร์ฟรี · ใช้สำหรับ research / educational เท่านั้น</p>
+    <p><strong>Disclaimer:</strong></p>
+    <ul style="margin:0">
+      <li>โปรเจคนี้เป็น <strong>research tool</strong> ไม่ใช่ Production trading EA</li>
+      <li>วัตถุประสงค์: เก็บข้อมูล + analyze patterns · ไม่ใช่เพื่อใช้ trade จริง</li>
+      <li>การลงทุนมีความเสี่ยง · ผลลัพธ์ใน backtest ≠ ผลในตลาดจริง</li>
+      <li>ก่อนใช้กับเงินจริง ต้องผ่าน <strong>forward test demo</strong> อย่างน้อย 3-6 เดือน</li>
+      <li>ผู้ใช้ต้องรับผิดชอบการตัดสินใจของตนเอง</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head"><span class="section-num">07</span><h2 class="section-title">🔗 Related Resources</h2></div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px">
+    <a href="ea-architecture.html" class="card" style="text-decoration:none;color:var(--text)"><div class="card-title">EA Architecture</div><div style="font-size:12px;color:var(--text-dim)">Code structure deep-dive</div></a>
+    <a href="tracking-system.html" class="card" style="text-decoration:none;color:var(--text)"><div class="card-title">Tracking System</div><div style="font-size:12px;color:var(--text-dim)">93 CSV cols explained</div></a>
+    <a href="patterns-encyclopedia.html" class="card" style="text-decoration:none;color:var(--text)"><div class="card-title">Pattern Encyclopedia</div><div style="font-size:12px;color:var(--text-dim)">177 patterns details</div></a>
+    <a href="research-references.html" class="card" style="text-decoration:none;color:var(--text)"><div class="card-title">Research References</div><div style="font-size:12px;color:var(--text-dim)">Academic sources</div></a>
+  </div>
+</section>
+
+</main>
+
+<script src="assets/app.js?v=6.7"></script>
+  <script>
+    // Force close all sidebar menus — runs BEFORE and AFTER DOM load
+    (function forceClose() {
+      try {
+        localStorage.removeItem('kmp_sidebar_state');
+        localStorage.removeItem('kmp_sidebar_state_v2');
+      } catch(e) {}
+      var doIt = function() {
+        document.querySelectorAll('.tree-children').forEach(function(el) {
+          el.classList.remove('show');
+        });
+        document.querySelectorAll('.tree-node.expandable, .tree-node.expanded').forEach(function(el) {
+          el.classList.remove('expanded');
+        });
+      };
+      // Run NOW (immediately when this script executes)
+      doIt();
+      // Run AGAIN after DOM ready (in case elements weren't there yet)
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', doIt);
+      }
+      // Run on every visibility change (back from another tab)
+      document.addEventListener('visibilitychange', doIt);
+    })();
+  </script>
+</body>
+</html>
