@@ -1,0 +1,10 @@
+{
+  "meta": {
+    "version": "v8.6",
+    "generated_at": "2026-05-09",
+    "source_datasets": 48,
+    "criteria": "Sample < 30 trades OR negative EV in 100% datasets",
+    "count": 0
+  },
+  "patterns": []
+}
