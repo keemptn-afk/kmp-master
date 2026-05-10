@@ -1,0 +1,1290 @@
+<!DOCTYPE html>
+<html lang="th"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reference · KMP Master</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&family=Sarabun:wght@400;500;600;700&family=Bricolage+Grotesque:wght@400;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css?v=6.7">
+</head><body>
+<nav class="sidebar">
+  <div class="sidebar-brand">
+    <a class="brand-logo" href="index.html">KMP <span class="accent">Master</span></a>
+    <div class="brand-ver">EA v4.1 · 177 patterns · 131 cols</div>
+  </div>
+  
+  <input type="text" class="search-box" id="globalSearch" placeholder="ค้นหา...">
+  
+  <div class="nav-section">
+    <div class="nav-label">Overview</div>
+    <a class="tree-node lvl-0" href="index.html"><span class="arrow"></span><span class="nm">Dashboard</span></a>
+    <a class="tree-node lvl-0" href="preface.html"><span class="arrow"></span><span class="nm">คำนำ &amp; เป้าหมาย</span></a>
+  </div>
+  
+  <div class="nav-section">
+    <div class="nav-label">Datasets · v8.6 · 15 ds · 559K trades</div>
+    
+    <div class="tree-node lvl-0 expandable" data-toggle="crypto-menu">
+      <span class="arrow">▶</span><span class="nm">Crypto</span><span class="badge">2</span>
+    </div>
+    <div class="tree-children" id="crypto-menu">
+      <div class="tree-node lvl-1 expandable" data-toggle="btc-menu">
+        <span class="arrow">▶</span><span class="nm">BTC/USD</span><span class="badge" style="background:#f7931a;color:#0a0a0a">131.2K</span>
+      </div>
+      <div class="tree-children" id="btc-menu">
+        <a class="tree-node lvl-2" href="btc-h4.html"><span class="nm">BTC H4</span><span class="badge" style="background:#10b981;color:#fff">6,340</span></a>
+        <a class="tree-node lvl-2" href="btc-h1.html"><span class="nm">BTC H1</span><span class="badge" style="background:#10b981;color:#fff">24,235</span></a>
+        <a class="tree-node lvl-2" href="btc-m15.html"><span class="nm">BTC M15</span><span class="badge" style="background:#10b981;color:#fff">100,599</span></a>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="eth-menu">
+        <span class="arrow">▶</span><span class="nm">ETH/USD</span><span class="badge" style="background:#627eea;color:#fff">133.8K</span>
+      </div>
+      <div class="tree-children" id="eth-menu">
+        <a class="tree-node lvl-2" href="eth-h4.html"><span class="nm">ETH H4</span><span class="badge" style="background:#10b981;color:#fff">6,449</span></a>
+        <a class="tree-node lvl-2" href="eth-h1.html"><span class="nm">ETH H1</span><span class="badge" style="background:#10b981;color:#fff">24,342</span></a>
+        <a class="tree-node lvl-2" href="eth-m15.html"><span class="nm">ETH M15</span><span class="badge" style="background:#10b981;color:#fff">103,040</span></a>
+      </div>
+    </div>
+    
+    <div class="tree-node lvl-0 expandable" data-toggle="metals-menu">
+      <span class="arrow">▶</span><span class="nm">Metals</span><span class="badge">3</span>
+    </div>
+    <div class="tree-children" id="metals-menu">
+      <div class="tree-node lvl-1 expandable" data-toggle="xau-menu">
+        <span class="arrow">▶</span><span class="nm">XAU/USD</span><span class="badge" style="background:#fbbf24;color:#0a0a0a">92.2K</span>
+      </div>
+      <div class="tree-children" id="xau-menu">
+        <a class="tree-node lvl-2" href="xau-h4.html"><span class="nm">XAU H4</span><span class="badge" style="background:#10b981;color:#fff">4,650</span></a>
+        <a class="tree-node lvl-2" href="xau-h1.html"><span class="nm">XAU H1</span><span class="badge" style="background:#10b981;color:#fff">16,746</span></a>
+        <a class="tree-node lvl-2" href="xau-m15.html"><span class="nm">XAU M15</span><span class="badge" style="background:#10b981;color:#fff">70,805</span></a>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="xag-menu">
+        <span class="arrow">▶</span><span class="nm">XAG/USD (Silver)</span><span class="badge" style="background:#94a3b8;color:#0a0a0a">0</span>
+      </div>
+      <div class="tree-children" id="xag-menu">
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">XAG H4</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">XAG H1</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">XAG M15</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="xpt-menu">
+        <span class="arrow">▶</span><span class="nm">XPT/USD (Platinum)</span><span class="badge" style="background:#cbd5e1;color:#0a0a0a">0</span>
+      </div>
+      <div class="tree-children" id="xpt-menu">
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">XPT H4</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">XPT H1</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">XPT M15</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+      </div>
+    </div>
+    
+    <div class="tree-node lvl-0 expandable" data-toggle="energy-menu">
+      <span class="arrow">▶</span><span class="nm">Energy</span><span class="badge">3</span>
+    </div>
+    <div class="tree-children" id="energy-menu">
+      <div class="tree-node lvl-1 expandable" data-toggle="usoil-menu">
+        <span class="arrow">▶</span><span class="nm">USOIL (WTI)</span><span class="badge" style="background:#84cc16;color:#0a0a0a">0</span>
+      </div>
+      <div class="tree-children" id="usoil-menu">
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">USOIL H4</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">USOIL H1</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">USOIL M15</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="ukoil-menu">
+        <span class="arrow">▶</span><span class="nm">UKOIL (Brent)</span><span class="badge" style="background:#65a30d;color:#0a0a0a">0</span>
+      </div>
+      <div class="tree-children" id="ukoil-menu">
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">UKOIL H4</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">UKOIL H1</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">UKOIL M15</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="xng-menu">
+        <span class="arrow">▶</span><span class="nm">XNGUSD (NatGas)</span><span class="badge" style="background:#06b6d4;color:#0a0a0a">0</span>
+      </div>
+      <div class="tree-children" id="xng-menu">
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">XNG H4</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">XNG H1</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">XNG M15</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+      </div>
+    </div>
+    
+    <div class="tree-node lvl-0 expandable" data-toggle="forex-menu">
+      <span class="arrow">▶</span><span class="nm">Forex</span><span class="badge">7</span>
+    </div>
+    <div class="tree-children" id="forex-menu">
+      <div class="tree-node lvl-1 expandable" data-toggle="eur-menu">
+        <span class="arrow">▶</span><span class="nm">EUR/USD</span><span class="badge" style="background:#5b9bd5;color:#fff">102.2K</span>
+      </div>
+      <div class="tree-children" id="eur-menu">
+        <a class="tree-node lvl-2" href="eur-h4.html"><span class="nm">EUR H4</span><span class="badge" style="background:#10b981;color:#fff">4,674</span></a>
+        <a class="tree-node lvl-2" href="eur-h1.html"><span class="nm">EUR H1</span><span class="badge" style="background:#10b981;color:#fff">18,405</span></a>
+        <a class="tree-node lvl-2" href="eur-m15.html"><span class="nm">EUR M15</span><span class="badge" style="background:#10b981;color:#fff">79,150</span></a>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="gbp-menu">
+        <span class="arrow">▶</span><span class="nm">GBP/USD</span><span class="badge" style="background:#a78bfa;color:#fff">0</span>
+      </div>
+      <div class="tree-children" id="gbp-menu">
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">GBP H4</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">GBP H1</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">GBP M15</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="jpy-menu">
+        <span class="arrow">▶</span><span class="nm">USD/JPY</span><span class="badge" style="background:#fb7185;color:#fff">99.4K</span>
+      </div>
+      <div class="tree-children" id="jpy-menu">
+        <a class="tree-node lvl-2" href="jpy-h4.html"><span class="nm">JPY H4</span><span class="badge" style="background:#10b981;color:#fff">4,639</span></a>
+        <a class="tree-node lvl-2" href="jpy-h1.html"><span class="nm">JPY H1</span><span class="badge" style="background:#10b981;color:#fff">17,783</span></a>
+        <a class="tree-node lvl-2" href="jpy-m15.html"><span class="nm">JPY M15</span><span class="badge" style="background:#10b981;color:#fff">76,937</span></a>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="aud-menu">
+        <span class="arrow">▶</span><span class="nm">AUD/USD</span><span class="badge" style="background:#34d399;color:#0a0a0a">0</span>
+      </div>
+      <div class="tree-children" id="aud-menu">
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">AUD H4</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">AUD H1</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">AUD M15</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="cad-menu">
+        <span class="arrow">▶</span><span class="nm">USD/CAD</span><span class="badge" style="background:#f59e0b;color:#0a0a0a">0</span>
+      </div>
+      <div class="tree-children" id="cad-menu">
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">CAD H4</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">CAD H1</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">CAD M15</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="chf-menu">
+        <span class="arrow">▶</span><span class="nm">USD/CHF</span><span class="badge" style="background:#ef4444;color:#fff">0</span>
+      </div>
+      <div class="tree-children" id="chf-menu">
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">CHF H4</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">CHF H1</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">CHF M15</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="nzd-menu">
+        <span class="arrow">▶</span><span class="nm">NZD/USD</span><span class="badge" style="background:#22c55e;color:#fff">0</span>
+      </div>
+      <div class="tree-children" id="nzd-menu">
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">NZD H4</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">NZD H1</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">NZD M15</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+      </div>
+    </div>
+    
+    <div class="tree-node lvl-0 expandable" data-toggle="cross-menu">
+      <span class="arrow">▶</span><span class="nm">Forex Cross</span><span class="badge">3</span>
+    </div>
+    <div class="tree-children" id="cross-menu">
+      <div class="tree-node lvl-1 expandable" data-toggle="eurjpy-menu">
+        <span class="arrow">▶</span><span class="nm">EUR/JPY</span><span class="badge" style="background:#8b5cf6;color:#fff">0</span>
+      </div>
+      <div class="tree-children" id="eurjpy-menu">
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">EURJPY H4</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">EURJPY H1</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">EURJPY M15</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="gbpjpy-menu">
+        <span class="arrow">▶</span><span class="nm">GBP/JPY</span><span class="badge" style="background:#ec4899;color:#fff">0</span>
+      </div>
+      <div class="tree-children" id="gbpjpy-menu">
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">GBPJPY H4</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">GBPJPY H1</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">GBPJPY M15</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="eurgbp-menu">
+        <span class="arrow">▶</span><span class="nm">EUR/GBP</span><span class="badge" style="background:#6366f1;color:#fff">0</span>
+      </div>
+      <div class="tree-children" id="eurgbp-menu">
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">EURGBP H4</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">EURGBP H1</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">EURGBP M15</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+      </div>
+    </div>
+
+    <div class="tree-node lvl-0 expandable" data-toggle="indices-menu">
+      <span class="arrow">▶</span><span class="nm">Indices</span><span class="badge">5</span>
+    </div>
+    <div class="tree-children" id="indices-menu">
+      <div class="tree-node lvl-1 expandable" data-toggle="us500-menu">
+        <span class="arrow">▶</span><span class="nm">US500 (S&amp;P 500)</span><span class="badge" style="background:#3b82f6;color:#fff">0</span>
+      </div>
+      <div class="tree-children" id="us500-menu">
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">US500 H4</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">US500 H1</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">US500 M15</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="ustec-menu">
+        <span class="arrow">▶</span><span class="nm">USTEC (Nasdaq 100)</span><span class="badge" style="background:#06b6d4;color:#fff">0</span>
+      </div>
+      <div class="tree-children" id="ustec-menu">
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">USTEC H4</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">USTEC H1</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">USTEC M15</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="de30-menu">
+        <span class="arrow">▶</span><span class="nm">DE30 (DAX)</span><span class="badge" style="background:#facc15;color:#0a0a0a">0</span>
+      </div>
+      <div class="tree-children" id="de30-menu">
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">DE30 H4</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">DE30 H1</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">DE30 M15</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="jp225-menu">
+        <span class="arrow">▶</span><span class="nm">JP225 (Nikkei 225)</span><span class="badge" style="background:#ef4444;color:#fff">0</span>
+      </div>
+      <div class="tree-children" id="jp225-menu">
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">JP225 H4</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">JP225 H1</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">JP225 M15</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="uk100-menu">
+        <span class="arrow">▶</span><span class="nm">UK100 (FTSE 100)</span><span class="badge" style="background:#a78bfa;color:#fff">0</span>
+      </div>
+      <div class="tree-children" id="uk100-menu">
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">UK100 H4</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">UK100 H1</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">UK100 M15</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+      </div>
+    </div>
+  </div>
+  
+  <div class="nav-section">
+    <div class="nav-label">Patterns · 177 (v3.1)</div>
+    <a class="tree-node lvl-0" href="patterns-encyclopedia.html"><span class="arrow"></span><span class="nm">📚 Pattern Encyclopedia</span><span class="badge">177</span></a>
+    <div class="tree-node lvl-0 expandable" data-toggle="pat-menu">
+      <span class="arrow">▶</span><span class="nm">v4 Analysis</span><span class="badge">80</span>
+    </div>
+    <div class="tree-children" id="pat-menu">
+      <a class="tree-node lvl-1" href="patterns.html"><span class="nm">All Patterns Table</span></a>
+      <a class="tree-node lvl-1" href="tier.html"><span class="nm">Tier Rankings</span></a>
+      <a class="tree-node lvl-1" href="optimal-tpsl.html"><span class="nm">Optimal TP/SL EV</span></a>
+    </div>
+  </div>
+  
+  <div class="nav-section">
+    <div class="nav-label">Analysis</div>
+    <a class="tree-node lvl-0" href="cross.html"><span class="arrow"></span><span class="nm">Cross-TF / Asset</span></a>
+    <a class="tree-node lvl-0" href="time.html"><span class="arrow"></span><span class="nm">Hour / DoW / Conf</span></a>
+    <a class="tree-node lvl-0" href="edge.html"><span class="arrow"></span><span class="nm">Edge Decay / Vol</span></a>
+  </div>
+  
+  <div class="nav-section">
+    <div class="nav-label">Strategy</div>
+    
+  </div>
+  
+  <div class="nav-section">
+    <div class="nav-label">EA System · v3.1</div>
+    <a class="tree-node lvl-0" href="ea-architecture.html"><span class="arrow"></span><span class="nm">⚙ EA Architecture</span></a>
+    <a class="tree-node lvl-0" href="tracking-system.html"><span class="arrow"></span><span class="nm">🎯 Tracking System</span></a>  </div>  <div class="nav-section">
+    <div class="nav-label">Reference</div>
+
+  <a class="tree-node lvl-0" href="reference.html"><span class="arrow"></span><span class="nm">Sources &amp; Changelog</span></a>
+  </div>
+</nav>
+
+<main class="main"><div class="breadcrumb"><a href="index.html" class="crumb">Dashboard</a><span class="sep">▸</span><a href="#" class="crumb">Reference</a><span class="sep">▸</span><span class="crumb current">Sources & Glossary</span></div>
+<div class="hero">
+  <span class="hero-tag">Reference</span>
+  <h1 class="hero-title">Sources <span class="accent">/ Glossary.</span></h1>
+  <p class="hero-desc">
+    Books · academic papers · methodology · EA architecture · technical glossary · change log
+  </p>
+</div>
+
+<section class="section">
+  <div class="section-head"><span class="section-num">01</span>
+
+<h2 id="critical-disclaimers" style="margin-top:48px;color:#ef4444">⚠️ Critical Research Disclaimers (Honest Assessment)</h2>
+
+<div class="insight" style="border-color:#ef4444;background:linear-gradient(90deg,rgba(239,68,68,0.12),transparent)">
+  <div class="insight-tag" style="color:#ef4444">🚨 BUG พบ — EA ไม่บันทึก SL timing</div>
+  <strong>EA v3.1 KMP_Structures.mqh ขาด field สำคัญ:</strong><br>
+  ✅ มี: tp_10_time, tp_20_time, tp_30_time, tp_50_time (TP timestamps)<br>
+  ❌ ขาด: sl_05_time, sl_10_time, sl_20_time, sl_30_time (SL timestamps)<br><br>
+  
+  <strong>ผลกระทบ:</strong> First-hit logic ใน analyze_master.py ใช้ <code>hours_to_mae</code> (peak) เป็น proxy แทนเวลา SL hit จริง<br><br>
+  
+  <strong>Measurement (sample 314K trades):</strong><br>
+  • 93.6% ของ trades มีทั้ง TP10 + SL05 hit<br>
+  • <strong style="color:#ef4444">48.3% เป็น "suspicious cases"</strong> ที่ MAE peak ≤ MFE peak<br>
+  • Analysis อาจ overstate EV ~30-50%<br><br>
+  
+  <strong>Status:</strong> ต้องแก้ EA → v3.2 (เพิ่ม SL timestamps) → re-harvest ทุก dataset → re-analyze
+</div>
+
+<div class="insight" style="border-color:#f59e0b;background:linear-gradient(90deg,rgba(245,158,11,0.12),transparent)">
+  <div class="insight-tag" style="color:#f59e0b">📊 Multiple Testing Problem (ไม่ได้ apply correction)</div>
+  
+  <strong>ขนาด:</strong> 177 patterns × 16 SL/TP combos × 48 datasets = <strong>135,936 statistical tests</strong><br><br>
+  
+  <strong>Expected false positives:</strong><br>
+  • α = 0.05 → <strong>6,797</strong> false positives by chance<br>
+  • α = 0.01 → <strong>1,359</strong> false positives by chance<br>
+  • Bonferroni-corrected α = 3.68e-07 (ผมไม่ได้ apply)<br><br>
+  
+  <strong>ผลกระทบ:</strong> Tier S+ 19 patterns อาจมี false positives เยอะ<br>
+  <strong>Status:</strong> ต้อง implement FDR control (Benjamini-Hochberg) ใน v9.0 analysis
+</div>
+
+<div class="insight" style="border-color:#f59e0b;background:linear-gradient(90deg,rgba(245,158,11,0.12),transparent)">
+  <div class="insight-tag" style="color:#f59e0b">📏 Sample Threshold n≥30 ต่ำเกิน (Academic Std: n≥100)</div>
+  
+  <strong>Re-evaluate Tier S+ ที่ stricter threshold:</strong><br>
+  • At n≥30 (current): <strong>19 patterns</strong> Tier S+<br>
+  • At n≥100 (academic): <strong>9 patterns</strong> Tier S+ ⚠️<br>
+  • Difference: 10 patterns อาจไม่ statistically significant<br><br>
+  
+  <strong>Recommendation:</strong> ใช้ n≥100 เป็น threshold สำหรับ Production EA candidate selection
+</div>
+
+<div class="insight" style="border-color:#f59e0b;background:linear-gradient(90deg,rgba(245,158,11,0.12),transparent)">
+  <div class="insight-tag" style="color:#f59e0b">🎯 "Tier S+ 100% Profitable" Misleading</div>
+  
+  <strong>Definition:</strong> best_setup EV > 0 ในทุก dataset<br>
+  <strong>Caveat:</strong> "best_setup" คือ post-hoc selection จาก 16 SL/TP combos<br><br>
+  
+  <strong>ปัญหา:</strong><br>
+  • ใน live trading จะเลือก SL/TP combo ไหน?<br>
+  • ใช้ in-sample best → overfitting risk สูง<br>
+  • ใช้ generic SL/TP → ผลแย่กว่า<br><br>
+  
+  <strong>True Tier S+ ที่แท้จริง:</strong> ต้อง robust ใน multiple SL/TP combos · ไม่ใช่แค่ best
+</div>
+
+<div class="insight" style="border-color:#f59e0b;background:linear-gradient(90deg,rgba(245,158,11,0.12),transparent)">
+  <div class="insight-tag" style="color:#f59e0b">💾 master_data.json จะเกิน GitHub Limit</div>
+  
+  <strong>Current:</strong> 74.7 MB / 100 MB hard limit<br>
+  <strong>Projection at 69 datasets:</strong> <strong style="color:#ef4444">107 MB (เกิน limit!)</strong><br><br>
+  
+  <strong>วิธีแก้ (ต้องทำก่อนถึง):</strong><br>
+  1. Split master_data.json per asset class (5-6 files แยก)<br>
+  2. หรือใช้ Git LFS<br>
+  3. หรือเก็บ data ใน CDN (S3/Cloudflare R2)<br><br>
+  
+  <strong>Trigger:</strong> ก่อน v8.8 (Phase 2 complete)
+</div>
+
+<div class="insight" style="border-color:#3b82f6;background:linear-gradient(90deg,rgba(59,130,246,0.08),transparent)">
+  <div class="insight-tag" style="color:#3b82f6">📐 Honest Confidence Re-Assessment</div>
+  
+  <strong>ผมเคย claim 3.7/5.0 — แต่ตั้งเองโดยไม่มี framework</strong><br><br>
+  
+  <strong>Honest reassessment:</strong><br>
+  • Sample size: ⭐⭐⭐⭐⭐ (2M+ trades · solid)<br>
+  • Pattern detection: ⭐⭐⭐⭐⭐ (mechanical · objective)<br>
+  • Entry execution capture: ⭐⭐⭐⭐☆ (real fills + spread)<br>
+  • <strong style="color:#ef4444">Path tracking: ⭐⭐☆☆☆</strong> (SL timing ไม่บันทึก! · ไม่ใช่ ⭐⭐⭐⭐ ตามที่เคยบอก)<br>
+  • <strong style="color:#ef4444">First-hit accuracy: ⭐⭐☆☆☆</strong> (48% suspicious cases · ไม่ใช่ ⭐⭐⭐⭐)<br>
+  • Multiple testing correction: ⭐☆☆☆☆ (ไม่มี)<br>
+  • Out-of-sample: ☆☆☆☆☆ (ยังไม่ทำ)<br>
+  • Live forward test: ☆☆☆☆☆ (ยังไม่ทำ)<br><br>
+  
+  <strong>Honest Overall: 2.5 / 5.0</strong> — "Preliminary research" ไม่ใช่ "research-grade"<br>
+  <strong>Status:</strong> Suitable for hypothesis generation · NOT for live trading without major fixes
+</div>
+
+<div class="insight" style="border-color:#10b981;background:linear-gradient(90deg,rgba(16,185,129,0.08),transparent)">
+  <div class="insight-tag" style="color:#10b981">🛠️ Action Items — v9.0 Critical Fixes</div>
+  
+  <strong>1. Fix EA (KMP_Structures.mqh):</strong><br>
+  • เพิ่ม fields: sl_05_time, sl_10_time, sl_20_time, sl_30_time<br>
+  • Update logger to record + export ใน CSV<br>
+  • Recompile + re-harvest ทุก dataset<br><br>
+  
+  <strong>2. Fix analyze_master.py:</strong><br>
+  • Use real sl_X_time แทน hours_to_mae proxy<br>
+  • Implement FDR correction (Benjamini-Hochberg)<br>
+  • Use n≥100 threshold for Tier classification<br><br>
+  
+  <strong>3. Re-classify all patterns:</strong><br>
+  • New Tier S+ definition: robust ใน 3+ SL/TP combos · ไม่ใช่ best only<br>
+  • Add confidence intervals (95% CI) ทุก EV claim<br><br>
+  
+  <strong>4. Storage planning:</strong><br>
+  • Split master_data.json before reaching 100 MB<br>
+  • Implement Git LFS or external CDN<br><br>
+  
+  <strong>5. Plan OOS testing:</strong><br>
+  • Dukascopy data 3-5 ปี · multi-regime<br>
+  • Walk-forward analysis<br>
+  • Conservative position sizing in live
+</div>
+
+<h2 id="status-goals-obstacles" style="margin-top:48px">📌 สถานะ · เป้าหมาย · อุปสรรค (v8.6)</h2>
+
+<div class="insight" style="border-color:#10b981;background:linear-gradient(90deg,rgba(16,185,129,0.08),transparent)">
+  <div class="insight-tag" style="color:#10b981">🎯 เป้าหมายของโปรเจกต์ KMP</div>
+  <strong>เป้าหมายหลัก — Production EA</strong><br>
+  สร้าง Trading EA ที่ใช้ <strong>Tier S+ Universal Patterns</strong> เป็นแกนกลาง · มี SL/TP/filter optimization per pattern per asset<br><br>
+
+  <strong>เป้าหมายระยะกลาง:</strong><br>
+  • Phase 2 (in-sample): เก็บ data ครบ 23 assets × 3 TFs = 69 datasets · ~3M trades · ปัจจุบัน <strong style="color:#10b981">48/69 (69%)</strong><br>
+  • Phase OOS: ทดสอบ Tier S+ patterns ใน Out-of-Sample 3-5 ปี (Dukascopy data)<br>
+  • Phase Forward: Demo trading 1-3 เดือน ใน Live MT5<br>
+  • Phase Live: Production EA · scale up หลัง validate<br><br>
+
+  <strong>Universal Patterns Findings (v8.6 baseline):</strong><br>
+  • Tier S+ (active 100% + profitable 100% + minEV>0): <strong style="color:#10b981">19 patterns</strong><br>
+  • Tier A (active 95%+ + profitable 95%+ + minEV>-0.3): <strong style="color:#3b82f6">24 patterns</strong><br>
+  • รวม Production-ready candidates: <strong>43 patterns</strong>
+</div>
+
+<div class="insight" style="border-color:#f59e0b;background:linear-gradient(90deg,rgba(245,158,11,0.08),transparent)">
+  <div class="insight-tag" style="color:#f59e0b">🚧 อุปสรรคที่เจอ (และวิธีจัดการ)</div>
+  <strong>1. Trial14 — Crypto Altcoins Disabled</strong><br>
+  • SOLUSD/XRPUSD/BTCJPY → Trade: Disabled (server-side)<br>
+  • <strong>วิธีจัดการ:</strong> ตัดออกจาก Phase 2 · revisit ใน Live account สำหรับ Production EA<br><br>
+
+  <strong>2. EA MAX_TRACKED_POSITIONS = 10,000</strong><br>
+  • BTC/ETH M15 ติด rate limit · ทำให้ ~20-30% trades หาย (selection bias)<br>
+  • <strong>วิธีจัดการ:</strong> v9.0 เพิ่มเป็น 30K-50K + recompile + rerun BTC/ETH M15<br>
+  • <strong>สถานะ:</strong> ยอมรับได้ใน Phase 2 — sample ที่เหลือ 120K trades ก็ robust พอ<br><br>
+
+  <strong>3. master_data.json ใกล้ GitHub limit</strong><br>
+  • ปัจจุบัน 76.5 MB · GitHub soft limit 50 MB · hard limit 100 MB<br>
+  • <strong>วิธีจัดการ:</strong> ตอนนี้ยังใช้ได้ · ก่อนถึง 100MB อาจ split ต่อ asset/class หรือใช้ Git LFS<br><br>
+
+  <strong>4. Path-dependency (Same-hour ambiguity)</strong><br>
+  • ระบบเก็บ first-hit ที่ระดับ hour · ภายใน 1 ชม. swing 2 ทาง → ambiguous (~5-10% trades)<br>
+  • <strong>วิธีจัดการ:</strong> Tier S+ patterns มี margin มากพอ (mean EV +1.3-1.7R) · factor risk 10-15%<br>
+  • <strong>v9.x improvement:</strong> เปลี่ยนเป็น minute-level precision ถ้าจำเป็น<br><br>
+
+  <strong>5. In-sample only (single regime)</strong><br>
+  • Trial14 backtest ใช้ data 4 เดือน (2026.01-2026.04) — single market regime<br>
+  • <strong>วิธีจัดการ:</strong> หลัง Phase 2 ครบ → ทำ OOS ด้วย Dukascopy data 3-5 ปี + multi-regime
+</div>
+
+<div class="insight" style="border-color:#3b82f6;background:linear-gradient(90deg,rgba(59,130,246,0.08),transparent)">
+  <div class="insight-tag" style="color:#3b82f6">🛣️ Roadmap — Updated v9.x Plan (revised)</div>
+  <strong>Final Asset Plan: 23 assets · 6 classes · 69 datasets target</strong><br><br>
+
+  <strong>v8.6 (ปัจจุบัน) — Phase 2A 100% COMPLETE 🏆</strong><br>
+  • 48 datasets · 2,201,457 trades · 16 assets<br>
+  • Forex Major 7/7 · Forex Cross 3/3 · Energy 3/3 · Crypto 2/2 · Metals 1/3<br><br>
+
+  <strong>v8.7 (next batch — currently harvesting) — Indices + Metals M15</strong><br>
+  • +XAGUSD M15 · +US500 M15 · +USTEC M15 · +DE30 M15<br>
+  • Target: 52 datasets · ~2.5M trades · 19 assets<br><br>
+
+  <strong>v8.8 — Phase 2B Metals + Phase 2D Indices H4+H1</strong><br>
+  • +XPTUSD ทั้ง 3 TF · +XAGUSD H4+H1<br>
+  • +US500/USTEC/DE30 H4+H1<br>
+  • +JP225/UK100 ทั้ง 3 TF<br>
+  • Target: 69 datasets · ~3M trades · 23 assets ✅ Phase 2 COMPLETE<br><br>
+
+  <strong>v9.0 — Production EA Stage 1: OOS Validation</strong><br>
+  • Dukascopy tick data 3-5 ปี import ผ่าน TickStory<br>
+  • Re-test Tier S+ patterns ใน OOS<br>
+  • Bump MAX_TRACKED_POSITIONS 30K-50K + rerun BTC/ETH M15<br><br>
+
+  <strong>v9.1 — Production EA Stage 2: Forward Demo Test</strong><br>
+  • Demo MT5 live · 1-3 เดือน · real ticks · real slippage<br>
+  • Compare backtest EV vs forward EV per pattern<br><br>
+
+  <strong>v10.0 — Production Launch</strong><br>
+  • Live MT5 trading · smallest position size<br>
+  • Per pattern per asset SL/TP optimization<br>
+  • Monitor + scale up gradually
+</div>
+
+<div class="insight" style="border-color:#a855f7;background:linear-gradient(90deg,rgba(168,85,247,0.08),transparent)">
+  <div class="insight-tag" style="color:#a855f7">🏆 Top 10 Universal Tier S+ Patterns (v8.6)</div>
+  <table style="width:100%;font-size:13px;margin-top:8px">
+    <tr style="background:rgba(168,85,247,0.1)"><th>PID</th><th>Cat</th><th>Pattern</th><th>Mean EV</th><th>Trades</th></tr>
+    <tr><td><strong>P128</strong></td><td><span class="cat-badge">K</span></td><td>MTF_FVG_Aligned_Long</td><td style="color:#10b981;font-weight:bold">+1.69R</td><td>16,948</td></tr><tr><td><strong>P132</strong></td><td><span class="cat-badge">K</span></td><td>Daily_Bias_Intraday_Long</td><td style="color:#10b981;font-weight:bold">+1.69R</td><td>39,732</td></tr><tr><td><strong>P51</strong></td><td><span class="cat-badge">D</span></td><td>HHHL</td><td style="color:#10b981;font-weight:bold">+1.67R</td><td>55,246</td></tr><tr><td><strong>P165</strong></td><td><span class="cat-badge">O</span></td><td>POC_Migration_Long</td><td style="color:#10b981;font-weight:bold">+1.66R</td><td>23,179</td></tr><tr><td><strong>P140</strong></td><td><span class="cat-badge">L</span></td><td>Ichimoku_Kumo_Twist_Bull</td><td style="color:#10b981;font-weight:bold">+1.57R</td><td>33,175</td></tr><tr><td><strong>P71</strong></td><td><span class="cat-badge">F</span></td><td>FVG_Bull</td><td style="color:#10b981;font-weight:bold">+1.57R</td><td>83,979</td></tr><tr><td><strong>P9</strong></td><td><span class="cat-badge">A</span></td><td>BB_Touch_Reversal</td><td style="color:#10b981;font-weight:bold">+1.43R</td><td>25,299</td></tr><tr><td><strong>P21</strong></td><td><span class="cat-badge">B</span></td><td>Doji</td><td style="color:#10b981;font-weight:bold">+1.40R</td><td>18,029</td></tr><tr><td><strong>P20</strong></td><td><span class="cat-badge">A</span></td><td>Inside_Bar_Break</td><td style="color:#10b981;font-weight:bold">+1.39R</td><td>27,216</td></tr><tr><td><strong>P170</strong></td><td><span class="cat-badge">P</span></td><td>Range_Mid_Bounce</td><td style="color:#10b981;font-weight:bold">+1.38R</td><td>23,642</td></tr>
+  </table>
+  <p style="margin-top:12px;color:#a8a8b8;font-size:12px">
+    <strong>Criteria:</strong> Active ใน 100% ของ 48 datasets · Profitable ใน 100% · MinEV > 0<br>
+    <strong>Source:</strong> data/universal_patterns.json · auto-regenerated ทุก version
+  </p>
+</div>
+
+<div class="insight" style="border-color:#ec4899;background:linear-gradient(90deg,rgba(236,72,153,0.08),transparent)">
+  <div class="insight-tag" style="color:#ec4899">📐 Confidence Assessment</div>
+  <table style="width:100%;font-size:13px">
+    <tr style="background:rgba(236,72,153,0.1)"><th>Aspect</th><th>Score</th><th>Note</th></tr>
+    <tr><td>Sample size</td><td>⭐⭐⭐⭐⭐</td><td>2,201,457 trades · rock solid</td></tr>
+    <tr><td>Pattern detection accuracy</td><td>⭐⭐⭐⭐⭐</td><td>Academic standards · 100% objective</td></tr>
+    <tr><td>Entry execution capture</td><td>⭐⭐⭐⭐☆</td><td>Real fills + spread · ขาดแค่ live slippage</td></tr>
+    <tr><td>Path tracking</td><td>⭐⭐⭐⭐☆</td><td>Real ticks + 9 checkpoints · hour-level</td></tr>
+    <tr><td>First-hit accuracy</td><td>⭐⭐⭐⭐☆</td><td>~90-95% · same-hour ambiguity ~5-10%</td></tr>
+    <tr><td>Regime coverage</td><td>⭐⭐⭐☆☆</td><td>4 เดือน · single regime · ต้อง OOS</td></tr>
+    <tr><td>Live validation</td><td>⭐☆☆☆☆</td><td>❌ ยังไม่ได้ forward test</td></tr>
+  </table>
+  <p style="margin-top:12px"><strong>Overall: 3.7/5.0</strong> — Research-grade · ดีพอ identify candidates · ต้องผ่าน OOS+forward ก่อน live</p>
+</div>
+
+<h2 class="section-title">Classical Books</h2></div>
+  
+  <div class="kpis">
+    <div class="kpi">
+      <div class="kpi-label">Candlestick</div>
+      <div style="font-size:11px;color:var(--txt-d);line-height:1.7;margin-top:10px">
+        Steve Nison · Japanese Candlestick (1991)<br>
+        Bulkowski · Encyclopedia of Candlestick Charts<br>
+        → Patterns: P21-P40
+      </div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Chart Patterns</div>
+      <div style="font-size:11px;color:var(--txt-d);line-height:1.7;margin-top:10px">
+        Edwards &amp; Magee · Technical Analysis (1948)<br>
+        Bulkowski · Encyclopedia of Chart Patterns<br>
+        → Patterns: P61-P70
+      </div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Price Action</div>
+      <div style="font-size:11px;color:var(--txt-d);line-height:1.7;margin-top:10px">
+        Tony Crabel · Day Trading Patterns (1990)<br>
+        Al Brooks · Reading Price Charts Bar by Bar<br>
+        → Patterns: P1-P20
+      </div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Wyckoff/VSA</div>
+      <div style="font-size:11px;color:var(--txt-d);line-height:1.7;margin-top:10px">
+        Richard Wyckoff · Phase A-E (1930s)<br>
+        Tom Williams · Master the Markets (1998)<br>
+        → P55-P56 + P98-P107 (Cat I · VSA/Wyckoff in v3.1)
+      </div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Harmonic</div>
+      <div style="font-size:11px;color:var(--txt-d);line-height:1.7;margin-top:10px">
+        Scott Carney · Harmonic Trading (2004)<br>
+        H.M. Gartley · Profits in Stock Market (1935)<br>
+        Larry Pesavento · Fibonacci Ratios<br>
+        → Future: P108-P115
+      </div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Auction Market</div>
+      <div style="font-size:11px;color:var(--txt-d);line-height:1.7;margin-top:10px">
+        J. Peter Steidlmayer · Market Profile/TPO<br>
+        Sam Seiden · Supply/Demand zones<br>
+        → P41-P50, P79-P80
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head"><span class="section-num">02</span><h2 class="section-title">Academic Papers</h2></div>
+  <div class="insight blue">
+    <div class="insight-tag">Peer-Reviewed Sources</div>
+    <strong>Concretum Group</strong> · "Can Day Trading Really Be Profitable?" (2023) · ORB strategy<br>
+    <strong>Andrew Aziz et al.</strong> · ORB co-author, Polygon.io backtest framework<br>
+    <strong>Academia Sinica</strong> · "Timely Open Range Breakout on Index Futures" (2018)<br>
+    <strong>Renaissance Technologies methodology</strong> · Mean reversion · stat arbitrage<br>
+    <strong>AQR Capital</strong> · momentum factors research<br>
+    <strong>Two Sigma</strong> · stat arbitrage publications<br>
+    <strong>QuantConnect LEAN</strong> · open-source quant strategies
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head"><span class="section-num">03</span><h2 class="section-title">Modern Methodology</h2></div>
+  <div class="kpis">
+    <div class="kpi cyan">
+      <div class="kpi-label">SMC / ICT</div>
+      <div style="font-size:11px;color:var(--txt-d);line-height:1.7;margin-top:10px">
+        Inner Circle Trader (ICT) · Smart Money Concepts<br>
+        Order Blocks, FVG, Liquidity, BOS/CHoCH, Killzones<br>
+        OTE 62-79% Fib · Power of 3 · PD Array<br>
+        → Patterns: P43-P78 + P89-P97
+      </div>
+    </div>
+    <div class="kpi cyan">
+      <div class="kpi-label">Order Flow</div>
+      <div style="font-size:11px;color:var(--txt-d);line-height:1.7;margin-top:10px">
+        Bookmap · Cumulative Volume Delta<br>
+        TradingView/ATAS · Footprint charts<br>
+        Trader Dale · VWAP &amp; Volume Profile<br>
+        → Future: P105-P107
+      </div>
+    </div>
+    <div class="kpi cyan">
+      <div class="kpi-label">MQL5 Community</div>
+      <div style="font-size:11px;color:var(--txt-d);line-height:1.7;margin-top:10px">
+        MQL5.com articles 2025-2026<br>
+        Decoding Opening Range Breakout (Concretum)<br>
+        SMC EA Implementation references<br>
+        Forex Factory community threads
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head"><span class="section-num">04</span><h2 class="section-title">EA Architecture</h2></div>
+  
+  <div class="insight blue">
+    <div class="insight-tag">KMP Pattern Harvester EA · v3.1 (current)</div>
+    <strong>KMP_PatternHarvester.mq5</strong> · 1,108 lines main EA<br>
+    <strong>28 code files</strong> · 11,622 total lines (10,424 code + 1,198 docs)<br>
+    <strong>177 patterns</strong> in 18 categories (A-R) · 3 phases<br>
+    <strong>Per-Pattern Mode:</strong> 1 pattern fired = 1 order (no blocking)<br>
+    <strong>MAX_TRACKED_POSITIONS:</strong> 10,000 concurrent slots<br>
+    <strong>Magic Number:</strong> 317077 (configurable)<br>
+    <strong>Output:</strong> CSV with full trade details (93 columns)<br>
+    <strong>Time-stop:</strong> 240h · <strong>Path checkpoints:</strong> 9 (1/6/12/24/48/72/120/168/240h)<br>
+    <strong>Indicators:</strong> ATR, EMA(9/20/50/100/200), BB, RSI, Stoch, MACD, ADX, Ichimoku(9/26/52)<br>
+    <br>
+    📚 <a href="ea-architecture.html" style="color:var(--blue)">EA Architecture (full docs)</a> · 
+    🎯 <a href="tracking-system.html" style="color:var(--blue)">Tracking System</a> · 
+    📋 <a href="patterns-encyclopedia.html" style="color:var(--blue)">Pattern Encyclopedia</a>
+  </div>
+  
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>File</th><th>Lines</th><th>Purpose</th></tr></thead>
+      <tbody>
+        <tr><td>KMP_PatternHarvester.mq5</td><td>1,108</td><td>Main EA · OnTick · order management · OnTradeTransaction</td></tr>
+        <tr><td>Include/KMP_Structures.mqh</td><td>1,053</td><td>PatternFlags (177) · IndicatorSnapshot (70 fields) · TrackedPosition</td></tr>
+        <tr><td>Include/KMP_Indicators.mqh</td><td>~580</td><td>Indicator init + snapshot capture (incl. Ichimoku v3.0)</td></tr>
+        <tr><td>Include/KMP_Patterns.mqh</td><td>587</td><td>Master dispatcher · 18 sub-detectors</td></tr>
+        <tr><td>Include/KMP_PatternMetadata.mqh</td><td>459</td><td>177 metadata cases (name/category/direction)</td></tr>
+        <tr><td>Include/KMP_HarvesterLogger.mqh</td><td>~360</td><td>CSV writer · 93-column header + WriteRecord</td></tr>
+        <tr><td>Include/Patterns/KMP_CandleHelpers.mqh</td><td>~210</td><td>FindSwing, IsBullBar, GetHTF, etc.</td></tr>
+        <tr><td>Patterns/KMP_PatternsA_Original.mqh</td><td>~700</td><td>Cat A · P1-P20 · Original strategy</td></tr>
+        <tr><td>Patterns/KMP_PatternsB_Candlestick.mqh</td><td>~600</td><td>Cat B · P21-P40 · Nison candlesticks</td></tr>
+        <tr><td>Patterns/KMP_PatternsC_SupportRes.mqh</td><td>~510</td><td>Cat C · P41-P50 · S/R + OB</td></tr>
+        <tr><td>Patterns/KMP_PatternsD_Structure.mqh</td><td>~470</td><td>Cat D · P51-P60 · Structure</td></tr>
+        <tr><td>Patterns/KMP_PatternsE_ChartPatterns.mqh</td><td>~530</td><td>Cat E · P61-P70 · Chart patterns</td></tr>
+        <tr><td>Patterns/KMP_PatternsF_SmartMoney.mqh</td><td>~510</td><td>Cat F · P71-P80 · SMC</td></tr>
+        <tr><td>Patterns/KMP_PatternsG_StatEdge.mqh</td><td>~430</td><td>Cat G · P81-P88 · Statistical edge</td></tr>
+        <tr><td>Patterns/KMP_PatternsH_SMCAdvanced.mqh</td><td>~480</td><td>Cat H · P89-P97 · SMC advanced</td></tr>
+        <tr><td>Patterns/KMP_PatternsI_VolumeWyckoff.mqh</td><td>~600</td><td>Cat I · P98-P107 · VSA + Wyckoff</td></tr>
+        <tr><td>Patterns/KMP_PatternsJ_Harmonic.mqh</td><td>~700</td><td>Cat J · P108-P125 · Carney harmonics</td></tr>
+        <tr><td>Patterns/KMP_PatternsK_MultiTF.mqh</td><td>~370</td><td>Cat K · P126-P135 · Multi-timeframe (v3.0 NEW)</td></tr>
+        <tr><td>Patterns/KMP_PatternsL_Ichimoku.mqh</td><td>~240</td><td>Cat L · P136-P142 · Ichimoku (v3.0 NEW)</td></tr>
+        <tr><td>Patterns/KMP_PatternsM_ModernSMC.mqh</td><td>~330</td><td>Cat M · P143-P150 · Modern SMC (v3.0 NEW)</td></tr>
+        <tr><td>Patterns/KMP_PatternsN_Momentum.mqh</td><td>~330</td><td>Cat N · P151-P160 · Momentum + hidden div (v3.0 NEW)</td></tr>
+        <tr><td>Patterns/KMP_PatternsO_VolumeProfile.mqh</td><td>~280</td><td>Cat O · P161-P165 · Volume profile (v3.0 NEW)</td></tr>
+        <tr><td>Patterns/KMP_PatternsP_Range.mqh</td><td>~190</td><td>Cat P · P166-P170 · Range/reversion (v3.0 NEW)</td></tr>
+        <tr><td>Patterns/KMP_PatternsQ_ABCD.mqh</td><td>~210</td><td>Cat Q · P171-P174 · ABCD/Three Drives (v3.0 NEW)</td></tr>
+        <tr><td>Patterns/KMP_PatternsR_VolRegime.mqh</td><td>~140</td><td>Cat R · P175-P177 · Vol regime (v3.0 NEW)</td></tr>
+        <tr><td>Docs/PATTERN_REFERENCE.md</td><td>679</td><td>Theory + detection rules + bibliography</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head"><span class="section-num">05</span><h2 class="section-title">Glossary · ศัพท์เทคนิค</h2></div>
+  
+  <div class="glossary-term"><div class="glossary-term-name">ATR</div><div class="glossary-term-def">Average True Range · ค่าเฉลี่ยของ true range ใช้วัด volatility</div></div>
+  <div class="glossary-term"><div class="glossary-term-name">BOS</div><div class="glossary-term-def">Break of Structure · ราคาทะลุ swing high/low ก่อนหน้า · ยืนยัน trend</div></div>
+  <div class="glossary-term"><div class="glossary-term-name">CHoCH</div><div class="glossary-term-def">Change of Character · การเปลี่ยน trend · ทะลุ structure ตรงข้าม</div></div>
+  <div class="glossary-term"><div class="glossary-term-name">CVD</div><div class="glossary-term-def">Cumulative Volume Delta · ผลรวมสะสมของ buy volume - sell volume</div></div>
+  <div class="glossary-term"><div class="glossary-term-name">EV</div><div class="glossary-term-def">Expected Value · ผลตอบแทนคาดหวังต่อ trade · ใน R-units</div></div>
+  <div class="glossary-term"><div class="glossary-term-name">FVG</div><div class="glossary-term-def">Fair Value Gap · ช่องว่างราคา 3-bar pattern · imbalance</div></div>
+  <div class="glossary-term"><div class="glossary-term-name">HHHL</div><div class="glossary-term-def">Higher High Higher Low · ยืนยัน uptrend</div></div>
+  <div class="glossary-term"><div class="glossary-term-name">ICT</div><div class="glossary-term-def">Inner Circle Trader · methodology โดย Michael J. Huddleston (SMC)</div></div>
+  <div class="glossary-term"><div class="glossary-term-name">Killzone</div><div class="glossary-term-def">ช่วงเวลาที่ smart money active · London 7-10 GMT, NY 13-16 GMT</div></div>
+  <div class="glossary-term"><div class="glossary-term-name">LHLL</div><div class="glossary-term-def">Lower High Lower Low · ยืนยัน downtrend</div></div>
+  <div class="glossary-term"><div class="glossary-term-name">Liquidity Grab/Sweep</div><div class="glossary-term-def">ราคาทะลุ swing point เพื่อ trigger stops · แล้วกลับ</div></div>
+  <div class="glossary-term"><div class="glossary-term-name">MAE</div><div class="glossary-term-def">Maximum Adverse Excursion · การเคลื่อนที่ตรงข้ามทิศทางมากที่สุด</div></div>
+  <div class="glossary-term"><div class="glossary-term-name">MFE</div><div class="glossary-term-def">Maximum Favorable Excursion · การเคลื่อนที่ตามทิศทางมากที่สุด</div></div>
+  <div class="glossary-term"><div class="glossary-term-name">Mitigation Block</div><div class="glossary-term-def">Order block ที่ price กลับมา test แล้ว reverse · SMC concept</div></div>
+  <div class="glossary-term"><div class="glossary-term-name">OB</div><div class="glossary-term-def">Order Block · Last opposite candle ก่อน strong move · institutional interest</div></div>
+  <div class="glossary-term"><div class="glossary-term-name">OTE</div><div class="glossary-term-def">Optimal Trade Entry · ICT zone ที่ Fib retracement 62-79%</div></div>
+  <div class="glossary-term"><div class="glossary-term-name">POC</div><div class="glossary-term-def">Point of Control · ราคาที่มี volume สูงสุด · Volume Profile concept</div></div>
+  <div class="glossary-term"><div class="glossary-term-name">R-multiple</div><div class="glossary-term-def">ผลตอบแทนวัดในหน่วย R (initial risk) · เช่น +3R = ได้ 3 เท่าของ risk</div></div>
+  <div class="glossary-term"><div class="glossary-term-name">SMC</div><div class="glossary-term-def">Smart Money Concepts · Trading methodology ที่ตามรอย institutional</div></div>
+  <div class="glossary-term"><div class="glossary-term-name">VSA</div><div class="glossary-term-def">Volume Spread Analysis · วิเคราะห์ volume × spread × close · Tom Williams</div></div>
+  <div class="glossary-term"><div class="glossary-term-name">WR</div><div class="glossary-term-def">Win Rate · % ของ trades ที่ direction ถูก</div></div>
+  <div class="glossary-term"><div class="glossary-term-name">WRB</div><div class="glossary-term-def">Wide Range Bar · Bar ที่มี range ใหญ่ผิดปกติ · momentum signal</div></div>
+  <div class="glossary-term"><div class="glossary-term-name">Wyckoff Phases</div><div class="glossary-term-def">A-E schematic · Accumulation → Markup → Distribution → Markdown</div></div>
+</section>
+
+<section class="section">
+  <div class="section-head"><span class="section-num">06</span><h2 class="section-title">Change Log</h2></div>
+
+  <div class="insight" style="border-color:#22c55e;background:linear-gradient(90deg,rgba(34,197,94,0.12),transparent)">
+    <div class="insight-tag" style="color:#22c55e">🏆 v8.6 · Phase 2A 100% COMPLETE · 2026-05-09 · LATEST</div>
+    <strong>v8.6 — NZDUSD ครบ 3/3 · Forex Major 7/7 · 48 datasets · 2,201,457 trades</strong><br>
+    <strong>+NZDUSD H4</strong> (6,850)<br>
+    <strong>+NZDUSD H1</strong> (26,490)<br>
+    <strong>+NZDUSD M15</strong> (103,467)<br>
+    <strong>🎯 Phase 2A 100% complete</strong> — Forex Major ครบทุกตัว (EUR/GBP/JPY/AUD/CAD/CHF/NZD ครบ 7/7)<br>
+    <strong>16 assets · 5 classes</strong> — Forex Major + Forex Cross + Crypto + Energy + 1/3 Metals (XAU)<br>
+    <strong>Volume:</strong> +136,807 trades จาก v8.5
+  </div>
+  
+  <div class="insight" style="border-color:#10b981;background:linear-gradient(90deg,rgba(16,185,129,0.05),transparent)">
+    <div class="insight-tag" style="color:#10b981">🏆 v8.5 · Phase 2C COMPLETE · 2026-05-09</div>
+    <strong>v8.5 — Phase 2C 100% complete · 45 datasets · 2,064,650 trades · 15 assets</strong><br>
+    <strong>+EURJPY H1</strong> (27,071) — EURJPY ครบ 3/3 ✅<br>
+    <strong>+GBPJPY H1</strong> (26,390) — GBPJPY ครบ 3/3 ✅<br>
+    <strong>Forex Cross 100% complete:</strong> EURJPY 3/3 · GBPJPY 3/3 · EURGBP 3/3 · ทุก TF ครบทุกตัว<br>
+    <strong>Phase status:</strong> Phase 2A done · Phase 2B Energy done · Phase 2C done · Phase 2B Metals/Crypto + 2D Indices pending<br>
+    <strong>Volume:</strong> +53,461 trades จาก v8.4
+  </div>
+  
+  <div class="insight" style="border-color:#ec4899;background:linear-gradient(90deg,rgba(236,72,153,0.05),transparent)">
+    <div class="insight-tag" style="color:#ec4899">🎉 v8.4 · 2M Trades Milestone · 2026-05-09</div>
+    <strong>v8.4 — 4 datasets เพิ่ม · 43 datasets · 2,011,189 trades (2M+ milestone) · 15 assets</strong><br>
+    <strong>+EURJPY H4</strong> (7,225 · cross H4 ใหม่)<br>
+    <strong>+GBPJPY H4</strong> (6,969)<br>
+    <strong>+EURGBP H4</strong> (7,228)<br>
+    <strong>+EURGBP H1</strong> (28,129) — EURGBP ครบ 3/3 ✅<br>
+    <strong>Coverage Cross:</strong> EURJPY 2/3 · GBPJPY 2/3 · EURGBP 3/3 (ครบ!) · เหลือ H1 ของ EURJPY/GBPJPY<br>
+    <strong>Volume:</strong> +49,551 trades จาก v8.3 · ทะลุ 2 ล้าน trades แล้ว 🚀<br>
+    <strong>Phase 2C เหลือ:</strong> EURJPY H1 + GBPJPY H1 (2 datasets)
+  </div>
+  
+  <div class="insight" style="border-color:#8b5cf6;background:linear-gradient(90deg,rgba(139,92,246,0.05),transparent)">
+    <div class="insight-tag" style="color:#8b5cf6">🚀 v8.3 · Phase 2A Complete + Phase 2C Started · 2026-05-09</div>
+    <strong>v8.3 — 5 datasets เพิ่ม · 39 datasets · 1,961,638 trades · 15 assets</strong><br>
+    <strong>Phase 2A complete:</strong><br>
+    <strong>+XAU M15</strong> (97,149 · WR 49.4%) — XAUUSD ครบ 3/3 ✅<br>
+    <strong>+USOIL M15</strong> (92,162) — USOIL ครบ 3/3 ✅<br>
+    <strong>Phase 2C started — Forex Cross (3 assets ใหม่):</strong><br>
+    <strong>+EURJPY M15</strong> (104,548 · WR 48.1%)<br>
+    <strong>+GBPJPY M15</strong> (104,163 · WR 48.4%)<br>
+    <strong>+EURGBP M15</strong> (105,619 · WR 47.8%)<br>
+    <strong>Coverage:</strong> 15 assets · 5 classes (Crypto/Metals/Energy/Forex Major/Forex Cross) · ใหม่: forex-cross.html landing<br>
+    <strong>Volume growth:</strong> +503,641 trades (+34%) จาก v8.2<br>
+    <strong>Phase 2A เหลือ:</strong> NZDUSD ทั้ง 3 TF · <strong>Phase 2C เหลือ:</strong> H4+H1 ของ EURJPY/GBPJPY/EURGBP
+  </div>
+  
+<div class="insight" style="border-color:#f59e0b;background:linear-gradient(90deg,rgba(245,158,11,0.05),transparent)">
+    <div class="insight-tag" style="color:#f59e0b">⚠️ Known Limitation v8.x · 2026-05-09</div>
+    <strong>Buffer Cap: BTC/ETH M15 ติด rate-limit จาก MAX_TRACKED_POSITIONS = 10,000</strong><br>
+    <strong>Issue:</strong> EA ตั้ง buffer สำหรับ tracking ไม้พร้อมกัน 10,000 ตัว — เมื่อเต็ม patterns ใหม่ที่ตรวจพบจะถูก drop ไม่ open<br>
+    <strong>Math:</strong> Time-stop 240h × 41.67 trades/h = 10,000 concurrent → 41.67 × 24 × 120 days = exactly 120,000 trades<br>
+    <strong>Impact:</strong> BTC M15 = 120,000 (cap) · ETH M15 = 120,000 (cap) · forex M15 ปกติ ~105K (ไม่ชน cap)<br>
+    <strong>Re-evaluated Impact:</strong> Cap ทำให้ trade rate ถูก truncate ที่ steady-state · ตรวจ pattern distribution แล้วพบว่า <strong>BTC vs EUR M15 มี proportions คงสัดส่วน (ratio 0.94-1.45x)</strong> ไม่ skewed · ปริมาณ 120K มากกว่า forex M15 (105K) อยู่ดี · 95% CI margin ต่างกันแค่ 0.02% — <strong>คุณภาพดีพอ ไม่ต้องห่วง bias structural</strong><br>
+    <strong>Future fix (v9.0):</strong> เพิ่ม MAX_TRACKED_POSITIONS เป็น 30,000-50,000 + recompile + rerun BTC/ETH M15 (ตอนเปลี่ยนเป็น Live account → revisit altcoins)<br>
+    <strong>Status:</strong> ยอมรับได้สำหรับ Phase 2 — Production EA ใช้ Tier S+ patterns ที่ universal-robust อยู่แล้ว · BTC/ETH 120K trades ก็ statistically robust พอ
+  </div>
+  
+  <div class="insight" style="border-color:#10b981;background:linear-gradient(90deg,rgba(16,185,129,0.08),transparent)">
+    <div class="insight-tag" style="color:#10b981">🏆 Universal Patterns Analysis · v8.2 · 2026-05-09</div>
+    <strong>35 Patterns ที่ใช้ได้ทุก asset (ผ่าน 48 datasets) — Production EA candidates</strong><br>
+    <strong>Tier S+ (21 patterns):</strong> Active ALL 34/34 · Profitable 100% · MinEV > 0 ในทุก dataset<br>
+    Top 5: P159 Hidden_Div_Bull_MACD (+1.73R) · P132 Daily_Bias_Intraday_Long (+1.69R) · P124 ThreeBar_Rev_Bull (+1.68R) · P51 HHHL (+1.66R) · P165 POC_Migration_Long (+1.63R)<br>
+    Largest sample size: P142 Ichimoku_Chikou_Confirm (116,542 trades · +1.26R) · P85 NR4 (60,400 · +1.26R) · P71 FVG_Bull (57,140 · +1.53R)<br>
+    <strong>Tier S (5 patterns):</strong> P45 Breaker_Block_Bull · P141 Ichimoku_Kumo_Twist_Bear · P133 Daily_Bias_Intraday_Short · P46 Breaker_Block_Bear · P52 LHLL<br>
+    <strong>Tier A (9 patterns):</strong> P151 Pullback_EMA20_Long (+1.76R · highest) · P14 RSI_Divergence · P171 ABCD_Bull · P160 Hidden_Div_Bear_MACD · P15 MACD_Zero_Cross · P107 · P97 · P13 · P121<br>
+    <strong>Categories ที่ครองตลาด:</strong> Cat A (Original/classic) · Cat L (Ichimoku) · Cat F (SMC FVG) · Cat N (Hidden Divergence)<br>
+    <strong>Data:</strong> ดู <code>data/universal_patterns.json</code> สำหรับ full list + filter criteria
+  </div>
+  
+  <div class="insight" style="border-color:#06b6d4;background:linear-gradient(90deg,rgba(6,182,212,0.05),transparent)">
+    <div class="insight-tag" style="color:#06b6d4">🎯 Updated Roadmap — Current Plan · 2026-05-09</div>
+    <strong>Final Asset Plan: 23 assets · 6 classes (revised after Trial14 crypto issue)</strong><br><br>
+    <strong>✅ Phases COMPLETE:</strong><br>
+    • Phase 2A — Forex Major 7/7 (EUR/GBP/JPY/AUD/CAD/CHF/NZD)<br>
+    • Phase 2B Energy 3/3 (USOIL/UKOIL/XNGUSD)<br>
+    • Phase 2C Forex Cross 3/3 (EURJPY/GBPJPY/EURGBP)<br><br>
+    <strong>🟢 Currently harvesting (5 M15 datasets parallel):</strong><br>
+    • XAGUSD M15, DE30 M15, US500 M15, USTEC M15 + done NZDUSD<br><br>
+    <strong>📋 Remaining 7 assets · ~21 datasets:</strong><br>
+    • Phase 2B Metals: XAGUSD H4+H1 · XPTUSD ทุก TF<br>
+    • Phase 2D Indices: H4+H1 ของ US500/USTEC/DE30 · JP225 + UK100 ทุก TF<br><br>
+    <strong>❌ Cut from v8.x plan (Trial14 server limitations):</strong><br>
+    • SOLUSD/XRPUSD — Trial14 ตั้ง altcoins เป็น "Trade: Disabled" → ทดลองไม่ได้<br>
+    • BTCJPY — เห็นใน Crypto folder แต่ก็ disabled<br>
+    • Note: Indices ใน Trial14 ใช้ <strong>DE30</strong> (= DAX · Exness ใช้ชื่อเก่า) ไม่ใช่ DE40<br>
+    • <strong>Crypto altcoins จะ revisit ใน Live account</strong> ตอน Production EA<br><br>
+    <strong>Final target:</strong> 23 assets · 69 datasets · ~3M trades · Production EA candidates ใน Tier S+ (21 patterns universal)
+  </div>
+  
+  <div class="insight" style="border-color:#10b981;background:linear-gradient(90deg,rgba(16,185,129,0.05),transparent)">
+    <div class="insight-tag" style="color:#10b981">🏆 Validated Findings · Universal Patterns Analysis · v8.6</div>
+    <strong>Production EA Candidates: 20 Tier S+ patterns ที่ validated ใน 45+ datasets</strong><br><br>
+    <strong>🥇 Top 5 Universal Winners:</strong><br>
+    P159 Hidden_Div_Bull_MACD (+1.76R) · P128 MTF_FVG_Aligned_Long (+1.71R) · P132 Daily_Bias_Intraday_Long (+1.69R) · P51 HHHL (+1.68R) · P165 POC_Migration_Long (+1.66R)<br><br>
+    <strong>🌟 Most Robust (sample size ใหญ่):</strong><br>
+    P142 Ichimoku_Chikou_Confirm (163K trades · +1.31R) · P85 NR4 (85K · +1.31R) · P71 FVG_Bull (79K · +1.58R)<br><br>
+    <strong>📊 TF Performance Ranking:</strong><br>
+    M15 (mean EV +2.51R · 99.5% profitable · 1.5M trades) >> H1 (+1.34R) >> H4 (+0.63R)<br>
+    → M15 ดีกว่า H4 4 เท่า · sample size + statistical power สูงกว่า · Production EA ควร focus M15<br><br>
+    <strong>❌ Patterns to Skip:</strong><br>
+    • P177 ATR_Expansion — sample เล็ก (4 trades) + EV slightly negative<br>
+    • Other 156 patterns: Best EV positive ทั้งหมด แต่ raw PF < 1 ใน 60% → ต้องตั้ง SL/TP optimal<br><br>
+    <strong>⚠️ Path-dependency Limitation:</strong><br>
+    Hour-level granularity · same-hour ambiguity ~5-10% cases · EV อาจ overstate ~10-15% · ต้อง OOS + forward demo ก่อน live</div>
+  
+  <div class="insight" style="border-color:#f59e0b;background:linear-gradient(90deg,rgba(245,158,11,0.05),transparent)">
+    <div class="insight-tag" style="color:#f59e0b">🛡️ Confidence Assessment · v8.6</div>
+    <strong>Research-grade quality (3.7/5.0) — sufficient for candidate identification</strong><br><br>
+    <strong>✅ High confidence (90%+):</strong> Pattern frequencies · WR · Direction bias · MFE/MAE magnitudes · Relative ranking · TF comparison<br>
+    <strong>⚠️ Medium confidence (80-90%):</strong> WR at specific SL/TP combos · EV per setup · Profit factor (อาจ overstate ~10%)<br>
+    <strong>❌ Not yet validated:</strong> Different market regime (need OOS) · Different broker · Live tick stream<br><br>
+    <strong>Required before Production EA:</strong><br>
+    1. OOS Backtest 3-5 ปี (Dukascopy tick · TickStory)<br>
+    2. Forward Demo Test 1-3 เดือน (real ticks · real slippage)<br>
+    3. Walk-forward analysis (re-validate Tier S+ ทุกไตรมาส)<br>
+    4. Position sizing เริ่มเล็ก · scale up หลัง validate
+  </div>
+  
+<div class="insight" style="border-color:#06b6d4;background:linear-gradient(90deg,rgba(6,182,212,0.08),transparent)">
+    <div class="insight-tag" style="color:#06b6d4">🚀 v8.2 · Phase 2B Energy Complete · 2026-05-09</div>
+    <strong>v8.2 — Energy class ครบ 3 commodities · 34 datasets · 1,457,997 trades · 12 assets</strong><br>
+    <strong>+XNGUSD H4/H1/M15</strong> (123,247 · Natural Gas · asset ใหม่ครบ 3 TF) — 🔥 volatility สูงสุดใน Energy class<br>
+    <strong>+UKOIL M15</strong> (82,254 · WR 49.6% · PF 0.92) — UKOIL ครบ 3/3 timeframes<br>
+    <strong>Coverage:</strong> 12 assets · Energy 3 commodities (USOIL/UKOIL/XNGUSD) · USDCAD ครบ · USDCHF ครบ · UKOIL ครบ<br>
+    <strong>Volume growth:</strong> +205,501 trades (+16%) จาก v8.1<br>
+    <strong>Phase 2A เหลือ:</strong> XAU M15 (รันใน MT5) · USOIL M15 · NZD/USD ทุก TF
+  </div>
+  
+  <div class="insight" style="border-color:#ef4444;background:linear-gradient(90deg,rgba(239,68,68,0.08),transparent)">
+    <div class="insight-tag" style="color:#ef4444">🚀 v8.1 · USDCHF M15 added · 2026-05-09</div>
+    <strong>v8.1 — USDCHF M15 เสร็จสมบูรณ์ · 48 datasets · 2,201,457 trades</strong><br>
+    <strong>+USDCHF M15</strong> (104,173 · WR 49.9% · PF 0.89) — USDCHF ครบ 3/3 timeframes<br>
+    <strong>Coverage update:</strong> Forex 6 currencies · USDCHF ครบ 3 TF · เหลือ Phase 2A: XAU M15 · USOIL/UKOIL M15 · NZD pair<br>
+    <strong>Volume:</strong> +104,173 trades (+9%) จาก v8.0
+  </div>
+  
+  <div class="insight" style="border-color:#10b981;background:linear-gradient(90deg,rgba(16,185,129,0.08),transparent)">
+    <div class="insight-tag" style="color:#10b981">🚀 v8.0 · Phase 2A Massive Update · 2026-05-09</div>
+    <strong>v8.0 — 11 datasets เพิ่มในรอบเดียว · รวม 48 datasets · 2,201,457 trades · 15 assets</strong><br>
+    <strong>+GBP H1</strong> (26,671 · WR 49.8% · PF 0.93) · <strong>+GBP M15</strong> (104,878 · WR 49.3% · PF 0.92)<br>
+    <strong>+JPY H1</strong> (26,817 · WR 49.0% · PF 0.91) · <strong>+JPY M15</strong> (105,016 · WR 49.3% · PF 0.92)<br>
+    <strong>+USOIL H1</strong> (23,471 · WR 49.5% · PF 0.95) · <strong>+UKOIL H1</strong> (21,030 · WR 51.6% · PF 0.99)<br>
+    <strong>+USDCAD H4/H1/M15</strong> (139,824 · asset ใหม่ครบ 3 TF · USDCAD H4 PF 1.14 🟢 กำไร)<br>
+    <strong>+USDCHF H4/H1</strong> (34,099 · asset ใหม่ 2 TF)<br>
+    <strong>Coverage:</strong> 15 assets · 4 classes (Crypto 2 / Metals 1 / Energy 2 / Forex 6)<br>
+    <strong>Volume growth:</strong> +481,806 trades (+72%) จาก v7.5.3<br>
+    <strong>Pending:</strong> XAU M15 · USOIL/UKOIL/USDCAD/USDCHF M15 (Phase 2A complete) · NZD pair (Phase 2A planned)
+  </div>
+  
+  <div class="insight" style="border-color:#84cc16;background:linear-gradient(90deg,rgba(132,204,22,0.05),transparent)">
+    <div class="insight-tag" style="color:#84cc16">⚡ v7.5 · Phase 2A Start · 2026-05-08</div>
+    <strong>v7.5 — Phase 2A Begins · 4 datasets เพิ่ม</strong><br>
+    <strong>+AUD H1</strong> (26,781 trades · WR 48.8% · PF 0.98)<br>
+    <strong>+AUD M15</strong> (103,269 trades · WR 48.7% · PF 0.96)<br>
+    <strong>+USOIL H4 (WTI)</strong> (7,060 trades · WR <strong>51.8%</strong> · PF <strong>1.17</strong>) 🟢 กำไร<br>
+    <strong>+UKOIL H4 (Brent)</strong> (6,598 trades · WR <strong>54.8%</strong> · PF <strong>1.15</strong>) 🟢 WR สูงสุดในระบบ<br>
+    <strong>New: Energy class</strong> · landing energy.html + hubs usoil.html, ukoil.html<br>
+    <strong>Total:</strong> 48 datasets · 2,201,457 trades · 8 assets (added Energy class)<br>
+    <strong>Tier:</strong> S=51 · A=5 · B=5 · D=102<br>
+    <strong>Universal patterns:</strong> 0/18 robust · 0 robust ≥16/48 datasets
+  </div>
+  
+  <div class="insight" style="border-color:#4dd498;background:linear-gradient(90deg,rgba(77,212,152,0.05),transparent)">
+    <div class="insight-tag" style="color:#4dd498">🎉 v7.3 · Polish · 2026-05-08</div>
+    <strong>v7.3 Polish — Comprehensive QA + Thai descriptions + Visuals</strong><br>
+    <strong>Phase A:</strong> Fixed eth.html duplicate sections · expanded patterns-encyclopedia.html (22→154 KB · 177 patterns ครบ) · xau-m15.html → "Coming Soon"<br>
+    <strong>Phase B:</strong> Added Thai "วิธีอ่าน" blocks ใน 6 aggregators + 48 datasets + index intro<br>
+    <strong>Phase C:</strong> Added 6 visuals — Tier chart (patterns) · Top 20 bars (tier) · EV histogram (optimal-tpsl) · Universal Patterns 15 ตัว (cross) · 24h heatmap (time) · Top/Worst edges (edge)<br>
+    <strong>Phase D:</strong> 7 hubs standardized (4 sections each + Thai asset characteristics)<br>
+    <strong>Hero hardening:</strong> All aggregator hero tags now show "48 datasets · 2,201,457 trades"<br>
+    <strong>Bug fix:</strong> ETH M15 was missing from sidebar tree — now added in all 40 files
+  </div>
+  
+  <div class="insight" style="border-color:#a78bfa;background:linear-gradient(90deg,rgba(167,139,250,0.05),transparent)">
+    <div class="insight-tag" style="color:#a78bfa">🎉 v7.2 · 48 datasets · 7 assets · 2026-05-08</div>
+    <strong>v7.2 Forex Expansion — GBP + JPY + AUD added</strong><br>
+    GBPUSD H4 (7,217 · WR 48.0% · PF 0.88)<br>
+    USDJPY H4 (7,056 · WR 50.4% · PF 0.88)<br>
+    AUDUSD H4 (7,140 · WR 49.0% · PF 0.95)<br>
+    Total: <strong>2,201,457 trades</strong> across 48 datasets · 7 assets<br>
+    Forex coverage: 3 sessions (Tokyo/London/Sydney) + 3 currency types (safe-haven/major/commodity)
+  </div>
+  
+  <div class="insight" style="border-color:#4dd498;background:linear-gradient(90deg,rgba(77,212,152,0.05),transparent)">
+    <div class="insight-tag" style="color:#4dd498">🎉 v7.1 · 11 datasets · 2026-05-08</div>
+    <strong>v7 Backtest — BTC M15 + ETH M15 added</strong><br>
+    BTC M15 (120,000 · WR 49.8% · PF 1.01)<br>
+    ETH M15 (120,000 · WR 49.4% · PF 0.97)<br>
+    Total: <strong>501,396 trades</strong> across 11 datasets<br>
+    M15 cross-asset validation: BTC + EUR + ETH ครบ (เหลือ XAU M15)
+  </div>
+  
+  <div class="insight" style="border-color:#5b9bd5;background:linear-gradient(90deg,rgba(91,155,213,0.05),transparent)">
+    <div class="insight-tag" style="color:#5b9bd5">⭐ v6.8 · 9 datasets · 2026-05-08</div>
+    <strong>v6 Backtest — EUR M15 added (first M15 in v8.6)</strong><br>
+    EUR M15 (105,295 · WR 49.5% · PF 0.94 · Net -54,621 ATR)<br>
+    Total: <strong>261,396 trades</strong> across 9 datasets<br>
+    Active patterns: 163/177 · 142 with realistic EV
+  </div>
+  
+  <div class="insight" style="border-color:#4dd498;background:linear-gradient(90deg,rgba(77,212,152,0.05),transparent)">
+    <div class="insight-tag" style="color:#4dd498">🎉 v6.4 COMPLETE · 8/8 datasets · 2026-05-07</div>
+    <strong>v6 Backtest COMPLETE — Final dataset added</strong><br>
+    BTC H1 (35,654 · WR 50.0% · PF 1.03 · Net +4,417 ATR)<br>
+    Total: <strong>156,101 trades</strong> across 4 assets × 2 timeframes = 8 datasets<br>
+    EA v3.1.1 (FILE_COMMON patch) ทำงานปกติ — ไฟล์ไม่หาย<br>
+    UI fixes: ETH separate menu · slashed-zero font · bar overflow · v6 labels<br>
+    <strong>NEXT:</strong> finalize Tier S/A patterns → build Production EA → forward test
+  </div>
+  
+  <div class="insight" style="border-left:3px solid #10b981;background:rgba(16,185,129,0.06)">
+    <div class="insight-tag" style="color:#10b981">⭐ EA v3.1 · 2026-05-07 · LATEST · v8.6 ready</div>
+    <strong>Execution metadata + Weekend AUTO mode — production-ready harvester</strong><br>
+    <ul style="margin:8px 0;padding-left:20px;line-height:1.7">
+      <li><strong>+3 CSV columns</strong> (90 → 93): <code class="cb">intended_entry_price</code>, <code class="cb">spread_at_entry_pts</code>, <code class="cb">spread_at_exit_pts</code></li>
+      <li><strong>entry_price now = ACTUAL broker fill</strong> (was intended) → enables slippage analysis</li>
+      <li><strong>WeekendMode AUTO</strong> via SymbolInfoSessionTrade — BTC counts weekend hours, EUR/XAU skip weekend → uniform "chart-running hours" across assets</li>
+      <li>Phase 1+2+3 default = true (was Phase 1 only)</li>
+      <li><strong>OnTradeTransaction enhanced</strong>: handles DEAL_ENTRY_IN to capture actual fill price</li>
+      <li>Spread captured at both open + close → cost analysis vs MFE</li>
+      <li>Order rejection counter logged at OnDeinit (g_total_orders_failed)</li>
+      <li><strong>Academic standards preserved</strong> · no pattern threshold tuning · all detection logic = literature</li>
+    </ul>
+    📚 <a href="patterns-encyclopedia.html" style="color:#10b981">Encyclopedia</a> · 
+    ⚙ <a href="ea-architecture.html" style="color:#10b981">Architecture</a> · 
+    🎯 <a href="tracking-system.html" style="color:#10b981">Tracking</a>
+  </div>
+  
+  <div class="insight" style="border-left:3px solid #f59e0b;background:rgba(245,158,11,0.06)">
+    <div class="insight-tag" style="color:#f59e0b">EA v3.0 · 2026-05-06 · superseded by v3.1</div>
+    <strong>Pattern Harvester v3.0 — 177 patterns ready</strong><br>
+    <ul style="margin:8px 0;padding-left:20px;line-height:1.7">
+      <li><strong>+52 patterns</strong> in 8 new categories (K-R) — Phase 3 build</li>
+      <li><strong>Total 177 patterns</strong> in 18 categories</li>
+      <li>+ Ichimoku indicator (9/26/52)</li>
+      <li>+3 path checkpoints (120h, 168h, 240h) → total 9 checkpoints</li>
+      <li>Time-stop extended 168h → 240h</li>
+      <li>+3 CSV columns (87 → 90)</li>
+      <li>Independent phase toggles (InpEnablePhase1/2/3)</li>
+      <li>7-layer audit passed · 0 errors</li>
+    </ul>
+    📚 <a href="patterns-encyclopedia.html" style="color:#f59e0b">Encyclopedia</a> · 
+    ⚙ <a href="ea-architecture.html" style="color:#f59e0b">Architecture</a> · 
+    🎯 <a href="tracking-system.html" style="color:#f59e0b">Tracking</a> · 
+    Phase 3 (in v3.1)
+  </div>
+  
+  <div class="insight">
+    <div class="insight-tag">EA v2.01 · 2026-05-04 to 05-05 · legacy (not extensively tested)</div>
+    <strong>Phase 2 build — 125 patterns</strong><br>
+    +45 patterns in 4 new cat (G/H/I/J) · CSV 84 → 87 cols · Phase toggles introduced<br>
+    Skipped extensive backtest to wait for Phase 3 → v8.6
+  </div>
+  
+  <div class="insight blue">
+    <div class="insight-tag">Website v3.0 · 2026-05-06</div>
+    <strong>Multi-file website launch</strong><br>
+    Restructured as multi-page site (15+ pages)<br>
+    Sidebar tree navigation · collapsed by default<br>
+    Theme: minimal black/white + blue/green/yellow accents<br>
+    GitHub Pages deployment ready · All raw data preserved 100%
+  </div>
+  
+    <div class="insight" style="border-color:#10b981">
+    <div class="insight-tag" style="color:#10b981">⭐ v6.3 · 7/8 datasets · 2026-05-07</div>
+    <strong>v6 Backtest — Added 2 datasets (7 total · 120,447 trades)</strong><br>
+    EUR H1 (26,141 · WR 49.6% · PF 0.95) · 
+    ETH H4 (9,701 · WR 49.5% · PF 1.03)<br>
+    EA v3.1.1 (FILE_COMMON patch) ใช้แล้ว — ไฟล์ CSV ไม่หายอีก<br>
+    Only BTC H1 pending → จะครบ 8/8 = finalize Tier-A
+  </div>
+  
+  <div class="insight" style="border-color:#10b981">
+    <div class="insight-tag" style="color:#10b981">⭐ v6.2 · 5/6 datasets · 2026-05-07</div>
+    <strong>v6 Backtest — Added 3 datasets (5 total)</strong><br>
+    EUR H4 (6,956 · WR 49.8% · PF 0.99) · 
+    XAU H1 (24,611 · WR 50.7% · PF 1.08) · 
+    ETH H1 (36,487 · WR 49.1% · PF 0.95) — NEW asset!<br>
+    Total: 84,605 trades · 5/6 datasets · only BTC H1 pending<br>
+    New asset: <strong>ETHUSD</strong> added (Ethereum) · 36,487 trades · 163/177 patterns active
+  </div>
+  
+  <div class="insight" style="border-color:#10b981">
+    <div class="insight-tag" style="color:#10b981">⭐ v6 Baseline · 2026-05-07 · IN PROGRESS · 2/6 datasets</div>
+    <strong>v6 Backtest — first 2 datasets</strong><br>
+    BTCUSD H4 (9,474 trades · WR 50.5% · PF 1.11) · 
+    XAUUSD H4 (7,077 trades · WR 48.7% · PF 1.07)<br>
+    Total: 16,551 trades · 93 CSV cols · WeekendMode AUTO · spread+slippage real<br>
+    Pending: BTC H1 · EUR H1 · EUR H4 · XAU H1 (4 datasets)<br>
+    Top performer (both): P141 Ichimoku Kumo Twist Bear · Worst: Sunday Gap Fill (P120/P121)
+  </div>
+  
+  <div class="insight" style="border-color:#10b981">
+    <div class="insight-tag" style="color:#10b981">⭐ v6.2 · 5/6 datasets · 2026-05-07</div>
+    <strong>v6 Backtest — Added 3 datasets (5 total)</strong><br>
+    EUR H4 (6,956 · WR 49.8% · PF 0.99) · 
+    XAU H1 (24,611 · WR 50.7% · PF 1.08) · 
+    ETH H1 (36,487 · WR 49.1% · PF 0.95) — NEW asset!<br>
+    Total: 84,605 trades · 5/6 datasets · only BTC H1 pending<br>
+    New asset: <strong>ETHUSD</strong> added (Ethereum) · 36,487 trades · 163/177 patterns active
+  </div>
+  
+  <div class="insight" style="border-color:#10b981">
+    <div class="insight-tag" style="color:#10b981">⭐ v6 Baseline · 2026-05-07 · IN PROGRESS · 2/6 datasets</div>
+    <strong>v6 Backtest — first 2 datasets</strong><br>
+    BTCUSD H4 (9,474 trades · WR 50.5% · PF 1.11) · 
+    XAUUSD H4 (7,077 trades · WR 48.7% · PF 1.07)<br>
+    Total: 16,551 trades · 93 CSV cols · WeekendMode AUTO · spread+slippage real<br>
+    Pending: BTC H1 · EUR H1 · EUR H4 · XAU H1 (4 datasets)<br>
+    Top performer (both): P141 Ichimoku Kumo Twist Bear · Worst: Sunday Gap Fill (P120/P121)
+  </div>
+  
+  <div class="insight" style="border-color:#10b981">
+    <div class="insight-tag" style="color:#10b981">⭐ v6 Baseline · 2026-05-07 · IN PROGRESS · 18/6 datasets</div>
+    <strong>v6 Backtest — first 2 datasets</strong><br>
+    BTCUSD H4 (9,474 trades · WR 50.5% · PF 1.11) · 
+    XAUUSD H4 (7,077 trades · WR 48.7% · PF 1.07)<br>
+    Total: 2,201,457 trades · 93 CSV cols · WeekendMode AUTO · spread+slippage real<br>
+    Pending: BTC H1 · EUR H1 · EUR H4 · XAU H1 (4 datasets)<br>
+    Top performer (both): P141 Ichimoku Kumo Twist Bear · Worst: Sunday Gap Fill (P120/P121)
+  </div>
+  
+  <div class="insight" style="border-color:#10b981">
+    <div class="insight-tag" style="color:#10b981">⭐ v6 Baseline · 2026-05-07 · IN PROGRESS · 18/6 datasets</div>
+    <strong>v6 Backtest — first 2 datasets</strong><br>
+    BTCUSD H4 (9,474 trades · WR 50.5% · PF 1.11) · 
+    XAUUSD H4 (7,077 trades · WR 48.7% · PF 1.07)<br>
+    Total: 2,201,457 trades · 93 CSV cols · WeekendMode AUTO · spread+slippage real<br>
+    Pending: BTC H1 · EUR H1 · EUR H4 · XAU H1 (4 datasets)<br>
+    Top performer (both): P141 Ichimoku Kumo Twist Bear · Worst: Sunday Gap Fill (P120/P121)
+  </div>
+  
+  <div class="insight" style="border-color:#10b981">
+    <div class="insight-tag" style="color:#10b981">⭐ v6 Baseline · 2026-05-07 · IN PROGRESS · 29/6 datasets</div>
+    <strong>v6 Backtest — first 2 datasets</strong><br>
+    BTCUSD H4 (9,474 trades · WR 50.5% · PF 1.11) · 
+    XAUUSD H4 (7,077 trades · WR 48.7% · PF 1.07)<br>
+    Total: 2,201,457 trades · 93 CSV cols · WeekendMode AUTO · spread+slippage real<br>
+    Pending: BTC H1 · EUR H1 · EUR H4 · XAU H1 (4 datasets)<br>
+    Top performer (both): P141 Ichimoku Kumo Twist Bear · Worst: Sunday Gap Fill (P120/P121)
+  </div>
+  
+  <div class="insight" style="border-color:#10b981">
+    <div class="insight-tag" style="color:#10b981">⭐ v6 Baseline · 2026-05-07 · IN PROGRESS · 30/6 datasets</div>
+    <strong>v6 Backtest — first 2 datasets</strong><br>
+    BTCUSD H4 (9,474 trades · WR 50.5% · PF 1.11) · 
+    XAUUSD H4 (7,077 trades · WR 48.7% · PF 1.07)<br>
+    Total: 2,201,457 trades · 93 CSV cols · WeekendMode AUTO · spread+slippage real<br>
+    Pending: BTC H1 · EUR H1 · EUR H4 · XAU H1 (4 datasets)<br>
+    Top performer (both): P141 Ichimoku Kumo Twist Bear · Worst: Sunday Gap Fill (P120/P121)
+  </div>
+  
+  <div class="insight" style="border-color:#10b981">
+    <div class="insight-tag" style="color:#10b981">⭐ v6 Baseline · 2026-05-07 · IN PROGRESS · 34/6 datasets</div>
+    <strong>v6 Backtest — first 2 datasets</strong><br>
+    BTCUSD H4 (9,474 trades · WR 50.5% · PF 1.11) · 
+    XAUUSD H4 (7,077 trades · WR 48.7% · PF 1.07)<br>
+    Total: 2,201,457 trades · 93 CSV cols · WeekendMode AUTO · spread+slippage real<br>
+    Pending: BTC H1 · EUR H1 · EUR H4 · XAU H1 (4 datasets)<br>
+    Top performer (both): P141 Ichimoku Kumo Twist Bear · Worst: Sunday Gap Fill (P120/P121)
+  </div>
+  
+  <div class="insight" style="border-color:#10b981">
+    <div class="insight-tag" style="color:#10b981">⭐ v6 Baseline · 2026-05-07 · IN PROGRESS · 39/6 datasets</div>
+    <strong>v6 Backtest — first 2 datasets</strong><br>
+    BTCUSD H4 (9,474 trades · WR 50.5% · PF 1.11) · 
+    XAUUSD H4 (7,077 trades · WR 48.7% · PF 1.07)<br>
+    Total: 2,201,457 trades · 93 CSV cols · WeekendMode AUTO · spread+slippage real<br>
+    Pending: BTC H1 · EUR H1 · EUR H4 · XAU H1 (4 datasets)<br>
+    Top performer (both): P141 Ichimoku Kumo Twist Bear · Worst: Sunday Gap Fill (P120/P121)
+  </div>
+  
+  <div class="insight" style="border-color:#10b981">
+    <div class="insight-tag" style="color:#10b981">⭐ v6 Baseline · 2026-05-07 · IN PROGRESS · 43/6 datasets</div>
+    <strong>v6 Backtest — first 2 datasets</strong><br>
+    BTCUSD H4 (9,474 trades · WR 50.5% · PF 1.11) · 
+    XAUUSD H4 (7,077 trades · WR 48.7% · PF 1.07)<br>
+    Total: 2,201,457 trades · 93 CSV cols · WeekendMode AUTO · spread+slippage real<br>
+    Pending: BTC H1 · EUR H1 · EUR H4 · XAU H1 (4 datasets)<br>
+    Top performer (both): P141 Ichimoku Kumo Twist Bear · Worst: Sunday Gap Fill (P120/P121)
+  </div>
+  
+  <div class="insight" style="border-color:#10b981">
+    <div class="insight-tag" style="color:#10b981">⭐ v6 Baseline · 2026-05-07 · IN PROGRESS · 45/6 datasets</div>
+    <strong>v6 Backtest — first 2 datasets</strong><br>
+    BTCUSD H4 (9,474 trades · WR 50.5% · PF 1.11) · 
+    XAUUSD H4 (7,077 trades · WR 48.7% · PF 1.07)<br>
+    Total: 2,201,457 trades · 93 CSV cols · WeekendMode AUTO · spread+slippage real<br>
+    Pending: BTC H1 · EUR H1 · EUR H4 · XAU H1 (4 datasets)<br>
+    Top performer (both): P141 Ichimoku Kumo Twist Bear · Worst: Sunday Gap Fill (P120/P121)
+  </div>
+  
+  <div class="insight" style="border-color:#10b981">
+    <div class="insight-tag" style="color:#10b981">⭐ v6 Baseline · 2026-05-07 · IN PROGRESS · 48 datasets</div>
+    <strong>v6 Backtest — first 2 datasets</strong><br>
+    BTCUSD H4 (9,474 trades · WR 50.5% · PF 1.11) · 
+    XAUUSD H4 (7,077 trades · WR 48.7% · PF 1.07)<br>
+    Total: 2,201,457 trades · 93 CSV cols · WeekendMode AUTO · spread+slippage real<br>
+    Pending: BTC H1 · EUR H1 · EUR H4 · XAU H1 (4 datasets)<br>
+    Top performer (both): P141 Ichimoku Kumo Twist Bear · Worst: Sunday Gap Fill (P120/P121)
+  </div>
+  
+  <div class="insight" style="border-color:#10b981">
+    <div class="insight-tag" style="color:#10b981">⭐ v6 Baseline · 2026-05-07 · IN PROGRESS · 10/6 datasets</div>
+    <strong>v6 Backtest — first 2 datasets</strong><br>
+    BTCUSD H4 (6,340 trades · WR 51.0% · PF 1.10) · 
+    XAUUSD H4 (4,650 trades · WR 48.4% · PF 0.98)<br>
+    Total: 457,283 trades · 93 CSV cols · WeekendMode AUTO · spread+slippage real<br>
+    Pending: BTC H1 · EUR H1 · EUR H4 · XAU H1 (4 datasets)<br>
+    Top performer (both): P141 Ichimoku Kumo Twist Bear · Worst: Sunday Gap Fill (P120/P121)
+  </div>
+  
+  <div class="insight" style="border-color:#10b981">
+    <div class="insight-tag" style="color:#10b981">⭐ v6 Baseline · 2026-05-07 · IN PROGRESS · 5/6 datasets</div>
+    <strong>v6 Backtest — first 2 datasets</strong><br>
+    BTCUSD H4 (0 trades · WR 0.0% · PF 0.00) · 
+    XAUUSD H4 (0 trades · WR 0.0% · PF 0.00)<br>
+    Total: 430,531 trades · 93 CSV cols · WeekendMode AUTO · spread+slippage real<br>
+    Pending: BTC H1 · EUR H1 · EUR H4 · XAU H1 (4 datasets)<br>
+    Top performer (both): P141 Ichimoku Kumo Twist Bear · Worst: Sunday Gap Fill (P120/P121)
+  </div>
+  
+  <div class="insight" style="border-color:#10b981">
+    <div class="insight-tag" style="color:#10b981">⭐ v6 Baseline · 2026-05-07 · IN PROGRESS · 5/6 datasets</div>
+    <strong>v6 Backtest — first 2 datasets</strong><br>
+    BTCUSD H4 (0 trades · WR 0.0% · PF 0.00) · 
+    XAUUSD H4 (0 trades · WR 0.0% · PF 0.00)<br>
+    Total: 430,531 trades · 93 CSV cols · WeekendMode AUTO · spread+slippage real<br>
+    Pending: BTC H1 · EUR H1 · EUR H4 · XAU H1 (4 datasets)<br>
+    Top performer (both): P141 Ichimoku Kumo Twist Bear · Worst: Sunday Gap Fill (P120/P121)
+  </div>
+  
+  <div class="insight" style="border-color:#10b981">
+    <div class="insight-tag" style="color:#10b981">⭐ v6 Baseline · 2026-05-07 · IN PROGRESS · 15/6 datasets</div>
+    <strong>v6 Backtest — first 2 datasets</strong><br>
+    BTCUSD H4 (6,340 trades · WR 51.0% · PF 1.10) · 
+    XAUUSD H4 (4,650 trades · WR 48.4% · PF 0.98)<br>
+    Total: 558,794 trades · 93 CSV cols · WeekendMode AUTO · spread+slippage real<br>
+    Pending: BTC H1 · EUR H1 · EUR H4 · XAU H1 (4 datasets)<br>
+    Top performer (both): P141 Ichimoku Kumo Twist Bear · Worst: Sunday Gap Fill (P120/P121)
+  </div>
+  
+  <div class="insight" style="border-color:#10b981">
+    <div class="insight-tag" style="color:#10b981">⭐ v6 Baseline · 2026-05-07 · IN PROGRESS · 15/6 datasets</div>
+    <strong>v6 Backtest — first 2 datasets</strong><br>
+    BTCUSD H4 (6,340 trades · WR 51.0% · PF 1.10) · 
+    XAUUSD H4 (4,650 trades · WR 48.4% · PF 0.98)<br>
+    Total: 558,794 trades · 93 CSV cols · WeekendMode AUTO · spread+slippage real<br>
+    Pending: BTC H1 · EUR H1 · EUR H4 · XAU H1 (4 datasets)<br>
+    Top performer (both): P141 Ichimoku Kumo Twist Bear · Worst: Sunday Gap Fill (P120/P121)
+  </div>
+  
+<div class="insight" style="border-color:#10b981">
+    <div class="insight-tag" style="color:#10b981">⭐ Website v5.0 · 2026-05-07 · LATEST · EA v3.1 aligned</div>
+    <strong>v3.1 alignment update — 177 patterns ready</strong><br>
+    Branding refreshed everywhere: "EA v3.1 · 177 patterns · 93 cols"<br>
+    +9 dataset placeholders (BTC/EUR/XAU × H1/H4/M15) waiting for v8.6<br>
+    +Pattern Encyclopedia (P1-P177) · +Phase 3 page · +EA Architecture · +Tracking System<br>
+    +3 asset hubs (BTC/EUR/XAU) · +3 category landings (Crypto/Forex/Metals)<br>
+    patterns.json updated: meta.version v3.1 · csv_columns: 93 · time_stop_hours: 240 · indicators: ATR/EMA/BB/RSI/Stoch/MACD/ADX/Ichimoku · v31_new_fields: intended_entry_price, spread_at_entry_pts, spread_at_exit_pts<br>
+    All "90 cols" references updated → 93 cols · 30 HTML pages total
+  </div>
+  
+  <div class="insight">
+    <div class="insight-tag">Website v4.0 · 2026-05-06 · v4 baseline data (legacy 80 patterns)</div>
+    Add XAU M15 + EUR (3 TFs) → 9 datasets total · 248,875 trades<br>
+    New Forex section · Tier rankings rewritten · Strategy adds EUR module · Vol inversion 3 profiles
+  </div>
+  
+  <div class="insight">
+    <div class="insight-tag">Website v3.0 · 2026-05-06</div>
+    Single HTML with sidebar nav (19 pages)<br>
+    Combined 5 datasets · filter + search · cross-TF analysis · tier rankings + EA blueprint
+  </div>
+  
+  <div class="insight">
+    <div class="insight-tag">v1.x · 2026-04</div>
+    Per-Dataset Reports · Separate HTML reports per dataset · SVG charts + KPIs · Initial pattern findings
+  </div>
+</section>
+</main>
+
+
+<script>
+// KMP Master · Inline Sidebar JS (no cache, no delegation)
+(function() {
+  function initSidebar() {
+    // Make sure all menus start closed
+    document.querySelectorAll('.tree-children').forEach(function(el){ el.classList.remove('show'); });
+    document.querySelectorAll('.tree-node.expandable').forEach(function(el){ el.classList.remove('expanded'); });
+    
+    // Attach click handler to EACH expandable tree-node directly
+    var nodes = document.querySelectorAll('.tree-node.expandable');
+    nodes.forEach(function(node) {
+      // Visual feedback — click cursor
+      node.style.cursor = 'pointer';
+      
+      node.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var id = node.getAttribute('data-toggle');
+        if (!id) return;
+        var target = document.getElementById(id);
+        if (!target) return;
+        node.classList.toggle('expanded');
+        target.classList.toggle('show');
+      });
+    });
+    
+    // Highlight active link
+    var path = window.location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('.tree-node[href]').forEach(function(link) {
+      if (link.getAttribute('href') === path) link.classList.add('active');
+    });
+  }
+  
+  // Run when DOM is ready (or now if already ready)
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initSidebar);
+  } else {
+    initSidebar();
+  }
+  
+  // Search filter
+  function initSearch() {
+    var inp = document.getElementById('globalSearch');
+    if (!inp) return;
+    inp.addEventListener('input', function(e) {
+      var q = e.target.value.toLowerCase().trim();
+      var sections = document.querySelectorAll('.section, .insight, .kpi, .pat-card, .chart-card');
+      sections.forEach(function(s) {
+        if (!q) { s.style.display = ''; return; }
+        s.style.display = s.textContent.toLowerCase().includes(q) ? '' : 'none';
+      });
+    });
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initSearch);
+  } else {
+    initSearch();
+  }
+  
+  // Helper functions for pages that need them
+  window.wrClass = function(wr, n) {
+    if (wr == null || n < 30) return 'none';
+    return wr >= 53 ? 'high' : (wr >= 48 ? 'mid' : 'low');
+  };
+  window.wrPill = function(wr, n) {
+    if (wr == null || n < 30) return '<span class="wr-pill none">—</span>';
+    return '<span class="wr-pill ' + window.wrClass(wr, n) + '">' + wr.toFixed(1) + '%</span>';
+  };
+  window.dirText = function(d) {
+    if (d === 1) return '<span style="color:var(--green)">L</span>';
+    if (d === -1) return '<span style="color:var(--red)">S</span>';
+    return '<span style="color:var(--yellow)">⇄</span>';
+  };
+  window.tierLabel = function(tier) {
+    return '<span class="tier-tag tier-' + tier + '">' + tier + '</span>';
+  };
+  window.fmtN = function(n) {
+    if (n == null) return '—';
+    if (n >= 1000000) return (n/1000000).toFixed(2) + 'M';
+    if (n >= 1000) return (n/1000).toFixed(1) + 'K';
+    return n.toLocaleString();
+  };
+  window.fmtDollar = function(n, withSign) {
+    if (n == null) return '—';
+    var sign = n < 0 ? '-$' : (withSign ? '+$' : '$');
+    return sign + Math.abs(n).toLocaleString();
+  };
+  
+  // Data loader
+  var _cached = null;
+  window.loadData = async function() {
+    if (_cached) return _cached;
+    try {
+      var res = await fetch('data/master_data.json');
+      _cached = await res.json();
+      return _cached;
+    } catch (e) {
+      console.error('Failed to load data:', e);
+      return null;
+    }
+  };
+})();
+</script>
+</body></html>

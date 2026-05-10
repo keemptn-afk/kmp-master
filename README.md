@@ -1,39 +1,40 @@
-# KMP Master v9.0 — Sidebar Fixed + Exness Names
+# KMP Master v9.0 — 15 datasets active
 
-## Fixes in this build
+**Status:** v9.0 · 15/69 datasets · 558,794 trades · EA v4.1
+**Total HTML:** 110 pages · ZIP includes inline JS (sidebar bug fixed)
 
-### 1. Sidebar bug — fixed properly
-- Removed buggy inline `forceClose()` script from 109 HTML files
-  (it was closing menus on every visibilitychange — fighting with click handlers)
-- App.js now uses pure event delegation
-- Cache version bumped to v9.1 (forces browser to reload app.js)
+## Active Data (5 assets × 3 TFs)
 
-### 2. Asset names — match Exness Pro symbols
-| Display now | Old | Why |
-|------------|-----|-----|
-| USTEC (Nasdaq 100) | NASDAQ-100 | Exness uses USTEC symbol |
-| US500 (S&P 500) | S&P 500 | Exness uses US500 |
-| DE30 (DAX) | DAX (DE30) | Exness uses DE30 (even though actual index is DAX 40 now) |
-| JP225 (Nikkei 225) | Nikkei 225 | Exness uses JP225 |
-| UK100 (FTSE 100) | FTSE 100 | Exness uses UK100 |
+| Asset | M15 | H1 | H4 | Total |
+|-------|-----|----|----|-------|
+| BTC/USD | 100,599 | 24,235 | 6,340 | 131,174 |
+| ETH/USD | 103,040 | 24,342 | 6,449 | 133,831 |
+| EUR/USD | 79,150 | 18,405 | 4,674 | 102,229 |
+| USD/JPY | 76,937 | 17,783 | 4,639 | 99,359 |
+| XAU/USD | 70,805 | 16,746 | 4,650 | 92,201 |
+| **Total** | 430,531 | 101,511 | 26,752 | **558,794** |
 
-User can now copy the prefix (e.g. "USTEC") into Exness Pro search and find the symbol immediately.
+## Sidebar — 23 assets total
+Crypto · Metals (XAU/XAG/XPT) · Energy · Forex · Cross · Indices
 
-## Active Data (unchanged from previous build)
-- 5 M15 datasets · 430,531 trades
-- BTC · ETH · EUR · JPY · XAU all M15
+## Sidebar bug — FIXED
+- JS embedded inline in HTML (no external app.js)
+- Direct click handler attachment (not delegation)
+- No more cache issues
+
+## Asset names — match Exness Pro
+USTEC · US500 · DE30 · JP225 · UK100 (Exness symbols prominent)
 
 ## Deploy
-
 ```bash
 cd ~/Downloads
-unzip -o KMP_v9_fixed_website.zip
+unzip -o KMP_v9_15datasets_website.zip
 cd ~/Documents/kmp-master
 git pull
-cp -rf ~/Downloads/KMP_v9_fixed_website/* ./
+cp -rf ~/Downloads/KMP_v9_15datasets_website/* ./
 git add -A
-git commit -m "v9.0 fixed · sidebar bug · Exness symbol names · cache bump"
+git commit -m "v9.0 · 15 datasets active · 558K trades · sidebar inline JS · Exness names"
 git push
 ```
 
-After deploy, **clear browser cache** (Ctrl+Shift+R) to load new app.js v9.1.
+After deploy: Ctrl+Shift+R once to ensure fresh HTML.
