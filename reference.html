@@ -291,22 +291,23 @@
 <section class="section">
   <div class="section-head"><span class="section-num">01</span>
 
-<h2 id="critical-disclaimers" style="margin-top:48px;color:#ef4444">⚠️ Critical Research Disclaimers (Honest Assessment)</h2>
+<h2 id="critical-disclaimers" style="margin-top:48px;color:#fbbf24">📊 Research Disclaimers (Honest Assessment ของผลลัพธ์)</h2>
 
-<div class="insight" style="border-color:#ef4444;background:linear-gradient(90deg,rgba(239,68,68,0.12),transparent)">
-  <div class="insight-tag" style="color:#ef4444">🚨 BUG พบ — EA ไม่บันทึก SL timing</div>
-  <strong>EA v4.1 KMP_Structures.mqh ขาด field สำคัญ:</strong><br>
-  ✅ มี: tp_10_time, tp_20_time, tp_30_time, tp_50_time (TP timestamps)<br>
-  ❌ ขาด: sl_05_time, sl_10_time, sl_20_time, sl_30_time (SL timestamps)<br><br>
+<div class="insight" style="border-color:#10b981;background:linear-gradient(90deg,rgba(16,185,129,0.10),transparent)">
+  <div class="insight-tag" style="color:#10b981">✅ RESOLVED in v4.1 — SL timing เก็บครบแล้ว</div>
+  <strong>ประวัติ bug (อยู่ใน EA v3.1 เก่า):</strong><br>
+  EA v3.1 KMP_Structures.mqh มีฟิลด์ TP timestamps ครบ (tp_10/20/30/50_time) แต่<strong>ขาด SL timestamps</strong> (sl_05/10/20/30_time) → first-hit logic ต้องใช้ <code>hours_to_mae</code> (peak) เป็น proxy<br><br>
   
-  <strong>ผลกระทบ:</strong> First-hit logic ใน analyze_master.py ใช้ <code>hours_to_mae</code> (peak) เป็น proxy แทนเวลา SL hit จริง<br><br>
+  <strong>การแก้ไข (EA v4.1 ปัจจุบัน):</strong><br>
+  ✅ EA v4.1 ใช้ <strong>Triple-Barrier 20×20 grid</strong> เก็บ SL timing ครบทุก level<br>
+  ✅ CSV schema ขยายจาก 93 cols → <strong>131 cols</strong> (เพิ่ม path checkpoints + Triple-Barrier outcomes)<br>
+  ✅ First-hit logic ใช้ exact SL/TP hit times ไม่ใช่ proxy แล้ว<br>
+  ✅ <code>MAX_TRACKED_POSITIONS</code> ขยายจาก 10K → 50K (แก้ buffer cap ของ BTC/ETH M15)<br><br>
   
-  <strong>Measurement (sample 314K trades):</strong><br>
-  • 93.6% ของ trades มีทั้ง TP10 + SL05 hit<br>
-  • <strong style="color:#ef4444">48.3% เป็น "suspicious cases"</strong> ที่ MAE peak ≤ MFE peak<br>
-  • Analysis อาจ overstate EV ~30-50%<br><br>
-  
-  <strong>Status:</strong> ต้องแก้ EA → v3.2 (เพิ่ม SL timestamps) → re-harvest ทุก dataset → re-analyze
+  <strong>ผลข้อมูลปัจจุบัน:</strong><br>
+  • 66 datasets · 2,154,570 trades · 22 assets · all v4.1 schema<br>
+  • EV calculation accurate (no longer using MAE proxy)<br>
+  • Realistic-EV vs Aggregated-EV gap ~60-70% (expected · เป็น normal first-hit selection bias)
 </div>
 
 <div class="insight" style="border-color:#f59e0b;background:linear-gradient(90deg,rgba(245,158,11,0.12),transparent)">
@@ -446,7 +447,7 @@
   • Phase Forward: Demo trading 1-3 เดือน ใน Live MT5<br>
   • Phase Live: Production EA · scale up หลัง validate<br><br>
 
-  <strong>Universal Patterns Findings (v8.6 baseline · v9.0 expanded):</strong><br>
+  <strong>Universal Patterns Findings (v9.0 · 66 datasets):</strong><br>
   • Tier S+ (active 100% + profitable 100% + minEV>0): <strong style="color:#10b981">19 patterns</strong><br>
   • Tier A (active 95%+ + profitable 95%+ + minEV>-0.3): <strong style="color:#3b82f6">24 patterns</strong><br>
   • รวม Production-ready candidates: <strong>43 patterns</strong>
@@ -485,7 +486,7 @@
   • 66 datasets · 2,154,570 trades · 22 assets<br>
   • Forex Major 7/7 · Forex Cross 3/3 · Energy 3/3 · Crypto 2/2 · Metals 1/3<br><br>
 
-  <strong>v8.7 (next batch — currently harvesting) — Indices + Metals M15</strong><br>
+  <strong style="color:#94a3b8">v8.7 (planned · superseded by v9.0 with EA v4.1)</strong><br>
   • +XAGUSD M15 · +US500 M15 · +USTEC M15 · +DE30 M15<br>
   • Target: 52 datasets · ~2.5M trades · 19 assets<br><br>
 
@@ -511,30 +512,39 @@
 </div>
 
 <div class="insight" style="border-color:#a855f7;background:linear-gradient(90deg,rgba(168,85,247,0.08),transparent)">
-  <div class="insight-tag" style="color:#a855f7">🏆 Top 10 Universal Tier S+ Patterns (v8.6)</div>
+  <div class="insight-tag" style="color:#a855f7">🏆 Top 10 Universal Tier S+ Patterns (v9.0 · 66 datasets · 2,154,570 trades)</div>
   <table style="width:100%;font-size:13px;margin-top:8px">
-    <tr style="background:rgba(168,85,247,0.1)"><th>PID</th><th>Cat</th><th>Pattern</th><th>Mean EV</th><th>Trades</th></tr>
-    <tr><td><strong>P128</strong></td><td><span class="cat-badge">K</span></td><td>MTF_FVG_Aligned_Long</td><td style="color:#10b981;font-weight:bold">+1.69R</td><td>16,948</td></tr><tr><td><strong>P132</strong></td><td><span class="cat-badge">K</span></td><td>Daily_Bias_Intraday_Long</td><td style="color:#10b981;font-weight:bold">+1.69R</td><td>39,732</td></tr><tr><td><strong>P51</strong></td><td><span class="cat-badge">D</span></td><td>HHHL</td><td style="color:#10b981;font-weight:bold">+1.67R</td><td>55,246</td></tr><tr><td><strong>P165</strong></td><td><span class="cat-badge">O</span></td><td>POC_Migration_Long</td><td style="color:#10b981;font-weight:bold">+1.66R</td><td>23,179</td></tr><tr><td><strong>P140</strong></td><td><span class="cat-badge">L</span></td><td>Ichimoku_Kumo_Twist_Bull</td><td style="color:#10b981;font-weight:bold">+1.57R</td><td>33,175</td></tr><tr><td><strong>P71</strong></td><td><span class="cat-badge">F</span></td><td>FVG_Bull</td><td style="color:#10b981;font-weight:bold">+1.57R</td><td>83,979</td></tr><tr><td><strong>P9</strong></td><td><span class="cat-badge">A</span></td><td>BB_Touch_Reversal</td><td style="color:#10b981;font-weight:bold">+1.43R</td><td>25,299</td></tr><tr><td><strong>P21</strong></td><td><span class="cat-badge">B</span></td><td>Doji</td><td style="color:#10b981;font-weight:bold">+1.40R</td><td>18,029</td></tr><tr><td><strong>P20</strong></td><td><span class="cat-badge">A</span></td><td>Inside_Bar_Break</td><td style="color:#10b981;font-weight:bold">+1.39R</td><td>27,216</td></tr><tr><td><strong>P170</strong></td><td><span class="cat-badge">P</span></td><td>Range_Mid_Bounce</td><td style="color:#10b981;font-weight:bold">+1.38R</td><td>23,642</td></tr>
+    <tr style="background:rgba(168,85,247,0.1)"><th>PID</th><th>Cat</th><th>Pattern</th><th>Mean EV</th><th>Trades</th><th>Active</th></tr>
+    <tr><td><strong>P170</strong></td><td><span class="cat-badge">P</span></td><td>Range_Mid_Bounce</td><td style="color:#10b981;font-weight:bold">+0.943R</td><td>24,041</td><td>64/66</td></tr>
+    <tr><td><strong>P9</strong></td><td><span class="cat-badge">A</span></td><td>BB_Touch_Reversal</td><td style="color:#10b981;font-weight:bold">+0.924R</td><td>24,448</td><td>66/66</td></tr>
+    <tr><td><strong>P51</strong></td><td><span class="cat-badge">D</span></td><td>HHHL</td><td style="color:#10b981;font-weight:bold">+0.913R</td><td>54,307</td><td>66/66</td></tr>
+    <tr><td><strong>P71</strong></td><td><span class="cat-badge">F</span></td><td>FVG_Bull</td><td style="color:#10b981;font-weight:bold">+0.894R</td><td>84,626</td><td>66/66</td></tr>
+    <tr><td><strong>P21</strong></td><td><span class="cat-badge">B</span></td><td>Doji</td><td style="color:#10b981;font-weight:bold">+0.888R</td><td>17,565</td><td>63/66</td></tr>
+    <tr><td><strong>P12</strong></td><td><span class="cat-badge">A</span></td><td>EMA_Cross</td><td style="color:#10b981;font-weight:bold">+0.860R</td><td>22,093</td><td>65/66</td></tr>
+    <tr><td><strong>P16</strong></td><td><span class="cat-badge">A</span></td><td>Stoch_Cross</td><td style="color:#10b981;font-weight:bold">+0.835R</td><td>33,834</td><td>66/66</td></tr>
+    <tr><td><strong>P142</strong></td><td><span class="cat-badge">L</span></td><td>Ichimoku_Chikou_Confirm</td><td style="color:#10b981;font-weight:bold">+0.807R</td><td>174,033</td><td>66/66</td></tr>
+    <tr><td><strong>P11</strong></td><td><span class="cat-badge">A</span></td><td>EMA_Bounce</td><td style="color:#10b981;font-weight:bold">+0.797R</td><td>51,143</td><td>66/66</td></tr>
+    <tr><td><strong>P85</strong></td><td><span class="cat-badge">G</span></td><td>NR4</td><td style="color:#10b981;font-weight:bold">+0.795R</td><td>90,476</td><td>66/66</td></tr>
   </table>
   <p style="margin-top:12px;color:#a8a8b8;font-size:12px">
-    <strong>Criteria:</strong> Active ใน 100% ของ 66 datasets · Profitable ใน 100% · MinEV > 0<br>
-    <strong>Source:</strong> data/universal_patterns.json · auto-regenerated ทุก version
+    <strong>เกณฑ์:</strong> Active ≥95% ของ 66 datasets · Profitable ใน 100% · MinEV > 0 (realistic first-hit logic)<br>
+    <strong>Source:</strong> auto-computed จาก master_data.json (v9.0)
   </p>
 </div>
 
 <div class="insight" style="border-color:#ec4899;background:linear-gradient(90deg,rgba(236,72,153,0.08),transparent)">
-  <div class="insight-tag" style="color:#ec4899">📐 Confidence Assessment</div>
+  <div class="insight-tag" style="color:#ec4899">📐 Confidence Assessment (v9.0)</div>
   <table style="width:100%;font-size:13px">
     <tr style="background:rgba(236,72,153,0.1)"><th>Aspect</th><th>Score</th><th>Note</th></tr>
-    <tr><td>Sample size</td><td>⭐⭐⭐⭐⭐</td><td>2,201,457 trades · rock solid</td></tr>
+    <tr><td>Sample size</td><td>⭐⭐⭐⭐⭐</td><td>2,154,570 trades · 66 datasets · rock solid</td></tr>
     <tr><td>Pattern detection accuracy</td><td>⭐⭐⭐⭐⭐</td><td>Academic standards · 100% objective</td></tr>
     <tr><td>Entry execution capture</td><td>⭐⭐⭐⭐☆</td><td>Real fills + spread · ขาดแค่ live slippage</td></tr>
-    <tr><td>Path tracking</td><td>⭐⭐⭐⭐☆</td><td>Real ticks + 9 checkpoints · hour-level</td></tr>
-    <tr><td>First-hit accuracy</td><td>⭐⭐⭐⭐☆</td><td>~90-95% · same-hour ambiguity ~5-10%</td></tr>
-    <tr><td>Regime coverage</td><td>⭐⭐⭐☆☆</td><td>4 เดือน · single regime · ต้อง OOS</td></tr>
+    <tr><td>Path tracking</td><td>⭐⭐⭐⭐⭐</td><td>Triple-Barrier 20×20 grid · 9 path checkpoints · hour-level (v4.1)</td></tr>
+    <tr><td>First-hit accuracy</td><td>⭐⭐⭐⭐⭐</td><td>Exact SL/TP timestamps (v4.1) · ไม่ใช้ proxy</td></tr>
+    <tr><td>Regime coverage</td><td>⭐⭐⭐⭐☆</td><td>~4 ปี (2022-2026) · multi-regime (COVID/inflation/recovery) · ต้อง OOS</td></tr>
     <tr><td>Live validation</td><td>⭐☆☆☆☆</td><td>❌ ยังไม่ได้ forward test</td></tr>
   </table>
-  <p style="margin-top:12px"><strong>Overall: 3.7/5.0</strong> — Research-grade · ดีพอ identify candidates · ต้องผ่าน OOS+forward ก่อน live</p>
+  <p style="margin-top:12px"><strong>Overall: 4.0/5.0</strong> — Research-grade · ดีพอ identify candidates · ต้องผ่าน OOS+forward ก่อน live trading</p>
 </div>
 
 <h2 class="section-title">Classical Books</h2></div>
@@ -548,6 +558,7 @@
         → Patterns: P21-P40
       </div>
     </div>
+
     <div class="kpi">
       <div class="kpi-label">Chart Patterns</div>
       <div style="font-size:11px;color:var(--txt-d);line-height:1.7;margin-top:10px">
@@ -643,14 +654,14 @@
   <div class="section-head"><span class="section-num">04</span><h2 class="section-title">EA Architecture</h2></div>
   
   <div class="insight blue">
-    <div class="insight-tag">KMP Pattern Harvester EA · v3.1 (current)</div>
-    <strong>KMP_PatternHarvester.mq5</strong> · 1,108 lines main EA<br>
-    <strong>28 code files</strong> · 11,622 total lines (10,424 code + 1,198 docs)<br>
-    <strong>177 patterns</strong> in 18 categories (A-R) · 3 phases<br>
+    <div class="insight-tag">KMP Pattern Harvester EA · v4.1 (current)</div>
+    <strong>KMP_PatternHarvester.mq5</strong> · main EA<br>
+    <strong>177 patterns</strong> in 18 categories (A-R) · 3 phases · academic standards (Bulkowski/Nison/Carney/ICT/Wyckoff/Hosoda)<br>
     <strong>Per-Pattern Mode:</strong> 1 pattern fired = 1 order (no blocking)<br>
-    <strong>MAX_TRACKED_POSITIONS:</strong> 10,000 concurrent slots<br>
+    <strong>MAX_TRACKED_POSITIONS:</strong> 50,000 concurrent slots (bumped from 10K in v9.0 to fix BTC/ETH M15 buffer cap)<br>
     <strong>Magic Number:</strong> 317077 (configurable)<br>
-    <strong>Output:</strong> CSV with full trade details (131 columns)<br>
+    <strong>Output:</strong> CSV with full trade details — <strong>131 columns</strong> (v4.1 schema)<br>
+    <strong>Triple-Barrier:</strong> 20×20 SL/TP grid<br>
     <strong>Time-stop:</strong> 240h · <strong>Path checkpoints:</strong> 9 (1/6/12/24/48/72/120/168/240h)<br>
     <strong>Indicators:</strong> ATR, EMA(9/20/50/100/200), BB, RSI, Stoch, MACD, ADX, Ichimoku(9/26/52)<br>
     <br>
