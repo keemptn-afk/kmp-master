@@ -1,9 +1,9 @@
-# KMP Master v9.0 — 30 datasets active (1M trades soon!)
+# KMP Master v9.0 — 1 MILLION+ trades 🎉
 
-**Status:** v9.0 · 30/69 datasets · 998,272 trades · 10 assets active · EA v4.1
+**Status:** v9.0 · 33/69 datasets · 1,087,621 trades · 11 assets active · EA v4.1
 **Total HTML:** 110 pages · sidebar bug fixed (inline JS)
 
-## Active Data (10 assets × 3 TFs = 30 datasets)
+## Active Data (11 assets × 3 TFs = 33 datasets)
 
 | Asset      | M15     | H1      | H4     | Total   |
 |------------|---------|---------|--------|---------|
@@ -14,27 +14,28 @@
 | XAU/USD    | 70,805  | 16,746  | 4,650  | 92,201  |
 | XPT/USD    | 69,457  | 16,485  | 4,619  | 90,561  |
 | DE30 (DAX) | 66,253  | 16,207  | 4,311  | 86,771  |
-| UKOIL      | 61,022  | 15,156  | 4,303  | 80,481  |
 | US500      | 68,857  | 16,934  | 4,934  | 90,725  |
+| UKOIL      | 61,022  | 15,156  | 4,303  | 80,481  |
+| USOIL      | 68,188  | 16,456  | 4,705  | 89,349  |
 | XNGUSD     | 68,746  | 17,550  | 4,644  | 90,940  |
-| **Total**  | 764,866 | 183,843 | 49,563 | **998,272** |
+| **Total**  | 833,054 | 200,299 | 54,268 | **1,087,621** |
 
 ## Class breakdown
 - Crypto: 265,005 (BTC + ETH)
 - Metals: 182,762 (XAU + XPT)
-- Energy: 171,421 (UKOIL + XNGUSD)
+- Energy: 260,770 (UKOIL + USOIL + XNGUSD) ← Energy ครบทั้ง 3 ตัว
 - Forex: 201,588 (EUR + JPY)
 - Indices: 177,496 (DE30 + US500)
 
 ## Deploy
 ```bash
 cd ~/Downloads
-unzip -o KMP_v9_30datasets_website.zip
+unzip -o KMP_v9_33datasets_website.zip
 cd ~/Documents/kmp-master
 git pull
-cp -rf ~/Downloads/KMP_v9_30datasets_website/* ./
+cp -rf ~/Downloads/KMP_v9_33datasets_website/* ./
 git add -A
-git commit -m "v9.0 · 30 datasets · +XNGUSD · 998K trades (almost 1M)"
+git commit -m "v9.0 · 33 datasets · 1M+ trades · +USOIL · Energy class complete"
 git push
 ```
 
