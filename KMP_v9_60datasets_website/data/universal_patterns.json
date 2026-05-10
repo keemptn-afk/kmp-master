@@ -1,0 +1,920 @@
+{
+  "meta": {
+    "version": "v8.6",
+    "generated_at": "2026-05-09",
+    "source_datasets": 48,
+    "total_trades": 2201457,
+    "criteria_S_plus": "active 100% datasets + profitable 100% + minEV > 0",
+    "criteria_A": "active 95%+ datasets + profitable 95%+ + minEV > -0.3",
+    "tier_s_plus_count": 19,
+    "tier_a_count": 24,
+    "CRITICAL_DISCLAIMER": "Tier S+/A rankings ใช้ first-hit logic ที่มี flaw — EA v3.1 ไม่บันทึก SL timestamp · analysis ใช้ MAE peak time เป็น proxy. Measurement: 48.3% ของ trades เป็น 'suspicious cases'. EV ที่รายงานอาจ overstate 30-50%. Rankings ต้อง re-validate ใน v9.0 หลังแก้ EA + re-harvest.",
+    "multiple_testing_warning": "ผม ไม่ ได้ apply multiple testing correction. 135,936 statistical tests · expected ~6,800 false positives at α=0.05. Tier S+ 19 patterns อาจมี false positives.",
+    "sample_threshold_warning": "ใช้ n≥30 (ของผม) · academic standard n≥100. ที่ stricter threshold: Tier S+ ลด 19→9 patterns.",
+    "confidence_revised": "Preliminary research (2.5/5.0) · NOT research-grade · NOT for live trading"
+  },
+  "tier_s_plus": [
+    {
+      "pid": 128,
+      "name": "MTF_FVG_Aligned_Long",
+      "category": "K",
+      "mean_ev": 1.689,
+      "min_ev": 0.31,
+      "max_ev": 4.125,
+      "total_trades": 16948,
+      "active_in": 48,
+      "tier": "S+"
+    },
+    {
+      "pid": 132,
+      "name": "Daily_Bias_Intraday_Long",
+      "category": "K",
+      "mean_ev": 1.688,
+      "min_ev": 0.037,
+      "max_ev": 3.929,
+      "total_trades": 39732,
+      "active_in": 48,
+      "tier": "S+"
+    },
+    {
+      "pid": 51,
+      "name": "HHHL",
+      "category": "D",
+      "mean_ev": 1.67,
+      "min_ev": 0.196,
+      "max_ev": 4.056,
+      "total_trades": 55246,
+      "active_in": 48,
+      "tier": "S+"
+    },
+    {
+      "pid": 165,
+      "name": "POC_Migration_Long",
+      "category": "O",
+      "mean_ev": 1.664,
+      "min_ev": 0.056,
+      "max_ev": 4.051,
+      "total_trades": 23179,
+      "active_in": 48,
+      "tier": "S+"
+    },
+    {
+      "pid": 140,
+      "name": "Ichimoku_Kumo_Twist_Bull",
+      "category": "L",
+      "mean_ev": 1.575,
+      "min_ev": 0.033,
+      "max_ev": 4.072,
+      "total_trades": 33175,
+      "active_in": 48,
+      "tier": "S+"
+    },
+    {
+      "pid": 71,
+      "name": "FVG_Bull",
+      "category": "F",
+      "mean_ev": 1.566,
+      "min_ev": 0.062,
+      "max_ev": 4.356,
+      "total_trades": 83979,
+      "active_in": 48,
+      "tier": "S+"
+    },
+    {
+      "pid": 9,
+      "name": "BB_Touch_Reversal",
+      "category": "A",
+      "mean_ev": 1.429,
+      "min_ev": 0.147,
+      "max_ev": 2.956,
+      "total_trades": 25299,
+      "active_in": 48,
+      "tier": "S+"
+    },
+    {
+      "pid": 21,
+      "name": "Doji",
+      "category": "B",
+      "mean_ev": 1.395,
+      "min_ev": 0.2,
+      "max_ev": 3.051,
+      "total_trades": 18029,
+      "active_in": 48,
+      "tier": "S+"
+    },
+    {
+      "pid": 20,
+      "name": "Inside_Bar_Break",
+      "category": "A",
+      "mean_ev": 1.386,
+      "min_ev": 0.25,
+      "max_ev": 2.85,
+      "total_trades": 27216,
+      "active_in": 48,
+      "tier": "S+"
+    },
+    {
+      "pid": 170,
+      "name": "Range_Mid_Bounce",
+      "category": "P",
+      "mean_ev": 1.381,
+      "min_ev": 0.028,
+      "max_ev": 3.038,
+      "total_trades": 23642,
+      "active_in": 48,
+      "tier": "S+"
+    },
+    {
+      "pid": 11,
+      "name": "EMA_Bounce",
+      "category": "A",
+      "mean_ev": 1.374,
+      "min_ev": 0.13,
+      "max_ev": 3.051,
+      "total_trades": 51839,
+      "active_in": 48,
+      "tier": "S+"
+    },
+    {
+      "pid": 12,
+      "name": "EMA_Cross",
+      "category": "A",
+      "mean_ev": 1.359,
+      "min_ev": 0.16,
+      "max_ev": 2.95,
+      "total_trades": 22432,
+      "active_in": 48,
+      "tier": "S+"
+    },
+    {
+      "pid": 16,
+      "name": "Stoch_Cross",
+      "category": "A",
+      "mean_ev": 1.358,
+      "min_ev": 0.112,
+      "max_ev": 2.897,
+      "total_trades": 34491,
+      "active_in": 48,
+      "tier": "S+"
+    },
+    {
+      "pid": 8,
+      "name": "TwoBar_Reversal",
+      "category": "A",
+      "mean_ev": 1.343,
+      "min_ev": 0.079,
+      "max_ev": 2.843,
+      "total_trades": 74378,
+      "active_in": 48,
+      "tier": "S+"
+    },
+    {
+      "pid": 85,
+      "name": "NR4",
+      "category": "G",
+      "mean_ev": 1.306,
+      "min_ev": 0.179,
+      "max_ev": 2.814,
+      "total_trades": 90749,
+      "active_in": 48,
+      "tier": "S+"
+    },
+    {
+      "pid": 142,
+      "name": "Ichimoku_Chikou_Confirm",
+      "category": "L",
+      "mean_ev": 1.302,
+      "min_ev": 0.127,
+      "max_ev": 2.672,
+      "total_trades": 174947,
+      "active_in": 48,
+      "tier": "S+"
+    },
+    {
+      "pid": 72,
+      "name": "FVG_Bear",
+      "category": "F",
+      "mean_ev": 1.297,
+      "min_ev": 0.016,
+      "max_ev": 3.537,
+      "total_trades": 83538,
+      "active_in": 48,
+      "tier": "S+"
+    },
+    {
+      "pid": 18,
+      "name": "Pivot_Bounce",
+      "category": "A",
+      "mean_ev": 1.291,
+      "min_ev": 0.158,
+      "max_ev": 2.783,
+      "total_trades": 49513,
+      "active_in": 48,
+      "tier": "S+"
+    },
+    {
+      "pid": 86,
+      "name": "NR7",
+      "category": "G",
+      "mean_ev": 1.274,
+      "min_ev": 0.182,
+      "max_ev": 2.789,
+      "total_trades": 53866,
+      "active_in": 48,
+      "tier": "S+"
+    }
+  ],
+  "tier_a": [
+    {
+      "pid": 53,
+      "name": "BOS_Bull",
+      "category": "D",
+      "mean_ev": 1.811,
+      "min_ev": -0.038,
+      "total_trades": 17779,
+      "active_in": 48,
+      "tier": "A"
+    },
+    {
+      "pid": 159,
+      "name": "Hidden_Div_Bull_MACD",
+      "category": "N",
+      "mean_ev": 1.773,
+      "min_ev": 0.182,
+      "total_trades": 15177,
+      "active_in": 47,
+      "tier": "A"
+    },
+    {
+      "pid": 89,
+      "name": "OTE_Long",
+      "category": "H",
+      "mean_ev": 1.76,
+      "min_ev": -0.048,
+      "total_trades": 9861,
+      "active_in": 45,
+      "tier": "A"
+    },
+    {
+      "pid": 124,
+      "name": "ThreeBar_Rev_Bull",
+      "category": "J",
+      "mean_ev": 1.722,
+      "min_ev": 0.429,
+      "total_trades": 10608,
+      "active_in": 47,
+      "tier": "A"
+    },
+    {
+      "pid": 171,
+      "name": "ABCD_Bull",
+      "category": "Q",
+      "mean_ev": 1.706,
+      "min_ev": 0.095,
+      "total_trades": 11655,
+      "active_in": 45,
+      "tier": "A"
+    },
+    {
+      "pid": 79,
+      "name": "POC_Bounce_Long",
+      "category": "F",
+      "mean_ev": 1.697,
+      "min_ev": 0.105,
+      "total_trades": 10944,
+      "active_in": 45,
+      "tier": "A"
+    },
+    {
+      "pid": 168,
+      "name": "Daily_Pivot_Tag_Long",
+      "category": "P",
+      "mean_ev": 1.663,
+      "min_ev": 0.048,
+      "total_trades": 3215,
+      "active_in": 46,
+      "tier": "A"
+    },
+    {
+      "pid": 162,
+      "name": "VAL_Reject_Long",
+      "category": "O",
+      "mean_ev": 1.654,
+      "min_ev": 0.0,
+      "total_trades": 13540,
+      "active_in": 47,
+      "tier": "A"
+    },
+    {
+      "pid": 38,
+      "name": "Tweezer_Bottom",
+      "category": "B",
+      "mean_ev": 1.616,
+      "min_ev": 0.079,
+      "total_trades": 12413,
+      "active_in": 46,
+      "tier": "A"
+    },
+    {
+      "pid": 45,
+      "name": "Breaker_Block_Bull",
+      "category": "C",
+      "mean_ev": 1.582,
+      "min_ev": -0.085,
+      "total_trades": 73778,
+      "active_in": 48,
+      "tier": "A"
+    },
+    {
+      "pid": 28,
+      "name": "Bullish_Engulfing",
+      "category": "B",
+      "mean_ev": 1.539,
+      "min_ev": 0.091,
+      "total_trades": 13320,
+      "active_in": 47,
+      "tier": "A"
+    },
+    {
+      "pid": 125,
+      "name": "ThreeBar_Rev_Bear",
+      "category": "J",
+      "mean_ev": 1.465,
+      "min_ev": 0.167,
+      "total_trades": 10488,
+      "active_in": 45,
+      "tier": "A"
+    },
+    {
+      "pid": 173,
+      "name": "Three_Drives_Bull",
+      "category": "Q",
+      "mean_ev": 1.455,
+      "min_ev": -0.261,
+      "total_trades": 14961,
+      "active_in": 45,
+      "tier": "A"
+    },
+    {
+      "pid": 172,
+      "name": "ABCD_Bear",
+      "category": "Q",
+      "mean_ev": 1.407,
+      "min_ev": -0.062,
+      "total_trades": 12378,
+      "active_in": 46,
+      "tier": "A"
+    },
+    {
+      "pid": 106,
+      "name": "CVD_Div_Bull",
+      "category": "I",
+      "mean_ev": 1.39,
+      "min_ev": -0.095,
+      "total_trades": 19447,
+      "active_in": 48,
+      "tier": "A"
+    },
+    {
+      "pid": 29,
+      "name": "Bearish_Engulfing",
+      "category": "B",
+      "mean_ev": 1.368,
+      "min_ev": -0.25,
+      "total_trades": 13275,
+      "active_in": 47,
+      "tier": "A"
+    },
+    {
+      "pid": 129,
+      "name": "MTF_FVG_Aligned_Short",
+      "category": "K",
+      "mean_ev": 1.361,
+      "min_ev": -0.125,
+      "total_trades": 15534,
+      "active_in": 46,
+      "tier": "A"
+    },
+    {
+      "pid": 161,
+      "name": "VAH_Reject_Short",
+      "category": "O",
+      "mean_ev": 1.316,
+      "min_ev": -0.077,
+      "total_trades": 13616,
+      "active_in": 47,
+      "tier": "A"
+    },
+    {
+      "pid": 133,
+      "name": "Daily_Bias_Intraday_Short",
+      "category": "K",
+      "mean_ev": 1.286,
+      "min_ev": -0.281,
+      "total_trades": 31361,
+      "active_in": 48,
+      "tier": "A"
+    },
+    {
+      "pid": 39,
+      "name": "Tweezer_Top",
+      "category": "B",
+      "mean_ev": 1.284,
+      "min_ev": -0.167,
+      "total_trades": 13292,
+      "active_in": 48,
+      "tier": "A"
+    },
+    {
+      "pid": 174,
+      "name": "Three_Drives_Bear",
+      "category": "Q",
+      "mean_ev": 1.283,
+      "min_ev": -0.048,
+      "total_trades": 16537,
+      "active_in": 46,
+      "tier": "A"
+    },
+    {
+      "pid": 97,
+      "name": "PD_Array_Premium",
+      "category": "H",
+      "mean_ev": 1.271,
+      "min_ev": -0.157,
+      "total_trades": 31253,
+      "active_in": 48,
+      "tier": "A"
+    },
+    {
+      "pid": 46,
+      "name": "Breaker_Block_Bear",
+      "category": "C",
+      "mean_ev": 1.259,
+      "min_ev": -0.16,
+      "total_trades": 72037,
+      "active_in": 48,
+      "tier": "A"
+    },
+    {
+      "pid": 52,
+      "name": "LHLL",
+      "category": "D",
+      "mean_ev": 1.256,
+      "min_ev": -0.125,
+      "total_trades": 50494,
+      "active_in": 48,
+      "tier": "A"
+    }
+  ],
+  "patterns": [
+    {
+      "pid": 128,
+      "name": "MTF_FVG_Aligned_Long",
+      "category": "K",
+      "mean_ev": 1.689,
+      "min_ev": 0.31,
+      "max_ev": 4.125,
+      "total_trades": 16948,
+      "active_in": 48,
+      "tier": "S+"
+    },
+    {
+      "pid": 132,
+      "name": "Daily_Bias_Intraday_Long",
+      "category": "K",
+      "mean_ev": 1.688,
+      "min_ev": 0.037,
+      "max_ev": 3.929,
+      "total_trades": 39732,
+      "active_in": 48,
+      "tier": "S+"
+    },
+    {
+      "pid": 51,
+      "name": "HHHL",
+      "category": "D",
+      "mean_ev": 1.67,
+      "min_ev": 0.196,
+      "max_ev": 4.056,
+      "total_trades": 55246,
+      "active_in": 48,
+      "tier": "S+"
+    },
+    {
+      "pid": 165,
+      "name": "POC_Migration_Long",
+      "category": "O",
+      "mean_ev": 1.664,
+      "min_ev": 0.056,
+      "max_ev": 4.051,
+      "total_trades": 23179,
+      "active_in": 48,
+      "tier": "S+"
+    },
+    {
+      "pid": 140,
+      "name": "Ichimoku_Kumo_Twist_Bull",
+      "category": "L",
+      "mean_ev": 1.575,
+      "min_ev": 0.033,
+      "max_ev": 4.072,
+      "total_trades": 33175,
+      "active_in": 48,
+      "tier": "S+"
+    },
+    {
+      "pid": 71,
+      "name": "FVG_Bull",
+      "category": "F",
+      "mean_ev": 1.566,
+      "min_ev": 0.062,
+      "max_ev": 4.356,
+      "total_trades": 83979,
+      "active_in": 48,
+      "tier": "S+"
+    },
+    {
+      "pid": 9,
+      "name": "BB_Touch_Reversal",
+      "category": "A",
+      "mean_ev": 1.429,
+      "min_ev": 0.147,
+      "max_ev": 2.956,
+      "total_trades": 25299,
+      "active_in": 48,
+      "tier": "S+"
+    },
+    {
+      "pid": 21,
+      "name": "Doji",
+      "category": "B",
+      "mean_ev": 1.395,
+      "min_ev": 0.2,
+      "max_ev": 3.051,
+      "total_trades": 18029,
+      "active_in": 48,
+      "tier": "S+"
+    },
+    {
+      "pid": 20,
+      "name": "Inside_Bar_Break",
+      "category": "A",
+      "mean_ev": 1.386,
+      "min_ev": 0.25,
+      "max_ev": 2.85,
+      "total_trades": 27216,
+      "active_in": 48,
+      "tier": "S+"
+    },
+    {
+      "pid": 170,
+      "name": "Range_Mid_Bounce",
+      "category": "P",
+      "mean_ev": 1.381,
+      "min_ev": 0.028,
+      "max_ev": 3.038,
+      "total_trades": 23642,
+      "active_in": 48,
+      "tier": "S+"
+    },
+    {
+      "pid": 11,
+      "name": "EMA_Bounce",
+      "category": "A",
+      "mean_ev": 1.374,
+      "min_ev": 0.13,
+      "max_ev": 3.051,
+      "total_trades": 51839,
+      "active_in": 48,
+      "tier": "S+"
+    },
+    {
+      "pid": 12,
+      "name": "EMA_Cross",
+      "category": "A",
+      "mean_ev": 1.359,
+      "min_ev": 0.16,
+      "max_ev": 2.95,
+      "total_trades": 22432,
+      "active_in": 48,
+      "tier": "S+"
+    },
+    {
+      "pid": 16,
+      "name": "Stoch_Cross",
+      "category": "A",
+      "mean_ev": 1.358,
+      "min_ev": 0.112,
+      "max_ev": 2.897,
+      "total_trades": 34491,
+      "active_in": 48,
+      "tier": "S+"
+    },
+    {
+      "pid": 8,
+      "name": "TwoBar_Reversal",
+      "category": "A",
+      "mean_ev": 1.343,
+      "min_ev": 0.079,
+      "max_ev": 2.843,
+      "total_trades": 74378,
+      "active_in": 48,
+      "tier": "S+"
+    },
+    {
+      "pid": 85,
+      "name": "NR4",
+      "category": "G",
+      "mean_ev": 1.306,
+      "min_ev": 0.179,
+      "max_ev": 2.814,
+      "total_trades": 90749,
+      "active_in": 48,
+      "tier": "S+"
+    },
+    {
+      "pid": 142,
+      "name": "Ichimoku_Chikou_Confirm",
+      "category": "L",
+      "mean_ev": 1.302,
+      "min_ev": 0.127,
+      "max_ev": 2.672,
+      "total_trades": 174947,
+      "active_in": 48,
+      "tier": "S+"
+    },
+    {
+      "pid": 72,
+      "name": "FVG_Bear",
+      "category": "F",
+      "mean_ev": 1.297,
+      "min_ev": 0.016,
+      "max_ev": 3.537,
+      "total_trades": 83538,
+      "active_in": 48,
+      "tier": "S+"
+    },
+    {
+      "pid": 18,
+      "name": "Pivot_Bounce",
+      "category": "A",
+      "mean_ev": 1.291,
+      "min_ev": 0.158,
+      "max_ev": 2.783,
+      "total_trades": 49513,
+      "active_in": 48,
+      "tier": "S+"
+    },
+    {
+      "pid": 86,
+      "name": "NR7",
+      "category": "G",
+      "mean_ev": 1.274,
+      "min_ev": 0.182,
+      "max_ev": 2.789,
+      "total_trades": 53866,
+      "active_in": 48,
+      "tier": "S+"
+    },
+    {
+      "pid": 53,
+      "name": "BOS_Bull",
+      "category": "D",
+      "mean_ev": 1.811,
+      "min_ev": -0.038,
+      "total_trades": 17779,
+      "active_in": 48,
+      "tier": "A"
+    },
+    {
+      "pid": 159,
+      "name": "Hidden_Div_Bull_MACD",
+      "category": "N",
+      "mean_ev": 1.773,
+      "min_ev": 0.182,
+      "total_trades": 15177,
+      "active_in": 47,
+      "tier": "A"
+    },
+    {
+      "pid": 89,
+      "name": "OTE_Long",
+      "category": "H",
+      "mean_ev": 1.76,
+      "min_ev": -0.048,
+      "total_trades": 9861,
+      "active_in": 45,
+      "tier": "A"
+    },
+    {
+      "pid": 124,
+      "name": "ThreeBar_Rev_Bull",
+      "category": "J",
+      "mean_ev": 1.722,
+      "min_ev": 0.429,
+      "total_trades": 10608,
+      "active_in": 47,
+      "tier": "A"
+    },
+    {
+      "pid": 171,
+      "name": "ABCD_Bull",
+      "category": "Q",
+      "mean_ev": 1.706,
+      "min_ev": 0.095,
+      "total_trades": 11655,
+      "active_in": 45,
+      "tier": "A"
+    },
+    {
+      "pid": 79,
+      "name": "POC_Bounce_Long",
+      "category": "F",
+      "mean_ev": 1.697,
+      "min_ev": 0.105,
+      "total_trades": 10944,
+      "active_in": 45,
+      "tier": "A"
+    },
+    {
+      "pid": 168,
+      "name": "Daily_Pivot_Tag_Long",
+      "category": "P",
+      "mean_ev": 1.663,
+      "min_ev": 0.048,
+      "total_trades": 3215,
+      "active_in": 46,
+      "tier": "A"
+    },
+    {
+      "pid": 162,
+      "name": "VAL_Reject_Long",
+      "category": "O",
+      "mean_ev": 1.654,
+      "min_ev": 0.0,
+      "total_trades": 13540,
+      "active_in": 47,
+      "tier": "A"
+    },
+    {
+      "pid": 38,
+      "name": "Tweezer_Bottom",
+      "category": "B",
+      "mean_ev": 1.616,
+      "min_ev": 0.079,
+      "total_trades": 12413,
+      "active_in": 46,
+      "tier": "A"
+    },
+    {
+      "pid": 45,
+      "name": "Breaker_Block_Bull",
+      "category": "C",
+      "mean_ev": 1.582,
+      "min_ev": -0.085,
+      "total_trades": 73778,
+      "active_in": 48,
+      "tier": "A"
+    },
+    {
+      "pid": 28,
+      "name": "Bullish_Engulfing",
+      "category": "B",
+      "mean_ev": 1.539,
+      "min_ev": 0.091,
+      "total_trades": 13320,
+      "active_in": 47,
+      "tier": "A"
+    },
+    {
+      "pid": 125,
+      "name": "ThreeBar_Rev_Bear",
+      "category": "J",
+      "mean_ev": 1.465,
+      "min_ev": 0.167,
+      "total_trades": 10488,
+      "active_in": 45,
+      "tier": "A"
+    },
+    {
+      "pid": 173,
+      "name": "Three_Drives_Bull",
+      "category": "Q",
+      "mean_ev": 1.455,
+      "min_ev": -0.261,
+      "total_trades": 14961,
+      "active_in": 45,
+      "tier": "A"
+    },
+    {
+      "pid": 172,
+      "name": "ABCD_Bear",
+      "category": "Q",
+      "mean_ev": 1.407,
+      "min_ev": -0.062,
+      "total_trades": 12378,
+      "active_in": 46,
+      "tier": "A"
+    },
+    {
+      "pid": 106,
+      "name": "CVD_Div_Bull",
+      "category": "I",
+      "mean_ev": 1.39,
+      "min_ev": -0.095,
+      "total_trades": 19447,
+      "active_in": 48,
+      "tier": "A"
+    },
+    {
+      "pid": 29,
+      "name": "Bearish_Engulfing",
+      "category": "B",
+      "mean_ev": 1.368,
+      "min_ev": -0.25,
+      "total_trades": 13275,
+      "active_in": 47,
+      "tier": "A"
+    },
+    {
+      "pid": 129,
+      "name": "MTF_FVG_Aligned_Short",
+      "category": "K",
+      "mean_ev": 1.361,
+      "min_ev": -0.125,
+      "total_trades": 15534,
+      "active_in": 46,
+      "tier": "A"
+    },
+    {
+      "pid": 161,
+      "name": "VAH_Reject_Short",
+      "category": "O",
+      "mean_ev": 1.316,
+      "min_ev": -0.077,
+      "total_trades": 13616,
+      "active_in": 47,
+      "tier": "A"
+    },
+    {
+      "pid": 133,
+      "name": "Daily_Bias_Intraday_Short",
+      "category": "K",
+      "mean_ev": 1.286,
+      "min_ev": -0.281,
+      "total_trades": 31361,
+      "active_in": 48,
+      "tier": "A"
+    },
+    {
+      "pid": 39,
+      "name": "Tweezer_Top",
+      "category": "B",
+      "mean_ev": 1.284,
+      "min_ev": -0.167,
+      "total_trades": 13292,
+      "active_in": 48,
+      "tier": "A"
+    },
+    {
+      "pid": 174,
+      "name": "Three_Drives_Bear",
+      "category": "Q",
+      "mean_ev": 1.283,
+      "min_ev": -0.048,
+      "total_trades": 16537,
+      "active_in": 46,
+      "tier": "A"
+    },
+    {
+      "pid": 97,
+      "name": "PD_Array_Premium",
+      "category": "H",
+      "mean_ev": 1.271,
+      "min_ev": -0.157,
+      "total_trades": 31253,
+      "active_in": 48,
+      "tier": "A"
+    },
+    {
+      "pid": 46,
+      "name": "Breaker_Block_Bear",
+      "category": "C",
+      "mean_ev": 1.259,
+      "min_ev": -0.16,
+      "total_trades": 72037,
+      "active_in": 48,
+      "tier": "A"
+    },
+    {
+      "pid": 52,
+      "name": "LHLL",
+      "category": "D",
+      "mean_ev": 1.256,
+      "min_ev": -0.125,
+      "total_trades": 50494,
+      "active_in": 48,
+      "tier": "A"
+    }
+  ]
+}
