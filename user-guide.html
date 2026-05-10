@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<title>คู่มือการใช้งาน — KMP Master</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  :root {
+    --bg: #0a0a0a; --panel: #14141a; --card: #1a1a22; --border: #2a2a35;
+    --text: #e8e8ee; --muted: #8a8a9a; --green: #10b981; --red: #ef4444;
+    --yellow: #fbbf24; --blue: #3b82f6; --purple: #8b5cf6; --teal: #06b6d4;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Sukhumvit Set', 'IBM Plex Sans Thai', -apple-system, sans-serif; 
+         background: var(--bg); color: var(--text); line-height: 1.7; font-size: 15px; }
+  
+  .layout { display: grid; grid-template-columns: 280px 1fr; min-height: 100vh; }
+  .sidebar { background: var(--panel); border-right: 1px solid var(--border); padding: 20px 12px;
+             overflow-y: auto; max-height: 100vh; position: sticky; top: 0; }
+  .main { padding: 30px 50px 80px; max-width: 1200px; }
+  
+  .brand { display: flex; align-items: center; gap: 10px; padding: 0 8px 16px; border-bottom: 1px solid var(--border); margin-bottom: 12px; }
+  .brand-icon { font-size: 24px; }
+  .brand-name { font-weight: 600; font-size: 16px; }
+  .brand-ver { font-size: 11px; color: var(--muted); }
+  
+  .nav-label { color: var(--muted); font-size: 11px; text-transform: uppercase; letter-spacing: 1px; margin: 16px 0 4px 8px; }
+  
+  .tree-node { padding: 6px 8px; border-radius: 4px; display: flex; align-items: center; gap: 6px;
+               text-decoration: none; color: var(--text); font-size: 13px; cursor: pointer; }
+  .tree-node:hover { background: var(--card); }
+  .tree-node.active { background: var(--card); border-left: 3px solid var(--blue); }
+  .arrow { font-size: 9px; color: var(--muted); transition: transform .2s; }
+  .tree-node.expanded .arrow { transform: rotate(90deg); }
+  .tree-children { display: none; padding-left: 16px; }
+  .tree-children.show { display: block; }
+  .nm { flex: 1; }
+  .badge { padding: 2px 6px; border-radius: 3px; font-size: 10px; background: var(--card); color: var(--muted); }
+  .lvl-1 { padding-left: 16px; }
+  .lvl-2 { padding-left: 28px; font-size: 12px; }
+  
+  .hero-tag { display: inline-block; padding: 6px 14px; background: var(--card); border: 1px solid var(--border);
+              border-radius: 20px; font-size: 13px; color: var(--blue); margin-bottom: 12px; }
+  h1 { font-size: 32px; margin-bottom: 8px; line-height: 1.2; }
+  h2 { font-size: 24px; margin-top: 36px; margin-bottom: 14px; padding-bottom: 8px; border-bottom: 2px solid var(--border); color: #fff; }
+  h3 { font-size: 18px; margin-top: 24px; margin-bottom: 10px; color: var(--blue); }
+  h4 { font-size: 15px; margin-top: 16px; margin-bottom: 6px; color: var(--yellow); }
+  
+  p { margin-bottom: 10px; color: var(--text); }
+  .lead { font-size: 16px; color: var(--muted); margin-bottom: 20px; }
+  
+  ol, ul { margin: 8px 0 16px 24px; }
+  li { margin-bottom: 6px; }
+  
+  code { background: var(--card); padding: 2px 6px; border-radius: 3px; font-size: 13px; color: var(--yellow); 
+         font-family: 'JetBrains Mono', 'Courier New', monospace; }
+  pre { background: var(--card); border: 1px solid var(--border); padding: 14px; border-radius: 6px; overflow-x: auto; margin: 10px 0; }
+  pre code { background: transparent; padding: 0; color: var(--text); font-size: 12.5px; }
+  
+  .info-box { background: var(--card); border-left: 4px solid var(--blue); padding: 14px 18px; margin: 14px 0; border-radius: 4px; }
+  .info-box.warn { border-color: var(--yellow); }
+  .info-box.danger { border-color: var(--red); }
+  .info-box.success { border-color: var(--green); }
+  .info-box strong { color: var(--yellow); }
+  .info-box.warn strong { color: var(--yellow); }
+  .info-box.danger strong { color: var(--red); }
+  .info-box.success strong { color: var(--green); }
+  
+  table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 13.5px; }
+  th { background: var(--card); padding: 10px 14px; text-align: left; border-bottom: 2px solid var(--border); color: var(--muted); font-weight: 600; }
+  td { padding: 10px 14px; border-bottom: 1px solid var(--border); }
+  tr:hover td { background: var(--card); }
+  
+  .pill { display: inline-block; padding: 2px 8px; border-radius: 3px; font-size: 11px; font-weight: 600; }
+  .pill-green { background: rgba(16,185,129,.15); color: var(--green); }
+  .pill-red { background: rgba(239,68,68,.15); color: var(--red); }
+  .pill-yellow { background: rgba(251,191,36,.15); color: var(--yellow); }
+  .pill-blue { background: rgba(59,130,246,.15); color: var(--blue); }
+  
+  .toc { background: var(--card); padding: 16px 20px; border-radius: 6px; margin: 20px 0 30px; border: 1px solid var(--border); }
+  .toc h3 { margin: 0 0 10px; color: var(--text); font-size: 16px; }
+  .toc a { color: var(--blue); text-decoration: none; display: block; padding: 4px 0; }
+  .toc a:hover { color: var(--yellow); }
+  
+  .section { margin-bottom: 40px; }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 14px 0; }
+  .card-mini { background: var(--card); padding: 14px; border-radius: 6px; border: 1px solid var(--border); }
+  .card-mini h4 { margin: 0 0 8px; color: var(--blue); }
+  .card-mini p { margin: 0; font-size: 13px; color: var(--muted); }
+  
+  .step { display: flex; gap: 14px; margin: 12px 0; align-items: start; }
+  .step-num { background: var(--blue); color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 600; flex-shrink: 0; }
+  .step-content { flex: 1; }
+  .step-content h4 { margin-top: 0; }
+  
+  hr { border: none; border-top: 1px solid var(--border); margin: 30px 0; }
+</style>
+</head>
+<body>
+<div class="layout">
+  <div class="sidebar">
+    <div class="brand">
+      <span class="brand-icon">🏆</span>
+      <div>
+        <div class="brand-name">KMP Master</div>
+        <div class="brand-ver">EA v4.1 · 177 patterns · 131 cols</div>
+      </div>
+    </div>
+    <div class="nav-label">เริ่มต้น</div>
+    <a class="tree-node lvl-0 active" href="user-guide.html"><span class="nm">📖 คู่มือการใช้งาน</span></a>
+    <a class="tree-node lvl-0" href="index.html"><span class="nm">🏠 หน้าหลัก</span></a>
+    <a class="tree-node lvl-0" href="preface.html"><span class="nm">📝 คำนำ</span></a>
+    
+    <div class="nav-label">รายงานและการวิเคราะห์</div>
+    <a class="tree-node lvl-0" href="patterns.html"><span class="nm">📋 Patterns</span></a>
+    <a class="tree-node lvl-0" href="tier.html"><span class="nm">🏅 Tier ranking</span></a>
+    <a class="tree-node lvl-0" href="optimal-tpsl.html"><span class="nm">🎯 Optimal TP/SL</span></a>
+    <a class="tree-node lvl-0" href="cross.html"><span class="nm">🔀 Cross-asset</span></a>
+    <a class="tree-node lvl-0" href="time.html"><span class="nm">⏰ Time Analysis</span></a>
+    <a class="tree-node lvl-0" href="edge.html"><span class="nm">📊 Edge by Vol</span></a>
+    <a class="tree-node lvl-0" href="reference.html"><span class="nm">📚 Reference</span></a>
+  </div>
+  
+  <div class="main">
+    <span class="hero-tag">📖 KMP Master · v9.0 · 66/69 datasets · 2.15M trades</span>
+    <h1>คู่มือการใช้งานเว็บ KMP Master</h1>
+    <p class="lead">คู่มือนี้อธิบายทุกหัวข้อในเว็บ — วิธีอ่านค่า · ความหมายของตัวเลข · การใช้งานเพื่อหาแพทเทิร์นเทรด · ภาษาไทยล้วน เข้าใจง่าย ใช้ได้จริง</p>
+    
+    <div class="toc">
+      <h3>📑 สารบัญ</h3>
+      <a href="#part1">ส่วนที่ 1 · ภาพรวมโครงการ KMP Master</a>
+      <a href="#part2">ส่วนที่ 2 · คำศัพท์ trading ที่ต้องเข้าใจก่อน</a>
+      <a href="#part3">ส่วนที่ 3 · การอ่านค่าตัวเลขสำคัญ</a>
+      <a href="#part4">ส่วนที่ 4 · คู่มือแต่ละหน้า (Page-by-page)</a>
+      <a href="#part5">ส่วนที่ 5 · Sidebar Navigation</a>
+      <a href="#part6">ส่วนที่ 6 · 10 Sections ในหน้า Dataset</a>
+      <a href="#part7">ส่วนที่ 7 · การเลือก Pattern เพื่อใช้จริง (Workflow)</a>
+      <a href="#part8">ส่วนที่ 8 · ข้อจำกัด · ข้อควรระวัง · FAQ</a>
+    </div>
+    
+    <!-- ====================================================================== -->
+    <h2 id="part1">ส่วนที่ 1 · ภาพรวมโครงการ KMP Master</h2>
+    
+    <p>KMP Master คือเว็บ <strong>research dashboard</strong> สำหรับเก็บและวิเคราะห์ผล <strong>backtest 177 trading patterns</strong> ทำงานบน <strong>22 สินทรัพย์ × 3 timeframes = 66 datasets</strong> รวม <strong>2,154,570 trades</strong></p>
+    
+    <h3>1.1 จุดประสงค์</h3>
+    <ul>
+      <li>หา patterns ที่ <strong>ทำกำไรได้จริง</strong> ในหลายตลาด</li>
+      <li>หา <strong>SL/TP ที่ดีที่สุด</strong> ของแต่ละ pattern ใน asset/TF เฉพาะ</li>
+      <li>คัดเลือก patterns สำหรับสร้าง <strong>EA Production</strong> ในอนาคต</li>
+      <li>ทำให้ทุก pattern มี <strong>academic basis</strong> (Bulkowski, Nison, Carney, ICT, Wyckoff, Hosoda)</li>
+    </ul>
+    
+    <h3>1.2 ประเภทข้อมูลที่ทดสอบ</h3>
+    <table>
+      <tr><th>หมวด</th><th>จำนวน</th><th>สินทรัพย์</th><th>Total trades</th></tr>
+      <tr><td>Crypto</td><td>2 ✓</td><td>BTC/USD, ETH/USD</td><td>265,005</td></tr>
+      <tr><td>Metals</td><td>3 ✓</td><td>XAU (Gold), XAG (Silver), XPT (Platinum)</td><td>270,476</td></tr>
+      <tr><td>Energy</td><td>3 ✓</td><td>USOIL (WTI), UKOIL (Brent), XNGUSD (Natural Gas)</td><td>260,770</td></tr>
+      <tr><td>Forex Major</td><td>7 ✓</td><td>EUR/USD, USD/JPY, GBP/USD, AUD/USD, USD/CAD, USD/CHF, NZD/USD</td><td>702,219</td></tr>
+      <tr><td>Forex Cross</td><td>3 ✓</td><td>EUR/JPY, GBP/JPY, EUR/GBP</td><td>305,521</td></tr>
+      <tr><td>Indices</td><td>4/5</td><td>DE30 (DAX), US500 (S&P 500), JP225 (Nikkei), UK100 (FTSE) — เหลือ USTEC</td><td>350,579</td></tr>
+    </table>
+    
+    <h3>1.3 Timeframes ที่ทดสอบ</h3>
+    <ul>
+      <li><strong>M15</strong> = แท่งละ 15 นาที — เทรดถี่สุด · trade ~30/วัน/สินทรัพย์</li>
+      <li><strong>H1</strong> = แท่งละ 1 ชั่วโมง — เทรดปานกลาง · trade ~5-8/วัน</li>
+      <li><strong>H4</strong> = แท่งละ 4 ชั่วโมง — เทรดน้อย · trade ~1-2/วัน</li>
+    </ul>
+    
+    <hr>
+    
+    <!-- ====================================================================== -->
+    <h2 id="part2">ส่วนที่ 2 · คำศัพท์ trading ที่ต้องเข้าใจก่อน</h2>
+    
+    <div class="info-box">
+      <strong>ทำไมต้องเข้าใจคำศัพท์เหล่านี้?</strong> เพราะตัวเลขทุกหน้าในเว็บใช้คำเหล่านี้ — ถ้าไม่เข้าใจจะอ่านเลขผิดและตัดสินใจผิด
+    </div>
+    
+    <h3>2.1 R-Multiple (ตัว R)</h3>
+    <p><strong>R = หน่วยความเสี่ยง</strong> 1 R = ขนาดของ <code>SL</code> ที่กำหนด</p>
+    <p>ตัวอย่าง: ถ้า SL = 50 pips · TP = 100 pips → กำไร = +2R · ขาดทุน = -1R</p>
+    <p>ใช้ R-multiple แทนเป็นเงิน เพราะเปรียบเทียบ pattern ได้ตรงๆ ไม่ขึ้นกับขนาด lot · pip value</p>
+    
+    <h3>2.2 ATR (Average True Range)</h3>
+    <p>ค่าเฉลี่ยช่วงราคาขึ้น-ลงต่อแท่ง · ใช้วัด volatility ของตลาด</p>
+    <p>ทุก SL/TP ในเว็บนี้ใช้ <strong>ATR-based</strong> ไม่ใช้ pip คงที่ เช่น SL 0.5×ATR หมายถึง SL = ครึ่งหนึ่งของ ATR ปัจจุบัน</p>
+    <p><strong>ทำไมใช้ ATR?</strong> ทำให้ pattern ทำงานได้ทุกตลาด — XAU ATR 200 pip ก็ต่างจาก EUR ATR 30 pip · แต่ใน R-multiple เท่ากัน</p>
+    
+    <h3>2.3 RR (Risk-Reward Ratio)</h3>
+    <p>อัตราส่วน <strong>กำไรที่ตั้งไว้ : ความเสี่ยง</strong></p>
+    <table>
+      <tr><th>Combo</th><th>SL</th><th>TP</th><th>RR</th><th>หมายความว่า</th></tr>
+      <tr><td>sl0.5_tp1.0</td><td>0.5×ATR</td><td>1.0×ATR</td><td>1:2</td><td>เสี่ยง 1 ได้ 2</td></tr>
+      <tr><td>sl0.5_tp3.0</td><td>0.5×ATR</td><td>3.0×ATR</td><td>1:6</td><td>เสี่ยง 1 ได้ 6</td></tr>
+      <tr><td>sl0.5_tp5.0</td><td>0.5×ATR</td><td>5.0×ATR</td><td>1:10</td><td>เสี่ยง 1 ได้ 10</td></tr>
+      <tr><td>sl1.0_tp2.0</td><td>1.0×ATR</td><td>2.0×ATR</td><td>1:2</td><td>SL กว้างกว่า · entry ต่างจุด</td></tr>
+    </table>
+    
+    <h3>2.4 Win Rate (WR%)</h3>
+    <p>เปอร์เซ็นต์ครั้งที่ trade ปิดบวก (TP hit ก่อน SL hit)</p>
+    <div class="info-box warn">
+      <strong>กฎสำคัญที่ต้องจำ:</strong> RR ยิ่งสูง → WR ยิ่งต่ำ (เป็นธรรมชาติของตลาด)
+      <ul>
+        <li>RR 1:1 → ต้อง WR > 50% ถึงจะกำไร</li>
+        <li>RR 1:2 → ต้อง WR > 33% ถึงจะกำไร</li>
+        <li>RR 1:5 → ต้อง WR > 17% ถึงจะกำไร</li>
+        <li>RR 1:10 → ต้อง WR > 9% ถึงจะกำไร</li>
+      </ul>
+    </div>
+    
+    <h3>2.5 EV (Expected Value)</h3>
+    <p>กำไรเฉลี่ยต่อ trade เป็น R-multiple</p>
+    <pre><code>EV = (WR × R_win) - ((100-WR) × R_loss) / 100
+ตัวอย่าง: WR 56.8%, RR 1:2 → EV = (56.8 × 2 - 43.2 × 1) / 100 = +0.704R</code></pre>
+    <p><strong>EV เป็น metric ที่สำคัญที่สุด</strong> — บอกว่า trade เฉลี่ยกำไร R เท่าไหร่</p>
+    
+    <h3>2.6 PF (Profit Factor)</h3>
+    <p>อัตราส่วน <strong>กำไรรวม / ขาดทุนรวม</strong></p>
+    <table>
+      <tr><th>PF</th><th>ความหมาย</th></tr>
+      <tr><td>< 1.0</td><td>🔴 ขาดทุน</td></tr>
+      <tr><td>= 1.0</td><td>🟡 เสมอตัว</td></tr>
+      <tr><td>1.0 - 1.5</td><td>🟢 กำไรน้อย</td></tr>
+      <tr><td>1.5 - 2.0</td><td>🟢 ดี</td></tr>
+      <tr><td>2.0 - 3.0</td><td>💚 ดีมาก</td></tr>
+      <tr><td>> 3.0</td><td>💎 ยอดเยี่ยม (อาจ overfit ถ้า sample เล็ก)</td></tr>
+    </table>
+    
+    <h3>2.7 Sample Size (n) และ Confidence</h3>
+    <p>จำนวนเทรดที่เก็บได้ของ pattern นั้นๆใน dataset</p>
+    <table>
+      <tr><th>n (trades)</th><th>Confidence Tier</th><th>เชื่อได้แค่ไหน</th></tr>
+      <tr><td>30 - 59</td><td><span class="pill pill-yellow">Preliminary</span></td><td>เบื้องต้น · ดูเป็น signal · OOS test ต้องทำ</td></tr>
+      <tr><td>60 - 99</td><td><span class="pill pill-blue">Solid</span></td><td>มั่นคงพอควร · เริ่มเชื่อได้</td></tr>
+      <tr><td>100+</td><td><span class="pill pill-green">Robust</span></td><td>เชื่อได้สูง · พร้อม deploy ได้</td></tr>
+      <tr><td>500+</td><td><span class="pill pill-green">Ultra-Robust</span></td><td>มาตรฐาน academic · เชื่อได้แน่</td></tr>
+      <tr><td>1000+</td><td><span class="pill pill-green">Bulletproof</span></td><td>publishable in journal</td></tr>
+    </table>
+    
+    <h3>2.8 MFE / MAE</h3>
+    <p><strong>MFE (Maximum Favorable Excursion)</strong> = ราคาวิ่งไปทางถูกมากที่สุดก่อนปิด trade</p>
+    <p><strong>MAE (Maximum Adverse Excursion)</strong> = ราคาวิ่งไปทางผิดมากที่สุดก่อนปิด trade</p>
+    <p>ใช้บอก <strong>quality ของ entry</strong> — entry ดี = MFE สูง · MAE ต่ำ (ราคาวิ่งทางถูกทันที)</p>
+    
+    <h3>2.9 ICT Concepts (สั้นๆ)</h3>
+    <table>
+      <tr><th>ศัพท์</th><th>ความหมาย</th></tr>
+      <tr><td><strong>FVG</strong> (Fair Value Gap)</td><td>ช่องว่างราคาที่ market ยังไม่ deliver — ราคามักกลับมาเติม</td></tr>
+      <tr><td><strong>Breaker Block</strong></td><td>order block ที่ราคา break แล้วกลายเป็น support/resistance</td></tr>
+      <tr><td><strong>Mitigation Block</strong></td><td>โซนที่ smart money ใช้เพื่อ mitigate (ปรับ) ตำแหน่ง</td></tr>
+      <tr><td><strong>PD Array</strong></td><td>Premium/Discount Array — โซนที่ราคา premium (sell) หรือ discount (buy)</td></tr>
+      <tr><td><strong>Daily Bias</strong></td><td>ทิศทางหลักของวัน — ดูจาก HTF</td></tr>
+    </table>
+    
+    <hr>
+    
+    <!-- ====================================================================== -->
+    <h2 id="part3">ส่วนที่ 3 · การอ่านค่าตัวเลขสำคัญ</h2>
+    
+    <h3>3.1 Pattern Card</h3>
+    <pre><code>P140 · Ichimoku_Kumo_Twist_Bull         L  ← Direction (L=Long, S=Short, ⇄=Both)
+n=1,057 · WR 56.8% · EV +0.703R · PF 2.6
+SL 0.5×ATR / TP 1.0×ATR (RR 1:2)
+[Robust] [Universal]                     ← Tags</code></pre>
+    
+    <h3>3.2 WR Pill (สีบอกระดับ)</h3>
+    <table>
+      <tr><th>สี</th><th>WR</th><th>หมายความ</th></tr>
+      <tr><td><span class="pill pill-green">53%+</span></td><td>≥ 53%</td><td>ชนะมาก · pattern แข็ง</td></tr>
+      <tr><td><span class="pill pill-yellow">48-53%</span></td><td>48-53%</td><td>ชนะกึ่งหนึ่ง · ปกติ</td></tr>
+      <tr><td><span class="pill pill-red">< 48%</span></td><td>< 48%</td><td>ชนะน้อย · ต้อง RR สูง compensate</td></tr>
+      <tr><td>—</td><td>n < 30</td><td>sample เล็กไป · ไม่เชื่อ</td></tr>
+    </table>
+    
+    <h3>3.3 Tier Classification</h3>
+    <table>
+      <tr><th>Tier</th><th>เกณฑ์</th><th>ความหมาย</th></tr>
+      <tr><td><span class="pill pill-green">S+</span></td><td>active 100% datasets · profit 100% · minEV>0</td><td>Universal champion · deploy ได้ทันที</td></tr>
+      <tr><td><span class="pill pill-green">S</span></td><td>active 80%+ · profit 90%+</td><td>เก่งมาก · มีบาง dataset ที่อ่อน</td></tr>
+      <tr><td><span class="pill pill-blue">A</span></td><td>profit 70%+ · EV consistently positive</td><td>ดี · เลือกใช้บาง asset</td></tr>
+      <tr><td><span class="pill pill-yellow">B</span></td><td>profit 60-70%</td><td>กลางๆ · ต้อง filter เพิ่ม</td></tr>
+      <tr><td><span class="pill pill-red">C/D</span></td><td>profit <60% หรือไม่ fire</td><td>หลีกเลี่ยง</td></tr>
+    </table>
+    
+    <h3>3.4 SL/TP Heatmap (Grid)</h3>
+    <p>เป็นตาราง 4×4 หรือ 5×5 แสดง EV ของทุก SL × TP combo · สีเข้มขึ้น = EV สูงขึ้น</p>
+    <ul>
+      <li><strong>วิธีอ่าน:</strong> หา cell สีเขียวเข้มสุด = combo ที่ดีที่สุดสำหรับ pattern × asset นี้</li>
+      <li>เช็ค <strong>n column</strong> ของแต่ละ row — sample ใหญ่ = เชื่อได้</li>
+      <li>ระวัง: cell มุมขวาบน (SL ใหญ่ + TP ใหญ่) มักให้ค่าสูงเทียม เพราะ sample เล็กลง</li>
+    </ul>
+    
+    <h3>3.5 Path Trajectory Chart</h3>
+    <p>กราฟแสดง <strong>การเคลื่อนตัวของ trade เฉลี่ย</strong> ที่ checkpoints 1h, 6h, 12h, 24h, 48h, 72h, 120h, 168h, 240h</p>
+    <ul>
+      <li>Curve <strong>โค้งขึ้นทันที</strong> = pattern ทำงานเร็ว (entry ดี)</li>
+      <li>Curve <strong>โค้งช้า</strong> = ต้องรอนาน · อาจต้องใช้ TF ใหญ่กว่า</li>
+      <li>Curve <strong>ลงก่อนแล้วขึ้น</strong> = MAE ลึก · ต้อง SL กว้างกว่าค่า default</li>
+    </ul>
+    
+    <h3>3.6 Time Decay Chart</h3>
+    <p>แสดง <strong>cumulative TP/SL hit rate ตามเวลา</strong></p>
+    <ul>
+      <li>เส้น <strong>เขียว (TP hit)</strong> ขึ้นเร็ว = trade close fast</li>
+      <li>เส้น <strong>แดง (SL hit)</strong> ขึ้นเร็ว = pattern ผิดบ่อยช่วงต้น</li>
+      <li>ดู <strong>median hours to TP</strong> เพื่อตั้ง expectation: trade เฉลี่ยใช้กี่ชั่วโมง</li>
+    </ul>
+    
+    <hr>
+    
+    <!-- ====================================================================== -->
+    <h2 id="part4">ส่วนที่ 4 · คู่มือแต่ละหน้า (Page-by-page)</h2>
+    
+    <h3>4.1 หน้าหลัก (index.html)</h3>
+    <p><strong>วัตถุประสงค์:</strong> Dashboard ภาพรวม · KPIs ทั้งหมด · navigation ไปทุกหน้า</p>
+    <p><strong>สิ่งที่ดู:</strong></p>
+    <ol>
+      <li><strong>Hero Section</strong> — แสดง version + จำนวน datasets/trades ปัจจุบัน</li>
+      <li><strong>KPI Cards</strong> — Total trades, datasets, assets, robust patterns</li>
+      <li><strong>Datasets Overview</strong> — card ของแต่ละ class (Crypto, Metals, ...) คลิกเข้าไปดู landing</li>
+      <li><strong>Top Patterns</strong> — patterns ที่เก่งสุดในระบบ</li>
+      <li><strong>Recent Updates</strong> — changelog version ล่าสุด</li>
+    </ol>
+    
+    <h3>4.2 หน้า Patterns (patterns.html)</h3>
+    <p><strong>วัตถุประสงค์:</strong> ตารางรวมทุก pattern (177 ตัว) ทุก dataset (66) · search/filter ได้</p>
+    <p><strong>คอลัมน์:</strong></p>
+    <ul>
+      <li><code>PID</code> — รหัส pattern (P1-P177)</li>
+      <li><code>Name</code> — ชื่อ pattern (เช่น Ichimoku_Kumo_Twist_Bull)</li>
+      <li><code>Cat</code> — หมวด (A=All, L=Long, F=FVG/SMC, K=Daily Bias, H=PD Array, C=Block, etc.)</li>
+      <li><code>Direction</code> — L/S/⇄</li>
+      <li><code>n</code> — จำนวน trade</li>
+      <li><code>WR%</code> — win rate</li>
+      <li><code>EV</code> — expected value (R)</li>
+      <li><code>Tier</code> — S+/S/A/B/C</li>
+    </ul>
+    <p><strong>วิธีใช้:</strong> filter ด้วย search box หามองหา robust patterns (n ≥ 100, WR ≥ 50%, EV > 0)</p>
+    
+    <h3>4.3 หน้า Tier (tier.html)</h3>
+    <p><strong>วัตถุประสงค์:</strong> จัดอันดับ patterns ตาม Tier · เห็น "elite" ของระบบ</p>
+    <p><strong>วิธีใช้:</strong> ดู Tier S+ ก่อน — list ของ patterns ที่ทำงานทุก dataset · profit 100% — เลือกจาก list นี้</p>
+    
+    <h3>4.4 หน้า Optimal TP/SL (optimal-tpsl.html)</h3>
+    <p><strong>วัตถุประสงค์:</strong> หาค่า SL/TP ที่ดีที่สุดของแต่ละ pattern × dataset</p>
+    <p><strong>วิธีอ่าน:</strong></p>
+    <ol>
+      <li>เลือก <strong>dataset</strong> จาก dropdown (เช่น US500_M15)</li>
+      <li>ดูตาราง: ทุก pattern ที่ active ใน dataset นั้น · <strong>best combo</strong> + <strong>best EV</strong></li>
+      <li>เปรียบเทียบ <strong>realistic EV (first-hit)</strong> vs <strong>aggregated EV</strong> (จะต่างกันเสมอ — first-hit ถูกกว่า)</li>
+    </ol>
+    <div class="info-box warn">
+      <strong>สำคัญ:</strong> ใช้ <code>realistic EV</code> เท่านั้น — aggregated EV overstate edge ~60-70%
+    </div>
+    
+    <h3>4.5 หน้า Cross-asset (cross.html)</h3>
+    <p><strong>วัตถุประสงค์:</strong> ดู pattern ตัวเดียวกันแต่ในหลาย assets · เห็น universal patterns</p>
+    <p><strong>วิธีใช้:</strong> เลือก pattern → ดู metric ทุก asset · หาตัวที่ <strong>active ใน 12+ assets และ EV > 0 ทุกที่</strong></p>
+    
+    <h3>4.6 หน้า Time Analysis (time.html)</h3>
+    <p><strong>วัตถุประสงค์:</strong> ดู win rate ตามชั่วโมง (0-23) และวันในสัปดาห์ (0=จันทร์ ถึง 6=อาทิตย์)</p>
+    <p><strong>วิธีใช้:</strong> หา <strong>peak hours</strong> ที่ pattern ทำงานดีสุด · ตั้งเงื่อนไข EA เทรดเฉพาะช่วงเวลานั้น</p>
+    
+    <h3>4.7 หน้า Edge by Volatility (edge.html)</h3>
+    <p><strong>วัตถุประสงค์:</strong> ดู edge ของ pattern ตาม volatility regime (Low / Medium / High)</p>
+    <p><strong>วิธีใช้:</strong> บางตัวเก่งใน low vol บางตัวเก่งใน high vol · ตั้ง filter ใน EA ตาม regime</p>
+    
+    <h3>4.8 หน้า Asset Hub (เช่น btc.html, xau.html, eur.html)</h3>
+    <p><strong>วัตถุประสงค์:</strong> hub ของ asset แต่ละตัว · เห็น 3 TFs พร้อมกัน · เปรียบเทียบ M15 vs H1 vs H4</p>
+    
+    <h3>4.9 หน้า Landing (crypto.html, metals.html, ฯลฯ)</h3>
+    <p><strong>วัตถุประสงค์:</strong> รวม assets ในหมวดเดียวกัน · ดู cross-asset performance</p>
+    
+    <h3>4.10 หน้า Reference (reference.html)</h3>
+    <p><strong>วัตถุประสงค์:</strong> เอกสารอ้างอิง · changelog ทุกเวอร์ชัน · methodology</p>
+    
+    <hr>
+    
+    <!-- ====================================================================== -->
+    <h2 id="part5">ส่วนที่ 5 · Sidebar Navigation</h2>
+    
+    <p>Sidebar มี <strong>4 ระดับ</strong>:</p>
+    <ol>
+      <li><strong>Level 0 (Section)</strong> — Crypto, Metals, Energy, Forex, Indices, Cross</li>
+      <li><strong>Level 1 (Asset)</strong> — เช่น BTC/USD, XAU/USD, EUR/USD</li>
+      <li><strong>Level 2 (Timeframe)</strong> — H4, H1, M15</li>
+      <li><strong>Top items</strong> — Reports (Patterns, Tier, ...) + User Guide</li>
+    </ol>
+    
+    <h3>5.1 การคลิก</h3>
+    <ul>
+      <li><strong>คลิก section</strong> → เปิด/ปิด assets ในนั้น</li>
+      <li><strong>คลิก asset</strong> → เปิด/ปิด TFs · ไปหน้า hub</li>
+      <li><strong>คลิก TF</strong> → ไปหน้า dataset เฉพาะ (เช่น btc-m15.html)</li>
+    </ul>
+    
+    <h3>5.2 Badges</h3>
+    <ul>
+      <li><strong>Section badge:</strong> เลข = จำนวน assets ใน section</li>
+      <li><strong>Asset badge:</strong> เลขรวม trades ของ asset (ทุก TF) เช่น "131.2K"</li>
+      <li><strong>TF badge (เขียว):</strong> เลข trades ใน TF นั้น</li>
+    </ul>
+    
+    <h3>5.3 Search Box</h3>
+    <p>ด้านบน sidebar — พิมพ์ค้นได้ทุกอย่างในหน้านั้น (filter sections inline)</p>
+    
+    <hr>
+    
+    <!-- ====================================================================== -->
+    <h2 id="part6">ส่วนที่ 6 · 10 Sections ในหน้า Dataset</h2>
+    
+    <p>ทุกหน้า dataset (เช่น btc-m15.html, xau-h1.html) มี <strong>10 sections มาตรฐาน</strong> ตามลำดับ</p>
+    
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <h4>Pattern Distribution + Bar Chart</h4>
+        <p>กราฟแสดงจำนวน trade ของแต่ละ pattern · เห็น top 10 ที่ fire บ่อย</p>
+        <p><strong>วิธีใช้:</strong> หา patterns ที่มี n ≥ 100 ก่อน (Robust)</p>
+      </div>
+    </div>
+    
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <h4>Top Patterns + Links</h4>
+        <p>List ของ pattern ที่ EV สูงสุดใน dataset นั้น</p>
+        <p><strong>วิธีใช้:</strong> คลิก link ไป patterns.html#pXX เพื่อดู detail</p>
+      </div>
+    </div>
+    
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-content">
+        <h4>Worst Patterns</h4>
+        <p>Pattern ที่ EV ติดลบ — ใช้เป็น blacklist</p>
+        <p><strong>วิธีใช้:</strong> หลีกเลี่ยง patterns เหล่านี้ใน asset/TF นี้</p>
+      </div>
+    </div>
+    
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-content">
+        <h4>Entry Quality Distribution + Bar</h4>
+        <p>การกระจายของ entry quality (A=ดีสุด, B, C, D=แย่สุด)</p>
+        <p><strong>วิธีใช้:</strong> ถ้า A% สูง = entry ใน asset นี้แม่นยำ</p>
+      </div>
+    </div>
+    
+    <div class="step">
+      <div class="step-num">5</div>
+      <div class="step-content">
+        <h4>Context Filters (4-grid bars)</h4>
+        <p>ดู win rate แยกตาม:</p>
+        <ul>
+          <li><strong>Volatility regime</strong> (Low/Med/High)</li>
+          <li><strong>Trend regime</strong> (Up/Down/Sideways)</li>
+          <li><strong>Session</strong> (Asia/London/NY)</li>
+          <li><strong>ADX bins</strong> (5 ระดับความ trending)</li>
+        </ul>
+        <p><strong>วิธีใช้:</strong> หาเงื่อนไข context ที่ pattern ทำงานดีที่สุด · ใส่เป็น filter ใน EA</p>
+      </div>
+    </div>
+    
+    <div class="step">
+      <div class="step-num">6</div>
+      <div class="step-content">
+        <h4>SL/TP Analysis (Hit charts + Recommended Setup + Risk + Filter)</h4>
+        <p>ส่วนสำคัญที่สุด: <strong>Recommended SL/TP</strong> ของ pattern เด่นใน dataset นี้</p>
+        <ul>
+          <li><strong>Hit charts</strong> — กราฟ TP hit rate / SL hit rate ที่แต่ละระดับ</li>
+          <li><strong>Recommended table</strong> — combo + EV + n + confidence</li>
+          <li><strong>Risk metrics</strong> — Sharpe, Kelly%, Max drawdown</li>
+          <li><strong>"Robust only" filter</strong> — toggle เพื่อดูเฉพาะ n ≥ 100</li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="step">
+      <div class="step-num">7</div>
+      <div class="step-content">
+        <h4>Time Decay Curve (SVG)</h4>
+        <p>เส้นโค้ง cumulative hit rate ตามชั่วโมง · ดูว่า trade ใช้เวลากี่ชั่วโมงเฉลี่ย</p>
+      </div>
+    </div>
+    
+    <div class="step">
+      <div class="step-num">8</div>
+      <div class="step-content">
+        <h4>Trade Trajectory Overlay (SVG)</h4>
+        <p>กราฟแสดง MFE/MAE ที่ checkpoints 1h, 6h, 12h, 24h, 48h, 72h, 120h, 168h, 240h</p>
+        <p>เห็นว่า trade winner กับ loser มี trajectory ต่างกันยังไง</p>
+      </div>
+    </div>
+    
+    <div class="step">
+      <div class="step-num">9</div>
+      <div class="step-content">
+        <h4>SL/TP Grid (Heatmap)</h4>
+        <p>ตาราง 4×4 หรือ 5×5 — สีบอก EV ที่ทุก SL × TP combo</p>
+        <p><strong>วิธีใช้:</strong> หา cell สีเขียวเข้มสุด · ดู n ของ row นั้น</p>
+      </div>
+    </div>
+    
+    <div class="step">
+      <div class="step-num">10</div>
+      <div class="step-content">
+        <h4>Key Findings + How to Use</h4>
+        <p>สรุป 3-5 ข้อสำคัญที่ได้จาก dataset · พร้อมคำแนะนำการใช้งาน</p>
+      </div>
+    </div>
+    
+    <hr>
+    
+    <!-- ====================================================================== -->
+    <h2 id="part7">ส่วนที่ 7 · การเลือก Pattern เพื่อใช้จริง (Workflow)</h2>
+    
+    <div class="info-box success">
+      <strong>เป้าหมาย:</strong> หา patterns ไปเทรดจริง · ขั้นตอนนี้ใช้ได้กับ manual trading หรือเขียน EA
+    </div>
+    
+    <h3>7.1 Workflow แนะนำ</h3>
+    
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <h4>เริ่มจากหน้า Tier (tier.html)</h4>
+        <p>ดู <strong>Tier S+</strong> patterns ก่อน · จะได้รายชื่อ "elite" เช่น P140, P159, P132</p>
+      </div>
+    </div>
+    
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <h4>เปิด patterns.html → search ตาม PID</h4>
+        <p>ดู description ของ pattern · มี theory อะไร · ใช้ indicator อะไร</p>
+      </div>
+    </div>
+    
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-content">
+        <h4>ไปหน้า Cross-asset (cross.html) → เลือก pattern นั้น</h4>
+        <p>ดูว่า active ในกี่ assets · EV ของแต่ละตัว · หา <strong>asset+TF ที่เก่งที่สุด</strong></p>
+      </div>
+    </div>
+    
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-content">
+        <h4>เปิดหน้า dataset ของ asset+TF นั้น (เช่น us500-m15.html)</h4>
+        <p>ดู 10 sections — focus ที่ Section 6 (SL/TP) และ Section 9 (Grid) เพื่อหา <strong>combo ที่ดีสุด</strong></p>
+      </div>
+    </div>
+    
+    <div class="step">
+      <div class="step-num">5</div>
+      <div class="step-content">
+        <h4>ดู Section 5 (Context Filters) → เลือกเงื่อนไข trade</h4>
+        <p>เช่น "เทรด P140 ใน US500 M15 เฉพาะ NY session + ADX > 25"</p>
+      </div>
+    </div>
+    
+    <div class="step">
+      <div class="step-num">6</div>
+      <div class="step-content">
+        <h4>ตรวจ confidence: n ≥ 100 (Robust ขั้นต่ำ)</h4>
+        <p>ถ้า n < 60 = preliminary · ไม่ควร deploy จริง · ทำ OOS test ก่อน</p>
+      </div>
+    </div>
+    
+    <div class="step">
+      <div class="step-num">7</div>
+      <div class="step-content">
+        <h4>คำนวณ realistic OOS</h4>
+        <p>EV ที่เห็น × 0.5 ถึง 0.7 = expected EV ใน live (50-70% retention หลังจาก spread/slippage/regime change)</p>
+      </div>
+    </div>
+    
+    <h3>7.2 Checklist ก่อน Deploy</h3>
+    <ul>
+      <li>☐ Pattern อยู่ Tier S+ หรือ S</li>
+      <li>☐ n ≥ 100 ใน dataset ที่จะใช้ (Robust)</li>
+      <li>☐ EV > +0.30R (หลัง × 0.5 OOS discount = +0.15R · ยังบวก)</li>
+      <li>☐ WR > 40% ที่ RR ที่ใช้ (มี buffer)</li>
+      <li>☐ มี theoretical basis ชัด (academic source)</li>
+      <li>☐ ทดสอบ demo อย่างน้อย 3 เดือน</li>
+      <li>☐ เริ่ม live ด้วย risk 0.25-0.5% per trade</li>
+      <li>☐ Stop ถ้า rolling-100 WR ต่ำกว่า 38% ติดต่อกัน 2 เดือน</li>
+    </ul>
+    
+    <hr>
+    
+    <!-- ====================================================================== -->
+    <h2 id="part8">ส่วนที่ 8 · ข้อจำกัด · ข้อควรระวัง · FAQ</h2>
+    
+    <h3>8.1 ข้อจำกัดที่ต้องรู้</h3>
+    <div class="info-box warn">
+      <strong>1. ข้อมูลเป็น in-sample</strong><br>
+      Pattern detection rules ตั้งจากข้อมูลเดียวกับที่ทดสอบ → bias ขึ้น 30-50%<br>
+      <strong>แก้ไข:</strong> ใช้ค่า EV × 0.5 ถึง 0.7 เป็นมาตรฐาน expected OOS · หรือทำ OOS test (3-5 ปี future data)
+    </div>
+    
+    <div class="info-box warn">
+      <strong>2. ไม่รวม spread/commission/slippage</strong><br>
+      EA harvester เก็บ "real fills" ของ MT5 Tester แต่ไม่รวม cost ของ live brokers<br>
+      <strong>แก้ไข:</strong> ลบ -0.05R ถึง -0.15R ออกจาก EV ที่เห็น
+    </div>
+    
+    <div class="info-box warn">
+      <strong>3. Sample bias ใน BTC/ETH M15</strong><br>
+      EA เก่ามี <code>MAX_TRACKED_POSITIONS = 10000</code> → BTC/ETH M15 chop รายการ ~20-30%<br>
+      <strong>แก้ไข v9.0:</strong> bump เป็น 50K + rerun (ในแผน)
+    </div>
+    
+    <div class="info-box danger">
+      <strong>4. Pattern บางตัวไม่ fire (P69, P70, P100, P111, P113, P114, P131, P134, P164, P177)</strong><br>
+      ตลาดไม่ตรงเงื่อนไข academic ระหว่าง test window → ไม่ใช่ bug · เป็น research finding<br>
+      ใน live อาจ fire ได้ในตลาดอื่น
+    </div>
+    
+    <h3>8.2 FAQ</h3>
+    
+    <h4>Q: ถ้าเลือก 1 pattern เดียวเทรดทุก asset ทำได้ไหม?</h4>
+    <p>A: ทำได้แต่ WR จะลดลงเหลือ ~44% (จาก 56.8% ที่ best case) เพราะ asset แต่ละตัวมี behavior ต่างกัน · กลยุทธ์ที่แนะนำ: ใช้ <strong>P140 + P141 (Bull+Bear Kumo Twist) บน H1 timeframe</strong> · expected EV ~+0.33R/trade</p>
+    
+    <h4>Q: เงินทุนเท่าไรพอ?</h4>
+    <p>A: <strong>$10,000 USD ขั้นต่ำ</strong> สำหรับเทรด 12-22 assets พร้อมกัน · risk 0.5%/trade · expected return realistic +50-100%/year หลัง OOS discount</p>
+    
+    <h4>Q: เลือกแค่ M15 หรือต้องดู H1, H4 ด้วย?</h4>
+    <p>A: ขึ้นกับ trading style:</p>
+    <ul>
+      <li>EA Bot เทรดอัตโนมัติ → M15 (เทรดถี่ · 19 ครั้ง/วัน)</li>
+      <li>Manual trading → H1 (5 ครั้ง/วัน · ดูทุกชั่วโมง)</li>
+      <li>Position trading → H4 (1-2 ครั้ง/วัน · เช็คเช้า-เย็น)</li>
+    </ul>
+    
+    <h4>Q: ถ้า WR ใน live ต่ำกว่าที่เว็บแสดง ควรทำยังไง?</h4>
+    <p>A: ปกติ — เพราะเว็บแสดง in-sample · live จะ -10-15% · ถ้า:</p>
+    <ul>
+      <li>ลด < 10%: ปกติ (เช่น 56.8% → 50%)</li>
+      <li>ลด 10-15%: เริ่มเฝ้าระวัง</li>
+      <li>ลด >15%: หยุดเทรด · re-evaluate</li>
+    </ul>
+    
+    <h4>Q: ใช้ broker ไหนได้?</h4>
+    <p>A: ทดสอบใน Exness Pro · MT5 · standard contracts (USTEC ไม่ใช่ USTEC_x100, US500 ไม่ใช่ US500.cm) · brokers อื่นที่มี standard CFD ก็ใช้ได้ แต่ spread/commission อาจต่างกัน</p>
+    
+    <h4>Q: ต้องเขียน EA เองไหม?</h4>
+    <p>A: ระบบนี้เป็น <strong>research dashboard</strong> ไม่ใช่ EA ใช้งานจริง · ต้องเขียน Production EA แยก โดยใช้ pattern logic + best SL/TP จากเว็บ</p>
+    
+    <h4>Q: เห็นเลขในเว็บไม่ตรงกับใน MT5 ของผม ทำไม?</h4>
+    <p>A: เพราะ:</p>
+    <ul>
+      <li>เว็บใช้ <strong>ATR-based</strong> SL/TP ไม่ใช่ pip · ต้อง convert</li>
+      <li>เว็บเก็บ <strong>real fills</strong> ใน MT5 Tester · spread ตอน backtest</li>
+      <li>Live spread ของ broker จะกว้างขึ้นในข่าว</li>
+    </ul>
+    
+    <hr>
+    
+    <h2>📚 ลิ้งสำคัญ</h2>
+    <div class="grid-2">
+      <div class="card-mini">
+        <h4>🏠 หน้าหลัก</h4>
+        <p><a href="index.html" style="color:var(--blue);text-decoration:none">index.html — Dashboard ภาพรวม</a></p>
+      </div>
+      <div class="card-mini">
+        <h4>📋 Patterns ทั้งหมด</h4>
+        <p><a href="patterns.html" style="color:var(--blue);text-decoration:none">patterns.html — 177 patterns table</a></p>
+      </div>
+      <div class="card-mini">
+        <h4>🏅 Tier Ranking</h4>
+        <p><a href="tier.html" style="color:var(--blue);text-decoration:none">tier.html — จัดอันดับโดย Tier</a></p>
+      </div>
+      <div class="card-mini">
+        <h4>🎯 Optimal SL/TP</h4>
+        <p><a href="optimal-tpsl.html" style="color:var(--blue);text-decoration:none">optimal-tpsl.html — best combos</a></p>
+      </div>
+      <div class="card-mini">
+        <h4>🔀 Cross-asset</h4>
+        <p><a href="cross.html" style="color:var(--blue);text-decoration:none">cross.html — pattern × asset matrix</a></p>
+      </div>
+      <div class="card-mini">
+        <h4>📚 Reference</h4>
+        <p><a href="reference.html" style="color:var(--blue);text-decoration:none">reference.html — methodology + changelog</a></p>
+      </div>
+    </div>
+    
+    <hr>
+    
+    <p style="text-align: center; color: var(--muted); font-size: 12px; margin-top: 40px;">
+      KMP Master · v9.0 · 66/69 datasets · 2,154,570 trades · 22/23 assets · EA v4.1 · 177 patterns<br>
+      Live: <a href="https://keemptn-afk.github.io/kmp-master/" style="color:var(--blue);text-decoration:none">keemptn-afk.github.io/kmp-master</a>
+    </p>
+  </div>
+</div>
+
+<script>
+// KMP Master · Inline Sidebar JS (no cache, no delegation)
+(function() {
+  function initSidebar() {
+    document.querySelectorAll('.tree-children').forEach(function(el){ el.classList.remove('show'); });
+    document.querySelectorAll('.tree-node.expandable').forEach(function(el){ el.classList.remove('expanded'); });
+    document.querySelectorAll('.tree-node.expandable').forEach(function(node) {
+      node.style.cursor = 'pointer';
+      node.addEventListener('click', function(e) {
+        e.preventDefault(); e.stopPropagation();
+        var id = node.getAttribute('data-toggle');
+        if (!id) return;
+        var target = document.getElementById(id);
+        if (!target) return;
+        node.classList.toggle('expanded');
+        target.classList.toggle('show');
+      });
+    });
+    var path = window.location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('.tree-node[href]').forEach(function(link) {
+      if (link.getAttribute('href') === path) link.classList.add('active');
+    });
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initSidebar);
+  else initSidebar();
+})();
+</script>
+</body>
+</html>
