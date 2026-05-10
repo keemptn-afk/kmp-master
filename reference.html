@@ -15,7 +15,7 @@
   
   <div class="nav-section">
     <a class="tree-node lvl-0" href="user-guide.html" style="background:#1e293b;border-left:3px solid #3b82f6;margin-bottom:6px"><span class="nm">📖 คู่มือการใช้งาน</span></a>
-    <div class="nav-label">Overview</div>
+    <div class="nav-label">ภาพรวม</div>
     <a class="tree-node lvl-0" href="index.html"><span class="arrow"></span><span class="nm">Dashboard</span></a>
     <a class="tree-node lvl-0" href="preface.html"><span class="arrow"></span><span class="nm">คำนำ &amp; เป้าหมาย</span></a>
   </div>
@@ -270,12 +270,12 @@
   </div>
   
   <div class="nav-section">
-    <div class="nav-label">EA System · v4.1</div>
+    <div class="nav-label">EA System · v4.1 (ปัจจุบัน)</div>
     <a class="tree-node lvl-0" href="ea-architecture.html"><span class="arrow"></span><span class="nm">⚙ EA Architecture</span></a>
     <a class="tree-node lvl-0" href="tracking-system.html"><span class="arrow"></span><span class="nm">🎯 Tracking System</span></a>  </div>  <div class="nav-section">
     <div class="nav-label">Reference</div>
 
-  <a class="tree-node lvl-0" href="reference.html"><span class="arrow"></span><span class="nm">Sources &amp; Changelog</span></a>
+  <a class="tree-node lvl-0" href="reference.html"><span class="arrow"></span><span class="nm">📚 อ้างอิง · ข้อจำกัด · Changelog</span></a>
   </div>
 </nav>
 
@@ -291,224 +291,241 @@
 <section class="section">
   <div class="section-head"><span class="section-num">01</span>
 
-<h2 id="critical-disclaimers" style="margin-top:48px;color:#fbbf24">📊 Research Disclaimers (Honest Assessment ของผลลัพธ์)</h2>
+<h2 id="critical-disclaimers" style="margin-top:48px;color:#fbbf24">📊 ข้อจำกัดและคำเตือน (Honest Assessment สำหรับนักลงทุน)</h2>
 
-<div class="insight" style="border-color:#10b981;background:linear-gradient(90deg,rgba(16,185,129,0.10),transparent)">
-  <div class="insight-tag" style="color:#10b981">✅ RESOLVED in v4.1 — SL timing เก็บครบแล้ว</div>
-  <strong>ประวัติ bug (อยู่ใน EA v3.1 เก่า):</strong><br>
-  EA v3.1 KMP_Structures.mqh มีฟิลด์ TP timestamps ครบ (tp_10/20/30/50_time) แต่<strong>ขาด SL timestamps</strong> (sl_05/10/20/30_time) → first-hit logic ต้องใช้ <code>hours_to_mae</code> (peak) เป็น proxy<br><br>
+<p style="color:#cbd5e1;margin-bottom:18px">ส่วนนี้รวบรวม <strong>ข้อจำกัดของผลการวิเคราะห์</strong> ที่ผู้ใช้ต้องเข้าใจก่อนนำไปใช้จริง · เนื้อหาทั้งหมดอ้างอิงถึงสถานะ <strong>ปัจจุบัน (v9.0 · 66 datasets · 2,154,570 trades)</strong></p>
+
+<!-- Disclaimer 1: In-sample only -->
+<div class="insight" style="border-color:#f59e0b;background:linear-gradient(90deg,rgba(245,158,11,0.10),transparent)">
+  <div class="insight-tag" style="color:#f59e0b">⚠️ คำเตือนหลัก: ข้อมูลทั้งหมดเป็น In-Sample Backtest</div>
   
-  <strong>การแก้ไข (EA v4.1 ปัจจุบัน):</strong><br>
-  ✅ EA v4.1 ใช้ <strong>Triple-Barrier 20×20 grid</strong> เก็บ SL timing ครบทุก level<br>
-  ✅ CSV schema ขยายจาก 93 cols → <strong>131 cols</strong> (เพิ่ม path checkpoints + Triple-Barrier outcomes)<br>
-  ✅ First-hit logic ใช้ exact SL/TP hit times ไม่ใช่ proxy แล้ว<br>
-  ✅ <code>MAX_TRACKED_POSITIONS</code> ขยายจาก 10K → 50K (แก้ buffer cap ของ BTC/ETH M15)<br><br>
+  <strong>ความหมาย:</strong><br>
+  ผลการวิเคราะห์ทั้งหมด (WR, EV, Tier ranking) มาจากการ backtest บนข้อมูลในอดีต — <strong>ยังไม่ได้ test บนข้อมูลที่ไม่เคยเห็น (Out-of-Sample)</strong> และยังไม่ได้ live forward test<br><br>
   
-  <strong>ผลข้อมูลปัจจุบัน:</strong><br>
-  • 66 datasets · 2,154,570 trades · 22 assets · all v4.1 schema<br>
-  • EV calculation accurate (no longer using MAE proxy)<br>
-  • Realistic-EV vs Aggregated-EV gap ~60-70% (expected · เป็น normal first-hit selection bias)
+  <strong>ผลกระทบ:</strong><br>
+  • EV ที่เห็นมักจะ <strong>overstate ของจริง 30-50%</strong><br>
+  • Pattern detection rules ตั้งจากข้อมูลเดียวกับที่ทดสอบ → bias ขึ้น<br>
+  • ตลาดในอนาคตอาจ regime change → pattern เก่าใช้ไม่ได้<br><br>
+  
+  <strong>วิธีจัดการ:</strong><br>
+  ✅ ใช้ค่า <strong>EV × 0.5 ถึง 0.7</strong> เป็น expected real-world EV<br>
+  ✅ ทำ OOS test 3-5 ปีก่อน deploy (ใช้ Dukascopy data ที่ไม่เคยเห็น)<br>
+  ✅ Demo trade 1-3 เดือนก่อนเริ่ม live<br>
+  ✅ เริ่ม live ที่ 0.25-0.5% risk per trade · scale up เมื่อ validate
 </div>
 
-<div class="insight" style="border-color:#f59e0b;background:linear-gradient(90deg,rgba(245,158,11,0.12),transparent)">
-  <div class="insight-tag" style="color:#f59e0b">📊 Multiple Testing Problem (ไม่ได้ apply correction)</div>
+<!-- Disclaimer 2: Multiple Testing -->
+<div class="insight" style="border-color:#f59e0b;background:linear-gradient(90deg,rgba(245,158,11,0.10),transparent)">
+  <div class="insight-tag" style="color:#f59e0b">📊 Multiple Testing Problem (ยังไม่ได้แก้)</div>
   
-  <strong>ขนาด:</strong> 177 patterns × 16 SL/TP combos × 66 datasets = <strong>186,912 statistical tests</strong><br><br>
+  <strong>จำนวน statistical tests ที่ทำ:</strong><br>
+  • 177 patterns × 16 SL/TP combos × 66 datasets = <strong>186,912 tests</strong><br><br>
   
-  <strong>Expected false positives:</strong><br>
-  • α = 0.05 → <strong>6,797</strong> false positives by chance<br>
-  • α = 0.01 → <strong>1,359</strong> false positives by chance<br>
-  • Bonferroni-corrected α = 3.68e-07 (ผมไม่ได้ apply)<br><br>
+  <strong>False positives ที่คาดว่าจะเกิดโดยบังเอิญ:</strong><br>
+  • ที่ α = 0.05 → คาด <strong>9,345</strong> false positives<br>
+  • ที่ α = 0.01 → คาด <strong>1,869</strong> false positives<br>
+  • Bonferroni-corrected α (ที่ควรใช้): 2.68 × 10⁻⁷<br><br>
   
-  <strong>ผลกระทบ:</strong> Tier S+ 19 patterns อาจมี false positives เยอะ<br>
-  <strong>Status:</strong> ต้อง implement FDR control (Benjamini-Hochberg) ใน v9.0 analysis
+  <strong>ผลกระทบ:</strong><br>
+  Tier ranking ปัจจุบันยังไม่ได้ apply FDR control · บาง pattern ที่ดูเหมือนเก่งอาจเป็นแค่ random luck<br><br>
+  
+  <strong>วิธีจัดการ:</strong><br>
+  ✅ เลือก pattern ที่ <strong>ใหญ่ + sample เยอะ</strong> (n ≥ 1,000) → robust ต่อ chance<br>
+  ✅ เลือก pattern ที่ active ในหลาย assets/TFs → ไม่ใช่ฟลุ๊คใน asset เดียว<br>
+  ✅ Tier S+ (9 patterns) ผ่านเกณฑ์ "active 100% + profit 100%" — strict ที่สุด<br>
+  📋 Future plan: implement Benjamini-Hochberg FDR control
 </div>
 
-<div class="insight" style="border-color:#f59e0b;background:linear-gradient(90deg,rgba(245,158,11,0.12),transparent)">
-  <div class="insight-tag" style="color:#f59e0b">📏 Sample Threshold n≥30 ต่ำเกิน (Academic Std: n≥100)</div>
+<!-- Disclaimer 3: Sample threshold -->
+<div class="insight" style="border-color:#f59e0b;background:linear-gradient(90deg,rgba(245,158,11,0.10),transparent)">
+  <div class="insight-tag" style="color:#f59e0b">📏 Sample Size Threshold (n ≥ 30 อาจต่ำเกินไป)</div>
   
-  <strong>Re-evaluate Tier S+ ที่ stricter threshold:</strong><br>
-  • At n≥30 (current): <strong>19 patterns</strong> Tier S+<br>
-  • At n≥100 (academic): <strong>9 patterns</strong> Tier S+ ⚠️<br>
-  • Difference: 10 patterns อาจไม่ statistically significant<br><br>
+  <strong>เกณฑ์ที่ระบบใช้ปัจจุบัน:</strong><br>
+  Pattern ต้องมีอย่างน้อย <strong>n ≥ 30 trades</strong> ใน dataset ถึงจะคำนวณ stats<br><br>
   
-  <strong>Recommendation:</strong> ใช้ n≥100 เป็น threshold สำหรับ Production EA candidate selection
+  <strong>เกณฑ์ academic ที่ strict กว่า:</strong><br>
+  • n ≥ 30 (current): ใช้ได้พอประมาณ · ความเชื่อมั่น <strong>preliminary</strong><br>
+  • n ≥ 100: <strong>robust</strong> · ใช้ได้ confident<br>
+  • n ≥ 500: ใช้ได้แน่นอน · publishable<br>
+  • n ≥ 1,000: bulletproof<br><br>
+  
+  <strong>ผลกระทบ:</strong><br>
+  Pattern ที่ n อยู่ระหว่าง 30-99 ถือเป็นเบื้องต้น · การเลือก pattern ไป deploy ควรใช้ n ≥ 100 ขั้นต่ำ<br><br>
+  
+  <strong>วิธีจัดการ:</strong><br>
+  ✅ ทุก dataset page มี toggle "Robust only (n ≥ 100)" — ใช้กรอง preliminary patterns<br>
+  ✅ Production EA ใช้ n ≥ 100 เท่านั้น · pattern ที่ Tier S+ ทุกตัวมี total trades > 24,000
 </div>
 
-<div class="insight" style="border-color:#f59e0b;background:linear-gradient(90deg,rgba(245,158,11,0.12),transparent)">
-  <div class="insight-tag" style="color:#f59e0b">🎯 "Tier S+ 100% Profitable" Misleading</div>
+<!-- Disclaimer 4: Tier S+ definition -->
+<div class="insight" style="border-color:#f59e0b;background:linear-gradient(90deg,rgba(245,158,11,0.10),transparent)">
+  <div class="insight-tag" style="color:#f59e0b">🎯 Tier S+ "100% Profitable" — เข้าใจให้ชัด</div>
   
-  <strong>Definition:</strong> best_setup EV > 0 ในทุก dataset<br>
-  <strong>Caveat:</strong> "best_setup" คือ post-hoc selection จาก 16 SL/TP combos<br><br>
+  <strong>นิยาม:</strong><br>
+  Tier S+ = Pattern ที่ <strong>best_setup EV > 0 ในทุก dataset</strong> + active 100% datasets<br><br>
   
-  <strong>ปัญหา:</strong><br>
-  • ใน live trading จะเลือก SL/TP combo ไหน?<br>
-  • ใช้ in-sample best → overfitting risk สูง<br>
-  • ใช้ generic SL/TP → ผลแย่กว่า<br><br>
+  <strong>ข้อควรรู้ (Caveat):</strong><br>
+  "best_setup" คือ <strong>post-hoc selection</strong> — เราเลือก SL/TP combo ที่ดีที่สุด<br>
+  ใน live trading จริง <strong>ต้องเลือก combo ก่อนเทรด</strong> ไม่ใช่หลังเทรด<br><br>
   
-  <strong>True Tier S+ ที่แท้จริง:</strong> ต้อง robust ใน multiple SL/TP combos · ไม่ใช่แค่ best
+  <strong>ปัญหาในการนำไปใช้:</strong><br>
+  • ถ้าใช้ "in-sample best combo" → overfitting risk สูง<br>
+  • ถ้าใช้ "generic SL/TP" → ผลแย่กว่า<br><br>
+  
+  <strong>วิธีจัดการ:</strong><br>
+  ✅ เลือก pattern ที่ดีใน <strong>หลาย SL/TP combos</strong> (ไม่ใช่ best เดียว)<br>
+  ✅ ดู SL/TP Grid ในหน้า dataset — หา cell สีเขียวเข้มหลายอัน<br>
+  ✅ Production EA จะใช้ "robust combo" (PF>1 ใน 70%+ ของ combos)
 </div>
 
-<div class="insight" style="border-color:#f59e0b;background:linear-gradient(90deg,rgba(245,158,11,0.12),transparent)">
-  <div class="insight-tag" style="color:#f59e0b">💾 master_data.json จะเกิน GitHub Limit</div>
+<!-- Disclaimer 5: master_data.json size -->
+<div class="insight" style="border-color:#f59e0b;background:linear-gradient(90deg,rgba(245,158,11,0.10),transparent)">
+  <div class="insight-tag" style="color:#f59e0b">💾 master_data.json ใกล้ GitHub Limit</div>
   
-  <strong>Current:</strong> 74.7 MB / 100 MB hard limit<br>
-  <strong>Projection at 69 datasets:</strong> <strong style="color:#ef4444">107 MB (เกิน limit!)</strong><br><br>
+  <strong>สถานะปัจจุบัน:</strong><br>
+  master_data.json ขนาด <strong>95.4 MB</strong> · GitHub hard limit = 100 MB<br><br>
   
-  <strong>วิธีแก้ (ต้องทำก่อนถึง):</strong><br>
-  1. Split master_data.json per asset class (5-6 files แยก)<br>
-  2. หรือใช้ Git LFS<br>
-  3. หรือเก็บ data ใน CDN (S3/Cloudflare R2)<br><br>
+  <strong>เหลือพื้นที่:</strong> ~4.6 MB (≈ 3 datasets เพิ่มได้)<br><br>
   
-  <strong>Trigger:</strong> ก่อน v8.8 (Phase 2 complete)
+  <strong>เมื่อจะเกิน:</strong><br>
+  • USTEC 3 datasets (~150K trades · ~5 MB) → จะเกิน 100 MB<br>
+  • ต้องใช้วิธีแก้ <strong>ก่อน USTEC harvest เสร็จ</strong><br><br>
+  
+  <strong>แผนแก้ไข (เลือกอย่างใดอย่างหนึ่ง):</strong><br>
+  1. <strong>Split per asset class</strong> — แยกเป็น 6 ไฟล์ (crypto/metals/energy/forex_major/forex_cross/indices)<br>
+  2. <strong>Git LFS</strong> — large file storage<br>
+  3. <strong>External CDN</strong> — Cloudflare R2 / AWS S3
 </div>
 
-<div class="insight" style="border-color:#3b82f6;background:linear-gradient(90deg,rgba(59,130,246,0.08),transparent)">
-  <div class="insight-tag" style="color:#3b82f6">📐 Honest Confidence Re-Assessment</div>
+<!-- Disclaimer 6: Honest Confidence Assessment -->
+<div class="insight" style="border-color:#3b82f6;background:linear-gradient(90deg,rgba(59,130,246,0.10),transparent)">
+  <div class="insight-tag" style="color:#3b82f6">📐 Honest Confidence Assessment (ปัจจุบัน v9.0)</div>
   
-  <strong>ผมเคย claim 3.7/5.0 — แต่ตั้งเองโดยไม่มี framework</strong><br><br>
+  <table style="width:100%;font-size:13px;margin-top:8px">
+    <tr style="background:rgba(59,130,246,0.1)"><th>หัวข้อ</th><th style="text-align:center">คะแนน</th><th>เหตุผล</th></tr>
+    <tr><td>Sample size</td><td style="text-align:center">⭐⭐⭐⭐⭐</td><td>2.15M trades · 66 datasets · เยอะมาก</td></tr>
+    <tr><td>Pattern detection accuracy</td><td style="text-align:center">⭐⭐⭐⭐⭐</td><td>Mechanical · academic standards · objective 100%</td></tr>
+    <tr><td>Entry execution capture</td><td style="text-align:center">⭐⭐⭐⭐☆</td><td>Real fills + spread · ขาดแค่ live slippage</td></tr>
+    <tr><td>Path tracking precision</td><td style="text-align:center">⭐⭐⭐⭐⭐</td><td>Triple-Barrier 20×20 grid + 9 path checkpoints</td></tr>
+    <tr><td>First-hit accuracy</td><td style="text-align:center">⭐⭐⭐⭐⭐</td><td>Exact SL/TP timestamps (ไม่ใช้ proxy)</td></tr>
+    <tr><td>Regime coverage</td><td style="text-align:center">⭐⭐⭐⭐☆</td><td>~4 ปี (2022-2026) · multi-regime</td></tr>
+    <tr><td>Multiple testing correction</td><td style="text-align:center">⭐☆☆☆☆</td><td>ยังไม่ได้ apply FDR control</td></tr>
+    <tr><td>Out-of-Sample validation</td><td style="text-align:center">☆☆☆☆☆</td><td>❌ ยังไม่ได้ทำ</td></tr>
+    <tr><td>Live forward test</td><td style="text-align:center">☆☆☆☆☆</td><td>❌ ยังไม่ได้ทำ</td></tr>
+  </table>
   
-  <strong>Honest reassessment:</strong><br>
-  • Sample size: ⭐⭐⭐⭐⭐ (2M+ trades · solid)<br>
-  • Pattern detection: ⭐⭐⭐⭐⭐ (mechanical · objective)<br>
-  • Entry execution capture: ⭐⭐⭐⭐☆ (real fills + spread)<br>
-  • <strong style="color:#ef4444">Path tracking: ⭐⭐☆☆☆</strong> (SL timing ไม่บันทึก! · ไม่ใช่ ⭐⭐⭐⭐ ตามที่เคยบอก)<br>
-  • <strong style="color:#ef4444">First-hit accuracy: ⭐⭐☆☆☆</strong> (48% suspicious cases · ไม่ใช่ ⭐⭐⭐⭐)<br>
-  • Multiple testing correction: ⭐☆☆☆☆ (ไม่มี)<br>
-  • Out-of-sample: ☆☆☆☆☆ (ยังไม่ทำ)<br>
-  • Live forward test: ☆☆☆☆☆ (ยังไม่ทำ)<br><br>
-  
-  <strong>Honest Overall: 2.5 / 5.0</strong> — "Preliminary research" ไม่ใช่ "research-grade"<br>
-  <strong>Status:</strong> Suitable for hypothesis generation · NOT for live trading without major fixes
+  <p style="margin-top:14px"><strong>Overall: 3.4 / 5.0</strong> — Research-grade · พร้อม identify candidates · <strong>ต้องผ่าน OOS + Forward test ก่อน live trading</strong></p>
 </div>
 
+<!-- Disclaimer 7: Pending tasks -->
 <div class="insight" style="border-color:#10b981;background:linear-gradient(90deg,rgba(16,185,129,0.08),transparent)">
-  <div class="insight-tag" style="color:#10b981">🛠️ Action Items — v9.0 Critical Fixes</div>
+  <div class="insight-tag" style="color:#10b981">📋 Pending Tasks ก่อน Production EA</div>
   
-  <strong>1. Fix EA (KMP_Structures.mqh):</strong><br>
-  • เพิ่ม fields: sl_05_time, sl_10_time, sl_20_time, sl_30_time<br>
-  • Update logger to record + export ใน CSV<br>
-  • Recompile + re-harvest ทุก dataset<br><br>
+  <strong>1. Data harvesting:</strong><br>
+  ⏳ USTEC (Nasdaq 100) — 3 datasets เหลือ · ~150K trades expected<br>
+  ⏳ จะปิดเป้า 23 assets · 69 datasets · ~2.3M trades<br><br>
   
-  <strong>2. Fix analyze_master.py:</strong><br>
-  • Use real sl_X_time แทน hours_to_mae proxy<br>
-  • Implement FDR correction (Benjamini-Hochberg)<br>
-  • Use n≥100 threshold for Tier classification<br><br>
+  <strong>2. master_data storage:</strong><br>
+  📋 Split JSON หรือใช้ Git LFS ก่อนเกิน 100 MB (จะถึงตอน USTEC complete)<br><br>
   
-  <strong>3. Re-classify all patterns:</strong><br>
-  • New Tier S+ definition: robust ใน 3+ SL/TP combos · ไม่ใช่ best only<br>
-  • Add confidence intervals (95% CI) ทุก EV claim<br><br>
+  <strong>3. Statistical refinement:</strong><br>
+  📋 Implement FDR correction (Benjamini-Hochberg) ใน analyze_master.py<br>
+  📋 Add 95% confidence intervals ทุก EV claim<br>
+  📋 Re-classify Tier ที่ stricter threshold (n ≥ 100, robust ใน multiple SL/TP combos)<br><br>
   
-  <strong>4. Storage planning:</strong><br>
-  • Split master_data.json before reaching 100 MB<br>
-  • Implement Git LFS or external CDN<br><br>
+  <strong>4. Out-of-Sample validation:</strong><br>
+  📋 Import Dukascopy tick data 2018-2021 ผ่าน TickStory<br>
+  📋 Re-test Tier S+ patterns ใน OOS window<br>
+  📋 Compare in-sample EV vs OOS EV per pattern<br><br>
   
-  <strong>5. Plan OOS testing:</strong><br>
-  • Dukascopy data 3-5 ปี · multi-regime<br>
-  • Walk-forward analysis<br>
-  • Conservative position sizing in live
+  <strong>5. Forward demo test:</strong><br>
+  📋 Demo MT5 live · 1-3 เดือน<br>
+  📋 Real ticks · real slippage · real broker latency
 </div>
 
-<h2 id="status-goals-obstacles-v9" style="margin-top:48px">📌 สถานะ v9.0 (ปัจจุบัน · 2026-05-10)</h2>
 
-<div style="background: linear-gradient(135deg, rgba(16,185,129,0.08), rgba(59,130,246,0.04)); border-left: 4px solid #10b981; padding: 20px; margin: 16px 0; border-radius: 6px;">
-  <strong style="color:#10b981; font-size:16px">v9.0 — 22 assets · 66 datasets · 2,154,570 trades · EA v4.1</strong><br><br>
-  
-  <strong>การเปลี่ยนแปลงสำคัญ:</strong><br>
-  • EA upgrade เป็น v4.1 — CSV 131 columns (+38 จาก v3.1)<br>
-  • Triple-Barrier 20×20 grid สำหรับ SL/TP analysis<br>
-  • <code>MAX_TRACKED_POSITIONS</code> ขยาย 10K → 50K (แก้ sample bias ของ BTC/ETH M15)<br>
-  • <strong>5 จาก 6 classes ครบทั้งหมด:</strong> Crypto · Metals · Energy · Forex Major · Forex Cross ✅<br>
-  • Forex Major 7/7 ✓ (เพิ่ม GBP, AUD, CAD, CHF, NZD)<br>
-  • Forex Cross 3/3 ✓ (เพิ่ม EURGBP, EURJPY, GBPJPY)<br>
-  • Indices 4/5 (เพิ่ม DE30, US500, JP225, UK100 · เหลือ USTEC)<br>
-  • Metals 3/3 ✓ (เพิ่ม XAG)<br><br>
-  
-  <strong>เหลือต้อง harvest อีก 1 asset:</strong><br>
-  • USTEC (Nasdaq 100) — 3 datasets · expected ~150K trades<br>
-  • Final target: 23 assets · 69 datasets · ~2.3M trades<br><br>
-  
-  <strong>Sidebar bug fix:</strong> ทุกไฟล์ HTML ฝัง inline JS แล้ว (110/110) · menu คลิกได้ทุกหน้า · ไม่มีปัญหา cache<br><br>
-  
-  <strong>📖 NEW: Thai User Guide</strong> (<a href="user-guide.html" style="color:#3b82f6;text-decoration:none">user-guide.html</a>)<br>
-  คู่มือภาษาไทยครบ 8 ส่วน · อธิบายทุกหัวข้อ · ทุกตัวเลข · วิธีใช้งานเว็บอย่างละเอียด
-</div>
+<h2 id="status-goals-obstacles" style="margin-top:48px">🎯 เป้าหมาย · อุปสรรค · Roadmap (ปัจจุบัน v9.0)</h2>
 
-<h2 id="status-goals-obstacles" style="margin-top:48px">📌 สถานะ · เป้าหมาย · อุปสรรค (historical v8.6 — v9.0 ปัจจุบันอยู่ด้านบน)</h2>
-
+<!-- เป้าหมาย -->
 <div class="insight" style="border-color:#10b981;background:linear-gradient(90deg,rgba(16,185,129,0.08),transparent)">
   <div class="insight-tag" style="color:#10b981">🎯 เป้าหมายของโปรเจกต์ KMP</div>
-  <strong>เป้าหมายหลัก — Production EA</strong><br>
-  สร้าง Trading EA ที่ใช้ <strong>Tier S+ Universal Patterns</strong> เป็นแกนกลาง · มี SL/TP/filter optimization per pattern per asset<br><br>
-
+  
+  <strong>เป้าหมายหลัก: สร้าง Production EA</strong><br>
+  ใช้ <strong>Tier S+ Universal Patterns</strong> เป็นแกนกลาง · ปรับ SL/TP/filter ต่อ pattern ต่อ asset<br><br>
+  
   <strong>เป้าหมายระยะกลาง:</strong><br>
-  • Phase 2 (in-sample): เก็บ data ครบ 23 assets × 3 TFs = 69 datasets · ~3M trades · ปัจจุบัน <strong style="color:#10b981">48/69 (69%)</strong><br>
-  • Phase OOS: ทดสอบ Tier S+ patterns ใน Out-of-Sample 3-5 ปี (Dukascopy data)<br>
-  • Phase Forward: Demo trading 1-3 เดือน ใน Live MT5<br>
-  • Phase Live: Production EA · scale up หลัง validate<br><br>
-
-  <strong>Universal Patterns Findings (v9.0 · 66 datasets):</strong><br>
-  • Tier S+ (active 100% + profitable 100% + minEV>0): <strong style="color:#10b981">19 patterns</strong><br>
-  • Tier A (active 95%+ + profitable 95%+ + minEV>-0.3): <strong style="color:#3b82f6">24 patterns</strong><br>
-  • รวม Production-ready candidates: <strong>43 patterns</strong>
+  • <strong>Phase 2 (in-sample harvest):</strong> เก็บ data 23 assets × 3 TFs = 69 datasets · ~2.3M trades · ปัจจุบัน <strong style="color:#10b981">66/69 (95.7%)</strong><br>
+  • <strong>Phase OOS:</strong> ทดสอบ Tier S+ patterns ใน Out-of-Sample 3-5 ปี<br>
+  • <strong>Phase Forward:</strong> Demo trading 1-3 เดือนใน Live MT5<br>
+  • <strong>Phase Live:</strong> Production EA · scale up หลัง validate<br><br>
+  
+  <strong>Universal Patterns Findings (ปัจจุบัน):</strong><br>
+  • <strong style="color:#10b981">Tier S+: 9 patterns</strong> (active 100% datasets + profitable 100% + minEV > 0)<br>
+  • <strong style="color:#3b82f6">Tier S: 18 patterns</strong> (active 90%+ datasets + profitable 90%+)<br>
+  • <strong style="color:#a855f7">Tier A: 32 patterns</strong> (active 70%+ datasets + profitable 70%+)<br>
+  • <strong>รวม Production-ready candidates: 59 patterns</strong>
 </div>
 
+<!-- อุปสรรค -->
 <div class="insight" style="border-color:#f59e0b;background:linear-gradient(90deg,rgba(245,158,11,0.08),transparent)">
   <div class="insight-tag" style="color:#f59e0b">🚧 อุปสรรคที่เจอ (และวิธีจัดการ)</div>
-  <strong>1. Trial14 — Crypto Altcoins Disabled</strong><br>
-  • SOLUSD/XRPUSD/BTCJPY → Trade: Disabled (server-side)<br>
-  • <strong>วิธีจัดการ:</strong> ตัดออกจาก Phase 2 · revisit ใน Live account สำหรับ Production EA<br><br>
-
-  <strong>2. EA MAX_TRACKED_POSITIONS = 10,000</strong><br>
-  • BTC/ETH M15 ติด rate limit · ทำให้ ~20-30% trades หาย (selection bias)<br>
-  • <strong>วิธีจัดการ:</strong> v9.0 เพิ่มเป็น 30K-50K + recompile + rerun BTC/ETH M15<br>
-  • <strong>สถานะ:</strong> ยอมรับได้ใน Phase 2 — sample ที่เหลือ 120K trades ก็ robust พอ<br><br>
-
-  <strong>3. master_data.json ใกล้ GitHub limit</strong><br>
-  • ปัจจุบัน 76.5 MB · GitHub soft limit 50 MB · hard limit 100 MB<br>
-  • <strong>วิธีจัดการ:</strong> ตอนนี้ยังใช้ได้ · ก่อนถึง 100MB อาจ split ต่อ asset/class หรือใช้ Git LFS<br><br>
-
-  <strong>4. Path-dependency (Same-hour ambiguity)</strong><br>
-  • ระบบเก็บ first-hit ที่ระดับ hour · ภายใน 1 ชม. swing 2 ทาง → ambiguous (~5-10% trades)<br>
-  • <strong>วิธีจัดการ:</strong> Tier S+ patterns มี margin มากพอ (mean EV +1.3-1.7R) · factor risk 10-15%<br>
-  • <strong>v9.x improvement:</strong> เปลี่ยนเป็น minute-level precision ถ้าจำเป็น<br><br>
-
-  <strong>5. In-sample only (single regime)</strong><br>
-  • Trial14 backtest ใช้ data 4 เดือน (2026.01-2026.04) — single market regime<br>
-  • <strong>วิธีจัดการ:</strong> หลัง Phase 2 ครบ → ทำ OOS ด้วย Dukascopy data 3-5 ปี + multi-regime
+  
+  <strong>1. master_data.json ใกล้ GitHub Limit</strong><br>
+  • ปัจจุบัน 95.4 MB · GitHub hard limit 100 MB<br>
+  • USTEC harvest จะทำให้เกิน → ต้อง split หรือ Git LFS ก่อน<br>
+  • <strong>วิธีจัดการ:</strong> แยก JSON per asset class (6 ไฟล์) ก่อน USTEC complete<br><br>
+  
+  <strong>2. Trial14 — Crypto Altcoins Disabled</strong><br>
+  • SOL/USD, XRP/USD, BTC/JPY → server-side disabled ใน MT5 Tester<br>
+  • <strong>วิธีจัดการ:</strong> ตัดออกจาก Phase 2 · revisit ใน Live account<br><br>
+  
+  <strong>3. Path-dependency (Same-hour ambiguity)</strong><br>
+  • Triple-Barrier เก็บ first-hit ที่ระดับ hour · ภายใน 1 ชม. swing 2 ทาง → ambiguous (~5-10% trades)<br>
+  • <strong>วิธีจัดการ:</strong> Tier S+ patterns มี margin มากพอ (mean EV +0.79 ถึง +0.94R) · acceptable risk<br><br>
+  
+  <strong>4. In-sample only · ยังไม่ได้ OOS</strong><br>
+  • Phase 2 backtest ใช้ data ~4 ปี (2022-2026)<br>
+  • <strong>วิธีจัดการ:</strong> หลัง Phase 2 ครบ → import Dukascopy 2018-2021 ทำ OOS<br><br>
+  
+  <strong>5. Multiple Testing — ยังไม่ได้ apply FDR</strong><br>
+  • 186,912 statistical tests · expected false positives สูง<br>
+  • <strong>วิธีจัดการ:</strong> Implement Benjamini-Hochberg ก่อน Production EA · ใช้ n ≥ 1000 + active 100% datasets เป็น filter strict
 </div>
 
+<!-- Roadmap -->
 <div class="insight" style="border-color:#3b82f6;background:linear-gradient(90deg,rgba(59,130,246,0.08),transparent)">
-  <div class="insight-tag" style="color:#3b82f6">🛣️ Roadmap — Updated v9.x Plan (revised)</div>
-  <strong>Final Asset Plan: 23 assets · 6 classes · 69 datasets target</strong><br><br>
-
-  <strong style="color:#94a3b8">v8.6 — Phase 2A 100% COMPLETE (historical · v9.0 is current)</strong><br>
-  • 66 datasets · 2,154,570 trades · 22 assets<br>
-  • Forex Major 7/7 · Forex Cross 3/3 · Energy 3/3 · Crypto 2/2 · Metals 1/3<br><br>
-
-  <strong style="color:#94a3b8">v8.7 (planned · superseded by v9.0 with EA v4.1)</strong><br>
-  • +XAGUSD M15 · +US500 M15 · +USTEC M15 · +DE30 M15<br>
-  • Target: 52 datasets · ~2.5M trades · 19 assets<br><br>
-
-  <strong>v8.8 — Phase 2B Metals + Phase 2D Indices H4+H1</strong><br>
-  • +XPTUSD ทั้ง 3 TF · +XAGUSD H4+H1<br>
-  • +US500/USTEC/DE30 H4+H1<br>
-  • +JP225/UK100 ทั้ง 3 TF<br>
-  • Target: 69 datasets · ~3M trades · 23 assets ✅ Phase 2 COMPLETE<br><br>
-
-  <strong>v9.0 — Production EA Stage 1: OOS Validation</strong><br>
-  • Dukascopy tick data 3-5 ปี import ผ่าน TickStory<br>
-  • Re-test Tier S+ patterns ใน OOS<br>
-  • Bump MAX_TRACKED_POSITIONS 30K-50K + rerun BTC/ETH M15<br><br>
-
-  <strong>v9.1 — Production EA Stage 2: Forward Demo Test</strong><br>
-  • Demo MT5 live · 1-3 เดือน · real ticks · real slippage<br>
-  • Compare backtest EV vs forward EV per pattern<br><br>
-
-  <strong>v10.0 — Production Launch</strong><br>
-  • Live MT5 trading · smallest position size<br>
+  <div class="insight-tag" style="color:#3b82f6">🛣️ Roadmap (ปัจจุบัน → Production)</div>
+  
+  <strong style="color:#10b981">✅ v9.0 (ปัจจุบัน · 2026-05-10)</strong><br>
+  • 22 assets · 66 datasets · 2,154,570 trades<br>
+  • 5/6 classes ครบ: Crypto · Metals · Energy · Forex Major · Forex Cross<br>
+  • Indices 4/5 (เหลือ USTEC)<br>
+  • EA v4.1 · CSV 131 cols · Triple-Barrier 20×20 grid · MAX_TRACKED 50K<br><br>
+  
+  <strong>📋 v9.1 (ถัดไป) — USTEC Harvest + JSON Split</strong><br>
+  • +USTEC (Nasdaq 100) M15 + H1 + H4 = 3 datasets · ~150K trades<br>
+  • Split master_data.json per asset class (ก่อนเกิน 100 MB)<br>
+  • <strong>Target:</strong> 23 assets · 69 datasets · ~2.3M trades · Phase 2 COMPLETE 100%<br><br>
+  
+  <strong>📋 v9.2 — Statistical Refinement</strong><br>
+  • Implement FDR correction (Benjamini-Hochberg)<br>
+  • Add 95% CI ทุก EV claim<br>
+  • Re-classify Tier ด้วย stricter rules (n ≥ 100, robust SL/TP)<br><br>
+  
+  <strong>📋 v9.3 — OOS Validation</strong><br>
+  • Import Dukascopy tick data 2018-2021 (~3-5 ปี ที่ไม่เคยเห็น)<br>
+  • Re-test Tier S+ patterns บน OOS window<br>
+  • Compare in-sample EV vs OOS EV — drop ที่ retain < 50% out<br><br>
+  
+  <strong>📋 v9.4 — Forward Demo Test</strong><br>
+  • Demo MT5 live · 1-3 เดือน<br>
+  • Track WR, EV, PF จริงเทียบกับ backtest<br>
+  • Hard cutoff: ถ้า rolling-100 WR ต่ำกว่า 38% ติด 2 เดือน → drop<br><br>
+  
+  <strong>📋 v10.0 — Production Launch</strong><br>
+  • Live MT5 trading · เริ่ม 0.25-0.5% risk per trade<br>
   • Per pattern per asset SL/TP optimization<br>
-  • Monitor + scale up gradually
+  • Monitor weekly · scale up gradually เมื่อ validate
 </div>
 
 <div class="insight" style="border-color:#a855f7;background:linear-gradient(90deg,rgba(168,85,247,0.08),transparent)">
@@ -580,7 +597,7 @@
       <div style="font-size:11px;color:var(--txt-d);line-height:1.7;margin-top:10px">
         Richard Wyckoff · Phase A-E (1930s)<br>
         Tom Williams · Master the Markets (1998)<br>
-        → P55-P56 + P98-P107 (Cat I · VSA/Wyckoff in v3.1)
+        → P55-P56 + P98-P107 (Cat I · VSA/Wyckoff)
       </div>
     </div>
     <div class="kpi">
@@ -676,7 +693,7 @@
       <tbody>
         <tr><td>KMP_PatternHarvester.mq5</td><td>1,108</td><td>Main EA · OnTick · order management · OnTradeTransaction</td></tr>
         <tr><td>Include/KMP_Structures.mqh</td><td>1,053</td><td>PatternFlags (177) · IndicatorSnapshot (70 fields) · TrackedPosition</td></tr>
-        <tr><td>Include/KMP_Indicators.mqh</td><td>~580</td><td>Indicator init + snapshot capture (incl. Ichimoku v3.0)</td></tr>
+        <tr><td>Include/KMP_Indicators.mqh</td><td>~580</td><td>Indicator init + snapshot capture (Ichimoku, ATR, EMA, BB, RSI, Stoch, MACD, ADX)</td></tr>
         <tr><td>Include/KMP_Patterns.mqh</td><td>587</td><td>Master dispatcher · 18 sub-detectors</td></tr>
         <tr><td>Include/KMP_PatternMetadata.mqh</td><td>459</td><td>177 metadata cases (name/category/direction)</td></tr>
         <tr><td>Include/KMP_HarvesterLogger.mqh</td><td>~360</td><td>CSV writer · 131-column header + WriteRecord</td></tr>
@@ -691,14 +708,14 @@
         <tr><td>Patterns/KMP_PatternsH_SMCAdvanced.mqh</td><td>~480</td><td>Cat H · P89-P97 · SMC advanced</td></tr>
         <tr><td>Patterns/KMP_PatternsI_VolumeWyckoff.mqh</td><td>~600</td><td>Cat I · P98-P107 · VSA + Wyckoff</td></tr>
         <tr><td>Patterns/KMP_PatternsJ_Harmonic.mqh</td><td>~700</td><td>Cat J · P108-P125 · Carney harmonics</td></tr>
-        <tr><td>Patterns/KMP_PatternsK_MultiTF.mqh</td><td>~370</td><td>Cat K · P126-P135 · Multi-timeframe (v3.0 NEW)</td></tr>
-        <tr><td>Patterns/KMP_PatternsL_Ichimoku.mqh</td><td>~240</td><td>Cat L · P136-P142 · Ichimoku (v3.0 NEW)</td></tr>
-        <tr><td>Patterns/KMP_PatternsM_ModernSMC.mqh</td><td>~330</td><td>Cat M · P143-P150 · Modern SMC (v3.0 NEW)</td></tr>
-        <tr><td>Patterns/KMP_PatternsN_Momentum.mqh</td><td>~330</td><td>Cat N · P151-P160 · Momentum + hidden div (v3.0 NEW)</td></tr>
-        <tr><td>Patterns/KMP_PatternsO_VolumeProfile.mqh</td><td>~280</td><td>Cat O · P161-P165 · Volume profile (v3.0 NEW)</td></tr>
-        <tr><td>Patterns/KMP_PatternsP_Range.mqh</td><td>~190</td><td>Cat P · P166-P170 · Range/reversion (v3.0 NEW)</td></tr>
-        <tr><td>Patterns/KMP_PatternsQ_ABCD.mqh</td><td>~210</td><td>Cat Q · P171-P174 · ABCD/Three Drives (v3.0 NEW)</td></tr>
-        <tr><td>Patterns/KMP_PatternsR_VolRegime.mqh</td><td>~140</td><td>Cat R · P175-P177 · Vol regime (v3.0 NEW)</td></tr>
+        <tr><td>Patterns/KMP_PatternsK_MultiTF.mqh</td><td>~370</td><td>Cat K · P126-P135 · Multi-timeframe</td></tr>
+        <tr><td>Patterns/KMP_PatternsL_Ichimoku.mqh</td><td>~240</td><td>Cat L · P136-P142 · Ichimoku</td></tr>
+        <tr><td>Patterns/KMP_PatternsM_ModernSMC.mqh</td><td>~330</td><td>Cat M · P143-P150 · Modern SMC</td></tr>
+        <tr><td>Patterns/KMP_PatternsN_Momentum.mqh</td><td>~330</td><td>Cat N · P151-P160 · Momentum + hidden div</td></tr>
+        <tr><td>Patterns/KMP_PatternsO_VolumeProfile.mqh</td><td>~280</td><td>Cat O · P161-P165 · Volume profile</td></tr>
+        <tr><td>Patterns/KMP_PatternsP_Range.mqh</td><td>~190</td><td>Cat P · P166-P170 · Range/reversion</td></tr>
+        <tr><td>Patterns/KMP_PatternsQ_ABCD.mqh</td><td>~210</td><td>Cat Q · P171-P174 · ABCD/Three Drives</td></tr>
+        <tr><td>Patterns/KMP_PatternsR_VolRegime.mqh</td><td>~140</td><td>Cat R · P175-P177 · Vol regime</td></tr>
         <tr><td>Docs/PATTERN_REFERENCE.md</td><td>679</td><td>Theory + detection rules + bibliography</td></tr>
       </tbody>
     </table>
@@ -982,7 +999,7 @@
     📚 <a href="patterns-encyclopedia.html" style="color:#f59e0b">Encyclopedia</a> · 
     ⚙ <a href="ea-architecture.html" style="color:#f59e0b">Architecture</a> · 
     🎯 <a href="tracking-system.html" style="color:#f59e0b">Tracking</a> · 
-    Phase 3 (in v3.1)
+    Phase 3 (P126-P177 patterns)
   </div>
   
   <div class="insight">
@@ -1051,91 +1068,11 @@
   </div>
   
   <div class="insight" style="border-color:#10b981">
-    <div class="insight-tag" style="color:#10b981">⭐ v6 Baseline · 2026-05-07 · IN PROGRESS · 18/6 datasets</div>
-    <strong>v6 Backtest — first 2 datasets</strong><br>
-    BTCUSD H4 (9,474 trades · WR 50.5% · PF 1.11) · 
-    XAUUSD H4 (7,077 trades · WR 48.7% · PF 1.07)<br>
-    Total: 2,201,457 trades · 131 CSV cols · WeekendMode AUTO · spread+slippage real<br>
-    Pending: BTC H1 · EUR H1 · EUR H4 · XAU H1 (4 datasets)<br>
-    Top performer (both): P141 Ichimoku Kumo Twist Bear · Worst: Sunday Gap Fill (P120/P121)
-  </div>
-  
-  <div class="insight" style="border-color:#10b981">
-    <div class="insight-tag" style="color:#10b981">⭐ v6 Baseline · 2026-05-07 · IN PROGRESS · 18/6 datasets</div>
-    <strong>v6 Backtest — first 2 datasets</strong><br>
-    BTCUSD H4 (9,474 trades · WR 50.5% · PF 1.11) · 
-    XAUUSD H4 (7,077 trades · WR 48.7% · PF 1.07)<br>
-    Total: 2,201,457 trades · 131 CSV cols · WeekendMode AUTO · spread+slippage real<br>
-    Pending: BTC H1 · EUR H1 · EUR H4 · XAU H1 (4 datasets)<br>
-    Top performer (both): P141 Ichimoku Kumo Twist Bear · Worst: Sunday Gap Fill (P120/P121)
-  </div>
-  
-  <div class="insight" style="border-color:#10b981">
-    <div class="insight-tag" style="color:#10b981">⭐ v6 Baseline · 2026-05-07 · IN PROGRESS · 29/6 datasets</div>
-    <strong>v6 Backtest — first 2 datasets</strong><br>
-    BTCUSD H4 (9,474 trades · WR 50.5% · PF 1.11) · 
-    XAUUSD H4 (7,077 trades · WR 48.7% · PF 1.07)<br>
-    Total: 2,201,457 trades · 131 CSV cols · WeekendMode AUTO · spread+slippage real<br>
-    Pending: BTC H1 · EUR H1 · EUR H4 · XAU H1 (4 datasets)<br>
-    Top performer (both): P141 Ichimoku Kumo Twist Bear · Worst: Sunday Gap Fill (P120/P121)
-  </div>
-  
-  <div class="insight" style="border-color:#10b981">
-    <div class="insight-tag" style="color:#10b981">⭐ v6 Baseline · 2026-05-07 · IN PROGRESS · 30/6 datasets</div>
-    <strong>v6 Backtest — first 2 datasets</strong><br>
-    BTCUSD H4 (9,474 trades · WR 50.5% · PF 1.11) · 
-    XAUUSD H4 (7,077 trades · WR 48.7% · PF 1.07)<br>
-    Total: 2,201,457 trades · 131 CSV cols · WeekendMode AUTO · spread+slippage real<br>
-    Pending: BTC H1 · EUR H1 · EUR H4 · XAU H1 (4 datasets)<br>
-    Top performer (both): P141 Ichimoku Kumo Twist Bear · Worst: Sunday Gap Fill (P120/P121)
-  </div>
-  
-  <div class="insight" style="border-color:#10b981">
-    <div class="insight-tag" style="color:#10b981">⭐ v6 Baseline · 2026-05-07 · IN PROGRESS · 34/6 datasets</div>
-    <strong>v6 Backtest — first 2 datasets</strong><br>
-    BTCUSD H4 (9,474 trades · WR 50.5% · PF 1.11) · 
-    XAUUSD H4 (7,077 trades · WR 48.7% · PF 1.07)<br>
-    Total: 2,201,457 trades · 131 CSV cols · WeekendMode AUTO · spread+slippage real<br>
-    Pending: BTC H1 · EUR H1 · EUR H4 · XAU H1 (4 datasets)<br>
-    Top performer (both): P141 Ichimoku Kumo Twist Bear · Worst: Sunday Gap Fill (P120/P121)
-  </div>
-  
-  <div class="insight" style="border-color:#10b981">
-    <div class="insight-tag" style="color:#10b981">⭐ v6 Baseline · 2026-05-07 · IN PROGRESS · 39/6 datasets</div>
-    <strong>v6 Backtest — first 2 datasets</strong><br>
-    BTCUSD H4 (9,474 trades · WR 50.5% · PF 1.11) · 
-    XAUUSD H4 (7,077 trades · WR 48.7% · PF 1.07)<br>
-    Total: 2,201,457 trades · 131 CSV cols · WeekendMode AUTO · spread+slippage real<br>
-    Pending: BTC H1 · EUR H1 · EUR H4 · XAU H1 (4 datasets)<br>
-    Top performer (both): P141 Ichimoku Kumo Twist Bear · Worst: Sunday Gap Fill (P120/P121)
-  </div>
-  
-  <div class="insight" style="border-color:#10b981">
-    <div class="insight-tag" style="color:#10b981">⭐ v6 Baseline · 2026-05-07 · IN PROGRESS · 43/6 datasets</div>
-    <strong>v6 Backtest — first 2 datasets</strong><br>
-    BTCUSD H4 (9,474 trades · WR 50.5% · PF 1.11) · 
-    XAUUSD H4 (7,077 trades · WR 48.7% · PF 1.07)<br>
-    Total: 2,201,457 trades · 131 CSV cols · WeekendMode AUTO · spread+slippage real<br>
-    Pending: BTC H1 · EUR H1 · EUR H4 · XAU H1 (4 datasets)<br>
-    Top performer (both): P141 Ichimoku Kumo Twist Bear · Worst: Sunday Gap Fill (P120/P121)
-  </div>
-  
-  <div class="insight" style="border-color:#10b981">
-    <div class="insight-tag" style="color:#10b981">⭐ v6 Baseline · 2026-05-07 · IN PROGRESS · 45/6 datasets</div>
-    <strong>v6 Backtest — first 2 datasets</strong><br>
-    BTCUSD H4 (9,474 trades · WR 50.5% · PF 1.11) · 
-    XAUUSD H4 (7,077 trades · WR 48.7% · PF 1.07)<br>
-    Total: 2,201,457 trades · 131 CSV cols · WeekendMode AUTO · spread+slippage real<br>
-    Pending: BTC H1 · EUR H1 · EUR H4 · XAU H1 (4 datasets)<br>
-    Top performer (both): P141 Ichimoku Kumo Twist Bear · Worst: Sunday Gap Fill (P120/P121)
-  </div>
-  
-  <div class="insight" style="border-color:#10b981">
     <div class="insight-tag" style="color:#10b981">⭐ v6 Baseline · 2026-05-07 · IN PROGRESS · 48 datasets</div>
     <strong>v6 Backtest — first 2 datasets</strong><br>
     BTCUSD H4 (9,474 trades · WR 50.5% · PF 1.11) · 
     XAUUSD H4 (7,077 trades · WR 48.7% · PF 1.07)<br>
-    Total: 2,201,457 trades · 131 CSV cols · WeekendMode AUTO · spread+slippage real<br>
+    Initial baseline with EA v3.0 · spread+slippage real fills<br>
     Pending: BTC H1 · EUR H1 · EUR H4 · XAU H1 (4 datasets)<br>
     Top performer (both): P141 Ichimoku Kumo Twist Bear · Worst: Sunday Gap Fill (P120/P121)
   </div>

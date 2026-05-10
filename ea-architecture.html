@@ -45,7 +45,7 @@
   
   <div class="nav-section">
     <a class="tree-node lvl-0" href="user-guide.html" style="background:#1e293b;border-left:3px solid #3b82f6;margin-bottom:6px"><span class="nm">📖 คู่มือการใช้งาน</span></a>
-    <div class="nav-label">Overview</div>
+    <div class="nav-label">ภาพรวม</div>
     <a class="tree-node lvl-0" href="index.html"><span class="arrow"></span><span class="nm">Dashboard</span></a>
     <a class="tree-node lvl-0" href="preface.html"><span class="arrow"></span><span class="nm">คำนำ &amp; เป้าหมาย</span></a>
   </div>
@@ -300,12 +300,12 @@
   </div>
   
   <div class="nav-section">
-    <div class="nav-label">EA System · v4.1</div>
+    <div class="nav-label">EA System · v4.1 (ปัจจุบัน)</div>
     <a class="tree-node lvl-0" href="ea-architecture.html"><span class="arrow"></span><span class="nm">⚙ EA Architecture</span></a>
     <a class="tree-node lvl-0" href="tracking-system.html"><span class="arrow"></span><span class="nm">🎯 Tracking System</span></a>  </div>  <div class="nav-section">
     <div class="nav-label">Reference</div>
 
-  <a class="tree-node lvl-0" href="reference.html"><span class="arrow"></span><span class="nm">Sources &amp; Changelog</span></a>
+  <a class="tree-node lvl-0" href="reference.html"><span class="arrow"></span><span class="nm">📚 อ้างอิง · ข้อจำกัด · Changelog</span></a>
   </div>
 </nav>
 
@@ -396,7 +396,7 @@
     </tbody>
   </table>
   
-  <h3 style="margin-top:18px;font-size:14px;color:var(--accent)">Risk + Trade Management <span style="color:var(--accent-2);font-size:11px">★ v3.1 updates</span></h3>
+  <h3 style="margin-top:18px;font-size:14px;color:var(--accent)">Risk + Trade Management </h3>
   <table class="config-table">
     <thead>
       <tr><th>Input</th><th>Default</th><th>Description</th></tr>
@@ -404,7 +404,7 @@
     <tbody>
       <tr><td class="pname">InpRiskPct</td><td class="pdef">0.01</td><td>% balance ต่อ trade (small for harvester pure data)</td></tr>
       <tr><td class="pname">InpTimeStopHours</td><td class="pdef">240</td><td>Time-stop in hours (10 days = 2 weeks)</td></tr>
-      <tr style="background:rgba(245,158,11,0.05)"><td class="pname">InpWeekendMode</td><td class="pdef">WEEKEND_AUTO</td><td>★ <strong>NEW v3.1</strong> · auto-detect from broker session info: BTC 24/7 → count weekend hours, EUR/XAU → skip Sat-Sun</td></tr>
+      <tr style="background:rgba(245,158,11,0.05)"><td class="pname">InpWeekendMode</td><td class="pdef">WEEKEND_AUTO</td><td>★ auto-detect from broker session info: BTC 24/7 → count weekend hours, EUR/XAU → skip Sat-Sun</td></tr>
       <tr><td class="pname">InpForceMinLot</td><td class="pdef">true</td><td>Use broker min_lot if calc &lt; min (no order blocking)</td></tr>
       <tr><td class="pname">InpMaxLot</td><td class="pdef">1.0</td><td>Cap on lot size</td></tr>
       <tr><td class="pname">InpMagic</td><td class="pdef">70707070</td><td>Magic number for position identification</td></tr>
@@ -414,7 +414,7 @@
   </table>
   
   <div class="alert-info" style="margin:14px 0">
-    <strong>★ Weekend handling (NEW v3.1):</strong> EA ตรวจอัตโนมัติว่า symbol นี้เทรดเสาร์-อาทิตย์ไหม via <code class="cb">SymbolInfoSessionTrade(SATURDAY/SUNDAY)</code> · BTC = trades 24/7 → time-stop counts weekend hours · EUR/XAU = closed Sat-Sun → time-stop skips weekend (counts trading hours only). User สามารถ override เป็น WEEKEND_SKIP หรือ WEEKEND_COUNT ก็ได้.
+    <strong>★ Weekend handling:</strong> EA ตรวจอัตโนมัติว่า symbol นี้เทรดเสาร์-อาทิตย์ไหม via <code class="cb">SymbolInfoSessionTrade(SATURDAY/SUNDAY)</code> · BTC = trades 24/7 → time-stop counts weekend hours · EUR/XAU = closed Sat-Sun → time-stop skips weekend (counts trading hours only). User สามารถ override เป็น WEEKEND_SKIP หรือ WEEKEND_COUNT ก็ได้.
   </div>
   
   <h3 style="margin-top:18px;font-size:14px;color:var(--accent)">Pattern Tuning Parameters (per category)</h3>

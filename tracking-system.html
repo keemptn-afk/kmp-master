@@ -64,7 +64,7 @@
   
   <div class="nav-section">
     <a class="tree-node lvl-0" href="user-guide.html" style="background:#1e293b;border-left:3px solid #3b82f6;margin-bottom:6px"><span class="nm">📖 คู่มือการใช้งาน</span></a>
-    <div class="nav-label">Overview</div>
+    <div class="nav-label">ภาพรวม</div>
     <a class="tree-node lvl-0" href="index.html"><span class="arrow"></span><span class="nm">Dashboard</span></a>
     <a class="tree-node lvl-0" href="preface.html"><span class="arrow"></span><span class="nm">คำนำ &amp; เป้าหมาย</span></a>
   </div>
@@ -319,12 +319,12 @@
   </div>
   
   <div class="nav-section">
-    <div class="nav-label">EA System · v4.1</div>
+    <div class="nav-label">EA System · v4.1 (ปัจจุบัน)</div>
     <a class="tree-node lvl-0" href="ea-architecture.html"><span class="arrow"></span><span class="nm">⚙ EA Architecture</span></a>
     <a class="tree-node lvl-0" href="tracking-system.html"><span class="arrow"></span><span class="nm">🎯 Tracking System</span></a>  </div>  <div class="nav-section">
     <div class="nav-label">Reference</div>
 
-  <a class="tree-node lvl-0" href="reference.html"><span class="arrow"></span><span class="nm">Sources &amp; Changelog</span></a>
+  <a class="tree-node lvl-0" href="reference.html"><span class="arrow"></span><span class="nm">📚 อ้างอิง · ข้อจำกัด · Changelog</span></a>
   </div>
 </nav>
 
@@ -398,7 +398,7 @@ g_tracked[slot].pattern_category    = "A";
 g_tracked[slot].pattern_direction   = +1;             <span class="com">// from metadata</span>
 g_tracked[slot].trade_direction     = +1;             <span class="com">// actual trade dir</span>
 
-<span class="com">// Entry context (NEW v3.1: separated intended vs actual fill)</span>
+<span class="com">// Entry context (separated intended vs actual fill)</span>
 g_tracked[slot].entry_price          = actual_broker_fill;  <span class="com">// updated in OnTradeTransaction DEAL_ENTRY_IN</span>
 g_tracked[slot].intended_entry_price = current_ASK;         <span class="com">// frozen: what we requested</span>
 g_tracked[slot].spread_at_entry_pts  = SymbolInfoInteger(SYMBOL_SPREAD);  <span class="com">// for execution analysis</span>
@@ -591,7 +591,7 @@ max_adverse_atr  = (entry_price - max_adverse)  / entry_atr;</pre>
     
     <pre class="code"><span class="com">// OnTradeTransaction handler</span>
 
-<span class="com">// (NEW v3.1) DEAL_ENTRY_IN — capture actual broker fill price for slippage</span>
+<span class="com">// DEAL_ENTRY_IN — capture actual broker fill price for slippage</span>
 <span class="kw">if</span>(deal_entry_type == DEAL_ENTRY_IN) {
    g_tracked[slot].entry_price = deal_price;  <span class="com">// actual fill, replaces intended</span>
    <span class="kw">return</span>;  <span class="com">// (intended_entry_price stays frozen for slippage analysis)</span>
@@ -600,7 +600,7 @@ max_adverse_atr  = (entry_price - max_adverse)  / entry_atr;</pre>
 <span class="com">// DEAL_ENTRY_OUT — close handler</span>
 g_tracked[slot].close_time          = deal_time;
 g_tracked[slot].exit_price          = deal_price;
-g_tracked[slot].spread_at_exit_pts  = SymbolInfoInteger(SYMBOL_SPREAD);  <span class="com">// NEW v3.1</span>
+g_tracked[slot].spread_at_exit_pts  = SymbolInfoInteger(SYMBOL_SPREAD);  <span class="com">// execution metadata</span>
 g_tracked[slot].pnl_dollars         = profit + swap + commission;
 g_tracked[slot].pnl_atr             = (deal_price - entry_price) / entry_atr * direction;
 g_tracked[slot].hours_held          = (deal_time - open_time) / <span class="num">3600</span>;
@@ -621,7 +621,7 @@ g_tracked[slot].ticket = <span class="num">0</span>;</pre>
 
 <section>
   <div class="section-head"><span class="section-num">07</span><h2 class="section-title">CSV Schema — 131 Columns (v4.1)</h2></div>
-  <p class="lead-desc">ทุก trade เก็บใน CSV file <code class="cb">MQL5/Files/KMP_Harvest_&lt;symbol&gt;_&lt;tf&gt;.csv</code> · 131 columns/row · v4.1 ขยายเป็น 131 cols (จาก 93 ใน v3.1) เพิ่ม Triple-Barrier 20×20 grid + path checkpoints</p>
+  <p class="lead-desc">ทุก trade เก็บใน CSV file <code class="cb">MQL5/Files/KMP_Harvest_&lt;symbol&gt;_&lt;tf&gt;.csv</code> · 131 columns/row · CSV schema 131 columns · ครอบคลุม Triple-Barrier 20×20 grid + 9 path checkpoints + execution metadata</p>
   
   <div class="csv-section-head"><span class="num">Cols 1-10:</span> Identification</div>
   <table class="csv-table">
@@ -654,7 +654,7 @@ g_tracked[slot].ticket = <span class="num">0</span>;</pre>
     </tbody>
   </table>
   
-  <div class="csv-section-head"><span class="num">Cols 19-27:</span> Entry Quality + Execution Metadata <span style="color:var(--accent-2);font-size:11px">★ NEW v3.1: cols 20-22</span></div>
+  <div class="csv-section-head"><span class="num">Cols 19-27:</span> Entry Quality + Execution Metadata <span style="color:var(--accent-2);font-size:11px">★ Execution metadata</span></div>
   <table class="csv-table">
     <tbody>
       <tr><td class="colnum">19</td><td class="colname">entry_price</td><td class="coltype">double</td><td>★ <strong>ACTUAL broker fill price</strong> (updated from intended via DEAL_ENTRY_IN)</td></tr>
