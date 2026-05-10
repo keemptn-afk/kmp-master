@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="th"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tracking System · KMP Master</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&family=Sarabun:wght@400;500;600;700&family=Bricolage+Grotesque:wght@400;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css?v=6.7">
+<style>
+  .phase-card { background: var(--bg-1); border: 1px solid var(--bdr); border-radius: 10px; padding: 20px; margin: 14px 0; border-left: 4px solid var(--accent); }
+  .phase-card.p1 { border-left-color: #6366f1; }
+  .phase-card.p2 { border-left-color: #22c55e; }
+  .phase-card.p3 { border-left-color: #14b8a6; }
+  .phase-card.p4 { border-left-color: #f59e0b; }
+  .phase-card.p5 { border-left-color: #ef4444; }
+  
+  .phase-head { display: flex; align-items: baseline; gap: 12px; margin-bottom: 12px; flex-wrap: wrap; }
+  .phase-num { font-family: 'JetBrains Mono', monospace; font-weight: 800; font-size: 14px; padding: 3px 10px; background: var(--bg-0); border-radius: 5px; color: var(--accent); }
+  .phase-card.p1 .phase-num { color: #6366f1; }
+  .phase-card.p2 .phase-num { color: #22c55e; }
+  .phase-card.p3 .phase-num { color: #14b8a6; }
+  .phase-card.p4 .phase-num { color: #f59e0b; }
+  .phase-card.p5 .phase-num { color: #ef4444; }
+  .phase-title { font-weight: 700; font-size: 16px; }
+  .phase-trigger { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--txt-d); margin-left: auto; padding: 3px 8px; background: var(--bg-0); border-radius: 4px; }
+  
+  pre.code { font-family: 'JetBrains Mono', monospace; font-size: 11.5px; line-height: 1.55; padding: 14px 16px; background: var(--bg-0); border: 1px solid var(--bdr); border-radius: 6px; margin: 10px 0; overflow-x: auto; color: var(--txt); }
+  pre.code .com { color: #94a3b8; font-style: italic; }
+  pre.code .kw { color: #a78bfa; font-weight: 700; }
+  pre.code .num { color: #f59e0b; }
+  pre.code .str { color: #22c55e; }
+  
+  .csv-table { width: 100%; border-collapse: collapse; font-size: 11.5px; margin: 10px 0; }
+  .csv-table th { padding: 8px 10px; background: var(--bg-1); border-bottom: 2px solid var(--bdr); text-align: left; font-weight: 700; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--txt-d); }
+  .csv-table td { padding: 7px 10px; border-bottom: 1px solid var(--bdr); }
+  .csv-table tr:hover td { background: var(--bg-1); }
+  .csv-table .colnum { font-family: 'JetBrains Mono', monospace; color: var(--txt-d); width: 40px; }
+  .csv-table .colname { font-family: 'JetBrains Mono', monospace; color: var(--accent); font-weight: 600; white-space: nowrap; }
+  .csv-table .coltype { font-family: 'JetBrains Mono', monospace; color: #f59e0b; font-size: 10.5px; }
+  
+  .csv-section-head { display: flex; align-items: baseline; gap: 12px; padding: 12px 14px; background: var(--bg-2); border-radius: 6px; margin: 14px 0 6px; font-weight: 700; }
+  .csv-section-head .num { font-family: 'JetBrains Mono', monospace; color: var(--accent); }
+  
+  .field-grid { display: grid; grid-template-columns: 1fr; gap: 6px; margin: 8px 0; font-size: 12.5px; }
+  .field-row { display: flex; gap: 12px; padding: 8px 12px; background: var(--bg-1); border-left: 2px solid var(--accent); border-radius: 0 5px 5px 0; }
+  .field-row .fname { font-family: 'JetBrains Mono', monospace; font-weight: 600; color: var(--accent); min-width: 200px; }
+  .field-row .fdesc { color: var(--txt); flex: 1; line-height: 1.5; }
+  
+  .alert-info { padding: 14px 16px; background: rgba(99,102,241,0.06); border-left: 3px solid #6366f1; border-radius: 5px; margin: 12px 0; font-size: 12.5px; line-height: 1.6; }
+  .alert-warn { padding: 14px 16px; background: rgba(245,158,11,0.06); border-left: 3px solid #f59e0b; border-radius: 5px; margin: 12px 0; font-size: 12.5px; line-height: 1.6; }
+  
+  .tick-flow { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; margin: 14px 0; }
+  .tick-item { padding: 12px 14px; background: var(--bg-1); border: 1px solid var(--bdr); border-radius: 6px; text-align: center; }
+  .tick-item .tt-name { font-weight: 700; font-size: 13px; color: var(--accent); }
+  .tick-item .tt-freq { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--txt-d); margin-top: 2px; }
+  .tick-item .tt-desc { font-size: 11.5px; margin-top: 6px; color: var(--txt); line-height: 1.5; }
+</style>
+</head><body>
+<nav class="sidebar">
+  <div class="sidebar-brand">
+    <a class="brand-logo" href="index.html">KMP <span class="accent">Master</span></a>
+    <div class="brand-ver">EA v4.1 · 177 patterns · 131 cols</div>
+  </div>
+  
+  <input type="text" class="search-box" id="globalSearch" placeholder="ค้นหา...">
+  
+  <div class="nav-section">
+    <div class="nav-label">Overview</div>
+    <a class="tree-node lvl-0" href="index.html"><span class="arrow"></span><span class="nm">Dashboard</span></a>
+    <a class="tree-node lvl-0" href="preface.html"><span class="arrow"></span><span class="nm">คำนำ &amp; เป้าหมาย</span></a>
+  </div>
+  
+  <div class="nav-section">
+    <div class="nav-label">Datasets · v9.0 · 21/69 ds · 736K trades</div>
+    
+    <div class="tree-node lvl-0 expandable" data-toggle="crypto-menu">
+      <span class="arrow">▶</span><span class="nm">Crypto</span><span class="badge">2</span>
+    </div>
+    <div class="tree-children" id="crypto-menu">
+      <div class="tree-node lvl-1 expandable" data-toggle="btc-menu">
+        <span class="arrow">▶</span><span class="nm">BTC/USD</span><span class="badge" style="background:#f7931a;color:#0a0a0a">131.2K</span>
+      </div>
+      <div class="tree-children" id="btc-menu">
+        <a class="tree-node lvl-2" href="btc-h4.html"><span class="nm">BTC H4</span><span class="badge" style="background:#10b981;color:#fff">6,340</span></a>
+        <a class="tree-node lvl-2" href="btc-h1.html"><span class="nm">BTC H1</span><span class="badge" style="background:#10b981;color:#fff">24,235</span></a>
+        <a class="tree-node lvl-2" href="btc-m15.html"><span class="nm">BTC M15</span><span class="badge" style="background:#10b981;color:#fff">100,599</span></a>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="eth-menu">
+        <span class="arrow">▶</span><span class="nm">ETH/USD</span><span class="badge" style="background:#627eea;color:#fff">133.8K</span>
+      </div>
+      <div class="tree-children" id="eth-menu">
+        <a class="tree-node lvl-2" href="eth-h4.html"><span class="nm">ETH H4</span><span class="badge" style="background:#10b981;color:#fff">6,449</span></a>
+        <a class="tree-node lvl-2" href="eth-h1.html"><span class="nm">ETH H1</span><span class="badge" style="background:#10b981;color:#fff">24,342</span></a>
+        <a class="tree-node lvl-2" href="eth-m15.html"><span class="nm">ETH M15</span><span class="badge" style="background:#10b981;color:#fff">103,040</span></a>
+      </div>
+    </div>
+    
+    <div class="tree-node lvl-0 expandable" data-toggle="metals-menu">
+      <span class="arrow">▶</span><span class="nm">Metals</span><span class="badge">3</span>
+    </div>
+    <div class="tree-children" id="metals-menu">
+      <div class="tree-node lvl-1 expandable" data-toggle="xau-menu">
+        <span class="arrow">▶</span><span class="nm">XAU/USD</span><span class="badge" style="background:#fbbf24;color:#0a0a0a">92.2K</span>
+      </div>
+      <div class="tree-children" id="xau-menu">
+        <a class="tree-node lvl-2" href="xau-h4.html"><span class="nm">XAU H4</span><span class="badge" style="background:#10b981;color:#fff">4,650</span></a>
+        <a class="tree-node lvl-2" href="xau-h1.html"><span class="nm">XAU H1</span><span class="badge" style="background:#10b981;color:#fff">16,746</span></a>
+        <a class="tree-node lvl-2" href="xau-m15.html"><span class="nm">XAU M15</span><span class="badge" style="background:#10b981;color:#fff">70,805</span></a>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="xag-menu">
+        <span class="arrow">▶</span><span class="nm">XAG/USD (Silver)</span><span class="badge" style="background:#94a3b8;color:#0a0a0a">0</span>
+      </div>
+      <div class="tree-children" id="xag-menu">
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">XAG H4</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">XAG H1</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">XAG M15</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="xpt-menu">
+        <span class="arrow">▶</span><span class="nm">XPT/USD (Platinum)</span><span class="badge" style="background:#cbd5e1;color:#0a0a0a">90.6K</span>
+      </div>
+      <div class="tree-children" id="xpt-menu">
+        <a class="tree-node lvl-2" href="xpt-h4.html"><span class="nm">XPT H4</span><span class="badge" style="background:#10b981;color:#fff">4,619</span></a>
+        <a class="tree-node lvl-2" href="xpt-h1.html"><span class="nm">XPT H1</span><span class="badge" style="background:#10b981;color:#fff">16,485</span></a>
+        <a class="tree-node lvl-2" href="xpt-m15.html"><span class="nm">XPT M15</span><span class="badge" style="background:#10b981;color:#fff">69,457</span></a>
+      </div>
+    </div>
+    
+    <div class="tree-node lvl-0 expandable" data-toggle="energy-menu">
+      <span class="arrow">▶</span><span class="nm">Energy</span><span class="badge">3</span>
+    </div>
+    <div class="tree-children" id="energy-menu">
+      <div class="tree-node lvl-1 expandable" data-toggle="usoil-menu">
+        <span class="arrow">▶</span><span class="nm">USOIL (WTI)</span><span class="badge" style="background:#84cc16;color:#0a0a0a">0</span>
+      </div>
+      <div class="tree-children" id="usoil-menu">
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">USOIL H4</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">USOIL H1</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">USOIL M15</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="ukoil-menu">
+        <span class="arrow">▶</span><span class="nm">UKOIL (Brent)</span><span class="badge" style="background:#65a30d;color:#0a0a0a">0</span>
+      </div>
+      <div class="tree-children" id="ukoil-menu">
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">UKOIL H4</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">UKOIL H1</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">UKOIL M15</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="xng-menu">
+        <span class="arrow">▶</span><span class="nm">XNGUSD (NatGas)</span><span class="badge" style="background:#06b6d4;color:#0a0a0a">0</span>
+      </div>
+      <div class="tree-children" id="xng-menu">
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">XNG H4</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">XNG H1</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">XNG M15</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+      </div>
+    </div>
+    
+    <div class="tree-node lvl-0 expandable" data-toggle="forex-menu">
+      <span class="arrow">▶</span><span class="nm">Forex</span><span class="badge">7</span>
+    </div>
+    <div class="tree-children" id="forex-menu">
+      <div class="tree-node lvl-1 expandable" data-toggle="eur-menu">
+        <span class="arrow">▶</span><span class="nm">EUR/USD</span><span class="badge" style="background:#5b9bd5;color:#fff">102.2K</span>
+      </div>
+      <div class="tree-children" id="eur-menu">
+        <a class="tree-node lvl-2" href="eur-h4.html"><span class="nm">EUR H4</span><span class="badge" style="background:#10b981;color:#fff">4,674</span></a>
+        <a class="tree-node lvl-2" href="eur-h1.html"><span class="nm">EUR H1</span><span class="badge" style="background:#10b981;color:#fff">18,405</span></a>
+        <a class="tree-node lvl-2" href="eur-m15.html"><span class="nm">EUR M15</span><span class="badge" style="background:#10b981;color:#fff">79,150</span></a>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="gbp-menu">
+        <span class="arrow">▶</span><span class="nm">GBP/USD</span><span class="badge" style="background:#a78bfa;color:#fff">0</span>
+      </div>
+      <div class="tree-children" id="gbp-menu">
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">GBP H4</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">GBP H1</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">GBP M15</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="jpy-menu">
+        <span class="arrow">▶</span><span class="nm">USD/JPY</span><span class="badge" style="background:#fb7185;color:#fff">99.4K</span>
+      </div>
+      <div class="tree-children" id="jpy-menu">
+        <a class="tree-node lvl-2" href="jpy-h4.html"><span class="nm">JPY H4</span><span class="badge" style="background:#10b981;color:#fff">4,639</span></a>
+        <a class="tree-node lvl-2" href="jpy-h1.html"><span class="nm">JPY H1</span><span class="badge" style="background:#10b981;color:#fff">17,783</span></a>
+        <a class="tree-node lvl-2" href="jpy-m15.html"><span class="nm">JPY M15</span><span class="badge" style="background:#10b981;color:#fff">76,937</span></a>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="aud-menu">
+        <span class="arrow">▶</span><span class="nm">AUD/USD</span><span class="badge" style="background:#34d399;color:#0a0a0a">0</span>
+      </div>
+      <div class="tree-children" id="aud-menu">
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">AUD H4</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">AUD H1</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">AUD M15</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="cad-menu">
+        <span class="arrow">▶</span><span class="nm">USD/CAD</span><span class="badge" style="background:#f59e0b;color:#0a0a0a">0</span>
+      </div>
+      <div class="tree-children" id="cad-menu">
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">CAD H4</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">CAD H1</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">CAD M15</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="chf-menu">
+        <span class="arrow">▶</span><span class="nm">USD/CHF</span><span class="badge" style="background:#ef4444;color:#fff">0</span>
+      </div>
+      <div class="tree-children" id="chf-menu">
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">CHF H4</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">CHF H1</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">CHF M15</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="nzd-menu">
+        <span class="arrow">▶</span><span class="nm">NZD/USD</span><span class="badge" style="background:#22c55e;color:#fff">0</span>
+      </div>
+      <div class="tree-children" id="nzd-menu">
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">NZD H4</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">NZD H1</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">NZD M15</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+      </div>
+    </div>
+    
+    <div class="tree-node lvl-0 expandable" data-toggle="cross-menu">
+      <span class="arrow">▶</span><span class="nm">Forex Cross</span><span class="badge">3</span>
+    </div>
+    <div class="tree-children" id="cross-menu">
+      <div class="tree-node lvl-1 expandable" data-toggle="eurjpy-menu">
+        <span class="arrow">▶</span><span class="nm">EUR/JPY</span><span class="badge" style="background:#8b5cf6;color:#fff">0</span>
+      </div>
+      <div class="tree-children" id="eurjpy-menu">
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">EURJPY H4</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">EURJPY H1</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">EURJPY M15</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="gbpjpy-menu">
+        <span class="arrow">▶</span><span class="nm">GBP/JPY</span><span class="badge" style="background:#ec4899;color:#fff">0</span>
+      </div>
+      <div class="tree-children" id="gbpjpy-menu">
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">GBPJPY H4</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">GBPJPY H1</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">GBPJPY M15</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="eurgbp-menu">
+        <span class="arrow">▶</span><span class="nm">EUR/GBP</span><span class="badge" style="background:#6366f1;color:#fff">0</span>
+      </div>
+      <div class="tree-children" id="eurgbp-menu">
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">EURGBP H4</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">EURGBP H1</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">EURGBP M15</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+      </div>
+    </div>
+
+    <div class="tree-node lvl-0 expandable" data-toggle="indices-menu">
+      <span class="arrow">▶</span><span class="nm">Indices</span><span class="badge">5</span>
+    </div>
+    <div class="tree-children" id="indices-menu">
+      <div class="tree-node lvl-1 expandable" data-toggle="us500-menu">
+        <span class="arrow">▶</span><span class="nm">US500 (S&amp;P 500)</span><span class="badge" style="background:#3b82f6;color:#fff">0</span>
+      </div>
+      <div class="tree-children" id="us500-menu">
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">US500 H4</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">US500 H1</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">US500 M15</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="ustec-menu">
+        <span class="arrow">▶</span><span class="nm">USTEC (Nasdaq 100)</span><span class="badge" style="background:#06b6d4;color:#fff">0</span>
+      </div>
+      <div class="tree-children" id="ustec-menu">
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">USTEC H4</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">USTEC H1</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">USTEC M15</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="de30-menu">
+        <span class="arrow">▶</span><span class="nm">DE30 (DAX)</span><span class="badge" style="background:#facc15;color:#0a0a0a">86.8K</span>
+      </div>
+      <div class="tree-children" id="de30-menu">
+        <a class="tree-node lvl-2" href="de30-h4.html"><span class="nm">DE30 H4</span><span class="badge" style="background:#10b981;color:#fff">4,311</span></a>
+        <a class="tree-node lvl-2" href="de30-h1.html"><span class="nm">DE30 H1</span><span class="badge" style="background:#10b981;color:#fff">16,207</span></a>
+        <a class="tree-node lvl-2" href="de30-m15.html"><span class="nm">DE30 M15</span><span class="badge" style="background:#10b981;color:#fff">66,253</span></a>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="jp225-menu">
+        <span class="arrow">▶</span><span class="nm">JP225 (Nikkei 225)</span><span class="badge" style="background:#ef4444;color:#fff">0</span>
+      </div>
+      <div class="tree-children" id="jp225-menu">
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">JP225 H4</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">JP225 H1</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">JP225 M15</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="uk100-menu">
+        <span class="arrow">▶</span><span class="nm">UK100 (FTSE 100)</span><span class="badge" style="background:#a78bfa;color:#fff">0</span>
+      </div>
+      <div class="tree-children" id="uk100-menu">
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">UK100 H4</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">UK100 H1</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">UK100 M15</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+      </div>
+    </div>
+  </div>
+  
+  <div class="nav-section">
+    <div class="nav-label">Patterns · 177 (v3.1)</div>
+    <a class="tree-node lvl-0" href="patterns-encyclopedia.html"><span class="arrow"></span><span class="nm">📚 Pattern Encyclopedia</span><span class="badge">177</span></a>
+    <div class="tree-node lvl-0 expandable" data-toggle="pat-menu">
+      <span class="arrow">▶</span><span class="nm">v4 Analysis</span><span class="badge">80</span>
+    </div>
+    <div class="tree-children" id="pat-menu">
+      <a class="tree-node lvl-1" href="patterns.html"><span class="nm">All Patterns Table</span></a>
+      <a class="tree-node lvl-1" href="tier.html"><span class="nm">Tier Rankings</span></a>
+      <a class="tree-node lvl-1" href="optimal-tpsl.html"><span class="nm">Optimal TP/SL EV</span></a>
+    </div>
+  </div>
+  
+  <div class="nav-section">
+    <div class="nav-label">Analysis</div>
+    <a class="tree-node lvl-0" href="cross.html"><span class="arrow"></span><span class="nm">Cross-TF / Asset</span></a>
+    <a class="tree-node lvl-0" href="time.html"><span class="arrow"></span><span class="nm">Hour / DoW / Conf</span></a>
+    <a class="tree-node lvl-0" href="edge.html"><span class="arrow"></span><span class="nm">Edge Decay / Vol</span></a>
+  </div>
+  
+  <div class="nav-section">
+    <div class="nav-label">Strategy</div>
+    
+  </div>
+  
+  <div class="nav-section">
+    <div class="nav-label">EA System · v3.1</div>
+    <a class="tree-node lvl-0" href="ea-architecture.html"><span class="arrow"></span><span class="nm">⚙ EA Architecture</span></a>
+    <a class="tree-node lvl-0" href="tracking-system.html"><span class="arrow"></span><span class="nm">🎯 Tracking System</span></a>  </div>  <div class="nav-section">
+    <div class="nav-label">Reference</div>
+
+  <a class="tree-node lvl-0" href="reference.html"><span class="arrow"></span><span class="nm">Sources &amp; Changelog</span></a>
+  </div>
+</nav>
+
+<main class="main">
+<div class="breadcrumb">
+  <a href="index.html" class="crumb">Dashboard</a>
+  <span class="sep">▸</span>
+  <a href="reference.html" class="crumb">Reference</a>
+  <span class="sep">▸</span>
+  <span class="crumb current">Tracking System</span>
+</div>
+
+<div class="hero">
+  <span class="hero-tag">Post-Order Tracking · Detail Spec</span>
+  <h1 class="hero-title">Tracking <span class="accent">System.</span></h1>
+  <p class="hero-desc">
+    Position lifecycle 5 phases · MFE/MAE/path/virtual SL-TP · 93-column CSV schema ·
+    เก็บไว้เป็น blueprint หาก EA หายก็ใช้เอกสารนี้สร้างใหม่ได้
+  </p>
+</div>
+
+<section>
+  <div class="section-head"><span class="section-num">01</span><h2 class="section-title">Position Lifecycle Overview</h2></div>
+  <p class="lead-desc">ทุก order มี 5 phases ของการติดตาม · 1 trade = 1 CSV row × 93 columns (รวม execution metadata)</p>
+  
+  <div class="tick-flow">
+    <div class="tick-item">
+      <div class="tt-name">Phase 1</div>
+      <div class="tt-freq">1× per trade</div>
+      <div class="tt-desc">Order open · capture pattern + 40 indicators</div>
+    </div>
+    <div class="tick-item">
+      <div class="tt-name">Phase 2</div>
+      <div class="tt-freq">Every tick</div>
+      <div class="tt-desc">MFE/MAE update · best/worst price</div>
+    </div>
+    <div class="tick-item">
+      <div class="tt-name">Phase 3</div>
+      <div class="tt-freq">9× per trade</div>
+      <div class="tt-desc">Path snapshots · 1/6/12/24/48/72/120/168/240h</div>
+    </div>
+    <div class="tick-item">
+      <div class="tt-name">Phase 4</div>
+      <div class="tt-freq">Every tick</div>
+      <div class="tt-desc">Virtual SL/TP hits · 4+4 levels</div>
+    </div>
+    <div class="tick-item">
+      <div class="tt-name">Phase 5</div>
+      <div class="tt-freq">1× per trade</div>
+      <div class="tt-desc">Position close · CSV row written</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-head"><span class="section-num">02</span><h2 class="section-title">Phase 1 — Order Open (1× per trade)</h2></div>
+  <div class="phase-card p1">
+    <div class="phase-head">
+      <span class="phase-num">PHASE 1</span>
+      <span class="phase-title">Order Opens — Snapshot Frozen</span>
+      <span class="phase-trigger">trigger: pattern fires</span>
+    </div>
+    
+    <p style="font-size:13px;line-height:1.6">เมื่อ pattern X ตรวจจับได้ที่บาร์ K ปิด → เปิด market order ที่ first tick ของบาร์ K+1 → จองช่อง slot ใน <code style="font-family:'JetBrains Mono',monospace;background:var(--bg-0);padding:1px 6px;border-radius:3px;color:var(--accent)">g_tracked[]</code> array</p>
+    
+    <h4 style="margin:14px 0 8px;font-size:13px;color:var(--accent)">ข้อมูลที่ถูก capture (frozen) ตลอดอายุ trade:</h4>
+    <pre class="code"><span class="com">// Pattern identification</span>
+g_tracked[slot].pattern_id          = pid;            <span class="com">// e.g., 5</span>
+g_tracked[slot].pattern_name        = "Engulf_Trap_Bull";
+g_tracked[slot].pattern_category    = "A";
+g_tracked[slot].pattern_direction   = +1;             <span class="com">// from metadata</span>
+g_tracked[slot].trade_direction     = +1;             <span class="com">// actual trade dir</span>
+
+<span class="com">// Entry context (NEW v3.1: separated intended vs actual fill)</span>
+g_tracked[slot].entry_price          = actual_broker_fill;  <span class="com">// updated in OnTradeTransaction DEAL_ENTRY_IN</span>
+g_tracked[slot].intended_entry_price = current_ASK;         <span class="com">// frozen: what we requested</span>
+g_tracked[slot].spread_at_entry_pts  = SymbolInfoInteger(SYMBOL_SPREAD);  <span class="com">// for execution analysis</span>
+g_tracked[slot].entry_atr            = snap.atr_14;
+g_tracked[slot].open_time            = now;
+g_tracked[slot].expire_time          = now + 240h (calendar OR trading per WeekendMode);
+g_tracked[slot].lot                  = computed_from_risk_pct;
+g_tracked[slot].entry_balance        = AccountBalance();
+
+<span class="com">// 40-field indicator snapshot — ALL frozen</span>
+g_tracked[slot].indicators          = snap;           <span class="com">// EMA9/20/50/100/200,</span>
+                                                       <span class="com">// BB upper/middle/lower/width/%B,</span>
+                                                       <span class="com">// ATR14/50, RSI7/14, Stoch K/D,</span>
+                                                       <span class="com">// MACD/signal, Volume ratio,</span>
+                                                       <span class="com">// ADX/DI+/DI-, Session, Hour, DoW</span>
+
+<span class="com">// 177-pattern context (which OTHER patterns also fired this bar)</span>
+g_tracked[slot].all_patterns        = flags;
+
+<span class="com">// Bar K anatomy (signal bar)</span>
+g_tracked[slot].bar_open/high/low/close = ...;
+g_tracked[slot].bar_body            = MathAbs(close - open);
+g_tracked[slot].bar_upper_wick      = high - MathMax(open, close);
+g_tracked[slot].bar_lower_wick      = MathMin(open, close) - low;
+g_tracked[slot].bar_range           = high - low;
+
+<span class="com">// Entry quality (timing relative to bar K)</span>
+g_tracked[slot].entry_vs_body_pct       = ...;        <span class="com">// %ของ body</span>
+g_tracked[slot].entry_vs_range_pct      = ...;        <span class="com">// %ของ range</span>
+g_tracked[slot].entry_distance_from_high_atr = ...;
+g_tracked[slot].entry_distance_from_low_atr  = ...;
+g_tracked[slot].entry_quality       = "AT_LOW";       <span class="com">// computed label</span>
+
+<span class="com">// Reset tracking arrays for this slot</span>
+ResetPathSnapshots(slot);    <span class="com">// 9 paths set to {captured=false}</span>
+ResetSLTPHits(slot);          <span class="com">// 4 SL + 4 TP flags = false</span>
+max_favorable = max_adverse = entry_price;</pre>
+  </div>
+</section>
+
+<section>
+  <div class="section-head"><span class="section-num">03</span><h2 class="section-title">Phase 2 — MFE/MAE (every tick)</h2></div>
+  <div class="phase-card p2">
+    <div class="phase-head">
+      <span class="phase-num">PHASE 2</span>
+      <span class="phase-title">Maximum Favorable / Adverse Excursion</span>
+      <span class="phase-trigger">trigger: every tick</span>
+    </div>
+    
+    <p style="font-size:13px;line-height:1.6">รัน <code style="font-family:'JetBrains Mono',monospace;background:var(--bg-0);padding:1px 6px;border-radius:3px;color:var(--accent)">UpdateActivePositions()</code> ทุก tick · update best/worst price ที่เคยเห็น + เวลาที่เกิด</p>
+    
+    <pre class="code"><span class="kw">double</span> current = (direction == +1) ? BID : ASK;   <span class="com">// fill side</span>
+
+<span class="com">// MFE — best price ever (Long: highest, Short: lowest)</span>
+<span class="kw">if</span> (direction == +1 && current > max_favorable) {
+   max_favorable = current;
+   mfe_time = now;
+   hours_to_mfe = (now - open_time) / <span class="num">3600</span>;
+}
+
+<span class="com">// MAE — worst price ever</span>
+<span class="kw">if</span> (direction == +1 && current < max_adverse) {
+   max_adverse = current;
+   mae_time = now;
+   hours_to_mae = (now - open_time) / <span class="num">3600</span>;
+}
+
+<span class="com">// Convert to ATR units (for cross-pattern/cross-symbol comparison)</span>
+max_favorable_atr = (max_favorable - entry_price) / entry_atr;
+max_adverse_atr  = (entry_price - max_adverse)  / entry_atr;</pre>
+    
+    <div class="alert-info">
+      <strong>ใช้หาอะไร:</strong> <code class="cb">mfe_atr</code> distribution ต่อ pattern → กำหนด TP ceiling realistic · <code class="cb">mae_atr</code> distribution → กำหนด SL minimum สำหรับ pattern นั้น
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-head"><span class="section-num">04</span><h2 class="section-title">Phase 3 — Path Snapshots (9 milestones)</h2></div>
+  <div class="phase-card p3">
+    <div class="phase-head">
+      <span class="phase-num">PHASE 3</span>
+      <span class="phase-title">Time-Series Snapshots (1/6/12/24/48/72/120/168/240h)</span>
+      <span class="phase-trigger">trigger: hours_held threshold first crossed</span>
+    </div>
+    
+    <p style="font-size:13px;line-height:1.6">ที่จุดเวลาแต่ละ milestone (calendar hours) → capture price + pnl_atr · ทำได้ครั้งเดียวต่อ milestone (sticky)</p>
+    
+    <pre class="code"><span class="com">// Run every tick, but capture once per threshold</span>
+<span class="kw">double</span> hours_held = (now - open_time) / <span class="num">3600</span>;
+<span class="kw">double</span> dir_pnl_atr = (direction == +1)
+                    ? (current - entry_price) / entry_atr
+                    : (entry_price - current) / entry_atr;
+
+<span class="com">// Each path bucket captured ONCE when threshold first reached</span>
+<span class="kw">if</span> (!path_1h.captured && hours_held >= <span class="num">1</span>) {
+   path_1h.captured    = <span class="kw">true</span>;
+   path_1h.price       = current;
+   path_1h.pnl_atr     = dir_pnl_atr;
+   path_1h.hour_offset = <span class="num">1</span>;
+}
+<span class="com">// ... repeat for 6, 12, 24, 48, 72, 120, 168, 240 hours</span></pre>
+    
+    <h4 style="margin:14px 0 8px;font-size:13px;color:var(--accent)">9 Path Buckets in CSV:</h4>
+    <table class="csv-table">
+      <thead><tr><th>Bucket</th><th>Hours</th><th>Use case</th></tr></thead>
+      <tbody>
+        <tr><td><code class="cb">path_1h_pnl_atr</code></td><td>1</td><td>Initial momentum (positive = pattern works fast)</td></tr>
+        <tr><td><code class="cb">path_6h_pnl_atr</code></td><td>6</td><td>Short-term follow-through</td></tr>
+        <tr><td><code class="cb">path_12h_pnl_atr</code></td><td>12</td><td>Half-day check (overnight cycle)</td></tr>
+        <tr><td><code class="cb">path_24h_pnl_atr</code></td><td>24</td><td>Daily cycle complete</td></tr>
+        <tr><td><code class="cb">path_48h_pnl_atr</code></td><td>48</td><td>2-day continuation</td></tr>
+        <tr><td><code class="cb">path_72h_pnl_atr</code></td><td>72</td><td>3-day swing</td></tr>
+        <tr><td><code class="cb">path_120h_pnl_atr</code></td><td>120</td><td>~1 week (5 days)</td></tr>
+        <tr><td><code class="cb">path_168h_pnl_atr</code></td><td>168</td><td>1 calendar week</td></tr>
+        <tr><td><code class="cb">path_240h_pnl_atr</code></td><td>240</td><td>10 calendar days (max time-stop)</td></tr>
+      </tbody>
+    </table>
+    
+    <div class="alert-info">
+      <strong>ใช้หาอะไร:</strong> Time-decay curve — ดูว่า edge ของ pattern X ขึ้นที่ชั่วโมงไหน หายที่ชั่วโมงไหน · ใช้ optimize hold time per pattern
+    </div>
+    
+    <div class="alert-warn">
+      <strong>หมายเหตุ TF-dependent:</strong> M15 trades มักไม่ถึง 240h (closes ก่อนด้วย TP/SL) → path columns ปลายๆ จะว่าง · นี่ไม่ใช่ bug — เป็น behavior ที่ถูกต้อง
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-head"><span class="section-num">05</span><h2 class="section-title">Phase 4 — Virtual SL/TP Tracking (every tick)</h2></div>
+  <div class="phase-card p4">
+    <div class="phase-head">
+      <span class="phase-num">PHASE 4</span>
+      <span class="phase-title">Virtual Stop Loss / Take Profit Hits</span>
+      <span class="phase-trigger">trigger: every tick</span>
+    </div>
+    
+    <p style="font-size:13px;line-height:1.6"><strong>"Virtual"</strong> = ไม่ปิด position จริง · แค่ track ว่าราคาเคยถึง level นั้นหรือไม่ · ใช้ simulate "ถ้าตั้ง SL=X, TP=Y จะเกิดอะไร"</p>
+    
+    <pre class="code"><span class="com">// Sticky SL hit flags (once true, stays true)</span>
+<span class="kw">if</span> (max_adverse_atr >= <span class="num">0.5</span>) sl_05_hit = <span class="kw">true</span>;
+<span class="kw">if</span> (max_adverse_atr >= <span class="num">1.0</span>) sl_10_hit = <span class="kw">true</span>;
+<span class="kw">if</span> (max_adverse_atr >= <span class="num">2.0</span>) sl_20_hit = <span class="kw">true</span>;
+<span class="kw">if</span> (max_adverse_atr >= <span class="num">3.0</span>) sl_30_hit = <span class="kw">true</span>;
+
+<span class="com">// TP hits with timestamp (FIRST crossing only)</span>
+<span class="kw">if</span> (max_favorable_atr >= <span class="num">1.0</span> && !tp_10_hit) {
+   tp_10_hit  = <span class="kw">true</span>;
+   tp_10_time = now;            <span class="com">// hours_to_tp10 derived later</span>
+}
+<span class="com">// ... repeat for 2.0x, 3.0x, 5.0x ATR</span></pre>
+    
+    <h4 style="margin:14px 0 8px;font-size:13px;color:var(--accent)">8 Virtual Levels Tracked:</h4>
+    <table class="csv-table">
+      <thead><tr><th>Field</th><th>Threshold</th><th>What it tells</th></tr></thead>
+      <tbody>
+        <tr><td><code class="cb">sl_05_hit</code></td><td>MAE ≥ 0.5 ATR</td><td>ราคาเคยลงไป 0.5 ATR ติดลบ</td></tr>
+        <tr><td><code class="cb">sl_10_hit</code></td><td>MAE ≥ 1.0 ATR</td><td>ถ้าตั้ง SL=1 ATR → trade นี้ stop out</td></tr>
+        <tr><td><code class="cb">sl_20_hit</code></td><td>MAE ≥ 2.0 ATR</td><td>ถ้าตั้ง SL=2 ATR → trade นี้ stop out</td></tr>
+        <tr><td><code class="cb">sl_30_hit</code></td><td>MAE ≥ 3.0 ATR</td><td>ถ้าตั้ง SL=3 ATR → trade นี้ stop out</td></tr>
+        <tr><td><code class="cb">tp_10_hit</code> + <code class="cb">hours_to_tp10</code></td><td>MFE ≥ 1.0 ATR</td><td>ถึง 1 ATR กำไรเมื่อไหร่</td></tr>
+        <tr><td><code class="cb">tp_20_hit</code> + <code class="cb">hours_to_tp20</code></td><td>MFE ≥ 2.0 ATR</td><td>ถึง 2 ATR กำไรเมื่อไหร่</td></tr>
+        <tr><td><code class="cb">tp_30_hit</code> + <code class="cb">hours_to_tp30</code></td><td>MFE ≥ 3.0 ATR</td><td>ถึง 3 ATR กำไรเมื่อไหร่</td></tr>
+        <tr><td><code class="cb">tp_50_hit</code> + <code class="cb">hours_to_tp50</code></td><td>MFE ≥ 5.0 ATR</td><td>Big winner — ถึง 5 ATR เมื่อไหร่</td></tr>
+      </tbody>
+    </table>
+    
+    <div class="alert-info">
+      <strong>ใช้หาอะไร:</strong> SL/TP grid hit rates ต่อ pattern → optimize SL distance + TP target · <code class="cb">hours_to_tp*</code> → optimize hold time
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-head"><span class="section-num">06</span><h2 class="section-title">Phase 5 — Position Close (1× per trade)</h2></div>
+  <div class="phase-card p5">
+    <div class="phase-head">
+      <span class="phase-num">PHASE 5</span>
+      <span class="phase-title">Final Exit + CSV Write</span>
+      <span class="phase-trigger">trigger: time-stop, OnTradeTransaction, or backtest end</span>
+    </div>
+    
+    <p style="font-size:13px;line-height:1.6">3 วิธีที่ position จะปิด:</p>
+    <ul style="font-size:12.5px;line-height:1.7;margin:8px 0">
+      <li><strong>Time-stop:</strong> <code class="cb">now &gt;= expire_time</code> → EA สั่ง <code class="cb">PositionClose()</code> + <code class="cb">exit_reason = "TIME_STOP"</code></li>
+      <li><strong>Broker close:</strong> margin call, manual close, etc. → <code class="cb">OnTradeTransaction</code> fires + <code class="cb">exit_reason = "EXPERT"</code> or other</li>
+      <li><strong>Backtest end:</strong> <code class="cb">OnDeinit</code> force-close active positions + <code class="cb">exit_reason = "BACKTEST_END"</code></li>
+    </ul>
+    
+    <pre class="code"><span class="com">// OnTradeTransaction handler</span>
+
+<span class="com">// (NEW v3.1) DEAL_ENTRY_IN — capture actual broker fill price for slippage</span>
+<span class="kw">if</span>(deal_entry_type == DEAL_ENTRY_IN) {
+   g_tracked[slot].entry_price = deal_price;  <span class="com">// actual fill, replaces intended</span>
+   <span class="kw">return</span>;  <span class="com">// (intended_entry_price stays frozen for slippage analysis)</span>
+}
+
+<span class="com">// DEAL_ENTRY_OUT — close handler</span>
+g_tracked[slot].close_time          = deal_time;
+g_tracked[slot].exit_price          = deal_price;
+g_tracked[slot].spread_at_exit_pts  = SymbolInfoInteger(SYMBOL_SPREAD);  <span class="com">// NEW v3.1</span>
+g_tracked[slot].pnl_dollars         = profit + swap + commission;
+g_tracked[slot].pnl_atr             = (deal_price - entry_price) / entry_atr * direction;
+g_tracked[slot].hours_held          = (deal_time - open_time) / <span class="num">3600</span>;
+g_tracked[slot].direction_correct   = (pnl_dollars > <span class="num">0</span>);
+
+<span class="com">// Write 93-column CSV row (90 + 3 execution metadata)</span>
+g_Logger.WriteRecord(g_tracked[slot]);
+
+<span class="com">// Free slot</span>
+g_tracked[slot].active = <span class="kw">false</span>;
+g_tracked[slot].ticket = <span class="num">0</span>;</pre>
+    
+    <div class="alert-info">
+      <strong>Exit Reasons in CSV:</strong> <code class="cb">TIME_STOP</code> (default 240h) · <code class="cb">EXPERT</code> (broker confirmed) · <code class="cb">SL_HIT</code> · <code class="cb">TP_HIT</code> · <code class="cb">BACKTEST_END</code> (force close at OnDeinit)
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-head"><span class="section-num">07</span><h2 class="section-title">CSV Schema — 93 Columns (v3.1)</h2></div>
+  <p class="lead-desc">ทุก trade เก็บใน CSV file <code class="cb">MQL5/Files/KMP_Harvest_&lt;symbol&gt;_&lt;tf&gt;.csv</code> · 93 columns/row · v3.1 เพิ่ม 3 fields สำหรับ execution metadata</p>
+  
+  <div class="csv-section-head"><span class="num">Cols 1-10:</span> Identification</div>
+  <table class="csv-table">
+    <thead><tr><th class="colnum">#</th><th>Column</th><th>Type</th><th>Description</th></tr></thead>
+    <tbody>
+      <tr><td class="colnum">1</td><td class="colname">ticket</td><td class="coltype">long</td><td>MT5 unique ticket number</td></tr>
+      <tr><td class="colnum">2</td><td class="colname">pattern_id</td><td class="coltype">int</td><td>1-177</td></tr>
+      <tr><td class="colnum">3</td><td class="colname">pattern_name</td><td class="coltype">string</td><td>e.g., "Engulf_Trap_Bull"</td></tr>
+      <tr><td class="colnum">4</td><td class="colname">pattern_cat</td><td class="coltype">string</td><td>"A" through "R"</td></tr>
+      <tr><td class="colnum">5</td><td class="colname">pattern_dir_expected</td><td class="coltype">int</td><td>+1 LONG, -1 SHORT, 0 AGNOSTIC</td></tr>
+      <tr><td class="colnum">6</td><td class="colname">trade_dir</td><td class="coltype">int</td><td>actual direction taken</td></tr>
+      <tr><td class="colnum">7</td><td class="colname">symbol</td><td class="coltype">string</td><td>e.g., "EURUSD"</td></tr>
+      <tr><td class="colnum">8</td><td class="colname">tf</td><td class="coltype">string</td><td>"M15", "H1", "H4"</td></tr>
+      <tr><td class="colnum">9</td><td class="colname">open_time</td><td class="coltype">datetime</td><td>YYYY.MM.DD HH:MM:SS</td></tr>
+      <tr><td class="colnum">10</td><td class="colname">close_time</td><td class="coltype">datetime</td><td>position close time</td></tr>
+    </tbody>
+  </table>
+  
+  <div class="csv-section-head"><span class="num">Cols 11-18:</span> Bar Anatomy (Signal Bar)</div>
+  <table class="csv-table">
+    <tbody>
+      <tr><td class="colnum">11</td><td class="colname">bar_open</td><td class="coltype">double</td><td>Open of signal bar K</td></tr>
+      <tr><td class="colnum">12</td><td class="colname">bar_high</td><td class="coltype">double</td><td>High of signal bar K</td></tr>
+      <tr><td class="colnum">13</td><td class="colname">bar_low</td><td class="coltype">double</td><td>Low of signal bar K</td></tr>
+      <tr><td class="colnum">14</td><td class="colname">bar_close</td><td class="coltype">double</td><td>Close of signal bar K</td></tr>
+      <tr><td class="colnum">15</td><td class="colname">bar_body</td><td class="coltype">double</td><td>|close - open|</td></tr>
+      <tr><td class="colnum">16</td><td class="colname">bar_upper_wick</td><td class="coltype">double</td><td>high - max(open, close)</td></tr>
+      <tr><td class="colnum">17</td><td class="colname">bar_lower_wick</td><td class="coltype">double</td><td>min(open, close) - low</td></tr>
+      <tr><td class="colnum">18</td><td class="colname">bar_range</td><td class="coltype">double</td><td>high - low</td></tr>
+    </tbody>
+  </table>
+  
+  <div class="csv-section-head"><span class="num">Cols 19-27:</span> Entry Quality + Execution Metadata <span style="color:var(--accent-2);font-size:11px">★ NEW v3.1: cols 20-22</span></div>
+  <table class="csv-table">
+    <tbody>
+      <tr><td class="colnum">19</td><td class="colname">entry_price</td><td class="coltype">double</td><td>★ <strong>ACTUAL broker fill price</strong> (updated from intended via DEAL_ENTRY_IN)</td></tr>
+      <tr style="background:rgba(245,158,11,0.05)"><td class="colnum">20</td><td class="colname">intended_entry_price</td><td class="coltype">double</td><td>★ <strong>NEW</strong> ราคาที่ขอตอน OnTick (ก่อน broker fill) → ใช้คำนวณ slippage</td></tr>
+      <tr style="background:rgba(245,158,11,0.05)"><td class="colnum">21</td><td class="colname">spread_at_entry_pts</td><td class="coltype">int</td><td>★ <strong>NEW</strong> spread (in points) ตอนเปิด order</td></tr>
+      <tr style="background:rgba(245,158,11,0.05)"><td class="colnum">22</td><td class="colname">spread_at_exit_pts</td><td class="coltype">int</td><td>★ <strong>NEW</strong> spread (in points) ตอนปิด order</td></tr>
+      <tr><td class="colnum">23</td><td class="colname">entry_vs_body_pct</td><td class="coltype">double</td><td>(entry - body_low) / body × 100</td></tr>
+      <tr><td class="colnum">24</td><td class="colname">entry_vs_range_pct</td><td class="coltype">double</td><td>(entry - low) / range × 100</td></tr>
+      <tr><td class="colnum">25</td><td class="colname">entry_dist_from_high_atr</td><td class="coltype">double</td><td>(high - entry) / atr</td></tr>
+      <tr><td class="colnum">26</td><td class="colname">entry_dist_from_low_atr</td><td class="coltype">double</td><td>(entry - low) / atr</td></tr>
+      <tr><td class="colnum">27</td><td class="colname">entry_quality</td><td class="coltype">string</td><td>"AT_LOW" / "MID" / "AT_HIGH" label</td></tr>
+    </tbody>
+  </table>
+  
+  <div class="alert-info" style="margin:14px 0">
+    <strong>Slippage analysis:</strong> <code class="cb">slippage_pts = (entry_price − intended_entry_price) × trade_dir × points_per_unit</code> · positive = unfavorable fill (broker filled worse than intended)
+  </div>
+  
+  <div class="csv-section-head"><span class="num">Cols 25-33:</span> Path Snapshots (9 buckets)</div>
+  <table class="csv-table">
+    <tbody>
+      <tr><td class="colnum">25</td><td class="colname">path_1h_pnl_atr</td><td class="coltype">double</td><td>PnL (ATR units) at 1 hour</td></tr>
+      <tr><td class="colnum">26</td><td class="colname">path_6h_pnl_atr</td><td class="coltype">double</td><td>PnL at 6 hours</td></tr>
+      <tr><td class="colnum">27</td><td class="colname">path_12h_pnl_atr</td><td class="coltype">double</td><td>PnL at 12 hours</td></tr>
+      <tr><td class="colnum">28</td><td class="colname">path_24h_pnl_atr</td><td class="coltype">double</td><td>PnL at 24 hours</td></tr>
+      <tr><td class="colnum">29</td><td class="colname">path_48h_pnl_atr</td><td class="coltype">double</td><td>PnL at 48 hours</td></tr>
+      <tr><td class="colnum">30</td><td class="colname">path_72h_pnl_atr</td><td class="coltype">double</td><td>PnL at 72 hours</td></tr>
+      <tr><td class="colnum">31</td><td class="colname">path_120h_pnl_atr</td><td class="coltype">double</td><td>PnL at 120 hours (5 days)</td></tr>
+      <tr><td class="colnum">32</td><td class="colname">path_168h_pnl_atr</td><td class="coltype">double</td><td>PnL at 168 hours (1 week)</td></tr>
+      <tr><td class="colnum">33</td><td class="colname">path_240h_pnl_atr</td><td class="coltype">double</td><td>PnL at 240 hours (10 days)</td></tr>
+    </tbody>
+  </table>
+  
+  <div class="csv-section-head"><span class="num">Cols 34-37:</span> MFE/MAE</div>
+  <table class="csv-table">
+    <tbody>
+      <tr><td class="colnum">34</td><td class="colname">mfe_atr</td><td class="coltype">double</td><td>Maximum Favorable Excursion (ATR)</td></tr>
+      <tr><td class="colnum">35</td><td class="colname">mae_atr</td><td class="coltype">double</td><td>Maximum Adverse Excursion (ATR)</td></tr>
+      <tr><td class="colnum">36</td><td class="colname">hours_to_mfe</td><td class="coltype">double</td><td>Hours from entry to peak favorable</td></tr>
+      <tr><td class="colnum">37</td><td class="colname">hours_to_mae</td><td class="coltype">double</td><td>Hours from entry to peak adverse</td></tr>
+    </tbody>
+  </table>
+  
+  <div class="csv-section-head"><span class="num">Cols 38-43:</span> Exit Data</div>
+  <table class="csv-table">
+    <tbody>
+      <tr><td class="colnum">38</td><td class="colname">exit_price</td><td class="coltype">double</td><td>Actual exit fill price</td></tr>
+      <tr><td class="colnum">39</td><td class="colname">pnl_dollars</td><td class="coltype">double</td><td>profit + swap + commission</td></tr>
+      <tr><td class="colnum">40</td><td class="colname">pnl_atr</td><td class="coltype">double</td><td>(exit - entry) / atr × direction</td></tr>
+      <tr><td class="colnum">41</td><td class="colname">exit_reason</td><td class="coltype">string</td><td>TIME_STOP / EXPERT / SL_HIT / TP_HIT / BACKTEST_END</td></tr>
+      <tr><td class="colnum">42</td><td class="colname">hours_held</td><td class="coltype">double</td><td>(close_time - open_time) / 3600</td></tr>
+      <tr><td class="colnum">43</td><td class="colname">direction_correct</td><td class="coltype">YES/NO</td><td>pnl_dollars &gt; 0</td></tr>
+    </tbody>
+  </table>
+  
+  <div class="csv-section-head"><span class="num">Cols 44-55:</span> Virtual SL/TP Grid</div>
+  <table class="csv-table">
+    <tbody>
+      <tr><td class="colnum">44</td><td class="colname">sl_05_hit</td><td class="coltype">0/1</td><td>MAE ever ≥ 0.5 ATR</td></tr>
+      <tr><td class="colnum">45</td><td class="colname">sl_10_hit</td><td class="coltype">0/1</td><td>MAE ever ≥ 1.0 ATR</td></tr>
+      <tr><td class="colnum">46</td><td class="colname">sl_20_hit</td><td class="coltype">0/1</td><td>MAE ever ≥ 2.0 ATR</td></tr>
+      <tr><td class="colnum">47</td><td class="colname">sl_30_hit</td><td class="coltype">0/1</td><td>MAE ever ≥ 3.0 ATR</td></tr>
+      <tr><td class="colnum">48</td><td class="colname">tp_10_hit</td><td class="coltype">0/1</td><td>MFE ever ≥ 1.0 ATR</td></tr>
+      <tr><td class="colnum">49</td><td class="colname">tp_20_hit</td><td class="coltype">0/1</td><td>MFE ever ≥ 2.0 ATR</td></tr>
+      <tr><td class="colnum">50</td><td class="colname">tp_30_hit</td><td class="coltype">0/1</td><td>MFE ever ≥ 3.0 ATR</td></tr>
+      <tr><td class="colnum">51</td><td class="colname">tp_50_hit</td><td class="coltype">0/1</td><td>MFE ever ≥ 5.0 ATR</td></tr>
+      <tr><td class="colnum">52</td><td class="colname">hours_to_tp10</td><td class="coltype">double</td><td>Time to first reach 1 ATR (empty if didn't)</td></tr>
+      <tr><td class="colnum">53</td><td class="colname">hours_to_tp20</td><td class="coltype">double</td><td>Time to first reach 2 ATR</td></tr>
+      <tr><td class="colnum">54</td><td class="colname">hours_to_tp30</td><td class="coltype">double</td><td>Time to first reach 3 ATR</td></tr>
+      <tr><td class="colnum">55</td><td class="colname">hours_to_tp50</td><td class="coltype">double</td><td>Time to first reach 5 ATR</td></tr>
+    </tbody>
+  </table>
+  
+  <div class="csv-section-head"><span class="num">Cols 56-58:</span> Position + Risk</div>
+  <table class="csv-table">
+    <tbody>
+      <tr><td class="colnum">56</td><td class="colname">lot</td><td class="coltype">double</td><td>Position size (lots)</td></tr>
+      <tr><td class="colnum">57</td><td class="colname">entry_balance</td><td class="coltype">double</td><td>Account balance at entry</td></tr>
+      <tr><td class="colnum">58</td><td class="colname">entry_atr</td><td class="coltype">double</td><td>ATR(14) at entry</td></tr>
+    </tbody>
+  </table>
+  
+  <div class="csv-section-head"><span class="num">Cols 59-86:</span> Indicator Snapshot (40 fields, frozen at entry)</div>
+  <table class="csv-table">
+    <tbody>
+      <tr><td class="colnum">59-63</td><td class="colname">ema_9 / 20 / 50 / 200 / alignment</td><td class="coltype">double / string</td><td>EMA values + alignment label (BULLISH/BEARISH/MIXED)</td></tr>
+      <tr><td class="colnum">64-68</td><td class="colname">bb_upper / middle / lower / width_ratio / position_pct</td><td class="coltype">double</td><td>Bollinger Bands</td></tr>
+      <tr><td class="colnum">69-72</td><td class="colname">atr_14 / atr_50 / volatility_regime / trend_regime</td><td class="coltype">double / string</td><td>Vol + trend labels</td></tr>
+      <tr><td class="colnum">73</td><td class="colname">rsi_14</td><td class="coltype">double</td><td>RSI(14)</td></tr>
+      <tr><td class="colnum">74-75</td><td class="colname">stoch_k / stoch_d</td><td class="coltype">double</td><td>Stochastic</td></tr>
+      <tr><td class="colnum">76-77</td><td class="colname">macd_main / macd_signal</td><td class="coltype">double</td><td>MACD</td></tr>
+      <tr><td class="colnum">78-80</td><td class="colname">tick_volume / volume_ratio / volume_spike</td><td class="coltype">long / double / 0/1</td><td>Volume info</td></tr>
+      <tr><td class="colnum">81-83</td><td class="colname">adx / di_plus / di_minus</td><td class="coltype">double</td><td>ADX trend strength</td></tr>
+      <tr><td class="colnum">84-86</td><td class="colname">session / hour_of_day / day_of_week</td><td class="coltype">string / int / int</td><td>Time context</td></tr>
+    </tbody>
+  </table>
+  
+  <div class="csv-section-head"><span class="num">Cols 87-90:</span> Pattern Confluence Context</div>
+  <table class="csv-table">
+    <tbody>
+      <tr><td class="colnum">87</td><td class="colname">patterns_total</td><td class="coltype">int</td><td>Total patterns fired this bar (0-177)</td></tr>
+      <tr><td class="colnum">88</td><td class="colname">patterns_long_score</td><td class="coltype">int</td><td>Sum of bullish patterns</td></tr>
+      <tr><td class="colnum">89</td><td class="colname">patterns_short_score</td><td class="coltype">int</td><td>Sum of bearish patterns</td></tr>
+      <tr><td class="colnum">90</td><td class="colname">patterns_list</td><td class="coltype">string</td><td>Space-separated PIDs (e.g., "P5 P21 P108")</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section>
+  <div class="section-head"><span class="section-num">08</span><h2 class="section-title">Recovery Use Cases</h2></div>
+  
+  <div class="field-grid">
+    <div class="field-row">
+      <span class="fname">Optimal SL per pattern</span>
+      <span class="fdesc">SELECT pattern_id, percentile(mae_atr, 90) FROM trades GROUP BY pattern_id<br>→ minimum SL = 90th percentile of MAE</span>
+    </div>
+    <div class="field-row">
+      <span class="fname">Optimal TP per pattern</span>
+      <span class="fdesc">SELECT pattern_id, AVG(tp_20_hit), AVG(hours_to_tp20) FROM trades GROUP BY pattern_id<br>→ TP=2 ATR works if hit_rate &gt; 60%</span>
+    </div>
+    <div class="field-row">
+      <span class="fname">Best filter regime</span>
+      <span class="fdesc">SELECT trend_regime, COUNT(*), AVG(pnl_atr) FROM trades WHERE pattern_id=5 GROUP BY trend_regime<br>→ ใช้ pattern X เฉพาะ regime ที่ EV positive</span>
+    </div>
+    <div class="field-row">
+      <span class="fname">Time-decay analysis</span>
+      <span class="fdesc">For each pattern: average path_1h, 6h, 24h, 72h, 240h<br>→ plot curve · ดูว่า edge เสริมหรือสลายเมื่อเวลาผ่าน</span>
+    </div>
+    <div class="field-row">
+      <span class="fname">Confluence stacking</span>
+      <span class="fdesc">SELECT pattern_id, AVG(direction_correct), patterns_long_score FROM trades GROUP BY pattern_id, patterns_long_score<br>→ ถ้ามี ≥3 long patterns พร้อมกัน, win rate เพิ่มไหม?</span>
+    </div>
+    <div class="field-row">
+      <span class="fname">Cross-asset edge transfer</span>
+      <span class="fdesc">Pattern X works on EUR H4 — does it work on XAU H1?<br>→ ATR-normalized comparison via mfe_atr/mae_atr</span>
+    </div>
+  </div>
+</section>
+
+</main>
+
+
+  
+<script>
+// KMP Master · Inline Sidebar JS (no cache, no delegation)
+(function() {
+  function initSidebar() {
+    // Make sure all menus start closed
+    document.querySelectorAll('.tree-children').forEach(function(el){ el.classList.remove('show'); });
+    document.querySelectorAll('.tree-node.expandable').forEach(function(el){ el.classList.remove('expanded'); });
+    
+    // Attach click handler to EACH expandable tree-node directly
+    var nodes = document.querySelectorAll('.tree-node.expandable');
+    nodes.forEach(function(node) {
+      // Visual feedback — click cursor
+      node.style.cursor = 'pointer';
+      
+      node.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var id = node.getAttribute('data-toggle');
+        if (!id) return;
+        var target = document.getElementById(id);
+        if (!target) return;
+        node.classList.toggle('expanded');
+        target.classList.toggle('show');
+      });
+    });
+    
+    // Highlight active link
+    var path = window.location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('.tree-node[href]').forEach(function(link) {
+      if (link.getAttribute('href') === path) link.classList.add('active');
+    });
+  }
+  
+  // Run when DOM is ready (or now if already ready)
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initSidebar);
+  } else {
+    initSidebar();
+  }
+  
+  // Search filter
+  function initSearch() {
+    var inp = document.getElementById('globalSearch');
+    if (!inp) return;
+    inp.addEventListener('input', function(e) {
+      var q = e.target.value.toLowerCase().trim();
+      var sections = document.querySelectorAll('.section, .insight, .kpi, .pat-card, .chart-card');
+      sections.forEach(function(s) {
+        if (!q) { s.style.display = ''; return; }
+        s.style.display = s.textContent.toLowerCase().includes(q) ? '' : 'none';
+      });
+    });
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initSearch);
+  } else {
+    initSearch();
+  }
+  
+  // Helper functions for pages that need them
+  window.wrClass = function(wr, n) {
+    if (wr == null || n < 30) return 'none';
+    return wr >= 53 ? 'high' : (wr >= 48 ? 'mid' : 'low');
+  };
+  window.wrPill = function(wr, n) {
+    if (wr == null || n < 30) return '<span class="wr-pill none">—</span>';
+    return '<span class="wr-pill ' + window.wrClass(wr, n) + '">' + wr.toFixed(1) + '%</span>';
+  };
+  window.dirText = function(d) {
+    if (d === 1) return '<span style="color:var(--green)">L</span>';
+    if (d === -1) return '<span style="color:var(--red)">S</span>';
+    return '<span style="color:var(--yellow)">⇄</span>';
+  };
+  window.tierLabel = function(tier) {
+    return '<span class="tier-tag tier-' + tier + '">' + tier + '</span>';
+  };
+  window.fmtN = function(n) {
+    if (n == null) return '—';
+    if (n >= 1000000) return (n/1000000).toFixed(2) + 'M';
+    if (n >= 1000) return (n/1000).toFixed(1) + 'K';
+    return n.toLocaleString();
+  };
+  window.fmtDollar = function(n, withSign) {
+    if (n == null) return '—';
+    var sign = n < 0 ? '-$' : (withSign ? '+$' : '$');
+    return sign + Math.abs(n).toLocaleString();
+  };
+  
+  // Data loader
+  var _cached = null;
+  window.loadData = async function() {
+    if (_cached) return _cached;
+    try {
+      var res = await fetch('data/master_data.json');
+      _cached = await res.json();
+      return _cached;
+    } catch (e) {
+      console.error('Failed to load data:', e);
+      return null;
+    }
+  };
+})();
+</script>
+</body></html>
