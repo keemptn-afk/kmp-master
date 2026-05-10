@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="th"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EA Architecture · KMP Master</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&family=Sarabun:wght@400;500;600;700&family=Bricolage+Grotesque:wght@400;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css?v=6.7">
+<style>
+  .file-tree { font-family: 'JetBrains Mono', monospace; font-size: 12.5px; line-height: 1.85; padding: 20px; background: var(--bg-1); border: 1px solid var(--bdr); border-radius: 8px; overflow-x: auto; }
+  .file-tree .folder { color: var(--accent); font-weight: 700; }
+  .file-tree .file-mq5 { color: #f59e0b; }
+  .file-tree .file-mqh { color: #6366f1; }
+  .file-tree .file-md { color: #94a3b8; }
+  .file-tree .meta { color: var(--txt-d); font-size: 11px; margin-left: 8px; }
+  
+  .config-table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 12.5px; }
+  .config-table th { text-align: left; padding: 10px 12px; background: var(--bg-1); border-bottom: 1px solid var(--bdr); font-weight: 700; font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--txt-d); }
+  .config-table td { padding: 10px 12px; border-bottom: 1px solid var(--bdr); }
+  .config-table tr:hover td { background: var(--bg-1); }
+  .config-table .pname { font-family: 'JetBrains Mono', monospace; font-weight: 600; color: var(--accent); white-space: nowrap; }
+  .config-table .pdef { font-family: 'JetBrains Mono', monospace; font-size: 11.5px; }
+  
+  .flow-block { padding: 14px 16px; background: var(--bg-1); border: 1px solid var(--bdr); border-radius: 8px; margin: 10px 0; }
+  .flow-block .flow-title { font-weight: 700; color: var(--accent); margin-bottom: 6px; font-size: 13px; }
+  .flow-block .flow-desc { font-size: 12.5px; line-height: 1.6; color: var(--txt); }
+  .flow-block .flow-meta { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--txt-d); margin-top: 4px; }
+  
+  .cb { font-family: 'JetBrains Mono', monospace; font-size: 11.5px; padding: 1px 6px; background: var(--bg-0); border-radius: 3px; color: var(--accent); }
+  
+  .alert-info { padding: 12px 16px; background: rgba(99,102,241,0.06); border-left: 3px solid #6366f1; border-radius: 5px; margin: 12px 0; font-size: 12.5px; line-height: 1.6; }
+  .alert-warn { padding: 12px 16px; background: rgba(245,158,11,0.06); border-left: 3px solid #f59e0b; border-radius: 5px; margin: 12px 0; font-size: 12.5px; line-height: 1.6; }
+  .alert-success { padding: 12px 16px; background: rgba(34,197,94,0.06); border-left: 3px solid #22c55e; border-radius: 5px; margin: 12px 0; font-size: 12.5px; line-height: 1.6; }
+  
+  .step-list { counter-reset: stp; list-style: none; padding: 0; }
+  .step-list li { counter-increment: stp; padding: 10px 14px 10px 44px; position: relative; background: var(--bg-1); border-left: 3px solid var(--accent); margin-bottom: 6px; border-radius: 0 6px 6px 0; font-size: 12.5px; line-height: 1.6; }
+  .step-list li::before { content: counter(stp); position: absolute; left: 12px; top: 10px; width: 22px; height: 22px; background: var(--accent); color: white; border-radius: 50%; text-align: center; font-weight: 700; font-size: 11px; line-height: 22px; font-family: 'JetBrains Mono', monospace; }
+</style>
+</head><body>
+<nav class="sidebar">
+  <div class="sidebar-brand">
+    <a class="brand-logo" href="index.html">KMP <span class="accent">Master</span></a>
+    <div class="brand-ver">EA v4.1 · 177 patterns · 131 cols</div>
+  </div>
+  
+  <input type="text" class="search-box" id="globalSearch" placeholder="ค้นหา...">
+  
+  <div class="nav-section">
+    <div class="nav-label">Overview</div>
+    <a class="tree-node lvl-0" href="index.html"><span class="arrow"></span><span class="nm">Dashboard</span></a>
+    <a class="tree-node lvl-0" href="preface.html"><span class="arrow"></span><span class="nm">คำนำ &amp; เป้าหมาย</span></a>
+  </div>
+  
+  <div class="nav-section">
+    <div class="nav-label">Datasets · v9.0 · 51/69 ds · 1651K trades</div>
+    
+    <div class="tree-node lvl-0 expandable" data-toggle="crypto-menu">
+      <span class="arrow">▶</span><span class="nm">Crypto</span><span class="badge">2</span>
+    </div>
+    <div class="tree-children" id="crypto-menu">
+      <div class="tree-node lvl-1 expandable" data-toggle="btc-menu">
+        <span class="arrow">▶</span><span class="nm">BTC/USD</span><span class="badge" style="background:#f7931a;color:#0a0a0a">131.2K</span>
+      </div>
+      <div class="tree-children" id="btc-menu">
+        <a class="tree-node lvl-2" href="btc-h4.html"><span class="nm">BTC H4</span><span class="badge" style="background:#10b981;color:#fff">6,340</span></a>
+        <a class="tree-node lvl-2" href="btc-h1.html"><span class="nm">BTC H1</span><span class="badge" style="background:#10b981;color:#fff">24,235</span></a>
+        <a class="tree-node lvl-2" href="btc-m15.html"><span class="nm">BTC M15</span><span class="badge" style="background:#10b981;color:#fff">100,599</span></a>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="eth-menu">
+        <span class="arrow">▶</span><span class="nm">ETH/USD</span><span class="badge" style="background:#627eea;color:#fff">133.8K</span>
+      </div>
+      <div class="tree-children" id="eth-menu">
+        <a class="tree-node lvl-2" href="eth-h4.html"><span class="nm">ETH H4</span><span class="badge" style="background:#10b981;color:#fff">6,449</span></a>
+        <a class="tree-node lvl-2" href="eth-h1.html"><span class="nm">ETH H1</span><span class="badge" style="background:#10b981;color:#fff">24,342</span></a>
+        <a class="tree-node lvl-2" href="eth-m15.html"><span class="nm">ETH M15</span><span class="badge" style="background:#10b981;color:#fff">103,040</span></a>
+      </div>
+    </div>
+    
+    <div class="tree-node lvl-0 expandable" data-toggle="metals-menu">
+      <span class="arrow">▶</span><span class="nm">Metals</span><span class="badge">3</span>
+    </div>
+    <div class="tree-children" id="metals-menu">
+      <div class="tree-node lvl-1 expandable" data-toggle="xau-menu">
+        <span class="arrow">▶</span><span class="nm">XAU/USD</span><span class="badge" style="background:#fbbf24;color:#0a0a0a">92.2K</span>
+      </div>
+      <div class="tree-children" id="xau-menu">
+        <a class="tree-node lvl-2" href="xau-h4.html"><span class="nm">XAU H4</span><span class="badge" style="background:#10b981;color:#fff">4,650</span></a>
+        <a class="tree-node lvl-2" href="xau-h1.html"><span class="nm">XAU H1</span><span class="badge" style="background:#10b981;color:#fff">16,746</span></a>
+        <a class="tree-node lvl-2" href="xau-m15.html"><span class="nm">XAU M15</span><span class="badge" style="background:#10b981;color:#fff">70,805</span></a>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="xag-menu">
+        <span class="arrow">▶</span><span class="nm">XAG/USD (Silver)</span><span class="badge" style="background:#94a3b8;color:#0a0a0a">87.7K</span>
+      </div>
+      <div class="tree-children" id="xag-menu">
+        <a class="tree-node lvl-2" href="xag-h4.html"><span class="nm">XAG H4</span><span class="badge" style="background:#10b981;color:#fff">4,417</span></a>
+        <a class="tree-node lvl-2" href="xag-h1.html"><span class="nm">XAG H1</span><span class="badge" style="background:#10b981;color:#fff">16,073</span></a>
+        <a class="tree-node lvl-2" href="xag-m15.html"><span class="nm">XAG M15</span><span class="badge" style="background:#10b981;color:#fff">67,224</span></a>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="xpt-menu">
+        <span class="arrow">▶</span><span class="nm">XPT/USD (Platinum)</span><span class="badge" style="background:#cbd5e1;color:#0a0a0a">90.6K</span>
+      </div>
+      <div class="tree-children" id="xpt-menu">
+        <a class="tree-node lvl-2" href="xpt-h4.html"><span class="nm">XPT H4</span><span class="badge" style="background:#10b981;color:#fff">4,619</span></a>
+        <a class="tree-node lvl-2" href="xpt-h1.html"><span class="nm">XPT H1</span><span class="badge" style="background:#10b981;color:#fff">16,485</span></a>
+        <a class="tree-node lvl-2" href="xpt-m15.html"><span class="nm">XPT M15</span><span class="badge" style="background:#10b981;color:#fff">69,457</span></a>
+      </div>
+    </div>
+    
+    <div class="tree-node lvl-0 expandable" data-toggle="energy-menu">
+      <span class="arrow">▶</span><span class="nm">Energy</span><span class="badge">3</span>
+    </div>
+    <div class="tree-children" id="energy-menu">
+      <div class="tree-node lvl-1 expandable" data-toggle="usoil-menu">
+        <span class="arrow">▶</span><span class="nm">USOIL (WTI)</span><span class="badge" style="background:#84cc16;color:#0a0a0a">89.3K</span>
+      </div>
+      <div class="tree-children" id="usoil-menu">
+        <a class="tree-node lvl-2" href="usoil-h4.html"><span class="nm">USOIL H4</span><span class="badge" style="background:#10b981;color:#fff">4,705</span></a>
+        <a class="tree-node lvl-2" href="usoil-h1.html"><span class="nm">USOIL H1</span><span class="badge" style="background:#10b981;color:#fff">16,456</span></a>
+        <a class="tree-node lvl-2" href="usoil-m15.html"><span class="nm">USOIL M15</span><span class="badge" style="background:#10b981;color:#fff">68,188</span></a>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="ukoil-menu">
+        <span class="arrow">▶</span><span class="nm">UKOIL (Brent)</span><span class="badge" style="background:#65a30d;color:#0a0a0a">80.5K</span>
+      </div>
+      <div class="tree-children" id="ukoil-menu">
+        <a class="tree-node lvl-2" href="ukoil-h4.html"><span class="nm">UKOIL H4</span><span class="badge" style="background:#10b981;color:#fff">4,303</span></a>
+        <a class="tree-node lvl-2" href="ukoil-h1.html"><span class="nm">UKOIL H1</span><span class="badge" style="background:#10b981;color:#fff">15,156</span></a>
+        <a class="tree-node lvl-2" href="ukoil-m15.html"><span class="nm">UKOIL M15</span><span class="badge" style="background:#10b981;color:#fff">61,022</span></a>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="xng-menu">
+        <span class="arrow">▶</span><span class="nm">XNGUSD (NatGas)</span><span class="badge" style="background:#06b6d4;color:#0a0a0a">90.9K</span>
+      </div>
+      <div class="tree-children" id="xng-menu">
+        <a class="tree-node lvl-2" href="xng-h4.html"><span class="nm">XNG H4</span><span class="badge" style="background:#10b981;color:#fff">4,644</span></a>
+        <a class="tree-node lvl-2" href="xng-h1.html"><span class="nm">XNG H1</span><span class="badge" style="background:#10b981;color:#fff">17,550</span></a>
+        <a class="tree-node lvl-2" href="xng-m15.html"><span class="nm">XNG M15</span><span class="badge" style="background:#10b981;color:#fff">68,746</span></a>
+      </div>
+    </div>
+    
+    <div class="tree-node lvl-0 expandable" data-toggle="forex-menu">
+      <span class="arrow">▶</span><span class="nm">Forex</span><span class="badge">7</span>
+    </div>
+    <div class="tree-children" id="forex-menu">
+      <div class="tree-node lvl-1 expandable" data-toggle="eur-menu">
+        <span class="arrow">▶</span><span class="nm">EUR/USD</span><span class="badge" style="background:#5b9bd5;color:#fff">102.2K</span>
+      </div>
+      <div class="tree-children" id="eur-menu">
+        <a class="tree-node lvl-2" href="eur-h4.html"><span class="nm">EUR H4</span><span class="badge" style="background:#10b981;color:#fff">4,674</span></a>
+        <a class="tree-node lvl-2" href="eur-h1.html"><span class="nm">EUR H1</span><span class="badge" style="background:#10b981;color:#fff">18,405</span></a>
+        <a class="tree-node lvl-2" href="eur-m15.html"><span class="nm">EUR M15</span><span class="badge" style="background:#10b981;color:#fff">79,150</span></a>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="gbp-menu">
+        <span class="arrow">▶</span><span class="nm">GBP/USD</span><span class="badge" style="background:#a78bfa;color:#fff">0</span>
+      </div>
+      <div class="tree-children" id="gbp-menu">
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">GBP H4</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">GBP H1</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">GBP M15</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="jpy-menu">
+        <span class="arrow">▶</span><span class="nm">USD/JPY</span><span class="badge" style="background:#fb7185;color:#fff">99.4K</span>
+      </div>
+      <div class="tree-children" id="jpy-menu">
+        <a class="tree-node lvl-2" href="jpy-h4.html"><span class="nm">JPY H4</span><span class="badge" style="background:#10b981;color:#fff">4,639</span></a>
+        <a class="tree-node lvl-2" href="jpy-h1.html"><span class="nm">JPY H1</span><span class="badge" style="background:#10b981;color:#fff">17,783</span></a>
+        <a class="tree-node lvl-2" href="jpy-m15.html"><span class="nm">JPY M15</span><span class="badge" style="background:#10b981;color:#fff">76,937</span></a>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="aud-menu">
+        <span class="arrow">▶</span><span class="nm">AUD/USD</span><span class="badge" style="background:#34d399;color:#0a0a0a">97.2K</span>
+      </div>
+      <div class="tree-children" id="aud-menu">
+        <a class="tree-node lvl-2" href="aud-h4.html"><span class="nm">AUD H4</span><span class="badge" style="background:#10b981;color:#fff">4,882</span></a>
+        <a class="tree-node lvl-2" href="aud-h1.html"><span class="nm">AUD H1</span><span class="badge" style="background:#10b981;color:#fff">18,036</span></a>
+        <a class="tree-node lvl-2" href="aud-m15.html"><span class="nm">AUD M15</span><span class="badge" style="background:#10b981;color:#fff">74,264</span></a>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="cad-menu">
+        <span class="arrow">▶</span><span class="nm">USD/CAD</span><span class="badge" style="background:#f59e0b;color:#0a0a0a">105K</span>
+      </div>
+      <div class="tree-children" id="cad-menu">
+        <a class="tree-node lvl-2" href="cad-h4.html"><span class="nm">CAD H4</span><span class="badge" style="background:#10b981;color:#fff">4,778</span></a>
+        <a class="tree-node lvl-2" href="cad-h1.html"><span class="nm">CAD H1</span><span class="badge" style="background:#10b981;color:#fff">18,598</span></a>
+        <a class="tree-node lvl-2" href="cad-m15.html"><span class="nm">CAD M15</span><span class="badge" style="background:#10b981;color:#fff">81,715</span></a>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="chf-menu">
+        <span class="arrow">▶</span><span class="nm">USD/CHF</span><span class="badge" style="background:#ef4444;color:#fff">100.4K</span>
+      </div>
+      <div class="tree-children" id="chf-menu">
+        <a class="tree-node lvl-2" href="chf-h4.html"><span class="nm">CHF H4</span><span class="badge" style="background:#10b981;color:#fff">4,679</span></a>
+        <a class="tree-node lvl-2" href="chf-h1.html"><span class="nm">CHF H1</span><span class="badge" style="background:#10b981;color:#fff">18,508</span></a>
+        <a class="tree-node lvl-2" href="chf-m15.html"><span class="nm">CHF M15</span><span class="badge" style="background:#10b981;color:#fff">77,257</span></a>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="nzd-menu">
+        <span class="arrow">▶</span><span class="nm">NZD/USD</span><span class="badge" style="background:#22c55e;color:#fff">0</span>
+      </div>
+      <div class="tree-children" id="nzd-menu">
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">NZD H4</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">NZD H1</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">NZD M15</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+      </div>
+    </div>
+    
+    <div class="tree-node lvl-0 expandable" data-toggle="cross-menu">
+      <span class="arrow">▶</span><span class="nm">Forex Cross</span><span class="badge">3</span>
+    </div>
+    <div class="tree-children" id="cross-menu">
+      <div class="tree-node lvl-1 expandable" data-toggle="eurjpy-menu">
+        <span class="arrow">▶</span><span class="nm">EUR/JPY</span><span class="badge" style="background:#8b5cf6;color:#fff">0</span>
+      </div>
+      <div class="tree-children" id="eurjpy-menu">
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">EURJPY H4</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">EURJPY H1</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">EURJPY M15</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="gbpjpy-menu">
+        <span class="arrow">▶</span><span class="nm">GBP/JPY</span><span class="badge" style="background:#ec4899;color:#fff">0</span>
+      </div>
+      <div class="tree-children" id="gbpjpy-menu">
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">GBPJPY H4</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">GBPJPY H1</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">GBPJPY M15</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="eurgbp-menu">
+        <span class="arrow">▶</span><span class="nm">EUR/GBP</span><span class="badge" style="background:#6366f1;color:#fff">0</span>
+      </div>
+      <div class="tree-children" id="eurgbp-menu">
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">EURGBP H4</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">EURGBP H1</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">EURGBP M15</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+      </div>
+    </div>
+
+    <div class="tree-node lvl-0 expandable" data-toggle="indices-menu">
+      <span class="arrow">▶</span><span class="nm">Indices</span><span class="badge">5</span>
+    </div>
+    <div class="tree-children" id="indices-menu">
+      <div class="tree-node lvl-1 expandable" data-toggle="us500-menu">
+        <span class="arrow">▶</span><span class="nm">US500 (S&amp;P 500)</span><span class="badge" style="background:#3b82f6;color:#fff">90.7K</span>
+      </div>
+      <div class="tree-children" id="us500-menu">
+        <a class="tree-node lvl-2" href="us500-h4.html"><span class="nm">US500 H4</span><span class="badge" style="background:#10b981;color:#fff">4,934</span></a>
+        <a class="tree-node lvl-2" href="us500-h1.html"><span class="nm">US500 H1</span><span class="badge" style="background:#10b981;color:#fff">16,934</span></a>
+        <a class="tree-node lvl-2" href="us500-m15.html"><span class="nm">US500 M15</span><span class="badge" style="background:#10b981;color:#fff">68,857</span></a>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="ustec-menu">
+        <span class="arrow">▶</span><span class="nm">USTEC (Nasdaq 100)</span><span class="badge" style="background:#06b6d4;color:#fff">0</span>
+      </div>
+      <div class="tree-children" id="ustec-menu">
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">USTEC H4</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">USTEC H1</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">USTEC M15</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="de30-menu">
+        <span class="arrow">▶</span><span class="nm">DE30 (DAX)</span><span class="badge" style="background:#facc15;color:#0a0a0a">86.8K</span>
+      </div>
+      <div class="tree-children" id="de30-menu">
+        <a class="tree-node lvl-2" href="de30-h4.html"><span class="nm">DE30 H4</span><span class="badge" style="background:#10b981;color:#fff">4,311</span></a>
+        <a class="tree-node lvl-2" href="de30-h1.html"><span class="nm">DE30 H1</span><span class="badge" style="background:#10b981;color:#fff">16,207</span></a>
+        <a class="tree-node lvl-2" href="de30-m15.html"><span class="nm">DE30 M15</span><span class="badge" style="background:#10b981;color:#fff">66,253</span></a>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="jp225-menu">
+        <span class="arrow">▶</span><span class="nm">JP225 (Nikkei 225)</span><span class="badge" style="background:#ef4444;color:#fff">86.4K</span>
+      </div>
+      <div class="tree-children" id="jp225-menu">
+        <a class="tree-node lvl-2" href="jp225-h4.html"><span class="nm">JP225 H4</span><span class="badge" style="background:#10b981;color:#fff">4,768</span></a>
+        <a class="tree-node lvl-2" href="jp225-h1.html"><span class="nm">JP225 H1</span><span class="badge" style="background:#10b981;color:#fff">15,784</span></a>
+        <a class="tree-node lvl-2" href="jp225-m15.html"><span class="nm">JP225 M15</span><span class="badge" style="background:#10b981;color:#fff">65,875</span></a>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="uk100-menu">
+        <span class="arrow">▶</span><span class="nm">UK100 (FTSE 100)</span><span class="badge" style="background:#a78bfa;color:#fff">86.7K</span>
+      </div>
+      <div class="tree-children" id="uk100-menu">
+        <a class="tree-node lvl-2" href="uk100-h4.html"><span class="nm">UK100 H4</span><span class="badge" style="background:#10b981;color:#fff">4,206</span></a>
+        <a class="tree-node lvl-2" href="uk100-h1.html"><span class="nm">UK100 H1</span><span class="badge" style="background:#10b981;color:#fff">16,524</span></a>
+        <a class="tree-node lvl-2" href="uk100-m15.html"><span class="nm">UK100 M15</span><span class="badge" style="background:#10b981;color:#fff">65,926</span></a>
+      </div>
+    </div>
+  </div>
+  
+  <div class="nav-section">
+    <div class="nav-label">Patterns · 177 (v3.1)</div>
+    <a class="tree-node lvl-0" href="patterns-encyclopedia.html"><span class="arrow"></span><span class="nm">📚 Pattern Encyclopedia</span><span class="badge">177</span></a>
+    <div class="tree-node lvl-0 expandable" data-toggle="pat-menu">
+      <span class="arrow">▶</span><span class="nm">v4 Analysis</span><span class="badge">80</span>
+    </div>
+    <div class="tree-children" id="pat-menu">
+      <a class="tree-node lvl-1" href="patterns.html"><span class="nm">All Patterns Table</span></a>
+      <a class="tree-node lvl-1" href="tier.html"><span class="nm">Tier Rankings</span></a>
+      <a class="tree-node lvl-1" href="optimal-tpsl.html"><span class="nm">Optimal TP/SL EV</span></a>
+    </div>
+  </div>
+  
+  <div class="nav-section">
+    <div class="nav-label">Analysis</div>
+    <a class="tree-node lvl-0" href="cross.html"><span class="arrow"></span><span class="nm">Cross-TF / Asset</span></a>
+    <a class="tree-node lvl-0" href="time.html"><span class="arrow"></span><span class="nm">Hour / DoW / Conf</span></a>
+    <a class="tree-node lvl-0" href="edge.html"><span class="arrow"></span><span class="nm">Edge Decay / Vol</span></a>
+  </div>
+  
+  <div class="nav-section">
+    <div class="nav-label">Strategy</div>
+    
+  </div>
+  
+  <div class="nav-section">
+    <div class="nav-label">EA System · v3.1</div>
+    <a class="tree-node lvl-0" href="ea-architecture.html"><span class="arrow"></span><span class="nm">⚙ EA Architecture</span></a>
+    <a class="tree-node lvl-0" href="tracking-system.html"><span class="arrow"></span><span class="nm">🎯 Tracking System</span></a>  </div>  <div class="nav-section">
+    <div class="nav-label">Reference</div>
+
+  <a class="tree-node lvl-0" href="reference.html"><span class="arrow"></span><span class="nm">Sources &amp; Changelog</span></a>
+  </div>
+</nav>
+
+<main class="main">
+<div class="breadcrumb">
+  <a href="index.html" class="crumb">Dashboard</a>
+  <span class="sep">▸</span>
+  <a href="reference.html" class="crumb">Reference</a>
+  <span class="sep">▸</span>
+  <span class="crumb current">EA Architecture</span>
+</div>
+
+<div class="hero">
+  <span class="hero-tag">EA System Documentation · v3.1</span>
+  <h1 class="hero-title">EA <span class="accent">Architecture.</span></h1>
+  <p class="hero-desc">
+    KeemPatternHarvester v3.1 — system design, file structure, detection flow, configuration ·
+    เก็บไว้เป็น blueprint หาก source ต้องสร้างใหม่
+  </p>
+</div>
+
+<section>
+  <div class="section-head"><span class="section-num">01</span><h2 class="section-title">File Structure (28 files · 11,622 lines)</h2></div>
+  <div class="file-tree">
+<span class="folder">KeemPatternHarvester/</span>
+├── <span class="file-mq5">KMP_PatternHarvester.mq5</span>           <span class="meta">— Main EA entry · 1,108 lines · OnTick + OnTradeTransaction</span>
+├── <span class="file-md">README.md</span> · <span class="file-md">README_v3.md</span>           <span class="meta">— Setup + v3 changelog</span>
+├── <span class="folder">Docs/</span>
+│   └── <span class="file-md">PATTERN_REFERENCE.md</span>             <span class="meta">— 177 patterns full theory + sources</span>
+├── <span class="folder">Include/</span>
+│   ├── <span class="file-mqh">KMP_Structures.mqh</span>               <span class="meta">— PatternFlags struct (177 fields), IndicatorSnapshot (70 fields), TrackedPosition</span>
+│   ├── <span class="file-mqh">KMP_Indicators.mqh</span>               <span class="meta">— Indicator initialization + snapshot capture · ATR, EMA, BB, RSI, Stoch, MACD, ADX, Ichimoku 9/26/52</span>
+│   ├── <span class="file-mqh">KMP_HarvesterLogger.mqh</span>          <span class="meta">— CSV writer · 93-column header + WriteRecord</span>
+│   ├── <span class="file-mqh">KMP_Patterns.mqh</span>                 <span class="meta">— Master detector — dispatches to 18 sub-detectors (A-R)</span>
+│   ├── <span class="file-mqh">KMP_PatternMetadata.mqh</span>          <span class="meta">— 177 pattern metadata cases (name/category/direction)</span>
+│   └── <span class="folder">Patterns/</span>
+│       ├── <span class="file-mqh">KMP_CandleHelpers.mqh</span>        <span class="meta">— FindSwingHigh/Low, IsBullBar, GetHTF, etc.</span>
+│       ├── <span class="file-mqh">KMP_PatternsA_Original.mqh</span>   <span class="meta">— Cat A · P1-P20 · Original strategy</span>
+│       ├── <span class="file-mqh">KMP_PatternsB_Candlestick.mqh</span> <span class="meta">— Cat B · P21-P40 · Nison candlesticks</span>
+│       ├── <span class="file-mqh">KMP_PatternsC_SupportRes.mqh</span> <span class="meta">— Cat C · P41-P50 · S/R + OB</span>
+│       ├── <span class="file-mqh">KMP_PatternsD_Structure.mqh</span>  <span class="meta">— Cat D · P51-P60 · Dow + ICT BOS/CHoCH</span>
+│       ├── <span class="file-mqh">KMP_PatternsE_ChartPatterns.mqh</span> <span class="meta">— Cat E · P61-P70 · Bulkowski formations</span>
+│       ├── <span class="file-mqh">KMP_PatternsF_SmartMoney.mqh</span> <span class="meta">— Cat F · P71-P80 · ICT SMC</span>
+│       ├── <span class="file-mqh">KMP_PatternsG_StatEdge.mqh</span>   <span class="meta">— Cat G · P81-P88 · Statistical (Z-score, ORB)</span>
+│       ├── <span class="file-mqh">KMP_PatternsH_SMCAdvanced.mqh</span> <span class="meta">— Cat H · P89-P97 · SMC advanced</span>
+│       ├── <span class="file-mqh">KMP_PatternsI_VolumeWyckoff.mqh</span> <span class="meta">— Cat I · P98-P107 · VSA + Wyckoff</span>
+│       ├── <span class="file-mqh">KMP_PatternsJ_Harmonic.mqh</span>   <span class="meta">— Cat J · P108-P125 · Carney harmonics</span>
+│       ├── <span class="file-mqh">KMP_PatternsK_MultiTF.mqh</span>    <span class="meta">— Cat K · P126-P135 · Multi-timeframe</span>
+│       ├── <span class="file-mqh">KMP_PatternsL_Ichimoku.mqh</span>   <span class="meta">— Cat L · P136-P142 · Ichimoku Kinko Hyo</span>
+│       ├── <span class="file-mqh">KMP_PatternsM_ModernSMC.mqh</span>  <span class="meta">— Cat M · P143-P150 · Modern SMC</span>
+│       ├── <span class="file-mqh">KMP_PatternsN_Momentum.mqh</span>   <span class="meta">— Cat N · P151-P160 · Pullback + hidden div</span>
+│       ├── <span class="file-mqh">KMP_PatternsO_VolumeProfile.mqh</span> <span class="meta">— Cat O · P161-P165 · Volume profile</span>
+│       ├── <span class="file-mqh">KMP_PatternsP_Range.mqh</span>      <span class="meta">— Cat P · P166-P170 · Range/reversion</span>
+│       ├── <span class="file-mqh">KMP_PatternsQ_ABCD.mqh</span>       <span class="meta">— Cat Q · P171-P174 · ABCD/3 drives</span>
+│       └── <span class="file-mqh">KMP_PatternsR_VolRegime.mqh</span>  <span class="meta">— Cat R · P175-P177 · Volatility regime</span>
+  </div>
+</section>
+
+<section>
+  <div class="section-head"><span class="section-num">02</span><h2 class="section-title">Detection Flow (per-bar)</h2></div>
+  <p class="lead-desc">เริ่มเมื่อบาร์ใหม่เปิด — รัน <code class="cb">ProcessClosedBar(shift=1)</code> วิเคราะห์บาร์ที่เพิ่งปิด</p>
+  
+  <ol class="step-list">
+    <li><strong>OnTick:</strong> ตรวจ <code class="cb">iTime(0)</code> ว่าเป็นบาร์ใหม่หรือไม่ (ถ้าใช่ → step 2)</li>
+    <li><strong>iBars check:</strong> ต้องมี ≥250 bars history (warm-up safety)</li>
+    <li><strong>Indicators.CaptureSnapshot(shift=1):</strong> เก็บค่า ATR, EMA, BB, RSI, MACD, Stoch, ADX, Ichimoku ของบาร์ที่ปิดแล้ว · ทั้งหมด 70 fields</li>
+    <li><strong>MasterDetector.DetectAll():</strong> รัน 18 sub-detectors (Cat A → R) เพื่อ check ทุก 177 patterns พร้อมกัน · set <code class="cb">flags.PXX_*</code> bool fields</li>
+    <li><strong>flags.CountAndScore():</strong> รวม total_count, long_score, short_score · สำหรับ context</li>
+    <li><strong>For each pattern that fired:</strong> ถ้า direction เป็น 1 หรือ -1 → <code class="cb">OpenForPattern(pid, direction, ...)</code> · ถ้า agnostic → split เป็น 2 ออเดอร์ (long + short)</li>
+    <li><strong>OpenForPattern:</strong> เปิด market order ที่ current ASK/BID · บันทึก slot ใน <code class="cb">g_tracked[]</code> array · capture entry snapshot</li>
+    <li><strong>Per-tick (between bars):</strong> <code class="cb">UpdateActivePositions()</code> รัน MFE/MAE/path/virtual SL-TP/time-stop</li>
+    <li><strong>OnTradeTransaction:</strong> เมื่อ broker ปิด position → fill exit data → <code class="cb">Logger.WriteRecord()</code> → free slot</li>
+  </ol>
+</section>
+
+<section>
+  <div class="section-head"><span class="section-num">03</span><h2 class="section-title">Configuration Inputs (EA settings)</h2></div>
+  
+  <h3 style="margin-top:18px;font-size:14px;color:var(--accent)">Phase Toggles</h3>
+  <table class="config-table">
+    <thead>
+      <tr><th>Input</th><th>Default</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="pname">InpEnablePhase1</td><td class="pdef">true</td><td>เปิด/ปิด Cat A-F (P1-P80, original + theoretical)</td></tr>
+      <tr><td class="pname">InpEnablePhase2</td><td class="pdef">true</td><td>เปิด/ปิด Cat G-J (P81-P125, statistical + advanced)</td></tr>
+      <tr><td class="pname">InpEnablePhase3</td><td class="pdef">true</td><td>เปิด/ปิด Cat K-R (P126-P177, multi-TF + modern)</td></tr>
+    </tbody>
+  </table>
+  
+  <h3 style="margin-top:18px;font-size:14px;color:var(--accent)">Risk + Trade Management <span style="color:var(--accent-2);font-size:11px">★ v3.1 updates</span></h3>
+  <table class="config-table">
+    <thead>
+      <tr><th>Input</th><th>Default</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="pname">InpRiskPct</td><td class="pdef">0.01</td><td>% balance ต่อ trade (small for harvester pure data)</td></tr>
+      <tr><td class="pname">InpTimeStopHours</td><td class="pdef">240</td><td>Time-stop in hours (10 days = 2 weeks)</td></tr>
+      <tr style="background:rgba(245,158,11,0.05)"><td class="pname">InpWeekendMode</td><td class="pdef">WEEKEND_AUTO</td><td>★ <strong>NEW v3.1</strong> · auto-detect from broker session info: BTC 24/7 → count weekend hours, EUR/XAU → skip Sat-Sun</td></tr>
+      <tr><td class="pname">InpForceMinLot</td><td class="pdef">true</td><td>Use broker min_lot if calc &lt; min (no order blocking)</td></tr>
+      <tr><td class="pname">InpMaxLot</td><td class="pdef">1.0</td><td>Cap on lot size</td></tr>
+      <tr><td class="pname">InpMagic</td><td class="pdef">70707070</td><td>Magic number for position identification</td></tr>
+      <tr><td class="pname">InpEmergencyClose</td><td class="pdef">true</td><td>Auto-close all if drawdown exceeds limit (safety)</td></tr>
+      <tr><td class="pname">InpMaxLossPct</td><td class="pdef">50</td><td>% max drawdown for emergency close</td></tr>
+    </tbody>
+  </table>
+  
+  <div class="alert-info" style="margin:14px 0">
+    <strong>★ Weekend handling (NEW v3.1):</strong> EA ตรวจอัตโนมัติว่า symbol นี้เทรดเสาร์-อาทิตย์ไหม via <code class="cb">SymbolInfoSessionTrade(SATURDAY/SUNDAY)</code> · BTC = trades 24/7 → time-stop counts weekend hours · EUR/XAU = closed Sat-Sun → time-stop skips weekend (counts trading hours only). User สามารถ override เป็น WEEKEND_SKIP หรือ WEEKEND_COUNT ก็ได้.
+  </div>
+  
+  <h3 style="margin-top:18px;font-size:14px;color:var(--accent)">Pattern Tuning Parameters (per category)</h3>
+  <p style="font-size:12px;color:var(--txt-d);margin:8px 0">แต่ละ category มี SetParams() method · default values ใน <code class="cb">SetCat*Params()</code> calls ใน OnInit · ปรับได้ผ่าน <code class="cb">Inp*</code> inputs:</p>
+  <table class="config-table">
+    <thead>
+      <tr><th>Category</th><th>Tunable Parameters</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Cat A · Original</td><td><code class="cb">m_round_step</code> (round number step), <code class="cb">m_pivot_tol</code> (pivot tolerance ATR)</td></tr>
+      <tr><td>Cat B · Candlestick</td><td><code class="cb">m_doji_pct</code>, <code class="cb">m_wick_ratio</code>, <code class="cb">m_engulf_threshold</code></td></tr>
+      <tr><td>Cat C · S/R + OB</td><td><code class="cb">m_ob_lookback</code>, <code class="cb">m_zone_tol_atr</code>, <code class="cb">m_min_swing_size</code></td></tr>
+      <tr><td>Cat D · Structure</td><td><code class="cb">m_lookback_bars</code>, <code class="cb">m_swing_left</code>, <code class="cb">m_swing_right</code></td></tr>
+      <tr><td>Cat G · StatEdge</td><td><code class="cb">m_zscore_threshold</code>, <code class="cb">m_orb_minutes</code>, <code class="cb">m_atr_expansion_ratio</code></td></tr>
+      <tr><td>Cat M · Modern SMC</td><td><code class="cb">m_swing_lookback</code>, <code class="cb">m_donchian_period</code>, <code class="cb">m_external_lookback</code></td></tr>
+      <tr><td>Cat N · Momentum</td><td><code class="cb">m_div_lookback</code>, <code class="cb">m_pullback_atr_tol</code></td></tr>
+      <tr><td>Cat O · Volume Profile</td><td><code class="cb">m_profile_bars</code>, <code class="cb">m_va_pct</code> (default 70% value area)</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section>
+  <div class="section-head"><span class="section-num">04</span><h2 class="section-title">Indicator Setup</h2></div>
+  <p class="lead-desc"><code class="cb">CIndicatorManager</code> initializes ทั้งหมดใน <code class="cb">OnInit</code> · capture snapshot ทุกบาร์ปิด</p>
+  
+  <table class="config-table">
+    <thead>
+      <tr><th>Indicator</th><th>Period(s)</th><th>Used For</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>ATR</td><td>14, 50</td><td>Volatility scaling, SL/TP normalization, regime detection</td></tr>
+      <tr><td>EMA</td><td>9, 20, 50, 100, 200</td><td>Trend bias, dynamic S/R, pullback detection</td></tr>
+      <tr><td>Bollinger Bands</td><td>20-2, 50-2</td><td>Volatility envelope, squeeze detection, %B extremes</td></tr>
+      <tr><td>RSI</td><td>7, 14</td><td>Momentum, divergence, extreme reversals</td></tr>
+      <tr><td>Stochastic</td><td>5-3-3</td><td>Momentum cross, OB/OS reversals</td></tr>
+      <tr><td>MACD</td><td>12-26-9</td><td>Trend momentum, zero-line cross, divergence</td></tr>
+      <tr><td>ADX + DI</td><td>14</td><td>Trend strength filter (ADX > 25 = trending)</td></tr>
+      <tr><td>Ichimoku</td><td>9, 26, 52</td><td>Multi-component trend system (Cat L only)</td></tr>
+    </tbody>
+  </table>
+  
+  <h3 style="margin-top:18px;font-size:14px;color:var(--accent)">Custom Snapshot Fields (computed)</h3>
+  <table class="config-table">
+    <tbody>
+      <tr><td class="pname">volatility_regime</td><td>"LOW" / "NORMAL" / "HIGH" / "EXTREME" — based on ATR(14) vs ATR(50)</td></tr>
+      <tr><td class="pname">trend_regime</td><td>"STRONG_UP" / "WEAK_UP" / "RANGE" / "WEAK_DOWN" / "STRONG_DOWN" — EMA alignment + ADX</td></tr>
+      <tr><td class="pname">ema_alignment</td><td>"BULLISH" / "BEARISH" / "MIXED" — relative position of EMAs</td></tr>
+      <tr><td class="pname">session</td><td>"ASIA" / "LONDON" / "NY_OPEN" / "NY_PM" / "OFF_HOURS"</td></tr>
+      <tr><td class="pname">bb_squeeze</td><td>true if BB width &lt; 0.5× recent average (squeeze condition)</td></tr>
+      <tr><td class="pname">distance_to_round</td><td>Distance to nearest round number (e.g., 1.2000, 50000)</td></tr>
+      <tr><td class="pname">rsi_divergence_bull/bear</td><td>Computed from swing low/high comparison vs RSI</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section>
+  <div class="section-head"><span class="section-num">05</span><h2 class="section-title">Pattern Detection Pattern (template)</h2></div>
+  <p class="lead-desc">ทุก pattern ใน Cat *.mqh files ใช้โครงเดียวกัน:</p>
+  
+  <div class="flow-block">
+    <div class="flow-title">Class Structure</div>
+    <div class="flow-desc">
+      <pre style="margin:0;font-family:'JetBrains Mono',monospace;font-size:11.5px;line-height:1.6">
+class CSomePatterns {
+public:
+  void Init(string symbol, ENUM_TIMEFRAMES period);
+  void SetParams(double param1, int param2, ...);  // optional
+  void DetectAll(int shift, PatternFlags &amp;flags, 
+                 const IndicatorSnapshot &amp;snap,
+                 const IndicatorSnapshot &amp;prev_snap,
+                 bool prev_valid);
+  
+private:
+  bool DetectPatternXBull(int shift, double atr);   // ส่วนใหญ่ pattern ใช้ shift=1
+  bool DetectPatternXBear(int shift, double atr);
+  // ...
+};
+</pre>
+    </div>
+  </div>
+  
+  <div class="alert-info">
+    <strong>หลักการสำคัญ:</strong> ทุก detector ใช้ <code class="cb">shift</code> argument เป็น offset จากบาร์ปัจจุบัน (=current_bar - shift) — สำหรับ harvester เรียกด้วย <code class="cb">shift=1</code> = บาร์ที่เพิ่งปิด (ป้องกัน look-ahead bias)
+  </div>
+</section>
+
+<section>
+  <div class="section-head"><span class="section-num">06</span><h2 class="section-title">Compilation Requirements</h2></div>
+  <ul style="line-height:1.8;font-size:13px">
+    <li><strong>Platform:</strong> MetaTrader 5 (MQL5)</li>
+    <li><strong>MetaEditor version:</strong> Build 4760+</li>
+    <li><strong>Standard libraries used:</strong> <code class="cb">Trade/Trade.mqh</code> (CTrade), <code class="cb">Trade/PositionInfo.mqh</code> (CPositionInfo)</li>
+    <li><strong>External dependencies:</strong> ไม่มี — pure MQL5</li>
+    <li><strong>Memory:</strong> Up to 10,000 concurrent positions tracked (configurable)</li>
+    <li><strong>CSV output path:</strong> <code class="cb">MQL5/Files/KMP_Harvest_&lt;symbol&gt;_&lt;tf&gt;.csv</code></li>
+  </ul>
+  
+  <div class="alert-success">
+    <strong>Compile-safe:</strong> 0 errors expected. ทุกไฟล์มี header guards (<code class="cb">#ifndef ... #define ... #endif</code>) · 18 sub-detector classes init/dispatch ผ่าน <code class="cb">CMasterDetector</code>
+  </div>
+</section>
+
+<section>
+  <div class="section-head"><span class="section-num">07</span><h2 class="section-title">Recovery Quick Reference</h2></div>
+  <div class="alert-warn">
+    <strong>ถ้า EA หาย/พัง:</strong> ใช้เอกสารต่อไปนี้สร้างใหม่ได้:
+    <ul style="margin-top:8px;line-height:1.7">
+      <li><a href="patterns-encyclopedia.html">Pattern Encyclopedia</a> — รายละเอียดทุก 177 patterns</li>
+      <li><a href="tracking-system.html">Tracking System</a> — post-order tracking 5 phases</li>
+      <li><a href="reference.html">Reference</a> — bibliography + theory sources</li>
+      <li>This page — file structure + detection flow + configuration</li>
+    </ul>
+  </div>
+  
+  <p style="margin-top:14px;font-size:12.5px;line-height:1.6;color:var(--txt-d)">
+    Source code stored externally · นำ blueprints จาก 4 หน้านี้ไปสร้างใหม่ได้ครบ — ทั้ง pattern logic, detection flow, tracking, CSV schema
+  </p>
+</section>
+
+</main>
+
+
+  
+<script>
+// KMP Master · Inline Sidebar JS (no cache, no delegation)
+(function() {
+  function initSidebar() {
+    // Make sure all menus start closed
+    document.querySelectorAll('.tree-children').forEach(function(el){ el.classList.remove('show'); });
+    document.querySelectorAll('.tree-node.expandable').forEach(function(el){ el.classList.remove('expanded'); });
+    
+    // Attach click handler to EACH expandable tree-node directly
+    var nodes = document.querySelectorAll('.tree-node.expandable');
+    nodes.forEach(function(node) {
+      // Visual feedback — click cursor
+      node.style.cursor = 'pointer';
+      
+      node.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var id = node.getAttribute('data-toggle');
+        if (!id) return;
+        var target = document.getElementById(id);
+        if (!target) return;
+        node.classList.toggle('expanded');
+        target.classList.toggle('show');
+      });
+    });
+    
+    // Highlight active link
+    var path = window.location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('.tree-node[href]').forEach(function(link) {
+      if (link.getAttribute('href') === path) link.classList.add('active');
+    });
+  }
+  
+  // Run when DOM is ready (or now if already ready)
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initSidebar);
+  } else {
+    initSidebar();
+  }
+  
+  // Search filter
+  function initSearch() {
+    var inp = document.getElementById('globalSearch');
+    if (!inp) return;
+    inp.addEventListener('input', function(e) {
+      var q = e.target.value.toLowerCase().trim();
+      var sections = document.querySelectorAll('.section, .insight, .kpi, .pat-card, .chart-card');
+      sections.forEach(function(s) {
+        if (!q) { s.style.display = ''; return; }
+        s.style.display = s.textContent.toLowerCase().includes(q) ? '' : 'none';
+      });
+    });
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initSearch);
+  } else {
+    initSearch();
+  }
+  
+  // Helper functions for pages that need them
+  window.wrClass = function(wr, n) {
+    if (wr == null || n < 30) return 'none';
+    return wr >= 53 ? 'high' : (wr >= 48 ? 'mid' : 'low');
+  };
+  window.wrPill = function(wr, n) {
+    if (wr == null || n < 30) return '<span class="wr-pill none">—</span>';
+    return '<span class="wr-pill ' + window.wrClass(wr, n) + '">' + wr.toFixed(1) + '%</span>';
+  };
+  window.dirText = function(d) {
+    if (d === 1) return '<span style="color:var(--green)">L</span>';
+    if (d === -1) return '<span style="color:var(--red)">S</span>';
+    return '<span style="color:var(--yellow)">⇄</span>';
+  };
+  window.tierLabel = function(tier) {
+    return '<span class="tier-tag tier-' + tier + '">' + tier + '</span>';
+  };
+  window.fmtN = function(n) {
+    if (n == null) return '—';
+    if (n >= 1000000) return (n/1000000).toFixed(2) + 'M';
+    if (n >= 1000) return (n/1000).toFixed(1) + 'K';
+    return n.toLocaleString();
+  };
+  window.fmtDollar = function(n, withSign) {
+    if (n == null) return '—';
+    var sign = n < 0 ? '-$' : (withSign ? '+$' : '$');
+    return sign + Math.abs(n).toLocaleString();
+  };
+  
+  // Data loader
+  var _cached = null;
+  window.loadData = async function() {
+    if (_cached) return _cached;
+    try {
+      var res = await fetch('data/master_data.json');
+      _cached = await res.json();
+      return _cached;
+    } catch (e) {
+      console.error('Failed to load data:', e);
+      return null;
+    }
+  };
+})();
+</script>
+</body></html>

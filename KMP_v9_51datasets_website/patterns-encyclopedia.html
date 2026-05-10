@@ -1,0 +1,2636 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pattern Encyclopedia · 177 Patterns · KMP Master</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&family=Sarabun:wght@400;500;600;700&family=Bricolage+Grotesque:wght@400;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css?v=6.7">
+</head>
+<body>
+
+<nav class="sidebar">
+  <div class="sidebar-brand">
+    <a class="brand-logo" href="index.html">KMP <span class="accent">Master</span></a>
+    <div class="brand-ver">EA v4.1 · 177 patterns · 131 cols</div>
+  </div>
+  
+  <input type="text" class="search-box" id="globalSearch" placeholder="ค้นหา...">
+  
+  <div class="nav-section">
+    <div class="nav-label">Overview</div>
+    <a class="tree-node lvl-0" href="index.html"><span class="arrow"></span><span class="nm">Dashboard</span></a>
+    <a class="tree-node lvl-0" href="preface.html"><span class="arrow"></span><span class="nm">คำนำ &amp; เป้าหมาย</span></a>
+  </div>
+  
+  <div class="nav-section">
+    <div class="nav-label">Datasets · v9.0 · 51/69 ds · 1651K trades</div>
+    
+    <div class="tree-node lvl-0 expandable" data-toggle="crypto-menu">
+      <span class="arrow">▶</span><span class="nm">Crypto</span><span class="badge">2</span>
+    </div>
+    <div class="tree-children" id="crypto-menu">
+      <div class="tree-node lvl-1 expandable" data-toggle="btc-menu">
+        <span class="arrow">▶</span><span class="nm">BTC/USD</span><span class="badge" style="background:#f7931a;color:#0a0a0a">131.2K</span>
+      </div>
+      <div class="tree-children" id="btc-menu">
+        <a class="tree-node lvl-2" href="btc-h4.html"><span class="nm">BTC H4</span><span class="badge" style="background:#10b981;color:#fff">6,340</span></a>
+        <a class="tree-node lvl-2" href="btc-h1.html"><span class="nm">BTC H1</span><span class="badge" style="background:#10b981;color:#fff">24,235</span></a>
+        <a class="tree-node lvl-2" href="btc-m15.html"><span class="nm">BTC M15</span><span class="badge" style="background:#10b981;color:#fff">100,599</span></a>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="eth-menu">
+        <span class="arrow">▶</span><span class="nm">ETH/USD</span><span class="badge" style="background:#627eea;color:#fff">133.8K</span>
+      </div>
+      <div class="tree-children" id="eth-menu">
+        <a class="tree-node lvl-2" href="eth-h4.html"><span class="nm">ETH H4</span><span class="badge" style="background:#10b981;color:#fff">6,449</span></a>
+        <a class="tree-node lvl-2" href="eth-h1.html"><span class="nm">ETH H1</span><span class="badge" style="background:#10b981;color:#fff">24,342</span></a>
+        <a class="tree-node lvl-2" href="eth-m15.html"><span class="nm">ETH M15</span><span class="badge" style="background:#10b981;color:#fff">103,040</span></a>
+      </div>
+    </div>
+    
+    <div class="tree-node lvl-0 expandable" data-toggle="metals-menu">
+      <span class="arrow">▶</span><span class="nm">Metals</span><span class="badge">3</span>
+    </div>
+    <div class="tree-children" id="metals-menu">
+      <div class="tree-node lvl-1 expandable" data-toggle="xau-menu">
+        <span class="arrow">▶</span><span class="nm">XAU/USD</span><span class="badge" style="background:#fbbf24;color:#0a0a0a">92.2K</span>
+      </div>
+      <div class="tree-children" id="xau-menu">
+        <a class="tree-node lvl-2" href="xau-h4.html"><span class="nm">XAU H4</span><span class="badge" style="background:#10b981;color:#fff">4,650</span></a>
+        <a class="tree-node lvl-2" href="xau-h1.html"><span class="nm">XAU H1</span><span class="badge" style="background:#10b981;color:#fff">16,746</span></a>
+        <a class="tree-node lvl-2" href="xau-m15.html"><span class="nm">XAU M15</span><span class="badge" style="background:#10b981;color:#fff">70,805</span></a>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="xag-menu">
+        <span class="arrow">▶</span><span class="nm">XAG/USD (Silver)</span><span class="badge" style="background:#94a3b8;color:#0a0a0a">87.7K</span>
+      </div>
+      <div class="tree-children" id="xag-menu">
+        <a class="tree-node lvl-2" href="xag-h4.html"><span class="nm">XAG H4</span><span class="badge" style="background:#10b981;color:#fff">4,417</span></a>
+        <a class="tree-node lvl-2" href="xag-h1.html"><span class="nm">XAG H1</span><span class="badge" style="background:#10b981;color:#fff">16,073</span></a>
+        <a class="tree-node lvl-2" href="xag-m15.html"><span class="nm">XAG M15</span><span class="badge" style="background:#10b981;color:#fff">67,224</span></a>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="xpt-menu">
+        <span class="arrow">▶</span><span class="nm">XPT/USD (Platinum)</span><span class="badge" style="background:#cbd5e1;color:#0a0a0a">90.6K</span>
+      </div>
+      <div class="tree-children" id="xpt-menu">
+        <a class="tree-node lvl-2" href="xpt-h4.html"><span class="nm">XPT H4</span><span class="badge" style="background:#10b981;color:#fff">4,619</span></a>
+        <a class="tree-node lvl-2" href="xpt-h1.html"><span class="nm">XPT H1</span><span class="badge" style="background:#10b981;color:#fff">16,485</span></a>
+        <a class="tree-node lvl-2" href="xpt-m15.html"><span class="nm">XPT M15</span><span class="badge" style="background:#10b981;color:#fff">69,457</span></a>
+      </div>
+    </div>
+    
+    <div class="tree-node lvl-0 expandable" data-toggle="energy-menu">
+      <span class="arrow">▶</span><span class="nm">Energy</span><span class="badge">3</span>
+    </div>
+    <div class="tree-children" id="energy-menu">
+      <div class="tree-node lvl-1 expandable" data-toggle="usoil-menu">
+        <span class="arrow">▶</span><span class="nm">USOIL (WTI)</span><span class="badge" style="background:#84cc16;color:#0a0a0a">89.3K</span>
+      </div>
+      <div class="tree-children" id="usoil-menu">
+        <a class="tree-node lvl-2" href="usoil-h4.html"><span class="nm">USOIL H4</span><span class="badge" style="background:#10b981;color:#fff">4,705</span></a>
+        <a class="tree-node lvl-2" href="usoil-h1.html"><span class="nm">USOIL H1</span><span class="badge" style="background:#10b981;color:#fff">16,456</span></a>
+        <a class="tree-node lvl-2" href="usoil-m15.html"><span class="nm">USOIL M15</span><span class="badge" style="background:#10b981;color:#fff">68,188</span></a>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="ukoil-menu">
+        <span class="arrow">▶</span><span class="nm">UKOIL (Brent)</span><span class="badge" style="background:#65a30d;color:#0a0a0a">80.5K</span>
+      </div>
+      <div class="tree-children" id="ukoil-menu">
+        <a class="tree-node lvl-2" href="ukoil-h4.html"><span class="nm">UKOIL H4</span><span class="badge" style="background:#10b981;color:#fff">4,303</span></a>
+        <a class="tree-node lvl-2" href="ukoil-h1.html"><span class="nm">UKOIL H1</span><span class="badge" style="background:#10b981;color:#fff">15,156</span></a>
+        <a class="tree-node lvl-2" href="ukoil-m15.html"><span class="nm">UKOIL M15</span><span class="badge" style="background:#10b981;color:#fff">61,022</span></a>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="xng-menu">
+        <span class="arrow">▶</span><span class="nm">XNGUSD (NatGas)</span><span class="badge" style="background:#06b6d4;color:#0a0a0a">90.9K</span>
+      </div>
+      <div class="tree-children" id="xng-menu">
+        <a class="tree-node lvl-2" href="xng-h4.html"><span class="nm">XNG H4</span><span class="badge" style="background:#10b981;color:#fff">4,644</span></a>
+        <a class="tree-node lvl-2" href="xng-h1.html"><span class="nm">XNG H1</span><span class="badge" style="background:#10b981;color:#fff">17,550</span></a>
+        <a class="tree-node lvl-2" href="xng-m15.html"><span class="nm">XNG M15</span><span class="badge" style="background:#10b981;color:#fff">68,746</span></a>
+      </div>
+    </div>
+    
+    <div class="tree-node lvl-0 expandable" data-toggle="forex-menu">
+      <span class="arrow">▶</span><span class="nm">Forex</span><span class="badge">7</span>
+    </div>
+    <div class="tree-children" id="forex-menu">
+      <div class="tree-node lvl-1 expandable" data-toggle="eur-menu">
+        <span class="arrow">▶</span><span class="nm">EUR/USD</span><span class="badge" style="background:#5b9bd5;color:#fff">102.2K</span>
+      </div>
+      <div class="tree-children" id="eur-menu">
+        <a class="tree-node lvl-2" href="eur-h4.html"><span class="nm">EUR H4</span><span class="badge" style="background:#10b981;color:#fff">4,674</span></a>
+        <a class="tree-node lvl-2" href="eur-h1.html"><span class="nm">EUR H1</span><span class="badge" style="background:#10b981;color:#fff">18,405</span></a>
+        <a class="tree-node lvl-2" href="eur-m15.html"><span class="nm">EUR M15</span><span class="badge" style="background:#10b981;color:#fff">79,150</span></a>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="gbp-menu">
+        <span class="arrow">▶</span><span class="nm">GBP/USD</span><span class="badge" style="background:#a78bfa;color:#fff">0</span>
+      </div>
+      <div class="tree-children" id="gbp-menu">
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">GBP H4</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">GBP H1</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">GBP M15</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="jpy-menu">
+        <span class="arrow">▶</span><span class="nm">USD/JPY</span><span class="badge" style="background:#fb7185;color:#fff">99.4K</span>
+      </div>
+      <div class="tree-children" id="jpy-menu">
+        <a class="tree-node lvl-2" href="jpy-h4.html"><span class="nm">JPY H4</span><span class="badge" style="background:#10b981;color:#fff">4,639</span></a>
+        <a class="tree-node lvl-2" href="jpy-h1.html"><span class="nm">JPY H1</span><span class="badge" style="background:#10b981;color:#fff">17,783</span></a>
+        <a class="tree-node lvl-2" href="jpy-m15.html"><span class="nm">JPY M15</span><span class="badge" style="background:#10b981;color:#fff">76,937</span></a>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="aud-menu">
+        <span class="arrow">▶</span><span class="nm">AUD/USD</span><span class="badge" style="background:#34d399;color:#0a0a0a">97.2K</span>
+      </div>
+      <div class="tree-children" id="aud-menu">
+        <a class="tree-node lvl-2" href="aud-h4.html"><span class="nm">AUD H4</span><span class="badge" style="background:#10b981;color:#fff">4,882</span></a>
+        <a class="tree-node lvl-2" href="aud-h1.html"><span class="nm">AUD H1</span><span class="badge" style="background:#10b981;color:#fff">18,036</span></a>
+        <a class="tree-node lvl-2" href="aud-m15.html"><span class="nm">AUD M15</span><span class="badge" style="background:#10b981;color:#fff">74,264</span></a>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="cad-menu">
+        <span class="arrow">▶</span><span class="nm">USD/CAD</span><span class="badge" style="background:#f59e0b;color:#0a0a0a">105K</span>
+      </div>
+      <div class="tree-children" id="cad-menu">
+        <a class="tree-node lvl-2" href="cad-h4.html"><span class="nm">CAD H4</span><span class="badge" style="background:#10b981;color:#fff">4,778</span></a>
+        <a class="tree-node lvl-2" href="cad-h1.html"><span class="nm">CAD H1</span><span class="badge" style="background:#10b981;color:#fff">18,598</span></a>
+        <a class="tree-node lvl-2" href="cad-m15.html"><span class="nm">CAD M15</span><span class="badge" style="background:#10b981;color:#fff">81,715</span></a>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="chf-menu">
+        <span class="arrow">▶</span><span class="nm">USD/CHF</span><span class="badge" style="background:#ef4444;color:#fff">100.4K</span>
+      </div>
+      <div class="tree-children" id="chf-menu">
+        <a class="tree-node lvl-2" href="chf-h4.html"><span class="nm">CHF H4</span><span class="badge" style="background:#10b981;color:#fff">4,679</span></a>
+        <a class="tree-node lvl-2" href="chf-h1.html"><span class="nm">CHF H1</span><span class="badge" style="background:#10b981;color:#fff">18,508</span></a>
+        <a class="tree-node lvl-2" href="chf-m15.html"><span class="nm">CHF M15</span><span class="badge" style="background:#10b981;color:#fff">77,257</span></a>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="nzd-menu">
+        <span class="arrow">▶</span><span class="nm">NZD/USD</span><span class="badge" style="background:#22c55e;color:#fff">0</span>
+      </div>
+      <div class="tree-children" id="nzd-menu">
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">NZD H4</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">NZD H1</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">NZD M15</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+      </div>
+    </div>
+    
+    <div class="tree-node lvl-0 expandable" data-toggle="cross-menu">
+      <span class="arrow">▶</span><span class="nm">Forex Cross</span><span class="badge">3</span>
+    </div>
+    <div class="tree-children" id="cross-menu">
+      <div class="tree-node lvl-1 expandable" data-toggle="eurjpy-menu">
+        <span class="arrow">▶</span><span class="nm">EUR/JPY</span><span class="badge" style="background:#8b5cf6;color:#fff">0</span>
+      </div>
+      <div class="tree-children" id="eurjpy-menu">
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">EURJPY H4</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">EURJPY H1</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">EURJPY M15</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="gbpjpy-menu">
+        <span class="arrow">▶</span><span class="nm">GBP/JPY</span><span class="badge" style="background:#ec4899;color:#fff">0</span>
+      </div>
+      <div class="tree-children" id="gbpjpy-menu">
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">GBPJPY H4</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">GBPJPY H1</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">GBPJPY M15</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="eurgbp-menu">
+        <span class="arrow">▶</span><span class="nm">EUR/GBP</span><span class="badge" style="background:#6366f1;color:#fff">0</span>
+      </div>
+      <div class="tree-children" id="eurgbp-menu">
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">EURGBP H4</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">EURGBP H1</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">EURGBP M15</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+      </div>
+    </div>
+
+    <div class="tree-node lvl-0 expandable" data-toggle="indices-menu">
+      <span class="arrow">▶</span><span class="nm">Indices</span><span class="badge">5</span>
+    </div>
+    <div class="tree-children" id="indices-menu">
+      <div class="tree-node lvl-1 expandable" data-toggle="us500-menu">
+        <span class="arrow">▶</span><span class="nm">US500 (S&amp;P 500)</span><span class="badge" style="background:#3b82f6;color:#fff">90.7K</span>
+      </div>
+      <div class="tree-children" id="us500-menu">
+        <a class="tree-node lvl-2" href="us500-h4.html"><span class="nm">US500 H4</span><span class="badge" style="background:#10b981;color:#fff">4,934</span></a>
+        <a class="tree-node lvl-2" href="us500-h1.html"><span class="nm">US500 H1</span><span class="badge" style="background:#10b981;color:#fff">16,934</span></a>
+        <a class="tree-node lvl-2" href="us500-m15.html"><span class="nm">US500 M15</span><span class="badge" style="background:#10b981;color:#fff">68,857</span></a>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="ustec-menu">
+        <span class="arrow">▶</span><span class="nm">USTEC (Nasdaq 100)</span><span class="badge" style="background:#06b6d4;color:#fff">0</span>
+      </div>
+      <div class="tree-children" id="ustec-menu">
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">USTEC H4</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">USTEC H1</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">USTEC M15</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="de30-menu">
+        <span class="arrow">▶</span><span class="nm">DE30 (DAX)</span><span class="badge" style="background:#facc15;color:#0a0a0a">86.8K</span>
+      </div>
+      <div class="tree-children" id="de30-menu">
+        <a class="tree-node lvl-2" href="de30-h4.html"><span class="nm">DE30 H4</span><span class="badge" style="background:#10b981;color:#fff">4,311</span></a>
+        <a class="tree-node lvl-2" href="de30-h1.html"><span class="nm">DE30 H1</span><span class="badge" style="background:#10b981;color:#fff">16,207</span></a>
+        <a class="tree-node lvl-2" href="de30-m15.html"><span class="nm">DE30 M15</span><span class="badge" style="background:#10b981;color:#fff">66,253</span></a>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="jp225-menu">
+        <span class="arrow">▶</span><span class="nm">JP225 (Nikkei 225)</span><span class="badge" style="background:#ef4444;color:#fff">86.4K</span>
+      </div>
+      <div class="tree-children" id="jp225-menu">
+        <a class="tree-node lvl-2" href="jp225-h4.html"><span class="nm">JP225 H4</span><span class="badge" style="background:#10b981;color:#fff">4,768</span></a>
+        <a class="tree-node lvl-2" href="jp225-h1.html"><span class="nm">JP225 H1</span><span class="badge" style="background:#10b981;color:#fff">15,784</span></a>
+        <a class="tree-node lvl-2" href="jp225-m15.html"><span class="nm">JP225 M15</span><span class="badge" style="background:#10b981;color:#fff">65,875</span></a>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="uk100-menu">
+        <span class="arrow">▶</span><span class="nm">UK100 (FTSE 100)</span><span class="badge" style="background:#a78bfa;color:#fff">86.7K</span>
+      </div>
+      <div class="tree-children" id="uk100-menu">
+        <a class="tree-node lvl-2" href="uk100-h4.html"><span class="nm">UK100 H4</span><span class="badge" style="background:#10b981;color:#fff">4,206</span></a>
+        <a class="tree-node lvl-2" href="uk100-h1.html"><span class="nm">UK100 H1</span><span class="badge" style="background:#10b981;color:#fff">16,524</span></a>
+        <a class="tree-node lvl-2" href="uk100-m15.html"><span class="nm">UK100 M15</span><span class="badge" style="background:#10b981;color:#fff">65,926</span></a>
+      </div>
+    </div>
+  </div>
+  
+  <div class="nav-section">
+    <div class="nav-label">Patterns · 177 (v3.1)</div>
+    <a class="tree-node lvl-0" href="patterns-encyclopedia.html"><span class="arrow"></span><span class="nm">📚 Pattern Encyclopedia</span><span class="badge">177</span></a>
+    <div class="tree-node lvl-0 expandable" data-toggle="pat-menu">
+      <span class="arrow">▶</span><span class="nm">v4 Analysis</span><span class="badge">80</span>
+    </div>
+    <div class="tree-children" id="pat-menu">
+      <a class="tree-node lvl-1" href="patterns.html"><span class="nm">All Patterns Table</span></a>
+      <a class="tree-node lvl-1" href="tier.html"><span class="nm">Tier Rankings</span></a>
+      <a class="tree-node lvl-1" href="optimal-tpsl.html"><span class="nm">Optimal TP/SL EV</span></a>
+    </div>
+  </div>
+  
+  <div class="nav-section">
+    <div class="nav-label">Analysis</div>
+    <a class="tree-node lvl-0" href="cross.html"><span class="arrow"></span><span class="nm">Cross-TF / Asset</span></a>
+    <a class="tree-node lvl-0" href="time.html"><span class="arrow"></span><span class="nm">Hour / DoW / Conf</span></a>
+    <a class="tree-node lvl-0" href="edge.html"><span class="arrow"></span><span class="nm">Edge Decay / Vol</span></a>
+  </div>
+  
+  <div class="nav-section">
+    <div class="nav-label">Strategy</div>
+    
+  </div>
+  
+  <div class="nav-section">
+    <div class="nav-label">EA System · v3.1</div>
+    <a class="tree-node lvl-0" href="ea-architecture.html"><span class="arrow"></span><span class="nm">⚙ EA Architecture</span></a>
+    <a class="tree-node lvl-0" href="tracking-system.html"><span class="arrow"></span><span class="nm">🎯 Tracking System</span></a>  </div>  <div class="nav-section">
+    <div class="nav-label">Reference</div>
+    
+  <a class="tree-node lvl-0" href="reference.html"><span class="arrow"></span><span class="nm">Sources &amp; Changelog</span></a>
+  </div>
+</nav>
+
+<main class="main">>
+<div class="hero">
+  <span class="hero-tag">Patterns Encyclopedia · 177 patterns · 48 datasets · 2,201,457 trades</span>
+  <h1 class="hero-title">177 <span class="accent">Patterns.</span></h1>
+  <p class="hero-desc">
+    คลังรวม 177 patterns ทั้งหมด · จัดหมวดหมู่ตาม source academic + industry · 
+    แต่ละ pattern มี theory, detection method, direction และ live tier ranking<br>
+    👉 
+  </p>
+  <div style="margin-top:16px;display:flex;gap:14px;flex-wrap:wrap">
+    <div class="kpi" style="border-color:#4dd498;padding:10px 18px"><div class="kpi-label" style="color:#4dd498">Tier S</div><div class="kpi-val" style="color:#4dd498;font-size:22px">61</div></div>
+    <div class="kpi" style="border-color:#22c55e;padding:10px 18px"><div class="kpi-label" style="color:#22c55e">Tier A</div><div class="kpi-val" style="color:#22c55e;font-size:22px">3</div></div>
+    <div class="kpi" style="border-color:#5b9bd5;padding:10px 18px"><div class="kpi-label" style="color:#5b9bd5">Tier B</div><div class="kpi-val" style="color:#5b9bd5;font-size:22px">5</div></div>
+    <div class="kpi" style="padding:10px 18px"><div class="kpi-label">C+D+N/A</div><div class="kpi-val" style="font-size:22px">108</div></div>
+  </div>
+</div>
+
+<section class="section">
+  <div class="section-head"><span class="section-num">📖</span><h2 class="section-title">วิธีอ่านหน้านี้</h2></div>
+  <div class="card" style="border-left:3px solid #5b9bd5">
+    <ul style="margin:0;padding-left:24px;line-height:1.9;font-size:14px">
+      <li><strong>177 patterns</strong> แบ่งตาม 18 categories (A-R) ตาม source ทางวิชาการ</li>
+      <li><strong>Tier ranking</strong> มาจาก backtest 48 datasets · 2,201,457 trades</li>
+      <li><strong>Tier S</strong> = production-ready (PnL ≥200 ATR · n≥100 · ใน 2+ datasets)</li>
+      <li><strong>Tier D</strong> = ขาดทุน · ไม่ควรใช้</li>
+      <li><strong>N/A</strong> = ข้อมูลไม่พอ (n&lt;30) หรือ pattern ไม่ fire</li>
+      <li>คลิก <strong>"รายละเอียด →"</strong> เพื่อดู Best Setup, EV, SL/TP per pattern</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head">
+    <span class="section-num">01</span>
+    <h2 class="section-title">Cat A — Original Bar Patterns (20 patterns)</h2>
+  </div>
+  <p class="lead-desc">รูปแบบ candlestick พื้นฐาน · เช่น Doji, Hammer, Engulfing · จากตำรา Nison · ที่มา: Nison (1991)</p>
+  <div style="margin:10px 0;display:flex;gap:8px;flex-wrap:wrap;font-size:12px">
+    <span style="padding:3px 10px;background:rgba(77,212,152,0.15);border-radius:3px">✅ S: 2</span>
+    <span style="padding:3px 10px;background:rgba(34,197,94,0.15);border-radius:3px">A: 0</span>
+    <span style="padding:3px 10px;background:rgba(91,155,213,0.15);border-radius:3px">B: 0</span>
+    <span style="padding:3px 10px;background:rgba(148,163,184,0.15);border-radius:3px">C: 0</span>
+    <span style="padding:3px 10px;background:rgba(255,94,108,0.15);border-radius:3px">D: 18</span>
+    <span style="padding:3px 10px;background:rgba(71,85,105,0.15);border-radius:3px">N/A: 0</span>
+  </div>
+  <div class="card" style="overflow-x:auto">
+    <table class="table compact">
+      <thead><tr>
+        <th>ID</th><th>Pattern Name</th><th>ชื่อย่อ</th><th>Theory</th>
+        <th>Tier</th><th class="r">Total N</th><th class="r">Active</th><th>Link</th>
+      </tr></thead>
+      <tbody>
+        <tr id="enc-p1">
+          <td><strong>P1</strong></td>
+          <td>🟢 <strong>MultiRej_Long</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">Multi-Rejection Long</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">Triple rejection of low followed by bullish bar</td>
+          <td style="text-align:center"><span style="background:#ff5e6c;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">4,609</td>
+          <td class="r">13/14</td>
+          <td><a href="patterns.html#p1" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p2">
+          <td><strong>P2</strong></td>
+          <td>🔴 <strong>MultiRej_Short</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">Multi-Rejection Short</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">Mirror of P1</td>
+          <td style="text-align:center"><span style="background:#4dd498;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">S</span></td>
+          <td class="r">4,701</td>
+          <td class="r">12/14</td>
+          <td><a href="patterns.html#p2" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p3">
+          <td><strong>P3</strong></td>
+          <td>🟢 <strong>WRB_Bull</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">WRB-Reversal Bull</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">Wide-Range Bar reversal pattern</td>
+          <td style="text-align:center"><span style="background:#ff5e6c;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">164</td>
+          <td class="r">13/14</td>
+          <td><a href="patterns.html#p3" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p4">
+          <td><strong>P4</strong></td>
+          <td>🔴 <strong>WRB_Bear</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">WRB-Reversal Bear</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">Mirror of P3</td>
+          <td style="text-align:center"><span style="background:#4dd498;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">S</span></td>
+          <td class="r">136</td>
+          <td class="r">13/14</td>
+          <td><a href="patterns.html#p4" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p5">
+          <td><strong>P5</strong></td>
+          <td>🟢 <strong>Engulf_Trap_Bull</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">Engulfing After Trap Bull</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">Bullish engulfing following trap setup</td>
+          <td style="text-align:center"><span style="background:#ff5e6c;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">61</td>
+          <td class="r">10/14</td>
+          <td><a href="patterns.html#p5" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p6">
+          <td><strong>P6</strong></td>
+          <td>🔴 <strong>Engulf_Trap_Bear</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">Engulfing After Trap Bear</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">Mirror of P5</td>
+          <td style="text-align:center"><span style="background:#ff5e6c;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">63</td>
+          <td class="r">10/14</td>
+          <td><a href="patterns.html#p6" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p7">
+          <td><strong>P7</strong></td>
+          <td>⚪ <strong>PinBar</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">Pin Bar at Extreme</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">Pin bar at recent high/low (direction inferred from wick)</td>
+          <td style="text-align:center"><span style="background:#ff5e6c;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">1,984</td>
+          <td class="r">14/14</td>
+          <td><a href="patterns.html#p7" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p8">
+          <td><strong>P8</strong></td>
+          <td>⚪ <strong>TwoBar_Reversal</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">Two-Bar Strict Reversal</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">2-bar reversal with strict criteria</td>
+          <td style="text-align:center"><span style="background:#ff5e6c;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">19,389</td>
+          <td class="r">14/14</td>
+          <td><a href="patterns.html#p8" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p9">
+          <td><strong>P9</strong></td>
+          <td>⚪ <strong>BB_Touch_Reversal</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">BB Touch + Reversal</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">Bollinger Band touch + reversal candle</td>
+          <td style="text-align:center"><span style="background:#ff5e6c;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">6,541</td>
+          <td class="r">14/14</td>
+          <td><a href="patterns.html#p9" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p10">
+          <td><strong>P10</strong></td>
+          <td>⚪ <strong>BB_Squeeze_Break</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">BB Squeeze Breakout</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">BB width contraction → expansion break</td>
+          <td style="text-align:center"><span style="background:#ff5e6c;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">96</td>
+          <td class="r">10/14</td>
+          <td><a href="patterns.html#p10" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p11">
+          <td><strong>P11</strong></td>
+          <td>⚪ <strong>EMA_Bounce</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">EMA Bounce (50/200)</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">EMA support/resistance bounce</td>
+          <td style="text-align:center"><span style="background:#ff5e6c;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">12,880</td>
+          <td class="r">14/14</td>
+          <td><a href="patterns.html#p11" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p12">
+          <td><strong>P12</strong></td>
+          <td>⚪ <strong>EMA_Cross</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">EMA Cross (9/20 or 20/50)</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">EMA fast/slow crossover (9/20 or 20/50)</td>
+          <td style="text-align:center"><span style="background:#ff5e6c;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">5,427</td>
+          <td class="r">14/14</td>
+          <td><a href="patterns.html#p12" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p13">
+          <td><strong>P13</strong></td>
+          <td>⚪ <strong>RSI_Extreme_Rev</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">RSI Extreme + Reversal</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">RSI exits extreme zone</td>
+          <td style="text-align:center"><span style="background:#ff5e6c;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">2,303</td>
+          <td class="r">14/14</td>
+          <td><a href="patterns.html#p13" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p14">
+          <td><strong>P14</strong></td>
+          <td>⚪ <strong>RSI_Divergence</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">RSI Divergence</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">Price/RSI divergence (regular)</td>
+          <td style="text-align:center"><span style="background:#ff5e6c;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">12,791</td>
+          <td class="r">14/14</td>
+          <td><a href="patterns.html#p14" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p15">
+          <td><strong>P15</strong></td>
+          <td>⚪ <strong>MACD_Zero_Cross</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">MACD Cross at Zero</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">MACD histogram crosses zero line</td>
+          <td style="text-align:center"><span style="background:#ff5e6c;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">3,059</td>
+          <td class="r">14/14</td>
+          <td><a href="patterns.html#p15" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p16">
+          <td><strong>P16</strong></td>
+          <td>⚪ <strong>Stoch_Cross</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">Stochastic Cross in OB/OS</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">Stochastic %K crosses %D in OB/OS</td>
+          <td style="text-align:center"><span style="background:#ff5e6c;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">8,123</td>
+          <td class="r">14/14</td>
+          <td><a href="patterns.html#p16" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p17">
+          <td><strong>P17</strong></td>
+          <td>⚪ <strong>Volume_Spike_Rev</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">Volume Spike Reversal</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">Volume climax + reversal</td>
+          <td style="text-align:center"><span style="background:#ff5e6c;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">2,322</td>
+          <td class="r">14/14</td>
+          <td><a href="patterns.html#p17" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p18">
+          <td><strong>P18</strong></td>
+          <td>⚪ <strong>Pivot_Bounce</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">Pivot Bounce</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">Daily pivot point bounce</td>
+          <td style="text-align:center"><span style="background:#ff5e6c;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">13,053</td>
+          <td class="r">14/14</td>
+          <td><a href="patterns.html#p18" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p19">
+          <td><strong>P19</strong></td>
+          <td>⚪ <strong>Round_Number</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">Round Number Bounce</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">Major round level tag (whole numbers)</td>
+          <td style="text-align:center"><span style="background:#ff5e6c;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">14,931</td>
+          <td class="r">13/14</td>
+          <td><a href="patterns.html#p19" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p20">
+          <td><strong>P20</strong></td>
+          <td>⚪ <strong>Inside_Bar_Break</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">Inside Bar Breakout</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">Inside bar breakout direction-agnostic</td>
+          <td style="text-align:center"><span style="background:#ff5e6c;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">7,943</td>
+          <td class="r">14/14</td>
+          <td><a href="patterns.html#p20" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr></tbody>
+    </table>
+  </div>
+</section>
+<section class="section">
+  <div class="section-head">
+    <span class="section-num">02</span>
+    <h2 class="section-title">Cat B — Reversal Patterns (20 patterns)</h2>
+  </div>
+  <p class="lead-desc">สัญญาณกลับทิศ · เช่น Bullish/Bearish Engulfing, Morning/Evening Star · ที่มา: Bulkowski / Nison</p>
+  <div style="margin:10px 0;display:flex;gap:8px;flex-wrap:wrap;font-size:12px">
+    <span style="padding:3px 10px;background:rgba(77,212,152,0.15);border-radius:3px">✅ S: 6</span>
+    <span style="padding:3px 10px;background:rgba(34,197,94,0.15);border-radius:3px">A: 0</span>
+    <span style="padding:3px 10px;background:rgba(91,155,213,0.15);border-radius:3px">B: 3</span>
+    <span style="padding:3px 10px;background:rgba(148,163,184,0.15);border-radius:3px">C: 0</span>
+    <span style="padding:3px 10px;background:rgba(255,94,108,0.15);border-radius:3px">D: 9</span>
+    <span style="padding:3px 10px;background:rgba(71,85,105,0.15);border-radius:3px">N/A: 2</span>
+  </div>
+  <div class="card" style="overflow-x:auto">
+    <table class="table compact">
+      <thead><tr>
+        <th>ID</th><th>Pattern Name</th><th>ชื่อย่อ</th><th>Theory</th>
+        <th>Tier</th><th class="r">Total N</th><th class="r">Active</th><th>Link</th>
+      </tr></thead>
+      <tbody>
+        <tr id="enc-p21">
+          <td><strong>P21</strong></td>
+          <td>⚪ <strong>Doji</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">Doji</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">Nison ch. 8: "When a market opens and closes at the same level, it forms a doji </td>
+          <td style="text-align:center"><span style="background:#ff5e6c;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">4,239</td>
+          <td class="r">14/14</td>
+          <td><a href="patterns.html#p21" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p22">
+          <td><strong>P22</strong></td>
+          <td>🟢 <strong>Dragonfly_Doji</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">Dragonfly Doji</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">Nison ch. 8: Open, high, close at same level + long lower wick</td>
+          <td style="text-align:center"><span style="background:#ff5e6c;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">80</td>
+          <td class="r">12/14</td>
+          <td><a href="patterns.html#p22" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p23">
+          <td><strong>P23</strong></td>
+          <td>🔴 <strong>Gravestone_Doji</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">Gravestone Doji</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">Nison ch. 8: Mirror of dragonfly</td>
+          <td style="text-align:center"><span style="background:#5b9bd5;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">B</span></td>
+          <td class="r">80</td>
+          <td class="r">12/14</td>
+          <td><a href="patterns.html#p23" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p24">
+          <td><strong>P24</strong></td>
+          <td>🟢 <strong>Hammer</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">Hammer</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">Nison ch. 4: Small body at upper end + long lower wick (≥2× body) Bulkowski accu</td>
+          <td style="text-align:center"><span style="background:#ff5e6c;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">940</td>
+          <td class="r">14/14</td>
+          <td><a href="patterns.html#p24" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p25">
+          <td><strong>P25</strong></td>
+          <td>🟢 <strong>Inverted_Hammer</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">Inverted Hammer</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">Nison ch. 5: Like hammer but with long upper wick at bottom</td>
+          <td style="text-align:center"><span style="background:#ff5e6c;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">686</td>
+          <td class="r">14/14</td>
+          <td><a href="patterns.html#p25" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p26">
+          <td><strong>P26</strong></td>
+          <td>🔴 <strong>Hanging_Man</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">Hanging Man</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">Nison ch. 4: Hammer shape but in uptrend</td>
+          <td style="text-align:center"><span style="background:#4dd498;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">S</span></td>
+          <td class="r">762</td>
+          <td class="r">14/14</td>
+          <td><a href="patterns.html#p26" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p27">
+          <td><strong>P27</strong></td>
+          <td>🔴 <strong>Shooting_Star</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">Shooting Star</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">Nison ch. 5: Inverted hammer in uptrend = rejection</td>
+          <td style="text-align:center"><span style="background:#4dd498;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">S</span></td>
+          <td class="r">884</td>
+          <td class="r">14/14</td>
+          <td><a href="patterns.html#p27" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p28">
+          <td><strong>P28</strong></td>
+          <td>🟢 <strong>Bullish_Engulfing</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">Bullish Engulfing</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">Nison ch. 6: "Small black candle, then large white body engulfs prior" Bulkowski</td>
+          <td style="text-align:center"><span style="background:#ff5e6c;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">2,982</td>
+          <td class="r">14/14</td>
+          <td><a href="patterns.html#p28" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p29">
+          <td><strong>P29</strong></td>
+          <td>🔴 <strong>Bearish_Engulfing</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">Bearish Engulfing</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px"></td>
+          <td style="text-align:center"><span style="background:#4dd498;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">S</span></td>
+          <td class="r">2,975</td>
+          <td class="r">14/14</td>
+          <td><a href="patterns.html#p29" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p30">
+          <td><strong>P30</strong></td>
+          <td>🟢 <strong>Piercing_Line</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">Piercing Line</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">Nison ch. 6: Strong black candle, then white opens below black low and closes ab</td>
+          <td style="text-align:center"><span style="background:#475569;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">N/A</span></td>
+          <td class="r">21</td>
+          <td class="r">8/14</td>
+          <td><a href="patterns.html#p30" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p31">
+          <td><strong>P31</strong></td>
+          <td>🔴 <strong>Dark_Cloud_Cover</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">Dark Cloud Cover</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px"></td>
+          <td style="text-align:center"><span style="background:#5b9bd5;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">B</span></td>
+          <td class="r">31</td>
+          <td class="r">5/14</td>
+          <td><a href="patterns.html#p31" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p32">
+          <td><strong>P32</strong></td>
+          <td>🟢 <strong>Bullish_Harami</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">Bullish Harami</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">Nison ch. 6: "Harami" = pregnant. Small candle inside large prior candle</td>
+          <td style="text-align:center"><span style="background:#ff5e6c;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">1,688</td>
+          <td class="r">14/14</td>
+          <td><a href="patterns.html#p32" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p33">
+          <td><strong>P33</strong></td>
+          <td>🔴 <strong>Bearish_Harami</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">Bearish Harami</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px"></td>
+          <td style="text-align:center"><span style="background:#4dd498;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">S</span></td>
+          <td class="r">1,655</td>
+          <td class="r">14/14</td>
+          <td><a href="patterns.html#p33" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p34">
+          <td><strong>P34</strong></td>
+          <td>🟢 <strong>Morning_Star</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">Morning Star</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">Nison ch. 7: Long bear → small star → long bull penetrating midpoint Bulkowski a</td>
+          <td style="text-align:center"><span style="background:#ff5e6c;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">986</td>
+          <td class="r">14/14</td>
+          <td><a href="patterns.html#p34" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p35">
+          <td><strong>P35</strong></td>
+          <td>🔴 <strong>Evening_Star</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">Evening Star</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px"></td>
+          <td style="text-align:center"><span style="background:#4dd498;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">S</span></td>
+          <td class="r">998</td>
+          <td class="r">14/14</td>
+          <td><a href="patterns.html#p35" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p36">
+          <td><strong>P36</strong></td>
+          <td>🟢 <strong>Three_White_Soldiers</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">Three White Soldiers</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">Nison ch. 7: Three bullish candles, each closing higher Bulkowski accuracy: ~82%</td>
+          <td style="text-align:center"><span style="background:#475569;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">N/A</span></td>
+          <td class="r">28</td>
+          <td class="r">11/14</td>
+          <td><a href="patterns.html#p36" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p37">
+          <td><strong>P37</strong></td>
+          <td>🔴 <strong>Three_Black_Crows</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">Three Black Crows</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px"></td>
+          <td style="text-align:center"><span style="background:#5b9bd5;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">B</span></td>
+          <td class="r">38</td>
+          <td class="r">9/14</td>
+          <td><a href="patterns.html#p37" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p38">
+          <td><strong>P38</strong></td>
+          <td>🟢 <strong>Tweezer_Bottom</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">Tweezer Bottom</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">Nison ch. 6: Two candles with same lows</td>
+          <td style="text-align:center"><span style="background:#ff5e6c;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">3,110</td>
+          <td class="r">14/14</td>
+          <td><a href="patterns.html#p38" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p39">
+          <td><strong>P39</strong></td>
+          <td>🔴 <strong>Tweezer_Top</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">Tweezer Top</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px"></td>
+          <td style="text-align:center"><span style="background:#4dd498;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">S</span></td>
+          <td class="r">3,184</td>
+          <td class="r">14/14</td>
+          <td><a href="patterns.html#p39" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p40">
+          <td><strong>P40</strong></td>
+          <td>⚪ <strong>Marubozu</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">Marubozu</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">Nison ch. 3: "Bald" candle with no wicks</td>
+          <td style="text-align:center"><span style="background:#ff5e6c;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">632</td>
+          <td class="r">13/14</td>
+          <td><a href="patterns.html#p40" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr></tbody>
+    </table>
+  </div>
+</section>
+<section class="section">
+  <div class="section-head">
+    <span class="section-num">03</span>
+    <h2 class="section-title">Cat C — Support/Resistance (10 patterns)</h2>
+  </div>
+  <p class="lead-desc">การสะท้อนแนวรับแนวต้าน · Breaker Block, S/R bounce · ที่มา: Classic TA + ICT</p>
+  <div style="margin:10px 0;display:flex;gap:8px;flex-wrap:wrap;font-size:12px">
+    <span style="padding:3px 10px;background:rgba(77,212,152,0.15);border-radius:3px">✅ S: 5</span>
+    <span style="padding:3px 10px;background:rgba(34,197,94,0.15);border-radius:3px">A: 0</span>
+    <span style="padding:3px 10px;background:rgba(91,155,213,0.15);border-radius:3px">B: 0</span>
+    <span style="padding:3px 10px;background:rgba(148,163,184,0.15);border-radius:3px">C: 0</span>
+    <span style="padding:3px 10px;background:rgba(255,94,108,0.15);border-radius:3px">D: 5</span>
+    <span style="padding:3px 10px;background:rgba(71,85,105,0.15);border-radius:3px">N/A: 0</span>
+  </div>
+  <div class="card" style="overflow-x:auto">
+    <table class="table compact">
+      <thead><tr>
+        <th>ID</th><th>Pattern Name</th><th>ชื่อย่อ</th><th>Theory</th>
+        <th>Tier</th><th class="r">Total N</th><th class="r">Active</th><th>Link</th>
+      </tr></thead>
+      <tbody>
+        <tr id="enc-p41">
+          <td><strong>P41</strong></td>
+          <td>🔴 <strong>Supply_Zone_Reject</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">Supply Zone Reject</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px"></td>
+          <td style="text-align:center"><span style="background:#4dd498;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">S</span></td>
+          <td class="r">217</td>
+          <td class="r">14/14</td>
+          <td><a href="patterns.html#p41" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p42">
+          <td><strong>P42</strong></td>
+          <td>🟢 <strong>Demand_Zone_Reject</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">Demand Zone Reject</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px"></td>
+          <td style="text-align:center"><span style="background:#ff5e6c;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">231</td>
+          <td class="r">14/14</td>
+          <td><a href="patterns.html#p42" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p43">
+          <td><strong>P43</strong></td>
+          <td>🟢 <strong>Bullish_Order_Block</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">Bullish Order Block</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px"></td>
+          <td style="text-align:center"><span style="background:#ff5e6c;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">1,655</td>
+          <td class="r">14/14</td>
+          <td><a href="patterns.html#p43" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p44">
+          <td><strong>P44</strong></td>
+          <td>🔴 <strong>Bearish_Order_Block</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">Bearish Order Block</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px"></td>
+          <td style="text-align:center"><span style="background:#4dd498;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">S</span></td>
+          <td class="r">1,728</td>
+          <td class="r">14/14</td>
+          <td><a href="patterns.html#p44" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p45">
+          <td><strong>P45</strong></td>
+          <td>🟢 <strong>Breaker_Block_Bull</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">Breaker Block Bull</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px"></td>
+          <td style="text-align:center"><span style="background:#ff5e6c;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">18,317</td>
+          <td class="r">14/14</td>
+          <td><a href="patterns.html#p45" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p46">
+          <td><strong>P46</strong></td>
+          <td>🔴 <strong>Breaker_Block_Bear</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">Breaker Block Bear</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px"></td>
+          <td style="text-align:center"><span style="background:#4dd498;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">S</span></td>
+          <td class="r">19,046</td>
+          <td class="r">14/14</td>
+          <td><a href="patterns.html#p46" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p47">
+          <td><strong>P47</strong></td>
+          <td>🟢 <strong>SR_Flip_Long</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">S/R Flip Long</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px"></td>
+          <td style="text-align:center"><span style="background:#ff5e6c;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">1,469</td>
+          <td class="r">14/14</td>
+          <td><a href="patterns.html#p47" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p48">
+          <td><strong>P48</strong></td>
+          <td>🔴 <strong>SR_Flip_Short</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">S/R Flip Short</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px"></td>
+          <td style="text-align:center"><span style="background:#4dd498;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">S</span></td>
+          <td class="r">1,618</td>
+          <td class="r">14/14</td>
+          <td><a href="patterns.html#p48" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p49">
+          <td><strong>P49</strong></td>
+          <td>🟢 <strong>Trendline_Bounce_Long</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">Trendline Bounce Long</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px"></td>
+          <td style="text-align:center"><span style="background:#ff5e6c;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">1,527</td>
+          <td class="r">14/14</td>
+          <td><a href="patterns.html#p49" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p50">
+          <td><strong>P50</strong></td>
+          <td>🔴 <strong>Trendline_Bounce_Short</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">Trendline Bounce Short</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px"></td>
+          <td style="text-align:center"><span style="background:#4dd498;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">S</span></td>
+          <td class="r">1,542</td>
+          <td class="r">14/14</td>
+          <td><a href="patterns.html#p50" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr></tbody>
+    </table>
+  </div>
+</section>
+<section class="section">
+  <div class="section-head">
+    <span class="section-num">04</span>
+    <h2 class="section-title">Cat D — Structure Patterns (10 patterns)</h2>
+  </div>
+  <p class="lead-desc">Higher Highs (HH), Lower Lows (LL), Pivot bounces · ที่มา: Wyckoff / Dow Theory</p>
+  <div style="margin:10px 0;display:flex;gap:8px;flex-wrap:wrap;font-size:12px">
+    <span style="padding:3px 10px;background:rgba(77,212,152,0.15);border-radius:3px">✅ S: 5</span>
+    <span style="padding:3px 10px;background:rgba(34,197,94,0.15);border-radius:3px">A: 0</span>
+    <span style="padding:3px 10px;background:rgba(91,155,213,0.15);border-radius:3px">B: 0</span>
+    <span style="padding:3px 10px;background:rgba(148,163,184,0.15);border-radius:3px">C: 0</span>
+    <span style="padding:3px 10px;background:rgba(255,94,108,0.15);border-radius:3px">D: 5</span>
+    <span style="padding:3px 10px;background:rgba(71,85,105,0.15);border-radius:3px">N/A: 0</span>
+  </div>
+  <div class="card" style="overflow-x:auto">
+    <table class="table compact">
+      <thead><tr>
+        <th>ID</th><th>Pattern Name</th><th>ชื่อย่อ</th><th>Theory</th>
+        <th>Tier</th><th class="r">Total N</th><th class="r">Active</th><th>Link</th>
+      </tr></thead>
+      <tbody>
+        <tr id="enc-p51">
+          <td><strong>P51</strong></td>
+          <td>🟢 <strong>HHHL</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">Higher High + Higher Low</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px"></td>
+          <td style="text-align:center"><span style="background:#ff5e6c;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">12,998</td>
+          <td class="r">14/14</td>
+          <td><a href="patterns.html#p51" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p52">
+          <td><strong>P52</strong></td>
+          <td>🔴 <strong>LHLL</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">Lower High + Lower Low</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px"></td>
+          <td style="text-align:center"><span style="background:#4dd498;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">S</span></td>
+          <td class="r">13,094</td>
+          <td class="r">14/14</td>
+          <td><a href="patterns.html#p52" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p53">
+          <td><strong>P53</strong></td>
+          <td>🟢 <strong>BOS_Bull</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">Break of Structure Bull (BOS)</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px"></td>
+          <td style="text-align:center"><span style="background:#ff5e6c;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">3,568</td>
+          <td class="r">14/14</td>
+          <td><a href="patterns.html#p53" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p54">
+          <td><strong>P54</strong></td>
+          <td>🔴 <strong>BOS_Bear</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">Break of Structure Bear</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px"></td>
+          <td style="text-align:center"><span style="background:#4dd498;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">S</span></td>
+          <td class="r">3,642</td>
+          <td class="r">14/14</td>
+          <td><a href="patterns.html#p54" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p55">
+          <td><strong>P55</strong></td>
+          <td>🟢 <strong>CHoCH_Bull</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">Change of Character Bull (CHoCH)</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px"></td>
+          <td style="text-align:center"><span style="background:#ff5e6c;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">2,149</td>
+          <td class="r">14/14</td>
+          <td><a href="patterns.html#p55" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p56">
+          <td><strong>P56</strong></td>
+          <td>🔴 <strong>CHoCH_Bear</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">Change of Character Bear</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px"></td>
+          <td style="text-align:center"><span style="background:#4dd498;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">S</span></td>
+          <td class="r">2,107</td>
+          <td class="r">14/14</td>
+          <td><a href="patterns.html#p56" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p57">
+          <td><strong>P57</strong></td>
+          <td>🟢 <strong>Liq_Sweep_Long</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">Liquidity Sweep Long</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px"></td>
+          <td style="text-align:center"><span style="background:#ff5e6c;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">765</td>
+          <td class="r">14/14</td>
+          <td><a href="patterns.html#p57" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p58">
+          <td><strong>P58</strong></td>
+          <td>🔴 <strong>Liq_Sweep_Short</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">Liquidity Sweep Short</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px"></td>
+          <td style="text-align:center"><span style="background:#4dd498;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">S</span></td>
+          <td class="r">760</td>
+          <td class="r">14/14</td>
+          <td><a href="patterns.html#p58" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p59">
+          <td><strong>P59</strong></td>
+          <td>🟢 <strong>Failed_Breakout_Long</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">Failed Breakout Long</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px"></td>
+          <td style="text-align:center"><span style="background:#ff5e6c;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">2,875</td>
+          <td class="r">14/14</td>
+          <td><a href="patterns.html#p59" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p60">
+          <td><strong>P60</strong></td>
+          <td>🔴 <strong>Failed_Breakout_Short</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">Failed Breakout Short</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px"></td>
+          <td style="text-align:center"><span style="background:#4dd498;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">S</span></td>
+          <td class="r">2,859</td>
+          <td class="r">14/14</td>
+          <td><a href="patterns.html#p60" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr></tbody>
+    </table>
+  </div>
+</section>
+<section class="section">
+  <div class="section-head">
+    <span class="section-num">05</span>
+    <h2 class="section-title">Cat E — Chart Patterns (10 patterns)</h2>
+  </div>
+  <p class="lead-desc">Head & Shoulders, Triangles, Flags, Wedges · ที่มา: Bulkowski (2005)</p>
+  <div style="margin:10px 0;display:flex;gap:8px;flex-wrap:wrap;font-size:12px">
+    <span style="padding:3px 10px;background:rgba(77,212,152,0.15);border-radius:3px">✅ S: 3</span>
+    <span style="padding:3px 10px;background:rgba(34,197,94,0.15);border-radius:3px">A: 0</span>
+    <span style="padding:3px 10px;background:rgba(91,155,213,0.15);border-radius:3px">B: 0</span>
+    <span style="padding:3px 10px;background:rgba(148,163,184,0.15);border-radius:3px">C: 0</span>
+    <span style="padding:3px 10px;background:rgba(255,94,108,0.15);border-radius:3px">D: 5</span>
+    <span style="padding:3px 10px;background:rgba(71,85,105,0.15);border-radius:3px">N/A: 2</span>
+  </div>
+  <div class="card" style="overflow-x:auto">
+    <table class="table compact">
+      <thead><tr>
+        <th>ID</th><th>Pattern Name</th><th>ชื่อย่อ</th><th>Theory</th>
+        <th>Tier</th><th class="r">Total N</th><th class="r">Active</th><th>Link</th>
+      </tr></thead>
+      <tbody>
+        <tr id="enc-p61">
+          <td><strong>P61</strong></td>
+          <td>🟢 <strong>Double_Bottom</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">Double Bottom (W)</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">Bulkowski: ~85% reliable when broken</td>
+          <td style="text-align:center"><span style="background:#ff5e6c;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">1,536</td>
+          <td class="r">14/14</td>
+          <td><a href="patterns.html#p61" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p62">
+          <td><strong>P62</strong></td>
+          <td>🔴 <strong>Double_Top</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">Double Top (M)</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px"></td>
+          <td style="text-align:center"><span style="background:#4dd498;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">S</span></td>
+          <td class="r">1,574</td>
+          <td class="r">14/14</td>
+          <td><a href="patterns.html#p62" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p63">
+          <td><strong>P63</strong></td>
+          <td>🟢 <strong>Triple_Bottom</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">Triple Bottom</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">Bulkowski: ~85-90% reliable</td>
+          <td style="text-align:center"><span style="background:#ff5e6c;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">248</td>
+          <td class="r">9/14</td>
+          <td><a href="patterns.html#p63" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p64">
+          <td><strong>P64</strong></td>
+          <td>🔴 <strong>Triple_Top</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">Triple Top</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px"></td>
+          <td style="text-align:center"><span style="background:#ff5e6c;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">236</td>
+          <td class="r">8/14</td>
+          <td><a href="patterns.html#p64" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p65">
+          <td><strong>P65</strong></td>
+          <td>🔴 <strong>HnS_Bear</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">Head & Shoulders (Bear)</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">Edwards & Magee ch. 6 — most famous pattern Bulkowski: ~93% reliable (one of the</td>
+          <td style="text-align:center"><span style="background:#ff5e6c;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">559</td>
+          <td class="r">11/14</td>
+          <td><a href="patterns.html#p65" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p66">
+          <td><strong>P66</strong></td>
+          <td>🟢 <strong>HnS_Bull</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">Inverted H&S (Bull)</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px"></td>
+          <td style="text-align:center"><span style="background:#4dd498;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">S</span></td>
+          <td class="r">352</td>
+          <td class="r">11/14</td>
+          <td><a href="patterns.html#p66" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p67">
+          <td><strong>P67</strong></td>
+          <td>🟢 <strong>Triangle_Asc</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">Ascending Triangle</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">Bulkowski: ~70% breakout up</td>
+          <td style="text-align:center"><span style="background:#ff5e6c;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">1,009</td>
+          <td class="r">14/14</td>
+          <td><a href="patterns.html#p67" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p68">
+          <td><strong>P68</strong></td>
+          <td>🔴 <strong>Triangle_Desc</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">Descending Triangle</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px"></td>
+          <td style="text-align:center"><span style="background:#4dd498;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">S</span></td>
+          <td class="r">1,088</td>
+          <td class="r">14/14</td>
+          <td><a href="patterns.html#p68" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p69">
+          <td><strong>P69</strong></td>
+          <td>🟢 <strong>Bull_Flag</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">Bull Flag</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px"></td>
+          <td style="text-align:center"><span style="background:#475569;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">N/A</span></td>
+          <td class="r">1</td>
+          <td class="r">1/14</td>
+          <td><a href="patterns.html#p69" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p70">
+          <td><strong>P70</strong></td>
+          <td>🔴 <strong>Bear_Flag</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">Bear Flag</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px"></td>
+          <td style="text-align:center"><span style="background:#475569;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">N/A</span></td>
+          <td class="r">3</td>
+          <td class="r">2/14</td>
+          <td><a href="patterns.html#p70" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr></tbody>
+    </table>
+  </div>
+</section>
+<section class="section">
+  <div class="section-head">
+    <span class="section-num">06</span>
+    <h2 class="section-title">Cat F — SMC / FVG (10 patterns)</h2>
+  </div>
+  <p class="lead-desc">Smart Money Concepts · Fair Value Gap, Order Block, Liquidity · ที่มา: ICT (Inner Circle Trader)</p>
+  <div style="margin:10px 0;display:flex;gap:8px;flex-wrap:wrap;font-size:12px">
+    <span style="padding:3px 10px;background:rgba(77,212,152,0.15);border-radius:3px">✅ S: 4</span>
+    <span style="padding:3px 10px;background:rgba(34,197,94,0.15);border-radius:3px">A: 0</span>
+    <span style="padding:3px 10px;background:rgba(91,155,213,0.15);border-radius:3px">B: 0</span>
+    <span style="padding:3px 10px;background:rgba(148,163,184,0.15);border-radius:3px">C: 0</span>
+    <span style="padding:3px 10px;background:rgba(255,94,108,0.15);border-radius:3px">D: 6</span>
+    <span style="padding:3px 10px;background:rgba(71,85,105,0.15);border-radius:3px">N/A: 0</span>
+  </div>
+  <div class="card" style="overflow-x:auto">
+    <table class="table compact">
+      <thead><tr>
+        <th>ID</th><th>Pattern Name</th><th>ชื่อย่อ</th><th>Theory</th>
+        <th>Tier</th><th class="r">Total N</th><th class="r">Active</th><th>Link</th>
+      </tr></thead>
+      <tbody>
+        <tr id="enc-p71">
+          <td><strong>P71</strong></td>
+          <td>🟢 <strong>FVG_Bull</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">Fair Value Gap (FVG) Bull</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px"></td>
+          <td style="text-align:center"><span style="background:#ff5e6c;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">19,714</td>
+          <td class="r">14/14</td>
+          <td><a href="patterns.html#p71" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p72">
+          <td><strong>P72</strong></td>
+          <td>🔴 <strong>FVG_Bear</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">Fair Value Gap Bear</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px"></td>
+          <td style="text-align:center"><span style="background:#4dd498;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">S</span></td>
+          <td class="r">19,715</td>
+          <td class="r">14/14</td>
+          <td><a href="patterns.html#p72" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p73">
+          <td><strong>P73</strong></td>
+          <td>🟢 <strong>Liq_Grab_Bull</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">Liquidity Grab Bull</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px"></td>
+          <td style="text-align:center"><span style="background:#ff5e6c;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">2,010</td>
+          <td class="r">14/14</td>
+          <td><a href="patterns.html#p73" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p74">
+          <td><strong>P74</strong></td>
+          <td>🔴 <strong>Liq_Grab_Bear</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">Liquidity Grab Bear</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px"></td>
+          <td style="text-align:center"><span style="background:#4dd498;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">S</span></td>
+          <td class="r">1,912</td>
+          <td class="r">14/14</td>
+          <td><a href="patterns.html#p74" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p75">
+          <td><strong>P75</strong></td>
+          <td>🔴 <strong>Equal_Highs_Sweep</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">Equal Highs Sweep</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px"></td>
+          <td style="text-align:center"><span style="background:#ff5e6c;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">87</td>
+          <td class="r">11/14</td>
+          <td><a href="patterns.html#p75" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p76">
+          <td><strong>P76</strong></td>
+          <td>🟢 <strong>Equal_Lows_Sweep</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">Equal Lows Sweep</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px"></td>
+          <td style="text-align:center"><span style="background:#ff5e6c;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">112</td>
+          <td class="r">10/14</td>
+          <td><a href="patterns.html#p76" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p77">
+          <td><strong>P77</strong></td>
+          <td>🟢 <strong>Mitigation_Block_Bull</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">Mitigation Block Bull</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px"></td>
+          <td style="text-align:center"><span style="background:#ff5e6c;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">488</td>
+          <td class="r">11/14</td>
+          <td><a href="patterns.html#p77" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p78">
+          <td><strong>P78</strong></td>
+          <td>🔴 <strong>Mitigation_Block_Bear</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">Mitigation Block Bear</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px"></td>
+          <td style="text-align:center"><span style="background:#4dd498;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">S</span></td>
+          <td class="r">471</td>
+          <td class="r">11/14</td>
+          <td><a href="patterns.html#p78" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p79">
+          <td><strong>P79</strong></td>
+          <td>🟢 <strong>POC_Bounce_Long</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">POC Bounce Long</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px"></td>
+          <td style="text-align:center"><span style="background:#ff5e6c;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">2,813</td>
+          <td class="r">14/14</td>
+          <td><a href="patterns.html#p79" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p80">
+          <td><strong>P80</strong></td>
+          <td>🔴 <strong>POC_Bounce_Short</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">POC Bounce Short</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px"></td>
+          <td style="text-align:center"><span style="background:#4dd498;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">S</span></td>
+          <td class="r">2,679</td>
+          <td class="r">14/14</td>
+          <td><a href="patterns.html#p80" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr></tbody>
+    </table>
+  </div>
+</section>
+<section class="section">
+  <div class="section-head">
+    <span class="section-num">07</span>
+    <h2 class="section-title">Cat G — Range Patterns (8 patterns)</h2>
+  </div>
+  <p class="lead-desc">NR4, NR7 · Narrow Range bars สำหรับ breakout · ที่มา: Crabel (1990)</p>
+  <div style="margin:10px 0;display:flex;gap:8px;flex-wrap:wrap;font-size:12px">
+    <span style="padding:3px 10px;background:rgba(77,212,152,0.15);border-radius:3px">✅ S: 3</span>
+    <span style="padding:3px 10px;background:rgba(34,197,94,0.15);border-radius:3px">A: 0</span>
+    <span style="padding:3px 10px;background:rgba(91,155,213,0.15);border-radius:3px">B: 0</span>
+    <span style="padding:3px 10px;background:rgba(148,163,184,0.15);border-radius:3px">C: 0</span>
+    <span style="padding:3px 10px;background:rgba(255,94,108,0.15);border-radius:3px">D: 5</span>
+    <span style="padding:3px 10px;background:rgba(71,85,105,0.15);border-radius:3px">N/A: 0</span>
+  </div>
+  <div class="card" style="overflow-x:auto">
+    <table class="table compact">
+      <thead><tr>
+        <th>ID</th><th>Pattern Name</th><th>ชื่อย่อ</th><th>Theory</th>
+        <th>Tier</th><th class="r">Total N</th><th class="r">Active</th><th>Link</th>
+      </tr></thead>
+      <tbody>
+        <tr id="enc-p81">
+          <td><strong>P81</strong></td>
+          <td>🟢 <strong>ZScore_MeanRev_Long</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">ZScore_MeanRev_Long</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">Bollinger %B + close-Z method</td>
+          <td style="text-align:center"><span style="background:#ff5e6c;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">615</td>
+          <td class="r">14/14</td>
+          <td><a href="patterns.html#p81" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p82">
+          <td><strong>P82</strong></td>
+          <td>🔴 <strong>ZScore_MeanRev_Short</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">ZScore_MeanRev_Short</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">Mirror of P81</td>
+          <td style="text-align:center"><span style="background:#4dd498;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">S</span></td>
+          <td class="r">620</td>
+          <td class="r">14/14</td>
+          <td><a href="patterns.html#p82" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p83">
+          <td><strong>P83</strong></td>
+          <td>🟢 <strong>ORB_Long</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">ORB_Long</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">Donchian/ORB classical strategy</td>
+          <td style="text-align:center"><span style="background:#ff5e6c;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">1,141</td>
+          <td class="r">14/14</td>
+          <td><a href="patterns.html#p83" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p84">
+          <td><strong>P84</strong></td>
+          <td>🔴 <strong>ORB_Short</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">ORB_Short</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">Mirror of P83</td>
+          <td style="text-align:center"><span style="background:#4dd498;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">S</span></td>
+          <td class="r">1,219</td>
+          <td class="r">14/14</td>
+          <td><a href="patterns.html#p84" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p85">
+          <td><strong>P85</strong></td>
+          <td>⚪ <strong>NR4</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">NR4</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">ATR ratio method</td>
+          <td style="text-align:center"><span style="background:#ff5e6c;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">22,245</td>
+          <td class="r">14/14</td>
+          <td><a href="patterns.html#p85" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p86">
+          <td><strong>P86</strong></td>
+          <td>⚪ <strong>NR7</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">NR7</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">Mirror of P85</td>
+          <td style="text-align:center"><span style="background:#ff5e6c;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">13,072</td>
+          <td class="r">14/14</td>
+          <td><a href="patterns.html#p86" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p87">
+          <td><strong>P87</strong></td>
+          <td>🟢 <strong>BB_PctB_Long</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">BB_PctB_Long</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">%B < 0.05 = price below lower band by margin</td>
+          <td style="text-align:center"><span style="background:#ff5e6c;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">551</td>
+          <td class="r">14/14</td>
+          <td><a href="patterns.html#p87" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p88">
+          <td><strong>P88</strong></td>
+          <td>🔴 <strong>BB_PctB_Short</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">BB_PctB_Short</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">%B > 0.95 = price above upper band</td>
+          <td style="text-align:center"><span style="background:#4dd498;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">S</span></td>
+          <td class="r">549</td>
+          <td class="r">14/14</td>
+          <td><a href="patterns.html#p88" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr></tbody>
+    </table>
+  </div>
+</section>
+<section class="section">
+  <div class="section-head">
+    <span class="section-num">08</span>
+    <h2 class="section-title">Cat H — SMC Advanced (9 patterns)</h2>
+  </div>
+  <p class="lead-desc">Liquidity Grab, Premium/Discount, Killzone · ที่มา: ICT</p>
+  <div style="margin:10px 0;display:flex;gap:8px;flex-wrap:wrap;font-size:12px">
+    <span style="padding:3px 10px;background:rgba(77,212,152,0.15);border-radius:3px">✅ S: 4</span>
+    <span style="padding:3px 10px;background:rgba(34,197,94,0.15);border-radius:3px">A: 0</span>
+    <span style="padding:3px 10px;background:rgba(91,155,213,0.15);border-radius:3px">B: 0</span>
+    <span style="padding:3px 10px;background:rgba(148,163,184,0.15);border-radius:3px">C: 0</span>
+    <span style="padding:3px 10px;background:rgba(255,94,108,0.15);border-radius:3px">D: 3</span>
+    <span style="padding:3px 10px;background:rgba(71,85,105,0.15);border-radius:3px">N/A: 2</span>
+  </div>
+  <div class="card" style="overflow-x:auto">
+    <table class="table compact">
+      <thead><tr>
+        <th>ID</th><th>Pattern Name</th><th>ชื่อย่อ</th><th>Theory</th>
+        <th>Tier</th><th class="r">Total N</th><th class="r">Active</th><th>Link</th>
+      </tr></thead>
+      <tbody>
+        <tr id="enc-p89">
+          <td><strong>P89</strong></td>
+          <td>🟢 <strong>OTE_Long</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">OTE_Long</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">ICT London killzone (07:00-10:00 GMT)</td>
+          <td style="text-align:center"><span style="background:#ff5e6c;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">2,511</td>
+          <td class="r">14/14</td>
+          <td><a href="patterns.html#p89" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p90">
+          <td><strong>P90</strong></td>
+          <td>🔴 <strong>OTE_Short</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">OTE_Short</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">Mirror of P89</td>
+          <td style="text-align:center"><span style="background:#4dd498;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">S</span></td>
+          <td class="r">2,558</td>
+          <td class="r">14/14</td>
+          <td><a href="patterns.html#p90" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p91">
+          <td><strong>P91</strong></td>
+          <td>🟢 <strong>LondonKZ_Long</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">LondonKZ_Long</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">NY killzone (12:30-15:00 GMT)</td>
+          <td style="text-align:center"><span style="background:#ff5e6c;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">1,005</td>
+          <td class="r">7/14</td>
+          <td><a href="patterns.html#p91" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p92">
+          <td><strong>P92</strong></td>
+          <td>🔴 <strong>LondonKZ_Short</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">LondonKZ_Short</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">Mirror of P91</td>
+          <td style="text-align:center"><span style="background:#4dd498;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">S</span></td>
+          <td class="r">981</td>
+          <td class="r">7/14</td>
+          <td><a href="patterns.html#p92" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p93">
+          <td><strong>P93</strong></td>
+          <td>🟢 <strong>NYSB_Long</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">NYSB_Long</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">ICT 3-candle imbalance / FVG</td>
+          <td style="text-align:center"><span style="background:#ff5e6c;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">436</td>
+          <td class="r">14/14</td>
+          <td><a href="patterns.html#p93" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p94">
+          <td><strong>P94</strong></td>
+          <td>🔴 <strong>NYSB_Short</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">NYSB_Short</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">Mirror of P93</td>
+          <td style="text-align:center"><span style="background:#4dd498;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">S</span></td>
+          <td class="r">433</td>
+          <td class="r">14/14</td>
+          <td><a href="patterns.html#p94" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p95">
+          <td><strong>P95</strong></td>
+          <td>🟢 <strong>PowerOf3_Long</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">PowerOf3_Long</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">ICT displacement = strong directional candle</td>
+          <td style="text-align:center"><span style="background:#475569;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">N/A</span></td>
+          <td class="r">28</td>
+          <td class="r">6/14</td>
+          <td><a href="patterns.html#p95" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p96">
+          <td><strong>P96</strong></td>
+          <td>🔴 <strong>PowerOf3_Short</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">PowerOf3_Short</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">Mirror of P95</td>
+          <td style="text-align:center"><span style="background:#475569;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">N/A</span></td>
+          <td class="r">28</td>
+          <td class="r">6/14</td>
+          <td><a href="patterns.html#p96" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p97">
+          <td><strong>P97</strong></td>
+          <td>🔴 <strong>PD_Array_Premium</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">PD_Array_Premium</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">ICT inducement: stop-hunt above swing high then reverse</td>
+          <td style="text-align:center"><span style="background:#4dd498;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">S</span></td>
+          <td class="r">7,387</td>
+          <td class="r">14/14</td>
+          <td><a href="patterns.html#p97" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr></tbody>
+    </table>
+  </div>
+</section>
+<section class="section">
+  <div class="section-head">
+    <span class="section-num">09</span>
+    <h2 class="section-title">Cat I — Volume / Wyckoff (10 patterns)</h2>
+  </div>
+  <p class="lead-desc">Volume Spread Analysis · Accumulation/Distribution · ที่มา: Wyckoff (1931)</p>
+  <div style="margin:10px 0;display:flex;gap:8px;flex-wrap:wrap;font-size:12px">
+    <span style="padding:3px 10px;background:rgba(77,212,152,0.15);border-radius:3px">✅ S: 4</span>
+    <span style="padding:3px 10px;background:rgba(34,197,94,0.15);border-radius:3px">A: 0</span>
+    <span style="padding:3px 10px;background:rgba(91,155,213,0.15);border-radius:3px">B: 0</span>
+    <span style="padding:3px 10px;background:rgba(148,163,184,0.15);border-radius:3px">C: 0</span>
+    <span style="padding:3px 10px;background:rgba(255,94,108,0.15);border-radius:3px">D: 4</span>
+    <span style="padding:3px 10px;background:rgba(71,85,105,0.15);border-radius:3px">N/A: 2</span>
+  </div>
+  <div class="card" style="overflow-x:auto">
+    <table class="table compact">
+      <thead><tr>
+        <th>ID</th><th>Pattern Name</th><th>ชื่อย่อ</th><th>Theory</th>
+        <th>Tier</th><th class="r">Total N</th><th class="r">Active</th><th>Link</th>
+      </tr></thead>
+      <tbody>
+        <tr id="enc-p98">
+          <td><strong>P98</strong></td>
+          <td>🔴 <strong>VSA_NoDemand</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">VSA_NoDemand</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">Tom Williams VSA</td>
+          <td style="text-align:center"><span style="background:#4dd498;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">S</span></td>
+          <td class="r">1,195</td>
+          <td class="r">14/14</td>
+          <td><a href="patterns.html#p98" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p99">
+          <td><strong>P99</strong></td>
+          <td>🟢 <strong>VSA_NoSupply</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">VSA_NoSupply</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">Mirror of P98</td>
+          <td style="text-align:center"><span style="background:#ff5e6c;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">1,126</td>
+          <td class="r">14/14</td>
+          <td><a href="patterns.html#p99" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p100">
+          <td><strong>P100</strong></td>
+          <td>🟢 <strong>VSA_StoppingVol_Bull</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">VSA_StoppingVol_Bull</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">VSA reversal signal</td>
+          <td style="text-align:center"><span style="background:#475569;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">N/A</span></td>
+          <td class="r">25</td>
+          <td class="r">7/14</td>
+          <td><a href="patterns.html#p100" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p101">
+          <td><strong>P101</strong></td>
+          <td>🔴 <strong>VSA_ClimaxVol_Bear</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">VSA_ClimacticVol_Bear</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">Mirror of P100</td>
+          <td style="text-align:center"><span style="background:#475569;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">N/A</span></td>
+          <td class="r">24</td>
+          <td class="r">10/14</td>
+          <td><a href="patterns.html#p101" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p102">
+          <td><strong>P102</strong></td>
+          <td>🟢 <strong>Wyckoff_Spring</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">Wyckoff_Spring</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">Wyckoff buying climax</td>
+          <td style="text-align:center"><span style="background:#ff5e6c;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">405</td>
+          <td class="r">12/14</td>
+          <td><a href="patterns.html#p102" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p103">
+          <td><strong>P103</strong></td>
+          <td>🔴 <strong>Wyckoff_Upthrust</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">Wyckoff_Upthrust</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">Wyckoff selling climax</td>
+          <td style="text-align:center"><span style="background:#4dd498;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">S</span></td>
+          <td class="r">365</td>
+          <td class="r">10/14</td>
+          <td><a href="patterns.html#p103" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p104">
+          <td><strong>P104</strong></td>
+          <td>🟢 <strong>SellingClimax</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">SellingClimax</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">Wyckoff accumulation phase 4 — Spring</td>
+          <td style="text-align:center"><span style="background:#ff5e6c;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">285</td>
+          <td class="r">14/14</td>
+          <td><a href="patterns.html#p104" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p105">
+          <td><strong>P105</strong></td>
+          <td>🔴 <strong>BuyingClimax</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">BuyingClimax</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">Wyckoff distribution phase 4</td>
+          <td style="text-align:center"><span style="background:#4dd498;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">S</span></td>
+          <td class="r">271</td>
+          <td class="r">14/14</td>
+          <td><a href="patterns.html#p105" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p106">
+          <td><strong>P106</strong></td>
+          <td>🟢 <strong>CVD_Div_Bull</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">CVD_Div_Bull</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">Wyckoff accumulation start</td>
+          <td style="text-align:center"><span style="background:#ff5e6c;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">4,428</td>
+          <td class="r">14/14</td>
+          <td><a href="patterns.html#p106" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p107">
+          <td><strong>P107</strong></td>
+          <td>🔴 <strong>CVD_Div_Bear</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">CVD_Div_Bear</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">Wyckoff distribution start</td>
+          <td style="text-align:center"><span style="background:#4dd498;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">S</span></td>
+          <td class="r">4,459</td>
+          <td class="r">14/14</td>
+          <td><a href="patterns.html#p107" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr></tbody>
+    </table>
+  </div>
+</section>
+<section class="section">
+  <div class="section-head">
+    <span class="section-num">10</span>
+    <h2 class="section-title">Cat J — Harmonic Patterns (18 patterns)</h2>
+  </div>
+  <p class="lead-desc">Gartley, Bat, Crab, Butterfly · Fibonacci-based · ที่มา: Carney (1999)</p>
+  <div style="margin:10px 0;display:flex;gap:8px;flex-wrap:wrap;font-size:12px">
+    <span style="padding:3px 10px;background:rgba(77,212,152,0.15);border-radius:3px">✅ S: 4</span>
+    <span style="padding:3px 10px;background:rgba(34,197,94,0.15);border-radius:3px">A: 2</span>
+    <span style="padding:3px 10px;background:rgba(91,155,213,0.15);border-radius:3px">B: 2</span>
+    <span style="padding:3px 10px;background:rgba(148,163,184,0.15);border-radius:3px">C: 0</span>
+    <span style="padding:3px 10px;background:rgba(255,94,108,0.15);border-radius:3px">D: 7</span>
+    <span style="padding:3px 10px;background:rgba(71,85,105,0.15);border-radius:3px">N/A: 3</span>
+  </div>
+  <div class="card" style="overflow-x:auto">
+    <table class="table compact">
+      <thead><tr>
+        <th>ID</th><th>Pattern Name</th><th>ชื่อย่อ</th><th>Theory</th>
+        <th>Tier</th><th class="r">Total N</th><th class="r">Active</th><th>Link</th>
+      </tr></thead>
+      <tbody>
+        <tr id="enc-p108">
+          <td><strong>P108</strong></td>
+          <td>🟢 <strong>Gartley_Bull</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">Gartley_Bull</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">Carney harmonic — Gartley XABCD</td>
+          <td style="text-align:center"><span style="background:#ff5e6c;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">165</td>
+          <td class="r">7/14</td>
+          <td><a href="patterns.html#p108" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p109">
+          <td><strong>P109</strong></td>
+          <td>🔴 <strong>Gartley_Bear</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">Gartley_Bear</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">Mirror of P108</td>
+          <td style="text-align:center"><span style="background:#4dd498;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">S</span></td>
+          <td class="r">174</td>
+          <td class="r">8/14</td>
+          <td><a href="patterns.html#p109" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p110">
+          <td><strong>P110</strong></td>
+          <td>🟢 <strong>Bat_Bull</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">Bat_Bull</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">Carney harmonic — Bat</td>
+          <td style="text-align:center"><span style="background:#5b9bd5;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">B</span></td>
+          <td class="r">43</td>
+          <td class="r">8/14</td>
+          <td><a href="patterns.html#p110" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p111">
+          <td><strong>P111</strong></td>
+          <td>🔴 <strong>Bat_Bear</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">Bat_Bear</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">Mirror of P110</td>
+          <td style="text-align:center"><span style="background:#475569;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">N/A</span></td>
+          <td class="r">20</td>
+          <td class="r">3/14</td>
+          <td><a href="patterns.html#p111" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p112">
+          <td><strong>P112</strong></td>
+          <td>🟢 <strong>Butterfly_Bull</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">Butterfly_Bull</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">Carney harmonic — Crab (extreme extension)</td>
+          <td style="text-align:center"><span style="background:#22c55e;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">A</span></td>
+          <td class="r">93</td>
+          <td class="r">10/14</td>
+          <td><a href="patterns.html#p112" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p113">
+          <td><strong>P113</strong></td>
+          <td>🔴 <strong>Butterfly_Bear</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">Butterfly_Bear</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">Mirror of P112</td>
+          <td style="text-align:center"><span style="background:#5b9bd5;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">B</span></td>
+          <td class="r">53</td>
+          <td class="r">8/14</td>
+          <td><a href="patterns.html#p113" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p114">
+          <td><strong>P114</strong></td>
+          <td>🟢 <strong>Crab_Bull</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">Crab_Bull</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">Carney harmonic — Butterfly</td>
+          <td style="text-align:center"><span style="background:#475569;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">N/A</span></td>
+          <td class="r">13</td>
+          <td class="r">4/14</td>
+          <td><a href="patterns.html#p114" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p115">
+          <td><strong>P115</strong></td>
+          <td>🔴 <strong>Crab_Bear</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">Crab_Bear</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">Mirror of P114</td>
+          <td style="text-align:center"><span style="background:#475569;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">N/A</span></td>
+          <td class="r">28</td>
+          <td class="r">6/14</td>
+          <td><a href="patterns.html#p115" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p116">
+          <td><strong>P116</strong></td>
+          <td>🟢 <strong>Cypher_Bull</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">Cypher_Bull</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">Pesavento harmonic — Cypher</td>
+          <td style="text-align:center"><span style="background:#ff5e6c;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">54</td>
+          <td class="r">8/14</td>
+          <td><a href="patterns.html#p116" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p117">
+          <td><strong>P117</strong></td>
+          <td>🔴 <strong>Cypher_Bear</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">Cypher_Bear</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">Mirror of P116</td>
+          <td style="text-align:center"><span style="background:#22c55e;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">A</span></td>
+          <td class="r">73</td>
+          <td class="r">8/14</td>
+          <td><a href="patterns.html#p117" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p118">
+          <td><strong>P118</strong></td>
+          <td>🟢 <strong>Asian_Sweep_Long</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">Asian_Sweep_Long</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">Pesavento harmonic — Shark</td>
+          <td style="text-align:center"><span style="background:#ff5e6c;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">639</td>
+          <td class="r">14/14</td>
+          <td><a href="patterns.html#p118" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p119">
+          <td><strong>P119</strong></td>
+          <td>🔴 <strong>Asian_Sweep_Short</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">Asian_Sweep_Short</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">Mirror of P118</td>
+          <td style="text-align:center"><span style="background:#4dd498;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">S</span></td>
+          <td class="r">668</td>
+          <td class="r">14/14</td>
+          <td><a href="patterns.html#p119" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p120">
+          <td><strong>P120</strong></td>
+          <td>🟢 <strong>Sunday_Gap_Fill_Long</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">Sunday_Gap_Fill_Long</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">Asian session range break (London open)</td>
+          <td style="text-align:center"><span style="background:#ff5e6c;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">1,062</td>
+          <td class="r">12/14</td>
+          <td><a href="patterns.html#p120" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p121">
+          <td><strong>P121</strong></td>
+          <td>🔴 <strong>Sunday_Gap_Fill_Short</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">Sunday_Gap_Fill_Short</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">Mirror of P120</td>
+          <td style="text-align:center"><span style="background:#ff5e6c;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">1,308</td>
+          <td class="r">12/14</td>
+          <td><a href="patterns.html#p121" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p122">
+          <td><strong>P122</strong></td>
+          <td>🟢 <strong>Kicker_Bull</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">Kicker_Bull</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">Volatility spike fade</td>
+          <td style="text-align:center"><span style="background:#ff5e6c;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">395</td>
+          <td class="r">14/14</td>
+          <td><a href="patterns.html#p122" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p123">
+          <td><strong>P123</strong></td>
+          <td>🔴 <strong>Kicker_Bear</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">Kicker_Bear</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">Mirror of P122</td>
+          <td style="text-align:center"><span style="background:#4dd498;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">S</span></td>
+          <td class="r">401</td>
+          <td class="r">14/14</td>
+          <td><a href="patterns.html#p123" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p124">
+          <td><strong>P124</strong></td>
+          <td>🟢 <strong>ThreeBar_Rev_Bull</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">ThreeBar_Rev_Bull</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">EOW positioning effect</td>
+          <td style="text-align:center"><span style="background:#ff5e6c;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">2,471</td>
+          <td class="r">14/14</td>
+          <td><a href="patterns.html#p124" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p125">
+          <td><strong>P125</strong></td>
+          <td>🔴 <strong>ThreeBar_Rev_Bear</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">ThreeBar_Rev_Bear</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">Mirror of P124</td>
+          <td style="text-align:center"><span style="background:#4dd498;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">S</span></td>
+          <td class="r">2,406</td>
+          <td class="r">14/14</td>
+          <td><a href="patterns.html#p125" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr></tbody>
+    </table>
+  </div>
+</section>
+<section class="section">
+  <div class="section-head">
+    <span class="section-num">11</span>
+    <h2 class="section-title">Cat K — Multi-Timeframe (10 patterns)</h2>
+  </div>
+  <p class="lead-desc">Daily Bias, Weekly Range, HTF alignment · ที่มา: Multi-TF analysis</p>
+  <div style="margin:10px 0;display:flex;gap:8px;flex-wrap:wrap;font-size:12px">
+    <span style="padding:3px 10px;background:rgba(77,212,152,0.15);border-radius:3px">✅ S: 4</span>
+    <span style="padding:3px 10px;background:rgba(34,197,94,0.15);border-radius:3px">A: 1</span>
+    <span style="padding:3px 10px;background:rgba(91,155,213,0.15);border-radius:3px">B: 0</span>
+    <span style="padding:3px 10px;background:rgba(148,163,184,0.15);border-radius:3px">C: 0</span>
+    <span style="padding:3px 10px;background:rgba(255,94,108,0.15);border-radius:3px">D: 5</span>
+    <span style="padding:3px 10px;background:rgba(71,85,105,0.15);border-radius:3px">N/A: 0</span>
+  </div>
+  <div class="card" style="overflow-x:auto">
+    <table class="table compact">
+      <thead><tr>
+        <th>ID</th><th>Pattern Name</th><th>ชื่อย่อ</th><th>Theory</th>
+        <th>Tier</th><th class="r">Total N</th><th class="r">Active</th><th>Link</th>
+      </tr></thead>
+      <tbody>
+        <tr id="enc-p126">
+          <td><strong>P126</strong></td>
+          <td>🟢 <strong>HTF_Bias_Long</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">HTF_Bias_Long</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">Higher TF EMA alignment filter</td>
+          <td style="text-align:center"><span style="background:#ff5e6c;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">1,119</td>
+          <td class="r">14/14</td>
+          <td><a href="patterns.html#p126" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p127">
+          <td><strong>P127</strong></td>
+          <td>🔴 <strong>HTF_Bias_Short</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">HTF_Bias_Short</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">Mirror of P126</td>
+          <td style="text-align:center"><span style="background:#ff5e6c;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">1,251</td>
+          <td class="r">12/14</td>
+          <td><a href="patterns.html#p127" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p128">
+          <td><strong>P128</strong></td>
+          <td>🟢 <strong>MTF_FVG_Aligned_Long</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">MTF_FVG_Aligned_Long</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">FVG present on both LTF AND MTF</td>
+          <td style="text-align:center"><span style="background:#ff5e6c;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">3,678</td>
+          <td class="r">14/14</td>
+          <td><a href="patterns.html#p128" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p129">
+          <td><strong>P129</strong></td>
+          <td>🔴 <strong>MTF_FVG_Aligned_Short</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">MTF_FVG_Aligned_Short</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">Mirror of P128</td>
+          <td style="text-align:center"><span style="background:#4dd498;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">S</span></td>
+          <td class="r">3,706</td>
+          <td class="r">14/14</td>
+          <td><a href="patterns.html#p129" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p130">
+          <td><strong>P130</strong></td>
+          <td>🟢 <strong>MTF_OB_Aligned_Long</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">MTF_OB_Aligned_Long</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">Order Block on both LTF and MTF</td>
+          <td style="text-align:center"><span style="background:#ff5e6c;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">162</td>
+          <td class="r">8/14</td>
+          <td><a href="patterns.html#p130" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p131">
+          <td><strong>P131</strong></td>
+          <td>🔴 <strong>MTF_OB_Aligned_Short</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">MTF_OB_Aligned_Short</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">Mirror of P130</td>
+          <td style="text-align:center"><span style="background:#4dd498;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">S</span></td>
+          <td class="r">169</td>
+          <td class="r">7/14</td>
+          <td><a href="patterns.html#p131" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p132">
+          <td><strong>P132</strong></td>
+          <td>🟢 <strong>Daily_Bias_Intraday_Long</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">Daily_Bias_Intraday_Long</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">Daily HTF direction filter</td>
+          <td style="text-align:center"><span style="background:#ff5e6c;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">8,142</td>
+          <td class="r">14/14</td>
+          <td><a href="patterns.html#p132" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p133">
+          <td><strong>P133</strong></td>
+          <td>🔴 <strong>Daily_Bias_Intraday_Short</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">Daily_Bias_Intraday_Short</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">Mirror of P132</td>
+          <td style="text-align:center"><span style="background:#4dd498;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">S</span></td>
+          <td class="r">8,621</td>
+          <td class="r">14/14</td>
+          <td><a href="patterns.html#p133" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p134">
+          <td><strong>P134</strong></td>
+          <td>🟢 <strong>Triple_TF_Aligned_Long</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">Triple_TF_Aligned_Long</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">LTF + MTF + HTF all aligned</td>
+          <td style="text-align:center"><span style="background:#4dd498;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">S</span></td>
+          <td class="r">141</td>
+          <td class="r">9/14</td>
+          <td><a href="patterns.html#p134" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p135">
+          <td><strong>P135</strong></td>
+          <td>🔴 <strong>Triple_TF_Aligned_Short</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">Triple_TF_Aligned_Short</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">Mirror of P134</td>
+          <td style="text-align:center"><span style="background:#22c55e;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">A</span></td>
+          <td class="r">99</td>
+          <td class="r">9/14</td>
+          <td><a href="patterns.html#p135" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr></tbody>
+    </table>
+  </div>
+</section>
+<section class="section">
+  <div class="section-head">
+    <span class="section-num">12</span>
+    <h2 class="section-title">Cat L — Ichimoku (7 patterns)</h2>
+  </div>
+  <p class="lead-desc">Cloud breakouts · Tenkan/Kijun/Senkou/Chikou · ที่มา: Hosoda (1969)</p>
+  <div style="margin:10px 0;display:flex;gap:8px;flex-wrap:wrap;font-size:12px">
+    <span style="padding:3px 10px;background:rgba(77,212,152,0.15);border-radius:3px">✅ S: 3</span>
+    <span style="padding:3px 10px;background:rgba(34,197,94,0.15);border-radius:3px">A: 0</span>
+    <span style="padding:3px 10px;background:rgba(91,155,213,0.15);border-radius:3px">B: 0</span>
+    <span style="padding:3px 10px;background:rgba(148,163,184,0.15);border-radius:3px">C: 0</span>
+    <span style="padding:3px 10px;background:rgba(255,94,108,0.15);border-radius:3px">D: 4</span>
+    <span style="padding:3px 10px;background:rgba(71,85,105,0.15);border-radius:3px">N/A: 0</span>
+  </div>
+  <div class="card" style="overflow-x:auto">
+    <table class="table compact">
+      <thead><tr>
+        <th>ID</th><th>Pattern Name</th><th>ชื่อย่อ</th><th>Theory</th>
+        <th>Tier</th><th class="r">Total N</th><th class="r">Active</th><th>Link</th>
+      </tr></thead>
+      <tbody>
+        <tr id="enc-p136">
+          <td><strong>P136</strong></td>
+          <td>🟢 <strong>Ichimoku_TK_Cross_Bull</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">Ichimoku_TK_Cross_Bull</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">Tenkan crosses above Kijun</td>
+          <td style="text-align:center"><span style="background:#ff5e6c;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">1,043</td>
+          <td class="r">14/14</td>
+          <td><a href="patterns.html#p136" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p137">
+          <td><strong>P137</strong></td>
+          <td>🔴 <strong>Ichimoku_TK_Cross_Bear</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">Ichimoku_TK_Cross_Bear</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">Mirror of P136</td>
+          <td style="text-align:center"><span style="background:#4dd498;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">S</span></td>
+          <td class="r">1,035</td>
+          <td class="r">14/14</td>
+          <td><a href="patterns.html#p137" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p138">
+          <td><strong>P138</strong></td>
+          <td>🟢 <strong>Ichimoku_Cloud_Break_Bull</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">Ichimoku_Cloud_Break_Bull</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">Price breaks above cloud (kumo)</td>
+          <td style="text-align:center"><span style="background:#ff5e6c;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">651</td>
+          <td class="r">14/14</td>
+          <td><a href="patterns.html#p138" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p139">
+          <td><strong>P139</strong></td>
+          <td>🔴 <strong>Ichimoku_Cloud_Break_Bear</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">Ichimoku_Cloud_Break_Bear</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">Mirror of P138</td>
+          <td style="text-align:center"><span style="background:#4dd498;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">S</span></td>
+          <td class="r">673</td>
+          <td class="r">14/14</td>
+          <td><a href="patterns.html#p139" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p140">
+          <td><strong>P140</strong></td>
+          <td>🟢 <strong>Ichimoku_Kumo_Twist_Bull</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">Ichimoku_Kumo_Twist_Bull</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">Future cloud changes from bear to bull</td>
+          <td style="text-align:center"><span style="background:#ff5e6c;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">7,804</td>
+          <td class="r">14/14</td>
+          <td><a href="patterns.html#p140" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p141">
+          <td><strong>P141</strong></td>
+          <td>🔴 <strong>Ichimoku_Kumo_Twist_Bear</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">Ichimoku_Kumo_Twist_Bear</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">Mirror of P140</td>
+          <td style="text-align:center"><span style="background:#4dd498;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">S</span></td>
+          <td class="r">7,844</td>
+          <td class="r">14/14</td>
+          <td><a href="patterns.html#p141" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p142">
+          <td><strong>P142</strong></td>
+          <td>⚪ <strong>Ichimoku_Chikou_Confirm</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">Ichimoku_Chikou_Confirm</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">Chikou span in clear space</td>
+          <td style="text-align:center"><span style="background:#ff5e6c;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">40,084</td>
+          <td class="r">14/14</td>
+          <td><a href="patterns.html#p142" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr></tbody>
+    </table>
+  </div>
+</section>
+<section class="section">
+  <div class="section-head">
+    <span class="section-num">13</span>
+    <h2 class="section-title">Cat M — Indicator-based (8 patterns)</h2>
+  </div>
+  <p class="lead-desc">RSI Divergence, MACD Cross, Bollinger Squeeze · ที่มา: Wilder/Bollinger</p>
+  <div style="margin:10px 0;display:flex;gap:8px;flex-wrap:wrap;font-size:12px">
+    <span style="padding:3px 10px;background:rgba(77,212,152,0.15);border-radius:3px">✅ S: 3</span>
+    <span style="padding:3px 10px;background:rgba(34,197,94,0.15);border-radius:3px">A: 0</span>
+    <span style="padding:3px 10px;background:rgba(91,155,213,0.15);border-radius:3px">B: 0</span>
+    <span style="padding:3px 10px;background:rgba(148,163,184,0.15);border-radius:3px">C: 0</span>
+    <span style="padding:3px 10px;background:rgba(255,94,108,0.15);border-radius:3px">D: 5</span>
+    <span style="padding:3px 10px;background:rgba(71,85,105,0.15);border-radius:3px">N/A: 0</span>
+  </div>
+  <div class="card" style="overflow-x:auto">
+    <table class="table compact">
+      <thead><tr>
+        <th>ID</th><th>Pattern Name</th><th>ชื่อย่อ</th><th>Theory</th>
+        <th>Tier</th><th class="r">Total N</th><th class="r">Active</th><th>Link</th>
+      </tr></thead>
+      <tbody>
+        <tr id="enc-p143">
+          <td><strong>P143</strong></td>
+          <td>🟢 <strong>Inducement_Bull</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">Inducement_Bull</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">ICT inducement: sweep below swing low then reverse</td>
+          <td style="text-align:center"><span style="background:#ff5e6c;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">665</td>
+          <td class="r">14/14</td>
+          <td><a href="patterns.html#p143" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p144">
+          <td><strong>P144</strong></td>
+          <td>🔴 <strong>Inducement_Bear</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">Inducement_Bear</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">Mirror of P143</td>
+          <td style="text-align:center"><span style="background:#4dd498;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">S</span></td>
+          <td class="r">669</td>
+          <td class="r">14/14</td>
+          <td><a href="patterns.html#p144" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p145">
+          <td><strong>P145</strong></td>
+          <td>🟢 <strong>Turtle_Soup_Long</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">Turtle_Soup_Long</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">Failed Donchian breakdown reversal</td>
+          <td style="text-align:center"><span style="background:#ff5e6c;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">1,873</td>
+          <td class="r">14/14</td>
+          <td><a href="patterns.html#p145" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p146">
+          <td><strong>P146</strong></td>
+          <td>🔴 <strong>Turtle_Soup_Short</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">Turtle_Soup_Short</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">Mirror of P145</td>
+          <td style="text-align:center"><span style="background:#4dd498;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">S</span></td>
+          <td class="r">1,753</td>
+          <td class="r">14/14</td>
+          <td><a href="patterns.html#p146" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p147">
+          <td><strong>P147</strong></td>
+          <td>🟢 <strong>Stop_Run_Reversal_Bull</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">Stop_Run_Reversal_Bull</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">Liquidity stop hunt reversal</td>
+          <td style="text-align:center"><span style="background:#ff5e6c;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">294</td>
+          <td class="r">14/14</td>
+          <td><a href="patterns.html#p147" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p148">
+          <td><strong>P148</strong></td>
+          <td>🔴 <strong>Stop_Run_Reversal_Bear</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">Stop_Run_Reversal_Bear</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">Mirror of P147</td>
+          <td style="text-align:center"><span style="background:#4dd498;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">S</span></td>
+          <td class="r">244</td>
+          <td class="r">14/14</td>
+          <td><a href="patterns.html#p148" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p149">
+          <td><strong>P149</strong></td>
+          <td>🟢 <strong>Internal_Liq_Sweep_Long</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">Internal_Liq_Sweep_Long</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">Sweep recent (intra-range) liquidity</td>
+          <td style="text-align:center"><span style="background:#ff5e6c;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">1,565</td>
+          <td class="r">14/14</td>
+          <td><a href="patterns.html#p149" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p150">
+          <td><strong>P150</strong></td>
+          <td>🟢 <strong>External_Liq_Sweep_Long</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">External_Liq_Sweep_Long</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">Sweep major (50-bar) liquidity</td>
+          <td style="text-align:center"><span style="background:#ff5e6c;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">2,012</td>
+          <td class="r">14/14</td>
+          <td><a href="patterns.html#p150" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr></tbody>
+    </table>
+  </div>
+</section>
+<section class="section">
+  <div class="section-head">
+    <span class="section-num">14</span>
+    <h2 class="section-title">Cat N — Statistical Edge (10 patterns)</h2>
+  </div>
+  <p class="lead-desc">Mean reversion · Z-score · Statistical patterns · ที่มา: Quant research</p>
+  <div style="margin:10px 0;display:flex;gap:8px;flex-wrap:wrap;font-size:12px">
+    <span style="padding:3px 10px;background:rgba(77,212,152,0.15);border-radius:3px">✅ S: 5</span>
+    <span style="padding:3px 10px;background:rgba(34,197,94,0.15);border-radius:3px">A: 0</span>
+    <span style="padding:3px 10px;background:rgba(91,155,213,0.15);border-radius:3px">B: 0</span>
+    <span style="padding:3px 10px;background:rgba(148,163,184,0.15);border-radius:3px">C: 0</span>
+    <span style="padding:3px 10px;background:rgba(255,94,108,0.15);border-radius:3px">D: 5</span>
+    <span style="padding:3px 10px;background:rgba(71,85,105,0.15);border-radius:3px">N/A: 0</span>
+  </div>
+  <div class="card" style="overflow-x:auto">
+    <table class="table compact">
+      <thead><tr>
+        <th>ID</th><th>Pattern Name</th><th>ชื่อย่อ</th><th>Theory</th>
+        <th>Tier</th><th class="r">Total N</th><th class="r">Active</th><th>Link</th>
+      </tr></thead>
+      <tbody>
+        <tr id="enc-p151">
+          <td><strong>P151</strong></td>
+          <td>🟢 <strong>Pullback_EMA20_Long</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">Pullback_EMA20_Long</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">Trend pullback to EMA20</td>
+          <td style="text-align:center"><span style="background:#ff5e6c;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">2,469</td>
+          <td class="r">14/14</td>
+          <td><a href="patterns.html#p151" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p152">
+          <td><strong>P152</strong></td>
+          <td>🔴 <strong>Pullback_EMA20_Short</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">Pullback_EMA20_Short</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">Mirror of P151</td>
+          <td style="text-align:center"><span style="background:#4dd498;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">S</span></td>
+          <td class="r">2,501</td>
+          <td class="r">14/14</td>
+          <td><a href="patterns.html#p152" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p153">
+          <td><strong>P153</strong></td>
+          <td>🟢 <strong>Pullback_EMA50_Long</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">Pullback_EMA50_Long</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">Deeper trend pullback to EMA50</td>
+          <td style="text-align:center"><span style="background:#ff5e6c;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">1,122</td>
+          <td class="r">14/14</td>
+          <td><a href="patterns.html#p153" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p154">
+          <td><strong>P154</strong></td>
+          <td>🔴 <strong>Pullback_EMA50_Short</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">Pullback_EMA50_Short</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">Mirror of P153</td>
+          <td style="text-align:center"><span style="background:#4dd498;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">S</span></td>
+          <td class="r">1,114</td>
+          <td class="r">14/14</td>
+          <td><a href="patterns.html#p154" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p155">
+          <td><strong>P155</strong></td>
+          <td>🟢 <strong>Three_Touch_Trendline_Long</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">Three_Touch_Trendline_Long</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">Trendline confirmed by 3 touches</td>
+          <td style="text-align:center"><span style="background:#ff5e6c;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">1,050</td>
+          <td class="r">14/14</td>
+          <td><a href="patterns.html#p155" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p156">
+          <td><strong>P156</strong></td>
+          <td>🔴 <strong>Three_Touch_Trendline_Short</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">Three_Touch_Trendline_Short</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">Mirror of P155</td>
+          <td style="text-align:center"><span style="background:#4dd498;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">S</span></td>
+          <td class="r">1,068</td>
+          <td class="r">14/14</td>
+          <td><a href="patterns.html#p156" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p157">
+          <td><strong>P157</strong></td>
+          <td>🟢 <strong>Hidden_Div_Bull_RSI</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">Hidden_Div_Bull_RSI</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">Hidden bullish RSI divergence</td>
+          <td style="text-align:center"><span style="background:#ff5e6c;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">2,436</td>
+          <td class="r">14/14</td>
+          <td><a href="patterns.html#p157" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p158">
+          <td><strong>P158</strong></td>
+          <td>🔴 <strong>Hidden_Div_Bear_RSI</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">Hidden_Div_Bear_RSI</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">Mirror of P157</td>
+          <td style="text-align:center"><span style="background:#4dd498;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">S</span></td>
+          <td class="r">2,463</td>
+          <td class="r">14/14</td>
+          <td><a href="patterns.html#p158" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p159">
+          <td><strong>P159</strong></td>
+          <td>🟢 <strong>Hidden_Div_Bull_MACD</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">Hidden_Div_Bull_MACD</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">Hidden bullish MACD divergence</td>
+          <td style="text-align:center"><span style="background:#ff5e6c;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">3,321</td>
+          <td class="r">14/14</td>
+          <td><a href="patterns.html#p159" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p160">
+          <td><strong>P160</strong></td>
+          <td>🔴 <strong>Hidden_Div_Bear_MACD</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">Hidden_Div_Bear_MACD</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">Mirror of P159</td>
+          <td style="text-align:center"><span style="background:#4dd498;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">S</span></td>
+          <td class="r">3,734</td>
+          <td class="r">14/14</td>
+          <td><a href="patterns.html#p160" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr></tbody>
+    </table>
+  </div>
+</section>
+<section class="section">
+  <div class="section-head">
+    <span class="section-num">15</span>
+    <h2 class="section-title">Cat O — Volume Profile (5 patterns)</h2>
+  </div>
+  <p class="lead-desc">POC, Value Area · Volume distribution analysis · ที่มา: Market Profile</p>
+  <div style="margin:10px 0;display:flex;gap:8px;flex-wrap:wrap;font-size:12px">
+    <span style="padding:3px 10px;background:rgba(77,212,152,0.15);border-radius:3px">✅ S: 1</span>
+    <span style="padding:3px 10px;background:rgba(34,197,94,0.15);border-radius:3px">A: 0</span>
+    <span style="padding:3px 10px;background:rgba(91,155,213,0.15);border-radius:3px">B: 0</span>
+    <span style="padding:3px 10px;background:rgba(148,163,184,0.15);border-radius:3px">C: 0</span>
+    <span style="padding:3px 10px;background:rgba(255,94,108,0.15);border-radius:3px">D: 2</span>
+    <span style="padding:3px 10px;background:rgba(71,85,105,0.15);border-radius:3px">N/A: 2</span>
+  </div>
+  <div class="card" style="overflow-x:auto">
+    <table class="table compact">
+      <thead><tr>
+        <th>ID</th><th>Pattern Name</th><th>ชื่อย่อ</th><th>Theory</th>
+        <th>Tier</th><th class="r">Total N</th><th class="r">Active</th><th>Link</th>
+      </tr></thead>
+      <tbody>
+        <tr id="enc-p161">
+          <td><strong>P161</strong></td>
+          <td>🔴 <strong>VAH_Reject_Short</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">VAH_Reject_Short</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">Value Area High rejection</td>
+          <td style="text-align:center"><span style="background:#4dd498;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">S</span></td>
+          <td class="r">3,078</td>
+          <td class="r">14/14</td>
+          <td><a href="patterns.html#p161" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p162">
+          <td><strong>P162</strong></td>
+          <td>🟢 <strong>VAL_Reject_Long</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">VAL_Reject_Long</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">Value Area Low rejection</td>
+          <td style="text-align:center"><span style="background:#ff5e6c;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">3,319</td>
+          <td class="r">14/14</td>
+          <td><a href="patterns.html#p162" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p163">
+          <td><strong>P163</strong></td>
+          <td>🟢 <strong>Single_Print_Fill_Long</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">Single_Print_Fill_Long</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">Single-print zone filling (low-volume area)</td>
+          <td style="text-align:center"><span style="background:#475569;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">N/A</span></td>
+          <td class="r">14</td>
+          <td class="r">6/14</td>
+          <td><a href="patterns.html#p163" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p164">
+          <td><strong>P164</strong></td>
+          <td>🔴 <strong>Single_Print_Fill_Short</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">Single_Print_Fill_Short</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">Mirror of P163</td>
+          <td style="text-align:center"><span style="background:#475569;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">N/A</span></td>
+          <td class="r">7</td>
+          <td class="r">4/14</td>
+          <td><a href="patterns.html#p164" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p165">
+          <td><strong>P165</strong></td>
+          <td>🟢 <strong>POC_Migration_Long</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">POC_Migration_Long</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">Point of Control shift detection</td>
+          <td style="text-align:center"><span style="background:#ff5e6c;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">4,648</td>
+          <td class="r">14/14</td>
+          <td><a href="patterns.html#p165" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr></tbody>
+    </table>
+  </div>
+</section>
+<section class="section">
+  <div class="section-head">
+    <span class="section-num">16</span>
+    <h2 class="section-title">Cat P — Range / Breakout (5 patterns)</h2>
+  </div>
+  <p class="lead-desc">Asian Range break, Opening Range Breakout · ที่มา: ORB strategies</p>
+  <div style="margin:10px 0;display:flex;gap:8px;flex-wrap:wrap;font-size:12px">
+    <span style="padding:3px 10px;background:rgba(77,212,152,0.15);border-radius:3px">✅ S: 2</span>
+    <span style="padding:3px 10px;background:rgba(34,197,94,0.15);border-radius:3px">A: 0</span>
+    <span style="padding:3px 10px;background:rgba(91,155,213,0.15);border-radius:3px">B: 0</span>
+    <span style="padding:3px 10px;background:rgba(148,163,184,0.15);border-radius:3px">C: 0</span>
+    <span style="padding:3px 10px;background:rgba(255,94,108,0.15);border-radius:3px">D: 3</span>
+    <span style="padding:3px 10px;background:rgba(71,85,105,0.15);border-radius:3px">N/A: 0</span>
+  </div>
+  <div class="card" style="overflow-x:auto">
+    <table class="table compact">
+      <thead><tr>
+        <th>ID</th><th>Pattern Name</th><th>ชื่อย่อ</th><th>Theory</th>
+        <th>Tier</th><th class="r">Total N</th><th class="r">Active</th><th>Link</th>
+      </tr></thead>
+      <tbody>
+        <tr id="enc-p166">
+          <td><strong>P166</strong></td>
+          <td>🟢 <strong>Round_Number_Bounce_Long</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">Round_Number_Bounce_Long</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">Round number support reaction</td>
+          <td style="text-align:center"><span style="background:#ff5e6c;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">515</td>
+          <td class="r">11/14</td>
+          <td><a href="patterns.html#p166" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p167">
+          <td><strong>P167</strong></td>
+          <td>🔴 <strong>Round_Number_Bounce_Short</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">Round_Number_Bounce_Short</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">Mirror of P166</td>
+          <td style="text-align:center"><span style="background:#4dd498;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">S</span></td>
+          <td class="r">556</td>
+          <td class="r">14/14</td>
+          <td><a href="patterns.html#p167" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p168">
+          <td><strong>P168</strong></td>
+          <td>🟢 <strong>Daily_Pivot_Tag_Long</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">Daily_Pivot_Tag_Long</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">Classical daily pivot bounce</td>
+          <td style="text-align:center"><span style="background:#ff5e6c;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">806</td>
+          <td class="r">14/14</td>
+          <td><a href="patterns.html#p168" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p169">
+          <td><strong>P169</strong></td>
+          <td>🔴 <strong>Daily_Pivot_Tag_Short</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">Daily_Pivot_Tag_Short</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">Mirror of P168</td>
+          <td style="text-align:center"><span style="background:#4dd498;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">S</span></td>
+          <td class="r">887</td>
+          <td class="r">14/14</td>
+          <td><a href="patterns.html#p169" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p170">
+          <td><strong>P170</strong></td>
+          <td>⚪ <strong>Range_Mid_Bounce</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">Range_Mid_Bounce</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">Range middle reversion (direction-agnostic)</td>
+          <td style="text-align:center"><span style="background:#ff5e6c;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">5,136</td>
+          <td class="r">14/14</td>
+          <td><a href="patterns.html#p170" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr></tbody>
+    </table>
+  </div>
+</section>
+<section class="section">
+  <div class="section-head">
+    <span class="section-num">17</span>
+    <h2 class="section-title">Cat Q — Special Setups (4 patterns)</h2>
+  </div>
+  <p class="lead-desc">Specific market structure setups · ที่มา: Various</p>
+  <div style="margin:10px 0;display:flex;gap:8px;flex-wrap:wrap;font-size:12px">
+    <span style="padding:3px 10px;background:rgba(77,212,152,0.15);border-radius:3px">✅ S: 2</span>
+    <span style="padding:3px 10px;background:rgba(34,197,94,0.15);border-radius:3px">A: 0</span>
+    <span style="padding:3px 10px;background:rgba(91,155,213,0.15);border-radius:3px">B: 0</span>
+    <span style="padding:3px 10px;background:rgba(148,163,184,0.15);border-radius:3px">C: 0</span>
+    <span style="padding:3px 10px;background:rgba(255,94,108,0.15);border-radius:3px">D: 2</span>
+    <span style="padding:3px 10px;background:rgba(71,85,105,0.15);border-radius:3px">N/A: 0</span>
+  </div>
+  <div class="card" style="overflow-x:auto">
+    <table class="table compact">
+      <thead><tr>
+        <th>ID</th><th>Pattern Name</th><th>ชื่อย่อ</th><th>Theory</th>
+        <th>Tier</th><th class="r">Total N</th><th class="r">Active</th><th>Link</th>
+      </tr></thead>
+      <tbody>
+        <tr id="enc-p171">
+          <td><strong>P171</strong></td>
+          <td>🟢 <strong>ABCD_Bull</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">ABCD_Bull</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">Classical ABCD measure-leg pattern</td>
+          <td style="text-align:center"><span style="background:#ff5e6c;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">3,028</td>
+          <td class="r">14/14</td>
+          <td><a href="patterns.html#p171" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p172">
+          <td><strong>P172</strong></td>
+          <td>🔴 <strong>ABCD_Bear</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">ABCD_Bear</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">Mirror of P171</td>
+          <td style="text-align:center"><span style="background:#4dd498;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">S</span></td>
+          <td class="r">2,911</td>
+          <td class="r">14/14</td>
+          <td><a href="patterns.html#p172" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p173">
+          <td><strong>P173</strong></td>
+          <td>🟢 <strong>Three_Drives_Bull</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">Three_Drives_Bull</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">Three drives to a bottom</td>
+          <td style="text-align:center"><span style="background:#ff5e6c;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">3,692</td>
+          <td class="r">14/14</td>
+          <td><a href="patterns.html#p173" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p174">
+          <td><strong>P174</strong></td>
+          <td>🔴 <strong>Three_Drives_Bear</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">Three_Drives_Bear</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">Three drives to a top</td>
+          <td style="text-align:center"><span style="background:#4dd498;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">S</span></td>
+          <td class="r">3,498</td>
+          <td class="r">14/14</td>
+          <td><a href="patterns.html#p174" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr></tbody>
+    </table>
+  </div>
+</section>
+<section class="section">
+  <div class="section-head">
+    <span class="section-num">18</span>
+    <h2 class="section-title">Cat R — Specialized (3 patterns)</h2>
+  </div>
+  <p class="lead-desc">Specialized patterns · combination strategies · ที่มา: Various</p>
+  <div style="margin:10px 0;display:flex;gap:8px;flex-wrap:wrap;font-size:12px">
+    <span style="padding:3px 10px;background:rgba(77,212,152,0.15);border-radius:3px">✅ S: 1</span>
+    <span style="padding:3px 10px;background:rgba(34,197,94,0.15);border-radius:3px">A: 0</span>
+    <span style="padding:3px 10px;background:rgba(91,155,213,0.15);border-radius:3px">B: 0</span>
+    <span style="padding:3px 10px;background:rgba(148,163,184,0.15);border-radius:3px">C: 0</span>
+    <span style="padding:3px 10px;background:rgba(255,94,108,0.15);border-radius:3px">D: 1</span>
+    <span style="padding:3px 10px;background:rgba(71,85,105,0.15);border-radius:3px">N/A: 1</span>
+  </div>
+  <div class="card" style="overflow-x:auto">
+    <table class="table compact">
+      <thead><tr>
+        <th>ID</th><th>Pattern Name</th><th>ชื่อย่อ</th><th>Theory</th>
+        <th>Tier</th><th class="r">Total N</th><th class="r">Active</th><th>Link</th>
+      </tr></thead>
+      <tbody>
+        <tr id="enc-p175">
+          <td><strong>P175</strong></td>
+          <td>🟢 <strong>BB_Squeeze_Breakout_Long</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">BB_Squeeze_Breakout_Long</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">Volatility regime change — bullish breakout</td>
+          <td style="text-align:center"><span style="background:#ff5e6c;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">D</span></td>
+          <td class="r">372</td>
+          <td class="r">14/14</td>
+          <td><a href="patterns.html#p175" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p176">
+          <td><strong>P176</strong></td>
+          <td>🔴 <strong>BB_Squeeze_Breakout_Short</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">BB_Squeeze_Breakout_Short</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">Mirror of P175</td>
+          <td style="text-align:center"><span style="background:#4dd498;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">S</span></td>
+          <td class="r">390</td>
+          <td class="r">14/14</td>
+          <td><a href="patterns.html#p176" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr>
+        <tr id="enc-p177">
+          <td><strong>P177</strong></td>
+          <td>⚪ <strong>ATR_Expansion</strong></td>
+          <td style="color:var(--text-dim);font-size:13px">ATR_Expansion</td>
+          <td style="font-size:12px;color:var(--text-dim);max-width:300px">Volatility regime shift (agnostic)</td>
+          <td style="text-align:center"><span style="background:#475569;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:700;font-size:11px">N/A</span></td>
+          <td class="r">0</td>
+          <td class="r">0/14</td>
+          <td><a href="patterns.html#p177" style="color:var(--blue);font-size:12px">รายละเอียด →</a></td>
+        </tr></tbody>
+    </table>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head"><span class="section-num">🔗</span><h2 class="section-title">หน้าที่เกี่ยวข้อง</h2></div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px">
+    <a href="patterns.html" class="card" style="text-decoration:none;color:var(--text)"><div class="card-title">📊 Patterns Master Table</div><div style="font-size:12px;color:var(--text-dim)">ตาราง pattern + Best Setup</div></a>
+    <a href="tier.html" class="card" style="text-decoration:none;color:var(--text)"><div class="card-title">🏆 Tier Rankings</div><div style="font-size:12px;color:var(--text-dim)">จัดอันดับ S/A/B/C/D</div></a>
+    <a href="research-references.html" class="card" style="text-decoration:none;color:var(--text)"><div class="card-title">📚 Research References</div><div style="font-size:12px;color:var(--text-dim)">ที่มาของ patterns</div></a>
+    <a href="optimal-tpsl.html" class="card" style="text-decoration:none;color:var(--text)"><div class="card-title">⚙️ Optimal SL/TP</div><div style="font-size:12px;color:var(--text-dim)">setup แนะนำ</div></a>
+  </div>
+</section>
+</main>
+
+
+  
+<script>
+// KMP Master · Inline Sidebar JS (no cache, no delegation)
+(function() {
+  function initSidebar() {
+    // Make sure all menus start closed
+    document.querySelectorAll('.tree-children').forEach(function(el){ el.classList.remove('show'); });
+    document.querySelectorAll('.tree-node.expandable').forEach(function(el){ el.classList.remove('expanded'); });
+    
+    // Attach click handler to EACH expandable tree-node directly
+    var nodes = document.querySelectorAll('.tree-node.expandable');
+    nodes.forEach(function(node) {
+      // Visual feedback — click cursor
+      node.style.cursor = 'pointer';
+      
+      node.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var id = node.getAttribute('data-toggle');
+        if (!id) return;
+        var target = document.getElementById(id);
+        if (!target) return;
+        node.classList.toggle('expanded');
+        target.classList.toggle('show');
+      });
+    });
+    
+    // Highlight active link
+    var path = window.location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('.tree-node[href]').forEach(function(link) {
+      if (link.getAttribute('href') === path) link.classList.add('active');
+    });
+  }
+  
+  // Run when DOM is ready (or now if already ready)
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initSidebar);
+  } else {
+    initSidebar();
+  }
+  
+  // Search filter
+  function initSearch() {
+    var inp = document.getElementById('globalSearch');
+    if (!inp) return;
+    inp.addEventListener('input', function(e) {
+      var q = e.target.value.toLowerCase().trim();
+      var sections = document.querySelectorAll('.section, .insight, .kpi, .pat-card, .chart-card');
+      sections.forEach(function(s) {
+        if (!q) { s.style.display = ''; return; }
+        s.style.display = s.textContent.toLowerCase().includes(q) ? '' : 'none';
+      });
+    });
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initSearch);
+  } else {
+    initSearch();
+  }
+  
+  // Helper functions for pages that need them
+  window.wrClass = function(wr, n) {
+    if (wr == null || n < 30) return 'none';
+    return wr >= 53 ? 'high' : (wr >= 48 ? 'mid' : 'low');
+  };
+  window.wrPill = function(wr, n) {
+    if (wr == null || n < 30) return '<span class="wr-pill none">—</span>';
+    return '<span class="wr-pill ' + window.wrClass(wr, n) + '">' + wr.toFixed(1) + '%</span>';
+  };
+  window.dirText = function(d) {
+    if (d === 1) return '<span style="color:var(--green)">L</span>';
+    if (d === -1) return '<span style="color:var(--red)">S</span>';
+    return '<span style="color:var(--yellow)">⇄</span>';
+  };
+  window.tierLabel = function(tier) {
+    return '<span class="tier-tag tier-' + tier + '">' + tier + '</span>';
+  };
+  window.fmtN = function(n) {
+    if (n == null) return '—';
+    if (n >= 1000000) return (n/1000000).toFixed(2) + 'M';
+    if (n >= 1000) return (n/1000).toFixed(1) + 'K';
+    return n.toLocaleString();
+  };
+  window.fmtDollar = function(n, withSign) {
+    if (n == null) return '—';
+    var sign = n < 0 ? '-$' : (withSign ? '+$' : '$');
+    return sign + Math.abs(n).toLocaleString();
+  };
+  
+  // Data loader
+  var _cached = null;
+  window.loadData = async function() {
+    if (_cached) return _cached;
+    try {
+      var res = await fetch('data/master_data.json');
+      _cached = await res.json();
+      return _cached;
+    } catch (e) {
+      console.error('Failed to load data:', e);
+      return null;
+    }
+  };
+})();
+</script>
+</body>
+</html>
