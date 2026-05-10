@@ -296,26 +296,27 @@
 <section>
   <div class="section-head"><span class="section-num">01</span><h2 class="section-title">Tier Distribution</h2></div>
   <div class="kpis">
-    <div class="kpi" style="border-color:#10b981"><div class="kpi-label" style="color:#10b981">Tier S</div><div class="kpi-val" style="color:#10b981">12</div><div class="kpi-sub">PnL ≥200 · 2ds · n≥100</div></div>
-    <div class="kpi" style="border-color:#22c55e"><div class="kpi-label" style="color:#22c55e">Tier A</div><div class="kpi-val" style="color:#22c55e">3</div><div class="kpi-sub">PnL ≥100 · n≥60</div></div>
-    <div class="kpi" style="border-color:#3b82f6"><div class="kpi-label" style="color:#3b82f6">Tier B</div><div class="kpi-val" style="color:#3b82f6">2</div><div class="kpi-sub">PnL ≥50</div></div>
-    <div class="kpi"><div class="kpi-label">Tier C</div><div class="kpi-val">7</div><div class="kpi-sub">PnL 0-50</div></div>
-    <div class="kpi" style="border-color:#ef4444"><div class="kpi-label" style="color:#ef4444">Tier D</div><div class="kpi-val" style="color:#ef4444">150</div><div class="kpi-sub">PnL < 0 (avoid)</div></div>
-    <div class="kpi"><div class="kpi-label" style="color:#94a3b8">N/A</div><div class="kpi-val" style="color:#94a3b8">3</div><div class="kpi-sub">n < 30 หรือ inactive</div></div>
+    <div class="kpi" style="border-color:#10b981"><div class="kpi-label" style="color:#10b981">Tier S+</div><div class="kpi-val" style="color:#10b981">9</div><div class="kpi-sub">active 100% + profit 100%</div></div>
+    <div class="kpi" style="border-color:#22c55e"><div class="kpi-label" style="color:#22c55e">Tier S</div><div class="kpi-val" style="color:#22c55e">18</div><div class="kpi-sub">active 90%+ · profit 90%+</div></div>
+    <div class="kpi" style="border-color:#3b82f6"><div class="kpi-label" style="color:#3b82f6">Tier A</div><div class="kpi-val" style="color:#3b82f6">32</div><div class="kpi-sub">active 70%+ · profit 70%+</div></div>
+    <div class="kpi" style="border-color:#fbbf24"><div class="kpi-label" style="color:#fbbf24">Tier B</div><div class="kpi-val" style="color:#fbbf24">95</div><div class="kpi-sub">profit ≥50%</div></div>
+    <div class="kpi" style="border-color:#f59e0b"><div class="kpi-label" style="color:#f59e0b">Tier C</div><div class="kpi-val" style="color:#f59e0b">0</div><div class="kpi-sub">marginal</div></div>
+    <div class="kpi" style="border-color:#ef4444"><div class="kpi-label" style="color:#ef4444">Tier D</div><div class="kpi-val" style="color:#ef4444">23</div><div class="kpi-sub">avoid (EV negative)</div></div>
+  </div>
   </div>
 </section>
 
 <section>
   <div class="section-head"><span class="section-num">02</span><h2 class="section-title">Patterns Master Table</h2></div>
-  <p class="lead-desc">177 patterns · sortable · filterable · ⚠️ Tier ตอนนี้ preliminary จาก 66/6 datasets</p>
+  <p class="lead-desc">177 patterns · sortable · filterable · Tier ranking จาก 66 datasets · 2,154,570 trades · ใช้ realistic first-hit logic</p>
   <div style="margin:12px 0;display:flex;gap:8px;flex-wrap:wrap;align-items:center">
     <label style="font-size:13px;color:var(--txt-d)">Filter:</label>
     <button class="filter-btn active" onclick="filterTier('all')">All</button>
-    <button class="filter-btn" onclick="filterTier('S')">Tier S</button>
-    <button class="filter-btn" onclick="filterTier('A')">Tier A</button>
-    <button class="filter-btn" onclick="filterTier('B')">Tier B</button>
-    <button class="filter-btn" onclick="filterTier('C')">Tier C</button>
-    <button class="filter-btn" onclick="filterTier('D')">Tier D</button>
+    <button class="filter-btn" onclick="filterTier('S+')">Tier S+ (9)</button>
+    <button class="filter-btn" onclick="filterTier('S')">Tier S (18)</button>
+    <button class="filter-btn" onclick="filterTier('A')">Tier A (32)</button>
+    <button class="filter-btn" onclick="filterTier('B')">Tier B (95)</button>
+    <button class="filter-btn" onclick="filterTier('D')">Tier D (23)</button>
     <input type="text" id="patternSearch" placeholder="Search name..." style="margin-left:auto;padding:6px 10px;background:var(--bg-1);border:1px solid var(--bd);color:var(--txt);border-radius:4px;width:200px" oninput="filterSearch()"/>
   </div>
   <div class="card" style="overflow-x:auto">
