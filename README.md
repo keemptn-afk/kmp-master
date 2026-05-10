@@ -1,9 +1,9 @@
-# KMP Master v9.0 — 27 datasets active
+# KMP Master v9.0 — 30 datasets active (1M trades soon!)
 
-**Status:** v9.0 · 27/69 datasets · 907,332 trades · 9 assets active · EA v4.1
+**Status:** v9.0 · 30/69 datasets · 998,272 trades · 10 assets active · EA v4.1
 **Total HTML:** 110 pages · sidebar bug fixed (inline JS)
 
-## Active Data (9 assets × 3 TFs = 27 datasets)
+## Active Data (10 assets × 3 TFs = 30 datasets)
 
 | Asset      | M15     | H1      | H4     | Total   |
 |------------|---------|---------|--------|---------|
@@ -16,24 +16,25 @@
 | DE30 (DAX) | 66,253  | 16,207  | 4,311  | 86,771  |
 | UKOIL      | 61,022  | 15,156  | 4,303  | 80,481  |
 | US500      | 68,857  | 16,934  | 4,934  | 90,725  |
-| **Total**  | 696,120 | 166,293 | 44,919 | **907,332** |
+| XNGUSD     | 68,746  | 17,550  | 4,644  | 90,940  |
+| **Total**  | 764,866 | 183,843 | 49,563 | **998,272** |
 
 ## Class breakdown
 - Crypto: 265,005 (BTC + ETH)
 - Metals: 182,762 (XAU + XPT)
-- Energy: 80,481 (UKOIL)
+- Energy: 171,421 (UKOIL + XNGUSD)
 - Forex: 201,588 (EUR + JPY)
 - Indices: 177,496 (DE30 + US500)
 
 ## Deploy
 ```bash
 cd ~/Downloads
-unzip -o KMP_v9_27datasets_website.zip
+unzip -o KMP_v9_30datasets_website.zip
 cd ~/Documents/kmp-master
 git pull
-cp -rf ~/Downloads/KMP_v9_27datasets_website/* ./
+cp -rf ~/Downloads/KMP_v9_30datasets_website/* ./
 git add -A
-git commit -m "v9.0 · 27 datasets · +UKOIL +US500 · 907K trades"
+git commit -m "v9.0 · 30 datasets · +XNGUSD · 998K trades (almost 1M)"
 git push
 ```
 
