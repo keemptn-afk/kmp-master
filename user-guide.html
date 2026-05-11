@@ -103,7 +103,7 @@
       <span class="brand-icon">🏆</span>
       <div>
         <div class="brand-name">KMP Master</div>
-        <div class="brand-ver">EA v4.1 · 177 patterns · 131 cols</div>
+        <div class="brand-ver">v9.1 · EA v4.1 · 23 assets · 69 datasets · 2,245,158 trades</div>
       </div>
     </div>
     <div class="nav-label">เริ่มต้น</div>
@@ -122,7 +122,7 @@
   </div>
   
   <div class="main">
-    <span class="hero-tag">📖 KMP Master · v9.0 · 66/69 datasets · 2.15M trades</span>
+    <span class="hero-tag">📖 KMP Master · v9.1 · 69/69 datasets · 2.25M trades · 23/23 assets</span>
     <h1>คู่มือการใช้งานเว็บ KMP Master</h1>
     <p class="lead">คู่มือนี้อธิบายทุกหัวข้อในเว็บ — วิธีอ่านค่า · ความหมายของตัวเลข · การใช้งานเพื่อหาแพทเทิร์นเทรด · ภาษาไทยล้วน เข้าใจง่าย ใช้ได้จริง</p>
     
@@ -141,7 +141,7 @@
     <!-- ====================================================================== -->
     <h2 id="part1">ส่วนที่ 1 · ภาพรวมโครงการ KMP Master</h2>
     
-    <p>KMP Master คือเว็บ <strong>research dashboard</strong> สำหรับเก็บและวิเคราะห์ผล <strong>backtest 177 trading patterns</strong> ทำงานบน <strong>22 สินทรัพย์ × 3 timeframes = 66 datasets</strong> รวม <strong>2,154,570 trades</strong></p>
+    <p>KMP Master คือเว็บ <strong>research dashboard</strong> สำหรับเก็บและวิเคราะห์ผล <strong>backtest 177 trading patterns</strong> ทำงานบน <strong>22 สินทรัพย์ × 3 timeframes = 69 datasets</strong> รวม <strong>2,245,158 trades</strong></p>
     
     <h3>1.1 จุดประสงค์</h3>
     <ul>
@@ -159,7 +159,7 @@
       <tr><td>Energy</td><td>3 ✓</td><td>USOIL (WTI), UKOIL (Brent), XNGUSD (Natural Gas)</td><td>260,770</td></tr>
       <tr><td>Forex Major</td><td>7 ✓</td><td>EUR/USD, USD/JPY, GBP/USD, AUD/USD, USD/CAD, USD/CHF, NZD/USD</td><td>702,219</td></tr>
       <tr><td>Forex Cross</td><td>3 ✓</td><td>EUR/JPY, GBP/JPY, EUR/GBP</td><td>305,521</td></tr>
-      <tr><td>Indices</td><td>4/5</td><td>DE30 (DAX), US500 (S&P 500), JP225 (Nikkei), UK100 (FTSE) — เหลือ USTEC</td><td>350,579</td></tr>
+      <tr><td>Indices</td><td>5/5</td><td>DE30 (DAX), US500 (S&P 500), USTEC (Nasdaq 100), JP225 (Nikkei), UK100 (FTSE)</td><td>441,167</td></tr>
     </table>
     
     <h3>1.3 Timeframes ที่ทดสอบ</h3>
@@ -325,7 +325,7 @@ SL 0.5×ATR / TP 1.0×ATR (RR 1:2)
     </ol>
     
     <h3>4.2 หน้า Patterns (patterns.html)</h3>
-    <p><strong>วัตถุประสงค์:</strong> ตารางรวมทุก pattern (177 ตัว) ทุก dataset (66) · search/filter ได้</p>
+    <p><strong>วัตถุประสงค์:</strong> ตารางรวมทุก pattern (177 ตัว) ทุก dataset (69) · search/filter ได้</p>
     <p><strong>คอลัมน์:</strong></p>
     <ul>
       <li><code>PID</code> — รหัส pattern (P1-P177)</li>
@@ -527,7 +527,7 @@ SL 0.5×ATR / TP 1.0×ATR (RR 1:2)
       <div class="step-num">1</div>
       <div class="step-content">
         <h4>เริ่มจากหน้า Tier (tier.html)</h4>
-        <p>ดู <strong>Tier S+</strong> patterns ก่อน · จะได้รายชื่อ "elite" 9 ตัว · top 3: P9 BB_Touch_Reversal (+0.92R), P51 HHHL (+0.91R), P71 FVG_Bull (+0.89R)</p>
+        <p>ดู <strong>Tier S+</strong> patterns ก่อน · จะได้รายชื่อ "elite" 9 ตัว · top 3: P9 BB_Touch_Reversal (+0.93R), P51 HHHL (+0.92R), P71 FVG_Bull (+0.89R)</p>
       </div>
     </div>
     
@@ -612,7 +612,7 @@ SL 0.5×ATR / TP 1.0×ATR (RR 1:2)
     <div class="info-box warn">
       <strong>3. Sample bias ใน BTC/ETH M15</strong><br>
       EA เก่ามี <code>MAX_TRACKED_POSITIONS = 10000</code> → BTC/ETH M15 chop รายการ ~20-30%<br>
-      <strong>แก้ไข v9.0:</strong> bump เป็น 50K + rerun (ในแผน)
+      <strong>✅ แก้ไขแล้ว v9.0:</strong> bump เป็น 50K + rerun เสร็จ · ปัจจุบัน v9.1 ครบ 23 assets
     </div>
     
     <div class="info-box danger">
@@ -627,7 +627,7 @@ SL 0.5×ATR / TP 1.0×ATR (RR 1:2)
     <p>A: ทำได้แต่ WR จะลดลงเหลือ ~44% (จาก 56.8% ที่ best case) เพราะ asset แต่ละตัวมี behavior ต่างกัน · กลยุทธ์ที่แนะนำ: ใช้ <strong>P140 + P141 (Bull+Bear Kumo Twist) บน H1 timeframe</strong> · expected EV ~+0.33R/trade</p>
     
     <h4>Q: เงินทุนเท่าไรพอ?</h4>
-    <p>A: <strong>$10,000 USD ขั้นต่ำ</strong> สำหรับเทรด 12-22 assets พร้อมกัน · risk 0.5%/trade · expected return realistic +50-100%/year หลัง OOS discount</p>
+    <p>A: <strong>$10,000 USD ขั้นต่ำ</strong> สำหรับเทรด 12-23 assets พร้อมกัน · risk 0.5%/trade · expected return realistic +50-100%/year หลัง OOS discount</p>
     
     <h4>Q: เลือกแค่ M15 หรือต้องดู H1, H4 ด้วย?</h4>
     <p>A: ขึ้นกับ trading style:</p>
@@ -692,7 +692,7 @@ SL 0.5×ATR / TP 1.0×ATR (RR 1:2)
     <hr>
     
     <p style="text-align: center; color: var(--muted); font-size: 12px; margin-top: 40px;">
-      KMP Master · v9.0 · 66/69 datasets · 2,154,570 trades · 22/23 assets · EA v4.1 · 177 patterns<br>
+      KMP Master · v9.1 · 69/69 datasets · 2,245,158 trades · 23/23 assets · EA v4.1 · 177 patterns<br>
       Live: <a href="https://keemptn-afk.github.io/kmp-master/" style="color:var(--blue);text-decoration:none">keemptn-afk.github.io/kmp-master</a>
     </p>
   </div>

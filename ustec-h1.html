@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="th"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>USTEC (Nasdaq 100) H1 · KMP Master</title>
+<title>BTC H4 · KMP Master</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&family=Sarabun:wght@400;500;600;700&family=Bricolage+Grotesque:wght@400;700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css?v=6.7">
+<link rel="stylesheet" href="assets/style.css?v=9.1">
 </head><body>
 <nav class="sidebar">
   <div class="sidebar-brand">
     <a class="brand-logo" href="index.html">KMP <span class="accent">Master</span></a>
-    <div class="brand-ver">EA v4.1 · 177 patterns · 131 cols</div>
+    <div class="brand-ver">v9.1 · EA v4.1 · 23 assets · 69 datasets · 2,245,158 trades</div>
   </div>
   
   <input type="text" class="search-box" id="globalSearch" placeholder="ค้นหา...">
@@ -21,7 +21,7 @@
   </div>
   
   <div class="nav-section">
-    <div class="nav-label">Datasets · v9.0 · 66/69 ds · 2154K trades</div>
+    <div class="nav-label">Datasets · v9.1 · 69/69 ds · 2.25M trades</div>
     
     <div class="tree-node lvl-0 expandable" data-toggle="crypto-menu">
       <span class="arrow">▶</span><span class="nm">Crypto</span><span class="badge">2</span>
@@ -210,12 +210,12 @@
         <a class="tree-node lvl-2" href="us500-m15.html"><span class="nm">US500 M15</span><span class="badge" style="background:#10b981;color:#fff">68,857</span></a>
       </div>
       <div class="tree-node lvl-1 expandable" data-toggle="ustec-menu">
-        <span class="arrow">▶</span><span class="nm">USTEC (Nasdaq 100)</span><span class="badge" style="background:#06b6d4;color:#fff">0</span>
+        <span class="arrow">▶</span><span class="nm">USTEC (Nasdaq 100)</span><span class="badge" style="background:#06b6d4;color:#fff">90.6K</span>
       </div>
       <div class="tree-children" id="ustec-menu">
-        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">USTEC H4</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
-        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">USTEC H1</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
-        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">USTEC M15</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <a class="tree-node lvl-2" href="ustec-h4.html"><span class="nm">USTEC H4</span><span class="badge" style="background:#10b981;color:#fff">4,831</span></a>
+        <a class="tree-node lvl-2" href="ustec-h1.html"><span class="nm">USTEC H1</span><span class="badge" style="background:#10b981;color:#fff">16,830</span></a>
+        <a class="tree-node lvl-2" href="ustec-m15.html"><span class="nm">USTEC M15</span><span class="badge" style="background:#10b981;color:#fff">68,927</span></a>
       </div>
       <div class="tree-node lvl-1 expandable" data-toggle="de30-menu">
         <span class="arrow">▶</span><span class="nm">DE30 (DAX)</span><span class="badge" style="background:#facc15;color:#0a0a0a">86.8K</span>
@@ -266,7 +266,6 @@
   
   <div class="nav-section">
     <div class="nav-label">Strategy</div>
-    
   </div>
   
   <div class="nav-section">
@@ -274,24 +273,546 @@
     <a class="tree-node lvl-0" href="ea-architecture.html"><span class="arrow"></span><span class="nm">⚙ EA Architecture</span></a>
     <a class="tree-node lvl-0" href="tracking-system.html"><span class="arrow"></span><span class="nm">🎯 Tracking System</span></a>  </div>  <div class="nav-section">
     <div class="nav-label">Reference</div>
-
   <a class="tree-node lvl-0" href="reference.html"><span class="arrow"></span><span class="nm">📚 อ้างอิง · ข้อจำกัด · Changelog</span></a>
   </div>
 </nav>
 
-<main class="main-content">
-<div style="padding:48px 24px;text-align:center;background:rgba(15,23,42,.5);border:1px dashed rgba(148,163,184,.5);border-radius:12px;margin:32px 0">
-  <h1 style="color:#94a3b8;margin:0 0 12px 0;font-size:2em">⋯ NASDAQ-100 H1</h1>
-  <p style="color:#cbd5e1;font-size:1.1em">Pending harvest with EA v4.1</p>
-  <p style="color:#94a3b8">When data is available, this page will show:</p>
-  <p style="color:#cbd5e1;line-height:1.8">
-    Pattern Distribution · Top/Worst Patterns · Entry Quality · Context Filters<br>
-    SL/TP 20×20 grid (400 combos) · Time Decay · Trade Trajectory · Key Findings<br>
-    HTF D1 Filter Context · RR Selector Tool · Spread/Swing Quality
+<main class="main">
+
+  <div class="hero">
+    <span class="hero-tag" style="background:#3b82f6;color:#0a0a0a">USTEC (Nasdaq 100) · H1 · v9.1 EA v4.1</span>
+    <h1 class="hero-title">USTEC (Nasdaq 100) <span class="accent">H1</span></h1>
+    <p class="hero-desc">
+      EA v4.1 · 16,830 trades · WR 49.86% · PF 1.011 · 
+      Net <span class="tg">+676.2 ATR</span> 
+      / <span class="tg">$+676</span>
+    </p>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:14px;font-size:12px;color:var(--text-dim)">
+      <div>📅 2026.01.26 → 2026.04.20</div>
+      <div>🎯 153/177 patterns · ✅ 43 robust · 🔵 28 solid · ⚠️ 28 preliminary</div>
+      <div>📊 expectancy +0.0402 ATR/trade</div>
+      <div>💱 spread avg 148pts</div>
+    </div>
+  </div>
+
+<section>
+  <div class="section-head"><span class="section-num">01</span><h2 class="section-title">Pattern Distribution</h2></div>
+  <p class="lead-desc">153 active patterns / 177 categories · ขนาด bar = จำนวน trades · ค่าขวา = total PnL ATR</p>
+  <div class="chart-card">
+    <div class="chart-title">Trades by Pattern Category</div>
+    <div class="bar-row"><span class="label">A · Original</span><div class="bar-track"><div class="bar-fill" style="width:100.0%;background:var(--yellow)"></div><span class="bar-label-outside">2,940 · 17.5%</span></div><span class="val-r num-neg">-93.9R</span></div><div class="bar-row"><span class="label">L · Ichimoku</span><div class="bar-track"><div class="bar-fill" style="width:75.7%;background:var(--blue)"></div><span class="bar-label-outside">2,226 · 13.2%</span></div><span class="val-r num-neg">-605.0R</span></div><div class="bar-row"><span class="label">D · Structure</span><div class="bar-track"><div class="bar-fill" style="width:52.6%;background:var(--amber)"></div><span class="bar-label-outside">1,546 · 9.2%</span></div><span class="val-r num-pos">+568.3R</span></div><div class="bar-row"><span class="label">F · SMC</span><div class="bar-track"><div class="bar-fill" style="width:50.5%;background:var(--cyan)"></div><span class="bar-label-outside">1,486 · 8.8%</span></div><span class="val-r num-neg">-831.9R</span></div><div class="bar-row"><span class="label">C · S/R + OB</span><div class="bar-track"><div class="bar-fill" style="width:48.5%;background:var(--red)"></div><span class="bar-label-outside">1,427 · 8.5%</span></div><span class="val-r num-pos">+81.7R</span></div><div class="bar-row"><span class="label">G · Stat Edge</span><div class="bar-track"><div class="bar-fill" style="width:48.5%;background:var(--green)"></div><span class="bar-label-outside">1,426 · 8.5%</span></div><span class="val-r num-neg">-30.2R</span></div><div class="bar-row"><span class="label">K · Multi-TF</span><div class="bar-track"><div class="bar-fill" style="width:33.4%;background:var(--yellow)"></div><span class="bar-label-outside">981 · 5.8%</span></div><span class="val-r num-pos">+244.0R</span></div><div class="bar-row"><span class="label">B · Candlestick</span><div class="bar-track"><div class="bar-fill" style="width:26.5%;background:var(--blue)"></div><span class="bar-label-outside">779 · 4.6%</span></div><span class="val-r num-pos">+65.6R</span></div><div class="bar-row"><span class="label">N · Momentum</span><div class="bar-track"><div class="bar-fill" style="width:24.9%;background:var(--amber)"></div><span class="bar-label-outside">731 · 4.3%</span></div><span class="val-r num-pos">+353.2R</span></div><div class="bar-row"><span class="label">I · VSA/Wyckoff</span><div class="bar-track"><div class="bar-fill" style="width:21.5%;background:var(--cyan)"></div><span class="bar-label-outside">632 · 3.8%</span></div><span class="val-r num-pos">+390.0R</span></div><div class="bar-row"><span class="label">Q · ABCD</span><div class="bar-track"><div class="bar-fill" style="width:18.1%;background:var(--red)"></div><span class="bar-label-outside">531 · 3.2%</span></div><span class="val-r num-neg">-218.5R</span></div><div class="bar-row"><span class="label">H · SMC Adv</span><div class="bar-track"><div class="bar-fill" style="width:16.7%;background:var(--green)"></div><span class="bar-label-outside">490 · 2.9%</span></div><span class="val-r num-pos">+129.2R</span></div><div class="bar-row"><span class="label">J · Harmonic</span><div class="bar-track"><div class="bar-fill" style="width:16.4%;background:var(--yellow)"></div><span class="bar-label-outside">482 · 2.9%</span></div><span class="val-r num-pos">+609.5R</span></div><div class="bar-row"><span class="label">O · Vol Profile</span><div class="bar-track"><div class="bar-fill" style="width:12.8%;background:var(--blue)"></div><span class="bar-label-outside">377 · 2.2%</span></div><span class="val-r num-pos">+111.1R</span></div><div class="bar-row"><span class="label">M · Modern SMC</span><div class="bar-track"><div class="bar-fill" style="width:12.0%;background:var(--amber)"></div><span class="bar-label-outside">353 · 2.1%</span></div><span class="val-r num-neg">-396.3R</span></div><div class="bar-row"><span class="label">P · Range</span><div class="bar-track"><div class="bar-fill" style="width:8.9%;background:var(--cyan)"></div><span class="bar-label-outside">263 · 1.6%</span></div><span class="val-r num-neg">-29.3R</span></div><div class="bar-row"><span class="label">E · Chart Patt</span><div class="bar-track"><div class="bar-fill" style="width:4.5%;background:var(--red)"></div><span class="bar-label-outside">132 · 0.8%</span></div><span class="val-r num-pos">+328.6R</span></div><div class="bar-row"><span class="label">R · Vol Regime</span><div class="bar-track"><div class="bar-fill" style="width:1.0%;background:var(--green)"></div><span class="bar-label-outside">28 · 0.2%</span></div><span class="val-r num-pos">+0.0R</span></div>
+  </div>
+  <div class="section-head"><span class="section-num">02</span><h2 class="section-title">Top Patterns (n≥30)</h2></div>
+  <p class="lead-desc">15 patterns กำไรสูงสุด · MFE/MAE = max favorable/adverse excursion · คลิก P# เปิดใน Patterns table</p>
+  <div class="card"><table class="table compact ranked">
+    <thead><tr><th>Pattern</th><th>Cat</th><th class="r">N</th><th class="r">Win%</th><th class="r">PnL ATR</th><th class="r">PnL $</th><th class="r">PF</th><th class="r">MFE</th><th class="r">MAE</th></tr></thead>
+    <tbody><tr><td><a href="patterns.html#p46" style="color:var(--blue)"><strong>P46</strong></a> Breaker_Block_Bear</td><td>Cat C</td><td class="r">558</td><td class="r">62.7%</td><td class="r tg">+865.2</td><td class="r tg">$+865</td><td class="r">1.56</td><td class="r">6.46</td><td class="r">5.16</td></tr><tr><td><a href="patterns.html#p72" style="color:var(--blue)"><strong>P72</strong></a> FVG_Bear</td><td>Cat F</td><td class="r">617</td><td class="r">62.9%</td><td class="r tg">+734.9</td><td class="r tg">$+735</td><td class="r">1.43</td><td class="r">6.26</td><td class="r">5.36</td></tr><tr><td><a href="patterns.html#p126" style="color:var(--blue)"><strong>P126</strong></a> HTF_Bias_Long</td><td>Cat K</td><td class="r">63</td><td class="r">88.9%</td><td class="r tg">+493.6</td><td class="r tg">$+494</td><td class="r">8.31</td><td class="r">9.07</td><td class="r">2.94</td></tr><tr><td><a href="patterns.html#p52" style="color:var(--blue)"><strong>P52</strong></a> LHLL</td><td>Cat D</td><td class="r">434</td><td class="r">56.9%</td><td class="r tg">+442.6</td><td class="r tg">$+443</td><td class="r">1.38</td><td class="r">6.27</td><td class="r">5.24</td></tr><tr><td><a href="patterns.html#p53" style="color:var(--blue)"><strong>P53</strong></a> BOS_Bull</td><td>Cat D</td><td class="r">142</td><td class="r">62.0%</td><td class="r tg">+377.1</td><td class="r tg">$+377</td><td class="r">1.76</td><td class="r">7.58</td><td class="r">5.20</td></tr><tr><td><a href="patterns.html#p141" style="color:var(--blue)"><strong>P141</strong></a> Ichimoku_Kumo_Twist_Bear</td><td>Cat L</td><td class="r">273</td><td class="r">58.2%</td><td class="r tg">+372.4</td><td class="r tg">$+372</td><td class="r">1.58</td><td class="r">6.73</td><td class="r">5.36</td></tr><tr><td><a href="patterns.html#p121" style="color:var(--blue)"><strong>P121</strong></a> Sunday_Gap_Fill_Short</td><td>Cat J</td><td class="r">124</td><td class="r">73.4%</td><td class="r tg">+363.1</td><td class="r tg">$+363</td><td class="r">2.15</td><td class="r">7.51</td><td class="r">4.70</td></tr><tr><td><a href="patterns.html#p133" style="color:var(--blue)"><strong>P133</strong></a> Daily_Bias_Intraday_Short</td><td>Cat K</td><td class="r">241</td><td class="r">56.0%</td><td class="r tg">+252.8</td><td class="r tg">$+253</td><td class="r">1.38</td><td class="r">6.00</td><td class="r">5.26</td></tr><tr><td><a href="patterns.html#p90" style="color:var(--blue)"><strong>P90</strong></a> OTE_Short</td><td>Cat H</td><td class="r">73</td><td class="r">69.9%</td><td class="r tg">+240.6</td><td class="r tg">$+241</td><td class="r">2.49</td><td class="r">7.50</td><td class="r">4.56</td></tr><tr><td><a href="patterns.html#p152" style="color:var(--blue)"><strong>P152</strong></a> Pullback_EMA20_Short</td><td>Cat N</td><td class="r">72</td><td class="r">70.8%</td><td class="r tg">+233.1</td><td class="r tg">$+233</td><td class="r">2.52</td><td class="r">7.03</td><td class="r">4.46</td></tr><tr><td><a href="patterns.html#p98" style="color:var(--blue)"><strong>P98</strong></a> VSA_NoDemand</td><td>Cat I</td><td class="r">129</td><td class="r">63.6%</td><td class="r tg">+231.9</td><td class="r tg">$+232</td><td class="r">1.60</td><td class="r">6.63</td><td class="r">5.04</td></tr><tr><td><a href="patterns.html#p157" style="color:var(--blue)"><strong>P157</strong></a> Hidden_Div_Bull_RSI</td><td>Cat N</td><td class="r">102</td><td class="r">61.8%</td><td class="r tg">+227.2</td><td class="r tg">$+227</td><td class="r">1.66</td><td class="r">6.30</td><td class="r">5.38</td></tr><tr><td><a href="patterns.html#p174" style="color:var(--blue)"><strong>P174</strong></a> Three_Drives_Bear</td><td>Cat Q</td><td class="r">124</td><td class="r">62.1%</td><td class="r tg">+222.2</td><td class="r tg">$+222</td><td class="r">1.58</td><td class="r">6.96</td><td class="r">5.54</td></tr><tr><td><a href="patterns.html#p161" style="color:var(--blue)"><strong>P161</strong></a> VAH_Reject_Short</td><td>Cat O</td><td class="r">107</td><td class="r">65.4%</td><td class="r tg">+220.8</td><td class="r tg">$+221</td><td class="r">1.74</td><td class="r">6.58</td><td class="r">4.95</td></tr><tr><td><a href="patterns.html#p120" style="color:var(--blue)"><strong>P120</strong></a> Sunday_Gap_Fill_Long</td><td>Cat J</td><td class="r">72</td><td class="r">68.1%</td><td class="r tg">+201.0</td><td class="r tg">$+201</td><td class="r">4.15</td><td class="r">7.22</td><td class="r">4.81</td></tr></tbody>
+  </table></div>
+  <div class="section-head"><span class="section-num">03</span><h2 class="section-title">Worst Patterns</h2></div>
+  <p class="lead-desc">Top 10 ขาดทุนสูงสุด — <strong style="color:var(--red)">ห้ามใช้ใน production</strong></p>
+  <div class="card"><table class="table compact ranked">
+    <thead><tr><th>Pattern</th><th>Cat</th><th class="r">N</th><th class="r">Win%</th><th class="r">PnL ATR</th><th class="r">PnL $</th><th class="r">PF</th></tr></thead>
+    <tbody><tr><td><a href="patterns.html#p71" style="color:var(--blue)"><strong>P71</strong></a> FVG_Bull</td><td>Cat F</td><td class="r">575</td><td class="r">29.9%</td><td class="r tr">-1,372.8</td><td class="r">$-1,373</td><td class="r">0.53</td></tr><tr><td><a href="patterns.html#p140" style="color:var(--blue)"><strong>P140</strong></a> Ichimoku_Kumo_Twist_Bull</td><td>Cat L</td><td class="r">284</td><td class="r">22.5%</td><td class="r tr">-1,010.1</td><td class="r">$-1,010</td><td class="r">0.38</td></tr><tr><td><a href="patterns.html#p45" style="color:var(--blue)"><strong>P45</strong></a> Breaker_Block_Bull</td><td>Cat C</td><td class="r">582</td><td class="r">37.1%</td><td class="r tr">-681.9</td><td class="r">$-682</td><td class="r">0.73</td></tr><tr><td><a href="patterns.html#p173" style="color:var(--blue)"><strong>P173</strong></a> Three_Drives_Bull</td><td>Cat Q</td><td class="r">187</td><td class="r">35.8%</td><td class="r tr">-355.7</td><td class="r">$-356</td><td class="r">0.56</td></tr><tr><td><a href="patterns.html#p51" style="color:var(--blue)"><strong>P51</strong></a> HHHL</td><td>Cat D</td><td class="r">443</td><td class="r">42.0%</td><td class="r tr">-290.4</td><td class="r">$-290</td><td class="r">0.86</td></tr><tr><td><a href="patterns.html#p89" style="color:var(--blue)"><strong>P89</strong></a> OTE_Long</td><td>Cat H</td><td class="r">63</td><td class="r">30.2%</td><td class="r tr">-223.5</td><td class="r">$-224</td><td class="r">0.36</td></tr><tr><td><a href="patterns.html#p128" style="color:var(--blue)"><strong>P128</strong></a> MTF_FVG_Aligned_Long</td><td>Cat K</td><td class="r">170</td><td class="r">38.8%</td><td class="r tr">-207.7</td><td class="r">$-208</td><td class="r">0.75</td></tr><tr><td><a href="patterns.html#p73" style="color:var(--blue)"><strong>P73</strong></a> Liq_Grab_Bull</td><td>Cat F</td><td class="r">94</td><td class="r">31.9%</td><td class="r tr">-159.7</td><td class="r">$-160</td><td class="r">0.62</td></tr><tr><td><a href="patterns.html#p129" style="color:var(--blue)"><strong>P129</strong></a> MTF_FVG_Aligned_Short</td><td>Cat K</td><td class="r">94</td><td class="r">41.5%</td><td class="r tr">-137.9</td><td class="r">$-138</td><td class="r">0.67</td></tr><tr><td><a href="patterns.html#p32" style="color:var(--blue)"><strong>P32</strong></a> Bullish_Harami</td><td>Cat B</td><td class="r">61</td><td class="r">32.8%</td><td class="r tr">-137.0</td><td class="r">$-137</td><td class="r">0.56</td></tr></tbody>
+  </table></div>
+  <div class="section-head"><span class="section-num">04</span><h2 class="section-title">Entry Quality</h2></div>
+  <p class="lead-desc">เข้าตลาดที่ตำแหน่งไหนของ bar (เทียบ high-low) ส่ง outcome ยังไง · เรียงจากดีที่สุดลงล่าง</p>
+  <div class="chart-card">
+    <div class="chart-title">Win Rate by Entry Position</div>
+    <div class="chart-sub">เปรียบเทียบ WR (bar) + Mean PnL ATR (ขวา)</div>
+    <div class="bar-row"><span class="label">B (n=1,345)</span><div class="bar-track"><div class="bar-fill" style="width:150.0%;background:var(--green)"></div><span class="bar-label-outside">100.0%</span></div><span class="val-r num-pos">+8.6807 R</span></div><div class="bar-row"><span class="label">D (n=1,513)</span><div class="bar-track"><div class="bar-fill" style="width:142.3%;background:var(--green)"></div><span class="bar-label-outside">94.8%</span></div><span class="val-r num-pos">+8.2614 R</span></div><div class="bar-row"><span class="label">C (n=13,972)</span><div class="bar-track"><div class="bar-fill" style="width:60.2%;background:var(--red)"></div><span class="bar-label-outside">40.2%</span></div><span class="val-r num-neg">-1.6819 R</span></div>
+  </div>
+  <div class="section-head"><span class="section-num">05</span><h2 class="section-title">Context Filters</h2></div>
+  <p class="lead-desc">การกระจาย trades ตาม market context · <strong>ADX</strong> มี WR + Mean ATR (others = distribution)</p>
+  <div class="chart-grid">
+    <div class="chart-card"><div class="chart-title">Volatility Regime</div><div class="chart-sub">Distribution</div><div class="bar-row"><span class="label">NORMAL</span><div class="bar-track"><div class="bar-fill" style="width:100.0%;background:var(--green)"></div><span class="bar-label-outside">12,343</span></div><span class="val-r">12,343</span></div><div class="bar-row"><span class="label">HIGH</span><div class="bar-track"><div class="bar-fill" style="width:18.3%;background:var(--amber)"></div><span class="bar-label-outside">2,260</span></div><span class="val-r">2,260</span></div><div class="bar-row"><span class="label">LOW</span><div class="bar-track"><div class="bar-fill" style="width:18.0%;background:var(--red)"></div><span class="bar-label-outside">2,227</span></div><span class="val-r">2,227</span></div></div>
+    <div class="chart-card"><div class="chart-title">Trend Regime</div><div class="chart-sub">Distribution</div><div class="bar-row"><span class="label">STRONG_UP</span><div class="bar-track"><div class="bar-fill" style="width:100.0%;background:var(--green)"></div><span class="bar-label-outside">5,010</span></div><span class="val-r">5,010</span></div><div class="bar-row"><span class="label">STRONG_DOWN</span><div class="bar-track"><div class="bar-fill" style="width:78.7%;background:var(--amber)"></div><span class="bar-label-outside">3,945</span></div><span class="val-r">3,945</span></div><div class="bar-row"><span class="label">WEAK_UP</span><div class="bar-track"><div class="bar-fill" style="width:64.3%;background:var(--red)"></div><span class="bar-label-outside">3,223</span></div><span class="val-r">3,223</span></div><div class="bar-row"><span class="label">WEAK_DOWN</span><div class="bar-track"><div class="bar-fill" style="width:62.8%;background:var(--blue)"></div><span class="bar-label-outside">3,145</span></div><span class="val-r">3,145</span></div><div class="bar-row"><span class="label">RANGING</span><div class="bar-track"><div class="bar-fill" style="width:30.1%;background:var(--cyan)"></div><span class="bar-label-outside">1,507</span></div><span class="val-r">1,507</span></div></div>
+    <div class="chart-card"><div class="chart-title">Trading Session</div><div class="chart-sub">Distribution</div><div class="bar-row"><span class="label">Asia</span><div class="bar-track"><div class="bar-fill" style="width:100.0%;background:var(--green)"></div><span class="bar-label-outside">5,722</span></div><span class="val-r">5,722</span></div><div class="bar-row"><span class="label">NY</span><div class="bar-track"><div class="bar-fill" style="width:67.1%;background:var(--amber)"></div><span class="bar-label-outside">3,841</span></div><span class="val-r">3,841</span></div><div class="bar-row"><span class="label">London</span><div class="bar-track"><div class="bar-fill" style="width:66.2%;background:var(--red)"></div><span class="bar-label-outside">3,789</span></div><span class="val-r">3,789</span></div><div class="bar-row"><span class="label">Overlap</span><div class="bar-track"><div class="bar-fill" style="width:41.7%;background:var(--blue)"></div><span class="bar-label-outside">2,385</span></div><span class="val-r">2,385</span></div><div class="bar-row"><span class="label">Off</span><div class="bar-track"><div class="bar-fill" style="width:19.1%;background:var(--cyan)"></div><span class="bar-label-outside">1,093</span></div><span class="val-r">1,093</span></div></div>
+    <div class="chart-card"><div class="chart-title">ADX (Trend Strength)</div><div class="chart-sub">WR + Mean ATR</div><div class="bar-row"><span class="label"><20</span><div class="bar-track"><div class="bar-fill" style="width:66.6%;background:var(--green)"></div><span class="bar-label-outside">49.0%</span></div><span class="val-r num-pos">+0.023R</span></div><div class="bar-row"><span class="label">20-25</span><div class="bar-track"><div class="bar-fill" style="width:68.2%;background:var(--amber)"></div><span class="bar-label-outside">50.7%</span></div><span class="val-r num-pos">+0.226R</span></div><div class="bar-row"><span class="label">25-35</span><div class="bar-track"><div class="bar-fill" style="width:100.0%;background:var(--red)"></div><span class="bar-label-outside">49.2%</span></div><span class="val-r num-neg">-0.250R</span></div><div class="bar-row"><span class="label">35-45</span><div class="bar-track"><div class="bar-fill" style="width:65.1%;background:var(--blue)"></div><span class="bar-label-outside">49.6%</span></div><span class="val-r num-neg">-0.041R</span></div><div class="bar-row"><span class="label">>45</span><div class="bar-track"><div class="bar-fill" style="width:56.4%;background:var(--cyan)"></div><span class="bar-label-outside">51.2%</span></div><span class="val-r num-pos">+0.444R</span></div></div>
+  </div>
+  <div class="section-head"><span class="section-num">06</span><h2 class="section-title">⭐ SL/TP Analysis</h2></div>
+  <p class="lead-desc">
+    📊 <strong>Hit Rates (any-time during 240h)</strong> = % trades ที่ราคา "เคยแตะ" SL/TP — overview ทั้ง dataset<br>
+    🎯 <strong>Recommended Setup</strong> = best SL/TP per pattern (first-hit logic) + risk metrics<br>
+    <span style="background:#4dd498;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:600;font-size:11px" title="n≥100">✅ Robust</span> n≥100 · <span style="background:#5b9bd5;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:600;font-size:11px" title="60-99">🔵 Solid</span> 60-99 · <span style="background:#f5b400;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:600;font-size:11px" title="30-59">⚠️ Preliminary</span> 30-59
   </p>
-  <p style="color:#64748b;margin-top:24px;font-size:.9em">Schedule: see <a href="future.html">Roadmap</a></p>
-  <p><a href="ustec.html" style="color:#38bdf8">← Back to NASDAQ-100 hub</a></p>
-</div>
+  
+  <!-- Hit Rate Bar Charts -->
+  <div class="chart-grid">
+    <div class="chart-card">
+      <div class="chart-title">Stop Loss Hit Rate</div>
+      <div class="chart-sub">% trades MAE ≥ N × ATR (overall dataset)</div>
+      <div class="bar-row"><span class="label">SL @ 0.5× ATR</span><div class="bar-track"><div class="bar-fill" style="width:94.2%;background:var(--red)"></div><span class="bar-label-outside">94.2%</span></div><span class="val-r"></span></div><div class="bar-row"><span class="label">SL @ 1.0× ATR</span><div class="bar-track"><div class="bar-fill" style="width:88.7%;background:var(--red)"></div><span class="bar-label-outside">88.7%</span></div><span class="val-r"></span></div><div class="bar-row"><span class="label">SL @ 2.0× ATR</span><div class="bar-track"><div class="bar-fill" style="width:78.4%;background:var(--red)"></div><span class="bar-label-outside">78.4%</span></div><span class="val-r"></span></div><div class="bar-row"><span class="label">SL @ 3.0× ATR</span><div class="bar-track"><div class="bar-fill" style="width:70.0%;background:var(--red)"></div><span class="bar-label-outside">70.0%</span></div><span class="val-r"></span></div>
+    </div>
+    <div class="chart-card">
+      <div class="chart-title">Take Profit Hit Rate</div>
+      <div class="chart-sub">% trades MFE ≥ N × ATR (overall dataset)</div>
+      <div class="bar-row"><span class="label">TP @ 1.0× ATR</span><div class="bar-track"><div class="bar-fill" style="width:88.1%;background:var(--green)"></div><span class="bar-label-outside">88.1%</span></div><span class="val-r"></span></div><div class="bar-row"><span class="label">TP @ 2.0× ATR</span><div class="bar-track"><div class="bar-fill" style="width:77.7%;background:var(--green)"></div><span class="bar-label-outside">77.7%</span></div><span class="val-r"></span></div><div class="bar-row"><span class="label">TP @ 3.0× ATR</span><div class="bar-track"><div class="bar-fill" style="width:69.8%;background:var(--green)"></div><span class="bar-label-outside">69.8%</span></div><span class="val-r"></span></div><div class="bar-row"><span class="label">TP @ 5.0× ATR</span><div class="bar-track"><div class="bar-fill" style="width:55.6%;background:var(--green)"></div><span class="bar-label-outside">55.6%</span></div><span class="val-r"></span></div>
+    </div>
+  </div>
+  
+  <!-- Confidence breakdown + Filter -->
+  <div class="card" style="margin-top:18px;margin-bottom:14px">
+    <div style="display:flex;gap:14px;flex-wrap:wrap;align-items:center;justify-content:space-between">
+      <div style="font-size:13px;color:var(--text-dim)">
+        Confidence breakdown (99 patterns with EV):
+        <span style="background:#4dd498;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:600;font-size:11px" title="n≥100">✅ Robust</span> <strong>0</strong> ·
+        <span style="background:#5b9bd5;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:600;font-size:11px" title="60-99">🔵 Solid</span> <strong>0</strong> ·
+        <span style="background:#f5b400;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:600;font-size:11px" title="30-59">⚠️ Preliminary</span> <strong>0</strong>
+      </div>
+      <div style="display:flex;gap:6px">
+        <button class="cf active" onclick="cf6('all', event)">All</button>
+        <button class="cf" onclick="cf6('robust', event)">✅ Robust only</button>
+        <button class="cf" onclick="cf6('solid', event)">🔵 Solid+</button>
+      </div>
+    </div>
+  </div>
+  
+  <div class="card" style="overflow-x:auto">
+    <div class="card-title" style="margin-bottom:8px">🎯 Recommended Setup (Top 25 · Realistic EV)</div>
+    <table class="table compact ranked" id="recSetup">
+      <thead><tr>
+        <th>Conf</th><th>Pattern</th><th class="r">N</th>
+        <th class="r" style="background:rgba(77,212,152,0.08)">EV/trade</th>
+        <th class="r" style="font-size:11px">CI 95%</th>
+        <th class="r">SL / TP</th>
+        <th class="r">RR</th>
+        <th class="r">TP first %</th>
+        <th class="r" title="Sharpe per trade">SR</th>
+        <th class="r" title="Kelly fraction">Kelly</th>
+        <th class="r" title="Max drawdown R">MDD</th>
+      </tr></thead>
+      <tbody>
+        <tr data-conf="preliminary">
+          <td><span style="background:#f5b400;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:600;font-size:11px" title="30-59">⚠️ Preliminary</span></td>
+          <td><a href="patterns.html#p120" style="color:var(--blue)"><strong>P120</strong></a> Sunday_Gap_Fill_Long</td>
+          <td class="r">72</td>
+          <td class="r"><strong style="color:var(--green)">+5.42R</strong></td>
+          <td class="r" style="font-size:11px;color:var(--text-dim)">—</td>
+          <td class="r"><strong>0.5× / 5.0×</strong></td>
+          <td class="r">1:10.0</td>
+          <td class="r">58%</td>
+          <td class="r">+0.00</td>
+          <td class="r">0.0%</td>
+          <td class="r">0.0R</td>
+        </tr>
+        <tr data-conf="preliminary">
+          <td><span style="background:#f5b400;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:600;font-size:11px" title="30-59">⚠️ Preliminary</span></td>
+          <td><a href="patterns.html#p43" style="color:var(--blue)"><strong>P43</strong></a> Bullish_Order_Block</td>
+          <td class="r">43</td>
+          <td class="r"><strong style="color:var(--green)">+2.58R</strong></td>
+          <td class="r" style="font-size:11px;color:var(--text-dim)">—</td>
+          <td class="r"><strong>0.5× / 3.0×</strong></td>
+          <td class="r">1:6.0</td>
+          <td class="r">51%</td>
+          <td class="r">+0.00</td>
+          <td class="r">0.0%</td>
+          <td class="r">0.0R</td>
+        </tr>
+        <tr data-conf="preliminary">
+          <td><span style="background:#f5b400;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:600;font-size:11px" title="30-59">⚠️ Preliminary</span></td>
+          <td><a href="patterns.html#p150" style="color:var(--blue)"><strong>P150</strong></a> External_Liq_Sweep_Long</td>
+          <td class="r">49</td>
+          <td class="r"><strong style="color:var(--green)">+2.37R</strong></td>
+          <td class="r" style="font-size:11px;color:var(--text-dim)">—</td>
+          <td class="r"><strong>0.5× / 5.0×</strong></td>
+          <td class="r">1:10.0</td>
+          <td class="r">31%</td>
+          <td class="r">+0.00</td>
+          <td class="r">0.0%</td>
+          <td class="r">0.0R</td>
+        </tr>
+        <tr data-conf="preliminary">
+          <td><span style="background:#f5b400;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:600;font-size:11px" title="30-59">⚠️ Preliminary</span></td>
+          <td><a href="patterns.html#p89" style="color:var(--blue)"><strong>P89</strong></a> OTE_Long</td>
+          <td class="r">63</td>
+          <td class="r"><strong style="color:var(--green)">+2.14R</strong></td>
+          <td class="r" style="font-size:11px;color:var(--text-dim)">—</td>
+          <td class="r"><strong>0.5× / 5.0×</strong></td>
+          <td class="r">1:10.0</td>
+          <td class="r">29%</td>
+          <td class="r">+0.00</td>
+          <td class="r">0.0%</td>
+          <td class="r">0.0R</td>
+        </tr>
+        <tr data-conf="preliminary">
+          <td><span style="background:#f5b400;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:600;font-size:11px" title="30-59">⚠️ Preliminary</span></td>
+          <td><a href="patterns.html#p34" style="color:var(--blue)"><strong>P34</strong></a> Morning_Star</td>
+          <td class="r">32</td>
+          <td class="r"><strong style="color:var(--green)">+2.09R</strong></td>
+          <td class="r" style="font-size:11px;color:var(--text-dim)">—</td>
+          <td class="r"><strong>0.5× / 5.0×</strong></td>
+          <td class="r">1:10.0</td>
+          <td class="r">28%</td>
+          <td class="r">+0.00</td>
+          <td class="r">0.0%</td>
+          <td class="r">0.0R</td>
+        </tr>
+        <tr data-conf="preliminary">
+          <td><span style="background:#f5b400;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:600;font-size:11px" title="30-59">⚠️ Preliminary</span></td>
+          <td><a href="patterns.html#p155" style="color:var(--blue)"><strong>P155</strong></a> Three_Touch_Trendline_Long</td>
+          <td class="r">32</td>
+          <td class="r"><strong style="color:var(--green)">+2.09R</strong></td>
+          <td class="r" style="font-size:11px;color:var(--text-dim)">—</td>
+          <td class="r"><strong>0.5× / 5.0×</strong></td>
+          <td class="r">1:10.0</td>
+          <td class="r">28%</td>
+          <td class="r">+0.00</td>
+          <td class="r">0.0%</td>
+          <td class="r">0.0R</td>
+        </tr>
+        <tr data-conf="preliminary">
+          <td><span style="background:#f5b400;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:600;font-size:11px" title="30-59">⚠️ Preliminary</span></td>
+          <td><a href="patterns.html#p91" style="color:var(--blue)"><strong>P91</strong></a> LondonKZ_Long</td>
+          <td class="r">44</td>
+          <td class="r"><strong style="color:var(--green)">+2.02R</strong></td>
+          <td class="r" style="font-size:11px;color:var(--text-dim)">—</td>
+          <td class="r"><strong>0.5× / 3.0×</strong></td>
+          <td class="r">1:6.0</td>
+          <td class="r">43%</td>
+          <td class="r">+0.00</td>
+          <td class="r">0.0%</td>
+          <td class="r">0.0R</td>
+        </tr>
+        <tr data-conf="preliminary">
+          <td><span style="background:#f5b400;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:600;font-size:11px" title="30-59">⚠️ Preliminary</span></td>
+          <td><a href="patterns.html#p53" style="color:var(--blue)"><strong>P53</strong></a> BOS_Bull</td>
+          <td class="r">142</td>
+          <td class="r"><strong style="color:var(--green)">+2.02R</strong></td>
+          <td class="r" style="font-size:11px;color:var(--text-dim)">—</td>
+          <td class="r"><strong>0.5× / 5.0×</strong></td>
+          <td class="r">1:10.0</td>
+          <td class="r">27%</td>
+          <td class="r">+0.00</td>
+          <td class="r">0.0%</td>
+          <td class="r">0.0R</td>
+        </tr>
+        <tr data-conf="preliminary">
+          <td><span style="background:#f5b400;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:600;font-size:11px" title="30-59">⚠️ Preliminary</span></td>
+          <td><a href="patterns.html#p28" style="color:var(--blue)"><strong>P28</strong></a> Bullish_Engulfing</td>
+          <td class="r">76</td>
+          <td class="r"><strong style="color:var(--green)">+1.89R</strong></td>
+          <td class="r" style="font-size:11px;color:var(--text-dim)">—</td>
+          <td class="r"><strong>0.5× / 5.0×</strong></td>
+          <td class="r">1:10.0</td>
+          <td class="r">26%</td>
+          <td class="r">+0.00</td>
+          <td class="r">0.0%</td>
+          <td class="r">0.0R</td>
+        </tr>
+        <tr data-conf="preliminary">
+          <td><span style="background:#f5b400;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:600;font-size:11px" title="30-59">⚠️ Preliminary</span></td>
+          <td><a href="patterns.html#p173" style="color:var(--blue)"><strong>P173</strong></a> Three_Drives_Bull</td>
+          <td class="r">187</td>
+          <td class="r"><strong style="color:var(--green)">+1.88R</strong></td>
+          <td class="r" style="font-size:11px;color:var(--text-dim)">—</td>
+          <td class="r"><strong>0.5× / 3.0×</strong></td>
+          <td class="r">1:6.0</td>
+          <td class="r">41%</td>
+          <td class="r">+0.00</td>
+          <td class="r">0.0%</td>
+          <td class="r">0.0R</td>
+        </tr>
+        <tr data-conf="preliminary">
+          <td><span style="background:#f5b400;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:600;font-size:11px" title="30-59">⚠️ Preliminary</span></td>
+          <td><a href="patterns.html#p81" style="color:var(--blue)"><strong>P81</strong></a> ZScore_MeanRev_Long</td>
+          <td class="r">32</td>
+          <td class="r"><strong style="color:var(--green)">+1.84R</strong></td>
+          <td class="r" style="font-size:11px;color:var(--text-dim)">—</td>
+          <td class="r"><strong>0.5× / 3.0×</strong></td>
+          <td class="r">1:6.0</td>
+          <td class="r">41%</td>
+          <td class="r">+0.00</td>
+          <td class="r">0.0%</td>
+          <td class="r">0.0R</td>
+        </tr>
+        <tr data-conf="preliminary">
+          <td><span style="background:#f5b400;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:600;font-size:11px" title="30-59">⚠️ Preliminary</span></td>
+          <td><a href="patterns.html#p153" style="color:var(--blue)"><strong>P153</strong></a> Pullback_EMA50_Long</td>
+          <td class="r">40</td>
+          <td class="r"><strong style="color:var(--green)">+1.80R</strong></td>
+          <td class="r" style="font-size:11px;color:var(--text-dim)">—</td>
+          <td class="r"><strong>0.5× / 3.0×</strong></td>
+          <td class="r">1:6.0</td>
+          <td class="r">40%</td>
+          <td class="r">+0.00</td>
+          <td class="r">0.0%</td>
+          <td class="r">0.0R</td>
+        </tr>
+        <tr data-conf="preliminary">
+          <td><span style="background:#f5b400;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:600;font-size:11px" title="30-59">⚠️ Preliminary</span></td>
+          <td><a href="patterns.html#p145" style="color:var(--blue)"><strong>P145</strong></a> Turtle_Soup_Long</td>
+          <td class="r">76</td>
+          <td class="r"><strong style="color:var(--green)">+1.76R</strong></td>
+          <td class="r" style="font-size:11px;color:var(--text-dim)">—</td>
+          <td class="r"><strong>0.5× / 3.0×</strong></td>
+          <td class="r">1:6.0</td>
+          <td class="r">39%</td>
+          <td class="r">+0.00</td>
+          <td class="r">0.0%</td>
+          <td class="r">0.0R</td>
+        </tr>
+        <tr data-conf="preliminary">
+          <td><span style="background:#f5b400;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:600;font-size:11px" title="30-59">⚠️ Preliminary</span></td>
+          <td><a href="patterns.html#p50" style="color:var(--blue)"><strong>P50</strong></a> Trendline_Bounce_Short</td>
+          <td class="r">33</td>
+          <td class="r"><strong style="color:var(--green)">+1.76R</strong></td>
+          <td class="r" style="font-size:11px;color:var(--text-dim)">—</td>
+          <td class="r"><strong>0.5× / 3.0×</strong></td>
+          <td class="r">1:6.0</td>
+          <td class="r">39%</td>
+          <td class="r">+0.00</td>
+          <td class="r">0.0%</td>
+          <td class="r">0.0R</td>
+        </tr>
+        <tr data-conf="preliminary">
+          <td><span style="background:#f5b400;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:600;font-size:11px" title="30-59">⚠️ Preliminary</span></td>
+          <td><a href="patterns.html#p124" style="color:var(--blue)"><strong>P124</strong></a> ThreeBar_Rev_Bull</td>
+          <td class="r">90</td>
+          <td class="r"><strong style="color:var(--green)">+1.74R</strong></td>
+          <td class="r" style="font-size:11px;color:var(--text-dim)">—</td>
+          <td class="r"><strong>0.5× / 5.0×</strong></td>
+          <td class="r">1:10.0</td>
+          <td class="r">24%</td>
+          <td class="r">+0.00</td>
+          <td class="r">0.0%</td>
+          <td class="r">0.0R</td>
+        </tr>
+        <tr data-conf="preliminary">
+          <td><span style="background:#f5b400;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:600;font-size:11px" title="30-59">⚠️ Preliminary</span></td>
+          <td><a href="patterns.html#p127" style="color:var(--blue)"><strong>P127</strong></a> HTF_Bias_Short</td>
+          <td class="r">33</td>
+          <td class="r"><strong style="color:var(--green)">+1.67R</strong></td>
+          <td class="r" style="font-size:11px;color:var(--text-dim)">—</td>
+          <td class="r"><strong>0.5× / 5.0×</strong></td>
+          <td class="r">1:10.0</td>
+          <td class="r">24%</td>
+          <td class="r">+0.00</td>
+          <td class="r">0.0%</td>
+          <td class="r">0.0R</td>
+        </tr>
+        <tr data-conf="preliminary">
+          <td><span style="background:#f5b400;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:600;font-size:11px" title="30-59">⚠️ Preliminary</span></td>
+          <td><a href="patterns.html#p54" style="color:var(--blue)"><strong>P54</strong></a> BOS_Bear</td>
+          <td class="r">134</td>
+          <td class="r"><strong style="color:var(--green)">+1.54R</strong></td>
+          <td class="r" style="font-size:11px;color:var(--text-dim)">—</td>
+          <td class="r"><strong>0.5× / 5.0×</strong></td>
+          <td class="r">1:10.0</td>
+          <td class="r">23%</td>
+          <td class="r">+0.00</td>
+          <td class="r">0.0%</td>
+          <td class="r">0.0R</td>
+        </tr>
+        <tr data-conf="preliminary">
+          <td><span style="background:#f5b400;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:600;font-size:11px" title="30-59">⚠️ Preliminary</span></td>
+          <td><a href="patterns.html#p171" style="color:var(--blue)"><strong>P171</strong></a> ABCD_Bull</td>
+          <td class="r">105</td>
+          <td class="r"><strong style="color:var(--green)">+1.53R</strong></td>
+          <td class="r" style="font-size:11px;color:var(--text-dim)">—</td>
+          <td class="r"><strong>0.5× / 3.0×</strong></td>
+          <td class="r">1:6.0</td>
+          <td class="r">36%</td>
+          <td class="r">+0.00</td>
+          <td class="r">0.0%</td>
+          <td class="r">0.0R</td>
+        </tr>
+        <tr data-conf="preliminary">
+          <td><span style="background:#f5b400;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:600;font-size:11px" title="30-59">⚠️ Preliminary</span></td>
+          <td><a href="patterns.html#p73" style="color:var(--blue)"><strong>P73</strong></a> Liq_Grab_Bull</td>
+          <td class="r">94</td>
+          <td class="r"><strong style="color:var(--green)">+1.46R</strong></td>
+          <td class="r" style="font-size:11px;color:var(--text-dim)">—</td>
+          <td class="r"><strong>0.5× / 3.0×</strong></td>
+          <td class="r">1:6.0</td>
+          <td class="r">35%</td>
+          <td class="r">+0.00</td>
+          <td class="r">0.0%</td>
+          <td class="r">0.0R</td>
+        </tr>
+        <tr data-conf="preliminary">
+          <td><span style="background:#f5b400;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:600;font-size:11px" title="30-59">⚠️ Preliminary</span></td>
+          <td><a href="patterns.html#p44" style="color:var(--blue)"><strong>P44</strong></a> Bearish_Order_Block</td>
+          <td class="r">86</td>
+          <td class="r"><strong style="color:var(--green)">+1.44R</strong></td>
+          <td class="r" style="font-size:11px;color:var(--text-dim)">—</td>
+          <td class="r"><strong>0.5× / 3.0×</strong></td>
+          <td class="r">1:6.0</td>
+          <td class="r">35%</td>
+          <td class="r">+0.00</td>
+          <td class="r">0.0%</td>
+          <td class="r">0.0R</td>
+        </tr>
+        <tr data-conf="preliminary">
+          <td><span style="background:#f5b400;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:600;font-size:11px" title="30-59">⚠️ Preliminary</span></td>
+          <td><a href="patterns.html#p33" style="color:var(--blue)"><strong>P33</strong></a> Bearish_Harami</td>
+          <td class="r">55</td>
+          <td class="r"><strong style="color:var(--green)">+1.42R</strong></td>
+          <td class="r" style="font-size:11px;color:var(--text-dim)">—</td>
+          <td class="r"><strong>0.5× / 3.0×</strong></td>
+          <td class="r">1:6.0</td>
+          <td class="r">35%</td>
+          <td class="r">+0.00</td>
+          <td class="r">0.0%</td>
+          <td class="r">0.0R</td>
+        </tr>
+        <tr data-conf="preliminary">
+          <td><span style="background:#f5b400;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:600;font-size:11px" title="30-59">⚠️ Preliminary</span></td>
+          <td><a href="patterns.html#p38" style="color:var(--blue)"><strong>P38</strong></a> Tweezer_Bottom</td>
+          <td class="r">84</td>
+          <td class="r"><strong style="color:var(--green)">+1.42R</strong></td>
+          <td class="r" style="font-size:11px;color:var(--text-dim)">—</td>
+          <td class="r"><strong>0.5× / 3.0×</strong></td>
+          <td class="r">1:6.0</td>
+          <td class="r">35%</td>
+          <td class="r">+0.00</td>
+          <td class="r">0.0%</td>
+          <td class="r">0.0R</td>
+        </tr>
+        <tr data-conf="preliminary">
+          <td><span style="background:#f5b400;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:600;font-size:11px" title="30-59">⚠️ Preliminary</span></td>
+          <td><a href="patterns.html#p166" style="color:var(--blue)"><strong>P166</strong></a> Round_Number_Bounce_Long</td>
+          <td class="r">32</td>
+          <td class="r"><strong style="color:var(--green)">+1.41R</strong></td>
+          <td class="r" style="font-size:11px;color:var(--text-dim)">—</td>
+          <td class="r"><strong>0.5× / 5.0×</strong></td>
+          <td class="r">1:10.0</td>
+          <td class="r">22%</td>
+          <td class="r">+0.00</td>
+          <td class="r">0.0%</td>
+          <td class="r">0.0R</td>
+        </tr>
+        <tr data-conf="preliminary">
+          <td><span style="background:#f5b400;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:600;font-size:11px" title="30-59">⚠️ Preliminary</span></td>
+          <td><a href="patterns.html#p147" style="color:var(--blue)"><strong>P147</strong></a> Stop_Run_Reversal_Bull</td>
+          <td class="r">32</td>
+          <td class="r"><strong style="color:var(--green)">+1.41R</strong></td>
+          <td class="r" style="font-size:11px;color:var(--text-dim)">—</td>
+          <td class="r"><strong>0.5× / 3.0×</strong></td>
+          <td class="r">1:6.0</td>
+          <td class="r">34%</td>
+          <td class="r">+0.00</td>
+          <td class="r">0.0%</td>
+          <td class="r">0.0R</td>
+        </tr>
+        <tr data-conf="preliminary">
+          <td><span style="background:#f5b400;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-weight:600;font-size:11px" title="30-59">⚠️ Preliminary</span></td>
+          <td><a href="patterns.html#p59" style="color:var(--blue)"><strong>P59</strong></a> Failed_Breakout_Long</td>
+          <td class="r">112</td>
+          <td class="r"><strong style="color:var(--green)">+1.38R</strong></td>
+          <td class="r" style="font-size:11px;color:var(--text-dim)">—</td>
+          <td class="r"><strong>0.5× / 3.0×</strong></td>
+          <td class="r">1:6.0</td>
+          <td class="r">34%</td>
+          <td class="r">+0.00</td>
+          <td class="r">0.0%</td>
+          <td class="r">0.0R</td>
+        </tr></tbody>
+    </table>
+  </div>
+  
+  <style>
+    .cf {padding:5px 12px;background:var(--bg-card);border:1px solid var(--line);color:var(--text);border-radius:3px;cursor:pointer;font-size:11px}
+    .cf.active, .cf:hover {background:var(--blue);color:var(--bg-base);border-color:var(--blue)}
+  </style>
+  <script>
+    function cf6(t, e) {
+      document.querySelectorAll('.cf').forEach(b => b.classList.remove('active'));
+      e.target.classList.add('active');
+      document.querySelectorAll('#recSetup tbody tr').forEach(tr => {
+        const c = tr.dataset.conf;
+        if (t === 'all') tr.style.display = '';
+        else if (t === 'robust') tr.style.display = c === 'robust' ? '' : 'none';
+        else if (t === 'solid') tr.style.display = (c === 'robust' || c === 'solid') ? '' : 'none';
+      });
+    }
+  </script>
+  <div class="section-head"><span class="section-num">07</span><h2 class="section-title">Time Decay (Dataset Trajectory)</h2></div>
+  <p class="lead-desc">Mean PnL ATR ของทุก trade ที่ checkpoint ต่างๆ · Peak: <strong>240h</strong> (+0.040 ATR)</p>
+  <div class="chart-card">
+    <div class="chart-title">Cumulative PnL Over Time</div>
+    <div class="chart-sub">Mean (solid) vs Median (dashed) · ATR units · zero line dashed</div>
+    <svg class="curve-svg" viewBox="0 0 800 280" xmlns="http://www.w3.org/2000/svg">
+      <line x1="40" y1="40" x2="40" y2="240" stroke="var(--line)" stroke-width="1"/>
+      <line x1="40" y1="240" x2="770" y2="240" stroke="var(--line)" stroke-width="1"/>
+      <line x1="40" y1="140" x2="770" y2="140" stroke="var(--line)" stroke-dasharray="4,4"/>
+      <path d="M 43,142 L 58,140 L 76,140 L 113,140 L 186,140 L 259,140 L 405,140 L 551,140 L 770,169" fill="none" stroke="var(--text-dim)" stroke-width="1.5" stroke-dasharray="4,4"/>
+      <path d="M 43,142 L 58,143 L 76,143 L 113,143 L 186,147 L 259,152 L 405,150 L 551,148 L 770,130" fill="none" stroke="var(--blue)" stroke-width="2.5"/>
+      <circle cx="43" cy="142" r="3" fill="var(--red)"/><circle cx="58" cy="143" r="3" fill="var(--red)"/><circle cx="76" cy="143" r="3" fill="var(--red)"/><circle cx="113" cy="143" r="3" fill="var(--red)"/><circle cx="186" cy="147" r="3" fill="var(--red)"/><circle cx="259" cy="152" r="3" fill="var(--red)"/><circle cx="405" cy="150" r="3" fill="var(--red)"/><circle cx="551" cy="148" r="3" fill="var(--red)"/><circle cx="770" cy="130" r="3" fill="var(--green)"/>
+      <text x="32" y="244" class="curve-label" text-anchor="end">-0.39R</text><text x="32" y="194" class="curve-label" text-anchor="end">-0.20R</text><text x="32" y="144" class="curve-label" text-anchor="end">+0.00R</text><text x="32" y="94" class="curve-label" text-anchor="end">+0.20R</text><text x="32" y="44" class="curve-label" text-anchor="end">+0.39R</text>
+      <text x="43" y="265" class="curve-label" text-anchor="middle">1h</text><text x="58" y="265" class="curve-label" text-anchor="middle">6h</text><text x="76" y="265" class="curve-label" text-anchor="middle">12h</text><text x="113" y="265" class="curve-label" text-anchor="middle">24h</text><text x="186" y="265" class="curve-label" text-anchor="middle">48h</text><text x="259" y="265" class="curve-label" text-anchor="middle">72h</text><text x="405" y="265" class="curve-label" text-anchor="middle">120h</text><text x="551" y="265" class="curve-label" text-anchor="middle">168h</text><text x="770" y="265" class="curve-label" text-anchor="middle">240h</text>
+      <text x="765" y="52" class="curve-label" text-anchor="end" fill="var(--blue)" font-weight="700">━ Mean</text>
+      <text x="765" y="66" class="curve-label" text-anchor="end" fill="var(--text-dim)" font-weight="700">┄ Median</text>
+    </svg>
+  </div>
+  <details style="margin-top:10px"><summary style="cursor:pointer;color:var(--text-dim);font-size:13px">📋 ตารางรายละเอียด</summary>
+    <div class="card" style="margin-top:8px"><table class="table compact"><thead><tr><th>Checkpoint</th><th class="r">Mean ATR</th><th class="r">Median ATR</th><th class="r">% Positive</th><th class="r">% ≥+1 ATR</th><th class="r">% ≤-1 ATR</th></tr></thead><tbody><tr><td><strong>1h</strong></td><td class="r tr">-0.0092</td><td class="r tr">-0.0085</td><td class="r">49.4%</td><td class="r">7.2%</td><td class="r">7.4%</td></tr><tr><td><strong>6h</strong></td><td class="r tr">-0.0106</td><td class="r tr">-0.0013</td><td class="r">49.1%</td><td class="r">24.4%</td><td class="r">24.7%</td></tr><tr><td><strong>12h</strong></td><td class="r tr">-0.0107</td><td class="r tr">-0.0002</td><td class="r">49.2%</td><td class="r">33.3%</td><td class="r">33.7%</td></tr><tr><td><strong>24h</strong></td><td class="r tr">-0.0109</td><td class="r ">+0.0000</td><td class="r">47.5%</td><td class="r">37.4%</td><td class="r">37.0%</td></tr><tr><td><strong>48h</strong></td><td class="r tr">-0.0290</td><td class="r ">+0.0000</td><td class="r">47.1%</td><td class="r">36.7%</td><td class="r">37.4%</td></tr><tr><td><strong>72h</strong></td><td class="r tr">-0.0472</td><td class="r ">+0.0000</td><td class="r">37.0%</td><td class="r">31.2%</td><td class="r">32.1%</td></tr><tr><td><strong>120h</strong></td><td class="r tr">-0.0387</td><td class="r ">+0.0000</td><td class="r">37.3%</td><td class="r">29.7%</td><td class="r">30.4%</td></tr><tr><td><strong>168h</strong></td><td class="r tr">-0.0303</td><td class="r ">+0.0000</td><td class="r">24.9%</td><td class="r">21.4%</td><td class="r">23.1%</td></tr><tr><td><strong>240h</strong></td><td class="r tg">+0.0402</td><td class="r tr">-0.1119</td><td class="r">49.9%</td><td class="r">46.1%</td><td class="r">46.5%</td></tr></tbody></table></div>
+  </details>
+  <div class="section-head"><span class="section-num">08</span><h2 class="section-title">Trade Trajectory (Top 5 by EV)</h2></div>
+  <p class="lead-desc">Mean PnL ATR ของแต่ละ pattern ที่ checkpoint ต่างๆ — ดูว่า trade "พีค" ตอนกี่ ชม.</p>
+  <div class="chart-card">
+    <div class="chart-title">Per-Pattern Trajectory Overlay</div>
+    <div class="chart-sub">5 patterns ที่มี realistic EV สูงสุด</div>
+    <svg class="curve-svg" viewBox="0 0 800 320" xmlns="http://www.w3.org/2000/svg" style="height:auto">
+      <line x1="50" y1="30" x2="50" y2="270" stroke="var(--line)" stroke-width="1"/>
+      <line x1="50" y1="270" x2="640" y2="270" stroke="var(--line)" stroke-width="1"/>
+      <line x1="50" y1="150" x2="640" y2="150" stroke="var(--line)" stroke-dasharray="4,4"/>
+      <path d="M 52,146 L 65,124 L 80,101 L 109,77 L 168,81 L 227,84 L 345,128 L 463,171 L 640,71" fill="none" stroke="var(--green)" stroke-width="2.5" opacity="0.9"/><circle cx="52" cy="146" r="3" fill="var(--green)"/><circle cx="65" cy="124" r="3" fill="var(--green)"/><circle cx="80" cy="101" r="3" fill="var(--green)"/><circle cx="109" cy="77" r="3" fill="var(--green)"/><circle cx="168" cy="81" r="3" fill="var(--green)"/><circle cx="227" cy="84" r="3" fill="var(--green)"/><circle cx="345" cy="128" r="3" fill="var(--green)"/><circle cx="463" cy="171" r="3" fill="var(--green)"/><circle cx="640" cy="71" r="3" fill="var(--green)"/><path d="M 52,144 L 65,127 L 80,125 L 109,124 L 168,139 L 227,154 L 345,147 L 463,140 L 640,209" fill="none" stroke="var(--blue)" stroke-width="2.5" opacity="0.9"/><circle cx="52" cy="144" r="3" fill="var(--blue)"/><circle cx="65" cy="127" r="3" fill="var(--blue)"/><circle cx="80" cy="125" r="3" fill="var(--blue)"/><circle cx="109" cy="124" r="3" fill="var(--blue)"/><circle cx="168" cy="139" r="3" fill="var(--blue)"/><circle cx="227" cy="154" r="3" fill="var(--blue)"/><circle cx="345" cy="147" r="3" fill="var(--blue)"/><circle cx="463" cy="140" r="3" fill="var(--blue)"/><circle cx="640" cy="209" r="3" fill="var(--blue)"/><path d="M 52,148 L 65,147 L 80,140 L 109,132 L 168,159 L 227,185 L 345,179 L 463,172 L 640,203" fill="none" stroke="var(--amber)" stroke-width="2.5" opacity="0.9"/><circle cx="52" cy="148" r="3" fill="var(--amber)"/><circle cx="65" cy="147" r="3" fill="var(--amber)"/><circle cx="80" cy="140" r="3" fill="var(--amber)"/><circle cx="109" cy="132" r="3" fill="var(--amber)"/><circle cx="168" cy="159" r="3" fill="var(--amber)"/><circle cx="227" cy="185" r="3" fill="var(--amber)"/><circle cx="345" cy="179" r="3" fill="var(--amber)"/><circle cx="463" cy="172" r="3" fill="var(--amber)"/><circle cx="640" cy="203" r="3" fill="var(--amber)"/><path d="M 52,159 L 65,162 L 80,160 L 109,158 L 168,165 L 227,172 L 345,176 L 463,180 L 640,250" fill="none" stroke="var(--cyan)" stroke-width="2.5" opacity="0.9"/><circle cx="52" cy="159" r="3" fill="var(--cyan)"/><circle cx="65" cy="162" r="3" fill="var(--cyan)"/><circle cx="80" cy="160" r="3" fill="var(--cyan)"/><circle cx="109" cy="158" r="3" fill="var(--cyan)"/><circle cx="168" cy="165" r="3" fill="var(--cyan)"/><circle cx="227" cy="172" r="3" fill="var(--cyan)"/><circle cx="345" cy="176" r="3" fill="var(--cyan)"/><circle cx="463" cy="180" r="3" fill="var(--cyan)"/><circle cx="640" cy="250" r="3" fill="var(--cyan)"/><path d="M 52,148 L 65,141 L 80,145 L 109,149 L 168,159 L 227,170 L 345,172 L 463,175 L 640,198" fill="none" stroke="var(--yellow)" stroke-width="2.5" opacity="0.9"/><circle cx="52" cy="148" r="3" fill="var(--yellow)"/><circle cx="65" cy="141" r="3" fill="var(--yellow)"/><circle cx="80" cy="145" r="3" fill="var(--yellow)"/><circle cx="109" cy="149" r="3" fill="var(--yellow)"/><circle cx="168" cy="159" r="3" fill="var(--yellow)"/><circle cx="227" cy="170" r="3" fill="var(--yellow)"/><circle cx="345" cy="172" r="3" fill="var(--yellow)"/><circle cx="463" cy="175" r="3" fill="var(--yellow)"/><circle cx="640" cy="198" r="3" fill="var(--yellow)"/>
+      <text x="52" y="295" class="curve-label" text-anchor="middle">1h</text><text x="65" y="295" class="curve-label" text-anchor="middle">6h</text><text x="80" y="295" class="curve-label" text-anchor="middle">12h</text><text x="109" y="295" class="curve-label" text-anchor="middle">24h</text><text x="168" y="295" class="curve-label" text-anchor="middle">48h</text><text x="227" y="295" class="curve-label" text-anchor="middle">72h</text><text x="345" y="295" class="curve-label" text-anchor="middle">120h</text><text x="463" y="295" class="curve-label" text-anchor="middle">168h</text><text x="640" y="295" class="curve-label" text-anchor="middle">240h</text>
+      <text x="42" y="274" class="curve-label" text-anchor="end">-4.26</text><text x="42" y="214" class="curve-label" text-anchor="end">-2.13</text><text x="42" y="154" class="curve-label" text-anchor="end">+0.00</text><text x="42" y="94" class="curve-label" text-anchor="end">+2.13</text><text x="42" y="34" class="curve-label" text-anchor="end">+4.26</text>
+      <text x="645" y="45" class="curve-label" font-size="11" font-weight="700">Patterns</text>
+      <line x1="650" y1="60" x2="670" y2="60" stroke="var(--green)" stroke-width="2.5"/><text x="675" y="64" class="curve-label" font-size="11">P120 (n=72)</text><line x1="650" y1="84" x2="670" y2="84" stroke="var(--blue)" stroke-width="2.5"/><text x="675" y="88" class="curve-label" font-size="11">P43 (n=43)</text><line x1="650" y1="108" x2="670" y2="108" stroke="var(--amber)" stroke-width="2.5"/><text x="675" y="112" class="curve-label" font-size="11">P150 (n=49)</text><line x1="650" y1="132" x2="670" y2="132" stroke="var(--cyan)" stroke-width="2.5"/><text x="675" y="136" class="curve-label" font-size="11">P89 (n=63)</text><line x1="650" y1="156" x2="670" y2="156" stroke="var(--yellow)" stroke-width="2.5"/><text x="675" y="160" class="curve-label" font-size="11">P34 (n=32)</text>
+      <text x="345" y="315" class="curve-label" text-anchor="middle">Hours after entry</text>
+    </svg>
+  </div>
+  <div class="card" style="margin-top:10px">
+    <div class="card-title">Peak Summary</div>
+    <table class="table compact"><thead><tr><th>Pattern</th><th class="r">N</th><th class="r">Peak hour</th><th class="r">Mean at peak</th></tr></thead><tbody><tr><td><a href="patterns.html#p120" style="color:var(--blue)"><strong>P120</strong></a> Sunday_Gap_Fill_Long</td><td class="r">72</td><td class="r"><strong>240h</strong></td><td class="r tg">+2.7921</td></tr><tr><td><a href="patterns.html#p43" style="color:var(--blue)"><strong>P43</strong></a> Bullish_Order_Block</td><td class="r">43</td><td class="r"><strong>24h</strong></td><td class="r tg">+0.9240</td></tr><tr><td><a href="patterns.html#p150" style="color:var(--blue)"><strong>P150</strong></a> External_Liq_Sweep_Long</td><td class="r">49</td><td class="r"><strong>24h</strong></td><td class="r tg">+0.6310</td></tr><tr><td><a href="patterns.html#p89" style="color:var(--blue)"><strong>P89</strong></a> OTE_Long</td><td class="r">63</td><td class="r"><strong>24h</strong></td><td class="r tr">-0.2690</td></tr><tr><td><a href="patterns.html#p34" style="color:var(--blue)"><strong>P34</strong></a> Morning_Star</td><td class="r">32</td><td class="r"><strong>6h</strong></td><td class="r tg">+0.3030</td></tr></tbody></table>
+  </div>
+  <div class="section-head"><span class="section-num">09</span><h2 class="section-title">SL/TP Grid Heatmap</h2></div>
+  <p class="lead-desc">EV (R-multiple) สำหรับทุก SL × TP combination · top 5 patterns ที่ EV สูงสุด</p>
+  <div><div class="card" style="margin-bottom:14px"><div class="card-title"><a href="patterns.html#p120" style="color:var(--blue)"><strong>P120</strong></a> Sunday_Gap_Fill_Long (Cat J · n=72 · WR 68%)</div><table class="table compact" style="margin-top:6px"><tbody><tr><th></th><th class="r" style="background:rgba(77,212,152,0.1)">TP 1.0×</th><th class="r" style="background:rgba(77,212,152,0.1)">TP 2.0×</th><th class="r" style="background:rgba(77,212,152,0.1)">TP 3.0×</th><th class="r" style="background:rgba(77,212,152,0.1)">TP 5.0×</th></tr><tr><th style="background:rgba(255,94,108,0.1)">SL 0.5×</th><td class="r" style="background:rgba(77,212,152,0.5);font-weight:400">+1.33R</td><td class="r" style="background:rgba(77,212,152,0.5);font-weight:400">+2.89R</td><td class="r" style="background:rgba(77,212,152,0.5);font-weight:400">+4.35R</td><td class="r" style="background:rgba(77,212,152,0.5);font-weight:700">+5.42R ⭐</td></tr><tr><th style="background:rgba(255,94,108,0.1)">SL 1.0×</th><td class="r" style="color:var(--text-dim)">—</td><td class="r" style="background:rgba(77,212,152,0.5);font-weight:400">+1.42R</td><td class="r" style="background:rgba(77,212,152,0.5);font-weight:400">+2.17R</td><td class="r" style="background:rgba(77,212,152,0.5);font-weight:400">+2.67R</td></tr><tr><th style="background:rgba(255,94,108,0.1)">SL 2.0×</th><td class="r" style="color:var(--text-dim)">—</td><td class="r" style="color:var(--text-dim)">—</td><td class="r" style="background:rgba(77,212,152,0.5);font-weight:400">+1.15R</td><td class="r" style="background:rgba(77,212,152,0.5);font-weight:400">+1.38R</td></tr><tr><th style="background:rgba(255,94,108,0.1)">SL 3.0×</th><td class="r" style="color:var(--text-dim)">—</td><td class="r" style="color:var(--text-dim)">—</td><td class="r" style="color:var(--text-dim)">—</td><td class="r" style="background:rgba(77,212,152,0.25);font-weight:400">+0.96R</td></tr></tbody></table><div style="margin-top:8px;font-size:12px;color:var(--text-dim)">⭐ = recommended · เขียวเข้ม = EV ดี</div></div><div class="card" style="margin-bottom:14px"><div class="card-title"><a href="patterns.html#p43" style="color:var(--blue)"><strong>P43</strong></a> Bullish_Order_Block (Cat C · n=43 · WR 30%)</div><table class="table compact" style="margin-top:6px"><tbody><tr><th></th><th class="r" style="background:rgba(77,212,152,0.1)">TP 1.0×</th><th class="r" style="background:rgba(77,212,152,0.1)">TP 2.0×</th><th class="r" style="background:rgba(77,212,152,0.1)">TP 3.0×</th><th class="r" style="background:rgba(77,212,152,0.1)">TP 5.0×</th></tr><tr><th style="background:rgba(255,94,108,0.1)">SL 0.5×</th><td class="r" style="background:rgba(77,212,152,0.25);font-weight:400">+0.88R</td><td class="r" style="background:rgba(77,212,152,0.5);font-weight:400">+1.67R</td><td class="r" style="background:rgba(77,212,152,0.5);font-weight:700">+2.58R ⭐</td><td class="r" style="background:rgba(77,212,152,0.5);font-weight:400">+2.07R</td></tr><tr><th style="background:rgba(255,94,108,0.1)">SL 1.0×</th><td class="r" style="color:var(--text-dim)">—</td><td class="r" style="background:rgba(77,212,152,0.25);font-weight:400">+0.60R</td><td class="r" style="background:rgba(77,212,152,0.5);font-weight:400">+1.05R</td><td class="r" style="background:rgba(77,212,152,0.25);font-weight:400">+0.67R</td></tr><tr><th style="background:rgba(255,94,108,0.1)">SL 2.0×</th><td class="r" style="color:var(--text-dim)">—</td><td class="r" style="color:var(--text-dim)">—</td><td class="r" style="background:rgba(77,212,152,0.25);font-weight:400">+0.63R</td><td class="r" style="background:rgba(77,212,152,0.25);font-weight:400">+0.47R</td></tr><tr><th style="background:rgba(255,94,108,0.1)">SL 3.0×</th><td class="r" style="color:var(--text-dim)">—</td><td class="r" style="color:var(--text-dim)">—</td><td class="r" style="color:var(--text-dim)">—</td><td class="r" style="background:rgba(91,155,213,0.15);font-weight:400">+0.24R</td></tr></tbody></table><div style="margin-top:8px;font-size:12px;color:var(--text-dim)">⭐ = recommended · เขียวเข้ม = EV ดี</div></div><div class="card" style="margin-bottom:14px"><div class="card-title"><a href="patterns.html#p150" style="color:var(--blue)"><strong>P150</strong></a> External_Liq_Sweep_Long (Cat M · n=49 · WR 39%)</div><table class="table compact" style="margin-top:6px"><tbody><tr><th></th><th class="r" style="background:rgba(77,212,152,0.1)">TP 1.0×</th><th class="r" style="background:rgba(77,212,152,0.1)">TP 2.0×</th><th class="r" style="background:rgba(77,212,152,0.1)">TP 3.0×</th><th class="r" style="background:rgba(77,212,152,0.1)">TP 5.0×</th></tr><tr><th style="background:rgba(255,94,108,0.1)">SL 0.5×</th><td class="r" style="background:rgba(77,212,152,0.25);font-weight:400">+0.90R</td><td class="r" style="background:rgba(77,212,152,0.5);font-weight:400">+1.24R</td><td class="r" style="background:rgba(77,212,152,0.5);font-weight:400">+2.00R</td><td class="r" style="background:rgba(77,212,152,0.5);font-weight:700">+2.37R ⭐</td></tr><tr><th style="background:rgba(255,94,108,0.1)">SL 1.0×</th><td class="r" style="color:var(--text-dim)">—</td><td class="r" style="background:rgba(77,212,152,0.25);font-weight:400">+0.35R</td><td class="r" style="background:rgba(77,212,152,0.25);font-weight:400">+0.71R</td><td class="r" style="background:rgba(77,212,152,0.25);font-weight:400">+0.84R</td></tr><tr><th style="background:rgba(255,94,108,0.1)">SL 2.0×</th><td class="r" style="color:var(--text-dim)">—</td><td class="r" style="color:var(--text-dim)">—</td><td class="r" style="background:rgba(77,212,152,0.25);font-weight:400">+0.48R</td><td class="r" style="background:rgba(77,212,152,0.25);font-weight:400">+0.60R</td></tr><tr><th style="background:rgba(255,94,108,0.1)">SL 3.0×</th><td class="r" style="color:var(--text-dim)">—</td><td class="r" style="color:var(--text-dim)">—</td><td class="r" style="color:var(--text-dim)">—</td><td class="r" style="background:rgba(91,155,213,0.15);font-weight:400">+0.28R</td></tr></tbody></table><div style="margin-top:8px;font-size:12px;color:var(--text-dim)">⭐ = recommended · เขียวเข้ม = EV ดี</div></div><div class="card" style="margin-bottom:14px"><div class="card-title"><a href="patterns.html#p89" style="color:var(--blue)"><strong>P89</strong></a> OTE_Long (Cat H · n=63 · WR 30%)</div><table class="table compact" style="margin-top:6px"><tbody><tr><th></th><th class="r" style="background:rgba(77,212,152,0.1)">TP 1.0×</th><th class="r" style="background:rgba(77,212,152,0.1)">TP 2.0×</th><th class="r" style="background:rgba(77,212,152,0.1)">TP 3.0×</th><th class="r" style="background:rgba(77,212,152,0.1)">TP 5.0×</th></tr><tr><th style="background:rgba(255,94,108,0.1)">SL 0.5×</th><td class="r" style="background:rgba(77,212,152,0.25);font-weight:400">+0.71R</td><td class="r" style="background:rgba(77,212,152,0.5);font-weight:400">+1.30R</td><td class="r" style="background:rgba(77,212,152,0.5);font-weight:400">+1.89R</td><td class="r" style="background:rgba(77,212,152,0.5);font-weight:700">+2.14R ⭐</td></tr><tr><th style="background:rgba(255,94,108,0.1)">SL 1.0×</th><td class="r" style="color:var(--text-dim)">—</td><td class="r" style="background:rgba(77,212,152,0.25);font-weight:400">+0.43R</td><td class="r" style="background:rgba(77,212,152,0.25);font-weight:400">+0.71R</td><td class="r" style="background:rgba(77,212,152,0.25);font-weight:400">+0.81R</td></tr><tr><th style="background:rgba(255,94,108,0.1)">SL 2.0×</th><td class="r" style="color:var(--text-dim)">—</td><td class="r" style="color:var(--text-dim)">—</td><td class="r" style="background:rgba(91,155,213,0.15);font-weight:400">+0.11R</td><td class="r" style="background:rgba(91,155,213,0.15);font-weight:400">+0.08R</td></tr><tr><th style="background:rgba(255,94,108,0.1)">SL 3.0×</th><td class="r" style="color:var(--text-dim)">—</td><td class="r" style="color:var(--text-dim)">—</td><td class="r" style="color:var(--text-dim)">—</td><td class="r" style="background:rgba(255,94,108,0.15);font-weight:400">-0.13R</td></tr></tbody></table><div style="margin-top:8px;font-size:12px;color:var(--text-dim)">⭐ = recommended · เขียวเข้ม = EV ดี</div></div><div class="card" style="margin-bottom:14px"><div class="card-title"><a href="patterns.html#p34" style="color:var(--blue)"><strong>P34</strong></a> Morning_Star (Cat B · n=32 · WR 34%)</div><table class="table compact" style="margin-top:6px"><tbody><tr><th></th><th class="r" style="background:rgba(77,212,152,0.1)">TP 1.0×</th><th class="r" style="background:rgba(77,212,152,0.1)">TP 2.0×</th><th class="r" style="background:rgba(77,212,152,0.1)">TP 3.0×</th><th class="r" style="background:rgba(77,212,152,0.1)">TP 5.0×</th></tr><tr><th style="background:rgba(255,94,108,0.1)">SL 0.5×</th><td class="r" style="background:rgba(77,212,152,0.25);font-weight:400">+0.88R</td><td class="r" style="background:rgba(77,212,152,0.5);font-weight:400">+1.66R</td><td class="r" style="background:rgba(77,212,152,0.5);font-weight:400">+2.06R</td><td class="r" style="background:rgba(77,212,152,0.5);font-weight:700">+2.09R ⭐</td></tr><tr><th style="background:rgba(255,94,108,0.1)">SL 1.0×</th><td class="r" style="color:var(--text-dim)">—</td><td class="r" style="background:rgba(77,212,152,0.25);font-weight:400">+0.69R</td><td class="r" style="background:rgba(77,212,152,0.25);font-weight:400">+0.88R</td><td class="r" style="background:rgba(77,212,152,0.25);font-weight:400">+0.88R</td></tr><tr><th style="background:rgba(255,94,108,0.1)">SL 2.0×</th><td class="r" style="color:var(--text-dim)">—</td><td class="r" style="color:var(--text-dim)">—</td><td class="r" style="background:rgba(77,212,152,0.25);font-weight:400">+0.33R</td><td class="r" style="background:rgba(77,212,152,0.25);font-weight:400">+0.31R</td></tr><tr><th style="background:rgba(255,94,108,0.1)">SL 3.0×</th><td class="r" style="color:var(--text-dim)">—</td><td class="r" style="color:var(--text-dim)">—</td><td class="r" style="color:var(--text-dim)">—</td><td class="r" style="background:rgba(91,155,213,0.15);font-weight:400">+0.03R</td></tr></tbody></table><div style="margin-top:8px;font-size:12px;color:var(--text-dim)">⭐ = recommended · เขียวเข้ม = EV ดี</div></div></div>
+  <div class="section-head"><span class="section-num">10</span><h2 class="section-title">Key Findings + How to Use</h2></div>
+  
+  <div class="insight" style="margin-bottom:14px">
+    <div class="insight-tag" style="color:var(--green)">📋 KEY FINDINGS</div>
+    <ul class="bullet"><li><strong>Total trades:</strong> 16,830 · WR <strong>49.86%</strong> · PF (ATR) <strong>1.011</strong> · expectancy <strong>+0.0402 ATR/trade</strong></li><li><strong>Net PnL:</strong> <span class="tg">+676.16 ATR</span> · <span class="tg">$+676</span></li><li><strong>Active patterns:</strong> 153/177 · 99 ผ่านเกณฑ์ n≥30 · 99 มี realistic EV (0 robust)</li><li><strong>Top 3 by ATR:</strong> <a href="patterns.html#p46" style="color:var(--blue)"><strong>P46</strong></a> Breaker_Block_Bear (+865 ATR) · <a href="patterns.html#p72" style="color:var(--blue)"><strong>P72</strong></a> FVG_Bear (+735 ATR) · <a href="patterns.html#p126" style="color:var(--blue)"><strong>P126</strong></a> HTF_Bias_Long (+494 ATR)</li><li><strong>Spread cost:</strong> entry 147.6pts · exit 157.7pts (real broker fill)</li><li><strong>MFE/MAE avg:</strong> trades วิ่งขึ้น 5.89 ATR · ลง 5.88 ATR</li></ul>
+  </div>
+  
+  <div class="insight blue">
+    <div class="insight-tag" style="color:var(--blue)">🎯 HOW TO USE THIS DATA</div>
+    
+    <h4 style="color:var(--green);margin-top:14px;margin-bottom:8px">✅ ทำได้ตอนนี้เลย</h4>
+    <ul class="bullet">
+      <li>คัด <strong>Tier S/A patterns</strong> จาก <a href="tier.html" style="color:var(--blue)">Tier Rankings</a> เป็น candidates</li>
+      <li>ใช้ <strong>Recommended Setup</strong> ใน Section 6 (กรอง "Robust only" เพื่อดูเฉพาะ n≥100)</li>
+      <li>ดู <strong>Trade Trajectory</strong> (Section 8) เพื่อรู้ว่า pattern แต่ละตัว "พีค" ตอนกี่ ชม. — ใช้กำหนด time-stop</li>
+      <li>เปรียบเทียบ <strong>Cross-asset</strong> ที่ <a href="cross.html" style="color:var(--blue)">Cross Analysis</a></li>
+    </ul>
+    
+    <h4 style="color:var(--amber);margin-top:14px;margin-bottom:8px">⚠️ ก่อนใช้ Live ต้อง</h4>
+    <ol style="line-height:1.8;color:var(--text)">
+      <li>รอครบ 6 datasets (เหลือ BTC H1, XAU H1, EUR H1/H4)</li>
+      <li>สร้าง <strong>Production EA</strong> ที่ exit ที่ SL/TP จริง (ไม่ใช่ time-stop)</li>
+      <li><strong>Forward test 3-6 เดือน</strong> บน demo ก่อน live</li>
+      <li>ใช้ <strong>Kelly × 0.5 (half-Kelly)</strong> เพื่อ conservative position sizing</li>
+      <li>ตั้ง stop เพิ่มถ้า drawdown เกิน 1.5× MDD ในตาราง</li>
+    </ol>
+    
+    <h4 style="color:var(--red);margin-top:14px;margin-bottom:8px">🚫 ห้ามทำ</h4>
+    <ul class="bullet">
+      <li>ใช้ <strong>Tier D</strong> (Worst Patterns · Section 3)</li>
+      <li>ใช้ <strong>Preliminary patterns (n&lt;60)</strong> โดยไม่ forward-test</li>
+      <li>เชื่อ <strong>RR 1:10</strong> โดยไม่ระวัง slippage</li>
+      <li><strong>Compound</strong> kelly เต็ม % ตั้งแต่แรก — เริ่มที่ 0.25× ก่อน</li>
+    </ul>
+  </div>
+  
+  <div class="insight cyan" style="margin-top:14px">
+    <div class="insight-tag" style="color:var(--cyan)">💡 RECOMMENDATION</div>
+    เริ่มจาก 1 pattern ที่ <strong>ROBUST</strong> + EV สูงที่สุด (ดู Best ROBUST setup ใน findings) · 
+    ใช้กับ <strong>USTEC (Nasdaq 100) H1</strong> เท่านั้น (อย่าใช้ข้าม asset/timeframe) · risk 0.5-1% ต่อ trade · review รายเดือน
+  </div>
+</section>
 </main>
 
   
@@ -299,16 +820,10 @@
 // KMP Master · Inline Sidebar JS (no cache, no delegation)
 (function() {
   function initSidebar() {
-    // Make sure all menus start closed
     document.querySelectorAll('.tree-children').forEach(function(el){ el.classList.remove('show'); });
     document.querySelectorAll('.tree-node.expandable').forEach(function(el){ el.classList.remove('expanded'); });
-    
-    // Attach click handler to EACH expandable tree-node directly
-    var nodes = document.querySelectorAll('.tree-node.expandable');
-    nodes.forEach(function(node) {
-      // Visual feedback — click cursor
+    document.querySelectorAll('.tree-node.expandable').forEach(function(node) {
       node.style.cursor = 'pointer';
-      
       node.addEventListener('click', function(e) {
         e.preventDefault();
         e.stopPropagation();
@@ -320,81 +835,38 @@
         target.classList.toggle('show');
       });
     });
-    
-    // Highlight active link
     var path = window.location.pathname.split('/').pop() || 'index.html';
     document.querySelectorAll('.tree-node[href]').forEach(function(link) {
       if (link.getAttribute('href') === path) link.classList.add('active');
     });
   }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initSidebar);
+  else initSidebar();
   
-  // Run when DOM is ready (or now if already ready)
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initSidebar);
-  } else {
-    initSidebar();
-  }
-  
-  // Search filter
   function initSearch() {
     var inp = document.getElementById('globalSearch');
     if (!inp) return;
     inp.addEventListener('input', function(e) {
       var q = e.target.value.toLowerCase().trim();
-      var sections = document.querySelectorAll('.section, .insight, .kpi, .pat-card, .chart-card');
-      sections.forEach(function(s) {
-        if (!q) { s.style.display = ''; return; }
-        s.style.display = s.textContent.toLowerCase().includes(q) ? '' : 'none';
+      document.querySelectorAll('.section, .insight, .kpi, .pat-card, .chart-card').forEach(function(s) {
+        s.style.display = !q || s.textContent.toLowerCase().includes(q) ? '' : 'none';
       });
     });
   }
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initSearch);
-  } else {
-    initSearch();
-  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initSearch);
+  else initSearch();
   
-  // Helper functions for pages that need them
-  window.wrClass = function(wr, n) {
-    if (wr == null || n < 30) return 'none';
-    return wr >= 53 ? 'high' : (wr >= 48 ? 'mid' : 'low');
-  };
-  window.wrPill = function(wr, n) {
-    if (wr == null || n < 30) return '<span class="wr-pill none">—</span>';
-    return '<span class="wr-pill ' + window.wrClass(wr, n) + '">' + wr.toFixed(1) + '%</span>';
-  };
-  window.dirText = function(d) {
-    if (d === 1) return '<span style="color:var(--green)">L</span>';
-    if (d === -1) return '<span style="color:var(--red)">S</span>';
-    return '<span style="color:var(--yellow)">⇄</span>';
-  };
-  window.tierLabel = function(tier) {
-    return '<span class="tier-tag tier-' + tier + '">' + tier + '</span>';
-  };
-  window.fmtN = function(n) {
-    if (n == null) return '—';
-    if (n >= 1000000) return (n/1000000).toFixed(2) + 'M';
-    if (n >= 1000) return (n/1000).toFixed(1) + 'K';
-    return n.toLocaleString();
-  };
-  window.fmtDollar = function(n, withSign) {
-    if (n == null) return '—';
-    var sign = n < 0 ? '-$' : (withSign ? '+$' : '$');
-    return sign + Math.abs(n).toLocaleString();
-  };
+  window.wrClass = function(wr, n) { return wr == null || n < 30 ? 'none' : (wr >= 53 ? 'high' : (wr >= 48 ? 'mid' : 'low')); };
+  window.wrPill = function(wr, n) { return wr == null || n < 30 ? '<span class="wr-pill none">—</span>' : '<span class="wr-pill ' + window.wrClass(wr, n) + '">' + wr.toFixed(1) + '%</span>'; };
+  window.dirText = function(d) { return d === 1 ? '<span style="color:var(--green)">L</span>' : (d === -1 ? '<span style="color:var(--red)">S</span>' : '<span style="color:var(--yellow)">⇄</span>'); };
+  window.tierLabel = function(t) { return '<span class="tier-tag tier-' + t + '">' + t + '</span>'; };
+  window.fmtN = function(n) { if (n == null) return '—'; if (n >= 1e6) return (n/1e6).toFixed(2) + 'M'; if (n >= 1e3) return (n/1e3).toFixed(1) + 'K'; return n.toLocaleString(); };
+  window.fmtDollar = function(n, w) { if (n == null) return '—'; var s = n < 0 ? '-$' : (w ? '+$' : '$'); return s + Math.abs(n).toLocaleString(); };
   
-  // Data loader
-  var _cached = null;
+  var _c = null;
   window.loadData = async function() {
-    if (_cached) return _cached;
-    try {
-      var res = await fetch('data/master_data.json');
-      _cached = await res.json();
-      return _cached;
-    } catch (e) {
-      console.error('Failed to load data:', e);
-      return null;
-    }
+    if (_c) return _c;
+    try { var r = await fetch('data/master_data.json?v=9.1'); _c = await r.json(); return _c; } catch(e) { return null; }
   };
 })();
 </script>

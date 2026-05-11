@@ -5,14 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Euro / Pound · KMP Master</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&family=Sarabun:wght@400;500;600;700&family=Bricolage+Grotesque:wght@400;700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css?v=8.0">
+<link rel="stylesheet" href="assets/style.css?v=9.1">
 </head>
 <body>
 
 <nav class="sidebar">
   <div class="sidebar-brand">
     <a class="brand-logo" href="index.html">KMP <span class="accent">Master</span></a>
-    <div class="brand-ver">EA v4.1 · 177 patterns · 131 cols</div>
+    <div class="brand-ver">v9.1 · EA v4.1 · 23 assets · 69 datasets · 2,245,158 trades</div>
   </div>
   
   <input type="text" class="search-box" id="globalSearch" placeholder="ค้นหา...">
@@ -25,7 +25,7 @@
   </div>
   
   <div class="nav-section">
-    <div class="nav-label">Datasets · v9.0 · 66/69 ds · 2154K trades</div>
+    <div class="nav-label">Datasets · v9.1 · 69/69 ds · 2.25M trades</div>
     
     <div class="tree-node lvl-0 expandable" data-toggle="crypto-menu">
       <span class="arrow">▶</span><span class="nm">Crypto</span><span class="badge">2</span>
@@ -214,12 +214,12 @@
         <a class="tree-node lvl-2" href="us500-m15.html"><span class="nm">US500 M15</span><span class="badge" style="background:#10b981;color:#fff">68,857</span></a>
       </div>
       <div class="tree-node lvl-1 expandable" data-toggle="ustec-menu">
-        <span class="arrow">▶</span><span class="nm">USTEC (Nasdaq 100)</span><span class="badge" style="background:#06b6d4;color:#fff">0</span>
+        <span class="arrow">▶</span><span class="nm">USTEC (Nasdaq 100)</span><span class="badge" style="background:#06b6d4;color:#fff">90.6K</span>
       </div>
       <div class="tree-children" id="ustec-menu">
-        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">USTEC H4</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
-        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">USTEC H1</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
-        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">USTEC M15</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <a class="tree-node lvl-2" href="ustec-h4.html"><span class="nm">USTEC H4</span><span class="badge" style="background:#10b981;color:#fff">4,831</span></a>
+        <a class="tree-node lvl-2" href="ustec-h1.html"><span class="nm">USTEC H1</span><span class="badge" style="background:#10b981;color:#fff">16,830</span></a>
+        <a class="tree-node lvl-2" href="ustec-m15.html"><span class="nm">USTEC M15</span><span class="badge" style="background:#10b981;color:#fff">68,927</span></a>
       </div>
       <div class="tree-node lvl-1 expandable" data-toggle="de30-menu">
         <span class="arrow">▶</span><span class="nm">DE30 (DAX)</span><span class="badge" style="background:#facc15;color:#0a0a0a">86.8K</span>
@@ -270,7 +270,6 @@
   
   <div class="nav-section">
     <div class="nav-label">Strategy</div>
-    <a class="tree-node lvl-0" href="strategy.html"><span class="arrow"></span><span class="nm">EA Blueprint &amp; Risk</span></a>
   </div>
   
   <div class="nav-section">
@@ -278,9 +277,6 @@
     <a class="tree-node lvl-0" href="ea-architecture.html"><span class="arrow"></span><span class="nm">⚙ EA Architecture</span></a>
     <a class="tree-node lvl-0" href="tracking-system.html"><span class="arrow"></span><span class="nm">🎯 Tracking System</span></a>  </div>  <div class="nav-section">
     <div class="nav-label">Reference</div>
-    <a class="tree-node lvl-0" href="ea-source.html"><span class="arrow"></span><span class="nm">EA Source Code</span><span class="badge" style="background:#4dd498;color:#0a0a0a">v4.1</span></a>
-    <a class="tree-node lvl-0" href="research-references.html"><span class="arrow"></span><span class="nm">Research Refs</span><span class="badge" style="background:#5b9bd5;color:#fff">NEW</span></a>
-    <a class="tree-node lvl-0" href="research-comparison.html"><span class="nm">📊 Research Comparison</span></a>
   <a class="tree-node lvl-0" href="reference.html"><span class="arrow"></span><span class="nm">📚 อ้างอิง · ข้อจำกัด · Changelog</span></a>
   </div>
 </nav>
@@ -401,18 +397,24 @@
 </section>
 </main>
 
-
-  
-<script>
+<script src="assets/app.js?v=9.1"></script>
+  <script>
 // KMP Master · Inline Sidebar JS (no cache, no delegation)
 (function() {
   function initSidebar() {
+    // Make sure all menus start closed
     document.querySelectorAll('.tree-children').forEach(function(el){ el.classList.remove('show'); });
     document.querySelectorAll('.tree-node.expandable').forEach(function(el){ el.classList.remove('expanded'); });
-    document.querySelectorAll('.tree-node.expandable').forEach(function(node) {
+    
+    // Attach click handler to EACH expandable tree-node directly
+    var nodes = document.querySelectorAll('.tree-node.expandable');
+    nodes.forEach(function(node) {
+      // Visual feedback — click cursor
       node.style.cursor = 'pointer';
+      
       node.addEventListener('click', function(e) {
-        e.preventDefault(); e.stopPropagation();
+        e.preventDefault();
+        e.stopPropagation();
         var id = node.getAttribute('data-toggle');
         if (!id) return;
         var target = document.getElementById(id);
@@ -421,35 +423,81 @@
         target.classList.toggle('show');
       });
     });
+    
+    // Highlight active link
     var path = window.location.pathname.split('/').pop() || 'index.html';
     document.querySelectorAll('.tree-node[href]').forEach(function(link) {
       if (link.getAttribute('href') === path) link.classList.add('active');
     });
   }
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initSidebar);
-  else initSidebar();
+  
+  // Run when DOM is ready (or now if already ready)
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initSidebar);
+  } else {
+    initSidebar();
+  }
+  
+  // Search filter
   function initSearch() {
     var inp = document.getElementById('globalSearch');
     if (!inp) return;
     inp.addEventListener('input', function(e) {
       var q = e.target.value.toLowerCase().trim();
-      document.querySelectorAll('.section, .insight, .kpi, .pat-card, .chart-card').forEach(function(s) {
-        s.style.display = !q || s.textContent.toLowerCase().includes(q) ? '' : 'none';
+      var sections = document.querySelectorAll('.section, .insight, .kpi, .pat-card, .chart-card');
+      sections.forEach(function(s) {
+        if (!q) { s.style.display = ''; return; }
+        s.style.display = s.textContent.toLowerCase().includes(q) ? '' : 'none';
       });
     });
   }
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initSearch);
-  else initSearch();
-  window.wrClass = function(wr, n) { return wr == null || n < 30 ? 'none' : (wr >= 53 ? 'high' : (wr >= 48 ? 'mid' : 'low')); };
-  window.wrPill = function(wr, n) { return wr == null || n < 30 ? '<span class="wr-pill none">—</span>' : '<span class="wr-pill ' + window.wrClass(wr, n) + '">' + wr.toFixed(1) + '%</span>'; };
-  window.dirText = function(d) { return d === 1 ? '<span style="color:var(--green)">L</span>' : (d === -1 ? '<span style="color:var(--red)">S</span>' : '<span style="color:var(--yellow)">⇄</span>'); };
-  window.tierLabel = function(t) { return '<span class="tier-tag tier-' + t + '">' + t + '</span>'; };
-  window.fmtN = function(n) { if (n == null) return '—'; if (n >= 1e6) return (n/1e6).toFixed(2) + 'M'; if (n >= 1e3) return (n/1e3).toFixed(1) + 'K'; return n.toLocaleString(); };
-  window.fmtDollar = function(n, w) { if (n == null) return '—'; var s = n < 0 ? '-$' : (w ? '+$' : '$'); return s + Math.abs(n).toLocaleString(); };
-  var _c = null;
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initSearch);
+  } else {
+    initSearch();
+  }
+  
+  // Helper functions for pages that need them
+  window.wrClass = function(wr, n) {
+    if (wr == null || n < 30) return 'none';
+    return wr >= 53 ? 'high' : (wr >= 48 ? 'mid' : 'low');
+  };
+  window.wrPill = function(wr, n) {
+    if (wr == null || n < 30) return '<span class="wr-pill none">—</span>';
+    return '<span class="wr-pill ' + window.wrClass(wr, n) + '">' + wr.toFixed(1) + '%</span>';
+  };
+  window.dirText = function(d) {
+    if (d === 1) return '<span style="color:var(--green)">L</span>';
+    if (d === -1) return '<span style="color:var(--red)">S</span>';
+    return '<span style="color:var(--yellow)">⇄</span>';
+  };
+  window.tierLabel = function(tier) {
+    return '<span class="tier-tag tier-' + tier + '">' + tier + '</span>';
+  };
+  window.fmtN = function(n) {
+    if (n == null) return '—';
+    if (n >= 1000000) return (n/1000000).toFixed(2) + 'M';
+    if (n >= 1000) return (n/1000).toFixed(1) + 'K';
+    return n.toLocaleString();
+  };
+  window.fmtDollar = function(n, withSign) {
+    if (n == null) return '—';
+    var sign = n < 0 ? '-$' : (withSign ? '+$' : '$');
+    return sign + Math.abs(n).toLocaleString();
+  };
+  
+  // Data loader
+  var _cached = null;
   window.loadData = async function() {
-    if (_c) return _c;
-    try { var r = await fetch('data/master_data.json'); _c = await r.json(); return _c; } catch(e) { return null; }
+    if (_cached) return _cached;
+    try {
+      var res = await fetch('data/master_data.json?v=9.1');
+      _cached = await res.json();
+      return _cached;
+    } catch (e) {
+      console.error('Failed to load data:', e);
+      return null;
+    }
   };
 })();
 </script>

@@ -5,14 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Preface · KMP Master</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&family=Sarabun:wght@400;500;600;700&family=Bricolage+Grotesque:wght@400;700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css?v=6.7">
+<link rel="stylesheet" href="assets/style.css?v=9.1">
 </head>
 <body>
 
 <nav class="sidebar">
   <div class="sidebar-brand">
     <a class="brand-logo" href="index.html">KMP <span class="accent">Master</span></a>
-    <div class="brand-ver">EA v4.1 · 177 patterns · 131 cols</div>
+    <div class="brand-ver">v9.1 · EA v4.1 · 23 assets · 69 datasets · 2,245,158 trades</div>
   </div>
   
   <input type="text" class="search-box" id="globalSearch" placeholder="ค้นหา...">
@@ -25,7 +25,7 @@
   </div>
   
   <div class="nav-section">
-    <div class="nav-label">Datasets · v9.0 · 66/69 ds · 2154K trades</div>
+    <div class="nav-label">Datasets · v9.1 · 69/69 ds · 2.25M trades</div>
     
     <div class="tree-node lvl-0 expandable" data-toggle="crypto-menu">
       <span class="arrow">▶</span><span class="nm">Crypto</span><span class="badge">2</span>
@@ -214,12 +214,12 @@
         <a class="tree-node lvl-2" href="us500-m15.html"><span class="nm">US500 M15</span><span class="badge" style="background:#10b981;color:#fff">68,857</span></a>
       </div>
       <div class="tree-node lvl-1 expandable" data-toggle="ustec-menu">
-        <span class="arrow">▶</span><span class="nm">USTEC (Nasdaq 100)</span><span class="badge" style="background:#06b6d4;color:#fff">0</span>
+        <span class="arrow">▶</span><span class="nm">USTEC (Nasdaq 100)</span><span class="badge" style="background:#06b6d4;color:#fff">90.6K</span>
       </div>
       <div class="tree-children" id="ustec-menu">
-        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">USTEC H4</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
-        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">USTEC H1</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
-        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">USTEC M15</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <a class="tree-node lvl-2" href="ustec-h4.html"><span class="nm">USTEC H4</span><span class="badge" style="background:#10b981;color:#fff">4,831</span></a>
+        <a class="tree-node lvl-2" href="ustec-h1.html"><span class="nm">USTEC H1</span><span class="badge" style="background:#10b981;color:#fff">16,830</span></a>
+        <a class="tree-node lvl-2" href="ustec-m15.html"><span class="nm">USTEC M15</span><span class="badge" style="background:#10b981;color:#fff">68,927</span></a>
       </div>
       <div class="tree-node lvl-1 expandable" data-toggle="de30-menu">
         <span class="arrow">▶</span><span class="nm">DE30 (DAX)</span><span class="badge" style="background:#facc15;color:#0a0a0a">86.8K</span>
@@ -314,7 +314,7 @@
   <p><strong>เป้าหมายระยะสั้น:</strong> สร้าง production EA จาก patterns ที่พิสูจน์แล้วว่ามี edge
   ในตลาด BTC และ XAU เพื่อใช้งานจริงผ่าน Exness Pro broker</p>
   
-  <p><strong>เป้าหมายระยะกลาง:</strong> Harvester EA <strong>177 patterns</strong> (Phase 1: P1-P80 · Phase 2: P81-P125 · Phase 3: P126-P177) ทดสอบทุก phase พร้อมกัน · ปัจจุบันรวม <strong>66 datasets · 22 assets · 2,154,570 trades</strong> · เหลือเฉพาะ USTEC อีก 1 asset (3 datasets) ก่อนปิดเป้า 23 assets</p>
+  <p><strong>เป้าหมายระยะกลาง:</strong> Harvester EA <strong>177 patterns</strong> (Phase 1: P1-P80 · Phase 2: P81-P125 · Phase 3: P126-P177) ทดสอบทุก phase พร้อมกัน · ปัจจุบันรวม <strong>69 datasets · 23 assets · 2,245,158 trades</strong> · <strong style="color:#10b981">Phase 2 COMPLETE 100% — ครบทุก asset target</strong></p>
   
   <p><strong>เป้าหมายระยะยาว:</strong> สร้างระบบ adaptive trading ที่:</p>
   <ul class="bullet">
@@ -338,9 +338,10 @@
   </div>
   
   <div class="insight blue">
-    <div class="insight-tag">Tier System</div>
-    <strong>A</strong> (universal) → <strong>B</strong> (strong) → <strong>C</strong> (specialist) →
-    <strong>M</strong> (marginal) → <strong>BAD</strong> (avoid) → <strong>NF</strong> (not fired)<br>
+    <div class="insight-tag">Tier System (v9.1)</div>
+    <strong>S+</strong> (universal · 9 patterns) → <strong>S</strong> (highly robust · 17) →
+    <strong>A</strong> (strong · 33) → <strong>B</strong> (moderate · 95) → <strong>D</strong> (avoid · 23)<br>
+    เกณฑ์: active in % of datasets + profitable % + minEV<br>
     ดูรายละเอียดที่ <a href="tier.html" style="color:var(--blue)">Tier Rankings</a>
   </div>
 </section>
@@ -384,10 +385,10 @@
 <section class="section">
   <div class="section-head"><span class="section-num">06</span><h2 class="section-title">สถานะปัจจุบัน</h2></div>
   <div class="kpis">
-    <div class="kpi green"><div class="kpi-label">Phase 1-4</div><div class="kpi-val green">DONE</div><div class="kpi-sub">Multi-pattern backtester · EA v4.1 · 177 patterns · 131 cols</div></div>
-    <div class="kpi green"><div class="kpi-label">Phase 5</div><div class="kpi-val green">DONE</div><div class="kpi-sub">KMP Pattern Harvester</div></div>
-    <div class="kpi yellow"><div class="kpi-label">Datasets</div><div class="kpi-val green">3/3</div><div class="kpi-sub">XAU complete (H4+H1+M15)</div></div>
-    <div class="kpi cyan"><div class="kpi-label">Future</div><div class="kpi-val cyan">45</div><div class="kpi-sub">P81-P125 ready</div></div>
+    <div class="kpi green"><div class="kpi-label">EA Development</div><div class="kpi-val green">DONE</div><div class="kpi-sub">EA v4.1 · 177 patterns · 131 CSV cols · Triple-Barrier 20×20</div></div>
+    <div class="kpi green"><div class="kpi-label">Phase 2 Harvest</div><div class="kpi-val green">100%</div><div class="kpi-sub">69/69 datasets · 23/23 assets · 2,245,158 trades COMPLETE</div></div>
+    <div class="kpi green"><div class="kpi-label">Universal Patterns</div><div class="kpi-val green">9</div><div class="kpi-sub">Tier S+ · active 100% + profitable 100% + minEV > 0</div></div>
+    <div class="kpi cyan"><div class="kpi-label">Next: OOS</div><div class="kpi-val cyan">v9.3</div><div class="kpi-sub">Dukascopy 2018-2021 OOS validation</div></div>
   </div>
 </section>
 
@@ -488,7 +489,7 @@
   window.loadData = async function() {
     if (_cached) return _cached;
     try {
-      var res = await fetch('data/master_data.json');
+      var res = await fetch('data/master_data.json?v=9.1');
       _cached = await res.json();
       return _cached;
     } catch (e) {

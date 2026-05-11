@@ -5,14 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Edge Analysis · KMP Master</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&family=Sarabun:wght@400;500;600;700&family=Bricolage+Grotesque:wght@400;700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css?v=6.7">
+<link rel="stylesheet" href="assets/style.css?v=9.1">
 </head>
 <body>
 
 <nav class="sidebar">
   <div class="sidebar-brand">
     <a class="brand-logo" href="index.html">KMP <span class="accent">Master</span></a>
-    <div class="brand-ver">EA v4.1 · 177 patterns · 131 cols</div>
+    <div class="brand-ver">v9.1 · EA v4.1 · 23 assets · 69 datasets · 2,245,158 trades</div>
   </div>
   
   <input type="text" class="search-box" id="globalSearch" placeholder="ค้นหา...">
@@ -25,7 +25,7 @@
   </div>
   
   <div class="nav-section">
-    <div class="nav-label">Datasets · v9.0 · 66/69 ds · 2154K trades</div>
+    <div class="nav-label">Datasets · v9.1 · 69/69 ds · 2.25M trades</div>
     
     <div class="tree-node lvl-0 expandable" data-toggle="crypto-menu">
       <span class="arrow">▶</span><span class="nm">Crypto</span><span class="badge">2</span>
@@ -214,12 +214,12 @@
         <a class="tree-node lvl-2" href="us500-m15.html"><span class="nm">US500 M15</span><span class="badge" style="background:#10b981;color:#fff">68,857</span></a>
       </div>
       <div class="tree-node lvl-1 expandable" data-toggle="ustec-menu">
-        <span class="arrow">▶</span><span class="nm">USTEC (Nasdaq 100)</span><span class="badge" style="background:#06b6d4;color:#fff">0</span>
+        <span class="arrow">▶</span><span class="nm">USTEC (Nasdaq 100)</span><span class="badge" style="background:#06b6d4;color:#fff">90.6K</span>
       </div>
       <div class="tree-children" id="ustec-menu">
-        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">USTEC H4</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
-        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">USTEC H1</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
-        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">USTEC M15</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <a class="tree-node lvl-2" href="ustec-h4.html"><span class="nm">USTEC H4</span><span class="badge" style="background:#10b981;color:#fff">4,831</span></a>
+        <a class="tree-node lvl-2" href="ustec-h1.html"><span class="nm">USTEC H1</span><span class="badge" style="background:#10b981;color:#fff">16,830</span></a>
+        <a class="tree-node lvl-2" href="ustec-m15.html"><span class="nm">USTEC M15</span><span class="badge" style="background:#10b981;color:#fff">68,927</span></a>
       </div>
       <div class="tree-node lvl-1 expandable" data-toggle="de30-menu">
         <span class="arrow">▶</span><span class="nm">DE30 (DAX)</span><span class="badge" style="background:#facc15;color:#0a0a0a">86.8K</span>
@@ -286,7 +286,7 @@
 <main class="main">
 
   <div class="hero">
-    <span class="hero-tag">Edge Analysis · v9.0 · 66 datasets · 2,154,570 trades</span>
+    <span class="hero-tag">Edge Analysis · v9.1 · 69 datasets · 2,245,158 trades</span>
     <h1 class="hero-title">Trading <span class="accent">Edge.</span></h1>
     <p class="hero-desc">ค้นหาเงื่อนไขที่ pattern มี edge ชัดเจน — vol regime · trend · ADX · session</p>
   </div>
@@ -1281,6 +1281,51 @@
     </div>
   </div>
 </section>
+<section>
+  <div class="section-head"><h2 class="section-title">USTEC_H4 (4,831 trades · WR 48.7% · PF 0.96)</h2></div>
+  <div style="display:flex;gap:14px;flex-wrap:wrap">
+    <div class="card" style="flex:1;min-width:340px">
+      <div class="card-title">🟢 Top Edge Conditions (n≥50)</div>
+      <table class="table compact"><thead><tr><th>Condition</th><th class="r">N</th><th class="r">WR</th><th class="r">Mean</th><th class="r">Total</th></tr></thead>
+      <tbody><tr><td>quality_D</td><td class="r">728</td><td class="r">84.1%</td><td class="r tg">+4.7866</td><td class="r tg">+3,484.6</td></tr><tr><td>quality_B</td><td class="r">644</td><td class="r">100.0%</td><td class="r tg">+4.2356</td><td class="r tg">+2,727.7</td></tr><tr><td>trend_RANGING</td><td class="r">462</td><td class="r">51.1%</td><td class="r tg">+0.3518</td><td class="r tg">+162.5</td></tr><tr><td>session_NY</td><td class="r">1,779</td><td class="r">49.5%</td><td class="r tg">+0.1459</td><td class="r tg">+259.6</td></tr><tr><td>trend_WEAK_DOWN</td><td class="r">990</td><td class="r">47.5%</td><td class="r tg">+0.0319</td><td class="r tg">+31.6</td></tr><tr><td>vol_regime_NORMAL</td><td class="r">3,921</td><td class="r">48.6%</td><td class="r tr">-0.0236</td><td class="r tr">-92.7</td></tr><tr><td>trend_STRONG_UP</td><td class="r">1,308</td><td class="r">48.5%</td><td class="r tr">-0.0366</td><td class="r tr">-47.8</td></tr><tr><td>vol_regime_LOW</td><td class="r">355</td><td class="r">47.6%</td><td class="r tr">-0.0762</td><td class="r tr">-27.1</td></tr><tr><td>session_London</td><td class="r">1,524</td><td class="r">45.6%</td><td class="r tr">-0.1660</td><td class="r tr">-253.0</td></tr><tr><td>trend_WEAK_UP</td><td class="r">1,112</td><td class="r">44.8%</td><td class="r tr">-0.1819</td><td class="r tr">-202.2</td></tr><tr><td>session_Asia</td><td class="r">1,528</td><td class="r">46.1%</td><td class="r tr">-0.2300</td><td class="r tr">-351.4</td></tr><tr><td>trend_STRONG_DOWN</td><td class="r">959</td><td class="r">45.6%</td><td class="r tr">-0.3012</td><td class="r tr">-288.8</td></tr><tr><td>vol_regime_HIGH</td><td class="r">555</td><td class="r">40.9%</td><td class="r tr">-0.4055</td><td class="r tr">-225.1</td></tr><tr><td>quality_C</td><td class="r">3,459</td><td class="r">30.5%</td><td class="r tr">-1.8957</td><td class="r tr">-6,557.2</td></tr></tbody></table>
+    </div>
+    <div class="card" style="flex:1;min-width:340px">
+      <div class="card-title">🔴 Worst Conditions (avoid)</div>
+      <table class="table compact"><thead><tr><th>Condition</th><th class="r">N</th><th class="r">WR</th><th class="r">Mean</th><th class="r">Total</th></tr></thead>
+      <tbody><tr><td>quality_C</td><td class="r">3,459</td><td class="r">30.5%</td><td class="r tr">-1.8957</td><td class="r tr">-6,557.2</td></tr><tr><td>vol_regime_HIGH</td><td class="r">555</td><td class="r">40.9%</td><td class="r tr">-0.4055</td><td class="r tr">-225.1</td></tr><tr><td>trend_STRONG_DOWN</td><td class="r">959</td><td class="r">45.6%</td><td class="r tr">-0.3012</td><td class="r tr">-288.8</td></tr><tr><td>session_Asia</td><td class="r">1,528</td><td class="r">46.1%</td><td class="r tr">-0.2300</td><td class="r tr">-351.4</td></tr><tr><td>trend_WEAK_UP</td><td class="r">1,112</td><td class="r">44.8%</td><td class="r tr">-0.1819</td><td class="r tr">-202.2</td></tr><tr><td>session_London</td><td class="r">1,524</td><td class="r">45.6%</td><td class="r tr">-0.1660</td><td class="r tr">-253.0</td></tr><tr><td>vol_regime_LOW</td><td class="r">355</td><td class="r">47.6%</td><td class="r tr">-0.0762</td><td class="r tr">-27.1</td></tr><tr><td>trend_STRONG_UP</td><td class="r">1,308</td><td class="r">48.5%</td><td class="r tr">-0.0366</td><td class="r tr">-47.8</td></tr><tr><td>vol_regime_NORMAL</td><td class="r">3,921</td><td class="r">48.6%</td><td class="r tr">-0.0236</td><td class="r tr">-92.7</td></tr><tr><td>trend_WEAK_DOWN</td><td class="r">990</td><td class="r">47.5%</td><td class="r tg">+0.0319</td><td class="r tg">+31.6</td></tr></tbody></table>
+    </div>
+  </div>
+</section>
+<section>
+  <div class="section-head"><h2 class="section-title">USTEC_H1 (16,830 trades · WR 49.9% · PF 1.01)</h2></div>
+  <div style="display:flex;gap:14px;flex-wrap:wrap">
+    <div class="card" style="flex:1;min-width:340px">
+      <div class="card-title">🟢 Top Edge Conditions (n≥50)</div>
+      <table class="table compact"><thead><tr><th>Condition</th><th class="r">N</th><th class="r">WR</th><th class="r">Mean</th><th class="r">Total</th></tr></thead>
+      <tbody><tr><td>quality_B</td><td class="r">1,345</td><td class="r">100.0%</td><td class="r tg">+8.6807</td><td class="r tg">+11,675.6</td></tr><tr><td>quality_D</td><td class="r">1,513</td><td class="r">94.5%</td><td class="r tg">+8.2614</td><td class="r tg">+12,499.5</td></tr><tr><td>trend_WEAK_DOWN</td><td class="r">3,145</td><td class="r">50.7%</td><td class="r tg">+0.2701</td><td class="r tg">+849.4</td></tr><tr><td>session_Off</td><td class="r">1,093</td><td class="r">49.7%</td><td class="r tg">+0.2692</td><td class="r tg">+294.2</td></tr><tr><td>session_Overlap</td><td class="r">2,385</td><td class="r">48.8%</td><td class="r tg">+0.2592</td><td class="r tg">+618.2</td></tr><tr><td>vol_regime_HIGH</td><td class="r">2,260</td><td class="r">48.7%</td><td class="r tg">+0.1817</td><td class="r tg">+410.6</td></tr><tr><td>session_London</td><td class="r">3,789</td><td class="r">49.5%</td><td class="r tg">+0.1116</td><td class="r tg">+422.8</td></tr><tr><td>trend_STRONG_DOWN</td><td class="r">3,945</td><td class="r">48.6%</td><td class="r tg">+0.0811</td><td class="r tg">+319.7</td></tr><tr><td>session_NY</td><td class="r">3,841</td><td class="r">48.9%</td><td class="r tg">+0.0502</td><td class="r tg">+193.0</td></tr><tr><td>vol_regime_NORMAL</td><td class="r">12,343</td><td class="r">49.4%</td><td class="r tg">+0.0267</td><td class="r tg">+330.0</td></tr><tr><td>trend_STRONG_UP</td><td class="r">5,010</td><td class="r">50.0%</td><td class="r tg">+0.0157</td><td class="r tg">+78.7</td></tr><tr><td>trend_WEAK_UP</td><td class="r">3,223</td><td class="r">47.2%</td><td class="r tr">-0.0145</td><td class="r tr">-46.8</td></tr><tr><td>vol_regime_LOW</td><td class="r">2,227</td><td class="r">48.5%</td><td class="r tr">-0.0289</td><td class="r tr">-64.4</td></tr><tr><td>session_Asia</td><td class="r">5,722</td><td class="r">48.6%</td><td class="r tr">-0.1489</td><td class="r tr">-852.0</td></tr><tr><td>trend_RANGING</td><td class="r">1,507</td><td class="r">46.9%</td><td class="r tr">-0.3483</td><td class="r tr">-524.9</td></tr></tbody></table>
+    </div>
+    <div class="card" style="flex:1;min-width:340px">
+      <div class="card-title">🔴 Worst Conditions (avoid)</div>
+      <table class="table compact"><thead><tr><th>Condition</th><th class="r">N</th><th class="r">WR</th><th class="r">Mean</th><th class="r">Total</th></tr></thead>
+      <tbody><tr><td>quality_C</td><td class="r">13,972</td><td class="r">39.8%</td><td class="r tr">-1.6819</td><td class="r tr">-23,498.9</td></tr><tr><td>trend_RANGING</td><td class="r">1,507</td><td class="r">46.9%</td><td class="r tr">-0.3483</td><td class="r tr">-524.9</td></tr><tr><td>session_Asia</td><td class="r">5,722</td><td class="r">48.6%</td><td class="r tr">-0.1489</td><td class="r tr">-852.0</td></tr><tr><td>vol_regime_LOW</td><td class="r">2,227</td><td class="r">48.5%</td><td class="r tr">-0.0289</td><td class="r tr">-64.4</td></tr><tr><td>trend_WEAK_UP</td><td class="r">3,223</td><td class="r">47.2%</td><td class="r tr">-0.0145</td><td class="r tr">-46.8</td></tr><tr><td>trend_STRONG_UP</td><td class="r">5,010</td><td class="r">50.0%</td><td class="r tg">+0.0157</td><td class="r tg">+78.7</td></tr><tr><td>vol_regime_NORMAL</td><td class="r">12,343</td><td class="r">49.4%</td><td class="r tg">+0.0267</td><td class="r tg">+330.0</td></tr><tr><td>session_NY</td><td class="r">3,841</td><td class="r">48.9%</td><td class="r tg">+0.0502</td><td class="r tg">+193.0</td></tr><tr><td>trend_STRONG_DOWN</td><td class="r">3,945</td><td class="r">48.6%</td><td class="r tg">+0.0811</td><td class="r tg">+319.7</td></tr><tr><td>session_London</td><td class="r">3,789</td><td class="r">49.5%</td><td class="r tg">+0.1116</td><td class="r tg">+422.8</td></tr></tbody></table>
+    </div>
+  </div>
+</section>
+<section>
+  <div class="section-head"><h2 class="section-title">USTEC_M15 (68,927 trades · WR 49.3% · PF 0.97)</h2></div>
+  <div style="display:flex;gap:14px;flex-wrap:wrap">
+    <div class="card" style="flex:1;min-width:340px">
+      <div class="card-title">🟢 Top Edge Conditions (n≥50)</div>
+      <table class="table compact"><thead><tr><th>Condition</th><th class="r">N</th><th class="r">WR</th><th class="r">Mean</th><th class="r">Total</th></tr></thead>
+      <tbody><tr><td>quality_B</td><td class="r">4,167</td><td class="r">100.0%</td><td class="r tg">+9.9329</td><td class="r tg">+41,390.3</td></tr><tr><td>quality_D</td><td class="r">5,294</td><td class="r">99.6%</td><td class="r tg">+9.8509</td><td class="r tg">+52,150.6</td></tr><tr><td>vol_regime_EXTREME</td><td class="r">876</td><td class="r">51.3%</td><td class="r tg">+0.4824</td><td class="r tg">+422.6</td></tr><tr><td>vol_regime_HIGH</td><td class="r">15,315</td><td class="r">50.1%</td><td class="r tg">+0.1268</td><td class="r tg">+1,942.1</td></tr><tr><td>session_Overlap</td><td class="r">9,758</td><td class="r">49.3%</td><td class="r tg">+0.1190</td><td class="r tg">+1,161.4</td></tr><tr><td>session_Off</td><td class="r">4,319</td><td class="r">49.2%</td><td class="r tg">+0.0125</td><td class="r tg">+53.8</td></tr><tr><td>session_NY</td><td class="r">14,255</td><td class="r">49.8%</td><td class="r tg">+0.0061</td><td class="r tg">+86.7</td></tr><tr><td>trend_STRONG_UP</td><td class="r">18,026</td><td class="r">49.5%</td><td class="r tr">-0.0703</td><td class="r tr">-1,266.5</td></tr><tr><td>trend_STRONG_DOWN</td><td class="r">16,342</td><td class="r">49.4%</td><td class="r tr">-0.1174</td><td class="r tr">-1,918.6</td></tr><tr><td>trend_WEAK_UP</td><td class="r">13,940</td><td class="r">48.6%</td><td class="r tr">-0.1746</td><td class="r tr">-2,434.5</td></tr><tr><td>trend_WEAK_DOWN</td><td class="r">13,915</td><td class="r">48.4%</td><td class="r tr">-0.1750</td><td class="r tr">-2,434.9</td></tr><tr><td>session_London</td><td class="r">16,414</td><td class="r">48.7%</td><td class="r tr">-0.1845</td><td class="r tr">-3,028.8</td></tr><tr><td>trend_RANGING</td><td class="r">6,704</td><td class="r">48.2%</td><td class="r tr">-0.1917</td><td class="r tr">-1,285.3</td></tr><tr><td>vol_regime_NORMAL</td><td class="r">35,883</td><td class="r">48.7%</td><td class="r tr">-0.2118</td><td class="r tr">-7,599.3</td></tr><tr><td>vol_regime_LOW</td><td class="r">16,853</td><td class="r">48.7%</td><td class="r tr">-0.2436</td><td class="r tr">-4,105.2</td></tr></tbody></table>
+    </div>
+    <div class="card" style="flex:1;min-width:340px">
+      <div class="card-title">🔴 Worst Conditions (avoid)</div>
+      <table class="table compact"><thead><tr><th>Condition</th><th class="r">N</th><th class="r">WR</th><th class="r">Mean</th><th class="r">Total</th></tr></thead>
+      <tbody><tr><td>quality_C</td><td class="r">59,466</td><td class="r">41.1%</td><td class="r tr">-1.7301</td><td class="r tr">-102,880.8</td></tr><tr><td>session_Asia</td><td class="r">24,181</td><td class="r">48.3%</td><td class="r tr">-0.3148</td><td class="r tr">-7,612.9</td></tr><tr><td>vol_regime_LOW</td><td class="r">16,853</td><td class="r">48.7%</td><td class="r tr">-0.2436</td><td class="r tr">-4,105.2</td></tr><tr><td>vol_regime_NORMAL</td><td class="r">35,883</td><td class="r">48.7%</td><td class="r tr">-0.2118</td><td class="r tr">-7,599.3</td></tr><tr><td>trend_RANGING</td><td class="r">6,704</td><td class="r">48.2%</td><td class="r tr">-0.1917</td><td class="r tr">-1,285.3</td></tr><tr><td>session_London</td><td class="r">16,414</td><td class="r">48.7%</td><td class="r tr">-0.1845</td><td class="r tr">-3,028.8</td></tr><tr><td>trend_WEAK_DOWN</td><td class="r">13,915</td><td class="r">48.4%</td><td class="r tr">-0.1750</td><td class="r tr">-2,434.9</td></tr><tr><td>trend_WEAK_UP</td><td class="r">13,940</td><td class="r">48.6%</td><td class="r tr">-0.1746</td><td class="r tr">-2,434.5</td></tr><tr><td>trend_STRONG_DOWN</td><td class="r">16,342</td><td class="r">49.4%</td><td class="r tr">-0.1174</td><td class="r tr">-1,918.6</td></tr><tr><td>trend_STRONG_UP</td><td class="r">18,026</td><td class="r">49.5%</td><td class="r tr">-0.0703</td><td class="r tr">-1,266.5</td></tr></tbody></table>
+    </div>
+  </div>
+</section>
 </main>
 
 
@@ -1378,7 +1423,7 @@
   window.loadData = async function() {
     if (_cached) return _cached;
     try {
-      var res = await fetch('data/master_data.json');
+      var res = await fetch('data/master_data.json?v=9.1');
       _cached = await res.json();
       return _cached;
     } catch (e) {

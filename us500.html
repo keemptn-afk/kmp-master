@@ -3,16 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>S&P 500 · KMP Master</title>
+<title>US500 (S&P 500) Hub · KMP Master</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&family=Sarabun:wght@400;500;600;700&family=Bricolage+Grotesque:wght@400;700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css?v=6.7">
+<link rel="stylesheet" href="assets/style.css?v=9.1">
 </head>
 <body>
 
 <nav class="sidebar">
   <div class="sidebar-brand">
     <a class="brand-logo" href="index.html">KMP <span class="accent">Master</span></a>
-    <div class="brand-ver">EA v4.1 · 177 patterns · 131 cols</div>
+    <div class="brand-ver">v9.1 · EA v4.1 · 23 assets · 69 datasets · 2,245,158 trades</div>
   </div>
   
   <input type="text" class="search-box" id="globalSearch" placeholder="ค้นหา...">
@@ -25,7 +25,7 @@
   </div>
   
   <div class="nav-section">
-    <div class="nav-label">Datasets · v9.0 · 66/69 ds · 2154K trades</div>
+    <div class="nav-label">Datasets · v9.1 · 69/69 ds · 2.25M trades</div>
     
     <div class="tree-node lvl-0 expandable" data-toggle="crypto-menu">
       <span class="arrow">▶</span><span class="nm">Crypto</span><span class="badge">2</span>
@@ -214,12 +214,12 @@
         <a class="tree-node lvl-2" href="us500-m15.html"><span class="nm">US500 M15</span><span class="badge" style="background:#10b981;color:#fff">68,857</span></a>
       </div>
       <div class="tree-node lvl-1 expandable" data-toggle="ustec-menu">
-        <span class="arrow">▶</span><span class="nm">USTEC (Nasdaq 100)</span><span class="badge" style="background:#06b6d4;color:#fff">0</span>
+        <span class="arrow">▶</span><span class="nm">USTEC (Nasdaq 100)</span><span class="badge" style="background:#06b6d4;color:#fff">90.6K</span>
       </div>
       <div class="tree-children" id="ustec-menu">
-        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">USTEC H4</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
-        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">USTEC H1</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
-        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">USTEC M15</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <a class="tree-node lvl-2" href="ustec-h4.html"><span class="nm">USTEC H4</span><span class="badge" style="background:#10b981;color:#fff">4,831</span></a>
+        <a class="tree-node lvl-2" href="ustec-h1.html"><span class="nm">USTEC H1</span><span class="badge" style="background:#10b981;color:#fff">16,830</span></a>
+        <a class="tree-node lvl-2" href="ustec-m15.html"><span class="nm">USTEC M15</span><span class="badge" style="background:#10b981;color:#fff">68,927</span></a>
       </div>
       <div class="tree-node lvl-1 expandable" data-toggle="de30-menu">
         <span class="arrow">▶</span><span class="nm">DE30 (DAX)</span><span class="badge" style="background:#facc15;color:#0a0a0a">86.8K</span>
@@ -270,7 +270,6 @@
   
   <div class="nav-section">
     <div class="nav-label">Strategy</div>
-    
   </div>
   
   <div class="nav-section">
@@ -278,31 +277,128 @@
     <a class="tree-node lvl-0" href="ea-architecture.html"><span class="arrow"></span><span class="nm">⚙ EA Architecture</span></a>
     <a class="tree-node lvl-0" href="tracking-system.html"><span class="arrow"></span><span class="nm">🎯 Tracking System</span></a>  </div>  <div class="nav-section">
     <div class="nav-label">Reference</div>
-    
   <a class="tree-node lvl-0" href="reference.html"><span class="arrow"></span><span class="nm">📚 อ้างอิง · ข้อจำกัด · Changelog</span></a>
   </div>
 </nav>
 
-<main class="main-content">
-<h1>S&P 500 <span style="color:#94a3b8;font-weight:400;font-size:.7em">— Indices hub</span></h1>
-<p><a href="indices.html" style="color:#38bdf8">← Back to Indices</a></p>
-
-<div style="padding:32px;background:rgba(15,23,42,.4);border:1px dashed rgba(148,163,184,.5);border-radius:12px;margin:24px 0">
-<h2 style="color:#94a3b8;margin:0 0 16px 0">⋯ All timeframes pending harvest</h2>
-<p style="color:#cbd5e1">When EA v4.1 harvests data for this asset, you'll see top patterns ranked by median R, robustness counts, and links to per-TF analysis here.</p>
+<main class="main">
+<div class="hero">
+  <span class="hero-tag" style="background:#3b82f6;color:#0a0a0a">US500 · 3 timeframes · 90,725 trades</span>
+  <h1 class="hero-title">S&P 500</h1>
+  <p class="hero-desc">
+    <strong>US500 (S&P 500)</strong> · ดัชนีหุ้นสหรัฐ 500 บริษัทใหญ่ · trading hours US session · ตอบสนองต่อ FED policy + earnings + macro data
+  </p>
 </div>
 
-<div class="section">
-<h2 class="section-title">Timeframes</h2>
-<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:16px 0">
-<a href="us500-m15.html" style="display:block;padding:16px;background:rgba(15,23,42,.5);border:1px dashed rgba(148,163,184,.5);border-radius:8px;text-decoration:none;color:inherit;margin:8px 0;opacity:.7"><div style="font-weight:600">M15</div><div style="color:#94a3b8;font-size:.9em">⋯ Pending harvest</div></a><a href="us500-h1.html" style="display:block;padding:16px;background:rgba(15,23,42,.5);border:1px dashed rgba(148,163,184,.5);border-radius:8px;text-decoration:none;color:inherit;margin:8px 0;opacity:.7"><div style="font-weight:600">H1</div><div style="color:#94a3b8;font-size:.9em">⋯ Pending harvest</div></a><a href="us500-h4.html" style="display:block;padding:16px;background:rgba(15,23,42,.5);border:1px dashed rgba(148,163,184,.5);border-radius:8px;text-decoration:none;color:inherit;margin:8px 0;opacity:.7"><div style="font-weight:600">H4</div><div style="color:#94a3b8;font-size:.9em">⋯ Pending harvest</div></a>
-</div>
-</div>
+<section class="section">
+  <div class="section-head"><span class="section-num">01</span><h2 class="section-title">📊 ภาพรวม · 90,725 trades</h2></div>
+  <p class="lead-desc">สรุปผลรวมของ US500 ใน Backtest 4 เดือน · 3 timeframes</p>
+  <div class="kpis">
+    <div class="kpi" style="border-color:#3b82f6">
+      <div class="kpi-label" style="color:#3b82f6">Trades รวม</div>
+      <div class="kpi-val" style="color:#3b82f6">90,725</div>
+      <div class="kpi-sub">3 timeframes</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Win Rate เฉลี่ย</div>
+      <div class="kpi-val">49.3%</div>
+      <div class="kpi-sub">น้ำหนักตาม trade count</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Profit Factor</div>
+      <div class="kpi-val">0.98</div>
+      <div class="kpi-sub">≥1 = กำไร</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Robust Patterns</div>
+      <div class="kpi-val" style="color:#4dd498">0</div>
+      <div class="kpi-sub">รวมทุก TF (n≥100)</div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head"><span class="section-num">02</span><h2 class="section-title">⏱️ เลือก Timeframe</h2></div>
+  <p class="lead-desc">คลิกเข้าไปดูรายละเอียดของแต่ละ timeframe · ตัวเลข ✅ = จำนวน robust patterns</p>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px">
+    <a href="us500-h4.html" class="card" style="text-decoration:none;color:var(--text);border-left:3px solid #3b82f6">
+          <div style="display:flex;justify-content:space-between;align-items:start">
+            <div>
+              <div class="card-title" style="color:#3b82f6">US500 H4</div>
+              <div style="font-size:13px;color:var(--text-dim);margin:6px 0">
+                4,934 trades · WR 50.4% · PF 1.04
+              </div>
+            </div>
+            <span style="background:#4dd498;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-size:11px;font-weight:600">✅ 0</span>
+          </div>
+          <div style="margin-top:8px;font-size:12px;color:var(--text-dim)">
+            Net: <span class="tr" style="font-weight:600">-200 ATR</span>
+          </div>
+        </a><a href="us500-h1.html" class="card" style="text-decoration:none;color:var(--text);border-left:3px solid #3b82f6">
+          <div style="display:flex;justify-content:space-between;align-items:start">
+            <div>
+              <div class="card-title" style="color:#3b82f6">US500 H1</div>
+              <div style="font-size:13px;color:var(--text-dim);margin:6px 0">
+                16,934 trades · WR 49.5% · PF 1.00
+              </div>
+            </div>
+            <span style="background:#4dd498;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-size:11px;font-weight:600">✅ 0</span>
+          </div>
+          <div style="margin-top:8px;font-size:12px;color:var(--text-dim)">
+            Net: <span class="tg" style="font-weight:600">+2,503 ATR</span>
+          </div>
+        </a><a href="us500-m15.html" class="card" style="text-decoration:none;color:var(--text);border-left:3px solid #3b82f6">
+          <div style="display:flex;justify-content:space-between;align-items:start">
+            <div>
+              <div class="card-title" style="color:#3b82f6">US500 M15</div>
+              <div style="font-size:13px;color:var(--text-dim);margin:6px 0">
+                68,857 trades · WR 49.1% · PF 0.96
+              </div>
+            </div>
+            <span style="background:#4dd498;color:#0a0a0a;padding:2px 8px;border-radius:3px;font-size:11px;font-weight:600">✅ 0</span>
+          </div>
+          <div style="margin-top:8px;font-size:12px;color:var(--text-dim)">
+            Net: <span class="tr" style="font-weight:600">-1,863 ATR</span>
+          </div>
+        </a>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head"><span class="section-num">03</span><h2 class="section-title">🎯 ลักษณะของสินทรัพย์</h2></div>
+  <p class="lead-desc">สิ่งที่ควรรู้เกี่ยวกับ Gold ก่อนเทรด</p>
+  <div class="card" style="border-left:3px solid #3b82f6">
+    <ul style="margin:0;padding-left:24px;line-height:1.9;font-size:14px">
+      <li style="margin:6px 0">🥇 Safe-haven อันดับหนึ่ง · ตอบสนอง crisis</li><li style="margin:6px 0">💱 Inverse correlation USD + yields</li><li style="margin:6px 0">⏰ Best: London + NY overlap (20:00-23:00 ไทย)</li><li style="margin:6px 0">📰 ตอบสนอง Fed + geopolitics</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head"><span class="section-num">04</span><h2 class="section-title">🔗 หน้าที่เกี่ยวข้อง</h2></div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px">
+    <a href="metals.html" class="card" style="text-decoration:none;color:var(--text)">
+      <div class="card-title">📁 Metals</div>
+      <div style="font-size:12px;color:var(--text-dim)">หน้ารวม category</div>
+    </a>
+    <a href="patterns.html" class="card" style="text-decoration:none;color:var(--text)">
+      <div class="card-title">🎯 177 Patterns</div>
+      <div style="font-size:12px;color:var(--text-dim)">ตารางรวมทุก pattern</div>
+    </a>
+    <a href="cross.html" class="card" style="text-decoration:none;color:var(--text)">
+      <div class="card-title">🔄 Cross Analysis</div>
+      <div style="font-size:12px;color:var(--text-dim)">เปรียบเทียบทุก asset</div>
+    </a>
+    <a href="optimal-tpsl.html" class="card" style="text-decoration:none;color:var(--text)">
+      <div class="card-title">⚙️ Optimal SL/TP</div>
+      <div style="font-size:12px;color:var(--text-dim)">setup ที่แนะนำ</div>
+    </a>
+  </div>
+</section>
 </main>
 
-
-  
-<script>
+<script src="assets/app.js?v=9.1"></script>
+  <script>
 // KMP Master · Inline Sidebar JS (no cache, no delegation)
 (function() {
   function initSidebar() {
@@ -395,7 +491,7 @@
   window.loadData = async function() {
     if (_cached) return _cached;
     try {
-      var res = await fetch('data/master_data.json');
+      var res = await fetch('data/master_data.json?v=9.1');
       _cached = await res.json();
       return _cached;
     } catch (e) {

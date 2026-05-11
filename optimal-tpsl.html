@@ -5,14 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Optimal TP/SL · KMP Master</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&family=Sarabun:wght@400;500;600;700&family=Bricolage+Grotesque:wght@400;700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css?v=6.7">
+<link rel="stylesheet" href="assets/style.css?v=9.1">
 </head>
 <body>
 
 <nav class="sidebar">
   <div class="sidebar-brand">
     <a class="brand-logo" href="index.html">KMP <span class="accent">Master</span></a>
-    <div class="brand-ver">EA v4.1 · 177 patterns · 131 cols</div>
+    <div class="brand-ver">v9.1 · EA v4.1 · 23 assets · 69 datasets · 2,245,158 trades</div>
   </div>
   
   <input type="text" class="search-box" id="globalSearch" placeholder="ค้นหา...">
@@ -25,7 +25,7 @@
   </div>
   
   <div class="nav-section">
-    <div class="nav-label">Datasets · v9.0 · 66/69 ds · 2154K trades</div>
+    <div class="nav-label">Datasets · v9.1 · 69/69 ds · 2.25M trades</div>
     
     <div class="tree-node lvl-0 expandable" data-toggle="crypto-menu">
       <span class="arrow">▶</span><span class="nm">Crypto</span><span class="badge">2</span>
@@ -214,12 +214,12 @@
         <a class="tree-node lvl-2" href="us500-m15.html"><span class="nm">US500 M15</span><span class="badge" style="background:#10b981;color:#fff">68,857</span></a>
       </div>
       <div class="tree-node lvl-1 expandable" data-toggle="ustec-menu">
-        <span class="arrow">▶</span><span class="nm">USTEC (Nasdaq 100)</span><span class="badge" style="background:#06b6d4;color:#fff">0</span>
+        <span class="arrow">▶</span><span class="nm">USTEC (Nasdaq 100)</span><span class="badge" style="background:#06b6d4;color:#fff">90.6K</span>
       </div>
       <div class="tree-children" id="ustec-menu">
-        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">USTEC H4</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
-        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">USTEC H1</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
-        <span class="tree-node lvl-2" style="opacity:0.5;cursor:default"><span class="nm">USTEC M15</span><span class="badge" style="background:#475569;color:#fff">⏳ pending</span></span>
+        <a class="tree-node lvl-2" href="ustec-h4.html"><span class="nm">USTEC H4</span><span class="badge" style="background:#10b981;color:#fff">4,831</span></a>
+        <a class="tree-node lvl-2" href="ustec-h1.html"><span class="nm">USTEC H1</span><span class="badge" style="background:#10b981;color:#fff">16,830</span></a>
+        <a class="tree-node lvl-2" href="ustec-m15.html"><span class="nm">USTEC M15</span><span class="badge" style="background:#10b981;color:#fff">68,927</span></a>
       </div>
       <div class="tree-node lvl-1 expandable" data-toggle="de30-menu">
         <span class="arrow">▶</span><span class="nm">DE30 (DAX)</span><span class="badge" style="background:#facc15;color:#0a0a0a">86.8K</span>
@@ -286,7 +286,7 @@
 <main class="main">
 
   <div class="hero">
-    <span class="hero-tag">Optimal TP/SL · v9.0 · 66 datasets · 2,154,570 trades</span>
+    <span class="hero-tag">Optimal TP/SL · v9.1 · 69 datasets · 2,245,158 trades</span>
     <h1 class="hero-title">TP / SL <span class="accent">Optimization.</span></h1>
     <p class="hero-desc">ตาราง hit rates ของ SL (0.5/1/2/3× ATR) และ TP (1/2/3/5× ATR) per pattern — หาค่าที่ optimal</p>
   </div>
@@ -23529,6 +23529,1035 @@
     </table>
   </div>
 </section>
+<section>
+  <div class="section-head"><h2 class="section-title">USTEC_H4 — TP/SL Hit Rates (Top 30 by PnL · n≥50)</h2></div>
+  <div class="card" style="overflow-x:auto">
+    <table class="table compact">
+      <thead><tr>
+        <th>Pattern</th><th class="r">N</th>
+        <th class="r" style="background:rgba(239,68,68,0.1)">SL 0.5×</th>
+        <th class="r" style="background:rgba(239,68,68,0.1)">SL 1×</th>
+        <th class="r" style="background:rgba(239,68,68,0.1)">SL 2×</th>
+        <th class="r" style="background:rgba(16,185,129,0.1)">TP 1×</th>
+        <th class="r" style="background:rgba(16,185,129,0.1)">TP 2×</th>
+        <th class="r" style="background:rgba(16,185,129,0.1)">TP 3×</th>
+        <th class="r" style="background:rgba(16,185,129,0.1)">TP 5×</th>
+        <th>Best TP</th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>P46</strong> Breaker_Block_Bear</td>
+          <td class="r">178</td>
+          <td class="r">88.8%</td>
+          <td class="r">72.5%</td>
+          <td class="r">43.8%</td>
+          <td class="r">91.0%</td>
+          <td class="r">78.7%</td>
+          <td class="r">65.7%</td>
+          <td class="r">38.2%</td>
+          <td><strong style="color:#10b981">TP 3×</strong></td>
+        </tr>
+        <tr>
+          <td><strong>P72</strong> FVG_Bear</td>
+          <td class="r">217</td>
+          <td class="r">90.8%</td>
+          <td class="r">72.8%</td>
+          <td class="r">53.5%</td>
+          <td class="r">86.6%</td>
+          <td class="r">74.2%</td>
+          <td class="r">58.5%</td>
+          <td class="r">33.6%</td>
+          <td><strong style="color:#10b981">TP 3×</strong></td>
+        </tr>
+        <tr>
+          <td><strong>P141</strong> Ichimoku_Kumo_Twist_Bear</td>
+          <td class="r">97</td>
+          <td class="r">87.6%</td>
+          <td class="r">65.0%</td>
+          <td class="r">39.2%</td>
+          <td class="r">89.7%</td>
+          <td class="r">83.5%</td>
+          <td class="r">72.2%</td>
+          <td class="r">48.5%</td>
+          <td><strong style="color:#10b981">TP 5×</strong></td>
+        </tr>
+        <tr>
+          <td><strong>P97</strong> PD_Array_Premium</td>
+          <td class="r">71</td>
+          <td class="r">88.7%</td>
+          <td class="r">69.0%</td>
+          <td class="r">46.5%</td>
+          <td class="r">84.5%</td>
+          <td class="r">76.1%</td>
+          <td class="r">57.8%</td>
+          <td class="r">32.4%</td>
+          <td><strong style="color:#10b981">TP 3×</strong></td>
+        </tr>
+        <tr>
+          <td><strong>P20</strong> Inside_Bar_Break</td>
+          <td class="r">56</td>
+          <td class="r">87.5%</td>
+          <td class="r">73.2%</td>
+          <td class="r">67.9%</td>
+          <td class="r">73.2%</td>
+          <td class="r">67.9%</td>
+          <td class="r">53.6%</td>
+          <td class="r">25.0%</td>
+          <td><strong style="color:#10b981">TP 3×</strong></td>
+        </tr>
+        <tr>
+          <td><strong>P16</strong> Stoch_Cross</td>
+          <td class="r">74</td>
+          <td class="r">94.6%</td>
+          <td class="r">83.8%</td>
+          <td class="r">66.2%</td>
+          <td class="r">83.8%</td>
+          <td class="r">66.2%</td>
+          <td class="r">51.4%</td>
+          <td class="r">20.3%</td>
+          <td><strong style="color:#10b981">TP 3×</strong></td>
+        </tr>
+        <tr>
+          <td><strong>P86</strong> NR7</td>
+          <td class="r">112</td>
+          <td class="r">88.4%</td>
+          <td class="r">75.9%</td>
+          <td class="r">64.3%</td>
+          <td class="r">75.0%</td>
+          <td class="r">64.3%</td>
+          <td class="r">50.0%</td>
+          <td class="r">26.8%</td>
+          <td><strong style="color:#10b981">TP 3×</strong></td>
+        </tr>
+        <tr>
+          <td><strong>P8</strong> TwoBar_Reversal</td>
+          <td class="r">118</td>
+          <td class="r">89.8%</td>
+          <td class="r">83.9%</td>
+          <td class="r">66.1%</td>
+          <td class="r">83.9%</td>
+          <td class="r">66.1%</td>
+          <td class="r">52.5%</td>
+          <td class="r">30.5%</td>
+          <td><strong style="color:#10b981">TP 3×</strong></td>
+        </tr>
+        <tr>
+          <td><strong>P170</strong> Range_Mid_Bounce</td>
+          <td class="r">122</td>
+          <td class="r">94.3%</td>
+          <td class="r">84.4%</td>
+          <td class="r">66.4%</td>
+          <td class="r">84.4%</td>
+          <td class="r">65.6%</td>
+          <td class="r">49.2%</td>
+          <td class="r">18.9%</td>
+          <td><strong style="color:#10b981">TP 3×</strong></td>
+        </tr>
+        <tr>
+          <td><strong>P11</strong> EMA_Bounce</td>
+          <td class="r">146</td>
+          <td class="r">92.5%</td>
+          <td class="r">76.0%</td>
+          <td class="r">63.7%</td>
+          <td class="r">76.0%</td>
+          <td class="r">63.7%</td>
+          <td class="r">46.6%</td>
+          <td class="r">22.6%</td>
+          <td><strong style="color:#10b981">TP 2×</strong></td>
+        </tr>
+        <tr>
+          <td><strong>P85</strong> NR4</td>
+          <td class="r">184</td>
+          <td class="r">87.0%</td>
+          <td class="r">76.1%</td>
+          <td class="r">63.0%</td>
+          <td class="r">75.5%</td>
+          <td class="r">63.0%</td>
+          <td class="r">50.0%</td>
+          <td class="r">25.5%</td>
+          <td><strong style="color:#10b981">TP 3×</strong></td>
+        </tr>
+        <tr>
+          <td><strong>P18</strong> Pivot_Bounce</td>
+          <td class="r">322</td>
+          <td class="r">88.8%</td>
+          <td class="r">81.4%</td>
+          <td class="r">64.6%</td>
+          <td class="r">81.1%</td>
+          <td class="r">64.6%</td>
+          <td class="r">49.7%</td>
+          <td class="r">24.5%</td>
+          <td><strong style="color:#10b981">TP 3×</strong></td>
+        </tr>
+        <tr>
+          <td><strong>P142</strong> Ichimoku_Chikou_Confirm</td>
+          <td class="r">324</td>
+          <td class="r">88.0%</td>
+          <td class="r">77.8%</td>
+          <td class="r">65.1%</td>
+          <td class="r">77.8%</td>
+          <td class="r">64.8%</td>
+          <td class="r">51.5%</td>
+          <td class="r">34.3%</td>
+          <td><strong style="color:#10b981">TP 3×</strong></td>
+        </tr>
+        <tr>
+          <td><strong>P133</strong> Daily_Bias_Intraday_Short</td>
+          <td class="r">69</td>
+          <td class="r">95.7%</td>
+          <td class="r">88.4%</td>
+          <td class="r">60.9%</td>
+          <td class="r">84.1%</td>
+          <td class="r">69.6%</td>
+          <td class="r">58.0%</td>
+          <td class="r">31.9%</td>
+          <td><strong style="color:#10b981">TP 3×</strong></td>
+        </tr>
+        <tr>
+          <td><strong>P52</strong> LHLL</td>
+          <td class="r">83</td>
+          <td class="r">94.0%</td>
+          <td class="r">79.5%</td>
+          <td class="r">63.9%</td>
+          <td class="r">79.5%</td>
+          <td class="r">57.8%</td>
+          <td class="r">37.4%</td>
+          <td class="r">12.1%</td>
+          <td><strong style="color:#10b981">TP 2×</strong></td>
+        </tr>
+        <tr>
+          <td><strong>P140</strong> Ichimoku_Kumo_Twist_Bull</td>
+          <td class="r">108</td>
+          <td class="r">86.1%</td>
+          <td class="r">84.3%</td>
+          <td class="r">78.7%</td>
+          <td class="r">69.4%</td>
+          <td class="r">52.8%</td>
+          <td class="r">37.0%</td>
+          <td class="r">23.1%</td>
+          <td><strong style="color:#10b981">TP 2×</strong></td>
+        </tr>
+        <tr>
+          <td><strong>P132</strong> Daily_Bias_Intraday_Long</td>
+          <td class="r">100</td>
+          <td class="r">88.0%</td>
+          <td class="r">82.0%</td>
+          <td class="r">73.0%</td>
+          <td class="r">71.0%</td>
+          <td class="r">60.0%</td>
+          <td class="r">42.0%</td>
+          <td class="r">29.0%</td>
+          <td><strong style="color:#10b981">TP 2×</strong></td>
+        </tr>
+        <tr>
+          <td><strong>P45</strong> Breaker_Block_Bull</td>
+          <td class="r">159</td>
+          <td class="r">95.0%</td>
+          <td class="r">90.6%</td>
+          <td class="r">79.9%</td>
+          <td class="r">68.5%</td>
+          <td class="r">49.7%</td>
+          <td class="r">39.0%</td>
+          <td class="r">18.9%</td>
+          <td><strong style="color:#10b981">TP 3×</strong></td>
+        </tr>
+        <tr>
+          <td><strong>P157</strong> Hidden_Div_Bull_RSI</td>
+          <td class="r">51</td>
+          <td class="r">98.0%</td>
+          <td class="r">94.1%</td>
+          <td class="r">90.2%</td>
+          <td class="r">72.5%</td>
+          <td class="r">51.0%</td>
+          <td class="r">25.5%</td>
+          <td class="r">11.8%</td>
+          <td><strong style="color:#10b981">TP 2×</strong></td>
+        </tr>
+        <tr>
+          <td><strong>P51</strong> HHHL</td>
+          <td class="r">137</td>
+          <td class="r">93.4%</td>
+          <td class="r">89.8%</td>
+          <td class="r">83.9%</td>
+          <td class="r">76.6%</td>
+          <td class="r">54.0%</td>
+          <td class="r">40.1%</td>
+          <td class="r">24.8%</td>
+          <td><strong style="color:#10b981">TP 2×</strong></td>
+        </tr>
+        <tr>
+          <td><strong>P71</strong> FVG_Bull</td>
+          <td class="r">223</td>
+          <td class="r">92.4%</td>
+          <td class="r">87.9%</td>
+          <td class="r">78.9%</td>
+          <td class="r">65.5%</td>
+          <td class="r">42.1%</td>
+          <td class="r">28.2%</td>
+          <td class="r">18.4%</td>
+          <td><strong style="color:#10b981">TP 1×</strong></td>
+        </tr></tbody>
+    </table>
+  </div>
+</section>
+<section>
+  <div class="section-head"><h2 class="section-title">USTEC_H1 — TP/SL Hit Rates (Top 30 by PnL · n≥50)</h2></div>
+  <div class="card" style="overflow-x:auto">
+    <table class="table compact">
+      <thead><tr>
+        <th>Pattern</th><th class="r">N</th>
+        <th class="r" style="background:rgba(239,68,68,0.1)">SL 0.5×</th>
+        <th class="r" style="background:rgba(239,68,68,0.1)">SL 1×</th>
+        <th class="r" style="background:rgba(239,68,68,0.1)">SL 2×</th>
+        <th class="r" style="background:rgba(16,185,129,0.1)">TP 1×</th>
+        <th class="r" style="background:rgba(16,185,129,0.1)">TP 2×</th>
+        <th class="r" style="background:rgba(16,185,129,0.1)">TP 3×</th>
+        <th class="r" style="background:rgba(16,185,129,0.1)">TP 5×</th>
+        <th>Best TP</th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>P46</strong> Breaker_Block_Bear</td>
+          <td class="r">558</td>
+          <td class="r">94.3%</td>
+          <td class="r">86.6%</td>
+          <td class="r">74.0%</td>
+          <td class="r">91.4%</td>
+          <td class="r">84.0%</td>
+          <td class="r">75.8%</td>
+          <td class="r">63.1%</td>
+          <td><strong style="color:#10b981">TP 5×</strong></td>
+        </tr>
+        <tr>
+          <td><strong>P72</strong> FVG_Bear</td>
+          <td class="r">617</td>
+          <td class="r">94.8%</td>
+          <td class="r">87.4%</td>
+          <td class="r">74.7%</td>
+          <td class="r">90.4%</td>
+          <td class="r">83.5%</td>
+          <td class="r">77.2%</td>
+          <td class="r">61.8%</td>
+          <td><strong style="color:#10b981">TP 5×</strong></td>
+        </tr>
+        <tr>
+          <td><strong>P126</strong> HTF_Bias_Long</td>
+          <td class="r">63</td>
+          <td class="r">81.0%</td>
+          <td class="r">63.5%</td>
+          <td class="r">42.9%</td>
+          <td class="r">95.2%</td>
+          <td class="r">90.5%</td>
+          <td class="r">90.5%</td>
+          <td class="r">88.9%</td>
+          <td><strong style="color:#10b981">TP 5×</strong></td>
+        </tr>
+        <tr>
+          <td><strong>P52</strong> LHLL</td>
+          <td class="r">434</td>
+          <td class="r">94.0%</td>
+          <td class="r">88.2%</td>
+          <td class="r">78.8%</td>
+          <td class="r">90.8%</td>
+          <td class="r">83.9%</td>
+          <td class="r">75.8%</td>
+          <td class="r">62.0%</td>
+          <td><strong style="color:#10b981">TP 5×</strong></td>
+        </tr>
+        <tr>
+          <td><strong>P53</strong> BOS_Bull</td>
+          <td class="r">142</td>
+          <td class="r">84.5%</td>
+          <td class="r">77.5%</td>
+          <td class="r">64.1%</td>
+          <td class="r">92.2%</td>
+          <td class="r">86.6%</td>
+          <td class="r">78.2%</td>
+          <td class="r">73.9%</td>
+          <td><strong style="color:#10b981">TP 5×</strong></td>
+        </tr>
+        <tr>
+          <td><strong>P141</strong> Ichimoku_Kumo_Twist_Bear</td>
+          <td class="r">273</td>
+          <td class="r">97.8%</td>
+          <td class="r">96.0%</td>
+          <td class="r">84.2%</td>
+          <td class="r">91.6%</td>
+          <td class="r">89.7%</td>
+          <td class="r">85.3%</td>
+          <td class="r">72.2%</td>
+          <td><strong style="color:#10b981">TP 5×</strong></td>
+        </tr>
+        <tr>
+          <td><strong>P121</strong> Sunday_Gap_Fill_Short</td>
+          <td class="r">124</td>
+          <td class="r">96.0%</td>
+          <td class="r">89.5%</td>
+          <td class="r">70.2%</td>
+          <td class="r">93.5%</td>
+          <td class="r">91.9%</td>
+          <td class="r">90.3%</td>
+          <td class="r">74.2%</td>
+          <td><strong style="color:#10b981">TP 5×</strong></td>
+        </tr>
+        <tr>
+          <td><strong>P133</strong> Daily_Bias_Intraday_Short</td>
+          <td class="r">241</td>
+          <td class="r">95.4%</td>
+          <td class="r">90.5%</td>
+          <td class="r">78.4%</td>
+          <td class="r">89.6%</td>
+          <td class="r">81.3%</td>
+          <td class="r">71.8%</td>
+          <td class="r">55.6%</td>
+          <td><strong style="color:#10b981">TP 5×</strong></td>
+        </tr>
+        <tr>
+          <td><strong>P90</strong> OTE_Short</td>
+          <td class="r">73</td>
+          <td class="r">93.2%</td>
+          <td class="r">82.2%</td>
+          <td class="r">63.0%</td>
+          <td class="r">95.9%</td>
+          <td class="r">93.2%</td>
+          <td class="r">87.7%</td>
+          <td class="r">78.1%</td>
+          <td><strong style="color:#10b981">TP 5×</strong></td>
+        </tr>
+        <tr>
+          <td><strong>P152</strong> Pullback_EMA20_Short</td>
+          <td class="r">72</td>
+          <td class="r">93.1%</td>
+          <td class="r">84.7%</td>
+          <td class="r">73.6%</td>
+          <td class="r">95.8%</td>
+          <td class="r">86.1%</td>
+          <td class="r">79.2%</td>
+          <td class="r">66.7%</td>
+          <td><strong style="color:#10b981">TP 5×</strong></td>
+        </tr>
+        <tr>
+          <td><strong>P98</strong> VSA_NoDemand</td>
+          <td class="r">129</td>
+          <td class="r">94.6%</td>
+          <td class="r">76.7%</td>
+          <td class="r">61.2%</td>
+          <td class="r">92.2%</td>
+          <td class="r">85.3%</td>
+          <td class="r">73.6%</td>
+          <td class="r">63.6%</td>
+          <td><strong style="color:#10b981">TP 5×</strong></td>
+        </tr>
+        <tr>
+          <td><strong>P157</strong> Hidden_Div_Bull_RSI</td>
+          <td class="r">102</td>
+          <td class="r">91.2%</td>
+          <td class="r">81.4%</td>
+          <td class="r">69.6%</td>
+          <td class="r">77.5%</td>
+          <td class="r">65.7%</td>
+          <td class="r">59.8%</td>
+          <td class="r">57.8%</td>
+          <td><strong style="color:#10b981">TP 5×</strong></td>
+        </tr>
+        <tr>
+          <td><strong>P174</strong> Three_Drives_Bear</td>
+          <td class="r">124</td>
+          <td class="r">96.8%</td>
+          <td class="r">87.9%</td>
+          <td class="r">73.4%</td>
+          <td class="r">95.2%</td>
+          <td class="r">91.9%</td>
+          <td class="r">84.7%</td>
+          <td class="r">64.5%</td>
+          <td><strong style="color:#10b981">TP 5×</strong></td>
+        </tr>
+        <tr>
+          <td><strong>P161</strong> VAH_Reject_Short</td>
+          <td class="r">107</td>
+          <td class="r">91.6%</td>
+          <td class="r">83.2%</td>
+          <td class="r">67.3%</td>
+          <td class="r">90.7%</td>
+          <td class="r">85.0%</td>
+          <td class="r">73.8%</td>
+          <td class="r">60.8%</td>
+          <td><strong style="color:#10b981">TP 5×</strong></td>
+        </tr>
+        <tr>
+          <td><strong>P120</strong> Sunday_Gap_Fill_Long</td>
+          <td class="r">72</td>
+          <td class="r">84.7%</td>
+          <td class="r">79.2%</td>
+          <td class="r">72.2%</td>
+          <td class="r">100.0%</td>
+          <td class="r">100.0%</td>
+          <td class="r">98.6%</td>
+          <td class="r">80.6%</td>
+          <td><strong style="color:#10b981">TP 5×</strong></td>
+        </tr>
+        <tr>
+          <td><strong>P39</strong> Tweezer_Top</td>
+          <td class="r">98</td>
+          <td class="r">92.9%</td>
+          <td class="r">87.8%</td>
+          <td class="r">69.4%</td>
+          <td class="r">89.8%</td>
+          <td class="r">79.6%</td>
+          <td class="r">75.5%</td>
+          <td class="r">65.3%</td>
+          <td><strong style="color:#10b981">TP 5×</strong></td>
+        </tr>
+        <tr>
+          <td><strong>P107</strong> CVD_Div_Bear</td>
+          <td class="r">179</td>
+          <td class="r">96.1%</td>
+          <td class="r">87.2%</td>
+          <td class="r">69.3%</td>
+          <td class="r">84.9%</td>
+          <td class="r">77.1%</td>
+          <td class="r">72.1%</td>
+          <td class="r">59.2%</td>
+          <td><strong style="color:#10b981">TP 5×</strong></td>
+        </tr>
+        <tr>
+          <td><strong>P54</strong> BOS_Bear</td>
+          <td class="r">134</td>
+          <td class="r">94.0%</td>
+          <td class="r">91.8%</td>
+          <td class="r">83.6%</td>
+          <td class="r">91.8%</td>
+          <td class="r">88.1%</td>
+          <td class="r">81.3%</td>
+          <td class="r">71.6%</td>
+          <td><strong style="color:#10b981">TP 5×</strong></td>
+        </tr>
+        <tr>
+          <td><strong>P106</strong> CVD_Div_Bull</td>
+          <td class="r">188</td>
+          <td class="r">92.5%</td>
+          <td class="r">88.3%</td>
+          <td class="r">79.3%</td>
+          <td class="r">90.4%</td>
+          <td class="r">79.3%</td>
+          <td class="r">73.9%</td>
+          <td class="r">52.7%</td>
+          <td><strong style="color:#10b981">TP 5×</strong></td>
+        </tr>
+        <tr>
+          <td><strong>P97</strong> PD_Array_Premium</td>
+          <td class="r">245</td>
+          <td class="r">95.1%</td>
+          <td class="r">88.6%</td>
+          <td class="r">71.4%</td>
+          <td class="r">87.3%</td>
+          <td class="r">79.6%</td>
+          <td class="r">73.1%</td>
+          <td class="r">55.5%</td>
+          <td><strong style="color:#10b981">TP 5×</strong></td>
+        </tr>
+        <tr>
+          <td><strong>P56</strong> CHoCH_Bear</td>
+          <td class="r">59</td>
+          <td class="r">93.2%</td>
+          <td class="r">91.5%</td>
+          <td class="r">81.4%</td>
+          <td class="r">98.3%</td>
+          <td class="r">93.2%</td>
+          <td class="r">86.4%</td>
+          <td class="r">64.4%</td>
+          <td><strong style="color:#10b981">TP 5×</strong></td>
+        </tr>
+        <tr>
+          <td><strong>P29</strong> Bearish_Engulfing</td>
+          <td class="r">77</td>
+          <td class="r">97.4%</td>
+          <td class="r">87.0%</td>
+          <td class="r">72.7%</td>
+          <td class="r">92.2%</td>
+          <td class="r">88.3%</td>
+          <td class="r">77.9%</td>
+          <td class="r">58.4%</td>
+          <td><strong style="color:#10b981">TP 5×</strong></td>
+        </tr>
+        <tr>
+          <td><strong>P84</strong> ORB_Short</td>
+          <td class="r">63</td>
+          <td class="r">95.2%</td>
+          <td class="r">87.3%</td>
+          <td class="r">82.5%</td>
+          <td class="r">84.1%</td>
+          <td class="r">76.2%</td>
+          <td class="r">71.4%</td>
+          <td class="r">63.5%</td>
+          <td><strong style="color:#10b981">TP 5×</strong></td>
+        </tr>
+        <tr>
+          <td><strong>P125</strong> ThreeBar_Rev_Bear</td>
+          <td class="r">85</td>
+          <td class="r">92.9%</td>
+          <td class="r">82.3%</td>
+          <td class="r">71.8%</td>
+          <td class="r">90.6%</td>
+          <td class="r">81.2%</td>
+          <td class="r">71.8%</td>
+          <td class="r">58.8%</td>
+          <td><strong style="color:#10b981">TP 5×</strong></td>
+        </tr>
+        <tr>
+          <td><strong>P74</strong> Liq_Grab_Bear</td>
+          <td class="r">69</td>
+          <td class="r">95.7%</td>
+          <td class="r">87.0%</td>
+          <td class="r">68.1%</td>
+          <td class="r">97.1%</td>
+          <td class="r">91.3%</td>
+          <td class="r">88.4%</td>
+          <td class="r">71.0%</td>
+          <td><strong style="color:#10b981">TP 5×</strong></td>
+        </tr>
+        <tr>
+          <td><strong>P55</strong> CHoCH_Bull</td>
+          <td class="r">60</td>
+          <td class="r">93.3%</td>
+          <td class="r">91.7%</td>
+          <td class="r">81.7%</td>
+          <td class="r">90.0%</td>
+          <td class="r">76.7%</td>
+          <td class="r">66.7%</td>
+          <td class="r">53.3%</td>
+          <td><strong style="color:#10b981">TP 5×</strong></td>
+        </tr>
+        <tr>
+          <td><strong>P160</strong> Hidden_Div_Bear_MACD</td>
+          <td class="r">122</td>
+          <td class="r">97.5%</td>
+          <td class="r">89.3%</td>
+          <td class="r">81.2%</td>
+          <td class="r">87.7%</td>
+          <td class="r">82.0%</td>
+          <td class="r">74.6%</td>
+          <td class="r">56.6%</td>
+          <td><strong style="color:#10b981">TP 5×</strong></td>
+        </tr>
+        <tr>
+          <td><strong>P124</strong> ThreeBar_Rev_Bull</td>
+          <td class="r">90</td>
+          <td class="r">92.2%</td>
+          <td class="r">83.3%</td>
+          <td class="r">76.7%</td>
+          <td class="r">90.0%</td>
+          <td class="r">80.0%</td>
+          <td class="r">77.8%</td>
+          <td class="r">61.1%</td>
+          <td><strong style="color:#10b981">TP 5×</strong></td>
+        </tr>
+        <tr>
+          <td><strong>P33</strong> Bearish_Harami</td>
+          <td class="r">55</td>
+          <td class="r">96.4%</td>
+          <td class="r">92.7%</td>
+          <td class="r">72.7%</td>
+          <td class="r">90.9%</td>
+          <td class="r">81.8%</td>
+          <td class="r">74.5%</td>
+          <td class="r">54.5%</td>
+          <td><strong style="color:#10b981">TP 5×</strong></td>
+        </tr>
+        <tr>
+          <td><strong>P172</strong> ABCD_Bear</td>
+          <td class="r">115</td>
+          <td class="r">98.3%</td>
+          <td class="r">93.9%</td>
+          <td class="r">83.5%</td>
+          <td class="r">86.1%</td>
+          <td class="r">81.7%</td>
+          <td class="r">73.0%</td>
+          <td class="r">51.3%</td>
+          <td><strong style="color:#10b981">TP 5×</strong></td>
+        </tr></tbody>
+    </table>
+  </div>
+</section>
+<section>
+  <div class="section-head"><h2 class="section-title">USTEC_M15 — TP/SL Hit Rates (Top 30 by PnL · n≥50)</h2></div>
+  <div class="card" style="overflow-x:auto">
+    <table class="table compact">
+      <thead><tr>
+        <th>Pattern</th><th class="r">N</th>
+        <th class="r" style="background:rgba(239,68,68,0.1)">SL 0.5×</th>
+        <th class="r" style="background:rgba(239,68,68,0.1)">SL 1×</th>
+        <th class="r" style="background:rgba(239,68,68,0.1)">SL 2×</th>
+        <th class="r" style="background:rgba(16,185,129,0.1)">TP 1×</th>
+        <th class="r" style="background:rgba(16,185,129,0.1)">TP 2×</th>
+        <th class="r" style="background:rgba(16,185,129,0.1)">TP 3×</th>
+        <th class="r" style="background:rgba(16,185,129,0.1)">TP 5×</th>
+        <th>Best TP</th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>P120</strong> Sunday_Gap_Fill_Long</td>
+          <td class="r">282</td>
+          <td class="r">85.5%</td>
+          <td class="r">76.6%</td>
+          <td class="r">62.4%</td>
+          <td class="r">100.0%</td>
+          <td class="r">98.9%</td>
+          <td class="r">97.9%</td>
+          <td class="r">97.2%</td>
+          <td><strong style="color:#10b981">TP 5×</strong></td>
+        </tr>
+        <tr>
+          <td><strong>P46</strong> Breaker_Block_Bear</td>
+          <td class="r">2,210</td>
+          <td class="r">95.7%</td>
+          <td class="r">92.0%</td>
+          <td class="r">83.1%</td>
+          <td class="r">90.8%</td>
+          <td class="r">82.6%</td>
+          <td class="r">78.2%</td>
+          <td class="r">67.6%</td>
+          <td><strong style="color:#10b981">TP 5×</strong></td>
+        </tr>
+        <tr>
+          <td><strong>P56</strong> CHoCH_Bear</td>
+          <td class="r">318</td>
+          <td class="r">95.6%</td>
+          <td class="r">91.2%</td>
+          <td class="r">78.9%</td>
+          <td class="r">93.4%</td>
+          <td class="r">89.9%</td>
+          <td class="r">89.6%</td>
+          <td class="r">82.7%</td>
+          <td><strong style="color:#10b981">TP 5×</strong></td>
+        </tr>
+        <tr>
+          <td><strong>P60</strong> Failed_Breakout_Short</td>
+          <td class="r">378</td>
+          <td class="r">93.4%</td>
+          <td class="r">88.6%</td>
+          <td class="r">73.8%</td>
+          <td class="r">91.8%</td>
+          <td class="r">82.5%</td>
+          <td class="r">78.8%</td>
+          <td class="r">71.2%</td>
+          <td><strong style="color:#10b981">TP 5×</strong></td>
+        </tr>
+        <tr>
+          <td><strong>P133</strong> Daily_Bias_Intraday_Short</td>
+          <td class="r">1,025</td>
+          <td class="r">95.5%</td>
+          <td class="r">91.1%</td>
+          <td class="r">81.0%</td>
+          <td class="r">90.6%</td>
+          <td class="r">82.9%</td>
+          <td class="r">78.8%</td>
+          <td class="r">67.1%</td>
+          <td><strong style="color:#10b981">TP 5×</strong></td>
+        </tr>
+        <tr>
+          <td><strong>P121</strong> Sunday_Gap_Fill_Short</td>
+          <td class="r">245</td>
+          <td class="r">95.5%</td>
+          <td class="r">90.6%</td>
+          <td class="r">83.3%</td>
+          <td class="r">92.7%</td>
+          <td class="r">86.9%</td>
+          <td class="r">85.7%</td>
+          <td class="r">82.0%</td>
+          <td><strong style="color:#10b981">TP 5×</strong></td>
+        </tr>
+        <tr>
+          <td><strong>P152</strong> Pullback_EMA20_Short</td>
+          <td class="r">341</td>
+          <td class="r">94.4%</td>
+          <td class="r">88.9%</td>
+          <td class="r">79.8%</td>
+          <td class="r">91.8%</td>
+          <td class="r">84.8%</td>
+          <td class="r">83.3%</td>
+          <td class="r">72.1%</td>
+          <td><strong style="color:#10b981">TP 5×</strong></td>
+        </tr>
+        <tr>
+          <td><strong>P39</strong> Tweezer_Top</td>
+          <td class="r">446</td>
+          <td class="r">96.2%</td>
+          <td class="r">92.6%</td>
+          <td class="r">83.2%</td>
+          <td class="r">91.9%</td>
+          <td class="r">84.5%</td>
+          <td class="r">79.8%</td>
+          <td class="r">71.5%</td>
+          <td><strong style="color:#10b981">TP 5×</strong></td>
+        </tr>
+        <tr>
+          <td><strong>P174</strong> Three_Drives_Bear</td>
+          <td class="r">622</td>
+          <td class="r">96.5%</td>
+          <td class="r">93.7%</td>
+          <td class="r">86.0%</td>
+          <td class="r">88.8%</td>
+          <td class="r">81.8%</td>
+          <td class="r">78.1%</td>
+          <td class="r">70.7%</td>
+          <td><strong style="color:#10b981">TP 5×</strong></td>
+        </tr>
+        <tr>
+          <td><strong>P107</strong> CVD_Div_Bear</td>
+          <td class="r">752</td>
+          <td class="r">94.8%</td>
+          <td class="r">90.8%</td>
+          <td class="r">81.5%</td>
+          <td class="r">88.3%</td>
+          <td class="r">78.5%</td>
+          <td class="r">75.1%</td>
+          <td class="r">68.2%</td>
+          <td><strong style="color:#10b981">TP 5×</strong></td>
+        </tr>
+        <tr>
+          <td><strong>P62</strong> Double_Top</td>
+          <td class="r">226</td>
+          <td class="r">97.3%</td>
+          <td class="r">96.0%</td>
+          <td class="r">85.8%</td>
+          <td class="r">92.9%</td>
+          <td class="r">86.7%</td>
+          <td class="r">81.4%</td>
+          <td class="r">73.9%</td>
+          <td><strong style="color:#10b981">TP 5×</strong></td>
+        </tr>
+        <tr>
+          <td><strong>P80</strong> POC_Bounce_Short</td>
+          <td class="r">260</td>
+          <td class="r">96.2%</td>
+          <td class="r">92.3%</td>
+          <td class="r">83.1%</td>
+          <td class="r">93.5%</td>
+          <td class="r">86.5%</td>
+          <td class="r">81.9%</td>
+          <td class="r">69.6%</td>
+          <td><strong style="color:#10b981">TP 5×</strong></td>
+        </tr>
+        <tr>
+          <td><strong>P97</strong> PD_Array_Premium</td>
+          <td class="r">1,068</td>
+          <td class="r">95.6%</td>
+          <td class="r">91.8%</td>
+          <td class="r">81.7%</td>
+          <td class="r">88.3%</td>
+          <td class="r">79.3%</td>
+          <td class="r">75.0%</td>
+          <td class="r">66.5%</td>
+          <td><strong style="color:#10b981">TP 5×</strong></td>
+        </tr>
+        <tr>
+          <td><strong>P74</strong> Liq_Grab_Bear</td>
+          <td class="r">256</td>
+          <td class="r">91.8%</td>
+          <td class="r">87.5%</td>
+          <td class="r">75.4%</td>
+          <td class="r">90.2%</td>
+          <td class="r">80.9%</td>
+          <td class="r">75.4%</td>
+          <td class="r">66.8%</td>
+          <td><strong style="color:#10b981">TP 5×</strong></td>
+        </tr>
+        <tr>
+          <td><strong>P78</strong> Mitigation_Block_Bear</td>
+          <td class="r">124</td>
+          <td class="r">98.4%</td>
+          <td class="r">96.8%</td>
+          <td class="r">85.5%</td>
+          <td class="r">91.1%</td>
+          <td class="r">87.1%</td>
+          <td class="r">79.8%</td>
+          <td class="r">78.2%</td>
+          <td><strong style="color:#10b981">TP 5×</strong></td>
+        </tr>
+        <tr>
+          <td><strong>P131</strong> MTF_OB_Aligned_Short</td>
+          <td class="r">50</td>
+          <td class="r">94.0%</td>
+          <td class="r">92.0%</td>
+          <td class="r">80.0%</td>
+          <td class="r">98.0%</td>
+          <td class="r">94.0%</td>
+          <td class="r">92.0%</td>
+          <td class="r">92.0%</td>
+          <td><strong style="color:#10b981">TP 5×</strong></td>
+        </tr>
+        <tr>
+          <td><strong>P125</strong> ThreeBar_Rev_Bear</td>
+          <td class="r">355</td>
+          <td class="r">96.3%</td>
+          <td class="r">91.3%</td>
+          <td class="r">82.2%</td>
+          <td class="r">90.7%</td>
+          <td class="r">84.2%</td>
+          <td class="r">79.2%</td>
+          <td class="r">69.0%</td>
+          <td><strong style="color:#10b981">TP 5×</strong></td>
+        </tr>
+        <tr>
+          <td><strong>P72</strong> FVG_Bear</td>
+          <td class="r">2,383</td>
+          <td class="r">95.7%</td>
+          <td class="r">92.0%</td>
+          <td class="r">83.4%</td>
+          <td class="r">88.9%</td>
+          <td class="r">80.6%</td>
+          <td class="r">75.6%</td>
+          <td class="r">65.0%</td>
+          <td><strong style="color:#10b981">TP 5×</strong></td>
+        </tr>
+        <tr>
+          <td><strong>P66</strong> HnS_Bull</td>
+          <td class="r">56</td>
+          <td class="r">83.9%</td>
+          <td class="r">73.2%</td>
+          <td class="r">53.6%</td>
+          <td class="r">100.0%</td>
+          <td class="r">98.2%</td>
+          <td class="r">96.4%</td>
+          <td class="r">94.6%</td>
+          <td><strong style="color:#10b981">TP 5×</strong></td>
+        </tr>
+        <tr>
+          <td><strong>P165</strong> POC_Migration_Long</td>
+          <td class="r">807</td>
+          <td class="r">92.4%</td>
+          <td class="r">88.0%</td>
+          <td class="r">79.4%</td>
+          <td class="r">89.3%</td>
+          <td class="r">80.8%</td>
+          <td class="r">73.6%</td>
+          <td class="r">63.8%</td>
+          <td><strong style="color:#10b981">TP 5×</strong></td>
+        </tr>
+        <tr>
+          <td><strong>P129</strong> MTF_FVG_Aligned_Short</td>
+          <td class="r">564</td>
+          <td class="r">96.5%</td>
+          <td class="r">93.3%</td>
+          <td class="r">82.8%</td>
+          <td class="r">87.8%</td>
+          <td class="r">79.4%</td>
+          <td class="r">74.7%</td>
+          <td class="r">66.5%</td>
+          <td><strong style="color:#10b981">TP 5×</strong></td>
+        </tr>
+        <tr>
+          <td><strong>P160</strong> Hidden_Div_Bear_MACD</td>
+          <td class="r">518</td>
+          <td class="r">98.1%</td>
+          <td class="r">96.5%</td>
+          <td class="r">89.6%</td>
+          <td class="r">87.5%</td>
+          <td class="r">77.8%</td>
+          <td class="r">70.3%</td>
+          <td class="r">60.6%</td>
+          <td><strong style="color:#10b981">TP 5×</strong></td>
+        </tr>
+        <tr>
+          <td><strong>P48</strong> SR_Flip_Short</td>
+          <td class="r">219</td>
+          <td class="r">97.7%</td>
+          <td class="r">96.3%</td>
+          <td class="r">84.5%</td>
+          <td class="r">92.2%</td>
+          <td class="r">84.0%</td>
+          <td class="r">80.4%</td>
+          <td class="r">70.3%</td>
+          <td><strong style="color:#10b981">TP 5×</strong></td>
+        </tr>
+        <tr>
+          <td><strong>P161</strong> VAH_Reject_Short</td>
+          <td class="r">423</td>
+          <td class="r">95.0%</td>
+          <td class="r">90.3%</td>
+          <td class="r">81.6%</td>
+          <td class="r">90.8%</td>
+          <td class="r">84.4%</td>
+          <td class="r">78.2%</td>
+          <td class="r">67.6%</td>
+          <td><strong style="color:#10b981">TP 5×</strong></td>
+        </tr>
+        <tr>
+          <td><strong>P154</strong> Pullback_EMA50_Short</td>
+          <td class="r">141</td>
+          <td class="r">92.2%</td>
+          <td class="r">88.7%</td>
+          <td class="r">78.7%</td>
+          <td class="r">88.7%</td>
+          <td class="r">83.7%</td>
+          <td class="r">82.3%</td>
+          <td class="r">71.6%</td>
+          <td><strong style="color:#10b981">TP 5×</strong></td>
+        </tr>
+        <tr>
+          <td><strong>P44</strong> Bearish_Order_Block</td>
+          <td class="r">272</td>
+          <td class="r">95.2%</td>
+          <td class="r">92.7%</td>
+          <td class="r">79.8%</td>
+          <td class="r">92.7%</td>
+          <td class="r">85.7%</td>
+          <td class="r">82.0%</td>
+          <td class="r">71.3%</td>
+          <td><strong style="color:#10b981">TP 5×</strong></td>
+        </tr>
+        <tr>
+          <td><strong>P92</strong> LondonKZ_Short</td>
+          <td class="r">166</td>
+          <td class="r">94.0%</td>
+          <td class="r">87.3%</td>
+          <td class="r">72.9%</td>
+          <td class="r">85.5%</td>
+          <td class="r">82.5%</td>
+          <td class="r">80.1%</td>
+          <td class="r">71.1%</td>
+          <td><strong style="color:#10b981">TP 5×</strong></td>
+        </tr>
+        <tr>
+          <td><strong>P139</strong> Ichimoku_Cloud_Break_Bear</td>
+          <td class="r">91</td>
+          <td class="r">97.8%</td>
+          <td class="r">86.8%</td>
+          <td class="r">75.8%</td>
+          <td class="r">91.2%</td>
+          <td class="r">82.4%</td>
+          <td class="r">78.0%</td>
+          <td class="r">69.2%</td>
+          <td><strong style="color:#10b981">TP 5×</strong></td>
+        </tr>
+        <tr>
+          <td><strong>P81</strong> ZScore_MeanRev_Long</td>
+          <td class="r">86</td>
+          <td class="r">93.0%</td>
+          <td class="r">89.5%</td>
+          <td class="r">79.1%</td>
+          <td class="r">94.2%</td>
+          <td class="r">90.7%</td>
+          <td class="r">84.9%</td>
+          <td class="r">69.8%</td>
+          <td><strong style="color:#10b981">TP 5×</strong></td>
+        </tr>
+        <tr>
+          <td><strong>P146</strong> Turtle_Soup_Short</td>
+          <td class="r">313</td>
+          <td class="r">95.5%</td>
+          <td class="r">92.0%</td>
+          <td class="r">81.8%</td>
+          <td class="r">86.6%</td>
+          <td class="r">77.6%</td>
+          <td class="r">72.8%</td>
+          <td class="r">64.5%</td>
+          <td><strong style="color:#10b981">TP 5×</strong></td>
+        </tr></tbody>
+    </table>
+  </div>
+</section>
 </main>
 
 
@@ -23626,7 +24655,7 @@
   window.loadData = async function() {
     if (_cached) return _cached;
     try {
-      var res = await fetch('data/master_data.json');
+      var res = await fetch('data/master_data.json?v=9.1');
       _cached = await res.json();
       return _cached;
     } catch (e) {
