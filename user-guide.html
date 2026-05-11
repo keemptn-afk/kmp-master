@@ -141,7 +141,7 @@
     <!-- ====================================================================== -->
     <h2 id="part1">ส่วนที่ 1 · ภาพรวมโครงการ KMP Master</h2>
     
-    <p>KMP Master คือเว็บ <strong>research dashboard</strong> สำหรับเก็บและวิเคราะห์ผล <strong>backtest 177 trading patterns</strong> ทำงานบน <strong>22 สินทรัพย์ × 3 timeframes = 69 datasets</strong> รวม <strong>2,245,158 trades</strong></p>
+    <p>KMP Master คือเว็บ <strong>research dashboard</strong> สำหรับเก็บและวิเคราะห์ผล <strong>backtest 177 trading patterns</strong> ทำงานบน <strong>23 สินทรัพย์ × 3 timeframes = 69 datasets</strong> รวม <strong>2,245,158 trades</strong></p>
     
     <h3>1.1 จุดประสงค์</h3>
     <ul>
@@ -277,11 +277,11 @@ SL 0.5×ATR / TP 1.0×ATR (RR 1:2)
     <h3>3.3 Tier Classification</h3>
     <table>
       <tr><th>Tier</th><th>เกณฑ์</th><th>ความหมาย</th></tr>
-      <tr><td><span class="pill pill-green">S+</span></td><td>active 100% datasets · profit 100% · minEV>0</td><td>Universal champion · deploy ได้ทันที</td></tr>
-      <tr><td><span class="pill pill-green">S</span></td><td>active 80%+ · profit 90%+</td><td>เก่งมาก · มีบาง dataset ที่อ่อน</td></tr>
-      <tr><td><span class="pill pill-blue">A</span></td><td>profit 70%+ · EV consistently positive</td><td>ดี · เลือกใช้บาง asset</td></tr>
-      <tr><td><span class="pill pill-yellow">B</span></td><td>profit 60-70%</td><td>กลางๆ · ต้อง filter เพิ่ม</td></tr>
-      <tr><td><span class="pill pill-red">C/D</span></td><td>profit <60% หรือไม่ fire</td><td>หลีกเลี่ยง</td></tr>
+      <tr><td><span class="pill pill-green">S+</span></td><td>active 100% datasets · profit 100% · minEV > 0</td><td>Universal champion · deploy ได้ทันที (9 patterns)</td></tr>
+      <tr><td><span class="pill pill-green">S</span></td><td>active ≥90% · profit ≥90% · mean EV > 0</td><td>เก่งมาก · พลาดน้อย (17 patterns)</td></tr>
+      <tr><td><span class="pill pill-blue">A</span></td><td>active ≥70% · profit ≥70% · mean EV > 0</td><td>ดี · เลือกใช้ asset-specific (33 patterns)</td></tr>
+      <tr><td><span class="pill pill-yellow">B</span></td><td>profit ≥50% · mean EV > -0.2R</td><td>กลางๆ · ต้อง filter เพิ่ม (95 patterns)</td></tr>
+      <tr><td><span class="pill pill-red">D</span></td><td>negative EV หรือ inactive (ไม่ fire)</td><td>หลีกเลี่ยง · ไม่ใช้ใน Production EA (23 patterns)</td></tr>
     </table>
     
     <h3>3.4 SL/TP Heatmap (Grid)</h3>
@@ -330,12 +330,12 @@ SL 0.5×ATR / TP 1.0×ATR (RR 1:2)
     <ul>
       <li><code>PID</code> — รหัส pattern (P1-P177)</li>
       <li><code>Name</code> — ชื่อ pattern (เช่น Ichimoku_Kumo_Twist_Bull)</li>
-      <li><code>Cat</code> — หมวด (A=All, L=Long, F=FVG/SMC, K=Daily Bias, H=PD Array, C=Block, etc.)</li>
+      <li><code>Cat</code> — หมวด 18 ประเภท (A=Original Bar · B=Reversal · C=S/R · D=Structure · E=Chart · F=SMC/FVG · G=Range · H=SMC Advanced · I=Volume/Wyckoff · J=Harmonic · K=Multi-TF · L=Ichimoku · M=Indicator · N=Statistical · O=Volume Profile · P=Breakout · Q=Special · R=Specialized) · ดู patterns-encyclopedia.html</li>
       <li><code>Direction</code> — L/S/⇄</li>
       <li><code>n</code> — จำนวน trade</li>
       <li><code>WR%</code> — win rate</li>
       <li><code>EV</code> — expected value (R)</li>
-      <li><code>Tier</code> — S+/S/A/B/C</li>
+      <li><code>Tier</code> — S+/S/A/B/D (S+=9, S=17, A=33, B=95, D=23 · ดู tier.html)</li>
     </ul>
     <p><strong>วิธีใช้:</strong> filter ด้วย search box หามองหา robust patterns (n ≥ 100, WR ≥ 50%, EV > 0)</p>
     
@@ -347,7 +347,7 @@ SL 0.5×ATR / TP 1.0×ATR (RR 1:2)
     <p><strong>วัตถุประสงค์:</strong> หาค่า SL/TP ที่ดีที่สุดของแต่ละ pattern × dataset</p>
     <p><strong>วิธีอ่าน:</strong></p>
     <ol>
-      <li>เลือก <strong>dataset</strong> จาก dropdown (เช่น US500_M15)</li>
+      <li>Scroll ไปยัง dataset ที่ต้องการ (page มี 69 sections เรียงต่อกัน · ใช้ Ctrl+F หา "BTC_H4" เป็นต้น)</li>
       <li>ดูตาราง: ทุก pattern ที่ active ใน dataset นั้น · <strong>best combo</strong> + <strong>best EV</strong></li>
       <li>เปรียบเทียบ <strong>realistic EV (first-hit)</strong> vs <strong>aggregated EV</strong> (จะต่างกันเสมอ — first-hit ถูกกว่า)</li>
     </ol>
@@ -357,7 +357,7 @@ SL 0.5×ATR / TP 1.0×ATR (RR 1:2)
     
     <h3>4.5 หน้า Cross-asset (cross.html)</h3>
     <p><strong>วัตถุประสงค์:</strong> ดู pattern ตัวเดียวกันแต่ในหลาย assets · เห็น universal patterns</p>
-    <p><strong>วิธีใช้:</strong> เลือก pattern → ดู metric ทุก asset · หาตัวที่ <strong>active ใน 12+ assets และ EV > 0 ทุกที่</strong></p>
+    <p><strong>วิธีใช้:</strong> เลือก pattern → ดู metric ทุก asset · หาตัวที่ <strong>active ใน 50+ datasets และ EV > 0 ทุกที่</strong> (Universal patterns 20 · Tier S+ 9 ตัว เข้มที่สุด)</p>
     
     <h3>4.6 หน้า Time Analysis (time.html)</h3>
     <p><strong>วัตถุประสงค์:</strong> ดู win rate ตามชั่วโมง (0-23) และวันในสัปดาห์ (0=จันทร์ ถึง 6=อาทิตย์)</p>
