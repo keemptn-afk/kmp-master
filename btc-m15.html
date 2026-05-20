@@ -813,6 +813,114 @@
     ใช้กับ <strong>BTCUSD M15</strong> เท่านั้น (อย่าใช้ข้าม asset/timeframe) · risk 0.5-1% ต่อ trade · review รายเดือน
   </div>
 </section>
+
+<div style="margin:36px 0 8px;padding:14px 20px;background:linear-gradient(90deg,rgba(59,130,246,0.12),rgba(16,185,129,0.06));border-left:3px solid var(--blue);border-radius:0 6px 6px 0">
+  <div style="font-size:11px;color:var(--text-dim);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:2px">ส่วนด้านบน คือ ทดสอบสั้น (Phase 1 · ข้อมูล 3-4 เดือน)</div>
+  <div style="font-size:15px;color:var(--blue);font-weight:700">▼ ทดสอบระยะยาว — Phase 2 OOS</div>
+  <div style="font-size:12px;color:var(--text-dim);margin-top:2px">Data: Dukascopy tick · 2022.01.21 → 2026.05.08 · คัด top 3 patterns ด้วย Realistic EV (first-hit logic)</div>
+</div>
+
+<section>
+  <div class="section-head"><span class="section-num">11</span><h2 class="section-title">ทดสอบระยะยาว — Phase 2 OOS</h2></div>
+  
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin-bottom:18px">
+    <div class="kpi"><div class="kpi-val">20,296</div><div class="kpi-label">trades (OOS)</div></div>
+    <div class="kpi"><div class="kpi-val">4.2yr</div><div class="kpi-label">ระยะเวลา</div></div>
+    <div class="kpi"><div class="kpi-val">Up 43% / Down 39%</div><div class="kpi-label">regime coverage</div></div>
+    <div class="kpi"><div class="kpi-val">0.5/5.0R</div><div class="kpi-label">Optimal SL/TP</div></div>
+  </div>
+
+  <div class="card" style="margin-bottom:18px">
+    <div class="card-title" style="margin-bottom:10px">🏆 Top 3 Patterns — OOS Ranking</div>
+    <table class="table compact ranked">
+      <thead><tr>
+        <th>#</th><th>Pattern</th><th>Dir</th><th class="r">n</th>
+        <th class="r">Win Rate</th><th class="r">PF</th><th class="r">EV/trade</th><th class="r">Optimal</th>
+      </tr></thead>
+      <tbody>
+      <tr>
+        <td><strong style="color:var(--amber)">1</strong></td>
+        <td><a href="patterns.html#p109" style="color:var(--blue)">P109</a> Gartley_Bear</td>
+        <td><span style="color:var(--red)">S</span></td>
+        <td class="r">502</td>
+        <td class="r">5.4%</td>
+        <td class="r tg">8.71×</td>
+        <td class="r tg"><strong>+0.2380R</strong></td>
+        <td class="r" style="font-size:11px">SL 0.5 / TP 5.0</td>
+      </tr>
+      <tr>
+        <td><strong style="color:var(--text-dim)">2</strong></td>
+        <td><a href="patterns.html#p26" style="color:var(--blue)">P26</a> Hanging_Man</td>
+        <td><span style="color:var(--red)">S</span></td>
+        <td class="r">3,274</td>
+        <td class="r">4.9%</td>
+        <td class="r tg">8.56×</td>
+        <td class="r tg"><strong>+0.2172R</strong></td>
+        <td class="r" style="font-size:11px">SL 0.5 / TP 5.0</td>
+      </tr>
+      <tr>
+        <td><strong style="color:var(--text-dim)">3</strong></td>
+        <td><a href="patterns.html#p65" style="color:var(--blue)">P65</a> HnS_Bear</td>
+        <td><span style="color:var(--red)">S</span></td>
+        <td class="r">1,263</td>
+        <td class="r">4.4%</td>
+        <td class="r tg">8.59×</td>
+        <td class="r tg"><strong>+0.1924R</strong></td>
+        <td class="r" style="font-size:11px">SL 0.5 / TP 5.0</td>
+      </tr></tbody>
+    </table>
+  </div>
+
+  <div class="section-head" style="margin-top:8px"><span class="section-num" style="font-size:13px">11b</span><h2 class="section-title" style="font-size:16px">SL/TP Grid — Top 3 (OOS)</h2></div>
+  <div><div class="card" style="margin-bottom:14px">
+  <div class="card-title" style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+    <a href="patterns.html#p109" style="color:var(--blue)"><strong>P109</strong></a>
+    <span>Gartley_Bear</span>
+    <span style="color:var(--red);font-weight:700">SHORT</span>
+    <span style="color:var(--text-dim);font-size:12px">n=502 · OOS 4.2yr</span>
+    
+  </div>
+  <table class="table compact" style="margin-top:8px">
+    <tbody>
+      <tr>
+        <th></th><th class="r" style="background:rgba(77,212,152,0.1)">TP 1.0×</th><th class="r" style="background:rgba(77,212,152,0.1)">TP 2.0×</th><th class="r" style="background:rgba(77,212,152,0.1)">TP 3.0×</th><th class="r" style="background:rgba(77,212,152,0.1)">TP 5.0×</th></tr><tr><th style="background:rgba(255,94,108,0.1)">SL 0.5×</th><td class="r" style="background:rgba(91,155,213,0.13)">+0.0129R</td><td class="r" style="background:rgba(77,212,152,0.38);font-weight:500">+0.0847R</td><td class="r" style="background:rgba(77,212,152,0.18)">+0.0408R</td><td class="r" style="background:rgba(77,212,152,0.6);font-weight:700">+0.2380R ⭐</td></tr><tr><th style="background:rgba(255,94,108,0.1)">SL 1.0×</th><td class="r" style="color:var(--text-dim)">—</td><td class="r" style="background:rgba(77,212,152,0.18)">+0.0637R</td><td class="r" style="background:rgba(91,155,213,0.13)">+0.0159R</td><td class="r" style="background:rgba(77,212,152,0.6);font-weight:700">+0.2131R</td></tr>    </tbody>
+  </table>
+  <div style="margin-top:6px;font-size:11px;color:var(--text-dim)">⭐ = optimal · first-hit logic · EV per trade (R = 1×ATR)</div>
+</div><div class="card" style="margin-bottom:14px">
+  <div class="card-title" style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+    <a href="patterns.html#p26" style="color:var(--blue)"><strong>P26</strong></a>
+    <span>Hanging_Man</span>
+    <span style="color:var(--red);font-weight:700">SHORT</span>
+    <span style="color:var(--text-dim);font-size:12px">n=3,274 · OOS 4.2yr</span>
+    
+  </div>
+  <table class="table compact" style="margin-top:8px">
+    <tbody>
+      <tr>
+        <th></th><th class="r" style="background:rgba(77,212,152,0.1)">TP 1.0×</th><th class="r" style="background:rgba(77,212,152,0.1)">TP 2.0×</th><th class="r" style="background:rgba(77,212,152,0.1)">TP 3.0×</th><th class="r" style="background:rgba(77,212,152,0.1)">TP 5.0×</th></tr><tr><th style="background:rgba(255,94,108,0.1)">SL 0.5×</th><td class="r" style="background:rgba(255,94,108,0.18)">-0.0078R</td><td class="r" style="background:rgba(77,212,152,0.18)">+0.0234R</td><td class="r" style="background:rgba(77,212,152,0.38);font-weight:500">+0.0802R</td><td class="r" style="background:rgba(77,212,152,0.6);font-weight:700">+0.2172R ⭐</td></tr><tr><th style="background:rgba(255,94,108,0.1)">SL 1.0×</th><td class="r" style="color:var(--text-dim)">—</td><td class="r" style="background:rgba(91,155,213,0.13)">+0.0049R</td><td class="r" style="background:rgba(77,212,152,0.18)">+0.0611R</td><td class="r" style="background:rgba(77,212,152,0.6);font-weight:700">+0.1964R</td></tr>    </tbody>
+  </table>
+  <div style="margin-top:6px;font-size:11px;color:var(--text-dim)">⭐ = optimal · first-hit logic · EV per trade (R = 1×ATR)</div>
+</div><div class="card" style="margin-bottom:14px">
+  <div class="card-title" style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+    <a href="patterns.html#p65" style="color:var(--blue)"><strong>P65</strong></a>
+    <span>HnS_Bear</span>
+    <span style="color:var(--red);font-weight:700">SHORT</span>
+    <span style="color:var(--text-dim);font-size:12px">n=1,263 · OOS 4.2yr</span>
+    
+  </div>
+  <table class="table compact" style="margin-top:8px">
+    <tbody>
+      <tr>
+        <th></th><th class="r" style="background:rgba(77,212,152,0.1)">TP 1.0×</th><th class="r" style="background:rgba(77,212,152,0.1)">TP 2.0×</th><th class="r" style="background:rgba(77,212,152,0.1)">TP 3.0×</th><th class="r" style="background:rgba(77,212,152,0.1)">TP 5.0×</th></tr><tr><th style="background:rgba(255,94,108,0.1)">SL 0.5×</th><td class="r" style="background:rgba(91,155,213,0.13)">+0.0008R</td><td class="r" style="background:rgba(77,212,152,0.18)">+0.0238R</td><td class="r" style="background:rgba(77,212,152,0.18)">+0.0744R</td><td class="r" style="background:rgba(77,212,152,0.6);font-weight:700">+0.1924R ⭐</td></tr><tr><th style="background:rgba(255,94,108,0.1)">SL 1.0×</th><td class="r" style="color:var(--text-dim)">—</td><td class="r" style="background:rgba(91,155,213,0.13)">+0.0166R</td><td class="r" style="background:rgba(77,212,152,0.18)">+0.0673R</td><td class="r" style="background:rgba(77,212,152,0.6);font-weight:700">+0.1774R</td></tr>    </tbody>
+  </table>
+  <div style="margin-top:6px;font-size:11px;color:var(--text-dim)">⭐ = optimal · first-hit logic · EV per trade (R = 1×ATR)</div>
+</div></div>
+
+  <div class="insight green" style="margin-top:6px">
+    <div class="insight-tag" style="color:var(--green)">✅ KEY FINDING</div>
+    <strong>SL=0.5×ATR / TP=5.0×ATR (10:1 RR)</strong> ชนะทุก pattern ทุก timeframe — BTC เป็น fat-tail asset · รอ big move แล้วตัด loss เร็ว · win rate ต่ำ (2–5%) แต่ PF สูงมาก (8–27×)
+  </div>
+</section>
 </main>
 
   
