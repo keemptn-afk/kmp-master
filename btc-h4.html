@@ -815,110 +815,80 @@
 </section>
 
 <div style="margin:36px 0 8px;padding:14px 20px;background:linear-gradient(90deg,rgba(59,130,246,0.12),rgba(16,185,129,0.06));border-left:3px solid var(--blue);border-radius:0 6px 6px 0">
-  <div style="font-size:11px;color:var(--text-dim);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:2px">ส่วนด้านบน คือ ทดสอบสั้น (Phase 1 · ข้อมูล 3-4 เดือน)</div>
-  <div style="font-size:15px;color:var(--blue);font-weight:700">▼ ทดสอบระยะยาว — Phase 2 OOS</div>
-  <div style="font-size:12px;color:var(--text-dim);margin-top:2px">Data: Dukascopy tick · 2022.01.21 → 2026.04.20 · คัด top 3 patterns ด้วย Realistic EV (first-hit logic)</div>
+  <div style="font-size:11px;color:var(--text-dim);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:2px">ส่วนด้านบน คือ ทดสอบสั้น (Phase 1 · 3-4 เดือน)</div>
+  <div style="font-size:15px;color:var(--blue);font-weight:700">▼ ทดสอบระยะยาว — Phase 2 OOS (สมจริง)</div>
+  <div style="font-size:12px;color:var(--text-dim);margin-top:2px">Dukascopy tick · 2022.01.21 → 2026.04.20 · TRUE first-hit (เทียบเวลาแตะ SL/TP จริง) + หักค่า spread</div>
 </div>
-
 <section>
   <div class="section-head"><span class="section-num">11</span><h2 class="section-title">ทดสอบระยะยาว — Phase 2 OOS</h2></div>
-  
-  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin-bottom:18px">
+  <div class="insight" style="background:rgba(91,155,213,0.08);border-color:var(--blue);margin-bottom:16px">
+    <div class="insight-tag" style="color:var(--blue)">📐 วิธีคำนวณ</div>
+    คิด EV แบบ <strong>first-hit จริง</strong> — ดูว่าราคาแตะ SL หรือ TP ก่อนตามเวลาจริง (ไม่ใช่แค่ "เคยไปถึง") + หักค่า spread จาก Dukascopy ทุกไม้ · ตัวเลขจึง<strong>ต่ำกว่า</strong>แต่ใกล้เคียงเทรดจริง
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:18px">
     <div class="kpi"><div class="kpi-val">8,264</div><div class="kpi-label">trades (OOS)</div></div>
     <div class="kpi"><div class="kpi-val">4.2yr</div><div class="kpi-label">ระยะเวลา</div></div>
-    <div class="kpi"><div class="kpi-val">Down 44% / Up 37%</div><div class="kpi-label">regime coverage</div></div>
-    <div class="kpi"><div class="kpi-val">0.5/5.0R</div><div class="kpi-label">Optimal SL/TP</div></div>
   </div>
-
   <div class="card" style="margin-bottom:18px">
-    <div class="card-title" style="margin-bottom:10px">🏆 Top 3 Patterns — OOS Ranking</div>
-    <table class="table compact ranked">
-      <thead><tr>
-        <th>#</th><th>Pattern</th><th>Dir</th><th class="r">n</th>
-        <th class="r">Win Rate</th><th class="r">PF</th><th class="r">EV/trade</th><th class="r">Optimal</th>
-      </tr></thead>
-      <tbody>
-      <tr>
-        <td><strong style="color:var(--amber)">1</strong></td>
-        <td><a href="patterns.html#p158" style="color:var(--blue)">P158</a> Hidden_Div_Bear_RSI</td>
-        <td><span style="color:var(--red)">S</span></td>
-        <td class="r">487</td>
-        <td class="r">2.9%</td>
-        <td class="r tg">17.50×</td>
-        <td class="r tg"><strong>+0.1355R</strong></td>
-        <td class="r" style="font-size:11px">SL 0.5 / TP 5.0</td>
-      </tr>
-      <tr>
-        <td><strong style="color:var(--text-dim)">2</strong></td>
-        <td><a href="patterns.html#p160" style="color:var(--blue)">P160</a> Hidden_Div_Bear_MACD</td>
-        <td><span style="color:var(--red)">S</span></td>
-        <td class="r">740</td>
-        <td class="r">2.0%</td>
-        <td class="r tg">18.75×</td>
-        <td class="r tg"><strong>+0.0959R</strong></td>
-        <td class="r" style="font-size:11px">SL 0.5 / TP 5.0</td>
-      </tr>
-      <tr>
-        <td><strong style="color:var(--text-dim)">3</strong></td>
-        <td><a href="patterns.html#p159" style="color:var(--blue)">P159</a> Hidden_Div_Bull_MACD</td>
-        <td><span style="color:var(--green)">L</span></td>
-        <td class="r">818</td>
-        <td class="r">2.0%</td>
-        <td class="r tg">20.00×</td>
-        <td class="r tg"><strong>+0.0929R</strong></td>
-        <td class="r" style="font-size:11px">SL 0.5 / TP 5.0</td>
-      </tr></tbody>
-    </table>
+    <div class="card-title" style="margin-bottom:10px">🏆 Top Patterns — Realistic EV</div>
+    <table class="table compact ranked"><thead><tr>
+      <th>#</th><th>Pattern</th><th>Dir</th><th class="r">n</th><th class="r">WR</th><th class="r">RR</th><th class="r">PF</th><th class="r">EV/ไม้</th><th class="r">SL/TP</th>
+    </tr></thead><tbody><tr>
+      <td><strong style="color:var(--amber)">1</strong></td>
+      <td><a href="patterns.html#p171" style="color:var(--blue)">P171</a> ABCD_Bull</td>
+      <td><span style="color:var(--green)">L</span></td>
+      <td class="r">613</td><td class="r">20.7%</td>
+      <td class="r">5.00:1</td><td class="r">1.33×</td>
+      <td class="r tg"><strong>+0.159R</strong></td>
+      <td class="r" style="font-size:11px">1.0/5.0</td>
+    </tr><tr>
+      <td><strong style="color:var(--text-dim)">2</strong></td>
+      <td><a href="patterns.html#p169" style="color:var(--blue)">P169</a> Daily_Pivot_Tag_Short</td>
+      <td><span style="color:var(--red)">S</span></td>
+      <td class="r">667</td><td class="r">18.4%</td>
+      <td class="r">5.00:1</td><td class="r">1.15×</td>
+      <td class="r tg"><strong>+0.099R</strong></td>
+      <td class="r" style="font-size:11px">1.0/5.0</td>
+    </tr><tr>
+      <td><strong style="color:var(--text-dim)">3</strong></td>
+      <td><a href="patterns.html#p159" style="color:var(--blue)">P159</a> Hidden_Div_Bull_MACD</td>
+      <td><span style="color:var(--green)">L</span></td>
+      <td class="r">818</td><td class="r">40.6%</td>
+      <td class="r">1.67:1</td><td class="r">1.20×</td>
+      <td class="r tg"><strong>+0.068R</strong></td>
+      <td class="r" style="font-size:11px">3.0/5.0</td>
+    </tr></tbody></table>
   </div>
-
-  <div class="section-head" style="margin-top:8px"><span class="section-num" style="font-size:13px">11b</span><h2 class="section-title" style="font-size:16px">SL/TP Grid — Top 3 (OOS)</h2></div>
+  
+  <div class="section-head" style="margin-top:8px"><span class="section-num" style="font-size:13px">11b</span><h2 class="section-title" style="font-size:16px">SL/TP Grid (Realistic)</h2></div>
   <div><div class="card" style="margin-bottom:14px">
   <div class="card-title" style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
-    <a href="patterns.html#p158" style="color:var(--blue)"><strong>P158</strong></a>
-    <span>Hidden_Div_Bear_RSI</span>
-    <span style="color:var(--red);font-weight:700">SHORT</span>
-    <span style="color:var(--text-dim);font-size:12px">n=487 · OOS 4.2yr</span>
-    
+    <a href="patterns.html#p171" style="color:var(--blue)"><strong>P171</strong></a>
+    <span>ABCD_Bull</span><span style="color:var(--green);font-weight:700">LONG</span>
+    <span style="color:var(--text-dim);font-size:12px">n=613</span>
   </div>
-  <table class="table compact" style="margin-top:8px">
-    <tbody>
-      <tr>
-        <th></th><th class="r" style="background:rgba(77,212,152,0.1)">TP 1.0×</th><th class="r" style="background:rgba(77,212,152,0.1)">TP 2.0×</th><th class="r" style="background:rgba(77,212,152,0.1)">TP 3.0×</th><th class="r" style="background:rgba(77,212,152,0.1)">TP 5.0×</th></tr><tr><th style="background:rgba(255,94,108,0.1)">SL 0.5×</th><td class="r" style="background:rgba(91,155,213,0.13)">+0.0041R</td><td class="r" style="background:rgba(91,155,213,0.13)">+0.0164R</td><td class="r" style="background:rgba(77,212,152,0.18)">+0.0226R</td><td class="r" style="background:rgba(77,212,152,0.38);font-weight:500">+0.1355R ⭐</td></tr><tr><th style="background:rgba(255,94,108,0.1)">SL 1.0×</th><td class="r" style="color:var(--text-dim)">—</td><td class="r" style="background:rgba(255,94,108,0.18)">-0.0021R</td><td class="r" style="background:rgba(91,155,213,0.13)">+0.0041R</td><td class="r" style="background:rgba(77,212,152,0.38);font-weight:500">+0.1170R</td></tr>    </tbody>
-  </table>
-  <div style="margin-top:6px;font-size:11px;color:var(--text-dim)">⭐ = optimal · first-hit logic · EV per trade (R = 1×ATR)</div>
+  <table class="table compact" style="margin-top:8px"><tbody><tr><th></th><th class="r" style="background:rgba(77,212,152,0.1)">TP 1×</th><th class="r" style="background:rgba(77,212,152,0.1)">TP 2×</th><th class="r" style="background:rgba(77,212,152,0.1)">TP 3×</th><th class="r" style="background:rgba(77,212,152,0.1)">TP 5×</th></tr><tr><th style="background:rgba(255,94,108,0.1)">SL 0.5×</th><td class="r" style="background:rgba(255,94,108,0.28)">-0.387<br><span style="font-size:10px;opacity:0.7">WR28%</span></td><td class="r" style="background:rgba(255,94,108,0.28)">-0.246<br><span style="font-size:10px;opacity:0.7">WR20%</span></td><td class="r" style="background:rgba(255,94,108,0.28)">-0.091<br><span style="font-size:10px;opacity:0.7">WR16%</span></td><td class="r" style="background:rgba(255,94,108,0.12)">-0.016<br><span style="font-size:10px;opacity:0.7">WR11%</span></td></tr><tr><th style="background:rgba(255,94,108,0.1)">SL 1.0×</th><td class="r" style="color:var(--text-dim)">—</td><td class="r" style="background:rgba(255,94,108,0.28)">-0.069<br><span style="font-size:10px;opacity:0.7">WR35%</span></td><td class="r" style="background:rgba(77,212,152,0.28)">+0.058<br><span style="font-size:10px;opacity:0.7">WR29%</span></td><td class="r" style="background:rgba(77,212,152,0.5);font-weight:700">+0.159<br><span style="font-size:10px;opacity:0.7">WR21%</span> ⭐</td></tr><tr><th style="background:rgba(255,94,108,0.1)">SL 2.0×</th><td class="r" style="color:var(--text-dim)">—</td><td class="r" style="color:var(--text-dim)">—</td><td class="r" style="background:rgba(91,155,213,0.13)">+0.028<br><span style="font-size:10px;opacity:0.7">WR45%</span></td><td class="r" style="background:rgba(77,212,152,0.5);font-weight:700">+0.148<br><span style="font-size:10px;opacity:0.7">WR34%</span></td></tr><tr><th style="background:rgba(255,94,108,0.1)">SL 3.0×</th><td class="r" style="color:var(--text-dim)">—</td><td class="r" style="color:var(--text-dim)">—</td><td class="r" style="color:var(--text-dim)">—</td><td class="r" style="background:rgba(77,212,152,0.5);font-weight:700">+0.110<br><span style="font-size:10px;opacity:0.7">WR41%</span></td></tr></tbody></table>
+  <div style="margin-top:6px;font-size:11px;color:var(--text-dim)">⭐=optimal · ค่าบน=EV/ไม้(R, R=เงินเสี่ยง) · ล่าง=win rate · TRUE first-hit + หัก spread</div>
 </div><div class="card" style="margin-bottom:14px">
   <div class="card-title" style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
-    <a href="patterns.html#p160" style="color:var(--blue)"><strong>P160</strong></a>
-    <span>Hidden_Div_Bear_MACD</span>
-    <span style="color:var(--red);font-weight:700">SHORT</span>
-    <span style="color:var(--text-dim);font-size:12px">n=740 · OOS 4.2yr</span>
-    
+    <a href="patterns.html#p169" style="color:var(--blue)"><strong>P169</strong></a>
+    <span>Daily_Pivot_Tag_Short</span><span style="color:var(--red);font-weight:700">SHORT</span>
+    <span style="color:var(--text-dim);font-size:12px">n=667</span>
   </div>
-  <table class="table compact" style="margin-top:8px">
-    <tbody>
-      <tr>
-        <th></th><th class="r" style="background:rgba(77,212,152,0.1)">TP 1.0×</th><th class="r" style="background:rgba(77,212,152,0.1)">TP 2.0×</th><th class="r" style="background:rgba(77,212,152,0.1)">TP 3.0×</th><th class="r" style="background:rgba(77,212,152,0.1)">TP 5.0×</th></tr><tr><th style="background:rgba(255,94,108,0.1)">SL 0.5×</th><td class="r" style="background:rgba(91,155,213,0.13)">+0.0068R</td><td class="r" style="background:rgba(77,212,152,0.18)">+0.0243R</td><td class="r" style="background:rgba(77,212,152,0.18)">+0.0392R</td><td class="r" style="background:rgba(77,212,152,0.38);font-weight:500">+0.0959R ⭐</td></tr><tr><th style="background:rgba(255,94,108,0.1)">SL 1.0×</th><td class="r" style="color:var(--text-dim)">—</td><td class="r" style="background:rgba(91,155,213,0.13)">+0.0122R</td><td class="r" style="background:rgba(77,212,152,0.18)">+0.0270R</td><td class="r" style="background:rgba(77,212,152,0.38);font-weight:500">+0.0838R</td></tr>    </tbody>
-  </table>
-  <div style="margin-top:6px;font-size:11px;color:var(--text-dim)">⭐ = optimal · first-hit logic · EV per trade (R = 1×ATR)</div>
+  <table class="table compact" style="margin-top:8px"><tbody><tr><th></th><th class="r" style="background:rgba(77,212,152,0.1)">TP 1×</th><th class="r" style="background:rgba(77,212,152,0.1)">TP 2×</th><th class="r" style="background:rgba(77,212,152,0.1)">TP 3×</th><th class="r" style="background:rgba(77,212,152,0.1)">TP 5×</th></tr><tr><th style="background:rgba(255,94,108,0.1)">SL 0.5×</th><td class="r" style="background:rgba(255,94,108,0.28)">-0.493<br><span style="font-size:10px;opacity:0.7">WR26%</span></td><td class="r" style="background:rgba(255,94,108,0.28)">-0.249<br><span style="font-size:10px;opacity:0.7">WR18%</span></td><td class="r" style="background:rgba(255,94,108,0.28)">-0.083<br><span style="font-size:10px;opacity:0.7">WR15%</span></td><td class="r" style="background:rgba(255,94,108,0.12)">-0.003<br><span style="font-size:10px;opacity:0.7">WR10%</span></td></tr><tr><th style="background:rgba(255,94,108,0.1)">SL 1.0×</th><td class="r" style="color:var(--text-dim)">—</td><td class="r" style="background:rgba(255,94,108,0.28)">-0.100<br><span style="font-size:10px;opacity:0.7">WR33%</span></td><td class="r" style="background:rgba(77,212,152,0.28)">+0.045<br><span style="font-size:10px;opacity:0.7">WR27%</span></td><td class="r" style="background:rgba(77,212,152,0.28)">+0.099<br><span style="font-size:10px;opacity:0.7">WR18%</span> ⭐</td></tr><tr><th style="background:rgba(255,94,108,0.1)">SL 2.0×</th><td class="r" style="color:var(--text-dim)">—</td><td class="r" style="color:var(--text-dim)">—</td><td class="r" style="background:rgba(91,155,213,0.13)">+0.023<br><span style="font-size:10px;opacity:0.7">WR39%</span></td><td class="r" style="background:rgba(255,94,108,0.12)">-0.020<br><span style="font-size:10px;opacity:0.7">WR25%</span></td></tr><tr><th style="background:rgba(255,94,108,0.1)">SL 3.0×</th><td class="r" style="color:var(--text-dim)">—</td><td class="r" style="color:var(--text-dim)">—</td><td class="r" style="color:var(--text-dim)">—</td><td class="r" style="background:rgba(255,94,108,0.28)">-0.075<br><span style="font-size:10px;opacity:0.7">WR30%</span></td></tr></tbody></table>
+  <div style="margin-top:6px;font-size:11px;color:var(--text-dim)">⭐=optimal · ค่าบน=EV/ไม้(R, R=เงินเสี่ยง) · ล่าง=win rate · TRUE first-hit + หัก spread</div>
 </div><div class="card" style="margin-bottom:14px">
   <div class="card-title" style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
     <a href="patterns.html#p159" style="color:var(--blue)"><strong>P159</strong></a>
-    <span>Hidden_Div_Bull_MACD</span>
-    <span style="color:var(--green);font-weight:700">LONG</span>
-    <span style="color:var(--text-dim);font-size:12px">n=818 · OOS 4.2yr</span>
-    
+    <span>Hidden_Div_Bull_MACD</span><span style="color:var(--green);font-weight:700">LONG</span>
+    <span style="color:var(--text-dim);font-size:12px">n=818</span>
   </div>
-  <table class="table compact" style="margin-top:8px">
-    <tbody>
-      <tr>
-        <th></th><th class="r" style="background:rgba(77,212,152,0.1)">TP 1.0×</th><th class="r" style="background:rgba(77,212,152,0.1)">TP 2.0×</th><th class="r" style="background:rgba(77,212,152,0.1)">TP 3.0×</th><th class="r" style="background:rgba(77,212,152,0.1)">TP 5.0×</th></tr><tr><th style="background:rgba(255,94,108,0.1)">SL 0.5×</th><td class="r" style="background:rgba(77,212,152,0.18)">+0.0208R</td><td class="r" style="background:rgba(77,212,152,0.18)">+0.0391R</td><td class="r" style="background:rgba(77,212,152,0.18)">+0.0318R</td><td class="r" style="background:rgba(77,212,152,0.38);font-weight:500">+0.0929R ⭐</td></tr><tr><th style="background:rgba(255,94,108,0.1)">SL 1.0×</th><td class="r" style="color:var(--text-dim)">—</td><td class="r" style="background:rgba(77,212,152,0.18)">+0.0318R</td><td class="r" style="background:rgba(77,212,152,0.18)">+0.0244R</td><td class="r" style="background:rgba(77,212,152,0.38);font-weight:500">+0.0856R</td></tr>    </tbody>
-  </table>
-  <div style="margin-top:6px;font-size:11px;color:var(--text-dim)">⭐ = optimal · first-hit logic · EV per trade (R = 1×ATR)</div>
+  <table class="table compact" style="margin-top:8px"><tbody><tr><th></th><th class="r" style="background:rgba(77,212,152,0.1)">TP 1×</th><th class="r" style="background:rgba(77,212,152,0.1)">TP 2×</th><th class="r" style="background:rgba(77,212,152,0.1)">TP 3×</th><th class="r" style="background:rgba(77,212,152,0.1)">TP 5×</th></tr><tr><th style="background:rgba(255,94,108,0.1)">SL 0.5×</th><td class="r" style="background:rgba(255,94,108,0.28)">-0.667<br><span style="font-size:10px;opacity:0.7">WR22%</span></td><td class="r" style="background:rgba(255,94,108,0.28)">-0.638<br><span style="font-size:10px;opacity:0.7">WR14%</span></td><td class="r" style="background:rgba(255,94,108,0.28)">-0.495<br><span style="font-size:10px;opacity:0.7">WR12%</span></td><td class="r" style="background:rgba(255,94,108,0.28)">-0.350<br><span style="font-size:10px;opacity:0.7">WR9%</span></td></tr><tr><th style="background:rgba(255,94,108,0.1)">SL 1.0×</th><td class="r" style="color:var(--text-dim)">—</td><td class="r" style="background:rgba(255,94,108,0.28)">-0.315<br><span style="font-size:10px;opacity:0.7">WR28%</span></td><td class="r" style="background:rgba(255,94,108,0.28)">-0.209<br><span style="font-size:10px;opacity:0.7">WR24%</span></td><td class="r" style="background:rgba(255,94,108,0.28)">-0.066<br><span style="font-size:10px;opacity:0.7">WR18%</span></td></tr><tr><th style="background:rgba(255,94,108,0.1)">SL 2.0×</th><td class="r" style="color:var(--text-dim)">—</td><td class="r" style="color:var(--text-dim)">—</td><td class="r" style="background:rgba(255,94,108,0.28)">-0.105<br><span style="font-size:10px;opacity:0.7">WR39%</span></td><td class="r" style="background:rgba(91,155,213,0.13)">+0.034<br><span style="font-size:10px;opacity:0.7">WR31%</span></td></tr><tr><th style="background:rgba(255,94,108,0.1)">SL 3.0×</th><td class="r" style="color:var(--text-dim)">—</td><td class="r" style="color:var(--text-dim)">—</td><td class="r" style="color:var(--text-dim)">—</td><td class="r" style="background:rgba(77,212,152,0.28)">+0.068<br><span style="font-size:10px;opacity:0.7">WR41%</span> ⭐</td></tr></tbody></table>
+  <div style="margin-top:6px;font-size:11px;color:var(--text-dim)">⭐=optimal · ค่าบน=EV/ไม้(R, R=เงินเสี่ยง) · ล่าง=win rate · TRUE first-hit + หัก spread</div>
 </div></div>
-
   <div class="insight green" style="margin-top:6px">
     <div class="insight-tag" style="color:var(--green)">✅ KEY FINDING</div>
-    <strong>SL=0.5×ATR / TP=5.0×ATR (10:1 RR)</strong> ชนะทุก pattern ทุก timeframe — BTC เป็น fat-tail asset · รอ big move แล้วตัด loss เร็ว · win rate ต่ำ (2–5%) แต่ PF สูงมาก (8–27×)
+    แม้คิดแบบสมจริงแล้ว H4 ยังมี <strong>5 patterns ที่ EV เป็นบวก</strong> — นำโดย P171 ABCD_Bull (PF 1.33). edge บางแต่จริง · ส่วนใหญ่ใช้ SL กว้าง (1-3×ATR) เพราะ SL แคบโดน noise ชนก่อน
   </div>
 </section>
 </main>
