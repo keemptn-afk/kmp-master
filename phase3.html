@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Energy · KMP Master</title>
+<title>Phase 3 Lab · KMP Master</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&family=Sarabun:wght@400;500;600;700&family=Bricolage+Grotesque:wght@400;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/style.css?v=9.1">
 </head>
@@ -271,6 +271,7 @@
   
   <div class="nav-section">
     <div class="nav-label">Strategy</div>
+    
   </div>
   
   <div class="nav-section">
@@ -278,78 +279,232 @@
     <a class="tree-node lvl-0" href="ea-architecture.html"><span class="arrow"></span><span class="nm">⚙ EA Architecture</span></a>
     <a class="tree-node lvl-0" href="tracking-system.html"><span class="arrow"></span><span class="nm">🎯 Tracking System</span></a>  </div>  <div class="nav-section">
     <div class="nav-label">Reference</div>
+
   <a class="tree-node lvl-0" href="reference.html"><span class="arrow"></span><span class="nm">📚 อ้างอิง · ข้อจำกัด · Changelog</span></a>
   </div>
 </nav>
 
 <main class="main">
+<div class="breadcrumb"><a href="index.html" class="crumb">Dashboard</a><span class="sep">▸</span><span class="crumb current">Phase 3 Lab</span></div>
+
 <div class="hero">
-  <span class="hero-tag" style="background:#84cc16;color:#0a0a0a">⚡ Energy · v9.1 · 3 commodities · 260,770 trades</span>
-  <h1 class="hero-title">Energy <span class="accent">Commodities.</span></h1>
-  <p class="hero-desc">
-    Crude oil benchmarks · USOIL (WTI) + UKOIL (Brent) · ตอบสนองต่อ OPEC+, geopolitics, US inventory data<br>
-    Volatility สูงกว่า forex 5-10x · เหมาะกับ swing/momentum strategies
-  </p>
+  <span class="hero-tag">Phase 3 · Optimization Lab</span>
+  <h1 class="hero-title">🧪 Phase 3 Lab — Optimization & Hypothesis Testing</h1>
+  <p class="hero-desc">เอา patterns ที่รอด Phase 2 OOS มาไล่ทดสอบทีละตัว — หา SL/TP/filter/entry ที่ optimal, ทดสอบเทคนิคต่างๆ (กันทุน, trailing, ควบรวม pattern, เพิ่ม SELL), และ walk-forward validate เพื่อกัน overfit · <strong>หน้านี้จะอัปเดตผลเรื่อยๆ ระหว่างทำ Phase 3</strong></p>
 </div>
 
-<section class="section">
-  <div class="section-head"><span class="section-num">01</span><h2 class="section-title">🛢️ Energy Commodities</h2></div>
-  <div class="kpis">
-    <a class="kpi" href="usoil.html" style="text-decoration:none;border-color:#84cc16">
-      <div class="kpi-label" style="color:#84cc16">🛢️ USOIL (WTI)</div>
-      <div class="kpi-val" style="color:#84cc16">89,349</div>
-      <div class="kpi-sub">trades · H4 + H1 + M15</div>
-    </a>
-    <a class="kpi" href="ukoil.html" style="text-decoration:none;border-color:#65a30d">
-      <div class="kpi-label" style="color:#65a30d">🌊 UKOIL (Brent)</div>
-      <div class="kpi-val" style="color:#65a30d">80,481</div>
-      <div class="kpi-sub">trades · H4 + H1 + M15</div>
-    </a>
-    <a class="kpi" href="xng.html" style="text-decoration:none;border-color:#06b6d4">
-      <div class="kpi-label" style="color:#06b6d4">🔥 XNGUSD (NatGas)</div>
-      <div class="kpi-val" style="color:#06b6d4">90,940</div>
-      <div class="kpi-sub">trades · H4 + H1 + M15</div>
-    </a>
-    
-  </div>
+<div class="insight" style="background:rgba(91,155,213,0.08);border-color:var(--blue);margin-bottom:20px">
+  <div class="insight-tag" style="color:var(--blue)">📋 สถานะการทดสอบ</div>
+  ⏳ queued (รอ) · 🔬 testing (กำลังทดสอบ) · ✅ done (เสร็จ/รับ) · ❌ rejected (ตัดทิ้ง)
+  <div style="margin-top:8px;font-size:13px;color:var(--text-dim)">เป้าหมาย Phase 3: จาก 14 candidate → optimize → เลือก top 1-3 ต่อกลุ่ม → ส่งต่อ Phase 4 (Demo forward test)</div>
+</div>
+
+<section>
+  <div class="section-head"><span class="section-num">01</span><h2 class="section-title">⭐ Priority Candidates (เริ่มก่อน)</h2></div>
+  <p style="color:var(--text-dim);font-size:14px;margin-bottom:12px">3 ตัวที่สมดุลสุด (WR + PF ดี, sample ใหญ่, robust) — เริ่ม optimize กลุ่มนี้ก่อน</p>
+  <div class="card"><table class="table compact ranked"><thead><tr>
+    <th class="r">#</th><th>Asset/TF</th><th>Pattern</th><th>Dir</th><th class="r">WR</th><th class="r">PF</th><th class="r">EV</th><th class="r">SL/TP</th><th class="r">n</th><th class="r">สถานะ</th>
+  </tr></thead><tbody><tr>
+      <td class="r">1</td>
+      <td><strong>XAUUSD</strong> <span style="color:var(--text-dim)">H1</span></td>
+      <td><a href="patterns.html#p66" style="color:var(--blue)">P66</a> HnS_Bull</td>
+      <td><span style="color:var(--green)">BUY</span></td>
+      <td class="r">46%</td><td class="r">2.17×</td>
+      <td class="r tg">+0.470R</td><td class="r" style="font-size:12px">2.0/5</td>
+      <td class="r">—</td>
+      <td class="r">⏳ queued</td></tr><tr>
+      <td class="r">2</td>
+      <td><strong>GBPJPY</strong> <span style="color:var(--text-dim)">H4</span></td>
+      <td><a href="patterns.html#p61" style="color:var(--blue)">P61</a> Double_Bottom</td>
+      <td><span style="color:var(--green)">BUY</span></td>
+      <td class="r">47%</td><td class="r">2.06×</td>
+      <td class="r tg">+0.486R</td><td class="r" style="font-size:12px">2.5/5</td>
+      <td class="r">—</td>
+      <td class="r">⏳ queued</td></tr><tr>
+      <td class="r">3</td>
+      <td><strong>USDJPY</strong> <span style="color:var(--text-dim)">H1</span></td>
+      <td><a href="patterns.html#p67" style="color:var(--blue)">P67</a> Triangle_Asc</td>
+      <td><span style="color:var(--green)">BUY</span></td>
+      <td class="r">50%</td><td class="r">1.72×</td>
+      <td class="r tg">+0.350R</td><td class="r" style="font-size:12px">2.0/5</td>
+      <td class="r">—</td>
+      <td class="r">⏳ queued</td></tr></tbody></table></div>
 </section>
 
-<section class="section">
-  <div class="section-head"><span class="section-num">02</span><h2 class="section-title">📊 Direct H4 Comparison</h2></div>
-  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px">
-    <a href="usoil-h4.html" class="card" style="text-decoration:none;color:var(--text);border-left:3px solid #84cc16"><div class="card-title">USOIL (WTI) H4</div><div style="font-size:12px;color:var(--text-dim)">4,705 · WR 52.1% · PF 1.15</div></a>
-    <a href="ukoil-h4.html" class="card" style="text-decoration:none;color:var(--text);border-left:3px solid #65a30d"><div class="card-title">UKOIL (Brent) H4</div><div style="font-size:12px;color:var(--text-dim)">4,303 · WR 53.5% · PF 1.26</div></a>
-    <a href="xng-h4.html" class="card" style="text-decoration:none;color:var(--text);border-left:3px solid #06b6d4"><div class="card-title">XNGUSD (NatGas) H4</div><div style="font-size:12px;color:var(--text-dim)">4,644 · WR 41.4% · PF 0.68</div></a>
-    
-  </div>
+<section>
+  <div class="section-head"><span class="section-num">02</span><h2 class="section-title">📋 Candidate Queue (ดีสุดต่อ asset)</h2></div>
+  <p style="color:var(--text-dim);font-size:14px;margin-bottom:12px">14 patterns — ตัวที่ EV/PF ดีสุดของแต่ละ asset (PF≥1.3, n≥300) จากผล Phase 2 OOS</p>
+  <div class="card"><table class="table compact ranked"><thead><tr>
+    <th class="r">#</th><th>Asset/TF</th><th>Pattern</th><th>Dir</th><th class="r">WR</th><th class="r">PF</th><th class="r">EV</th><th class="r">SL/TP</th><th class="r">n</th><th class="r">สถานะ</th>
+  </tr></thead><tbody><tr>
+      <td class="r">1</td>
+      <td><strong>USDJPY</strong> <span style="color:var(--text-dim)">H4</span></td>
+      <td><a href="patterns.html#p157" style="color:var(--blue)">P157</a> Hidden_Div_Bull_RSI</td>
+      <td><span style="color:var(--green)">BUY</span></td>
+      <td class="r">16%</td><td class="r">1.98×</td>
+      <td class="r tg">+0.748R</td><td class="r" style="font-size:12px">0.5/5</td>
+      <td class="r">492</td>
+      <td class="r">⏳</td></tr><tr>
+      <td class="r">2</td>
+      <td><strong>XAUUSD</strong> <span style="color:var(--text-dim)">H4</span></td>
+      <td><a href="patterns.html#p140" style="color:var(--blue)">P140</a> Ichimoku_Kumo_Twist_Bull</td>
+      <td><span style="color:var(--green)">BUY</span></td>
+      <td class="r">16%</td><td class="r">1.92×</td>
+      <td class="r tg">+0.721R</td><td class="r" style="font-size:12px">0.5/5</td>
+      <td class="r">1206</td>
+      <td class="r">⏳</td></tr><tr>
+      <td class="r">3</td>
+      <td><strong>GBPJPY</strong> <span style="color:var(--text-dim)">H1</span></td>
+      <td><a href="patterns.html#p55" style="color:var(--blue)">P55</a> CHoCH_Bull</td>
+      <td><span style="color:var(--green)">BUY</span></td>
+      <td class="r">47%</td><td class="r">1.78×</td>
+      <td class="r tg">+0.375R</td><td class="r" style="font-size:12px">2.5/5</td>
+      <td class="r">1401</td>
+      <td class="r">⏳</td></tr><tr>
+      <td class="r">4</td>
+      <td><strong>EURUSD</strong> <span style="color:var(--text-dim)">H1</span></td>
+      <td><a href="patterns.html#p66" style="color:var(--blue)">P66</a> HnS_Bull</td>
+      <td><span style="color:var(--green)">BUY</span></td>
+      <td class="r">36%</td><td class="r">1.67×</td>
+      <td class="r tg">+0.386R</td><td class="r" style="font-size:12px">1.0/3</td>
+      <td class="r">352</td>
+      <td class="r">⏳</td></tr><tr>
+      <td class="r">5</td>
+      <td><strong>JP225</strong> <span style="color:var(--text-dim)">H4</span></td>
+      <td><a href="patterns.html#p128" style="color:var(--blue)">P128</a> MTF_FVG_Aligned_Long</td>
+      <td><span style="color:var(--green)">BUY</span></td>
+      <td class="r">36%</td><td class="r">1.53×</td>
+      <td class="r tg">+0.335R</td><td class="r" style="font-size:12px">2.0/5</td>
+      <td class="r">667</td>
+      <td class="r">⏳</td></tr><tr>
+      <td class="r">6</td>
+      <td><strong>USDCHF</strong> <span style="color:var(--text-dim)">H1</span></td>
+      <td><a href="patterns.html#p68" style="color:var(--blue)">P68</a> Triangle_Desc</td>
+      <td><span style="color:var(--red)">SELL</span></td>
+      <td class="r">37%</td><td class="r">1.53×</td>
+      <td class="r tg">+0.269R</td><td class="r" style="font-size:12px">2.0/5</td>
+      <td class="r">683</td>
+      <td class="r">⏳</td></tr><tr>
+      <td class="r">7</td>
+      <td><strong>US500</strong> <span style="color:var(--text-dim)">H4</span></td>
+      <td><a href="patterns.html#p171" style="color:var(--blue)">P171</a> ABCD_Bull</td>
+      <td><span style="color:var(--green)">BUY</span></td>
+      <td class="r">13%</td><td class="r">1.51×</td>
+      <td class="r tg">+0.393R</td><td class="r" style="font-size:12px">0.5/5</td>
+      <td class="r">451</td>
+      <td class="r">⏳</td></tr><tr>
+      <td class="r">8</td>
+      <td><strong>UK100</strong> <span style="color:var(--text-dim)">H4</span></td>
+      <td><a href="patterns.html#p159" style="color:var(--blue)">P159</a> Hidden_Div_Bull_MACD</td>
+      <td><span style="color:var(--green)">BUY</span></td>
+      <td class="r">50%</td><td class="r">1.50×</td>
+      <td class="r tg">+0.200R</td><td class="r" style="font-size:12px">2.0/3</td>
+      <td class="r">667</td>
+      <td class="r">⏳</td></tr><tr>
+      <td class="r">9</td>
+      <td><strong>EURJPY</strong> <span style="color:var(--text-dim)">H4</span></td>
+      <td><a href="patterns.html#p150" style="color:var(--blue)">P150</a> External_Liq_Sweep_Long</td>
+      <td><span style="color:var(--green)">BUY</span></td>
+      <td class="r">22%</td><td class="r">1.44×</td>
+      <td class="r tg">+0.343R</td><td class="r" style="font-size:12px">1.0/5</td>
+      <td class="r">368</td>
+      <td class="r">⏳</td></tr><tr>
+      <td class="r">10</td>
+      <td><strong>ETHUSD</strong> <span style="color:var(--text-dim)">H4</span></td>
+      <td><a href="patterns.html#p62" style="color:var(--blue)">P62</a> Double_Top</td>
+      <td><span style="color:var(--red)">SELL</span></td>
+      <td class="r">29%</td><td class="r">1.40×</td>
+      <td class="r tg">+0.243R</td><td class="r" style="font-size:12px">1.5/5</td>
+      <td class="r">386</td>
+      <td class="r">⏳</td></tr><tr>
+      <td class="r">11</td>
+      <td><strong>XAGUSD</strong> <span style="color:var(--text-dim)">H4</span></td>
+      <td><a href="patterns.html#p140" style="color:var(--blue)">P140</a> Ichimoku_Kumo_Twist_Bull</td>
+      <td><span style="color:var(--green)">BUY</span></td>
+      <td class="r">29%</td><td class="r">1.39×</td>
+      <td class="r tg">+0.202R</td><td class="r" style="font-size:12px">1.5/5</td>
+      <td class="r">1225</td>
+      <td class="r">⏳</td></tr><tr>
+      <td class="r">12</td>
+      <td><strong>DE30</strong> <span style="color:var(--text-dim)">H1</span></td>
+      <td><a href="patterns.html#p56" style="color:var(--blue)">P56</a> CHoCH_Bear</td>
+      <td><span style="color:var(--red)">SELL</span></td>
+      <td class="r">22%</td><td class="r">1.37×</td>
+      <td class="r tg">+0.181R</td><td class="r" style="font-size:12px">1.0/5</td>
+      <td class="r">1283</td>
+      <td class="r">⏳</td></tr><tr>
+      <td class="r">13</td>
+      <td><strong>USOIL</strong> <span style="color:var(--text-dim)">H4</span></td>
+      <td><a href="patterns.html#p157" style="color:var(--blue)">P157</a> Hidden_Div_Bull_RSI</td>
+      <td><span style="color:var(--green)">BUY</span></td>
+      <td class="r">28%</td><td class="r">1.35×</td>
+      <td class="r tg">+0.217R</td><td class="r" style="font-size:12px">1.5/5</td>
+      <td class="r">355</td>
+      <td class="r">⏳</td></tr><tr>
+      <td class="r">14</td>
+      <td><strong>BTCUSD</strong> <span style="color:var(--text-dim)">H4</span></td>
+      <td><a href="patterns.html#p171" style="color:var(--blue)">P171</a> ABCD_Bull</td>
+      <td><span style="color:var(--green)">BUY</span></td>
+      <td class="r">21%</td><td class="r">1.33×</td>
+      <td class="r tg">+0.159R</td><td class="r" style="font-size:12px">1.0/5</td>
+      <td class="r">613</td>
+      <td class="r">⏳</td></tr></tbody></table></div>
 </section>
 
-<section class="section">
-  <div class="section-head"><span class="section-num">03</span><h2 class="section-title">📰 หมายเหตุการเทรด Energy</h2></div>
-  <div class="card">
-    <ul style="margin:0;padding-left:24px;line-height:1.9;font-size:14px">
-      <li>📈 <strong>Volatility สูงกว่า forex 5-10 เท่า</strong> — daily range $1.50-3.00 (WTI) vs 60-80 pips (forex major)</li>
-      <li>🎯 <strong>OPEC+ meetings</strong> สำคัญที่สุด — มีผลต่อ price action เกินกว่า technical</li>
-      <li>📊 <strong>US Inventory (EIA Wednesday)</strong> — gap volatility สูง · ระวัง stop run</li>
-      <li>🔥 <strong>Middle East geopolitics</strong> — Brent ตอบสนองมากกว่า WTI · Iran/Saudi/OPEC tensions</li>
-      <li>⏰ <strong>Best hours</strong>: NYMEX session (NY) สำหรับ WTI · London/EU session สำหรับ Brent</li>
-    </ul>
-  </div>
+<section>
+  <div class="section-head"><span class="section-num">03</span><h2 class="section-title">🛠️ เทคนิค & สมมติฐานที่จะทดสอบ</h2></div>
+  <p style="color:var(--text-dim);font-size:14px;margin-bottom:14px">แต่ละ candidate จะลองเทคนิคเหล่านี้เพื่อรีด RR / เพิ่มความแม่น / ลด drawdown</p>
+  <div class="card" style="margin-bottom:14px">
+      <div class="card-title" style="display:flex;align-items:center"><span style="font-size:18px;margin-right:8px">🛡️</span>1. กันทุน (Break-even)<span style="background:rgba(148,163,184,0.15);color:var(--text-dim);padding:2px 8px;border-radius:10px;font-size:11px;margin-left:8px">⏳ รอทดสอบ</span></div>
+      <div style="color:var(--text-dim);font-size:13px;margin:8px 0 6px">หลังกำไรถึง +X×ATR ขยับ SL มาที่จุดเข้า (entry) เพื่อไม่ให้ไม้กำไรกลับมาขาดทุน</div>
+      <div style="font-size:13px"><strong style="color:var(--blue)">สมมติฐาน:</strong> ลด max drawdown และจำนวนไม้ที่ "เคยกำไรแล้วกลับเป็นลบ" โดยไม่ลด WR มาก · ทดสอบ trigger ที่ +1, +1.5, +2×ATR</div>
+      </div><div class="card" style="margin-bottom:14px">
+      <div class="card-title" style="display:flex;align-items:center"><span style="font-size:18px;margin-right:8px">📈</span>2. ขยับ SL ตามราคา (Trailing SL)<span style="background:rgba(148,163,184,0.15);color:var(--text-dim);padding:2px 8px;border-radius:10px;font-size:11px;margin-left:8px">⏳ รอทดสอบ</span></div>
+      <div style="color:var(--text-dim);font-size:13px;margin:8px 0 6px">เลื่อน SL ตามราคาที่วิ่งไป (เช่น ตาม ATR, swing low, หรือ %) เพื่อล็อกกำไรระหว่างทาง</div>
+      <div style="font-size:13px"><strong style="color:var(--blue)">สมมติฐาน:</strong> เก็บกำไรไม้ที่วิ่งไกลได้มากขึ้น แต่ต้องระวังโดน noise เขี่ยออกก่อน · ทดสอบ trail 1-3×ATR</div>
+      </div><div class="card" style="margin-bottom:14px">
+      <div class="card-title" style="display:flex;align-items:center"><span style="font-size:18px;margin-right:8px">🎯</span>3. วิ่งยาวไม่มี TP — ใช้ SL ปิดกำไร<span style="background:rgba(148,163,184,0.15);color:var(--text-dim);padding:2px 8px;border-radius:10px;font-size:11px;margin-left:8px">⏳ รอทดสอบ</span></div>
+      <div style="color:var(--text-dim);font-size:13px;margin:8px 0 6px">ไม่ตั้ง TP ตายตัว ปล่อยให้วิ่ง แล้วใช้ trailing SL เป็นตัวปิด (let winners run)</div>
+      <div style="font-size:13px"><strong style="color:var(--blue)">สมมติฐาน:</strong> จับ trend ใหญ่ได้เต็มที่ · เพิ่ม RR เฉลี่ยของไม้ชนะ แต่ WR อาจลด · เทียบกับ TP=5×ATR คงที่</div>
+      </div><div class="card" style="margin-bottom:14px">
+      <div class="card-title" style="display:flex;align-items:center"><span style="font-size:18px;margin-right:8px">⬇️</span>4. Limit/Pullback Entry (เข้าต่ำกว่าสัญญาณ)<span style="background:rgba(77,212,152,0.15);color:var(--green);padding:2px 8px;border-radius:10px;font-size:11px;margin-left:8px">✅ ทดสอบแล้ว</span></div>
+      <div style="color:var(--text-dim);font-size:13px;margin:8px 0 6px">แทนเข้า market ที่ราคาสัญญาณ → ตั้ง limit เข้าต่ำกว่า K×ATR (long) เพื่อย่น SL + ขยาย TP → RR ดีขึ้น</div>
+      <div style="font-size:13px"><strong style="color:var(--blue)">สมมติฐาน:</strong> หา K ที่เหมาะต่อ pattern (sweet spot) · ต้องวัด EV ต่อ"สัญญาณ" ไม่ใช่ต่อ"ไม้ที่ฟิล"</div>
+      <div style="margin-top:10px;padding:10px 12px;background:rgba(77,212,152,0.07);border-left:2px solid var(--green);border-radius:0 4px 4px 0;font-size:13px"><strong>✅ พิสูจน์แล้วกับ GBPJPY P61:</strong> เข้า limit −0.5×ATR → EV/สัญญาณ +0.539R (จาก +0.487R = ดีขึ้น ~11%), RR 2.0→2.8 · แต่เข้าลึก −1.5×ATR กลับแย่กว่า baseline (fill เหลือ 66%) → มี sweet spot ต้อง optimize ต่อ pattern</div></div><div class="card" style="margin-bottom:14px">
+      <div class="card-title" style="display:flex;align-items:center"><span style="font-size:18px;margin-right:8px">🔗</span>5. ควบรวม 2 Patterns (Confluence)<span style="background:rgba(148,163,184,0.15);color:var(--text-dim);padding:2px 8px;border-radius:10px;font-size:11px;margin-left:8px">⏳ รอทดสอบ</span></div>
+      <div style="color:var(--text-dim);font-size:13px;margin:8px 0 6px">เปิดไม้เฉพาะตอนที่ 2 patterns ยืนยันพร้อมกัน (เช่น P61 Double_Bottom + P55 CHoCH) เพื่อกรองสัญญาณอ่อน</div>
+      <div style="font-size:13px"><strong style="color:var(--blue)">สมมติฐาน:</strong> เพิ่ม WR และ PF (สัญญาณแม่นขึ้น) แลกกับจำนวนไม้ที่ลดลง · ทดสอบคู่ที่ logic เสริมกัน (structure+momentum)</div>
+      </div><div class="card" style="margin-bottom:14px">
+      <div class="card-title" style="display:flex;align-items:center"><span style="font-size:18px;margin-right:8px">↕️</span>6. เพิ่ม SELL — เล่นสองทาง<span style="background:rgba(148,163,184,0.15);color:var(--text-dim);padding:2px 8px;border-radius:10px;font-size:11px;margin-left:8px">⏳ รอทดสอบ</span></div>
+      <div style="color:var(--text-dim);font-size:13px;margin:8px 0 6px">ปัจจุบันหลาย pattern เทรดทางเดียว (BUY) → เพิ่มฝั่ง SELL (mirror) เพื่อเล่นได้ทั้งขาขึ้น/ลง</div>
+      <div style="font-size:13px"><strong style="color:var(--blue)">สมมติฐาน:</strong> เพิ่มจำนวนโอกาส + ทำกำไรในตลาดขาลงได้ · ต้องเช็คว่าฝั่ง SELL มี edge จริงไหม (บาง pattern เก่งทางเดียว)</div>
+      </div><div class="card" style="margin-bottom:14px">
+      <div class="card-title" style="display:flex;align-items:center"><span style="font-size:18px;margin-right:8px">🔍</span>7. Context Filters<span style="background:rgba(148,163,184,0.15);color:var(--text-dim);padding:2px 8px;border-radius:10px;font-size:11px;margin-left:8px">⏳ รอทดสอบ</span></div>
+      <div style="color:var(--text-dim);font-size:13px;margin:8px 0 6px">กรองด้วยบริบท: session (London/NY), trend (HTF D1), ADX, volatility regime — เทรดเฉพาะตอนเงื่อนไขดี</div>
+      <div style="font-size:13px"><strong style="color:var(--blue)">สมมติฐาน:</strong> ตัดไม้ช่วงตลาดไม่เอื้อออก → เพิ่ม EV/ไม้ · มี filter columns ครบใน CSV (171 cols) แล้ว</div>
+      </div><div class="card" style="margin-bottom:14px">
+      <div class="card-title" style="display:flex;align-items:center"><span style="font-size:18px;margin-right:8px">⚙️</span>8. SL/TP Optimize + Walk-Forward<span style="background:rgba(148,163,184,0.15);color:var(--text-dim);padding:2px 8px;border-radius:10px;font-size:11px;margin-left:8px">⏳ รอทดสอบ</span></div>
+      <div style="color:var(--text-dim);font-size:13px;margin:8px 0 6px">หา SL/TP ที่ optimal ต่อ pattern แล้ว validate ด้วย walk-forward (แบ่งช่วงเวลา in-sample/out-sample สลับ)</div>
+      <div style="font-size:13px"><strong style="color:var(--blue)">สมมติฐาน:</strong> กัน overfit · ยืนยันว่าค่าที่หาได้เสถียรข้ามช่วงเวลา ไม่ใช่บังเอิญ · ⚠️ ระวัง TP=10 ที่ EV สูงผิดปกติ = ขอบ bracket</div>
+      </div>
 </section>
 
-<section class="section">
-  <div class="section-head"><span class="section-num">04</span><h2 class="section-title">🔗 หน้าที่เกี่ยวข้อง</h2></div>
-  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px">
-    <a href="patterns.html" class="card" style="text-decoration:none;color:var(--text)"><div class="card-title">🎯 177 Patterns</div></a>
-    <a href="cross.html" class="card" style="text-decoration:none;color:var(--text)"><div class="card-title">🔄 Cross Analysis</div></a>
-    <a href="optimal-tpsl.html" class="card" style="text-decoration:none;color:var(--text)"><div class="card-title">⚙️ Optimal SL/TP</div></a>
-    <a href="tier.html" class="card" style="text-decoration:none;color:var(--text)"><div class="card-title">🏆 Tier Rankings</div></a>
-  </div>
+<section>
+  <div class="section-head"><span class="section-num">04</span><h2 class="section-title">📝 Results Log</h2></div>
+  <p style="color:var(--text-dim);font-size:14px;margin-bottom:12px">บันทึกผลแต่ละการทดสอบที่นี่ (เติมเรื่อยๆ ระหว่างทำ Phase 3)</p>
+  <div class="card"><table class="table compact"><thead><tr>
+    <th>วันที่</th><th>Pattern</th><th>เทคนิค</th><th>ผลลัพธ์ (ก่อน → หลัง)</th><th>สรุป</th>
+  </tr></thead><tbody>
+    <tr><td>2026-05-22</td><td>GBPJPY P61</td><td>Limit entry −0.5×ATR</td><td>EV/สัญญาณ +0.487R → +0.539R · RR 2.0 → 2.8</td><td><span style="color:var(--green)">✅ ดีขึ้น ~11% (รับ)</span></td></tr>
+    <tr><td colspan="5" style="text-align:center;color:var(--text-dim);padding:18px">— รอผลการทดสอบถัดไป —</td></tr>
+  </tbody></table></div>
 </section>
+
 </main>
 
-<script src="assets/app.js?v=9.1"></script>
-  <script>
+
+  
+<script>
 // KMP Master · Inline Sidebar JS (no cache, no delegation)
 (function() {
   function initSidebar() {

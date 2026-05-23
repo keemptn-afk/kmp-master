@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Phase 3 Lab · KMP Master</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&family=Sarabun:wght@400;500;600;700&family=Bricolage+Grotesque:wght@400;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css?v=9.1">
+</head>
+<body>
+
+<nav class="sidebar">
+  <div class="sidebar-brand">
+    <a class="brand-logo" href="index.html">KMP <span class="accent">Master</span></a>
+    <div class="brand-ver">v9.1 · EA v4.1 · 23 assets · 69 datasets · 3,399,867 trades (P1+P2)</div>
+  </div>
+  
+  <input type="text" class="search-box" id="globalSearch" placeholder="ค้นหา...">
+  
+  <div class="nav-section">
+    <a class="tree-node lvl-0" href="user-guide.html" style="background:#1e293b;border-left:3px solid #3b82f6;margin-bottom:6px"><span class="nm">📖 คู่มือการใช้งาน</span></a>
+    <div class="nav-label">ภาพรวม</div>
+    <a class="tree-node lvl-0" href="index.html"><span class="arrow"></span><span class="nm">Dashboard</span></a>
+    <a class="tree-node lvl-0" href="preface.html"><span class="arrow"></span><span class="nm">คำนำ &amp; เป้าหมาย</span></a>
+    <a class="tree-node lvl-0" href="phase3.html"><span class="arrow"></span><span class="nm">🧪 Phase 3 Lab</span></a>
+  </div>
+  
+  <div class="nav-section">
+    <div class="nav-label">Datasets · v9.1 · 69/69 ds · 3.4M trades (P1+P2)</div>
+    
+    <div class="tree-node lvl-0 expandable" data-toggle="crypto-menu">
+      <span class="arrow">▶</span><span class="nm">Crypto</span><span class="badge">2</span>
+    </div>
+    <div class="tree-children" id="crypto-menu">
+      <div class="tree-node lvl-1 expandable" data-toggle="btc-menu">
+        <span class="arrow">▶</span><span class="nm">BTC/USD</span><a href="btc.html" class="hub-link" title="ดู hub ของ BTC/USD" onclick="event.stopPropagation()">↗</a><span class="badge" style="background:#f7931a;color:#0a0a0a">183.3K</span>
+      </div>
+      <div class="tree-children" id="btc-menu">
+        <a class="tree-node lvl-2" href="btc-h4.html"><span class="nm">BTC H4</span><span class="badge" style="background:#10b981;color:#fff">14,604</span></a>
+        <a class="tree-node lvl-2" href="btc-h1.html"><span class="nm">BTC H1</span><span class="badge" style="background:#10b981;color:#fff">47,822</span></a>
+        <a class="tree-node lvl-2" href="btc-m15.html"><span class="nm">BTC M15</span><span class="badge" style="background:#10b981;color:#fff">120,895</span></a>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="eth-menu">
+        <span class="arrow">▶</span><span class="nm">ETH/USD</span><a href="eth.html" class="hub-link" title="ดู hub ของ ETH/USD" onclick="event.stopPropagation()">↗</a><span class="badge" style="background:#627eea;color:#fff">182.7K</span>
+      </div>
+      <div class="tree-children" id="eth-menu">
+        <a class="tree-node lvl-2" href="eth-h4.html"><span class="nm">ETH H4</span><span class="badge" style="background:#10b981;color:#fff">16,314</span></a>
+        <a class="tree-node lvl-2" href="eth-h1.html"><span class="nm">ETH H1</span><span class="badge" style="background:#10b981;color:#fff">45,996</span></a>
+        <a class="tree-node lvl-2" href="eth-m15.html"><span class="nm">ETH M15</span><span class="badge" style="background:#10b981;color:#fff">120,380</span></a>
+      </div>
+    </div>
+    
+    <div class="tree-node lvl-0 expandable" data-toggle="metals-menu">
+      <span class="arrow">▶</span><span class="nm">Metals</span><span class="badge">3</span>
+    </div>
+    <div class="tree-children" id="metals-menu">
+      <div class="tree-node lvl-1 expandable" data-toggle="xau-menu">
+        <span class="arrow">▶</span><span class="nm">XAU/USD</span><a href="xau.html" class="hub-link" title="ดู hub ของ XAU/USD" onclick="event.stopPropagation()">↗</a><span class="badge" style="background:#fbbf24;color:#0a0a0a">138.0K</span>
+      </div>
+      <div class="tree-children" id="xau-menu">
+        <a class="tree-node lvl-2" href="xau-h4.html"><span class="nm">XAU H4</span><span class="badge" style="background:#10b981;color:#fff">13,609</span></a>
+        <a class="tree-node lvl-2" href="xau-h1.html"><span class="nm">XAU H1</span><span class="badge" style="background:#10b981;color:#fff">29,229</span></a>
+        <a class="tree-node lvl-2" href="xau-m15.html"><span class="nm">XAU M15</span><span class="badge" style="background:#10b981;color:#fff">95,156</span></a>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="xag-menu">
+        <span class="arrow">▶</span><span class="nm">XAG/USD (Silver)</span><span class="badge" style="background:#94a3b8;color:#0a0a0a">137.8K</span>
+      </div>
+      <div class="tree-children" id="xag-menu">
+        <a class="tree-node lvl-2" href="xag-h4.html"><span class="nm">XAG H4</span><span class="badge" style="background:#10b981;color:#fff">16,661</span></a>
+        <a class="tree-node lvl-2" href="xag-h1.html"><span class="nm">XAG H1</span><span class="badge" style="background:#10b981;color:#fff">34,039</span></a>
+        <a class="tree-node lvl-2" href="xag-m15.html"><span class="nm">XAG M15</span><span class="badge" style="background:#10b981;color:#fff">87,129</span></a>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="xpt-menu">
+        <span class="arrow">▶</span><span class="nm">XPT/USD (Platinum)</span><span class="badge" style="background:#cbd5e1;color:#0a0a0a">141.6K</span>
+      </div>
+      <div class="tree-children" id="xpt-menu">
+        <a class="tree-node lvl-2" href="xpt-h4.html"><span class="nm">XPT H4</span><span class="badge" style="background:#10b981;color:#fff">14,282</span></a>
+        <a class="tree-node lvl-2" href="xpt-h1.html"><span class="nm">XPT H1</span><span class="badge" style="background:#10b981;color:#fff">27,698</span></a>
+        <a class="tree-node lvl-2" href="xpt-m15.html"><span class="nm">XPT M15</span><span class="badge" style="background:#10b981;color:#fff">99,580</span></a>
+      </div>
+    </div>
+    
+    <div class="tree-node lvl-0 expandable" data-toggle="energy-menu">
+      <span class="arrow">▶</span><span class="nm">Energy</span><span class="badge">3</span>
+    </div>
+    <div class="tree-children" id="energy-menu">
+      <div class="tree-node lvl-1 expandable" data-toggle="usoil-menu">
+        <span class="arrow">▶</span><span class="nm">USOIL (WTI)</span><a href="usoil.html" class="hub-link" title="ดู hub ของ USOIL (WTI)" onclick="event.stopPropagation()">↗</a><span class="badge" style="background:#84cc16;color:#0a0a0a">138.3K</span>
+      </div>
+      <div class="tree-children" id="usoil-menu">
+        <a class="tree-node lvl-2" href="usoil-h4.html"><span class="nm">USOIL H4</span><span class="badge" style="background:#10b981;color:#fff">15,609</span></a>
+        <a class="tree-node lvl-2" href="usoil-h1.html"><span class="nm">USOIL H1</span><span class="badge" style="background:#10b981;color:#fff">29,301</span></a>
+        <a class="tree-node lvl-2" href="usoil-m15.html"><span class="nm">USOIL M15</span><span class="badge" style="background:#10b981;color:#fff">93,425</span></a>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="ukoil-menu">
+        <span class="arrow">▶</span><span class="nm">UKOIL (Brent)</span><a href="ukoil.html" class="hub-link" title="ดู hub ของ UKOIL (Brent)" onclick="event.stopPropagation()">↗</a><span class="badge" style="background:#65a30d;color:#0a0a0a">131.7K</span>
+      </div>
+      <div class="tree-children" id="ukoil-menu">
+        <a class="tree-node lvl-2" href="ukoil-h4.html"><span class="nm">UKOIL H4</span><span class="badge" style="background:#10b981;color:#fff">15,651</span></a>
+        <a class="tree-node lvl-2" href="ukoil-h1.html"><span class="nm">UKOIL H1</span><span class="badge" style="background:#10b981;color:#fff">24,177</span></a>
+        <a class="tree-node lvl-2" href="ukoil-m15.html"><span class="nm">UKOIL M15</span><span class="badge" style="background:#10b981;color:#fff">91,902</span></a>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="xng-menu">
+        <span class="arrow">▶</span><span class="nm">XNGUSD (NatGas)</span><span class="badge" style="background:#06b6d4;color:#0a0a0a">141.4K</span>
+      </div>
+      <div class="tree-children" id="xng-menu">
+        <a class="tree-node lvl-2" href="xng-h4.html"><span class="nm">XNG H4</span><span class="badge" style="background:#10b981;color:#fff">18,154</span></a>
+        <a class="tree-node lvl-2" href="xng-h1.html"><span class="nm">XNG H1</span><span class="badge" style="background:#10b981;color:#fff">28,789</span></a>
+        <a class="tree-node lvl-2" href="xng-m15.html"><span class="nm">XNG M15</span><span class="badge" style="background:#10b981;color:#fff">94,432</span></a>
+      </div>
+    </div>
+    
+    <div class="tree-node lvl-0 expandable" data-toggle="forex-menu">
+      <span class="arrow">▶</span><span class="nm">Forex</span><span class="badge">7</span>
+    </div>
+    <div class="tree-children" id="forex-menu">
+      <div class="tree-node lvl-1 expandable" data-toggle="eur-menu">
+        <span class="arrow">▶</span><span class="nm">EUR/USD</span><a href="eur.html" class="hub-link" title="ดู hub ของ EUR/USD" onclick="event.stopPropagation()">↗</a><span class="badge" style="background:#5b9bd5;color:#fff">141.7K</span>
+      </div>
+      <div class="tree-children" id="eur-menu">
+        <a class="tree-node lvl-2" href="eur-h4.html"><span class="nm">EUR H4</span><span class="badge" style="background:#10b981;color:#fff">13,707</span></a>
+        <a class="tree-node lvl-2" href="eur-h1.html"><span class="nm">EUR H1</span><span class="badge" style="background:#10b981;color:#fff">28,863</span></a>
+        <a class="tree-node lvl-2" href="eur-m15.html"><span class="nm">EUR M15</span><span class="badge" style="background:#10b981;color:#fff">99,120</span></a>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="gbp-menu">
+        <span class="arrow">▶</span><span class="nm">GBP/USD</span><a href="gbp.html" class="hub-link" title="ดู hub ของ GBP/USD" onclick="event.stopPropagation()">↗</a><span class="badge" style="background:#a78bfa;color:#fff">138.8K</span>
+      </div>
+      <div class="tree-children" id="gbp-menu">
+        <a class="tree-node lvl-2" href="gbp-h4.html"><span class="nm">GBP H4</span><span class="badge" style="background:#10b981;color:#fff">17,192</span></a>
+        <a class="tree-node lvl-2" href="gbp-h1.html"><span class="nm">GBP H1</span><span class="badge" style="background:#10b981;color:#fff">27,316</span></a>
+        <a class="tree-node lvl-2" href="gbp-m15.html"><span class="nm">GBP M15</span><span class="badge" style="background:#10b981;color:#fff">94,284</span></a>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="jpy-menu">
+        <span class="arrow">▶</span><span class="nm">USD/JPY</span><a href="jpy.html" class="hub-link" title="ดู hub ของ USD/JPY" onclick="event.stopPropagation()">↗</a><span class="badge" style="background:#fb7185;color:#fff">161.0K</span>
+      </div>
+      <div class="tree-children" id="jpy-menu">
+        <a class="tree-node lvl-2" href="jpy-h4.html"><span class="nm">JPY H4</span><span class="badge" style="background:#10b981;color:#fff">19,483</span></a>
+        <a class="tree-node lvl-2" href="jpy-h1.html"><span class="nm">JPY H1</span><span class="badge" style="background:#10b981;color:#fff">34,965</span></a>
+        <a class="tree-node lvl-2" href="jpy-m15.html"><span class="nm">JPY M15</span><span class="badge" style="background:#10b981;color:#fff">106,526</span></a>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="aud-menu">
+        <span class="arrow">▶</span><span class="nm">AUD/USD</span><a href="aud.html" class="hub-link" title="ดู hub ของ AUD/USD" onclick="event.stopPropagation()">↗</a><span class="badge" style="background:#34d399;color:#0a0a0a">151.2K</span>
+      </div>
+      <div class="tree-children" id="aud-menu">
+        <a class="tree-node lvl-2" href="aud-h4.html"><span class="nm">AUD H4</span><span class="badge" style="background:#10b981;color:#fff">17,572</span></a>
+        <a class="tree-node lvl-2" href="aud-h1.html"><span class="nm">AUD H1</span><span class="badge" style="background:#10b981;color:#fff">31,588</span></a>
+        <a class="tree-node lvl-2" href="aud-m15.html"><span class="nm">AUD M15</span><span class="badge" style="background:#10b981;color:#fff">102,043</span></a>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="cad-menu">
+        <span class="arrow">▶</span><span class="nm">USD/CAD</span><a href="cad.html" class="hub-link" title="ดู hub ของ USD/CAD" onclick="event.stopPropagation()">↗</a><span class="badge" style="background:#f59e0b;color:#0a0a0a">156.0K</span>
+      </div>
+      <div class="tree-children" id="cad-menu">
+        <a class="tree-node lvl-2" href="cad-h4.html"><span class="nm">CAD H4</span><span class="badge" style="background:#10b981;color:#fff">15,846</span></a>
+        <a class="tree-node lvl-2" href="cad-h1.html"><span class="nm">CAD H1</span><span class="badge" style="background:#10b981;color:#fff">31,274</span></a>
+        <a class="tree-node lvl-2" href="cad-m15.html"><span class="nm">CAD M15</span><span class="badge" style="background:#10b981;color:#fff">108,890</span></a>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="chf-menu">
+        <span class="arrow">▶</span><span class="nm">USD/CHF</span><a href="chf.html" class="hub-link" title="ดู hub ของ USD/CHF" onclick="event.stopPropagation()">↗</a><span class="badge" style="background:#ef4444;color:#fff">146.4K</span>
+      </div>
+      <div class="tree-children" id="chf-menu">
+        <a class="tree-node lvl-2" href="chf-h4.html"><span class="nm">CHF H4</span><span class="badge" style="background:#10b981;color:#fff">12,742</span></a>
+        <a class="tree-node lvl-2" href="chf-h1.html"><span class="nm">CHF H1</span><span class="badge" style="background:#10b981;color:#fff">41,461</span></a>
+        <a class="tree-node lvl-2" href="chf-m15.html"><span class="nm">CHF M15</span><span class="badge" style="background:#10b981;color:#fff">92,227</span></a>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="nzd-menu">
+        <span class="arrow">▶</span><span class="nm">NZD/USD</span><a href="nzd.html" class="hub-link" title="ดู hub ของ NZD/USD" onclick="event.stopPropagation()">↗</a><span class="badge" style="background:#22c55e;color:#fff">167.5K</span>
+      </div>
+      <div class="tree-children" id="nzd-menu">
+        <a class="tree-node lvl-2" href="nzd-h4.html"><span class="nm">NZD H4</span><span class="badge" style="background:#10b981;color:#fff">19,267</span></a>
+        <a class="tree-node lvl-2" href="nzd-h1.html"><span class="nm">NZD H1</span><span class="badge" style="background:#10b981;color:#fff">34,622</span></a>
+        <a class="tree-node lvl-2" href="nzd-m15.html"><span class="nm">NZD M15</span><span class="badge" style="background:#10b981;color:#fff">113,648</span></a>
+      </div>
+    </div>
+    
+    <div class="tree-node lvl-0 expandable" data-toggle="cross-menu">
+      <span class="arrow">▶</span><span class="nm">Forex Cross</span><span class="badge">3</span>
+    </div>
+    <div class="tree-children" id="cross-menu">
+      <div class="tree-node lvl-1 expandable" data-toggle="eurjpy-menu">
+        <span class="arrow">▶</span><span class="nm">EUR/JPY</span><a href="eurjpy.html" class="hub-link" title="ดู hub ของ EUR/JPY" onclick="event.stopPropagation()">↗</a><span class="badge" style="background:#8b5cf6;color:#fff">142.1K</span>
+      </div>
+      <div class="tree-children" id="eurjpy-menu">
+        <a class="tree-node lvl-2" href="eurjpy-h4.html"><span class="nm">EURJPY H4</span><span class="badge" style="background:#10b981;color:#fff">13,164</span></a>
+        <a class="tree-node lvl-2" href="eurjpy-h1.html"><span class="nm">EURJPY H1</span><span class="badge" style="background:#10b981;color:#fff">32,013</span></a>
+        <a class="tree-node lvl-2" href="eurjpy-m15.html"><span class="nm">EURJPY M15</span><span class="badge" style="background:#10b981;color:#fff">96,878</span></a>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="gbpjpy-menu">
+        <span class="arrow">▶</span><span class="nm">GBP/JPY</span><a href="gbpjpy.html" class="hub-link" title="ดู hub ของ GBP/JPY" onclick="event.stopPropagation()">↗</a><span class="badge" style="background:#ec4899;color:#fff">169.7K</span>
+      </div>
+      <div class="tree-children" id="gbpjpy-menu">
+        <a class="tree-node lvl-2" href="gbpjpy-h4.html"><span class="nm">GBPJPY H4</span><span class="badge" style="background:#10b981;color:#fff">13,206</span></a>
+        <a class="tree-node lvl-2" href="gbpjpy-h1.html"><span class="nm">GBPJPY H1</span><span class="badge" style="background:#10b981;color:#fff">34,066</span></a>
+        <a class="tree-node lvl-2" href="gbpjpy-m15.html"><span class="nm">GBPJPY M15</span><span class="badge" style="background:#10b981;color:#fff">122,448</span></a>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="eurgbp-menu">
+        <span class="arrow">▶</span><span class="nm">EUR/GBP</span><a href="eurgbp.html" class="hub-link" title="ดู hub ของ EUR/GBP" onclick="event.stopPropagation()">↗</a><span class="badge" style="background:#6366f1;color:#fff">143.4K</span>
+      </div>
+      <div class="tree-children" id="eurgbp-menu">
+        <a class="tree-node lvl-2" href="eurgbp-h4.html"><span class="nm">EURGBP H4</span><span class="badge" style="background:#10b981;color:#fff">17,113</span></a>
+        <a class="tree-node lvl-2" href="eurgbp-h1.html"><span class="nm">EURGBP H1</span><span class="badge" style="background:#10b981;color:#fff">32,074</span></a>
+        <a class="tree-node lvl-2" href="eurgbp-m15.html"><span class="nm">EURGBP M15</span><span class="badge" style="background:#10b981;color:#fff">94,178</span></a>
+      </div>
+    </div>
+
+    <div class="tree-node lvl-0 expandable" data-toggle="indices-menu">
+      <span class="arrow">▶</span><span class="nm">Indices</span><span class="badge">5</span>
+    </div>
+    <div class="tree-children" id="indices-menu">
+      <div class="tree-node lvl-1 expandable" data-toggle="us500-menu">
+        <span class="arrow">▶</span><span class="nm">US500 (S&amp;P 500)</span><span class="badge" style="background:#3b82f6;color:#fff">157.0K</span>
+      </div>
+      <div class="tree-children" id="us500-menu">
+        <a class="tree-node lvl-2" href="us500-h4.html"><span class="nm">US500 H4</span><span class="badge" style="background:#10b981;color:#fff">13,458</span></a>
+        <a class="tree-node lvl-2" href="us500-h1.html"><span class="nm">US500 H1</span><span class="badge" style="background:#10b981;color:#fff">26,761</span></a>
+        <a class="tree-node lvl-2" href="us500-m15.html"><span class="nm">US500 M15</span><span class="badge" style="background:#10b981;color:#fff">116,759</span></a>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="ustec-menu">
+        <span class="arrow">▶</span><span class="nm">USTEC (Nasdaq 100)</span><span class="badge" style="background:#06b6d4;color:#fff">127.9K</span>
+      </div>
+      <div class="tree-children" id="ustec-menu">
+        <a class="tree-node lvl-2" href="ustec-h4.html"><span class="nm">USTEC H4</span><span class="badge" style="background:#10b981;color:#fff">12,479</span></a>
+        <a class="tree-node lvl-2" href="ustec-h1.html"><span class="nm">USTEC H1</span><span class="badge" style="background:#10b981;color:#fff">28,841</span></a>
+        <a class="tree-node lvl-2" href="ustec-m15.html"><span class="nm">USTEC M15</span><span class="badge" style="background:#10b981;color:#fff">86,566</span></a>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="de30-menu">
+        <span class="arrow">▶</span><span class="nm">DE30 (DAX)</span><span class="badge" style="background:#facc15;color:#0a0a0a">136.0K</span>
+      </div>
+      <div class="tree-children" id="de30-menu">
+        <a class="tree-node lvl-2" href="de30-h4.html"><span class="nm">DE30 H4</span><span class="badge" style="background:#10b981;color:#fff">12,556</span></a>
+        <a class="tree-node lvl-2" href="de30-h1.html"><span class="nm">DE30 H1</span><span class="badge" style="background:#10b981;color:#fff">27,412</span></a>
+        <a class="tree-node lvl-2" href="de30-m15.html"><span class="nm">DE30 M15</span><span class="badge" style="background:#10b981;color:#fff">95,985</span></a>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="jp225-menu">
+        <span class="arrow">▶</span><span class="nm">JP225 (Nikkei 225)</span><span class="badge" style="background:#ef4444;color:#fff">136.8K</span>
+      </div>
+      <div class="tree-children" id="jp225-menu">
+        <a class="tree-node lvl-2" href="jp225-h4.html"><span class="nm">JP225 H4</span><span class="badge" style="background:#10b981;color:#fff">13,487</span></a>
+        <a class="tree-node lvl-2" href="jp225-h1.html"><span class="nm">JP225 H1</span><span class="badge" style="background:#10b981;color:#fff">33,815</span></a>
+        <a class="tree-node lvl-2" href="jp225-m15.html"><span class="nm">JP225 M15</span><span class="badge" style="background:#10b981;color:#fff">89,510</span></a>
+      </div>
+      <div class="tree-node lvl-1 expandable" data-toggle="uk100-menu">
+        <span class="arrow">▶</span><span class="nm">UK100 (FTSE 100)</span><span class="badge" style="background:#a78bfa;color:#fff">129.6K</span>
+      </div>
+      <div class="tree-children" id="uk100-menu">
+        <a class="tree-node lvl-2" href="uk100-h4.html"><span class="nm">UK100 H4</span><span class="badge" style="background:#10b981;color:#fff">16,620</span></a>
+        <a class="tree-node lvl-2" href="uk100-h1.html"><span class="nm">UK100 H1</span><span class="badge" style="background:#10b981;color:#fff">26,818</span></a>
+        <a class="tree-node lvl-2" href="uk100-m15.html"><span class="nm">UK100 M15</span><span class="badge" style="background:#10b981;color:#fff">86,190</span></a>
+      </div>
+    </div>
+  </div>
+  
+  <div class="nav-section">
+    <div class="nav-label">Patterns · 177 (v4.1)</div>
+    <a class="tree-node lvl-0" href="patterns-encyclopedia.html"><span class="arrow"></span><span class="nm">📚 Pattern Encyclopedia</span><span class="badge">177</span></a>
+    <div class="tree-node lvl-0 expandable" data-toggle="pat-menu">
+      <span class="arrow">▶</span><span class="nm">Pattern Analysis</span><span class="badge">177</span>
+    </div>
+    <div class="tree-children" id="pat-menu">
+      <a class="tree-node lvl-1" href="patterns.html"><span class="nm">All Patterns Table</span></a>
+      <a class="tree-node lvl-1" href="tier.html"><span class="nm">Tier Rankings</span></a>
+      <a class="tree-node lvl-1" href="optimal-tpsl.html"><span class="nm">Optimal TP/SL EV</span></a>
+    </div>
+  </div>
+  
+  <div class="nav-section">
+    <div class="nav-label">Analysis</div>
+    <a class="tree-node lvl-0" href="cross.html"><span class="arrow"></span><span class="nm">Cross-TF / Asset</span></a>
+    <a class="tree-node lvl-0" href="time.html"><span class="arrow"></span><span class="nm">Hour / DoW / Conf</span></a>
+    <a class="tree-node lvl-0" href="edge.html"><span class="arrow"></span><span class="nm">Edge Decay / Vol</span></a>
+  </div>
+  
+  <div class="nav-section">
+    <div class="nav-label">Strategy</div>
+    <a class="tree-node lvl-0" href="phase3-lab.html"><span class="arrow"></span><span class="nm">🧪 Phase 3 Lab</span><span class="badge">NEW</span></a>
+  </div>
+  
+  <div class="nav-section">
+    <div class="nav-label">EA System · v4.1 (ปัจจุบัน)</div>
+    <a class="tree-node lvl-0" href="ea-architecture.html"><span class="arrow"></span><span class="nm">⚙ EA Architecture</span></a>
+    <a class="tree-node lvl-0" href="tracking-system.html"><span class="arrow"></span><span class="nm">🎯 Tracking System</span></a>  </div>  <div class="nav-section">
+    <div class="nav-label">Reference</div>
+    
+  <a class="tree-node lvl-0" href="reference.html"><span class="arrow"></span><span class="nm">📚 อ้างอิง · ข้อจำกัด · Changelog</span></a>
+  </div>
+</nav>
+
+<main class="main">
+  <div class="hero">
+    <span class="hero-tag">Phase 3 Optimization Lab · v9.1 · candidates จาก Phase 2 OOS realistic</span>
+    <h1 class="hero-title">Phase 3 <span class="accent">Lab.</span></h1>
+    <p class="hero-desc">
+      ที่รวม <strong>candidate patterns</strong> ที่ผ่าน Phase 2 OOS (true first-hit, 4.2 ปี) และ <strong>บันทึกผลการ optimize</strong> ทุกเทคนิคแบบ progressive — อัปเดตเรื่อยๆ ระหว่างไล่ทดสอบทีละตัว
+    </p>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:14px;font-size:12px;color:var(--text-dim)">
+      <div>🧪 57 candidates</div>
+      <div>🅰️ Tier A: 9 · 🅱️ B: 14 · C: 34</div>
+      <div>🎯 เป้า: หา SL/TP/filter/entry ที่ optimal → เลือก 1-3 ตัวเข้า Phase 4 Demo</div>
+    </div>
+  </div>
+
+<section>
+  <div class="section-head"><span class="section-num">01</span><h2 class="section-title">5-Phase Workflow — เราอยู่ตรงนี้</h2></div>
+  <div class="card">
+    <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:13px">
+      <span style="padding:6px 12px;background:rgba(77,212,152,0.2);border-radius:6px">✅ P1 Screening</span>
+      <span style="color:var(--text-dim)">→</span>
+      <span style="padding:6px 12px;background:rgba(77,212,152,0.2);border-radius:6px">✅ P2 OOS Validation</span>
+      <span style="color:var(--text-dim)">→</span>
+      <span style="padding:6px 12px;background:rgba(59,130,246,0.3);border-radius:6px;font-weight:700;color:var(--blue)">🔄 P3 Optimization (ตอนนี้)</span>
+      <span style="color:var(--text-dim)">→</span>
+      <span style="padding:6px 12px;background:rgba(148,163,184,0.15);border-radius:6px;color:var(--text-dim)">⏳ P4 Demo</span>
+      <span style="color:var(--text-dim)">→</span>
+      <span style="padding:6px 12px;background:rgba(148,163,184,0.15);border-radius:6px;color:var(--text-dim)">⏳ P5 Live</span>
+    </div>
+    <p style="color:var(--text-dim);font-size:13px;margin:12px 0 0;line-height:1.7">Phase 3 = เอา candidate ที่รอด OOS มา optimize หา SL/TP/filter/entry ที่ดีที่สุด + กด drawdown + walk-forward ยืนยันความเสถียร → คัดเหลือ 1-3 ตัวเข้า Demo</p>
+  </div>
+</section>
+
+<section>
+  <div class="section-head"><span class="section-num">02</span><h2 class="section-title">🅰️ Tier A Candidates — ทดสอบก่อน (PF ≥ 1.7)</h2></div>
+  <p class="lead-desc">ตัวที่แข็งสุดจาก Phase 2 OOS · เริ่มไล่ optimize จากกลุ่มนี้</p>
+  <div class="card">
+    <table class="table compact ranked"><thead><tr>
+      <th>Tier</th><th>Pattern</th><th>Asset</th><th>TF</th><th>Dir</th><th class="r">WR</th><th class="r">RR</th><th class="r">PF</th><th class="r">EV</th><th class="r">SL/TP</th><th class="r">n</th><th>Status</th>
+    </tr></thead><tbody><tr>
+      <td><span style="color:var(--green);font-weight:700">A</span></td>
+      <td><a href="patterns.html#p66" style="color:var(--blue)">P66</a> HnS_Bull</td>
+      <td>XAUUSD</td><td>H1</td>
+      <td><span style="color:var(--green)">L</span></td>
+      <td class="r">46%</td><td class="r">2.5:1</td>
+      <td class="r tg">2.17</td><td class="r tg">+0.470R</td>
+      <td class="r" style="font-size:11px">2.0/5</td>
+      <td class="r">266</td>
+      <td><span style="color:var(--text-dim);font-size:11px">⏳ pending</span></td>
+    </tr><tr>
+      <td><span style="color:var(--green);font-weight:700">A</span></td>
+      <td><a href="patterns.html#p61" style="color:var(--blue)">P61</a> Double_Bottom</td>
+      <td>GBPJPY</td><td>H4</td>
+      <td><span style="color:var(--green)">L</span></td>
+      <td class="r">47%</td><td class="r">2.0:1</td>
+      <td class="r tg">2.06</td><td class="r tg">+0.486R</td>
+      <td class="r" style="font-size:11px">2.5/5</td>
+      <td class="r">273</td>
+      <td><span style="color:var(--text-dim);font-size:11px">⏳ pending</span></td>
+    </tr><tr>
+      <td><span style="color:var(--green);font-weight:700">A</span></td>
+      <td><a href="patterns.html#p157" style="color:var(--blue)">P157</a> Hidden_Div_Bull_RSI</td>
+      <td>USDJPY</td><td>H4</td>
+      <td><span style="color:var(--green)">L</span></td>
+      <td class="r">16%</td><td class="r">10.0:1</td>
+      <td class="r tg">1.98</td><td class="r tg">+0.748R</td>
+      <td class="r" style="font-size:11px">0.5/5</td>
+      <td class="r">492</td>
+      <td><span style="color:var(--text-dim);font-size:11px">⏳ pending</span></td>
+    </tr><tr>
+      <td><span style="color:var(--green);font-weight:700">A</span></td>
+      <td><a href="patterns.html#p140" style="color:var(--blue)">P140</a> Ichimoku_Kumo_Twist_Bull</td>
+      <td>XAUUSD</td><td>H4</td>
+      <td><span style="color:var(--green)">L</span></td>
+      <td class="r">16%</td><td class="r">10.0:1</td>
+      <td class="r tg">1.92</td><td class="r tg">+0.721R</td>
+      <td class="r" style="font-size:11px">0.5/5</td>
+      <td class="r">1,206</td>
+      <td><span style="color:var(--text-dim);font-size:11px">⏳ pending</span></td>
+    </tr><tr>
+      <td><span style="color:var(--green);font-weight:700">A</span></td>
+      <td><a href="patterns.html#p159" style="color:var(--blue)">P159</a> Hidden_Div_Bull_MACD</td>
+      <td>XAUUSD</td><td>H4</td>
+      <td><span style="color:var(--green)">L</span></td>
+      <td class="r">16%</td><td class="r">10.0:1</td>
+      <td class="r tg">1.90</td><td class="r tg">+0.705R</td>
+      <td class="r" style="font-size:11px">0.5/5</td>
+      <td class="r">577</td>
+      <td><span style="color:var(--text-dim);font-size:11px">⏳ pending</span></td>
+    </tr><tr>
+      <td><span style="color:var(--green);font-weight:700">A</span></td>
+      <td><a href="patterns.html#p157" style="color:var(--blue)">P157</a> Hidden_Div_Bull_RSI</td>
+      <td>XAUUSD</td><td>H4</td>
+      <td><span style="color:var(--green)">L</span></td>
+      <td class="r">16%</td><td class="r">10.0:1</td>
+      <td class="r tg">1.86</td><td class="r tg">+0.660R</td>
+      <td class="r" style="font-size:11px">0.5/5</td>
+      <td class="r">466</td>
+      <td><span style="color:var(--text-dim);font-size:11px">⏳ pending</span></td>
+    </tr><tr>
+      <td><span style="color:var(--green);font-weight:700">A</span></td>
+      <td><a href="patterns.html#p140" style="color:var(--blue)">P140</a> Ichimoku_Kumo_Twist_Bull</td>
+      <td>USDJPY</td><td>H4</td>
+      <td><span style="color:var(--green)">L</span></td>
+      <td class="r">27%</td><td class="r">5.0:1</td>
+      <td class="r tg">1.85</td><td class="r tg">+0.602R</td>
+      <td class="r" style="font-size:11px">1.0/5</td>
+      <td class="r">1,159</td>
+      <td><span style="color:var(--text-dim);font-size:11px">⏳ pending</span></td>
+    </tr><tr>
+      <td><span style="color:var(--green);font-weight:700">A</span></td>
+      <td><a href="patterns.html#p55" style="color:var(--blue)">P55</a> CHoCH_Bull</td>
+      <td>GBPJPY</td><td>H1</td>
+      <td><span style="color:var(--green)">L</span></td>
+      <td class="r">47%</td><td class="r">2.0:1</td>
+      <td class="r tg">1.78</td><td class="r tg">+0.375R</td>
+      <td class="r" style="font-size:11px">2.5/5</td>
+      <td class="r">1,401</td>
+      <td><span style="color:var(--text-dim);font-size:11px">⏳ pending</span></td>
+    </tr><tr>
+      <td><span style="color:var(--green);font-weight:700">A</span></td>
+      <td><a href="patterns.html#p67" style="color:var(--blue)">P67</a> Triangle_Asc</td>
+      <td>USDJPY</td><td>H1</td>
+      <td><span style="color:var(--green)">L</span></td>
+      <td class="r">50%</td><td class="r">1.7:1</td>
+      <td class="r tg">1.72</td><td class="r tg">+0.350R</td>
+      <td class="r" style="font-size:11px">3.0/5</td>
+      <td class="r">906</td>
+      <td><span style="color:var(--text-dim);font-size:11px">⏳ pending</span></td>
+    </tr></tbody></table>
+  </div>
+</section>
+
+<section>
+  <div class="section-head"><span class="section-num">03</span><h2 class="section-title">🅱️ Tier B/C Candidates — pool รอง</h2></div>
+  <p class="lead-desc">PF 1.25–1.7 · ทดสอบหลังจาก Tier A หรือใช้ทำ confluence</p>
+  <div class="card">
+    <table class="table compact ranked"><thead><tr>
+      <th>Tier</th><th>Pattern</th><th>Asset</th><th>TF</th><th>Dir</th><th class="r">WR</th><th class="r">RR</th><th class="r">PF</th><th class="r">EV</th><th class="r">SL/TP</th><th class="r">n</th><th>Status</th>
+    </tr></thead><tbody><tr>
+      <td><span style="color:var(--blue);font-weight:700">B</span></td>
+      <td><a href="patterns.html#p66" style="color:var(--blue)">P66</a> HnS_Bull</td>
+      <td>EURUSD</td><td>H1</td>
+      <td><span style="color:var(--green)">L</span></td>
+      <td class="r">36%</td><td class="r">3.0:1</td>
+      <td class="r tg">1.67</td><td class="r tg">+0.386R</td>
+      <td class="r" style="font-size:11px">1.0/3</td>
+      <td class="r">352</td>
+      <td><span style="color:var(--text-dim);font-size:11px">⏳ pending</span></td>
+    </tr><tr>
+      <td><span style="color:var(--blue);font-weight:700">B</span></td>
+      <td><a href="patterns.html#p132" style="color:var(--blue)">P132</a> Daily_Bias_Intraday_Long</td>
+      <td>XAUUSD</td><td>H4</td>
+      <td><span style="color:var(--green)">L</span></td>
+      <td class="r">41%</td><td class="r">2.0:1</td>
+      <td class="r tg">1.53</td><td class="r tg">+0.216R</td>
+      <td class="r" style="font-size:11px">2.5/5</td>
+      <td class="r">1,588</td>
+      <td><span style="color:var(--text-dim);font-size:11px">⏳ pending</span></td>
+    </tr><tr>
+      <td><span style="color:var(--blue);font-weight:700">B</span></td>
+      <td><a href="patterns.html#p128" style="color:var(--blue)">P128</a> MTF_FVG_Aligned_Long</td>
+      <td>JP225</td><td>H4</td>
+      <td><span style="color:var(--green)">L</span></td>
+      <td class="r">36%</td><td class="r">2.5:1</td>
+      <td class="r tg">1.53</td><td class="r tg">+0.335R</td>
+      <td class="r" style="font-size:11px">2.0/5</td>
+      <td class="r">667</td>
+      <td><span style="color:var(--text-dim);font-size:11px">⏳ pending</span></td>
+    </tr><tr>
+      <td><span style="color:var(--blue);font-weight:700">B</span></td>
+      <td><a href="patterns.html#p68" style="color:var(--blue)">P68</a> Triangle_Desc</td>
+      <td>USDCHF</td><td>H1</td>
+      <td><span style="color:var(--red)">S</span></td>
+      <td class="r">37%</td><td class="r">2.5:1</td>
+      <td class="r tg">1.53</td><td class="r tg">+0.269R</td>
+      <td class="r" style="font-size:11px">2.0/5</td>
+      <td class="r">683</td>
+      <td><span style="color:var(--text-dim);font-size:11px">⏳ pending</span></td>
+    </tr><tr>
+      <td><span style="color:var(--blue);font-weight:700">B</span></td>
+      <td><a href="patterns.html#p89" style="color:var(--blue)">P89</a> OTE_Long</td>
+      <td>JP225</td><td>H4</td>
+      <td><span style="color:var(--green)">L</span></td>
+      <td class="r">41%</td><td class="r">1.7:1</td>
+      <td class="r tg">1.52</td><td class="r tg">+0.254R</td>
+      <td class="r" style="font-size:11px">3.0/5</td>
+      <td class="r">364</td>
+      <td><span style="color:var(--text-dim);font-size:11px">⏳ pending</span></td>
+    </tr><tr>
+      <td><span style="color:var(--blue);font-weight:700">B</span></td>
+      <td><a href="patterns.html#p171" style="color:var(--blue)">P171</a> ABCD_Bull</td>
+      <td>US500</td><td>H4</td>
+      <td><span style="color:var(--green)">L</span></td>
+      <td class="r">13%</td><td class="r">10.0:1</td>
+      <td class="r tg">1.51</td><td class="r tg">+0.393R</td>
+      <td class="r" style="font-size:11px">0.5/5</td>
+      <td class="r">451</td>
+      <td><span style="color:var(--text-dim);font-size:11px">⏳ pending</span></td>
+    </tr><tr>
+      <td><span style="color:var(--blue);font-weight:700">B</span></td>
+      <td><a href="patterns.html#p159" style="color:var(--blue)">P159</a> Hidden_Div_Bull_MACD</td>
+      <td>UK100</td><td>H4</td>
+      <td><span style="color:var(--green)">L</span></td>
+      <td class="r">50%</td><td class="r">1.5:1</td>
+      <td class="r tg">1.50</td><td class="r tg">+0.200R</td>
+      <td class="r" style="font-size:11px">2.0/3</td>
+      <td class="r">667</td>
+      <td><span style="color:var(--text-dim);font-size:11px">⏳ pending</span></td>
+    </tr><tr>
+      <td><span style="color:var(--blue);font-weight:700">B</span></td>
+      <td><a href="patterns.html#p1" style="color:var(--blue)">P1</a> MultiRej_Long</td>
+      <td>EURJPY</td><td>H4</td>
+      <td><span style="color:var(--green)">L</span></td>
+      <td class="r">22%</td><td class="r">5.0:1</td>
+      <td class="r tg">1.46</td><td class="r tg">+0.317R</td>
+      <td class="r" style="font-size:11px">1.0/5</td>
+      <td class="r">557</td>
+      <td><span style="color:var(--text-dim);font-size:11px">⏳ pending</span></td>
+    </tr><tr>
+      <td><span style="color:var(--blue);font-weight:700">B</span></td>
+      <td><a href="patterns.html#p150" style="color:var(--blue)">P150</a> External_Liq_Sweep_Long</td>
+      <td>EURJPY</td><td>H4</td>
+      <td><span style="color:var(--green)">L</span></td>
+      <td class="r">22%</td><td class="r">5.0:1</td>
+      <td class="r tg">1.44</td><td class="r tg">+0.343R</td>
+      <td class="r" style="font-size:11px">1.0/5</td>
+      <td class="r">368</td>
+      <td><span style="color:var(--text-dim);font-size:11px">⏳ pending</span></td>
+    </tr><tr>
+      <td><span style="color:var(--blue);font-weight:700">B</span></td>
+      <td><a href="patterns.html#p61" style="color:var(--blue)">P61</a> Double_Bottom</td>
+      <td>US500</td><td>H1</td>
+      <td><span style="color:var(--green)">L</span></td>
+      <td class="r">32%</td><td class="r">3.0:1</td>
+      <td class="r tg">1.44</td><td class="r tg">+0.236R</td>
+      <td class="r" style="font-size:11px">1.0/3</td>
+      <td class="r">828</td>
+      <td><span style="color:var(--text-dim);font-size:11px">⏳ pending</span></td>
+    </tr><tr>
+      <td><span style="color:var(--blue);font-weight:700">B</span></td>
+      <td><a href="patterns.html#p171" style="color:var(--blue)">P171</a> ABCD_Bull</td>
+      <td>GBPJPY</td><td>H4</td>
+      <td><span style="color:var(--green)">L</span></td>
+      <td class="r">33%</td><td class="r">2.5:1</td>
+      <td class="r tg">1.42</td><td class="r tg">+0.283R</td>
+      <td class="r" style="font-size:11px">2.0/5</td>
+      <td class="r">501</td>
+      <td><span style="color:var(--text-dim);font-size:11px">⏳ pending</span></td>
+    </tr><tr>
+      <td><span style="color:var(--blue);font-weight:700">B</span></td>
+      <td><a href="patterns.html#p132" style="color:var(--blue)">P132</a> Daily_Bias_Intraday_Long</td>
+      <td>USDJPY</td><td>H4</td>
+      <td><span style="color:var(--green)">L</span></td>
+      <td class="r">29%</td><td class="r">3.3:1</td>
+      <td class="r tg">1.41</td><td class="r tg">+0.304R</td>
+      <td class="r" style="font-size:11px">1.5/5</td>
+      <td class="r">1,762</td>
+      <td><span style="color:var(--text-dim);font-size:11px">⏳ pending</span></td>
+    </tr><tr>
+      <td><span style="color:var(--blue);font-weight:700">B</span></td>
+      <td><a href="patterns.html#p150" style="color:var(--blue)">P150</a> External_Liq_Sweep_Long</td>
+      <td>EURUSD</td><td>H4</td>
+      <td><span style="color:var(--green)">L</span></td>
+      <td class="r">29%</td><td class="r">3.3:1</td>
+      <td class="r tg">1.41</td><td class="r tg">+0.277R</td>
+      <td class="r" style="font-size:11px">1.5/5</td>
+      <td class="r">352</td>
+      <td><span style="color:var(--text-dim);font-size:11px">⏳ pending</span></td>
+    </tr><tr>
+      <td><span style="color:var(--blue);font-weight:700">B</span></td>
+      <td><a href="patterns.html#p168" style="color:var(--blue)">P168</a> Daily_Pivot_Tag_Long</td>
+      <td>GBPJPY</td><td>H4</td>
+      <td><span style="color:var(--green)">L</span></td>
+      <td class="r">21%</td><td class="r">5.0:1</td>
+      <td class="r tg">1.40</td><td class="r tg">+0.252R</td>
+      <td class="r" style="font-size:11px">1.0/5</td>
+      <td class="r">558</td>
+      <td><span style="color:var(--text-dim);font-size:11px">⏳ pending</span></td>
+    </tr><tr>
+      <td><span style="color:var(--text-dim);font-weight:700">C</span></td>
+      <td><a href="patterns.html#p62" style="color:var(--blue)">P62</a> Double_Top</td>
+      <td>ETHUSD</td><td>H4</td>
+      <td><span style="color:var(--red)">S</span></td>
+      <td class="r">29%</td><td class="r">3.3:1</td>
+      <td class="r tg">1.40</td><td class="r tg">+0.243R</td>
+      <td class="r" style="font-size:11px">1.5/5</td>
+      <td class="r">386</td>
+      <td><span style="color:var(--text-dim);font-size:11px">⏳ pending</span></td>
+    </tr><tr>
+      <td><span style="color:var(--text-dim);font-weight:700">C</span></td>
+      <td><a href="patterns.html#p168" style="color:var(--blue)">P168</a> Daily_Pivot_Tag_Long</td>
+      <td>EURJPY</td><td>H4</td>
+      <td><span style="color:var(--green)">L</span></td>
+      <td class="r">21%</td><td class="r">5.0:1</td>
+      <td class="r tg">1.39</td><td class="r tg">+0.261R</td>
+      <td class="r" style="font-size:11px">1.0/5</td>
+      <td class="r">564</td>
+      <td><span style="color:var(--text-dim);font-size:11px">⏳ pending</span></td>
+    </tr><tr>
+      <td><span style="color:var(--text-dim);font-weight:700">C</span></td>
+      <td><a href="patterns.html#p140" style="color:var(--blue)">P140</a> Ichimoku_Kumo_Twist_Bull</td>
+      <td>XAGUSD</td><td>H4</td>
+      <td><span style="color:var(--green)">L</span></td>
+      <td class="r">29%</td><td class="r">3.3:1</td>
+      <td class="r tg">1.39</td><td class="r tg">+0.202R</td>
+      <td class="r" style="font-size:11px">1.5/5</td>
+      <td class="r">1,225</td>
+      <td><span style="color:var(--text-dim);font-size:11px">⏳ pending</span></td>
+    </tr><tr>
+      <td><span style="color:var(--text-dim);font-weight:700">C</span></td>
+      <td><a href="patterns.html#p120" style="color:var(--blue)">P120</a> Sunday_Gap_Fill_Long</td>
+      <td>US500</td><td>M15</td>
+      <td><span style="color:var(--green)">L</span></td>
+      <td class="r">35%</td><td class="r">2.5:1</td>
+      <td class="r tg">1.37</td><td class="r tg">+0.181R</td>
+      <td class="r" style="font-size:11px">2.0/5</td>
+      <td class="r">3,688</td>
+      <td><span style="color:var(--text-dim);font-size:11px">⏳ pending</span></td>
+    </tr><tr>
+      <td><span style="color:var(--text-dim);font-weight:700">C</span></td>
+      <td><a href="patterns.html#p56" style="color:var(--blue)">P56</a> CHoCH_Bear</td>
+      <td>DE30</td><td>H1</td>
+      <td><span style="color:var(--red)">S</span></td>
+      <td class="r">22%</td><td class="r">5.0:1</td>
+      <td class="r tg">1.37</td><td class="r tg">+0.181R</td>
+      <td class="r" style="font-size:11px">1.0/5</td>
+      <td class="r">1,283</td>
+      <td><span style="color:var(--text-dim);font-size:11px">⏳ pending</span></td>
+    </tr><tr>
+      <td><span style="color:var(--text-dim);font-weight:700">C</span></td>
+      <td><a href="patterns.html#p45" style="color:var(--blue)">P45</a> Breaker_Block_Bull</td>
+      <td>USDJPY</td><td>H4</td>
+      <td><span style="color:var(--green)">L</span></td>
+      <td class="r">21%</td><td class="r">5.0:1</td>
+      <td class="r tg">1.37</td><td class="r tg">+0.295R</td>
+      <td class="r" style="font-size:11px">1.0/5</td>
+      <td class="r">2,959</td>
+      <td><span style="color:var(--text-dim);font-size:11px">⏳ pending</span></td>
+    </tr><tr>
+      <td><span style="color:var(--text-dim);font-weight:700">C</span></td>
+      <td><a href="patterns.html#p63" style="color:var(--blue)">P63</a> Triple_Bottom</td>
+      <td>EURUSD</td><td>M15</td>
+      <td><span style="color:var(--green)">L</span></td>
+      <td class="r">40%</td><td class="r">2.0:1</td>
+      <td class="r tg">1.37</td><td class="r tg">+0.203R</td>
+      <td class="r" style="font-size:11px">2.5/5</td>
+      <td class="r">796</td>
+      <td><span style="color:var(--text-dim);font-size:11px">⏳ pending</span></td>
+    </tr><tr>
+      <td><span style="color:var(--text-dim);font-weight:700">C</span></td>
+      <td><a href="patterns.html#p162" style="color:var(--blue)">P162</a> VAL_Reject_Long</td>
+      <td>JP225</td><td>H4</td>
+      <td><span style="color:var(--green)">L</span></td>
+      <td class="r">35%</td><td class="r">2.0:1</td>
+      <td class="r tg">1.36</td><td class="r tg">+0.266R</td>
+      <td class="r" style="font-size:11px">2.5/5</td>
+      <td class="r">521</td>
+      <td><span style="color:var(--text-dim);font-size:11px">⏳ pending</span></td>
+    </tr><tr>
+      <td><span style="color:var(--text-dim);font-weight:700">C</span></td>
+      <td><a href="patterns.html#p47" style="color:var(--blue)">P47</a> SR_Flip_Long</td>
+      <td>XAUUSD</td><td>H1</td>
+      <td><span style="color:var(--green)">L</span></td>
+      <td class="r">29%</td><td class="r">3.3:1</td>
+      <td class="r tg">1.35</td><td class="r tg">+0.202R</td>
+      <td class="r" style="font-size:11px">1.5/5</td>
+      <td class="r">789</td>
+      <td><span style="color:var(--text-dim);font-size:11px">⏳ pending</span></td>
+    </tr><tr>
+      <td><span style="color:var(--text-dim);font-weight:700">C</span></td>
+      <td><a href="patterns.html#p157" style="color:var(--blue)">P157</a> Hidden_Div_Bull_RSI</td>
+      <td>USOIL</td><td>H4</td>
+      <td><span style="color:var(--green)">L</span></td>
+      <td class="r">28%</td><td class="r">3.3:1</td>
+      <td class="r tg">1.35</td><td class="r tg">+0.217R</td>
+      <td class="r" style="font-size:11px">1.5/5</td>
+      <td class="r">355</td>
+      <td><span style="color:var(--text-dim);font-size:11px">⏳ pending</span></td>
+    </tr><tr>
+      <td><span style="color:var(--text-dim);font-weight:700">C</span></td>
+      <td><a href="patterns.html#p71" style="color:var(--blue)">P71</a> FVG_Bull</td>
+      <td>USDJPY</td><td>H4</td>
+      <td><span style="color:var(--green)">L</span></td>
+      <td class="r">21%</td><td class="r">5.0:1</td>
+      <td class="r tg">1.35</td><td class="r tg">+0.269R</td>
+      <td class="r" style="font-size:11px">1.0/5</td>
+      <td class="r">3,558</td>
+      <td><span style="color:var(--text-dim);font-size:11px">⏳ pending</span></td>
+    </tr><tr>
+      <td><span style="color:var(--text-dim);font-weight:700">C</span></td>
+      <td><a href="patterns.html#p55" style="color:var(--blue)">P55</a> CHoCH_Bull</td>
+      <td>USDJPY</td><td>H1</td>
+      <td><span style="color:var(--green)">L</span></td>
+      <td class="r">21%</td><td class="r">5.0:1</td>
+      <td class="r tg">1.34</td><td class="r tg">+0.231R</td>
+      <td class="r" style="font-size:11px">1.0/5</td>
+      <td class="r">1,370</td>
+      <td><span style="color:var(--text-dim);font-size:11px">⏳ pending</span></td>
+    </tr><tr>
+      <td><span style="color:var(--text-dim);font-weight:700">C</span></td>
+      <td><a href="patterns.html#p68" style="color:var(--blue)">P68</a> Triangle_Desc</td>
+      <td>BTCUSD</td><td>H1</td>
+      <td><span style="color:var(--red)">S</span></td>
+      <td class="r">45%</td><td class="r">1.7:1</td>
+      <td class="r tg">1.34</td><td class="r tg">+0.109R</td>
+      <td class="r" style="font-size:11px">3.0/5</td>
+      <td class="r">858</td>
+      <td><span style="color:var(--text-dim);font-size:11px">⏳ pending</span></td>
+    </tr><tr>
+      <td><span style="color:var(--text-dim);font-weight:700">C</span></td>
+      <td><a href="patterns.html#p157" style="color:var(--blue)">P157</a> Hidden_Div_Bull_RSI</td>
+      <td>GBPJPY</td><td>H4</td>
+      <td><span style="color:var(--green)">L</span></td>
+      <td class="r">40%</td><td class="r">2.0:1</td>
+      <td class="r tg">1.34</td><td class="r tg">+0.149R</td>
+      <td class="r" style="font-size:11px">1.5/3</td>
+      <td class="r">430</td>
+      <td><span style="color:var(--text-dim);font-size:11px">⏳ pending</span></td>
+    </tr><tr>
+      <td><span style="color:var(--text-dim);font-weight:700">C</span></td>
+      <td><a href="patterns.html#p128" style="color:var(--blue)">P128</a> MTF_FVG_Aligned_Long</td>
+      <td>USDJPY</td><td>H4</td>
+      <td><span style="color:var(--green)">L</span></td>
+      <td class="r">28%</td><td class="r">3.3:1</td>
+      <td class="r tg">1.33</td><td class="r tg">+0.251R</td>
+      <td class="r" style="font-size:11px">1.5/5</td>
+      <td class="r">718</td>
+      <td><span style="color:var(--text-dim);font-size:11px">⏳ pending</span></td>
+    </tr><tr>
+      <td><span style="color:var(--text-dim);font-weight:700">C</span></td>
+      <td><a href="patterns.html#p168" style="color:var(--blue)">P168</a> Daily_Pivot_Tag_Long</td>
+      <td>USDJPY</td><td>H1</td>
+      <td><span style="color:var(--green)">L</span></td>
+      <td class="r">21%</td><td class="r">5.0:1</td>
+      <td class="r tg">1.33</td><td class="r tg">+0.195R</td>
+      <td class="r" style="font-size:11px">1.0/5</td>
+      <td class="r">749</td>
+      <td><span style="color:var(--text-dim);font-size:11px">⏳ pending</span></td>
+    </tr><tr>
+      <td><span style="color:var(--text-dim);font-weight:700">C</span></td>
+      <td><a href="patterns.html#p171" style="color:var(--blue)">P171</a> ABCD_Bull</td>
+      <td>BTCUSD</td><td>H4</td>
+      <td><span style="color:var(--green)">L</span></td>
+      <td class="r">21%</td><td class="r">5.0:1</td>
+      <td class="r tg">1.33</td><td class="r tg">+0.159R</td>
+      <td class="r" style="font-size:11px">1.0/5</td>
+      <td class="r">613</td>
+      <td><span style="color:var(--text-dim);font-size:11px">⏳ pending</span></td>
+    </tr><tr>
+      <td><span style="color:var(--text-dim);font-weight:700">C</span></td>
+      <td><a href="patterns.html#p136" style="color:var(--blue)">P136</a> Ichimoku_TK_Cross_Bull</td>
+      <td>EURJPY</td><td>H1</td>
+      <td><span style="color:var(--green)">L</span></td>
+      <td class="r">34%</td><td class="r">2.5:1</td>
+      <td class="r tg">1.32</td><td class="r tg">+0.182R</td>
+      <td class="r" style="font-size:11px">2.0/5</td>
+      <td class="r">598</td>
+      <td><span style="color:var(--text-dim);font-size:11px">⏳ pending</span></td>
+    </tr><tr>
+      <td><span style="color:var(--text-dim);font-weight:700">C</span></td>
+      <td><a href="patterns.html#p151" style="color:var(--blue)">P151</a> Pullback_EMA20_Long</td>
+      <td>USDJPY</td><td>H1</td>
+      <td><span style="color:var(--green)">L</span></td>
+      <td class="r">21%</td><td class="r">5.0:1</td>
+      <td class="r tg">1.31</td><td class="r tg">+0.199R</td>
+      <td class="r" style="font-size:11px">1.0/5</td>
+      <td class="r">1,463</td>
+      <td><span style="color:var(--text-dim);font-size:11px">⏳ pending</span></td>
+    </tr><tr>
+      <td><span style="color:var(--text-dim);font-weight:700">C</span></td>
+      <td><a href="patterns.html#p53" style="color:var(--blue)">P53</a> BOS_Bull</td>
+      <td>USDJPY</td><td>H1</td>
+      <td><span style="color:var(--green)">L</span></td>
+      <td class="r">44%</td><td class="r">1.7:1</td>
+      <td class="r tg">1.31</td><td class="r tg">+0.160R</td>
+      <td class="r" style="font-size:11px">3.0/5</td>
+      <td class="r">3,043</td>
+      <td><span style="color:var(--text-dim);font-size:11px">⏳ pending</span></td>
+    </tr><tr>
+      <td><span style="color:var(--text-dim);font-weight:700">C</span></td>
+      <td><a href="patterns.html#p159" style="color:var(--blue)">P159</a> Hidden_Div_Bull_MACD</td>
+      <td>GBPJPY</td><td>H4</td>
+      <td><span style="color:var(--green)">L</span></td>
+      <td class="r">40%</td><td class="r">1.7:1</td>
+      <td class="r tg">1.31</td><td class="r tg">+0.179R</td>
+      <td class="r" style="font-size:11px">3.0/5</td>
+      <td class="r">682</td>
+      <td><span style="color:var(--text-dim);font-size:11px">⏳ pending</span></td>
+    </tr><tr>
+      <td><span style="color:var(--text-dim);font-weight:700">C</span></td>
+      <td><a href="patterns.html#p49" style="color:var(--blue)">P49</a> Trendline_Bounce_Long</td>
+      <td>XAUUSD</td><td>H1</td>
+      <td><span style="color:var(--green)">L</span></td>
+      <td class="r">34%</td><td class="r">2.5:1</td>
+      <td class="r tg">1.30</td><td class="r tg">+0.118R</td>
+      <td class="r" style="font-size:11px">2.0/5</td>
+      <td class="r">905</td>
+      <td><span style="color:var(--text-dim);font-size:11px">⏳ pending</span></td>
+    </tr><tr>
+      <td><span style="color:var(--text-dim);font-weight:700">C</span></td>
+      <td><a href="patterns.html#p120" style="color:var(--blue)">P120</a> Sunday_Gap_Fill_Long</td>
+      <td>US500</td><td>H1</td>
+      <td><span style="color:var(--green)">L</span></td>
+      <td class="r">52%</td><td class="r">1.2:1</td>
+      <td class="r tg">1.30</td><td class="r tg">+0.123R</td>
+      <td class="r" style="font-size:11px">2.5/3</td>
+      <td class="r">1,270</td>
+      <td><span style="color:var(--text-dim);font-size:11px">⏳ pending</span></td>
+    </tr><tr>
+      <td><span style="color:var(--text-dim);font-weight:700">C</span></td>
+      <td><a href="patterns.html#p162" style="color:var(--blue)">P162</a> VAL_Reject_Long</td>
+      <td>GBPJPY</td><td>H4</td>
+      <td><span style="color:var(--green)">L</span></td>
+      <td class="r">32%</td><td class="r">2.5:1</td>
+      <td class="r tg">1.29</td><td class="r tg">+0.227R</td>
+      <td class="r" style="font-size:11px">2.0/5</td>
+      <td class="r">517</td>
+      <td><span style="color:var(--text-dim);font-size:11px">⏳ pending</span></td>
+    </tr><tr>
+      <td><span style="color:var(--text-dim);font-weight:700">C</span></td>
+      <td><a href="patterns.html#p59" style="color:var(--blue)">P59</a> Failed_Breakout_Long</td>
+      <td>US500</td><td>H4</td>
+      <td><span style="color:var(--green)">L</span></td>
+      <td class="r">11%</td><td class="r">10.0:1</td>
+      <td class="r tg">1.29</td><td class="r tg">+0.234R</td>
+      <td class="r" style="font-size:11px">0.5/5</td>
+      <td class="r">512</td>
+      <td><span style="color:var(--text-dim);font-size:11px">⏳ pending</span></td>
+    </tr><tr>
+      <td><span style="color:var(--text-dim);font-weight:700">C</span></td>
+      <td><a href="patterns.html#p51" style="color:var(--blue)">P51</a> HHHL</td>
+      <td>EURJPY</td><td>H4</td>
+      <td><span style="color:var(--green)">L</span></td>
+      <td class="r">33%</td><td class="r">2.5:1</td>
+      <td class="r tg">1.28</td><td class="r tg">+0.191R</td>
+      <td class="r" style="font-size:11px">2.0/5</td>
+      <td class="r">2,615</td>
+      <td><span style="color:var(--text-dim);font-size:11px">⏳ pending</span></td>
+    </tr><tr>
+      <td><span style="color:var(--text-dim);font-weight:700">C</span></td>
+      <td><a href="patterns.html#p32" style="color:var(--blue)">P32</a> Bullish_Harami</td>
+      <td>US500</td><td>H1</td>
+      <td><span style="color:var(--green)">L</span></td>
+      <td class="r">20%</td><td class="r">5.0:1</td>
+      <td class="r tg">1.28</td><td class="r tg">+0.169R</td>
+      <td class="r" style="font-size:11px">1.0/5</td>
+      <td class="r">1,032</td>
+      <td><span style="color:var(--text-dim);font-size:11px">⏳ pending</span></td>
+    </tr><tr>
+      <td><span style="color:var(--text-dim);font-weight:700">C</span></td>
+      <td><a href="patterns.html#p45" style="color:var(--blue)">P45</a> Breaker_Block_Bull</td>
+      <td>XNGUSD</td><td>H4</td>
+      <td><span style="color:var(--green)">L</span></td>
+      <td class="r">38%</td><td class="r">2.0:1</td>
+      <td class="r tg">1.28</td><td class="r tg">+0.117R</td>
+      <td class="r" style="font-size:11px">2.5/5</td>
+      <td class="r">2,577</td>
+      <td><span style="color:var(--text-dim);font-size:11px">⏳ pending</span></td>
+    </tr><tr>
+      <td><span style="color:var(--text-dim);font-weight:700">C</span></td>
+      <td><a href="patterns.html#p141" style="color:var(--blue)">P141</a> Ichimoku_Kumo_Twist_Bear</td>
+      <td>USTEC</td><td>H4</td>
+      <td><span style="color:var(--red)">S</span></td>
+      <td class="r">38%</td><td class="r">2.0:1</td>
+      <td class="r tg">1.27</td><td class="r tg">+0.225R</td>
+      <td class="r" style="font-size:11px">1.5/3</td>
+      <td class="r">1,200</td>
+      <td><span style="color:var(--text-dim);font-size:11px">⏳ pending</span></td>
+    </tr><tr>
+      <td><span style="color:var(--text-dim);font-weight:700">C</span></td>
+      <td><a href="patterns.html#p140" style="color:var(--blue)">P140</a> Ichimoku_Kumo_Twist_Bull</td>
+      <td>EURUSD</td><td>H4</td>
+      <td><span style="color:var(--green)">L</span></td>
+      <td class="r">33%</td><td class="r">2.5:1</td>
+      <td class="r tg">1.27</td><td class="r tg">+0.168R</td>
+      <td class="r" style="font-size:11px">2.0/5</td>
+      <td class="r">1,203</td>
+      <td><span style="color:var(--text-dim);font-size:11px">⏳ pending</span></td>
+    </tr><tr>
+      <td><span style="color:var(--text-dim);font-weight:700">C</span></td>
+      <td><a href="patterns.html#p132" style="color:var(--blue)">P132</a> Daily_Bias_Intraday_Long</td>
+      <td>XAGUSD</td><td>H4</td>
+      <td><span style="color:var(--green)">L</span></td>
+      <td class="r">39%</td><td class="r">1.7:1</td>
+      <td class="r tg">1.26</td><td class="r tg">+0.117R</td>
+      <td class="r" style="font-size:11px">3.0/5</td>
+      <td class="r">1,584</td>
+      <td><span style="color:var(--text-dim);font-size:11px">⏳ pending</span></td>
+    </tr><tr>
+      <td><span style="color:var(--text-dim);font-weight:700">C</span></td>
+      <td><a href="patterns.html#p90" style="color:var(--blue)">P90</a> OTE_Short</td>
+      <td>ETHUSD</td><td>H4</td>
+      <td><span style="color:var(--red)">S</span></td>
+      <td class="r">36%</td><td class="r">2.0:1</td>
+      <td class="r tg">1.26</td><td class="r tg">+0.093R</td>
+      <td class="r" style="font-size:11px">2.5/5</td>
+      <td class="r">535</td>
+      <td><span style="color:var(--text-dim);font-size:11px">⏳ pending</span></td>
+    </tr><tr>
+      <td><span style="color:var(--text-dim);font-weight:700">C</span></td>
+      <td><a href="patterns.html#p106" style="color:var(--blue)">P106</a> CVD_Div_Bull</td>
+      <td>XAGUSD</td><td>H4</td>
+      <td><span style="color:var(--green)">L</span></td>
+      <td class="r">39%</td><td class="r">1.7:1</td>
+      <td class="r tg">1.25</td><td class="r tg">+0.133R</td>
+      <td class="r" style="font-size:11px">3.0/5</td>
+      <td class="r">707</td>
+      <td><span style="color:var(--text-dim);font-size:11px">⏳ pending</span></td>
+    </tr><tr>
+      <td><span style="color:var(--text-dim);font-weight:700">C</span></td>
+      <td><a href="patterns.html#p155" style="color:var(--blue)">P155</a> Three_Touch_Trendline_Long</td>
+      <td>USDJPY</td><td>H1</td>
+      <td><span style="color:var(--green)">L</span></td>
+      <td class="r">33%</td><td class="r">2.5:1</td>
+      <td class="r tg">1.25</td><td class="r tg">+0.143R</td>
+      <td class="r" style="font-size:11px">2.0/5</td>
+      <td class="r">678</td>
+      <td><span style="color:var(--text-dim);font-size:11px">⏳ pending</span></td>
+    </tr></tbody></table>
+  </div>
+</section>
+
+<section>
+  <div class="section-head"><span class="section-num">04</span><h2 class="section-title">🛠️ เทคนิค Optimization ที่จะทดสอบ</h2></div>
+  <p class="lead-desc">แต่ละเทคนิคจะอัปเดตผลลัพธ์เข้ามาเรื่อยๆ ระหว่างทำ Phase 3</p>
+  <div class="card" style="margin-bottom:14px">
+  <div class="card-title" style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+    <span style="font-size:18px">📉</span>
+    <span style="font-weight:700">1. Limit / Pullback Entry (K-offset)</span>
+    <span style="margin-left:auto;font-size:11px;color:var(--green)">proof-of-concept ✅</span>
+  </div>
+  <p style="color:var(--text-dim);font-size:13px;margin:8px 0 0;line-height:1.7">เข้าไม้ต่ำกว่าสัญญาณ K×ATR (LONG) เพื่อย่น SL ให้สั้นลง + ดัน TP ให้ไกลขึ้น → RR ดีขึ้น เพราะ SL ผูกกับจุดโครงสร้างไม่ใช่ entry · ต้องหา K ที่สมดุลระหว่าง RR ที่ดีขึ้น vs fill rate ที่ลดลง</p>
+  <div class="insight green" style="margin-top:10px">
+  <div class="insight-tag" style="color:var(--green)">✅ ผลทดสอบเบื้องต้น — GBPJPY P61</div>
+  <table class="table compact" style="margin-top:6px"><tbody>
+    <tr><th>วิธีเข้า</th><th class="r">Fill</th><th class="r">WR</th><th class="r">RR</th><th class="r">EV/สัญญาณ</th></tr>
+    <tr><td>Market (ปกติ)</td><td class="r">100%</td><td class="r">47%</td><td class="r">2.0</td><td class="r">+0.487R</td></tr>
+    <tr><td style="background:rgba(77,212,152,0.15)">Limit −0.5×ATR</td><td class="r">89%</td><td class="r">41%</td><td class="r">2.8</td><td class="r tg"><strong>+0.539R ⭐</strong></td></tr>
+    <tr><td>Limit −1.0×ATR</td><td class="r">77%</td><td class="r">32%</td><td class="r">4.0</td><td class="r">+0.509R</td></tr>
+    <tr><td>Limit −1.5×ATR</td><td class="r">66%</td><td class="r">22%</td><td class="r">6.5</td><td class="r" style="color:var(--red)">+0.471R</td></tr>
+  </tbody></table>
+  <div style="margin-top:6px;font-size:12px;color:var(--text-dim)">เข้า limit −0.5×ATR ดีขึ้น ~11% และ RR ดีขึ้น 2.0→2.8 · มี "จุดพอดี" ลึกเกินไปพลาดไม้ชนะ</div>
+</div>
+</div><div class="card" style="margin-bottom:14px">
+  <div class="card-title" style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+    <span style="font-size:18px">🛡️</span>
+    <span style="font-weight:700">2. Break-even / กันทุน</span>
+    <span style="margin-left:auto;font-size:11px;color:var(--text-dim)">⏳ pending</span>
+  </div>
+  <p style="color:var(--text-dim);font-size:13px;margin:8px 0 0;line-height:1.7">พอกำไรถึงระดับหนึ่ง (เช่น +1×ATR) เลื่อน SL มาที่จุดเข้า → ไม้ที่กลับตัวไม่ขาดทุน · ลด drawdown แต่ระวังโดน "เด้งออก" ก่อนวิ่งต่อ ต้องหา trigger ที่เหมาะ</p>
+  
+</div><div class="card" style="margin-bottom:14px">
+  <div class="card-title" style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+    <span style="font-size:18px">📈</span>
+    <span style="font-weight:700">3. Trailing SL / ขยับ SL ตามราคา</span>
+    <span style="margin-left:auto;font-size:11px;color:var(--text-dim)">⏳ pending</span>
+  </div>
+  <p style="color:var(--text-dim);font-size:13px;margin:8px 0 0;line-height:1.7">เลื่อน SL ตามราคาที่วิ่งไป (เช่น trail 2×ATR ห่างจาก high) → ล็อกกำไรระหว่างทาง · เทียบกับ fixed TP ว่าจับ trend ยาวได้คุ้มกว่าไหม</p>
+  
+</div><div class="card" style="margin-bottom:14px">
+  <div class="card-title" style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+    <span style="font-size:18px">🏃</span>
+    <span style="font-weight:700">4. No-TP Runner (ใช้ SL ปิดกำไร)</span>
+    <span style="margin-left:auto;font-size:11px;color:var(--text-dim)">⏳ pending</span>
+  </div>
+  <p style="color:var(--text-dim);font-size:13px;margin:8px 0 0;line-height:1.7">ไม่ตั้ง TP เลย ปล่อยวิ่งจนกว่า trailing SL จะตัด → จับ tail ใหญ่ของ trend · เหมาะกับ pattern ที่ TP=5×ATR ชอบวิ่งเลย 5 ไป (จากที่เจอว่า EV ไต่ขึ้นเรื่อยๆ ตาม TP)</p>
+  
+</div><div class="card" style="margin-bottom:14px">
+  <div class="card-title" style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+    <span style="font-size:18px">🔗</span>
+    <span style="font-weight:700">5. Pattern Confluence / ควบรวม 2 patterns</span>
+    <span style="margin-left:auto;font-size:11px;color:var(--text-dim)">⏳ pending</span>
+  </div>
+  <p style="color:var(--text-dim);font-size:13px;margin:8px 0 0;line-height:1.7">เทรดเฉพาะเมื่อ 2 patterns ยืนยันพร้อมกัน (เช่น P66 HnS_Bull + P140 Ichimoku) → ลดจำนวนไม้แต่เพิ่ม WR/PF · รีด accuracy ขึ้นแลกกับความถี่ที่ลดลง</p>
+  
+</div><div class="card" style="margin-bottom:14px">
+  <div class="card-title" style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+    <span style="font-size:18px">↔️</span>
+    <span style="font-weight:700">6. Direction Expansion (Buy → +Sell)</span>
+    <span style="margin-left:auto;font-size:11px;color:var(--text-dim)">⏳ pending</span>
+  </div>
+  <p style="color:var(--text-dim);font-size:13px;margin:8px 0 0;line-height:1.7">หลาย pattern ที่รอดเป็น LONG อย่างเดียว (มาจาก screening ตลาดขาขึ้น) · ทดสอบเพิ่มฝั่ง SHORT (mirror pattern) เพื่อเทรดได้ทั้ง 2 ทาง + กระจายความเสี่ยงตามทิศตลาด</p>
+  
+</div><div class="card" style="margin-bottom:14px">
+  <div class="card-title" style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+    <span style="font-size:18px">🎯</span>
+    <span style="font-weight:700">7. SL/TP Fine Grid + Walk-Forward</span>
+    <span style="margin-left:auto;font-size:11px;color:var(--text-dim)">⏳ pending</span>
+  </div>
+  <p style="color:var(--text-dim);font-size:13px;margin:8px 0 0;line-height:1.7">หา SL/TP ที่ optimal ละเอียดขึ้น (ไม่ใช่แค่ grid หยาบ) + แบ่งช่วงเวลา walk-forward ยืนยันว่าค่าไม่ได้ดีแค่บังเอิญ · ใส่เพดานเวลาถือเพื่อตัด opportunity cost</p>
+  
+</div>
+</section>
+
+<section>
+  <div class="section-head"><span class="section-num">05</span><h2 class="section-title">📋 Results Log</h2></div>
+  <div class="insight" style="background:rgba(91,155,213,0.08);border-color:var(--blue)">
+    <div class="insight-tag" style="color:var(--blue)">📝 บันทึกผล (อัปเดตเรื่อยๆ)</div>
+    <ul style="margin:8px 0 0;padding-left:20px;line-height:2;color:var(--text-dim);font-size:13px">
+      <li><strong style="color:var(--green)">2026-05-22</strong> — Limit entry −0.5×ATR บน GBPJPY P61: EV/สัญญาณ +0.487→+0.539R (+11%), RR 2.0→2.8 ✅</li>
+      <li style="color:var(--text-dim)">— (ผลถัดไปจะเพิ่มที่นี่)</li>
+    </ul>
+  </div>
+</section>
+
+</main>
+</body>
+</html>
